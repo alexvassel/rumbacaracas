@@ -1,0 +1,12 @@
+/**
+@COMPANY: Raven Developers 2010
+@FILE INFO: Forms and Form elements master.
+@WEBSITE: http://www.ravendevelopers.com
+@AUTHOR: Anirudh K. Mahant
+@COPYRIGHTS:
+The original author(s) retain all the copyrights of this file.
+Portions created by Anirudh K. Mahant are Copyright of Raven Developers (C) 2010.
+Contains portions derived from Mozilla Gecko Framework (http://www.mozilla.org).
+**/
+
+form{margin:0;padding:0;display:inline}legend{padding-left:2px;padding-right:2px;border:none;position:static;float:none;width:-moz-fit-content;min-width:0;max-width:none;height:auto;min-height:0;max-height:none;white-space:nowrap}fieldset{display:block;margin-left:2px;margin-right:2px;padding:0.35em 0.625em 0.75em}label{cursor:default}textarea{margin:1px 0 1px 0;font:medium -moz-fixed;text-align:start;text-transform:none;word-spacing:normal;letter-spacing:normal;vertical-align:text-bottom;cursor:text;text-indent:0}select{margin:0;line-height:normal !important;white-space:nowrap !important;text-align:start;cursor:default;text-indent:0;overflow:-moz-hidden-unscrollable}option{display:block;float:none !important;position:static !important;min-height:1em;line-height:normal !important;text-indent:0;white-space:nowrap !important}optgroup{display:block;float:none !important;position:static !important;line-height:normal !important;font-style:italic;font-weight:bold;font-size:inherit;text-indent:0;white-space:nowrap !important}input[type="button"],input[type="submit"],input[type="checkbox"],input[type="radio"],input[type="text"]{vertical-align:middle}.iw99 input[type="text"],.iw99 input[type="password"],.iw99 textarea,.iw99 select{width:99%}.ie-iw99{width:99%}.iw98 input[type="text"],.iw98 input[type="password"],.iw98 textarea,.iw98 select{width:98%}.ie-iw98{width:98%}.iw97 input[type="text"],.iw97 input[type="password"],.iw97 textarea,.iw97 select{width:97%}.ie-iw97{width:97%}.iw96 input[type="text"],.iw96 input[type="password"],.iw96 textarea,.iw96 select{width:96%}.ie-iw96{width:96%}.iw95 input[type="text"],.iw95 input[type="password"],.iw95 textarea,.iw95 select{width:95%}.ie-iw95{width:95%}

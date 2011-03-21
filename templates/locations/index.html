@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}{% trans "Locales | Rumbabogota" %}{% endblock %}
+
+{% load tools %}
+
+{% block colleft %}
+<div class="title-wrap encap">
+	<span class="flt-left"><h2 class="title">{% trans "Locations"%}</h2></span>
+	<span class="flt-right">
+	  
+	</span>
+</div><!--//.title-wrap-->
+
+<div class="tab-containers event-detail-filters">
+	<table class="event-filters ptb8" width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tbody>
+	    <tr>
+	      <td valign="middle" align="left" colspan="3">
+	        <h3>{% trans "Find locations"%}</h3>
+	      </td>
+	    </tr>
+	    <tr>
+	      <td style="width: 120px;">
+	        <label for="events-list">{% trans "List of all locations"%}:</label>
+	      </td>
+	      <td valign="middle" align="left" style="width: 300px;" colspan="2">
+	        <select name="events-list" id="events-list" style="width: 300px;">
+	        	<option value="">{% trans "Select a location"%}</option>
+	        	{% for location in all_locations %}
+	        		<option value="{{location.slug}}">{{location.title}}</option>
+				{% endfor %}
+	        </select>
+	      </td>
+	    </tr>
+	  </tbody>
+	</table>
+	<div id="outline-briefs" class="outline-briefs eventos-outline">
+	  <div class="outline-navigation">
+	    <ul id="outline-titles" class="encap outnone">
+	      <li{% if view == "category" %} class="active"{% endif %}><a href="/locations/by-category">{% trans "By Category"%}</a><div {% if view == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if view == "area" %} class="active"{% endif %}><a href="/locations/by-area">{% trans "By Area"}</a><div {% if view == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if view == "music" %} class="active"{% endif %}><a href="/locations/by-music">{% trans "By music"}</a><div {% if view == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if view == "food" %} class="active"{% endif %}><a href="/locations/by-food">{% trans "By Type of Food"}</a><div {% if view == "food" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	    </ul>
+	  </div><!--//.outline-navigation-->
+	</div><!--//#outline-briefs-->
+	
+	<div id="events-category-wrapper" class="events-category-wrapper outnone">
+	<ul class="event-tab-contents">
+		<li>
+	      <div id="events-accordion" class="events-accordion encap">
+	  		{% for group in group_field %}
+	  		{% if group.location_set.all%}
+	        <a class="accordion-title" href="#"><span class="category-title">{{group.title}}</span><span class="status">&nbsp;</span></a>
+	        <div class="local-listing encap">
+	          <ul class="encap">
+				{% for location in group.location_set.all %}
+					<li>
+		              <h4><a href="/locations/{{location.slug}}"><img src="{{ location.thumbnail.url }}" alt="{{location.title}}" /></a></h4>
+		              <h3 class="decou"><a href="/locations/{{location.slug}}">{{location.title}}</a></h3>
+		              <p>{{location.description|truncate:70}}</p>
+		            </li>
+				{% endfor %}
+			  </ul>
+	          <a class="more-news" href="#">{% blocktrans with title=group.title %}View more {{title}}{% endblocktrans %}</a>
+			</div><!--//.local-listing-->
+			{% endif %}
+			{% endfor %}
+		</div><!--//.events-accordion-->
+		</li>
+	</ul><!--//.event-tab-contents-->
+	</div><!--//.events-category-wrapper-->
+</div><!--//.tab-containers-->
+
+<script>
+	$(document).ready(function () {
+		$("#events-list").change(function () {
+			var slug = $("#events-list").val();
+			if (slug != '') {
+				window.location.href = '/locations/'+ slug;	
+			}
+        })
+	})
+	
+</script>
+
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

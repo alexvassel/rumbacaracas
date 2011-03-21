@@ -1,0 +1,34 @@
+/**
+@COMPANY: Raven Developers 2010
+@FILE INFO: Fixes IE7 bugs (Some pest control)
+@WEBSITE: http://www.ravendevelopers.com
+@AUTHOR: Anirudh K. Mahant
+@COPYRIGHTS:
+The original author(s) of this file partially hold the copyrights. Portions created by Anirudh K. Mahant are Copyright of Raven Developers (C) 2010.
+Contains portions derived from YAML. YAML is licensed under
+1) CC (Creative Commons)-A 2.0 (http://creativecommons.org/licenses/by/2.0/),
+2) YAML-C (http://www.yaml.de/en/license/license-conditions.html)
+YAML is Copyright of Mr. Dirk Jesse (http://www.yaml.de)
+**/
+
+/*---------------------- DERIVED FROM YAML FRAMEWORK ----------------------*/
+/*Forcing vertical scrollbars is not needed in IE (only for Firefox/Netscape/Safari)*/
+html { height: auto; margin-bottom:0; }
+/* Essential in IE7 for correct layout scaling ... */
+body { position: relative; }
+/* List numbering bug */
+body ol li { display:list-item; }
+/* avoid horizontal scrollbars in IE7 in borderless layouts because of negative margins */
+html { margin-right: 1px; }
+* html { margin-right: 0 }
+/* clearfix for IE7 */
+.clearfix { display: inline-block }
+/*---------------------- END OF YAML FRAMEWORK MARKUP ----------------------*/
+/* { Fix IE Whitespace bug in IE when anchors are inside Paragraphs } */
+* html p a{ display: inline; }
+/* { IE only clearfix or better call it encapsulate fix } */
+.ie-encap:after{clear:both;display:block;font-size:0;content:" ";visibility:hidden;height:0;}.ie-encap{display:inline-block;}
+/* start commented backslash hack \*/
+* html .ie-encap{height:1%;}.ie-encap{display:block;}
+/* close commented backslash hack */
+.ie-inlineblk{display:inline-block;}.ie-inline{display:inline;}

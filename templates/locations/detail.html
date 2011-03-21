@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}
+{% trans "Locales | Rumbabogota" %}
+{% endblock %}
+
+{% load tools %}
+
+{% block colleft %}
+<div class="title-wrap encap">
+	<span class="flt-left"><h2 class="title">{% trans "Locales"%}</h2></span>
+	<span class="flt-right"></span>
+</div><!--//.title-wrap-->
+
+<div class="node locales-details encap">
+<div class="node-mini-left c65l">
+  <div class="contents">
+    <h2>{{location.title}}</h2>
+    <div class="locales-desc">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tbody>
+		{% if location.address%}
+    	  <tr class="odd">
+            <td><strong>{% trans "Address" %}:</strong></td>
+            <td>{{location.address}}</td>
+          </tr>
+		{% endif %}
+		{% if location.area%}
+          <tr class="even">
+            <td><strong>{% trans "Area"%}:</strong></td>
+            <td>{{location.area.title}}</td>
+          </tr>
+        {% endif %}
+		{% if location.city%}
+          <tr class="odd">
+            <td><strong>{% trans "City"%}:</strong></td>
+            <td>{{location.city}}<span class="location-map outnone ml25"><a href="#">{% trans "Map"%}</a></span></td>
+          </tr>
+        {% endif %}
+		{% if location.phone_1%}          
+          <tr class="even">
+            <td><strong>{% trans "Phone 1"%}:</strong></td>
+            <td>{{location.phone_1}}</td>
+          </tr>
+        {% endif %}
+		{% if location.phone_2%}          
+          <tr class="odd">
+            <td><strong>{% trans "Phone 2"%}:</strong></td>
+            <td>{{location.phone_2}}</td>
+          </tr>
+        {% endif %}
+		{% if location.url%}          
+          <tr class="even">
+            <td><strong>{% trans "Web"%}:</strong></td>
+            <td><a href="{{location.url}}">{{location.url}}</a></td>
+          </tr>
+        {% endif %}
+		{% if location.email%}          
+          <tr class="odd">
+            <td><strong>{% trans "Email"%}:</strong></td>
+            <td>{{location.email}}</td>
+          </tr>
+        {% endif %}
+		{% if location.hours_of_operation%}          
+          <tr class="even">
+            <td><strong>{% trans "Working hours"%}:</strong></td>
+            <td>{{location.hours_of_operation}}</td>
+          </tr>
+        {% endif %}
+		{% if location.dress%}          
+          <tr class="odd">
+            <td><strong>{% trans "Dress code"%}:</strong></td>
+            <td>{{location.dress.title}}</td>
+          </tr>
+		{% endif %}
+		{% if location.type%}
+          <tr class="even">
+            <td><strong>{% trans "Category"%}:</strong></td>
+            <td>{{location.type.all|join:", "}}</td>
+          </tr>
+        {% endif %}
+        {% if location.restaurant%}
+          <tr class="even">
+            <td><strong>{% trans "Restaurant"%}:</strong></td>
+            <td>{{location.restaurant.all|join:", "}}</td>
+          </tr>
+        {% endif %}            
+        </tbody>
+      </table>
+      <div class="locales-contents">
+      	{{location.description|linebreaks}}
+      </div><!--//.event-contents-->
+    </div><!--//.event-desc-->
+  </div><!--//.contents-->
+</div><!--//.node-mini-left-->
+<div class="node-mini-right c32r">
+  <div class="locales-info outnone">
+    <div class="locales-image-teaser">
+      <a class="image" href="{{location.image_logo.url}}"><img src="{{location.thumbnail.url}}" /></a>
+    </div><!--//.event-image-teaser-->
+  </div><!--//.event-info-->
+</div><!--//.node-mini-right-->
+</div><!--//.node-->
+
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

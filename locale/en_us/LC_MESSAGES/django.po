@@ -1,0 +1,266 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-21 16:39+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: locations/models.py:6
+msgid "Type of Venue/Club"
+msgstr ""
+
+#: locations/models.py:10
+msgid "Location type"
+msgstr ""
+
+#: locations/models.py:11
+msgid "Location types"
+msgstr ""
+
+#: locations/models.py:14 locations/models.py:18
+msgid "Type of Restaurant"
+msgstr ""
+
+#: locations/models.py:19
+msgid "Types of Restaurant"
+msgstr ""
+
+#: locations/models.py:22
+msgid "Style of the Venue"
+msgstr ""
+
+#: locations/models.py:26
+msgid "Location style"
+msgstr ""
+
+#: locations/models.py:27
+msgid "Location styles"
+msgstr ""
+
+#: locations/models.py:30 templates/locations/detail.html:29
+msgid "Area"
+msgstr ""
+
+#: locations/models.py:34
+msgid "Location area"
+msgstr ""
+
+#: locations/models.py:35
+msgid "Location areas"
+msgstr ""
+
+#: locations/models.py:38
+msgid "Music"
+msgstr ""
+
+#: locations/models.py:42
+msgid "Location music"
+msgstr ""
+
+#: locations/models.py:43
+msgid "Location musics"
+msgstr ""
+
+#: locations/models.py:47
+msgid "Event Name or Title"
+msgstr ""
+
+#: locations/models.py:51
+msgid "Dress type"
+msgstr ""
+
+#: locations/models.py:52
+msgid "Dress types"
+msgstr ""
+
+#: locations/models.py:56
+msgid "Name of venue/club"
+msgstr ""
+
+#: locations/models.py:57
+msgid "Url name for location"
+msgstr ""
+
+#: locations/models.py:60 templates/locations/detail.html:23
+msgid "Address"
+msgstr ""
+
+#: locations/models.py:61
+msgid "City / District"
+msgstr ""
+
+#: locations/models.py:62
+msgid "Telephone 1"
+msgstr ""
+
+#: locations/models.py:63
+msgid "Telephone 2"
+msgstr ""
+
+#: locations/models.py:64
+msgid "Fax"
+msgstr ""
+
+#: locations/models.py:65
+msgid "Url"
+msgstr ""
+
+#: locations/models.py:66 locations/models.py:80
+#: templates/locations/detail.html:59
+msgid "Email"
+msgstr ""
+
+#: locations/models.py:67 templates/locations/detail.html:65
+msgid "Working hours"
+msgstr ""
+
+#: locations/models.py:71
+msgid "Resident DJ"
+msgstr ""
+
+#: locations/models.py:73
+msgid "Capacity"
+msgstr ""
+
+#: locations/models.py:74
+msgid "Image logo"
+msgstr ""
+
+#: locations/models.py:75
+msgid "Description"
+msgstr ""
+
+#: locations/models.py:76
+msgid "Owner or manager"
+msgstr ""
+
+#: locations/models.py:77
+msgid "Contact Form"
+msgstr ""
+
+#: locations/models.py:78
+msgid "Contact for Updates"
+msgstr ""
+
+#: locations/models.py:79
+msgid "Telephones"
+msgstr ""
+
+#: locations/models.py:83
+msgid "View on site"
+msgstr ""
+
+#: locations/models.py:85
+msgid "Preview"
+msgstr ""
+
+#: locations/models.py:97
+msgid "Location"
+msgstr ""
+
+#: locations/models.py:98 locations/views.py:30 locations/views.py:42
+#: locations/views.py:53 locations/views.py:64
+#: templates/locations/index.html:8
+msgid "Locations"
+msgstr ""
+
+#: locations/views.py:31
+msgid "By category"
+msgstr ""
+
+#: locations/views.py:43
+msgid "By area"
+msgstr ""
+
+#: locations/views.py:54 templates/locations/index.html:42
+msgid "By music"
+msgstr ""
+
+#: locations/views.py:65
+msgid "By type of food"
+msgstr ""
+
+#: locations/views.py:76
+msgid "Locals"
+msgstr ""
+
+#: templates/locations/detail.html:3 templates/locations/index.html:2
+msgid "Locales | Rumbabogota"
+msgstr ""
+
+#: templates/locations/detail.html:10
+msgid "Locales"
+msgstr ""
+
+#: templates/locations/detail.html:35
+msgid "City"
+msgstr ""
+
+#: templates/locations/detail.html:36
+msgid "Map"
+msgstr ""
+
+#: templates/locations/detail.html:41
+msgid "Phone 1"
+msgstr ""
+
+#: templates/locations/detail.html:47
+msgid "Phone 2"
+msgstr ""
+
+#: templates/locations/detail.html:53
+msgid "Web"
+msgstr ""
+
+#: templates/locations/detail.html:71
+msgid "Dress code"
+msgstr ""
+
+#: templates/locations/detail.html:77
+msgid "Category"
+msgstr ""
+
+#: templates/locations/detail.html:83
+msgid "Restaurant"
+msgstr ""
+
+#: templates/locations/index.html:19
+msgid "Find locations"
+msgstr ""
+
+#: templates/locations/index.html:24
+msgid "List of all locations"
+msgstr ""
+
+#: templates/locations/index.html:28
+msgid "Select a location"
+msgstr ""
+
+#: templates/locations/index.html:40
+msgid "By Category"
+msgstr ""
+
+#: templates/locations/index.html:41
+msgid "By Area"
+msgstr ""
+
+#: templates/locations/index.html:43
+msgid "By Type of Food"
+msgstr ""
+
+#: templates/locations/index.html:65
+#, python-format
+msgid "View more %(title)s"
+msgstr ""
