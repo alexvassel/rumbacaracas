@@ -31,7 +31,7 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'es-es'
+LANGUAGE_CODE = 'en-us'
 
 LOCALE_PATHS = ( 
     '/home/maksim/Documents/Develop/rumbabogota/locale',
@@ -83,7 +83,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'breadcrumbs.middleware.BreadcrumbsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
  )
 
 INTERNAL_IPS = ( '127.0.0.1', )

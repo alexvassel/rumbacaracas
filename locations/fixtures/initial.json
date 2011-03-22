@@ -1,0 +1,373 @@
+[
+  {
+    "pk": 1, 
+    "model": "locations.locationtype", 
+    "fields": {
+      "title": "Discoteca"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "locations.locationtype", 
+    "fields": {
+      "title": "Bar / Lounge"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "locations.locationtype", 
+    "fields": {
+      "title": "Caf\u00e9"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "locations.locationtype", 
+    "fields": {
+      "title": "Club Privado"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "locations.locationtype", 
+    "fields": {
+      "title": "Museo / Galer\u00eda"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "locations.locationtype", 
+    "fields": {
+      "title": "Teatro / Auditorio"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "locations.locationtype", 
+    "fields": {
+      "title": "Centro Cultural"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "locations.locationtype", 
+    "fields": {
+      "title": "Parque"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "locations.locationtype", 
+    "fields": {
+      "title": "Otros"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Alem\u00e1n"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Americano"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "\u00c1rabe"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Argentino"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Brasilero"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Campestre"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Carnes"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Chino"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Cocina de Autor"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Colombiano"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Coreano"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Crepes"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Cubano"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Espa\u00f1ol"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Franc\u00e9s"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Fusi\u00f3n"
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Griego"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Helader\u00eda / Pasteler\u00eda"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Hind\u00fa"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Internacional"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Iran\u00ed"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Italiano"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Jamaiquino"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Japon\u00e9s"
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Marisquer\u00eda"
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Mediterr\u00e1neo"
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Mejicano"
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Peruano"
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Pizzer\u00eda"
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Rodizio"
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "S\u00e1ndwiches y ensaladas"
+    }
+  }, 
+  {
+    "pk": 32, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Sueco"
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Tailand\u00e9s"
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "locations.restauranttype", 
+    "fields": {
+      "title": "Vegetariano"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "locations.locationstyle", 
+    "fields": {
+      "title": "adult"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "locations.locationarea", 
+    "fields": {
+      "title": "Main area"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "locations.locationarea", 
+    "fields": {
+      "title": "dddddd"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "locations.locationmusic", 
+    "fields": {
+      "title": "rock"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "locations.dresstype", 
+    "fields": {
+      "title": "Casual"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "locations.location", 
+    "fields": {
+      "image_logo": "images/locations/IMG_6266.jpg", 
+      "resident_dj": "", 
+      "owner": "", 
+      "dress": 1, 
+      "phone_1": "", 
+      "city": "", 
+      "style": 1, 
+      "capacity": "", 
+      "title": "My BarraBar Vodketer\u00eda", 
+      "phone_2": "", 
+      "music": 1, 
+      "phones": "", 
+      "type": [
+        1
+      ], 
+      "email": "", 
+      "restaurant": [
+        1
+      ], 
+      "fax": "", 
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", 
+      "contact_email": "", 
+      "address": "", 
+      "slug": "my-barrabar-vodketeria", 
+      "contact_type": "", 
+      "url": "", 
+      "area": 2, 
+      "contact": "", 
+      "hours_of_operation": "Abierto de lunes a s\u00e1bado desde las 5:00 pm"
+    }
+  }
+]

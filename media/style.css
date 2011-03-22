@@ -3161,6 +3161,14 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 #main-contents #col-left .locales-details .logo-strips .logo-slides li img{
   vertical-align: top;
 }
+
+#main-contents #col-left .locales-details .logo-strips .logo-slides p{
+	background: white; 
+	text-align: center;
+	font-size: 16px; 
+	padding-top:5px
+}
+
 #main-contents #col-left .locales .eventos-outline ul#outline-titles li a {
   font-size: 12px !important;
   font-weight: normal !important;

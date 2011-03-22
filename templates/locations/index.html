@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block title %}{% trans "Locales | Rumbabogota" %}{% endblock %}
 
 {% load tools %}
@@ -10,6 +11,97 @@
 	  
 	</span>
 </div><!--//.title-wrap-->
+{% if location %}
+<div class="node locales-details encap">
+<div class="node-mini-left c65l">
+  <div class="contents">
+    <h2>{{location.title}}</h2>
+    <div class="locales-desc">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tbody>
+		{% if location.address%}
+    	  <tr class="odd">
+            <td><strong>{% trans "Address" %}:</strong></td>
+            <td>{{location.address}}</td>
+          </tr>
+		{% endif %}
+		{% if location.area%}
+          <tr class="even">
+            <td><strong>{% trans "Area"%}:</strong></td>
+            <td>{{location.area.title}}</td>
+          </tr>
+        {% endif %}
+		{% if location.city%}
+          <tr class="odd">
+            <td><strong>{% trans "City"%}:</strong></td>
+            <td>{{location.city}}<span class="location-map outnone ml25"><a href="#">{% trans "Map"%}</a></span></td>
+          </tr>
+        {% endif %}
+		{% if location.phone_1%}          
+          <tr class="even">
+            <td><strong>{% trans "Phone 1"%}:</strong></td>
+            <td>{{location.phone_1}}</td>
+          </tr>
+        {% endif %}
+		{% if location.phone_2%}          
+          <tr class="odd">
+            <td><strong>{% trans "Phone 2"%}:</strong></td>
+            <td>{{location.phone_2}}</td>
+          </tr>
+        {% endif %}
+		{% if location.url%}          
+          <tr class="even">
+            <td><strong>{% trans "Web"%}:</strong></td>
+            <td><a href="{{location.url}}">{{location.url}}</a></td>
+          </tr>
+        {% endif %}
+		{% if location.email%}          
+          <tr class="odd">
+            <td><strong>{% trans "Email"%}:</strong></td>
+            <td>{{location.email}}</td>
+          </tr>
+        {% endif %}
+		{% if location.hours_of_operation%}          
+          <tr class="even">
+            <td><strong>{% trans "Working hours"%}:</strong></td>
+            <td>{{location.hours_of_operation}}</td>
+          </tr>
+        {% endif %}
+		{% if location.dress%}          
+          <tr class="odd">
+            <td><strong>{% trans "Dress code"%}:</strong></td>
+            <td>{{location.dress.title}}</td>
+          </tr>
+		{% endif %}
+		{% if location.type%}
+          <tr class="even">
+            <td><strong>{% trans "Category"%}:</strong></td>
+            <td>{{location.type.all|join:", "}}</td>
+          </tr>
+        {% endif %}
+        {% if location.restaurant%}
+          <tr class="even">
+            <td><strong>{% trans "Restaurant"%}:</strong></td>
+            <td>{{location.restaurant.all|join:", "}}</td>
+          </tr>
+        {% endif %}            
+        </tbody>
+      </table>
+      <div class="locales-contents">
+      	{{location.description|linebreaks}}
+      </div><!--//.event-contents-->
+    </div><!--//.event-desc-->
+  </div><!--//.contents-->
+</div><!--//.node-mini-left-->
+<div class="node-mini-right c32r">
+  <div class="locales-info outnone">
+    <div class="locales-image-teaser">
+      <a class="image" href="{{location.image_logo.url}}"><img src="{{location.thumbnail.url}}" /></a>
+    </div><!--//.event-image-teaser-->
+  </div><!--//.event-info-->
+</div><!--//.node-mini-right-->
+</div><!--//.node-->
+{% endif %}
 
 <div class="tab-containers event-detail-filters">
 	<table class="event-filters ptb8" width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -38,9 +130,9 @@
 	  <div class="outline-navigation">
 	    <ul id="outline-titles" class="encap outnone">
 	      <li{% if view == "category" %} class="active"{% endif %}><a href="/locations/by-category">{% trans "By Category"%}</a><div {% if view == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if view == "area" %} class="active"{% endif %}><a href="/locations/by-area">{% trans "By Area"}</a><div {% if view == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if view == "music" %} class="active"{% endif %}><a href="/locations/by-music">{% trans "By music"}</a><div {% if view == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if view == "food" %} class="active"{% endif %}><a href="/locations/by-food">{% trans "By Type of Food"}</a><div {% if view == "food" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if view == "area" %} class="active"{% endif %}><a href="/locations/by-area">{% trans "By Area"%}</a><div {% if view == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if view == "music" %} class="active"{% endif %}><a href="/locations/by-music">{% trans "By music"%}</a><div {% if view == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if view == "food" %} class="active"{% endif %}><a href="/locations/by-food">{% trans "By Type of Food"%}</a><div {% if view == "food" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
 	    </ul>
 	  </div><!--//.outline-navigation-->
 	</div><!--//#outline-briefs-->
@@ -62,7 +154,6 @@
 		            </li>
 				{% endfor %}
 			  </ul>
-	          <a class="more-news" href="#">{% blocktrans with title=group.title %}View more {{title}}{% endblocktrans %}</a>
 			</div><!--//.local-listing-->
 			{% endif %}
 			{% endfor %}

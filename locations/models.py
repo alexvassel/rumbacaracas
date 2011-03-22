@@ -80,7 +80,7 @@ class Location( ImageModel ):
     contact_email = models.EmailField( _( 'Email' ) , blank = True )
 
     def view( self ):
-        return '<a target="_blank" href="/locations/' + self.slug + '">' + _( 'View on site' ) + '</a>'
+        return u'<a target="_blank" href="/locations/%s">%s</a>' % ( self.slug, _( "View on site" ) )
     view.allow_tags = True
     view.short_description = _( 'Preview' )
     class IKOptions:

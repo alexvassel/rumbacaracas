@@ -70,9 +70,12 @@ def food( request ):
 def food_detail( request ):
     pass
 
-@render_to( 'locations/detail.html' )
+@render_to( 'locations/index.html' )
 def detail ( request, slug ):
     location = get_object_or_404( Location, slug = slug )
-    request.breadcrumbs( _( 'Locals' ) , '/locations' )
+    group_field = LocationType.objects.select_related().all()
+    all_locations = Location.objects.all()
+    request.breadcrumbs( _( 'Locations' ) , '/locations' )
     request.breadcrumbs( location.title , request.path_info )
-    return {'location': location}
+
+    return {'location': location, 'all_locations': all_locations, 'group_field': group_field, 'view': 'category'}
