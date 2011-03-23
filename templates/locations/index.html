@@ -19,72 +19,66 @@
     <div class="locales-desc">
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tbody>
+    	{% if location.type.all%}
+          <tr>
+            <td><strong>{% trans "Category"%}:</strong></td>
+            <td>{{location.type.all|join:", "}}</td>
+          </tr>
+        {% endif %}
 		{% if location.address%}
-    	  <tr class="odd">
+    	  <tr>
             <td><strong>{% trans "Address" %}:</strong></td>
             <td>{{location.address}}</td>
           </tr>
 		{% endif %}
-		{% if location.area%}
-          <tr class="even">
-            <td><strong>{% trans "Area"%}:</strong></td>
-            <td>{{location.area.title}}</td>
-          </tr>
-        {% endif %}
-		{% if location.city%}
-          <tr class="odd">
+		{% if location.area or location.city%}
+          <tr>
             <td><strong>{% trans "City"%}:</strong></td>
-            <td>{{location.city}}<span class="location-map outnone ml25"><a href="#">{% trans "Map"%}</a></span></td>
+            <td>{% if location.city%}{{location.city}}, {% endif %}{% if location.area%}{{location.area.title}}{% endif %}<span class="location-map outnone ml25"><a href="#">{% trans "Map"%}</a></span></td>
           </tr>
         {% endif %}
 		{% if location.phone_1%}          
-          <tr class="even">
+          <tr>
             <td><strong>{% trans "Phone 1"%}:</strong></td>
             <td>{{location.phone_1}}</td>
           </tr>
         {% endif %}
 		{% if location.phone_2%}          
-          <tr class="odd">
+          <tr>
             <td><strong>{% trans "Phone 2"%}:</strong></td>
             <td>{{location.phone_2}}</td>
           </tr>
         {% endif %}
 		{% if location.url%}          
-          <tr class="even">
+          <tr>
             <td><strong>{% trans "Web"%}:</strong></td>
             <td><a href="{{location.url}}">{{location.url}}</a></td>
           </tr>
         {% endif %}
 		{% if location.email%}          
-          <tr class="odd">
+          <tr>
             <td><strong>{% trans "Email"%}:</strong></td>
             <td>{{location.email}}</td>
           </tr>
         {% endif %}
 		{% if location.hours_of_operation%}          
-          <tr class="even">
+          <tr>
             <td><strong>{% trans "Working hours"%}:</strong></td>
             <td>{{location.hours_of_operation}}</td>
           </tr>
         {% endif %}
-		{% if location.dress%}          
-          <tr class="odd">
-            <td><strong>{% trans "Dress code"%}:</strong></td>
-            <td>{{location.dress.title}}</td>
-          </tr>
-		{% endif %}
-		{% if location.type%}
-          <tr class="even">
-            <td><strong>{% trans "Category"%}:</strong></td>
-            <td>{{location.type.all|join:", "}}</td>
-          </tr>
-        {% endif %}
-        {% if location.restaurant%}
-          <tr class="even">
+		{% if location.restaurant.all%}
+          <tr>
             <td><strong>{% trans "Restaurant"%}:</strong></td>
             <td>{{location.restaurant.all|join:", "}}</td>
           </tr>
-        {% endif %}            
+        {% endif %}
+        {% if location.music%}
+          <tr>
+            <td><strong>{% trans "Music type"%}:</strong></td>
+            <td>{{location.music.title}}</td>
+          </tr>
+        {% endif %}
         </tbody>
       </table>
       <div class="locales-contents">
@@ -101,6 +95,16 @@
   </div><!--//.event-info-->
 </div><!--//.node-mini-right-->
 </div><!--//.node-->
+
+<script type="text/javascript" charset="utf-8">
+	jQuery(document).ready(function(){
+		$('div.locales-desc tr:odd').addClass('odd');
+		$('div.locales-desc tr:even').addClass('even');		
+	});
+</script>
+
+
+
 {% endif %}
 
 <div class="tab-containers event-detail-filters">

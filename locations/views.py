@@ -43,7 +43,7 @@ def _process( request, group ):
     for group in group_fields:
         locations = group.location_set.all()
         if locations:
-            paginator = Paginator( locations, 1 )
+            paginator = Paginator( locations, 6 )
             try:
                 if ( counter == group_id ):
                     locations_page = paginator.page( page )
