@@ -129,10 +129,10 @@
 	<div id="outline-briefs" class="outline-briefs eventos-outline">
 	  <div class="outline-navigation">
 	    <ul id="outline-titles" class="encap outnone">
-	      <li{% if view == "category" %} class="active"{% endif %}><a href="/locations/by-category">{% trans "By Category"%}</a><div {% if view == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if view == "area" %} class="active"{% endif %}><a href="/locations/by-area">{% trans "By Area"%}</a><div {% if view == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if view == "music" %} class="active"{% endif %}><a href="/locations/by-music">{% trans "By music"%}</a><div {% if view == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if view == "food" %} class="active"{% endif %}><a href="/locations/by-food">{% trans "By Type of Food"%}</a><div {% if view == "food" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "category" %} class="active"{% endif %}><a href="/locations/by-category">{% trans "By Category"%}</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "area" %} class="active"{% endif %}><a href="/locations/by-area">{% trans "By Area"%}</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "music" %} class="active"{% endif %}><a href="/locations/by-music">{% trans "By music"%}</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "food" %} class="active"{% endif %}><a href="/locations/by-food">{% trans "By Type of Food"%}</a><div {% if active_tab == "food" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
 	    </ul>
 	  </div><!--//.outline-navigation-->
 	</div><!--//#outline-briefs-->
@@ -141,23 +141,38 @@
 	<ul class="event-tab-contents">
 		<li>
 	      <div id="events-accordion" class="events-accordion encap">
-	  		{% for group in group_field %}
-	  		{% if group.location_set.all%}
-	        <a class="accordion-title" href="#"><span class="category-title">{{group.title}}</span><span class="status">&nbsp;</span></a>
+	  		{% for group, locations_page, locations_paginator in groups %}
+	        <a class="accordion-title" href="#"><span class="category-title">{{group}}</span><span class="status">&nbsp;</span></a>
 	        <div class="local-listing encap">
 	          <ul class="encap">
-				{% for location in group.location_set.all %}
-					<li>
+				{% for location in locations_page.object_list %}
+					{% if forloop.counter = 4 %}
+						</ul>
+						<ul class="encap">	
+					{% endif %}		
+					<li class="location-preview">
 		              <h4><a href="/locations/{{location.slug}}"><img src="{{ location.thumbnail.url }}" alt="{{location.title}}" /></a></h4>
 		              <h3 class="decou"><a href="/locations/{{location.slug}}">{{location.title}}</a></h3>
 		              <p>{{location.description|truncate:70}}</p>
 		            </li>
 				{% endfor %}
 			  </ul>
+				{% locations_paginator 3 %}
 			</div><!--//.local-listing-->
-			{% endif %}
 			{% endfor %}
 		</div><!--//.events-accordion-->
+		<script type="text/javascript" charset="utf-8">
+			jQuery(document).ready(function(){
+				jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion').accordion({
+					header: 'a.accordion-title',
+			      	fillSpace: false,
+			      	autoheight: true
+			    });
+			    jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion').accordion(
+			    	"activate", {{ active_group }}
+		    	);
+			});
+		</script>
 		</li>
 	</ul><!--//.event-tab-contents-->
 	</div><!--//.events-category-wrapper-->

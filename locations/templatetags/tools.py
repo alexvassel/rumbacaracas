@@ -21,7 +21,7 @@ def truncate( value, arg ):
         return value
 
 
-def paginator( context, adjacent_pages = 2 ):
+def locations_paginator( context, adjacent_pages = 2 ):
     """
     To be used in conjunction with the object_list generic view.
 
@@ -30,30 +30,30 @@ def paginator( context, adjacent_pages = 2 ):
     view.
 
     """
-    table = context['table']
-    startPage = max( table.page.number - adjacent_pages, 1 )
+    group_num = context['forloop']['counter0']
+    locations_page = context['locations_page']
+    locations_paginator = context['locations_paginator']
+    startPage = max( locations_page.number - adjacent_pages, 1 )
     if startPage <= 3: startPage = 1
-    endPage = table.page.number + adjacent_pages + 1
-    if endPage >= table.paginator.num_pages - 1: endPage = table.paginator.num_pages + 1
+    endPage = locations_page.number + adjacent_pages + 1
+    if endPage >= locations_paginator.num_pages - 1: endPage = locations_paginator.num_pages + 1
     page_numbers = [n for n in range( startPage, endPage ) \
-            if n > 0 and n <= table.paginator.num_pages]
-    page_obj = table.paginator.page
-    paginator = table.paginator
-
+            if n > 0 and n <= locations_paginator.num_pages]
+    page_obj = locations_paginator.page
+    paginator = locations_paginator
     return {
         'page_obj': page_obj,
+        'group_num': group_num,
         'paginator': paginator,
-        'page': table.page.number,
-        'pages': table.paginator.num_pages ,
+        'page': locations_page.number,
+        'pages': locations_paginator.num_pages ,
         'page_numbers': page_numbers,
-        'next': table.page.next_page_number(),
-        'previous': table.page.previous_page_number() ,
-        'has_next': table.page.has_next(),
-        'has_previous': table.page.has_previous(),
+        'next': locations_page.next_page_number(),
+        'previous': locations_page.previous_page_number() ,
+        'has_next': locations_page.has_next(),
+        'has_previous': locations_page.has_previous(),
         'show_first': 1 not in page_numbers,
-        'query': table.query,
-        'sort': table.sort,
-        'show_last': table.paginator.num_pages  not in page_numbers,
+        'show_last': locations_paginator.num_pages  not in page_numbers,
     }
 
-register.inclusion_tag( 'paginator.html', takes_context = True )( paginator )
+register.inclusion_tag( 'paginator.html', takes_context = True )( locations_paginator )

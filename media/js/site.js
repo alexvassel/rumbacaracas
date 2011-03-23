@@ -185,11 +185,7 @@ jQuery(document).ready(function(){
     jQuery('#main-contents .tab-containers table.events-calendar tbody td .events-listing ul').accordion({
       header: 'a.anchor-event-name'
     });
-    jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion').accordion({
-      header: 'a.accordion-title',
-      fillSpace: false,
-      autoheight: true
-    });
+    
   } catch (err){}
   jQuery("#main-contents .event-filters-extended ul#outline-titles li, #main-contents #col-left .locales #outline-briefs ul#outline-titles li, #main-contents #col-left .eventos .eventos-outline ul#outline-titles li").each(function(){
     var w = jQuery(this).width();

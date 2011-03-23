@@ -352,11 +352,20 @@
       "music": 1, 
       "phones": "", 
       "type": [
-        1
+        1, 
+        4, 
+        5, 
+        7
       ], 
       "email": "", 
       "restaurant": [
-        1
+        1, 
+        4, 
+        5, 
+        7, 
+        11, 
+        12, 
+        15
       ], 
       "fax": "", 
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", 
@@ -368,6 +377,93 @@
       "area": 2, 
       "contact": "", 
       "hours_of_operation": "Abierto de lunes a s\u00e1bado desde las 5:00 pm"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "locations.location", 
+    "fields": {
+      "image_logo": "images/locations/2_1.JPG", 
+      "resident_dj": "", 
+      "owner": "", 
+      "dress": 1, 
+      "phone_1": "", 
+      "city": "", 
+      "style": 1, 
+      "capacity": "", 
+      "title": "asdasfvbdfbg", 
+      "phone_2": "", 
+      "music": 1, 
+      "phones": "", 
+      "type": [
+        3, 
+        4, 
+        6
+      ], 
+      "email": "", 
+      "restaurant": [
+        4, 
+        5, 
+        10, 
+        15, 
+        17
+      ], 
+      "fax": "", 
+      "description": "ADASDFS\r\nDF\r\nFRG\r\nEARG\r\nRHGWRTHWRYUETYU\r\nETYU\r\nTYUT", 
+      "contact_email": "", 
+      "address": "", 
+      "slug": "asdasfvbdfbg", 
+      "contact_type": "", 
+      "url": "", 
+      "area": 1, 
+      "contact": "", 
+      "hours_of_operation": ""
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "locations.location", 
+    "fields": {
+      "image_logo": "images/locations/Workspace_1_002.png", 
+      "resident_dj": "", 
+      "owner": "", 
+      "dress": 1, 
+      "phone_1": "", 
+      "city": "", 
+      "style": 1, 
+      "capacity": "", 
+      "title": "v erte4t654fghfgh45ty45", 
+      "phone_2": "", 
+      "music": 1, 
+      "phones": "", 
+      "type": [
+        1, 
+        2, 
+        3, 
+        4, 
+        5
+      ], 
+      "email": "", 
+      "restaurant": [
+        1, 
+        2, 
+        3, 
+        4, 
+        5, 
+        6, 
+        7, 
+        8
+      ], 
+      "fax": "", 
+      "description": "asdsdasdasdasdasd\r\nas\r\ndasd\r\nasdasdasd\r\nasd\r\nasdasdasdasds", 
+      "contact_email": "", 
+      "address": "", 
+      "slug": "v-erte4t654fghfgh45ty45", 
+      "contact_type": "", 
+      "url": "", 
+      "area": 1, 
+      "contact": "", 
+      "hours_of_operation": ""
     }
   }
 ]

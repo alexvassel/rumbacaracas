@@ -1,7 +1,7 @@
 /*
  * jQuery UI Accordion 1.6
  *
- * Copyright (c) 2007 Jörn Zaefferer
+ * Copyright (c) 2007 Jï¿½rn Zaefferer
  *
  * http://docs.jquery.com/UI/Accordion
  *
@@ -94,7 +94,6 @@ $.ui.accordion.prototype = {
 			target: findActive( this.options.headers, index )[0]
 		});
 	},
-
 	enable: function() {
 		this.options.disabled = false;
 	},

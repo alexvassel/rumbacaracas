@@ -83,7 +83,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'breadcrumbs.middleware.BreadcrumbsMiddleware',
-    #'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
  )
 
 INTERNAL_IPS = ( '127.0.0.1', )
@@ -95,6 +95,10 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+ )
+
+FIXTURE_DIRS = ( 
+   '/home/maksim/Documents/Develop/rumbabogota/locations/fixtures/',
  )
 
 TEMPLATE_CONTEXT_PROCESSORS = ( 
