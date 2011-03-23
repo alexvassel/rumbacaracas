@@ -90,7 +90,9 @@
 <div class="node-mini-right c32r">
   <div class="locales-info outnone">
     <div class="locales-image-teaser">
-      <a class="image" href="{{location.image_logo.url}}"><img src="{{location.thumbnail.url}}" /></a>
+    	{% if location.image_logo%} 
+      	<a class="image" href="{{location.image_logo.url}}"><img src="{{location.logo.url}}" /></a>
+      	{% endif %}
     </div><!--//.event-image-teaser-->
   </div><!--//.event-info-->
 </div><!--//.node-mini-right-->
