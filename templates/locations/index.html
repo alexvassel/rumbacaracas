@@ -34,7 +34,11 @@
 		{% if location.area or location.city%}
           <tr>
             <td><strong>{% trans "City"%}:</strong></td>
-            <td>{% if location.city%}{{location.city}}, {% endif %}{% if location.area%}{{location.area.title}}{% endif %}<span class="location-map outnone ml25"><a href="#">{% trans "Map"%}</a></span></td>
+            <td>{% if location.city%}{{location.city}}, {% endif %}{% if location.area%}{{location.area.title}}{% endif %}
+            	<span class="location-map outnone ml25">
+            		<a href="http://map.google.es/maps?q={{location.address|add:" "|add:location.area|add:" "|add:location.city|urlencode }}">{% trans "Map"%}</a>
+        		</span>
+            </td>
           </tr>
         {% endif %}
 		{% if location.phone_1%}          
