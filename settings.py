@@ -118,13 +118,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.admin',
-    #'events',
+    'events',
     'locations',
     'debug_toolbar',
     #'photologue',
     #'tagging',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
  )

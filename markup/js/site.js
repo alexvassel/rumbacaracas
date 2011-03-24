@@ -183,7 +183,8 @@ jQuery(document).ready(function(){
   /* Accordions */
   try{
     jQuery('#main-contents .tab-containers table.events-calendar tbody td .events-listing ul').accordion({
-      header: 'a.anchor-event-name'
+      header: 'a.anchor-event-name',
+      animated: 'slide'
     });
     jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion').accordion({
       header: 'a.accordion-title',

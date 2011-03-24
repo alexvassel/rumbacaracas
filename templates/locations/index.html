@@ -161,7 +161,15 @@
 						<ul class="encap">	
 					{% endif %}		
 					<li class="location-preview">
-		              <h4><a href="/locations/{{location.slug}}"><img src="{{ location.thumbnail.url }}" alt="{{location.title}}" /></a></h4>
+		              <h4>
+		              	<a href="/locations/{{location.slug}}">
+		              		{% if location.thumbnail.url %}
+		              			<img src="{{ location.thumbnail.url }}" alt="{{location.title}}" />
+	              			{% else %}
+	              				<div class="empty encap"></div>
+	              			{%endif%}
+	              	  	</a>
+	              	  </h4>
 		              <h3 class="decou"><a href="/locations/{{location.slug}}">{{location.title}}</a></h3>
 		              <p>{{location.description|truncate:70}}</p>
 		            </li>
