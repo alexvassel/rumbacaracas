@@ -3221,8 +3221,8 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 }
 #main-contents #col-left .locales .tab-containers .local-listing ul.encap li.location-preview h4 div.empty {
   border: 1px solid #D6D6D6;
-  width: 185;
-  height: 100;
+  width: 185px;
+  height: 100px;
 }
 #main-contents #col-left .locales .tab-containers .local-listing ul.encap li.location-preview h3,
 #main-contents #col-left .locales .tab-containers .local-listing ul.encap li.location-preview h3 a{
