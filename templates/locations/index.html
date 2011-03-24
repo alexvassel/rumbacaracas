@@ -152,7 +152,7 @@
 		<li>
 	      <div id="events-accordion" class="events-accordion encap">
 	  		{% for group, locations_page, locations_paginator in groups %}
-	        <a class="accordion-title" href="#"><span class="category-title" id="group-anchor-{{forloop.counter}}">{{group}}</span><span class="status">&nbsp;</span></a>
+	        <a class="accordion-title" href="#"><span class="category-title" id="group-anchor-{{forloop.counter0}}">{{group}}</span><span class="status">&nbsp;</span></a>
 	        <div class="local-listing encap">
 	          <ul class="encap">
 				{% for location in locations_page.object_list %}
