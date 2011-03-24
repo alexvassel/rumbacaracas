@@ -90,9 +90,11 @@ $.ui.accordion = function(container, options) {
 $.ui.accordion.prototype = {
 	activate: function(index) {
 		// call clickHandler with custom event
+		var el = findActive( this.options.headers, index )[0];
 		clickHandler.call(this.element, {
-			target: findActive( this.options.headers, index )[0]
+			target: el
 		});
+        
 	},
 	enable: function() {
 		this.options.disabled = false;
@@ -289,6 +291,7 @@ $.extend($.ui.accordion, {
 						options.toShow.css("height", "auto");
 					}
 					options.complete();
+					options.toShow.get(0).scrollIntoView();
 				}
 			});
 		},
