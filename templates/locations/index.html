@@ -36,7 +36,7 @@
             <td><strong>{% trans "City"%}:</strong></td>
             <td>{% if location.city%}{{location.city}}, {% endif %}{% if location.area%}{{location.area.title}}{% endif %}
             	<span class="location-map outnone ml25">
-            		<a href="http://map.google.es/maps?q={{location.address|add:" "|add:location.area|add:" "|add:location.city|urlencode }}">{% trans "Map"%}</a>
+            		<a target="_blank" href="http://map.google.es/maps?q={{location.address|add:" "|add:location.area|add:" "|add:location.city|urlencode }}">{% trans "Map"%}</a>
         		</span>
             </td>
           </tr>
@@ -152,7 +152,7 @@
 		<li>
 	      <div id="events-accordion" class="events-accordion encap">
 	  		{% for group, locations_page, locations_paginator in groups %}
-	        <a class="accordion-title" href="#"><span class="category-title">{{group}}</span><span class="status">&nbsp;</span></a>
+	        <a class="accordion-title" href="#"><span class="category-title" id="group-anchor-{{forloop.counter}}">{{group}}</span><span class="status">&nbsp;</span></a>
 	        <div class="local-listing encap">
 	          <ul class="encap">
 				{% for location in locations_page.object_list %}

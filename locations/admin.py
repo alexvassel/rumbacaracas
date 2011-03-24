@@ -8,9 +8,9 @@ class LocationAdmin( admin.ModelAdmin ):
     list_display_links = ( 'title', )
     fieldsets = [
         ( 'Location data', {'fields': ( 
-            'title', 'slug', 'type', 'restaurant', 'area', 'dress', 'address', 'city', 'phone_1', 'phone_2',
+            'title', 'slug', 'style', 'type', 'restaurant', 'area', 'dress', 'address', 'city', 'phone_1', 'phone_2',
             'fax', 'url', 'email', 'hours_of_operation',
-            'style', 'music', 'resident_dj', 'capacity', 'image_logo', 'description',
+             'music', 'resident_dj', 'capacity', 'image_logo', 'description',
         )} ),
         ( 'Contact Information', {'fields': ( 'owner', 'contact_type', 'contact', 'phones', 'contact_email' )} ),
     ]

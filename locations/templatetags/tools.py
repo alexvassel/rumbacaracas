@@ -30,6 +30,7 @@ def locations_paginator( context, adjacent_pages = 2 ):
     view.
 
     """
+
     group_num = context['forloop']['counter0']
     locations_page = context['locations_page']
     locations_paginator = context['locations_paginator']
