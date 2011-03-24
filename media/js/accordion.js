@@ -291,7 +291,7 @@ $.extend($.ui.accordion, {
 						options.toShow.css("height", "auto");
 					}
 					options.complete();
-					options.toShow.get(0).scrollIntoView();
+					options.toShow.prev().get(0).scrollIntoView();
 				}
 			});
 		},

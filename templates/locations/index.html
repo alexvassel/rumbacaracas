@@ -152,7 +152,7 @@
 		<li>
 	      <div id="events-accordion" class="events-accordion encap">
 	  		{% for group, locations_page, locations_paginator in groups %}
-	        <a class="accordion-title" href="#"><span class="category-title" id="group-anchor-{{forloop.counter0}}">{{group}}</span><span class="status">&nbsp;</span></a>
+	        <a class="accordion-title" href="#" id="group-anchor-{{forloop.counter0}}><span class="category-title"">{{group}}</span><span class="status">&nbsp;</span></a>
 	        <div class="local-listing encap">
 	          <ul class="encap">
 				{% for location in locations_page.object_list %}
@@ -184,7 +184,8 @@
 				jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion').accordion({
 					header: 'a.accordion-title',
 			      	fillSpace: false,
-			      	autoheight: true
+			      	navigation: true,
+			      	autoheight: true,
 			    });
 			    jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion').accordion(
 			    	"activate", {{ active_group }}
