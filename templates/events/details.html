@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Locales | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% block colleft %}
+<div class="title-wrap encap">
+<span class="flt-left"><h2 class="title">{% trans "Events"%}</h2></span>
+<span class="flt-right"></span>
+</div><!--//.title-wrap-->
+<div class="node evento-details encap">
+<div class="node-mini-left c65l">
+<div class="contents">
+<h2>{{event.title}}</h2>
+<div class="event-desc">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tbody>
+	{% if event.category%}
+      <tr>
+        <td><strong>{% trans "Category"%}:</strong></td>
+        <td>{{event.category}}</td>
+      </tr>
+	{%endif%}
+	{% if event.from_date%}
+      <tr>
+        <td><strong>{%trans "Date"%}:</strong></td>
+        <td>{{event.from_date}}</td>
+      </tr>
+	{%endif%}
+	{% if event.time%}
+      <tr>
+        <td><strong>{% trans "Time"%}:</strong></td>
+        <td>{{event.time}}</td>
+      </tr>
+	{%endif%}
+	{% if event.location or event.place%}
+      <tr>
+        <td><strong>{% trans "Location"%}:</strong></td>
+	    {% if event.location %}
+		    <td><a href="/locations/{{event.location.slug}}">{{event.location.title}}</a></td>
+	    {%else%}
+		    <td>{{event.place}}</td>
+	    {%endif%}        	
+      </tr>
+	{%endif%}
+	{% if event.address%}
+      <tr>
+        <td><strong>{% trans "Address"%}:</strong></td>
+        <td>{{event.address}}</td>
+      </tr>
+	{%endif%}
+	{% if event.area or event.city%}
+      <tr>
+        <td><strong>{% trans "City, Area"%}:</strong></td>
+        <td>{% if event.city%}{{event.city}}, {% endif %}{% if event.area%}{{event.area.title}}{% endif %}
+        	<span class="location-map outnone ml25">
+        		<a target="_blank" href="http://map.google.es/maps?q={{event.address|add:" "|add:event.area|add:" "|add:event.city|urlencode }}">{% trans "Map"%}</a>
+    		</span>
+        </td>
+      </tr>
+    {% endif %}
+	{% if event.price%}
+      <tr>
+        <td><strong>Fee:</strong></td>
+        <td>{{event.price}}</td>
+      </tr>
+	{%endif%}
+	{% if location.music%}
+      <tr>
+        <td><strong>{% trans "Music type"%}:</strong></td>
+        <td>{{location.music.title}}</td>
+      </tr>
+    {% endif %}
+	{% if event.email%}
+      <tr>
+        <td><strong>{% trans "Email"%}:</strong></td>
+        <td><a href="mailto:{{event.email}}">{{event.email}}</a></td>
+      </tr>
+	{%endif%}
+	{% if event.url%}
+      <tr>
+        <td><strong>{% trans "Web"%}:</strong></td>
+        <td><a href="{{event.url}}">{{event.url}}</a></td>
+      </tr>
+	{%endif%}
+	{% if event.location.phone_1 or event.location.phone_2 or event.phone%}
+      <tr>
+        <td><strong>Info:</strong></td>
+        <td>
+        	{% if event.location.phone_1 or event.location.phone_2 %}
+        		{% if event.location.phone_1 %}{{event.location.phone_1}}, {% endif%}{% if event.location.phone_2 %}{{event.location.phone_2}}{% endif%}
+        	{% else %}
+        		{{event.phone}}
+        	{% endif %}
+    	</td>
+      </tr>
+	{%endif%}
+    </tbody>
+  </table>
+  	<script type="text/javascript" charset="utf-8">
+		jQuery(document).ready(function(){
+			$('div.event-desc tr:odd').addClass('odd');
+			$('div.event-desc tr:even').addClass('even');		
+		});
+	</script>
+  <div class="event-contents">
+    {{event.description|linebreaks}}
+  </div><!--//.event-contents-->
+</div><!--//.event-desc-->
+  </div><!--//.contents-->
+</div><!--//.node-mini-left-->
+<div class="node-mini-right c32r">
+  <div class="event-info outnone">
+<div class="event-image-teaser">
+  <a class="image" href="{{event.image.url}}"><img alt="Event" src="{{event.eventlogo.url}}" /></a>
+  <a class="lightbox" href="{{event.image.url}}">{% trans "Zoom"%}</a>
+</div><!--//.event-image-teaser-->
+  </div><!--//.event-info-->
+</div><!--//.node-mini-right-->
+  </div><!--//.node-->
+  <div class="tab-containers event-detail-filters">
+<table class="event-filters ptb8" width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+<tr>
+  <td valign="middle" align="left" colspan="2">
+    <h3>Buscar Eventos</h3>
+  </td>
+</tr>
+<tr>
+  <td style="width: 105px;">
+    <label for="events-list">Listado de Eventos:</label>
+  </td>
+  <td valign="middle" align="left" style="width: 420px;">
+    <select name="events-list" id="events-list" style="width: 300px;">
+		<option value="">{% trans "Select a event"%}</option>
+    	{% for event in all_events %}
+      		<option value="{{event.slug}}">{{event.title}}</option>
+  		{% endfor %}
+    </select>
+  </td>
+</tr>
+  </tbody>
+</table>
+<div id="outline-briefs" class="outline-briefs eventos-outline">
+  <div class="outline-navigation">
+<ul id="outline-titles" class="encap outnone">
+  <li{% if active_tab == "category" %} class="active"{% endif %}><a href="/events/by-category">Por Categoría</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+  <li{% if active_tab == "location" %} class="active"{% endif %}><a href="/events/by-location">Por Local</a><div {% if active_tab == "location" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+  <li{% if active_tab == "area" %} class="active"{% endif %}><a href="/events/by-area">Por Zona</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+  <li{% if active_tab == "music" %} class="active"{% endif %}><a href="/events/by-music">Tipo de Música</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+  <li{% if active_tab == "calendar" %} class="active"{% endif %}><a href="/events/calendar"><img class="search-calendar" alt="Ver Calendario" src="/media/images/blank.gif" />Ver Calendario</a><div {% if active_tab == "calendar" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+</ul>
+  </div><!--//.outline-navigation-->
+</div><!--//#outline-briefs-->
+<div id="events-category-wrapper" class="events-category-wrapper outnone">
+  <ul class="event-tab-contents">
+<li>
+  <div id="events-accordion" class="events-accordion encap">
+	{% for group, events in groups %} 
+		<a class="accordion-title" href="#"><span class="category-title">{{group}}</span><span class="status">&nbsp;</span></a> 
+		<div class="events-listing encap"> 
+	        <div class="c46l"> 
+	          <ul>
+				{% for event in events %}
+	            	<li><a href="/events/{{event.slug}}"><span class="event-name">{{event.title}}</span> | 
+	            		<span class="event-venue">
+	            			{% if event.location%}
+	            				{{event.location}}
+	            			{% else %}
+	            				{{event.place}}
+	            			{% endif%}
+	            		</span></a></li>
+	            {% endfor %} 
+	            {% if forloop.counter = forloop.revcounter %}
+					</ul>
+				</div><!--//.c46l--> 
+	        	<div class="c46r">
+	        		<ul>	
+				{% endif %}
+	          </ul> 
+	        </div><!--//.c46r--> 
+	      </div><!--//.events-listing-->
+	{% endfor %} 
+  </div><!--//.events-accordion-->
+</li>
+  </ul><!--//.event-tab-contents-->
+</div><!--//.events-category-wrapper-->
+  </div><!--//.tab-containers-->
+  
+<script>
+	$(document).ready(function () {
+		$("#events-list").change(function () {
+			var slug = $("#events-list").val();
+			if (slug != '') {
+				window.location.href = '/events/'+ slug;	
+			}
+        })
+	})
+</script>
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

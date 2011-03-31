@@ -2667,9 +2667,6 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 #main-contents .merged-contents .tab-containers .events-calendar-wrapper ul.event-tab-contents li{
   width: 880px;
 }
-.chrome #main-contents .merged-contents .tab-containers .events-calendar-wrapper ul.event-tab-contents{
-  min-height: 1873px;
-}
 #main-contents .merged-contents .tab-containers table.events-calendar tbody td .events-listing .event-count a{
   color: #CA2121;
   text-align: center;

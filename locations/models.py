@@ -2,6 +2,7 @@ from django.db import models
 from imagekit.models import ImageModel
 from django.utils.translation import ugettext_lazy as _
 
+
 class LocationType( models.Model ):
     title = models.CharField( _( 'Type of Venue/Club' ), max_length = 256 )
     def __unicode__( self ):
@@ -17,14 +18,6 @@ class RestaurantType ( models.Model ):
     class Meta:
         verbose_name = _( 'Type of Restaurant' )
         verbose_name_plural = _( 'Types of Restaurant' )
-
-class LocationStyle ( models.Model ):
-    title = models.CharField( _( 'Style of the Venue' ), max_length = 256 )
-    def __unicode__( self ):
-        return self.title
-    class Meta:
-        verbose_name = _( 'Location style' )
-        verbose_name_plural = _( 'Location styles' )
 
 class LocationArea ( models.Model ):
     title = models.CharField( _( 'Area' ), max_length = 256 )
@@ -52,6 +45,16 @@ class DressType( models.Model ):
         verbose_name_plural = _( 'Dress types' )
 
 
+class WeekDay( models.Model ):
+    value = models.IntegerField( _( 'Value' ), max_length = 256 )
+    title = models.CharField( _( 'Day title' ), max_length = 256 )
+    def __unicode__( self ):
+        return self.title
+    class Meta:
+        verbose_name = _( 'Week day' )
+        verbose_name_plural = _( 'Week days' )
+
+
 class Location( ImageModel ):
     title = models.CharField( _( 'Name of venue/club' ), max_length = 256 )
     slug = models.SlugField ( _( 'Url name for location' ) )
@@ -65,11 +68,10 @@ class Location( ImageModel ):
     url = models.URLField( _( 'Url' ) , blank = True )
     email = models.EmailField( _( 'Email' ) , blank = True )
     hours_of_operation = models.CharField( _( 'Working hours' ), max_length = 256 , blank = True )
-    style = models.ForeignKey( LocationStyle )
+    days_of_operation = models.ManyToManyField( WeekDay , blank = True )
     area = models.ForeignKey( LocationArea , blank = True , null = True )
     music = models.ForeignKey( LocationMusic , blank = True , null = True )
     resident_dj = models.CharField( _( 'Resident DJ' ), max_length = 256 , blank = True )
-    dress = models.ForeignKey( DressType , blank = True , null = True )
     capacity = models.CharField( _( 'Capacity' ), max_length = 256 , blank = True )
     image_logo = models.ImageField( _( 'Image logo' ), upload_to = 'images/locations' , blank = True )
     description = models.TextField( _( 'Description' ) , blank = True )

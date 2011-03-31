@@ -4,6 +4,8 @@
 
 {% load tools %}
 
+{% block advbodycls %}section-locations{% endblock %}
+
 {% block colleft %}
 <div class="title-wrap encap">
 	<span class="flt-left"><h2 class="title">{% trans "Locations"%}</h2></span>
@@ -11,6 +13,8 @@
 	  
 	</span>
 </div><!--//.title-wrap-->
+
+  
 {% if location %}
 <div class="node locales-details encap">
 <div class="node-mini-left c65l">
@@ -33,7 +37,7 @@
 		{% endif %}
 		{% if location.area or location.city%}
           <tr>
-            <td><strong>{% trans "City"%}:</strong></td>
+            <td><strong>{% trans "City, Area"%}:</strong></td>
             <td>{% if location.city%}{{location.city}}, {% endif %}{% if location.area%}{{location.area.title}}{% endif %}
             	<span class="location-map outnone ml25">
             		<a target="_blank" href="http://map.google.es/maps?q={{location.address|add:" "|add:location.area|add:" "|add:location.city|urlencode }}">{% trans "Map"%}</a>
@@ -56,7 +60,7 @@
 		{% if location.url%}          
           <tr>
             <td><strong>{% trans "Web"%}:</strong></td>
-            <td><a href="{{location.url}}">{{location.url}}</a></td>
+            <td><a href="{{location.url}}" target="_blank">{{location.url}}</a></td>
           </tr>
         {% endif %}
 		{% if location.email%}          
@@ -65,10 +69,14 @@
             <td>{{location.email}}</td>
           </tr>
         {% endif %}
-		{% if location.hours_of_operation%}          
+		{% if location.hours_of_operation or location.days_of_operation%}          
           <tr>
             <td><strong>{% trans "Working hours"%}:</strong></td>
-            <td>{{location.hours_of_operation}}</td>
+            <td>
+            	{% if location.hours_of_operation%}{{location.hours_of_operation}}{%endif%}
+            	{% if location.hours_of_operation and location.days_of_operation%},{%endif%}
+            	{% if location.days_of_operation.all%}{{location.days_of_operation.all|join:", "}}{%endif%}
+        	</td>
           </tr>
         {% endif %}
 		{% if location.restaurant.all%}
@@ -110,7 +118,26 @@
 </script>
 
 
-
+{% else %}
+<div class="node locales-details encap">
+	<div class="contents">
+	  <h2>{% trans "Locations of the day"%}</h2>
+	  <div class="logo-strips outnone">
+	    <ul class="logo-slides encap lcmr0">
+			{%for slide in slider%}
+	      	<li>
+	      		<a href="/locations/{{slide.slug}}">
+	        	<img src="{{slide.biglogo.url}}"/></a>
+	        	<p>{{slide.title}}<br />
+	        	<span style="color: #898989">
+	        		{% if slide.area %}{{slide.area.title}}{% else %}&nbsp;{%endif%}
+        		</span></p>
+	      	</li>
+			{%endfor%}
+	    </ul><!--//.image-teaser-slides-->
+	  </div><!--//.images-preview-->
+	</div><!--//.contents-->
+</div><!--//.node-->
 {% endif %}
 
 <div class="tab-containers event-detail-filters">
@@ -141,8 +168,9 @@
 	    <ul id="outline-titles" class="encap outnone">
 	      <li{% if active_tab == "category" %} class="active"{% endif %}><a href="/locations/by-category">{% trans "By Category"%}</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
 	      <li{% if active_tab == "area" %} class="active"{% endif %}><a href="/locations/by-area">{% trans "By Area"%}</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if active_tab == "music" %} class="active"{% endif %}><a href="/locations/by-music">{% trans "By music"%}</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "music" %} class="active"{% endif %}><a href="/locations/by-music">{% trans "By Music"%}</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
 	      <li{% if active_tab == "food" %} class="active"{% endif %}><a href="/locations/by-food">{% trans "By Type of Food"%}</a><div {% if active_tab == "food" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li><a href="#">{% trans "By Rating"%}</a><div class="pointer-tip"></div></li>
 	    </ul>
 	  </div><!--//.outline-navigation-->
 	</div><!--//#outline-briefs-->

@@ -1,15 +1,15 @@
-from locations.models import LocationType, RestaurantType, LocationStyle, LocationMusic, Location, DressType, LocationArea
+from locations.models import LocationType, RestaurantType, LocationMusic, Location, DressType, LocationArea
 from django.contrib import admin
 
 class LocationAdmin( admin.ModelAdmin ):
     prepopulated_fields = {"slug": ( "title", )}
-    filter_horizontal = ( "type", "restaurant", )
-    list_display = ( 'title', 'view', 'style', )
+    filter_horizontal = ( "type", "restaurant", "days_of_operation" )
+    list_display = ( 'title', 'view' )
     list_display_links = ( 'title', )
     fieldsets = [
         ( 'Location data', {'fields': ( 
-            'title', 'slug', 'style', 'type', 'restaurant', 'area', 'dress', 'address', 'city', 'phone_1', 'phone_2',
-            'fax', 'url', 'email', 'hours_of_operation',
+            'title', 'slug', 'type', 'restaurant', 'area', 'address', 'city', 'phone_1', 'phone_2',
+            'fax', 'url', 'email', 'hours_of_operation', 'days_of_operation',
              'music', 'resident_dj', 'capacity', 'image_logo', 'description',
         )} ),
         ( 'Contact Information', {'fields': ( 'owner', 'contact_type', 'contact', 'phones', 'contact_email' )} ),
@@ -22,5 +22,4 @@ admin.site.register( LocationArea )
 admin.site.register( LocationType )
 admin.site.register( DressType )
 admin.site.register( RestaurantType )
-admin.site.register( LocationStyle )
 admin.site.register( LocationMusic )

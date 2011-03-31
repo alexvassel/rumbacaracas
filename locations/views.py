@@ -3,6 +3,7 @@ from locations.models import Location, RestaurantType, LocationType, LocationMus
 from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from decorators import render_to
+import random
 
 def _process( request, group ):
     try:
@@ -33,7 +34,11 @@ def _process( request, group ):
             counter = counter + 1
 
     all_locations = Location.objects.all()
-    return {'all_locations': all_locations, 'groups': groups, 'active_group' : group_id}
+
+    slider = Location.objects.order_by( '?' )[:3]
+
+    all_locations = Location.objects.all().order_by( 'title' )
+    return {'all_locations': all_locations, 'groups': groups, 'active_group' : group_id, 'slider': slider}
 
 
 @render_to( 'locations/index.html' )

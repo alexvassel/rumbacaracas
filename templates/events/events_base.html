@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Locales | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% block colleft %}
+<div class="title-wrap encap">
+	<span class="flt-left"><h2 class="title">{% trans "Events"%}</h2></span>
+	<span class="flt-right">
+	  
+	</span>
+</div><!--//.title-wrap-->
+  <div class="event-meta">
+    <span class="meta-publish-date">{% now "l, F j" %}</span>
+  </div>
+  <div class="node bb-none encap">
+    <div class="images-preview outnone">
+      <ul class="image-teaser-slides encap">
+      	{% for slide in slider_events%}
+        	<li><a href="/events/{{slide.slug}}"><img src="{{slide.bigimg.url}}" alt="imgs_10"/></a></li>
+        {% endfor %}
+      </ul><!--//.image-teaser-slides-->
+    </div><!--//.images-preview-->
+    <div class="image-teaser-nav encap outnone">
+      <ul class="image-teaser-nav encap fcml0 fcmr0">
+      	{% for slide in slider_events%}
+        	<li><h6><a href="/events/{{slide.slug}}"><img src="{{slide.smallimg.url}}" alt="Image" /></a></h6></li>
+        {% endfor %}
+      </ul><!--//.image-teaser-nav-->
+      <div class="cflt"></div>
+    </div><!--//.image-teaser-nav-->
+  </div><!--//.node-->
+</div><!--//.node-container-->
+<div class="merged-container box-shadows">
+  <div class="merged-contents">
+    <div class="tab-titles encap">
+      <ul class="outnone encap">
+        <li class="box-shadows"><a href="#tab-today" class="">Para Hoy</a></li>
+        <li class="box-shadows"><a href="#tab-tomorrow" class="">Para Manana</a></li>
+        <li class="box-shadows"><a href="#tab-week" class="">Para Esta Semana</a></li>
+        <li class="box-shadows"><a href="#tab-month" class="">Para Este Mes</a></li>
+      </ul>
+    </div><!--//.tab-titles-->
+    <div class="tab-containers encap">
+      <div id="tab-events" class="tab-events encap">
+        <table class="event-filters ptb8" width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td valign="middle" align="left">
+                <h3>{% now "F j, Y" %}</h3>
+              </td>
+              <td valign="middle" align="right">
+                <label for="events-list">Listado de Eventos:</label>
+                <select name="events-list" id="events-list">
+                	<option value="">{% trans "Select a event"%}</option>
+                	{% for event in all_events %}
+                  		<option value="{{event.slug}}">{{event.title}}</option>
+              		{% endfor %}
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="event-filters-extended" width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr class="ptb5">
+              <td valign="middle" align="left">
+                <div id="outline-briefs" class="outline-briefs">
+                  <div class="outline-navigation">
+                    <ul id="outline-titles" class="encap outnone">
+                      <li{% if active_tab == "category" %} class="active"{% endif %}><a href="/events/by-category">By Category</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+                      <li{% if active_tab == "location" %} class="active"{% endif %}><a href="/events/by-location">By Location</a><div {% if active_tab == "location" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+                      <li{% if active_tab == "area" %} class="active"{% endif %}><a href="/events/by-area">By Area</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+                      <li{% if active_tab == "music" %} class="active"{% endif %}><a href="/events/by-music">By Music</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+                      <li{% if active_tab == "calendar" %} class="active"{% endif %}><a href="/events/calendar"><img class="search-calendar" alt="{% trans "Calendar"%}" src="/media/images/blank.gif" />{% trans "Calendar"%}</a><div {% if active_tab == "calendar" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+                    </ul>
+                  </div><!--//.outline-navigation-->
+                </div><!--//#outline-briefs-->
+              </td>
+              <td valign="middle" align="right">
+                <select name="events-months" id="events-months">
+                	{% for month_id, month_name in months.items%}
+                  		<option value="{{month_id}}" {%if month = month_id%}selected="selected"{%endif%}>{{month_name}}</option>
+              		{% endfor%}
+                </select>
+              </td>
+              <td valign="middle" align="right">
+                <select name="events-years" id="events-years">
+                	{% for year_id in years%}
+                  		<option value="{{year_id}}" {%if year = year_id%}selected="selected"{%endif%}>{{year_id}}</option>
+              		{% endfor%}
+                </select>
+              </td>
+              <td valign="middle" align="right">
+                <input type="button" id="event-filter-btn" value="IR" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!--//#tab-events-->
+      {% block eventscontent %}{% endblock %}
+    </div><!--//.tab-containers-->
+    <div class="cflt"></div>
+  </div><!--//.merged-contents-->
+  <div class="cflt"></div>
+<script>
+	$(document).ready(function () {
+		$("#events-list").change(function () {
+			var slug = $("#events-list").val();
+			if (slug != '') {
+				window.location.href = '/events/'+ slug;	
+			}
+        })
+		$("#event-filter-btn").click(function () {
+			var cur_month = $("#events-months").val();
+			var cur_year = $("#events-years").val();
+			if (cur_year != '' && cur_month != '') {
+				window.location.href = '/events/calendar/'+ cur_year+ '/'+ cur_month;	
+			}
+        })
+	})
+</script>
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

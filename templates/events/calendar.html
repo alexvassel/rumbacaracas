@@ -1,0 +1,53 @@
+{% extends "events/events_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Events | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% block eventscontent %}
+<div id="events-calendar-wrapper" class="events-calendar-wrapper outnone">
+<ul class="event-tab-contents">
+  <li>
+    <table class="events-calendar" width="100%" border="0" cellpadding="0" cellspacing="0">
+      <thead>
+        <tr>
+          <th>{% trans "Sunday" %}</th>
+          <th>{% trans "Monday" %}</th>
+          <th>{% trans "Tuesday" %}</th>
+          <th>{% trans "Wednesday" %}</th>
+          <th>{% trans "Thursday" %}</th>
+          <th>{% trans "Friday" %}</th>
+          <th>{% trans "Saturday" %}</th>
+        </tr>
+      </thead>
+      <tbody>
+      	{% for row in calendar %}
+        <tr>
+            {% for day,items in row  %}
+        	<td{% ifequal day today.day  %} class="today"{% endifequal %}>
+        		{% if day %}
+                    <h3><a href="#">{{ day }}</a></h3>
+                    {% if items %}
+	                    <div class="events-listing">
+	                      <ul class="events">
+	                      	{% for item, date in items|slice:":4" %}
+		                        <li>
+		                          <a href="/events/{{item.slug}}"><span class="event-image"><img src="{{item.square.url}}"></span></a>
+		                          <a href="#" class="anchor-event-name"><span class="event-name">{{ item.title }}</span></a>
+		                        </li>
+	                        {% endfor %}
+	                      </ul>
+	                      <div class="event-count decou"><a href="#">{{items|length}} {% trans "Events"%}</a></div>
+	                    </div><!--//.events-listing-->
+                    {% endif %}
+          		{% else %}
+          			&nbsp;
+          		{% endif %}
+              </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </li>
+</ul>
+</div><!--//.events-calendar-wrapper-->
+{% endblock %}
