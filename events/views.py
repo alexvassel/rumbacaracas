@@ -26,6 +26,11 @@ months = {
 calendar.setfirstweekday( 6 )
 #MO, TU, WE, TH, FR, SA, SU
 
+def f7( seq ):
+    seen = set()
+    seen_add = seen.add
+    return [ x for x in seq if x not in seen and not seen_add( x )]
+
 def _process( request, group_lambda, period ):
 
     from_date, to_date = _process_period( period )
@@ -36,7 +41,7 @@ def _process( request, group_lambda, period ):
     sorted_events = sorted( events, key = group_lambda )
 
     by_group = dict( [
-        ( group, list( items ) ) for group, items in itertools.groupby( sorted_events, group_lambda )
+        ( group, f7( list( items ) ) ) for group, items in itertools.groupby( sorted_events, group_lambda )
     ] )
 
     current_year = datetime.today().year
