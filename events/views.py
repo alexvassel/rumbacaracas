@@ -23,7 +23,7 @@ months = {
         12 : "December",
 }
 
-#calendar.setfirstweekday( 6 )
+calendar.setfirstweekday( 6 )
 #MO, TU, WE, TH, FR, SA, SU
 
 def f7( seq ):
