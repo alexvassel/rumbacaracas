@@ -38,7 +38,7 @@
         <li class="box-shadows"><a href="/events/by-{{active_tab}}/today" class="">{% trans "For Today"%}</a></li>
         <li class="box-shadows"><a href="/events/by-{{active_tab}}/tomorrow" class="">{% trans "For Tomorrow"%}</a></li>
         <li class="box-shadows"><a href="/events/by-{{active_tab}}/week" class="">{%trans "For a Week"%}</a></li>
-        <li class="box-shadows"><a href="/events/by-{{active_tab}}/month" class="">{% trans "For a month"%}</a></li>
+        <li class="box-shadows"><a href="/events/by-{{active_tab}}/month" class="active">{% trans "For a month"%}</a></li>
       </ul>
     </div><!--//.tab-titles-->
     <div class="tab-containers encap">
@@ -47,7 +47,7 @@
           <tbody>
             <tr>
               <td valign="middle" align="left">
-                <h3>{% now "F j, Y" %}</h3>
+                <h3>{{repr}}</h3>
               </td>
               <td valign="middle" align="right">
                 <label for="events-list">List of Events:</label>

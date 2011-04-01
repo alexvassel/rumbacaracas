@@ -7,6 +7,7 @@ from decorators import render_to
 import calendar
 from datetime import datetime, timedelta, time
 import itertools
+from django.template.defaultfilters import date
 
 months = {
         1 : "January",
@@ -33,7 +34,7 @@ def f7( seq ):
 
 def _process( request, group_lambda, period ):
 
-    from_date, to_date = _process_period( period )
+    from_date, to_date, repr = _process_period( period )
 
     events = Event.objects.get_occuriences( start_date = from_date, end_date = to_date )
 
@@ -50,7 +51,9 @@ def _process( request, group_lambda, period ):
 
     slider_events = Event.objects.order_by( '?' )[:5]
     all_events = Event.objects.all().order_by( 'title' )
-    return {'all_events': all_events, 'groups': by_group, 'slider_events': slider_events, 'years': years, 'months': months}
+    year = datetime.today().year
+    month = datetime.today().month
+    return {'all_events': all_events, 'groups': by_group, 'slider_events': slider_events, 'years': years, 'months': months, 'repr': repr, 'year': year, 'month': month}
 
 
 @render_to( 'events/calendar.html' )
@@ -91,6 +94,7 @@ def calendar_view(
         today = datetime.now(),
         calendar = calendars,
         this_month = dtstart,
+        repr = date( dtstart, 'F j, Y' ),
         next_month = dtstart + timedelta( days = +last_day ),
         last_month = dtstart + timedelta( days = -1 ),
         years = years,
@@ -105,9 +109,11 @@ def calendar_view(
 
 
 def _process_period( period ):
+
     if period == "day":
         from_date = datetime.today()
         to_date = datetime.today()
+        repr = date( from_date, 'F j, Y' )
     elif period == "week":
         from_date = datetime.today()
         # Adjust the start datetime to Monday or Sunday of the current week
@@ -115,13 +121,17 @@ def _process_period( period ):
         if sub_days > 0:
             from_date = from_date - datetime.timedelta( days = sub_days )
         to_date = from_date + datetime.timedelta( days = 7 )
+        #FIXME
+        repr = date( from_date, 'F j, Y' )
     elif period == "month":
         year = datetime.today().year
         month = datetime.today().month
         from_date = datetime( year, month, 1 )
         last_day = calendar.monthrange( year, month )[1]
         to_date = datetime( year, month, last_day )
-    return ( from_date, to_date )
+        repr = date( from_date, 'F, Y' )
+
+    return ( from_date, to_date, repr )
 
 @render_to( 'events/grouping.html' )
 def category( request , period = 'day', date_parameter = 0 ):
