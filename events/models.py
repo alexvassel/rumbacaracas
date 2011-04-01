@@ -49,7 +49,6 @@ class OccurrenceManager( models.Manager ):
             week_days = event.repeat.all()
             if week_days:
                 #fill all week days
-                print [int( day.value ) for day in week_days]
                 results.extend( [
                      ( event, tdt.date() )
                      for tdt in rrule.rrule( rrule.DAILY, dtstart = rrule_start, until = rrule_end, byweekday = [int( day.value ) for day in week_days] )
