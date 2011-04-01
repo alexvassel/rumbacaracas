@@ -40,7 +40,7 @@ def _process( request, group ):
     all_events = Event.objects.all().order_by( 'title' )
     return {'all_events': all_events, 'groups': groups, 'slider_events': slider_events, 'years': years, 'months': months}
 
-#calendar.setfirstweekday( swingtime_settings.CALENDAR_FIRST_WEEKDAY )
+calendar.setfirstweekday( 6 )
 #MO, TU, WE, TH, FR, SA, SU
 @render_to( 'events/calendar.html' )
 def calendar_view( 
@@ -66,35 +66,13 @@ def calendar_view(
     dtstart = datetime( year, month, 1 )
     last_day = max( cal[-1] )
 
-    #from dateutil import rrule
-    #from datetime import datetime, timedelta
-
-    #now = datetime.now()
-    #hundredDaysLater = now + timedelta(days=100)
-
-    #for dt in rrule.rrule(rrule.DAILY, dtstart=now, until=hundredDaysLater,byweekday=(rrule.TH, rrule.SA)):
-
-
 
     # TODO Whether to include those occurrences that started in the previous
     # month but end in this month?
     calendars = Event.objects.get_month( year = year, month = month )
 
-    #occurrences = queryset.filter( from_date__year = year, from_date__month = month )
-
     current_year = datetime.today().year
     years = range( current_year - 5, current_year + 5 )
-    #from mx.DateTime import *
-    #from datetime import datetime
-
-    #this_year = datetime.date.today().year
-    #self.years = range(this_year, this_year+10)
-
-    #date = now()
-    #month_ids = []
-    #while not (date.month == 4 and date.year == 2004):
-      #month_ids.append((date.strftime('%b%y'),date.strftime('%B %Y')))
-      #date = date + RelativeDateTime(months=-1)
 
     slider_events = Event.objects.order_by( '?' )[:5]
 

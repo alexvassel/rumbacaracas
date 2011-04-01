@@ -3,6 +3,7 @@
 {% block title %}{% trans "Locales | Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% block colleft %}
+<div class="node-container eventos box-shadows encap">
 <div class="title-wrap encap">
 <span class="flt-left"><h2 class="title">{% trans "Events"%}</h2></span>
 <span class="flt-right"></span>
@@ -147,11 +148,11 @@
 <div id="outline-briefs" class="outline-briefs eventos-outline">
   <div class="outline-navigation">
 <ul id="outline-titles" class="encap outnone">
-  <li{% if active_tab == "category" %} class="active"{% endif %}><a href="/events/by-category">Por Categoría</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-  <li{% if active_tab == "location" %} class="active"{% endif %}><a href="/events/by-location">Por Local</a><div {% if active_tab == "location" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-  <li{% if active_tab == "area" %} class="active"{% endif %}><a href="/events/by-area">Por Zona</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-  <li{% if active_tab == "music" %} class="active"{% endif %}><a href="/events/by-music">Tipo de Música</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-  <li{% if active_tab == "calendar" %} class="active"{% endif %}><a href="/events/calendar"><img class="search-calendar" alt="Ver Calendario" src="/media/images/blank.gif" />Ver Calendario</a><div {% if active_tab == "calendar" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+  <li{% if active_tab == "category" %} class="active"{% endif %}><a href="/events/by-category">By Category</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+  <li{% if active_tab == "location" %} class="active"{% endif %}><a href="/events/by-location">By Location</a><div {% if active_tab == "location" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+  <li{% if active_tab == "area" %} class="active"{% endif %}><a href="/events/by-area">By Area</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+  <li{% if active_tab == "music" %} class="active"{% endif %}><a href="/events/by-music">By Music</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+  <li{% if active_tab == "calendar" %} class="active"{% endif %}><a href="/events/calendar"><img class="search-calendar" alt="{% trans "Calendar"%}" src="/media/images/blank.gif" />{% trans "Calendar"%}</a><div {% if active_tab == "calendar" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
 </ul>
   </div><!--//.outline-navigation-->
 </div><!--//#outline-briefs-->
@@ -200,6 +201,7 @@
         })
 	})
 </script>
+</div><!--//.node-container-->
 {% endblock %}
 
 {% block colright %}
