@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from decorators import render_to
 import calendar
 from datetime import datetime, timedelta, time
+import itertools
 
 months = {
         1 : "January",
@@ -23,22 +24,25 @@ months = {
 }
 
 
-def _process( request, group ):
-    group_fields = group.objects.select_related().all()
-    groups = []
-    counter = 0
-    for group in group_fields:
-        events = group.event_set.all()
-        if events:
-            groups.append( ( group.title , events ) )
+def _process( request, group_lambda, period = 'day' ):
 
+    from_date, to_date = _process_period( period )
+
+    events = Event.objects.get_occuriences( start_date = from_date, end_date = to_date )
+
+    #group_lambda = lambda o: o[0].category
+    sorted_events = sorted( events, key = group_lambda )
+
+    by_group = dict( [
+        ( group, list( items ) ) for group, items in itertools.groupby( sorted_events, group_lambda )
+    ] )
 
     current_year = datetime.today().year
-    years = range( current_year - 5, current_year + 5 )
+    years = range( current_year - 3, current_year + 3 )
 
     slider_events = Event.objects.order_by( '?' )[:5]
     all_events = Event.objects.all().order_by( 'title' )
-    return {'all_events': all_events, 'groups': groups, 'slider_events': slider_events, 'years': years, 'months': months}
+    return {'all_events': all_events, 'groups': by_group, 'slider_events': slider_events, 'years': years, 'months': months}
 
 calendar.setfirstweekday( 6 )
 #MO, TU, WE, TH, FR, SA, SU
@@ -72,7 +76,7 @@ def calendar_view(
     calendars = Event.objects.get_month( year = year, month = month )
 
     current_year = datetime.today().year
-    years = range( current_year - 5, current_year + 5 )
+    years = range( current_year - 3, current_year + 3 )
 
     slider_events = Event.objects.order_by( '?' )[:5]
 
@@ -93,40 +97,57 @@ def calendar_view(
 
 
 
-
+def _process_period( period ):
+    if period == "day":
+        from_date = datetime.today()
+        to_date = datetime.today()
+    elif period == "week":
+        from_date = datetime.today()
+        # Adjust the start datetime to Monday or Sunday of the current week
+        sub_days = from_date.isoweekday() - 1
+        if sub_days > 0:
+            from_date = from_date - datetime.timedelta( days = sub_days )
+        to_date = from_date + datetime.timedelta( days = 7 )
+    elif period == "month":
+        year = datetime.today().year
+        month = datetime.today().month
+        from_date = datetime( year, month, 1 )
+        last_day = calendar.monthrange( year, month )[1]
+        to_date = datetime( year, month, last_day )
+    return ( from_date, to_date )
 
 @render_to( 'events/grouping.html' )
 def category( request , period = 'day', date_parameter = 0 ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Category' ) , request.path_info )
-    dict = _process( request, EventCategory )
+    dict = _process( request, lambda o: o[0].category, period )
     dict['active_tab'] = 'category'
     return dict
 
 
 @render_to( 'events/grouping.html' )
-def area( request ):
+def area( request , period = 'day' ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Area' ) , request.path_info )
-    dict = _process( request, LocationArea )
+    dict = _process( request, lambda o: o[0].area, period )
     dict['active_tab'] = 'area'
     return dict
 
 
 @render_to( 'events/grouping.html' )
-def location( request ):
+def location( request , period = 'day' ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Location' ) , request.path_info )
-    dict = _process( request, Location )
+    dict = _process( request, lambda o: o[0].location, period )
     dict['active_tab'] = 'location'
     return dict
 
 
 @render_to( 'events/grouping.html' )
-def music( request ):
+def music( request, period = 'day' ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Music' ) , request.path_info )
-    dict = _process( request, LocationMusic )
+    dict = _process( request, lambda o: o[0].music, period )
     dict['active_tab'] = 'music'
     return dict
 
@@ -135,7 +156,7 @@ def detail ( request, slug ):
     event = get_object_or_404( Event, slug = slug )
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( event.title , request.path_info )
-    dict = _process( request, EventCategory )
+    dict = _process( request, lambda o: o[0].category, period )
     dict['event'] = event
     dict['active_tab'] = 'category'
     return dict

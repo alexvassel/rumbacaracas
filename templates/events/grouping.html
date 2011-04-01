@@ -7,12 +7,12 @@
     <ul class="event-tab-contents"> 
       <li> 
         <div id="events-accordion" class="events-accordion encap">
-        	{% for group, events in groups %} 
+        	{% for group, events in groups.items %} 
           		<a class="accordion-title" href="#"><span class="category-title">{{group}}</span><span class="status">&nbsp;</span></a> 
           		<div class="events-listing encap"> 
 	                <div class="c46l"> 
 	                  <ul>
-						{% for event in events %}
+						{% for event, dt in events %}
 	                    	<li><a href="/events/{{event.slug}}"><span class="event-name">{{event.title}}</span> | 
 	                    		<span class="event-venue">
 	                    			{% if event.location%}

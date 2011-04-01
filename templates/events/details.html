@@ -24,7 +24,13 @@
 	{% if event.from_date%}
       <tr>
         <td><strong>{%trans "Date"%}:</strong></td>
-        <td>{{event.from_date}}</td>
+        <td>
+        	{% if event.from_date == event.to_date %}
+        		{{event.from_date}}
+    		{% else %}
+    			{{event.from_date}} - {{event.to_date}}{% if event.repeat.all %}; {{ event.repeat.all|join:", "}}{% endif %}
+    		{% endif %}
+    	</td>
       </tr>
 	{%endif%}
 	{% if event.time%}
