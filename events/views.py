@@ -23,8 +23,10 @@ months = {
         12 : "December",
 }
 
+calendar.setfirstweekday( 6 )
+#MO, TU, WE, TH, FR, SA, SU
 
-def _process( request, group_lambda, period = 'day' ):
+def _process( request, group_lambda, period ):
 
     from_date, to_date = _process_period( period )
 
@@ -44,8 +46,7 @@ def _process( request, group_lambda, period = 'day' ):
     all_events = Event.objects.all().order_by( 'title' )
     return {'all_events': all_events, 'groups': by_group, 'slider_events': slider_events, 'years': years, 'months': months}
 
-calendar.setfirstweekday( 6 )
-#MO, TU, WE, TH, FR, SA, SU
+
 @render_to( 'events/calendar.html' )
 def calendar_view( 
     request
@@ -117,7 +118,7 @@ def _process_period( period ):
     return ( from_date, to_date )
 
 @render_to( 'events/grouping.html' )
-def category( request , period = 'day', date_parameter = 0 ):
+def category( request , period = 'month', date_parameter = 0 ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Category' ) , request.path_info )
     dict = _process( request, lambda o: o[0].category, period )
@@ -126,7 +127,7 @@ def category( request , period = 'day', date_parameter = 0 ):
 
 
 @render_to( 'events/grouping.html' )
-def area( request , period = 'day' ):
+def area( request , period = 'month' ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Area' ) , request.path_info )
     dict = _process( request, lambda o: o[0].area, period )
@@ -135,7 +136,7 @@ def area( request , period = 'day' ):
 
 
 @render_to( 'events/grouping.html' )
-def location( request , period = 'day' ):
+def location( request , period = 'month' ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Location' ) , request.path_info )
     dict = _process( request, lambda o: o[0].location, period )
@@ -144,7 +145,7 @@ def location( request , period = 'day' ):
 
 
 @render_to( 'events/grouping.html' )
-def music( request, period = 'day' ):
+def music( request, period = 'month' ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Music' ) , request.path_info )
     dict = _process( request, lambda o: o[0].music, period )
