@@ -88,7 +88,7 @@ class Location( ImageModel ):
     class IKOptions:
         # This inner class is where we define the ImageKit options for the model
         spec_module = 'locations.specs'
-        cache_dir = 'photos'
+        cache_dir = 'photos/'
         image_field = 'image_logo'
         save_count_as = 'num_views'
 
