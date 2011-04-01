@@ -118,7 +118,7 @@ def _process_period( period ):
     return ( from_date, to_date )
 
 @render_to( 'events/grouping.html' )
-def category( request , period = 'month', date_parameter = 0 ):
+def category( request , period = 'day', date_parameter = 0 ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Category' ) , request.path_info )
     dict = _process( request, lambda o: o[0].category, period )
@@ -127,7 +127,7 @@ def category( request , period = 'month', date_parameter = 0 ):
 
 
 @render_to( 'events/grouping.html' )
-def area( request , period = 'month' ):
+def area( request , period = 'day' ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Area' ) , request.path_info )
     dict = _process( request, lambda o: o[0].area, period )
@@ -136,7 +136,7 @@ def area( request , period = 'month' ):
 
 
 @render_to( 'events/grouping.html' )
-def location( request , period = 'month' ):
+def location( request , period = 'day' ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Location' ) , request.path_info )
     dict = _process( request, lambda o: o[0].location, period )
@@ -145,7 +145,7 @@ def location( request , period = 'month' ):
 
 
 @render_to( 'events/grouping.html' )
-def music( request, period = 'month' ):
+def music( request, period = 'day' ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Music' ) , request.path_info )
     dict = _process( request, lambda o: o[0].music, period )
@@ -153,7 +153,7 @@ def music( request, period = 'month' ):
     return dict
 
 @render_to( 'events/details.html' )
-def detail ( request, slug, period = 'month' ):
+def detail ( request, slug, period = 'day' ):
     event = get_object_or_404( Event, slug = slug )
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( event.title , request.path_info )
