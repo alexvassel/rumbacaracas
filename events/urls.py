@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns( 'events.views',
-    ( r'^$', 'category' ),
+    ( r'^$', 'category', {'period': 'month'} ),
     ( r'^by-category/$', 'category', {'period': 'month'} ),
     ( r'^by-category/today$', 'category', {'period': 'month'} ),
     ( r'^by-category/tomorrow$', 'category', {'period': 'month'} ),
@@ -32,5 +32,5 @@ urlpatterns = patterns( 'events.views',
 
     ( r'^calendar$', 'calendar_view' ),
     ( r'^calendar/(?P<year>\d{4})/(?P<month>0?[1-9]|1[012])/$', 'calendar_view' ),
-    ( r'^(?P<slug>[-\w]+)/$', 'detail' ),
+    ( r'^(?P<slug>[-\w]+)/$', 'detail' , {'period': 'month'} ),
  )

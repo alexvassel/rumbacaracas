@@ -58,7 +58,6 @@ class OccurrenceManager( models.Manager ):
                 results.extend( [
                      ( event, tdt.date() ) for tdt in rrule.rrule( rrule.DAILY, dtstart = rrule_start, until = rrule_end )]
                 )
-
         return results
 
 
