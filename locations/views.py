@@ -44,7 +44,7 @@ def _process( request, group ):
 @render_to( 'locations/index.html' )
 def category( request ):
     request.breadcrumbs( _( 'Locations' ) , '/locations' )
-    request.breadcrumbs( _( 'By category' ) , request.path_info )
+    request.breadcrumbs( _( 'By Category' ) , request.path_info )
     dict = _process( request, LocationType )
     dict['active_tab'] = 'category'
     return dict
@@ -53,7 +53,7 @@ def category( request ):
 @render_to( 'locations/index.html' )
 def area( request ):
     request.breadcrumbs( _( 'Locations' ) , '/locations' )
-    request.breadcrumbs( _( 'By area' ) , request.path_info )
+    request.breadcrumbs( _( 'By Area' ) , request.path_info )
     dict = _process( request, LocationArea )
     dict['active_tab'] = 'area'
     return dict
@@ -62,7 +62,7 @@ def area( request ):
 @render_to( 'locations/index.html' )
 def music( request ):
     request.breadcrumbs( _( 'Locations' ) , '/locations' )
-    request.breadcrumbs( _( 'By music' ) , request.path_info )
+    request.breadcrumbs( _( 'By Music' ) , request.path_info )
     dict = _process( request, LocationMusic )
     dict['active_tab'] = 'music'
     return dict
@@ -70,7 +70,7 @@ def music( request ):
 @render_to( 'locations/index.html' )
 def food( request ):
     request.breadcrumbs( _( 'Locations' ) , '/locations' )
-    request.breadcrumbs( _( 'By type of food' ) , request.path_info )
+    request.breadcrumbs( _( 'By Type of Food' ) , request.path_info )
     dict = _process( request, RestaurantType )
     dict['active_tab'] = 'food'
     return dict

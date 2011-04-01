@@ -120,7 +120,7 @@ def calendar_view(
 @render_to( 'events/grouping.html' )
 def category( request , period = 'day', date_parameter = 0 ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
-    request.breadcrumbs( _( 'By category' ) , request.path_info )
+    request.breadcrumbs( _( 'By Category' ) , request.path_info )
     dict = _process( request, EventCategory )
     dict['active_tab'] = 'category'
     return dict
@@ -129,7 +129,7 @@ def category( request , period = 'day', date_parameter = 0 ):
 @render_to( 'events/grouping.html' )
 def area( request ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
-    request.breadcrumbs( _( 'By area' ) , request.path_info )
+    request.breadcrumbs( _( 'By Area' ) , request.path_info )
     dict = _process( request, LocationArea )
     dict['active_tab'] = 'area'
     return dict
@@ -138,7 +138,7 @@ def area( request ):
 @render_to( 'events/grouping.html' )
 def location( request ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
-    request.breadcrumbs( _( 'By area' ) , request.path_info )
+    request.breadcrumbs( _( 'By Location' ) , request.path_info )
     dict = _process( request, Location )
     dict['active_tab'] = 'location'
     return dict
@@ -147,7 +147,7 @@ def location( request ):
 @render_to( 'events/grouping.html' )
 def music( request ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
-    request.breadcrumbs( _( 'By music' ) , request.path_info )
+    request.breadcrumbs( _( 'By Music' ) , request.path_info )
     dict = _process( request, LocationMusic )
     dict['active_tab'] = 'music'
     return dict

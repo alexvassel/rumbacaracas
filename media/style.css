@@ -3169,6 +3169,11 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 #main-contents #col-left .locales-details .logo-strips .logo-slides li img{
   vertical-align: top;
 }
+#main-contents #col-left .locales-details .logo-strips .logo-slides li div.empty {
+	width: 192px;
+	height: 162px;
+	background: white;
+}
 #main-contents #col-left .locales-details .logo-strips .logo-slides p{
 	background: white; 
 	text-align: center;

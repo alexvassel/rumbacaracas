@@ -127,7 +127,12 @@
 			{%for slide in slider%}
 	      	<li>
 	      		<a href="/locations/{{slide.slug}}">
-	        	<img src="{{slide.biglogo.url}}"/></a>
+	      			{% if location.image_logo %}
+	        			<img src="{{slide.biglogo.url}}"/>
+        			{% else %}
+	        			<div class="empty encap"></div>
+        			{% endif %}
+	        	</a>
 	        	<p>{{slide.title}}<br />
 	        	<span style="color: #898989">
 	        		{% if slide.area %}{{slide.area.title}}{% else %}&nbsp;{%endif%}

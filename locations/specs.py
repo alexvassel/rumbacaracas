@@ -29,8 +29,7 @@ class EventBigThumb( processors.Resize ):
 
 class EventBigHighThumb( processors.Resize ):
     width = 188
-    height = 290
-    crop = True
+    crop = False
 
 
 class EventSmallThumb( processors.Resize ):

@@ -111,7 +111,11 @@
 <div class="node-mini-right c32r">
   <div class="event-info outnone">
 <div class="event-image-teaser">
-  <a class="image" href="{{event.image.url}}"><img alt="Event" src="{{event.eventlogo.url}}" /></a>
+	{% if event.image %}
+  	<a class="image" href="{{event.image.url}}">
+  		<img src="{{event.eventlogo.url}}" />
+  	</a>
+  	{% endif %}
   <a class="lightbox" href="{{event.image.url}}">{% trans "Zoom"%}</a>
 </div><!--//.event-image-teaser-->
   </div><!--//.event-info-->
