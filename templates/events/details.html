@@ -171,7 +171,7 @@
 		<div class="events-listing encap"> 
 	        <div class="c46l"> 
 	          <ul>
-				{% for event in events %}
+				{% for event, dt in events %}
 	            	<li><a href="/events/{{event.slug}}"><span class="event-name">{{event.title}}</span> | 
 	            		<span class="event-venue">
 	            			{% if event.location%}
