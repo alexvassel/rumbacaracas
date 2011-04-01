@@ -153,7 +153,7 @@ def music( request, period = 'month' ):
     return dict
 
 @render_to( 'events/details.html' )
-def detail ( request, slug ):
+def detail ( request, slug, period = 'month' ):
     event = get_object_or_404( Event, slug = slug )
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( event.title , request.path_info )
