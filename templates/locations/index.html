@@ -127,7 +127,7 @@
 			{%for slide in slider%}
 	      	<li>
 	      		<a href="/locations/{{slide.slug}}">
-	      			{% if location.image_logo %}
+	      			{% if slide.image_logo %}
 	        			<img src="{{slide.biglogo.url}}"/>
         			{% else %}
 	        			<div class="empty encap"></div>
