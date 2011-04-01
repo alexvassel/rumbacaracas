@@ -94,7 +94,7 @@ def calendar_view(
         today = datetime.now(),
         calendar = calendars,
         this_month = dtstart,
-        repr = date( dtstart, 'F j, Y' ),
+        repr = date( dtstart, 'F, Y' ),
         next_month = dtstart + timedelta( days = +last_day ),
         last_month = dtstart + timedelta( days = -1 ),
         years = years,
