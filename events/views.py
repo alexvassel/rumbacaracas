@@ -37,11 +37,12 @@ def _process( request, group_lambda, period ):
 
     events = Event.objects.get_occuriences( start_date = from_date, end_date = to_date )
 
+    unique = [group for group, items in itertools.groupby( [ event for event, dt in events] )]
     #group_lambda = lambda o: o[0].category
-    sorted_events = sorted( events, key = group_lambda )
+    sorted_events = sorted( unique , key = group_lambda )
 
     by_group = dict( [
-        ( group, f7( list( items ) ) ) for group, items in itertools.groupby( sorted_events, group_lambda )
+        ( group, list( items ) ) for group, items in itertools.groupby( unique, group_lambda )
     ] )
 
     current_year = datetime.today().year
@@ -126,7 +127,7 @@ def _process_period( period ):
 def category( request , period = 'day', date_parameter = 0 ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Category' ) , request.path_info )
-    dict = _process( request, lambda o: o[0].category, period )
+    dict = _process( request, lambda o: o.category, period )
     dict['active_tab'] = 'category'
     return dict
 
@@ -135,7 +136,7 @@ def category( request , period = 'day', date_parameter = 0 ):
 def area( request , period = 'day' ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Area' ) , request.path_info )
-    dict = _process( request, lambda o: o[0].area, period )
+    dict = _process( request, lambda o: o.area, period )
     dict['active_tab'] = 'area'
     return dict
 
@@ -144,7 +145,7 @@ def area( request , period = 'day' ):
 def location( request , period = 'day' ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Location' ) , request.path_info )
-    dict = _process( request, lambda o: o[0].location, period )
+    dict = _process( request, lambda o: o.location, period )
     dict['active_tab'] = 'location'
     return dict
 
@@ -153,7 +154,7 @@ def location( request , period = 'day' ):
 def music( request, period = 'day' ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Music' ) , request.path_info )
-    dict = _process( request, lambda o: o[0].music, period )
+    dict = _process( request, lambda o: o.music, period )
     dict['active_tab'] = 'music'
     return dict
 
@@ -162,7 +163,7 @@ def detail ( request, slug, period = 'day' ):
     event = get_object_or_404( Event, slug = slug )
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( event.title , request.path_info )
-    dict = _process( request, lambda o: o[0].category, period )
+    dict = _process( request, lambda o: o.category, period )
     dict['event'] = event
     dict['active_tab'] = 'category'
     return dict
