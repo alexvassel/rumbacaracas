@@ -58,3 +58,11 @@ def locations_paginator( context, adjacent_pages = 2 ):
     }
 
 register.inclusion_tag( 'paginator.html', takes_context = True )( locations_paginator )
+
+
+@register.filter
+def hash( h, key ):
+    try:
+        return h[key]
+    except KeyError: # invalid literal for int()
+        return '' # Fail silently.

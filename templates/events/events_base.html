@@ -17,7 +17,22 @@
     <div class="images-preview outnone">
       <ul class="image-teaser-slides encap">
       	{% for slide in slider_events%}
-        	<li><a href="/events/{{slide.slug}}"><img src="{{slide.bigimg.url}}" alt="imgs_10"/></a></li>
+        	<li>
+        		<a href="/events/{{slide.slug}}"><img src="{{slide.bigimg.url}}" alt="imgs_10"/></a>
+        		<div class="slide-teasers">
+                    <h3><a href="/events/{{slide.slug}}">{{slide.title}}</a></h3>
+                    <p>{{slide.description|truncate:70}}<br />
+                    	{% if slide.from_date == slide.to_date %}
+			        		{{slide.from_date}}
+			    		{% else %}
+			    			{{slide.from_date}} - {{slide.to_date}}
+			    		{% endif %}
+			    		{% if slide.time%}
+			    		, {{slide.time}}
+			    		{% endif %}
+        			</p>
+                </div>
+    		</li>
         {% endfor %}
       </ul><!--//.image-teaser-slides-->
     </div><!--//.images-preview-->
@@ -35,10 +50,11 @@
   <div class="merged-contents">
     <div class="tab-titles encap">
       <ul class="outnone encap">
-        <li class="box-shadows"><a href="/events/by-{{active_tab}}/today" class="">{% trans "For Today"%}</a></li>
-        <li class="box-shadows"><a href="/events/by-{{active_tab}}/tomorrow" class="">{% trans "For Tomorrow"%}</a></li>
-        <li class="box-shadows"><a href="/events/by-{{active_tab}}/week" class="">{%trans "For a Week"%}</a></li>
-        <li class="box-shadows"><a href="/events/by-{{active_tab}}/month" class="active">{% trans "For a month"%}</a></li>
+      	
+        <li class="box-shadows"><a href="/events/by-{% if active_tab == 'calendar'%}category{%else%}{{active_tab}}{% endif %}/day#outline-titles" {% if period == "day" %} class="active"{% endif %}>{% trans "For Today"%}</a></li>
+        <li class="box-shadows"><a href="/events/by-{% if active_tab == 'calendar'%}category{%else%}{{active_tab}}{% endif %}/tomorrow#outline-titles" {% if period == "tomorrow" %} class="active"{% endif %}>{% trans "For Tomorrow"%}</a></li>
+        <li class="box-shadows"><a href="/events/by-{% if active_tab == 'calendar'%}category{%else%}{{active_tab}}{% endif %}/week#outline-titles" {% if period == "week" %} class="active"{% endif %}>{%trans "For a Week"%}</a></li>
+        <li class="box-shadows"><a href="/events/by-{% if active_tab == 'calendar'%}category{%else%}{{active_tab}}{% endif %}/month#outline-titles" {% if period == "month" %} class="active"{% endif %}>{% trans "For a month"%}</a></li>
       </ul>
     </div><!--//.tab-titles-->
     <div class="tab-containers encap">
@@ -48,17 +64,58 @@
             <tr>
               <td valign="middle" align="left">
                 <h3>{{repr}}</h3>
+                <div class="navigate-days">
+	              	{% if period == "day" or period == "tomorrow"  %}
+	              		<a href="/events/by-{{active_tab}}/{% if period == 'tomorrow'%}day{%else%}{{period}}{% endif %}/{{prev_date.year}}/{{prev_date.month}}/{{prev_date.day}}#outline-titles" class="day-prev">{% trans "Previous day"%}</a>
+	          		{% endif %}
+	          		{% if period == "week"%}
+	              		<a href="/events/by-{{active_tab}}/{% if period == 'tomorrow'%}day{%else%}{{period}}{% endif %}/{{prev_date.year}}/{{prev_date.month}}/{{prev_date.day}}#outline-titles" class="day-prev">{% trans "Previous week"%}</a>
+	          		{% endif %}
+	          		{% if period == "month"  %}
+	              		<a href="/events/by-{{active_tab}}/{% if period == 'tomorrow'%}day{%else%}{{period}}{% endif %}/{{prev_date.year}}/{{prev_date.month}}#outline-titles" class="day-prev">{% trans "Previous month"%}</a>
+	          		{% endif %}
+	          		{% if active_tab == "calendar"  %}
+	              		<a href="/events/calendar/{{prev_date.year}}/{{prev_date.month}}#outline-titles" class="day-prev">{% trans "Previous month"%}</a>
+	          		{% endif %}
+          		  &nbsp;&nbsp;&nbsp;&nbsp;
+          		  	{% if period == "day" or period == "tomorrow"  %}
+                  		<a href="/events/by-{{active_tab}}/{% if period == 'tomorrow'%}day{%else%}{{period}}{% endif %}/{{next_date.year}}/{{next_date.month}}/{{next_date.day}}#outline-titles" class="day-next">{% trans "Next day"%}</a>
+              		{% endif %}
+              		{% if period == "week"%}
+                  		<a href="/events/by-{{active_tab}}/{% if period == 'tomorrow'%}day{%else%}{{period}}{% endif %}/{{next_date.year}}/{{next_date.month}}/{{next_date.day}}#outline-titles" class="day-next">{% trans "Next week"%}</a>
+              		{% endif %}
+              		{% if period == "month"  %}
+                  		<a href="/events/by-{{active_tab}}/{% if period == 'tomorrow'%}day{%else%}{{period}}{% endif %}/{{next_date.year}}/{{next_date.month}}#outline-titles" class="day-next">{% trans "Next month"%}</a>
+             		{% endif %}
+             		{% if active_tab == "calendar"  %}
+	              		<a href="/events/calendar/{{next_date.year}}/{{next_date.month}}#outline-titles" class="day-next">{% trans "Next month"%}</a>
+	          		{% endif %}
+                </div>
               </td>
               <td valign="middle" align="right">
-                <label for="events-list">List of Events:</label>
+                <label for="events-list">{% trans "List of Events"%}:</label>
                 <select name="events-list" id="events-list">
-                	<option value="">{% trans "Select a event"%}</option>
+                	<option value="">{% trans "Select an Event"%}</option>
                 	{% for event in all_events %}
                   		<option value="{{event.slug}}">{{event.title}}</option>
               		{% endfor %}
                 </select>
               </td>
             </tr>
+            <tr>
+          	<td valign="middle" align="left">
+
+          	</td>
+			<td valign="middle" align="right" style="width: 420px;">
+	            <label for="by-name">{% trans "List of Locations"%}:</label>
+	            <select name="locations-list" id="locations-list">
+                	<option value="">{% trans "Select a Location"%}</option>
+                	{% for location in all_locations %}
+                  		<option value="{{location.slug}}">{{location.title}}</option>
+              		{% endfor %}
+                </select>
+          	</td>
+        	</tr>
           </tbody>
         </table>
         <table class="event-filters-extended" width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -68,11 +125,26 @@
                 <div id="outline-briefs" class="outline-briefs">
                   <div class="outline-navigation">
                     <ul id="outline-titles" class="encap outnone">
-                      <li{% if active_tab == "category" %} class="active"{% endif %}><a href="/events/by-category">By Category</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-                      <li{% if active_tab == "location" %} class="active"{% endif %}><a href="/events/by-location">By Location</a><div {% if active_tab == "location" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-                      <li{% if active_tab == "area" %} class="active"{% endif %}><a href="/events/by-area">By Area</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-                      <li{% if active_tab == "music" %} class="active"{% endif %}><a href="/events/by-music">By Music</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-                      <li{% if active_tab == "calendar" %} class="active"{% endif %}><a href="/events/calendar"><img class="search-calendar" alt="{% trans "Calendar"%}" src="/media/images/blank.gif" />{% trans "Calendar"%}</a><div {% if active_tab == "calendar" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+                      <li{% if active_tab == "category" %} class="active"{% endif %}>
+                      	<a href="/events/by-category/{% if period == 'tomorrow'%}day{%else%}{{period}}{% endif %}{{filter_date}}#outline-titles">By Category</a>
+                      	<div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div>
+                  	  </li>
+                      <li{% if active_tab == "location" %} class="active"{% endif %}>
+                        <a href="/events/by-location/{% if period == 'tomorrow'%}day{%else%}{{period}}{% endif %}{{filter_date}}#outline-titles">By Location</a>
+                        <div {% if active_tab == "location" %}style="display: block"{% endif %} class="pointer-tip"></div>
+                      </li>
+                      <li{% if active_tab == "area" %} class="active"{% endif %}>
+                      	<a href="/events/by-area/{% if period == 'tomorrow'%}day{%else%}{{period}}{% endif %}{{filter_date}}#outline-titles">By Area</a>
+                      	<div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div>
+                      </li>
+                      <li{% if active_tab == "music" %} class="active"{% endif %}>
+                      	<a href="/events/by-music/{% if period == 'tomorrow'%}day{%else%}{{period}}{% endif %}{{filter_date}}#outline-titles">By Music</a>
+                      	<div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div>
+                      </li>
+                      <li{% if active_tab == "calendar" %} class="active"{% endif %}>
+                      	<a href="/events/calendar#outline-titles"><img class="search-calendar" alt="{% trans "Calendar"%}" src="/media/images/blank.gif" />{% trans "Calendar"%}</a>
+                      	<div {% if active_tab == "calendar" %}style="display: block"{% endif %} class="pointer-tip"></div>
+                      </li>
                     </ul>
                   </div><!--//.outline-navigation-->
                 </div><!--//#outline-briefs-->
@@ -111,6 +183,14 @@
 				window.location.href = '/events/'+ slug;	
 			}
         })
+        
+        $("#locations-list").change(function () {
+			var slug = $("#locations-list").val();
+			if (slug != '') {
+				window.location.href = '/locations/'+ slug;	
+			}
+        })
+        
 		$("#event-filter-btn").click(function () {
 			var cur_month = $("#events-months").val();
 			var cur_year = $("#events-years").val();

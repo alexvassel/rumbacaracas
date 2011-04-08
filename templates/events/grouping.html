@@ -13,14 +13,18 @@
 	                <div class="c46l"> 
 	                  <ul>
 						{% for event in events %}
-	                    	<li><a href="/events/{{event.slug}}"><span class="event-name">{{event.title}}</span> | 
+	                    	<li><a href="/events/{{event.slug}}">
+	                    		<a href="/events/{{event.slug}}"><span class="event-name">{{event.title}}</span></a> | 
 	                    		<span class="event-venue">
 	                    			{% if event.location%}
-	                    				{{event.location}}
+	                    				<a href="/locations/{{event.location.slug}}"><span>{{event.location}}</span></a>
 	                    			{% else %}
 	                    				{{event.place}}
 	                    			{% endif%}
-	                    		</span></a></li>
+	                    			{% if period == "week" or period == "month" %}
+	                    				{{closest_dates|hash:event.pk}}
+						    		{% endif %}
+	                    		</span></li>
 	                     
 	                    {% if forloop.counter == forloop.revcounter %}
 							</ul>
@@ -33,6 +37,8 @@
 	                  </ul> 
 	                </div><!--//.c46r--> 
 	              </div><!--//.events-listing-->
+              {% empty %}
+    		  <li>Sorry, there are no events in this period.</li>
               {% endfor %} 
 
 		</div><!--//.events-accordion-->

@@ -182,9 +182,7 @@ jQuery(document).ready(function(){
 	equalWidth(jQuery(".eqw"));
   /* Accordions */
   try{
-    jQuery('#main-contents .tab-containers table.events-calendar tbody td .events-listing ul').accordion({
-      header: 'a.anchor-event-name'
-    });
+    
     
   } catch (err){}
   jQuery("#main-contents .event-filters-extended ul#outline-titles li, #main-contents #col-left .locales #outline-briefs ul#outline-titles li, #main-contents #col-left .eventos .eventos-outline ul#outline-titles li").each(function(){

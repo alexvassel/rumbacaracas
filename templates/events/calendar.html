@@ -24,18 +24,18 @@
             {% for day,items in row  %}
         	<td{% ifequal day today.day  %} class="today"{% endifequal %}>
         		{% if day %}
-                    <h3><a href="#">{{ day }}</a></h3>
+                    <h3><a href="/events/by-category/day/{{year}}/{{month}}/{{day}}">{{ day }}</a></h3>
                     {% if items %}
 	                    <div class="events-listing">
 	                      <ul class="events">
 	                      	{% for item, date in items|slice:":4" %}
 		                        <li>
 		                          <a href="/events/{{item.slug}}"><span class="event-image"><img src="{{item.square.url}}"></span></a>
-		                          <a href="#" class="anchor-event-name"><span class="event-name">{{ item.title }}</span></a>
+		                          <a href="/events/{{item.slug}}" class="anchor-event-name"><span class="event-name">{{ item.title }}</span></a>
 		                        </li>
 	                        {% endfor %}
 	                      </ul>
-	                      <div class="event-count decou"><a href="#">{{items|length}} {% trans "Events"%}</a></div>
+	                      <div class="event-count decou"><a href="/events/by-category/day/{{year}}/{{month}}/{{day}}">{{items|length}} {% trans "Events"%}</a></div>
 	                    </div><!--//.events-listing-->
                     {% endif %}
           		{% else %}
@@ -47,6 +47,14 @@
         {% endfor %}
       </tbody>
     </table>
+    <script type="text/javascript" charset="utf-8">
+		jQuery('#main-contents .tab-containers table.events-calendar tbody td .events-listing ul').accordion({
+      		header: 'a.anchor-event-name',
+      		fillSpace: false,
+      		animation: 'easeslide',
+      		autoheight: true
+    	});
+		</script>
   </li>
 </ul>
 </div><!--//.events-calendar-wrapper-->

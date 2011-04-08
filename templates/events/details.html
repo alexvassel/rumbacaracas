@@ -28,11 +28,19 @@
         	{% if event.from_date == event.to_date %}
         		{{event.from_date}}
     		{% else %}
-    			{{event.from_date}} - {{event.to_date}}{% if event.repeat.all %}; {{ event.repeat.all|join:", "}}{% endif %}
+    			{{event.from_date}} - {{event.to_date}}
     		{% endif %}
     	</td>
       </tr>
 	{%endif%}
+	{% if event.repeat.all %}
+	  <tr>
+        <td><strong>{%trans "Days of week"%}:</strong></td>
+        <td>
+        	{{ event.repeat.all|join:", "}}
+    	</td>
+      </tr>
+	{% endif %}
 	{% if event.time%}
       <tr>
         <td><strong>{% trans "Time"%}:</strong></td>
