@@ -20,7 +20,7 @@ class Photo( ImageModel ):
     user = models.CharField( _( 'User' ), max_length = 256 )
     description = models.CharField( _( 'Your Photo Description' ), max_length = 256 )
     category = models.ForeignKey( PhotoCategory )
-    image = models.ImageField( upload_to = 'images/myphotos', blank = True )
+    image = models.ImageField( upload_to = 'images/yourphotos', blank = True )
     status = models.CharField( max_length = 10, choices = PHOTO_STATUSES )
     def thumb( self ):
         return '<img src="%s">' % ( self.thumbnail.url )
