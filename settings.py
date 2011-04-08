@@ -120,6 +120,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'events',
     'locations',
+    'yourphotos',
     'debug_toolbar',
     #'photologue',
     #'tagging',
