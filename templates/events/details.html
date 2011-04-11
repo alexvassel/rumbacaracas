@@ -2,6 +2,7 @@
 {% load i18n %}
 {% block title %}{% trans "Locales | Rumbabogota" %}{% endblock %}
 {% load tools %}
+{% load listtools %}
 {% block colleft %}
 <div class="node-container eventos box-shadows encap">
 <div class="title-wrap encap">
@@ -179,27 +180,26 @@
   		<div class="events-listing encap"> 
             <div class="c46l"> 
               <ul>
-				{% for event in events %}
-                	<li><a href="/events/{{event.slug}}">
-                		<a href="/events/{{event.slug}}"><span class="event-name">{{event.title}}</span></a> | 
-                		<span class="event-venue">
-                			{% if event.location%}
-                				<a href="/locations/{{event.location.slug}}"><span>{{event.location}}</span></a>
-                			{% else %}
-                				{{event.place}}
-                			{% endif%}
-                			{% if period == "week" or period == "month" %}
-                				- {{closest_dates|hash:event.pk}}
-				    		{% endif %}
-                		</span></li>
-                {% if forloop.counter == forloop.revcounter %}
-					</ul>
-				</div><!--//.c46l--> 
-            	<div class="c46r">
-            		<ul>	
-				{% endif %}
-				
-				{% endfor %}
+				{% for subevents in events|rows:2 %}
+			        {% for event in subevents %}
+	                	<li><a href="/events/{{event.slug}}">
+	                		<a href="/events/{{event.slug}}"><span class="event-name">{{event.title}}</span></a> | 
+	                		<span class="event-venue">
+	                			{% if event.location%}
+	                				<a href="/locations/{{event.location.slug}}"><span>{{event.location}}</span></a>
+	                			{% else %}
+	                				{{event.place}}
+	                			{% endif%}
+	                			{% if period == "week" or period == "month" %}
+	                				- {{closest_dates|hash:event.pk}}
+					    		{% endif %}
+	                		</span></li>
+	                {% endfor %}
+			        	</ul>
+					</div><!--//.c46l--> 
+                	<div class="c46r">
+            			<ul>
+			    {% endfor %}
               </ul> 
             </div><!--//.c46r--> 
           </div><!--//.events-listing-->
