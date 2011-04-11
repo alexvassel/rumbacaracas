@@ -191,38 +191,46 @@ def _process_period( period, year, month, day ):
     return ( from_date, to_date, repr , prev_date, next_date )
 
 @render_to( 'events/grouping.html' )
-def category( request , period = 'day', date_parameter = 0 , year = False, month = False, day = False ):
+def category( request , period = 'day', date_parameter = 0 , year = False, month = False, day = False, fake_tomorrow = False ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Category' ) , request.path_info )
     dict = _process( request, lambda o: o.category, period, year, month, day )
     dict['active_tab'] = 'category'
+    if fake_tomorrow:
+        dict['period'] = 'tomorrow'
     return dict
 
 
 @render_to( 'events/grouping.html' )
-def area( request , period = 'day' , year = False, month = False, day = False ):
+def area( request , period = 'day' , year = False, month = False, day = False, fake_tomorrow = False ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Area' ) , request.path_info )
     dict = _process( request, lambda o: o.area, period , year, month, day )
     dict['active_tab'] = 'area'
+    if fake_tomorrow:
+        dict['period'] = 'tomorrow'
     return dict
 
 
 @render_to( 'events/grouping.html' )
-def location( request , period = 'day', year = False, month = False, day = False ):
+def location( request , period = 'day', year = False, month = False, day = False, fake_tomorrow = False ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Location' ) , request.path_info )
     dict = _process( request, lambda o: o.location, period , year, month, day )
     dict['active_tab'] = 'location'
+    if fake_tomorrow:
+        dict['period'] = 'tomorrow'
     return dict
 
 
 @render_to( 'events/grouping.html' )
-def music( request, period = 'day' , year = False, month = False, day = False ):
+def music( request, period = 'day' , year = False, month = False, day = False, fake_tomorrow = False ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Music' ) , request.path_info )
     dict = _process( request, lambda o: o.music, period , year, month, day )
     dict['active_tab'] = 'music'
+    if fake_tomorrow:
+        dict['period'] = 'tomorrow'
     return dict
 
 @render_to( 'events/details.html' )

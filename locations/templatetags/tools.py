@@ -66,3 +66,4 @@ def hash( h, key ):
         return h[key]
     except KeyError: # invalid literal for int()
         return '' # Fail silently.
+
