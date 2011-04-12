@@ -76,7 +76,7 @@ def _process( request, group_lambda, period , year = False, month = False, day =
     slider_events = Event.objects.filter( to_date__gte = datetime.today() ).order_by( '?' )[:5]
 
 
-    all_locations = Location.objects.all()
+    all_locations = Location.objects.all().order_by( 'title' )
     all_events = Event.objects.all().order_by( 'title' )
 
     #Seems like wrong

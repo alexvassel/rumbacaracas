@@ -65,12 +65,12 @@
             <td><a href="mailto:{{location.email}}">{{location.email}}</a></td>
           </tr>
         {% endif %}
-		{% if location.hours_of_operation or location.days_of_operation%}          
+		{% if location.hours_of_operation or location.days_of_operation.all%}          
           <tr>
             <td><strong>{% trans "Working hours"%}:</strong></td>
             <td>
             	{% if location.hours_of_operation%}{{location.hours_of_operation}}{%endif%}
-            	{% if location.hours_of_operation and location.days_of_operation%},{%endif%}
+            	{% if location.hours_of_operation and location.days_of_operation.all%},{%endif%}
             	{% if location.days_of_operation.all%}{{location.days_of_operation.all|join:", "}}{%endif%}
         	</td>
           </tr>

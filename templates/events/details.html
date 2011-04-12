@@ -158,57 +158,34 @@
     </select>
   </td>
 </tr>
+<tr>
+  <td style="width: 105px;">
+    <label for="events-list">{% trans "List of Locations"%}:</label>
+  </td>
+  <td valign="middle" align="left" style="width: 420px;">
+    <select name="locations-list" id="locations-list" style="width: 300px;">
+		<option value="">{% trans "Select a location"%}</option>
+    	{% for location in all_locations %}
+      		<option value="{{location.slug}}">{{location.title}}</option>
+  		{% endfor %}
+    </select>
+  </td>
+</tr>
   </tbody>
 </table>
 <div id="outline-briefs" class="outline-briefs eventos-outline">
   <div class="outline-navigation">
 <ul id="outline-titles" class="encap outnone">
-  <li{% if active_tab == "category" %} class="active"{% endif %}><a href="/events/by-category">By Category</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-  <li{% if active_tab == "location" %} class="active"{% endif %}><a href="/events/by-location">By Location</a><div {% if active_tab == "location" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-  <li{% if active_tab == "area" %} class="active"{% endif %}><a href="/events/by-area">By Area</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-  <li{% if active_tab == "music" %} class="active"{% endif %}><a href="/events/by-music">By Music</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-  <li{% if active_tab == "calendar" %} class="active"{% endif %}><a href="/events/calendar"><img class="search-calendar" alt="{% trans "Calendar"%}" src="/media/images/blank.gif" />{% trans "Calendar"%}</a><div {% if active_tab == "calendar" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+  <li><a href="/events/by-category">By Category</a><div class="pointer-tip"></div></li>
+  <li><a href="/events/by-location">By Location</a><div class="pointer-tip"></div></li>
+  <li><a href="/events/by-area">By Area</a><div class="pointer-tip"></div></li>
+  <li><a href="/events/by-music">By Music</a><div class="pointer-tip"></div></li>
+  <li><a href="/events/calendar"><img class="search-calendar" alt="{% trans "Calendar"%}" src="/media/images/blank.gif" />{% trans "Calendar"%}</a><div class="pointer-tip"></div></li>
 </ul>
   </div><!--//.outline-navigation-->
 </div><!--//#outline-briefs-->
 <div id="events-category-wrapper" class="events-category-wrapper outnone">
-  <ul class="event-tab-contents">
-<li>
-  <div id="events-accordion" class="events-accordion encap">
-	{% for group, events in groups.items %} 
-  		<a class="accordion-title" href="#"><span class="category-title">{{group}}</span><span class="status">&nbsp;</span></a> 
-  		<div class="events-listing encap"> 
-            <div class="c46l"> 
-              <ul>
-				{% for subevents in events|rows:2 %}
-			        {% for event in subevents %}
-	                	<li><a href="/events/{{event.slug}}">
-	                		<a href="/events/{{event.slug}}"><span class="event-name">{{event.title}}</span></a> | 
-	                		<span class="event-venue">
-	                			{% if event.location%}
-	                				<a href="/locations/{{event.location.slug}}"><span>{{event.location}}</span></a>
-	                			{% else %}
-	                				{{event.place}}
-	                			{% endif%}
-	                			{% if period == "week" or period == "month" %}
-	                				- {{closest_dates|hash:event.pk}}
-					    		{% endif %}
-	                		</span></li>
-	                {% endfor %}
-			        	</ul>
-					</div><!--//.c46l--> 
-                	<div class="c46r">
-            			<ul>
-			    {% endfor %}
-              </ul> 
-            </div><!--//.c46r--> 
-          </div><!--//.events-listing-->
-      {% empty %}
-	  <li><p>There are no events in selected period.</p></li>
-      {% endfor %} 
-  </div><!--//.events-accordion-->
-</li>
-  </ul><!--//.event-tab-contents-->
+  
 </div><!--//.events-category-wrapper-->
   </div><!--//.tab-containers-->
   
@@ -218,6 +195,12 @@
 			var slug = $("#events-list").val();
 			if (slug != '') {
 				window.location.href = '/events/'+ slug;	
+			}
+        })
+        $("#locations-list").change(function () {
+			var slug = $("#locations-list").val();
+			if (slug != '') {
+				window.location.href = '/locations/'+ slug;	
 			}
         })
         jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion').accordion({
