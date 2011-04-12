@@ -34,7 +34,7 @@
 		{% if location.area or location.city%}
           <tr>
             <td><strong>{% trans "City, Area"%}:</strong></td>
-            <td>{% if location.area%}{{location.area.title}}{% endif %}{% if location.city and location.area%}, {% endif %}{% if location.city%}{{location.city}}{% endif %}{% if location.city and location.area and location.district%}/{% endif %}{% if location.district%}{{location.district}}{% endif %}
+            <td>{% if location.area%}{{location.area.title}}{% endif %}{% if location.city and location.area%}, {% endif %}{% if location.city%}{{location.city}}{% endif %}{% if location.city and location.area and location.district%} / {% endif %}{% if location.district%}{{location.district}}{% endif %}
             	<span class="location-map outnone ml25">
             		<a target="_blank" href="http://map.google.es/maps?q={{location.address|add:" "|add:location.area|add:" "|add:location.city|add:" "|add:location.district|urlencode }}">{% trans "Map"%}</a>
         		</span>
