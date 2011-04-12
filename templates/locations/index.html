@@ -24,12 +24,7 @@
     <div class="locales-desc">
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tbody>
-    	{% if location.type.all%}
-          <tr>
-            <td><strong>{% trans "Category"%}:</strong></td>
-            <td>{{location.type.all|join:", "}}</td>
-          </tr>
-        {% endif %}
+    	
 		{% if location.address%}
     	  <tr>
             <td><strong>{% trans "Address" %}:</strong></td>
@@ -39,7 +34,7 @@
 		{% if location.area or location.city%}
           <tr>
             <td><strong>{% trans "City, Area"%}:</strong></td>
-            <td>{% if location.city%}{{location.city}}, {% endif %}{% if location.area%}{{location.area.title}}{% endif %}
+            <td>{% if location.area%}{{location.area.title}}{% endif %}{% if location.city and location.area%}, {% endif %}{% if location.city%}{{location.city}}{% endif %}
             	<span class="location-map outnone ml25">
             		<a target="_blank" href="http://map.google.es/maps?q={{location.address|add:" "|add:location.area|add:" "|add:location.city|urlencode }}">{% trans "Map"%}</a>
         		</span>
@@ -48,13 +43,13 @@
         {% endif %}
 		{% if location.phone_1%}          
           <tr>
-            <td><strong>{% trans "Phone 1"%}:</strong></td>
+            <td><strong>{% trans "Phone"%}:</strong></td>
             <td>{{location.phone_1}}</td>
           </tr>
         {% endif %}
 		{% if location.phone_2%}          
           <tr>
-            <td><strong>{% trans "Phone 2"%}:</strong></td>
+            <td><strong>{% trans "Phone"%}:</strong></td>
             <td>{{location.phone_2}}</td>
           </tr>
         {% endif %}
@@ -67,7 +62,7 @@
 		{% if location.email%}          
           <tr>
             <td><strong>{% trans "Email"%}:</strong></td>
-            <td>{{location.email}}</td>
+            <td><a href="mailto:{{location.email}}">{{location.email}}</a></td>
           </tr>
         {% endif %}
 		{% if location.hours_of_operation or location.days_of_operation%}          
@@ -90,6 +85,12 @@
           <tr>
             <td><strong>{% trans "Music type"%}:</strong></td>
             <td>{{location.music.title}}</td>
+          </tr>
+        {% endif %}
+        {% if location.type.all%}
+          <tr>
+            <td><strong>{% trans "Category"%}:</strong></td>
+            <td>{{location.type.all|join:", "}}</td>
           </tr>
         {% endif %}
         </tbody>

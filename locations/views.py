@@ -33,8 +33,6 @@ def _process( request, group ):
             groups.append( ( group.title , locations_page, paginator ) )
             counter = counter + 1
 
-    all_locations = Location.objects.all()
-
     slider = Location.objects.order_by( '?' )[:3]
 
     all_locations = Location.objects.all().order_by( 'title' )

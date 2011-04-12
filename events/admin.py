@@ -6,7 +6,29 @@ class EventAdmin( admin.ModelAdmin ):
     filter_horizontal = ( "repeat", )
     list_display = ( 'title', 'view', 'category', )
     list_display_links = ( 'title', )
-
+    fields = ( 
+        'title',
+        'slug',
+        'category',
+        'from_date',
+        'to_date',
+        'repeat',
+        'time',
+        'location',
+        'place',
+        'address',
+        'city',
+        'area',
+        'price',
+        'phone',
+        'url',
+        'email',
+        'music',
+        'sort_order',
+        'image',
+        'user',
+        'description',
+    )
 
 admin.site.register( Event, EventAdmin )
 admin.site.register( WeekDay )
