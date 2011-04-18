@@ -105,7 +105,10 @@
   <div class="locales-info outnone">
     <div class="locales-image-teaser">
     	{% if location.image_logo%} 
-      	<a class="image" href="{{location.image_logo.url}}"><img src="{{location.logo.url}}" /></a>
+      	<a class="image" href="{{location.maxs.url}}"><img src="{{location.logo.url}}" />
+		  	<span class="lightbox" href="{{event.image.url}}">{% trans "Zoom"%}</span>
+	  	</a>
+	  	
       	{% endif %}
     </div><!--//.event-image-teaser-->
   </div><!--//.event-info-->
@@ -240,6 +243,13 @@
 				window.location.href = '/locations/'+ slug;	
 			}
         })
+        $('.locales-image-teaser a.image').lightBox({
+			imageLoading: '/media/images/lightbox-ico-loading.gif',
+			imageBtnClose: '/media/images/lightbox-btn-close.gif',
+			imageBtnPrev: '/media/images/lightbox-btn-prev.gif',
+			imageBtnNext: '/media/images/lightbox-btn-next.gif',
+			imageBlank: '/media/images/lightbox-blank.gif'
+		}); 
 	})
 	
 </script>

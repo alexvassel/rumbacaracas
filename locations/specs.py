@@ -37,6 +37,11 @@ class EventSmallThumb( processors.Resize ):
     height = 76
     crop = True
 
+
+class EventMaxS( processors.Resize ):
+    width = 800
+    crop = False
+
 # now let's create an adjustment processor to enhance the image at small sizes
 class EnchanceThumb( processors.Adjustment ):
     contrast = 1.2
@@ -75,6 +80,13 @@ class EventBig( ImageSpec ):
     access_as = 'bigimg'
     pre_cache = False
     processors = [EventBigThumb]
+
+
+# now we can define our thumbnail spec
+class EventMax( ImageSpec ):
+    access_as = 'maxs'
+    pre_cache = False
+    processors = [EventMaxS]
 
 # now we can define our thumbnail spec
 class EventSmall( ImageSpec ):

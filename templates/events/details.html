@@ -112,12 +112,6 @@
 	{%endif%}
     </tbody>
   </table>
-  	<script type="text/javascript" charset="utf-8">
-		jQuery(document).ready(function(){
-			$('div.event-desc tr:odd').addClass('odd');
-			$('div.event-desc tr:even').addClass('even');		
-		});
-	</script>
   <div class="event-contents">
     {{event.description|linebreaks}}
   </div><!--//.event-contents-->
@@ -128,11 +122,12 @@
   <div class="event-info outnone">
 <div class="event-image-teaser">
 	{% if event.image %}
-  	<a class="image" href="{{event.image.url}}">
+  	<a class="image" href="{{event.maxs.url}}">
   		<img src="{{event.eventlogo.url}}" />
+  	<span class="lightbox" href="{{event.image.url}}">{% trans "Zoom"%}</span>
   	</a>
   	{% endif %}
-  <a class="lightbox" href="{{event.image.url}}">{% trans "Zoom"%}</a>
+  
 </div><!--//.event-image-teaser-->
   </div><!--//.event-info-->
 </div><!--//.node-mini-right-->
@@ -191,6 +186,11 @@
   
 <script>
 	$(document).ready(function () {
+		jQuery(document).ready(function(){
+			$('div.event-desc tr:odd').addClass('odd');
+			$('div.event-desc tr:even').addClass('even');		
+		});
+		
 		$("#events-list").change(function () {
 			var slug = $("#events-list").val();
 			if (slug != '') {
@@ -209,6 +209,14 @@
 	      	navigation: true,
 	      	autoheight: true,
 	    });
+
+		$('.event-image-teaser a.image').lightBox({
+			imageLoading: '/media/images/lightbox-ico-loading.gif',
+			imageBtnClose: '/media/images/lightbox-btn-close.gif',
+			imageBtnPrev: '/media/images/lightbox-btn-prev.gif',
+			imageBtnNext: '/media/images/lightbox-btn-next.gif',
+			imageBlank: '/media/images/lightbox-blank.gif'
+		}); 
 	})
 </script>
 </div><!--//.node-container-->

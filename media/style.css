@@ -3007,8 +3007,8 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
   display: block;
   margin: 0 0 10px;
 }
-#main-contents #col-left .evento-details .node-mini-right .event-info .event-image-teaser a.lightbox,
-#main-contents #col-left .locales-details .node-mini-right .locales-info .locales-image-teaser a.lightbox{
+#main-contents #col-left .evento-details .node-mini-right .event-info .event-image-teaser span.lightbox,
+#main-contents #col-left .locales-details .node-mini-right .locales-info .locales-image-teaser span.lightbox{
   background: url("images/sprites/sprites_teaser_options.png") no-repeat scroll left -325px transparent;
   display: inline-block;
   text-align: center;
