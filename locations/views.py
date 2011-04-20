@@ -1,5 +1,8 @@
 from django.shortcuts import get_object_or_404
 from locations.models import Location, RestaurantType, LocationType, LocationMusic, LocationArea
+
+from events.models import Event
+
 from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from decorators import render_to
@@ -36,7 +39,11 @@ def _process( request, group ):
     slider = Location.objects.order_by( '?' )[:3]
 
     all_locations = Location.objects.all().order_by( 'title' )
-    return {'all_locations': all_locations, 'groups': groups, 'active_group' : group_id, 'slider': slider}
+
+    all_events = Event.objects.all().order_by( 'title' )
+
+
+    return {'all_locations': all_locations, 'groups': groups, 'active_group' : group_id, 'slider': slider, 'all_events': all_events}
 
 
 @render_to( 'locations/index.html' )

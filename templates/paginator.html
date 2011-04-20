@@ -2,25 +2,25 @@
 <div class="item-list outnone">
 	<ul class="pager encap">
 		{% if show_first %}
-			<li class="pager-first first"><a class="active" href="?page=1&group_id={{ group_num }}">&lt;&lt; {% trans "First" %}</a></li>
+			<li class="pager-first first"><a class="active" href="?page=1&group_id={{ group_num }}#locations-anchor">&lt;&lt; {% trans "First" %}</a></li>
 			<li class="pager-ellipsis">…</li>
 		{% endif %}
 		{% if has_previous %}
-			<li class="pager-previous"><a class="active" href="?page={{ previous }}&group_id={{ group_num }}">&lt; {% trans "Prev" %}</a></li>
+			<li class="pager-previous"><a class="active" href="?page={{ previous }}&group_id={{ group_num }}#locations-anchor">&lt; {% trans "Prev" %}</a></li>
 		{% endif %}
 		{% for linkpage in page_numbers %}
 			{% ifequal linkpage page %}
 				<li class="pager-current">{{ page }}</li>
 	      	{% else %}
-		      	<li class="pager-item"><a class="active" title="Go to page {{ linkpage }}" href="?page={{ linkpage }}&group_id={{ group_num }}">{{ linkpage }}</a></li>
+		      	<li class="pager-item"><a class="active" title="Go to page {{ linkpage }}" href="?page={{ linkpage }}&group_id={{ group_num }}#locations-anchor">{{ linkpage }}</a></li>
 	      	{% endifequal %}
 	    {% endfor %}
 		{% if has_next %}
-			<li class="pager-next"><a class="active" href="?page={{ next }}&group_id={{ group_num }}">{% trans "Next"%} &gt;</a></li>
+			<li class="pager-next"><a class="active" href="?page={{ next }}&group_id={{ group_num }}#locations-anchor">{% trans "Next"%} &gt;</a></li>
 		{% endif %}
 		{% if show_last %}
 			<li class="pager-ellipsis">…</li>
-			<li class="pager-last last"><a class="active" href="?page={{pages}}&group_id={{ group_num }}">{% trans "Last"%} &gt;&gt;</a></li>
+			<li class="pager-last last"><a class="active" href="?page={{pages}}&group_id={{ group_num }}#locations-anchor">{% trans "Last"%} &gt;&gt;</a></li>
 		{% endif %}
 	</ul>
 </div><!--//.item-list-->

@@ -160,10 +160,10 @@
 	    </tr>
 	    <tr>
 	      <td style="width: 120px;">
-	        <label for="events-list">{% trans "List of all locations"%}:</label>
+	        <label for="locations-list">{% trans "List of all locations"%}:</label>
 	      </td>
 	      <td valign="middle" align="left" style="width: 300px;" colspan="2">
-	        <select name="events-list" id="events-list" style="width: 300px;">
+	        <select name="locations-list" id="locations-list" style="width: 300px;">
 	        	<option value="">{% trans "Select a location"%}</option>
 	        	{% for location in all_locations %}
 	        		<option value="{{location.slug}}">{{location.title}}</option>
@@ -171,15 +171,30 @@
 	        </select>
 	      </td>
 	    </tr>
+	    <tr>
+	    	<td style="width: 120px;">
+		        <label for="events-list">{% trans "List of Events"%}:</label>
+		    </td>
+		    <td valign="middle" align="left" style="width: 300px;" colspan="2">
+            	<select name="events-list" id="events-list"  style="width: 300px;">
+                	<option value="">{% trans "Select an Event"%}</option>
+                	{% for event in all_events %}
+                  		<option value="{{event.slug}}">{{event.title}}</option>
+              		{% endfor %}
+                </select>
+              </td>
+            </tr>
+            <tr>
+		</tr>          	
 	  </tbody>
 	</table>
 	<div id="outline-briefs" class="outline-briefs eventos-outline">
-	  <div class="outline-navigation">
+	  <div class="outline-navigation" id="locations-anchor">
 	    <ul id="outline-titles" class="encap outnone">
-	      <li{% if active_tab == "category" %} class="active"{% endif %}><a href="/locations/by-category">{% trans "By Category"%}</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if active_tab == "area" %} class="active"{% endif %}><a href="/locations/by-area">{% trans "By Area"%}</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if active_tab == "music" %} class="active"{% endif %}><a href="/locations/by-music">{% trans "By Music"%}</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if active_tab == "food" %} class="active"{% endif %}><a href="/locations/by-food">{% trans "By Type of Food"%}</a><div {% if active_tab == "food" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "category" %} class="active"{% endif %}><a href="/locations/by-category#locations-anchor">{% trans "By Category"%}</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "area" %} class="active"{% endif %}><a href="/locations/by-area#locations-anchor">{% trans "By Area"%}</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "music" %} class="active"{% endif %}><a href="/locations/by-music#locations-anchor">{% trans "By Music"%}</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "food" %} class="active"{% endif %}><a href="/locations/by-food#locations-anchor">{% trans "By Type of Food"%}</a><div {% if active_tab == "food" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
 	      <li><a href="#">{% trans "By Rating"%}</a><div class="pointer-tip"></div></li>
 	    </ul>
 	  </div><!--//.outline-navigation-->
@@ -239,6 +254,12 @@
 	$(document).ready(function () {
 		$("#events-list").change(function () {
 			var slug = $("#events-list").val();
+			if (slug != '') {
+				window.location.href = '/events/'+ slug;	
+			}
+        })
+        $("#locations-list").change(function () {
+			var slug = $("#locations-list").val();
 			if (slug != '') {
 				window.location.href = '/locations/'+ slug;	
 			}
