@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Your photos | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load listtools %}
+{% block colleft %}
+<style>
+	.formset {
+		padding: 20px 0 20px;
+		border-bottom: 1px dotted #9F9F9F;
+	}
+	.formelement_wrap {
+		padding: 5px 0 0
+	}
+	.formelement_wrap ul{
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+	.label_wrap {
+		width: 160px;
+		float: left;
+		margin: 0 0 0 20px;
+		line-height: 28px;
+		color: #666666;
+		font-size: 14px;
+	}
+	.label_wrap label{
+		color: #666666;
+		font-size: 14px;
+	}
+	.formelement input{
+		width: 393px;
+		margin-left: 2px;
+	}
+	.formelement {
+		display: block;
+		float: right;
+		width: 400px;
+		margin-right: 20px
+	}
+	.formbtns {
+		padding: 30px 0 30px;
+		text-align: center;
+	}
+	.addphotohdr {
+		padding-left: 35px;
+		background: transparent url("/media/images/sprites/sprites_social_1.gif") no-repeat scroll 0 -427px;	
+	}
+	.errorlist {
+		color: #666666;
+	}
+	
+	
+</style>
+<div class="node-container gente box-shadows encap">
+  <div class="title-wrap encap">
+    <span class="flt-left"><h2 class="title addphotohdr">{% trans "Add Photos"%}</h2></span>
+    <span class="flt-right">
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+      </ul>
+    </span>
+  </div><!--//.title-wrap-->
+  <div class="node gente bb-none encap">
+  	<form enctype="multipart/form-data" method="post" action="" id="addform">
+    	{% csrf_token %}
+	    {{ formsets.management_form }}
+	    {% for form in formsets.forms %}
+	    <div class="formset" >
+	        {% for field in form %}
+		        <div class="formelement_wrap" {% if field.is_hidden %}style="display:none"{% endif %}>
+		        	
+	            	<div class="label_wrap">{{ field.label_tag }}:</div>
+	            	<div class="formelement">
+	            		{{ field }}
+	            		{% if field.errors %}
+			        		<br/>{{ field.errors }}
+			        	{% endif%}
+	            	</div>
+	            	
+	            	<div class="cflt"></div>
+	            </div>
+	        {% endfor %}
+        </div>
+	    {% endfor %}
+	    <div class="formbtns" >
+		    <input type="submit" value="{% trans "Submit"%}" />
+		    <input type="reset" value="{% trans "Reset"%}" />
+	    </div>
+	</form>
+	<div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
+      <a href="#"><img src="/media/images/banners/banner_8.jpg" alt="Ads"></a>
+    </div>
+  </div><!--//.node-->
+</div><!--//.node-container-->
+
+<script>
+	$(document).ready(function () {
+		$("div.formelement input:file").uniform();
+		$("div.formelement input:text").uniform();
+		$("div.formbtns input:submit").uniform();
+		$("div.formbtns input:reset").uniform();
+		
+		$('#addform input[type=reset]').click(function(){
+			$(':input','#addform')
+			 .not(':button, :submit, :reset, :hidden')
+			 .val('')
+			 .removeAttr('checked')
+			 .removeAttr('selected');
+			 return false;	
+		});
+	})
+</script>
+
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

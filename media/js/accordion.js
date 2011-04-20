@@ -208,13 +208,10 @@ function clickHandler(event) {
 	var clickedActive = clicked[0] == options.active[0];
 
 	// if animations are still active, or the active header is the target, ignore click
-	if (options.running || (options.alwaysOpen && clickedActive)){
-		return clickedActive;
-	}
-		
-	if (!clicked.is(options.header)){
-		return clickedActive;
-	}
+	if (options.running || (options.alwaysOpen && clickedActive))
+		return false;
+	if (!clicked.is(options.header))
+		return;
 
 	// switch classes
 	options.active.parent().andSelf().toggleClass(options.selectedClass);
@@ -239,7 +236,7 @@ function clickHandler(event) {
 	options.active = clickedActive ? $([]) : clicked;
 	toggle.call(this, toShow, toHide, data, clickedActive, down );
 
-	return clickedActive;
+	return false;
 };
 
 function findActive(headers, selector) {

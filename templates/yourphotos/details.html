@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Your photos | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load listtools %}
+{% block colleft %}
+<div class="node-container gente box-shadows encap">
+  <div class="title-wrap encap">
+    <span class="flt-left"><h2 class="title">{% trans "Your Photos"%}</h2></span>
+    <span class="flt-right">
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+        <li><a class="socializer-9" href="/yourphotos/add" title="{% trans "Add Photo" %}"><span class="hidden">{% trans "Add Photo" %}</span></a></li>
+      </ul>
+    </span>
+  </div><!--//.title-wrap-->
+  <div class="node gente bb-none encap">
+    <div class="wrapper encap">
+      <div class="c75l">
+        <span class="submitted">{{photo.datetime_added|date:"d/m/Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} <a class="author-link" href="#">{{photo.user}}</a></span></span>
+      </div><!--//.c75l-->
+      <div class="c20r txt-right mt15 outnone">
+        
+      </div><!--//.c20l-->
+    </div><!--//.wrapper-->
+    <h6>{{photo.description}}</h6>
+    <div class="image-navigations encap outnone">
+      <a href="/yourphotos/{{photo.get_prev.id}}" class="gente-prev" title="Previous image"><span class="hidden">Previous</span></a>
+      <a href="/yourphotos/{{photo.get_next.id}}" class="gente-next" title="Next image"><span class="hidden">Next</span></a>
+    </div>
+    <div class="images-preview outnone">
+      <ul class="image-teaser-slides encap">
+        <li><img width="337" height="532" src="{{photo.bigimg.url}}"/></li>
+      </ul><!--//.image-teaser-slides-->
+    </div><!--//.images-preview-->
+	<div class="ratings fivestar-form-item fivestar-user-text fivestar-smart-stars fivestar-average-stars fivestar-labels-hover fivestar-processed" style="border-bottom: none;">
+		
+	</div>
+    <div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
+      <a href="#"><img src="/media/images/banners/banner_8.jpg" alt="Ads"></a>
+    </div>
+  </div><!--//.node-->
+</div><!--//.node-container-->
+
+
+<script>
+	$(document).ready(function () {
+		 
+	})
+</script>
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

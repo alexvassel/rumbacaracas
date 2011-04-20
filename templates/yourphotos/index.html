@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Your photos | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load paging %}
+{% load listtools %}
+
+{% block advbodycls %}section-yourphotos{% endblock %}
+
+
+{% block colleft %}
+<style>
+	.yourphotos-tab-contents {
+		background: #ffffff;
+		padding-top: 30px !important
+	}
+	#main-contents #col-left .fotos-archives .std-archives ul.std-archives-list li {
+	  	margin: 0 22px !important;
+	}
+</style>
+<div class="node-container tus-fotos box-shadows encap">
+  <div class="title-wrap encap">
+    <span class="flt-left"><h2 class="title">{% trans "Your Photos"%}</h2></span>
+    <span class="flt-right">
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+        <li><a class="socializer-9 upload-photo" href="/yourphotos/add"><span  class="hidden">{%trans "Add photos"%}</span></a></li>
+      </ul>
+    </span>
+  </div><!--//.title-wrap-->
+	<div class="node">
+		<div class="wrapper encap">
+			<span class="submitted">{{latest.datetime_added|date:"d/m/Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} <a class="author-link" href="#">elibacter</a></span></span>
+		</div><!--//.wrapper-->
+		<div class="content">
+			<div class="std-thumbnail outnone"><a href="/yourphotos/{{latest.id}}"><img src="{{latest.bigimg.url}}"></a></div>
+		</div>
+		<div class="photos-share-options">
+			<ul class="teaser-options encap outnone fcml0 lcmr0">
+			</ul><!--//.teaser-options-->
+		</div><!--//.photos-share-options-->
+	</div><!--//.node-->
+</div><!--//.node-container-->
+	<div class="merged-container box-shadows fotos-archives encap">
+		<div class="merged-contents">
+			<div class="tab-titles encap" id="photo-anchor">
+		      <ul class="outnone encap">
+		        <li class="box-shadows">
+		        	<a href="/yourphotos/sexy#photo-anchor" {% if active_tab == "sexy" %} class="active"{% endif %}>
+		        		{% trans "Sexy"%}
+		    		</a>
+		        </li>
+		        <li class="box-shadows">
+		        	<a href="/yourphotos/rumbas#photo-anchor" {% if active_tab == "rumbas" %} class="active"{% endif %}>
+		        		{% trans "Rumbas"%}
+		    		</a>
+		        </li>
+		        <li class="box-shadows">
+		        	<a href="/yourphotos/amigos#photo-anchor" {% if active_tab == "amigos" %} class="active"{% endif %}>
+		        		{%trans "Amigos"%}
+		    		</a>
+		        </li>
+		        <li class="box-shadows">
+		        	<a href="/yourphotos/humor#photo-anchor" {% if active_tab == "humor" %} class="active"{% endif %}>
+		        		{% trans "Humor"%}
+		    		</a>
+				</li>
+		      </ul>
+		    </div><!--//.tab-titles-->
+		    <div class="tab-containers encap">
+				<div class="std-archives yourphotos-tab-contents encap">
+					<ul class="std-archives-list  encap outnone">
+						{% for photo in current_page.object_list    %}
+							<li>
+								<div class="std-thumbnail"><a href="/yourphotos/{{photo.id}}"><img src="{{photo.thumbnail.url}}"></a></div>
+								<div class="std-details decou">
+									<h6><a href="/yourphotos/{{photo.id}}">{{photo.description}}</a></h6>
+									<span class="author-meta">{% trans "Submitted by"%} <a href="#" class="author-link">elibacter</a></span>
+								</div><!--//.std-details-->
+							</li>
+						{% empty %}
+    						<li>{% trans "Sorry, no photo in this category"%}</li>
+						{% endfor%}
+						<div class="cflt"></div>
+						
+					</ul><!--//.video-archives-list-->
+					{% if current_page.object_list%}
+						{% common_paginator%}
+					{% endif%}
+				</div><!--//.encap-->
+			</div>
+		</div><!--//.merged-contents-->
+	</div><!--//.merged-container-->
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

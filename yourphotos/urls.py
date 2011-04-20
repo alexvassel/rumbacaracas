@@ -1,8 +1,8 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns( 'yourphotos.views',
-    ( r'^$', 'photos' ),
-    ( r'^photos$', 'photos' ),
+    ( r'^$', 'photos', {'category': 'sexy'} ),
     ( r'^add$', 'add' ),
-    ( r'^(?P<slug>[-\w]+)/$', 'detail' ),
+    ( r'^(?P<category>(sexy|rumbas|amigos|humor))$', 'photos' ),
+    ( r'^(?P<id>\d+)$', 'detail' ),
  )

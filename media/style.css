@@ -1806,7 +1806,7 @@ div.breadcrumb a.active {
   font-size: 11px;
   font-weight: bold;
   display: block;
-  padding: 0 0 5px;
+  padding: 5px 0 5px;
 }
 /* Gente page */
 #main-contents #col-left .gente .title-wrap, #main-contents #col-left .videos .title-wrap{
@@ -2059,6 +2059,7 @@ body.section-videos #main-contents #col-left .item-list ul{
 #main-contents #col-left .recent-events-list .item-list,
 body.section-blog #main-contents #col-left .item-list,
 body.section-locations #main-contents #col-left .item-list,
+body.section-yourphotos #main-contents #col-left .item-list,
 body.section-videos #main-contents #col-left .item-list{
   padding: 10px 0;
   margin: 0 0 20px;
@@ -2074,6 +2075,7 @@ body.section-locations #main-contents #col-left .item-list{
 #main-contents #col-left .recent-events-list .item-list ul li,
 body.section-blog #main-contents #col-left .item-list ul li,
 body.section-locations #main-contents #col-left .item-list ul li,
+body.section-yourphotos #main-contents #col-left .item-list ul li,
 body.section-videos #main-contents #col-left .item-list ul li{
   background: #D6D6D6 url("images/pager_normal.gif") repeat-x scroll left top;
   display: inline-block;
@@ -2087,6 +2089,7 @@ body.section-videos #main-contents #col-left .item-list ul li{
 .ie #main-contents #col-left .recent-events-list .item-list ul li,
 .ie body.section-blog #main-contents #col-left .item-list ul li,
 .ie body.section-locations #main-contents #col-left .item-list ul li,
+.ie body.section-yourphotos #main-contents #col-left .item-list ul li,
 .ie body.section-videos #main-contents #col-left .item-list ul li{
   display: inline;
   margin: 0 -1px;
@@ -2094,6 +2097,7 @@ body.section-videos #main-contents #col-left .item-list ul li{
 #main-contents #col-left .recent-events-list .item-list ul li.pager-current,
 body.section-blog #main-contents #col-left .item-list ul li.pager-current,
 body.section-locations #main-contents #col-left .item-list ul li.pager-current,
+body.section-yourphotos #main-contents #col-left .item-list ul li.pager-current,
 body.section-videos #main-contents #col-left .item-list ul li.pager-current{
   background: #030303 url("images/pager_current.gif") repeat-x scroll left top;
   border: 1px solid #000000;
@@ -2103,12 +2107,14 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 #main-contents #col-left .recent-events-list .item-list ul li.pager-ellipsis,
 body.section-blog #main-contents #col-left .item-list ul li.pager-ellipsis,
 body.section-locations #main-contents #col-left .item-list ul li.pager-ellipsis,
+body.section-yourphotos #main-contents #col-left .item-list ul li.pager-ellipsis,
 body.section-videos #main-contents #col-left .item-list ul li.pager-ellipsis{
   padding: 2px 5px;
 }
 #main-contents #col-left .recent-events-list .item-list ul li a,
 body.section-blog #main-contents #col-left .item-list ul li a,
 body.section-locations #main-contents #col-left .item-list ul li a,
+body.section-yourphotos #main-contents #col-left .item-list ul li a,
 body.section-videos #main-contents #col-left .item-list ul li a{
   display: inline-block;
   padding: 2px 8px;

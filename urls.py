@@ -6,6 +6,7 @@ admin.autodiscover()
 urlpatterns = patterns( '',
     ( r'^locations/', include( 'locations.urls' ) ),
     ( r'^events/', include( 'events.urls' ) ),
+    ( r'^yourphotos/', include( 'yourphotos.urls' ) ),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
