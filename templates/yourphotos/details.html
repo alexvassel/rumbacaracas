@@ -30,7 +30,8 @@
 		 	var addr = $(this).attr('href');
 		 	$('.images-preview ul').hide('slide', {direction: 'right'}, 500, function(){
 			 	$('#details-node').load(addr,function(){
-			 		$('.images-preview ul').show('slide', {direction: 'left'}, 500);	
+			 		$('.images-preview ul').show('slide', {direction: 'left'}, 500);
+			 		FB.XFBML.parse(document.getElementById('details-node'));	
 			 	});	
 		 	});
 		 	return false;
@@ -39,7 +40,8 @@
 		 	var addr = $(this).attr('href');
 		 	$('.images-preview ul').hide('slide', {direction: 'left'}, 500, function(){
 			 	$('#details-node').load(addr,function(){
-			 		$('.images-preview ul').show('slide', {direction: 'right'}, 500);	
+			 		$('.images-preview ul').show('slide', {direction: 'right'}, 500);
+			 		FB.XFBML.parse(document.getElementById('details-node'));	
 			 	});	
 		 	});
 		 	

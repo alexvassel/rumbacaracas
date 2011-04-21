@@ -76,15 +76,32 @@ TEMPLATE_LOADERS = (
 BREADCRUMBS = True
 BREADCRUMBS_AUTO_HOME = True
 
+
+
 MIDDLEWARE_CLASSES = ( 
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'breadcrumbs.middleware.BreadcrumbsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'socialregistration.middleware.FacebookMiddleware',
  )
+
+AUTHENTICATION_BACKENDS = ( 
+ 'socialregistration.auth.FacebookAuth',
+ 'django.contrib.auth.backends.ModelBackend',
+ )
+
+
+
+FACEBOOK_APP_ID = '195992407109917'
+FACEBOOK_API_KEY = '15d12186d338568b8b5634e27aafb7cd'
+FACEBOOK_SECRET_KEY = 'e450064cd78715d484825ed6c3b4e304'
+SOCIALREGISTRATION_GENERATE_USERNAME = True
+
+LOGIN_REDIRECT_URL = "/"
 
 INTERNAL_IPS = ( '127.0.0.1', )
 
@@ -111,13 +128,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
  )
 
 
-
 INSTALLED_APPS = ( 
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.admin',
+    'django.contrib.sites',
+    'socialregistration',
     'events',
     'locations',
     'yourphotos',

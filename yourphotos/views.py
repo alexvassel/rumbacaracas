@@ -54,7 +54,9 @@ def detail( request , id ):
 
 
 
+from django.contrib.auth.decorators import login_required
 
+@login_required( login_url = '/yourphotos/' )
 @render_to( 'yourphotos/add.html' )
 def add( request ):
     request.breadcrumbs( _( 'Your Photos' ) , '/yourphotos' )
@@ -65,7 +67,10 @@ def add( request ):
         formset = PhotoFormSet( request.POST, request.FILES,
                                 queryset = Photo.objects.none() )
         if formset.is_valid():
-            formset.save()
+            photos = formset.save( commit = False )
+            for photo in photos:
+                photo.user = request.user
+                photo.save()
             return HttpResponseRedirect( "/yourphotos" )
             # Do something.
     else:

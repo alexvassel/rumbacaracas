@@ -4,6 +4,8 @@ from django.conf import settings
 admin.autodiscover()
 
 urlpatterns = patterns( '',
+    ( r'' , include( 'yourphotos.urls' ) ),
+    ( r'^social/', include( 'socialregistration.urls' ) ),
     ( r'^locations/', include( 'locations.urls' ) ),
     ( r'^events/', include( 'events.urls' ) ),
     ( r'^yourphotos/', include( 'yourphotos.urls' ) ),

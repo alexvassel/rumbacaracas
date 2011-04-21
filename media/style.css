@@ -252,8 +252,11 @@ input[type="button"], input[type="submit"], button{
 #header-primary .rows .sec-left ul.top-menu-social{
 	margin: 0 10px 0 0;
 }
-#header-primary .rows .sec-left ul.top-menu-social li a{
+#header-primary .rows .sec-left ul.top-menu-social li{
 	padding: 10px 0px !important;
+}
+#header-primary .rows .sec-left ul.top-menu-social li a{
+	padding: 3px 0 0 0;
 }
 #header-primary .rows .sec-left ul li a{
 	text-transform: uppercase;

@@ -1,6 +1,9 @@
 from django.db import models
+from socialregistration.models import FacebookProfile
 from django.utils.translation import ugettext_lazy as _
 from imagekit.models import ImageModel
+from django.contrib.auth.models import User
+from django.utils.safestring import mark_safe
 
 PHOTO_STATUSES = ( 
     ( '1', _( 'Published' ) ),
@@ -16,7 +19,7 @@ PHOTO_CATEGORIES = (
 
 
 class Photo( ImageModel ):
-    user = models.CharField( _( 'User' ), max_length = 256, blank = True )
+    user = models.ForeignKey( User )
     description = models.CharField( _( 'Description' ), max_length = 256 )
     category = models.CharField( 'Category', max_length = 10, choices = PHOTO_CATEGORIES, blank = True )
     image = models.ImageField( upload_to = 'images/yourphotos' )
@@ -26,6 +29,10 @@ class Photo( ImageModel ):
         return '<img src="%s">' % ( self.thumbnail.url )
     thumb.allow_tags = True
     thumb.short_description = _( 'Preview' )
+
+    def get_user_link ( self ):
+        facebook_user = FacebookProfile.objects.get( user = self.user )
+        return mark_safe( u'<fb:name uid="%s" />' % ( facebook_user.uid ) )
 
     class IKOptions:
         # This inner class is where we define the ImageKit options for the model
