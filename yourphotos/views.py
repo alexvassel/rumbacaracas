@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404
 from yourphotos.models import Photo
 from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
@@ -45,9 +45,14 @@ def photos( request, category ):
 @render_to( 'yourphotos/details.html' )
 def detail( request , id ):
     photo = get_object_or_404( Photo, pk = id )
+    if request.is_ajax():
+        return render_to_response( 'yourphotos/details_node.html', {'photo': photo} )
     request.breadcrumbs( _( 'Your Photos' ) , '/yourphotos' )
     request.breadcrumbs( photo.description , request.path_info )
     return {'photo': photo}
+
+
+
 
 
 @render_to( 'yourphotos/add.html' )

@@ -13,38 +13,37 @@
       </ul>
     </span>
   </div><!--//.title-wrap-->
-  <div class="node gente bb-none encap">
-    <div class="wrapper encap">
-      <div class="c75l">
-        <span class="submitted">{{photo.datetime_added|date:"d/m/Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} <a class="author-link" href="#">{{photo.user}}</a></span></span>
-      </div><!--//.c75l-->
-      <div class="c20r txt-right mt15 outnone">
-        
-      </div><!--//.c20l-->
-    </div><!--//.wrapper-->
-    <h6>{{photo.description}}</h6>
-    <div class="image-navigations encap outnone">
-      <a href="/yourphotos/{{photo.get_prev.id}}" class="gente-prev" title="Previous image"><span class="hidden">Previous</span></a>
-      <a href="/yourphotos/{{photo.get_next.id}}" class="gente-next" title="Next image"><span class="hidden">Next</span></a>
-    </div>
-    <div class="images-preview outnone">
-      <ul class="image-teaser-slides encap">
-        <li><img width="337" height="532" src="{{photo.bigimg.url}}"/></li>
-      </ul><!--//.image-teaser-slides-->
-    </div><!--//.images-preview-->
-	<div class="ratings fivestar-form-item fivestar-user-text fivestar-smart-stars fivestar-average-stars fivestar-labels-hover fivestar-processed" style="border-bottom: none;">
-		
-	</div>
-    <div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
-      <a href="#"><img src="/media/images/banners/banner_8.jpg" alt="Ads"></a>
-    </div>
-  </div><!--//.node-->
+  <div  id="details-node">
+  	{% include "yourphotos/details_node.html" with show_img="1" %}
+  </div>
 </div><!--//.node-container-->
-
-
 <script>
 	$(document).ready(function () {
-		 
+		/*
+		$('#divContent').click(function(){
+		   $('#content').slideUp('slow').load('info.php', function() {
+		     $(this).slideDown('slow');
+		   });
+		});
+*/
+		 $('.gente-prev').live('click', function(){
+		 	$('.images-preview ul').hide('slide', {direction: 'left'}, 500, function(){
+			 	$('#details-node').load(addr,function(){
+			 		$('.images-preview ul').show('slide', {direction: 'right'}, 500);	
+			 	});	
+		 	});
+		 	return false;
+		 });
+		 $('.gente-next').live('click', function(){
+		 	var addr = $(this).attr('href');
+		 	$('.images-preview ul').hide('slide', {direction: 'left'}, 500, function(){
+			 	$('#details-node').load(addr,function(){
+			 		$('.images-preview ul').show('slide', {direction: 'right'}, 500);	
+			 	});	
+		 	});
+		 	
+		 	return false;
+		 });
 	})
 </script>
 {% endblock %}
