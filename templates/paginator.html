@@ -12,7 +12,7 @@
 			{% ifequal linkpage page %}
 				<li class="pager-current">{{ page }}</li>
 	      	{% else %}
-		      	<li class="pager-item"><a class="active" title="Go to page {{ linkpage }}" href="?page={{ linkpage }}&group_id={{ group_num }}#locations-anchor">{{ linkpage }}</a></li>
+		      	<li class="pager-item"><a class="active" title="{% trans "Go to page"%}" href="?page={{ linkpage }}&group_id={{ group_num }}#locations-anchor">{{ linkpage }}</a></li>
 	      	{% endifequal %}
 	    {% endfor %}
 		{% if has_next %}
