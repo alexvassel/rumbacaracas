@@ -1,10 +1,13 @@
 {% load socialregistration_tags %}
+{% load i18n %}
 {% comment %}
 <fb:login-button autologoutlink="true" perms="email,user_birthday,status_update,publish_stream"></fb:login-button>
 {% endcomment %}
 
 {% if logged_in %}
-    <a href="#" onclick:"javascript:FB.logout(function(resp){ document.location = '{% url social_logout %}'; })">{% trans "Logout"%}</a>
+    <a href="#" onclick:"javascript:FB.logout(function(resp){ document.location = '{% url social_logout %}'; })">
+		{% trans "Logout" %}
+	</a>
 {% else %}
 	<form class="connect-button" name="login" method="post" action="{% if logged_in %}{% url facebook_connect %}{% else %}{% url facebook_login %}{% endif %}">
 	{% social_csrf_token %}
