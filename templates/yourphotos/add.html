@@ -61,7 +61,7 @@
     </span>
   </div><!--//.title-wrap-->
   <div class="node gente bb-none encap">
-  	{% if completed %}<h5>{% trans "Your photos uploaded"%}</h5>{% endif %}
+  	{% if completed %}<h5>{% trans "Your photos successfully uploaded and will be reviewed shortly!"%}</h5>{% endif %}
   	<form enctype="multipart/form-data" method="post" action="" id="addform">
     	{% csrf_token %}
 	    {{ formsets.management_form }}

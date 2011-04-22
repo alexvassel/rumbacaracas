@@ -32,7 +32,10 @@ class Photo( ImageModel ):
 
     def get_user_link ( self ):
         facebook_user = FacebookProfile.objects.get( user = self.user )
-        return mark_safe( u'<fb:name uid="%s" />' % ( facebook_user.uid ) )
+        if facebook_user:
+            return mark_safe( u'<fb:name uid="%s" />' % ( facebook_user.uid ) )
+        else:
+            return mark_safe( self.user )
 
     class IKOptions:
         # This inner class is where we define the ImageKit options for the model
