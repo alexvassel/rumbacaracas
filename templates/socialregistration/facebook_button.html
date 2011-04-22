@@ -4,7 +4,7 @@
 {% endcomment %}
 
 {% if logged_in %}
-	<a href="{% url social_logout %}">LOGOUT</a>
+    <a href="#" onclick:"javascript:FB.logout(function(resp){ document.location = '{% url social_logout %}'; })">{% trans "Logout"%}</a>
 {% else %}
 	<form class="connect-button" name="login" method="post" action="{% if logged_in %}{% url facebook_connect %}{% else %}{% url facebook_login %}{% endif %}">
 	{% social_csrf_token %}
