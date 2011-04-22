@@ -71,7 +71,14 @@ def add( request ):
             for photo in photos:
                 photo.user = request.user
                 photo.save()
-            return HttpResponseRedirect( "/yourphotos" )
+
+            formset = PhotoFormSet( queryset = Photo.objects.none() )
+            #return HttpResponseRedirect( "/yourphotos" )
+            return {
+                    "formsets": formset,
+                    "completed": True,
+            }
+
             # Do something.
     else:
         formset = PhotoFormSet( queryset = Photo.objects.none() )
