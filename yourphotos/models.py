@@ -35,7 +35,7 @@ class Photo( ImageModel ):
         if facebook_user:
             return mark_safe( u'<fb:name uid="%s" />' % ( facebook_user.uid ) )
         else:
-            return mark_safe( self.user )
+            return mark_safe( self.user.username )
 
     class IKOptions:
         # This inner class is where we define the ImageKit options for the model
