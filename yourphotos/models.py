@@ -31,10 +31,10 @@ class Photo( ImageModel ):
     thumb.short_description = _( 'Preview' )
 
     def get_user_link ( self ):
-        facebook_user = FacebookProfile.objects.get( user = self.user )
-        if facebook_user:
+        try :
+            facebook_user = FacebookProfile.objects.get( user = self.user )
             return mark_safe( u'<fb:name uid="%s" />' % ( facebook_user.uid ) )
-        else:
+        except FacebookProfile.DoesNotExist:
             return mark_safe( self.user.username )
 
     class IKOptions:
