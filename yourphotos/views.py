@@ -56,7 +56,7 @@ def detail( request , id ):
 
 from django.contrib.auth.decorators import login_required
 
-@login_required( login_url = '/yourphotos/' )
+@login_required( login_url = '/login/' )
 @render_to( 'yourphotos/add.html' )
 def add( request ):
     request.breadcrumbs( _( 'Your Photos' ) , '/yourphotos' )
