@@ -5,7 +5,13 @@
 {% endcomment %}
 
 {% if logged_in %}
-    <a href="#" onclick:'javascript:FB.logout(function(resp){document.location ="{% url social_logout %}"})'>
+	<script>
+    function logout(){
+		FB.logout(function(resp){ 
+			document.location = '{% url social_logout %}'; 
+		})
+	</script>
+    <a href="#" onclick:'javascript:logout()'>
 		{% trans "Logout" %}
 	</a>
 {% else %}
