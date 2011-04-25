@@ -1897,6 +1897,9 @@ div.breadcrumb a.active {
 #main-contents #col-left .locales .node .image-teaser-slides li{
   height: 250px;
 }
+
+
+#main-contents #col-left .node .logo-slides li .slide-teasers,
 #main-contents #col-left .node .image-teaser-slides li .slide-teasers{
   background: #000000;
   padding: 8px 10px;
@@ -1906,26 +1909,40 @@ div.breadcrumb a.active {
 	-khtml-opacity: 0.85;
 	opacity: 0.85;
 }
+
+#main-contents #col-left .node .logo-slides li .slide-teasers{
+    margin: -60px 3px 0;
+}
+
+
+#main-contents #col-left .node .logo-slides li .slide-teasers,
+#main-contents #col-left .node .logo-slides li .slide-teasers *,
 #main-contents #col-left .node .image-teaser-slides li .slide-teasers,
 #main-contents #col-left .node .image-teaser-slides li .slide-teasers *{
   color: #FFFFFF;
 }
+#main-contents #col-left .node .logo-slides li .slide-teasers *,
 #main-contents #col-left .node .image-teaser-slides li .slide-teasers *{
 	filter:alpha(opacity=100);
 	-moz-opacity:100;
 	-khtml-opacity: 100;
 	opacity: 100;
 }
+
+#main-contents #col-left .node .logo-slides li .slide-teasers h3,
 #main-contents #col-left .node .image-teaser-slides li .slide-teasers h3{
   margin: 0 0 5px;
   font-size: 17px;
 }
+#main-contents #col-left .node .logo-slides li .slide-teasers p,
 #main-contents #col-left .node .image-teaser-slides li .slide-teasers p{
   padding: 0;
 }
+#main-contents #col-left .node .logo-slides li .slide-teasers a:hover,
 #main-contents #col-left .node .image-teaser-slides li .slide-teasers a:hover{
   text-decoration: underline;
 }
+
 #main-contents #col-left .node ul.node-mini-list div.image-teaser img{
   margin: 15px 0 20px;
 }
@@ -3183,15 +3200,7 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 	height: 162px;
 	background: white;
 }
-#main-contents #col-left .locales-details .logo-strips .logo-slides p{
-	background: white; 
-	text-align: center;
-	font-size: 16px; 
-	padding-top:5px;
-}
-#main-contents #col-left .locales-details .logo-strips .logo-slides p span{
-	color: #898989;
-}
+
 #main-contents #col-left .locales .eventos-outline ul#outline-titles li a {
   font-size: 12px !important;
   font-weight: normal !important;

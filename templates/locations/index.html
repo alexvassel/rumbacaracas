@@ -127,8 +127,8 @@
 <div class="node locales-details encap">
 	<div class="contents">
 	  <h2>{% trans "Locations of the day"%}</h2>
-	  <div class="logo-strips outnone">
-	    <ul class="logo-slides encap lcmr0">
+	  <div class="logo-strips outnone ">
+	    <ul class="logo-slides  encap lcmr0">
 			{%for slide in slider%}
 	      	<li>
 	      		<a href="/locations/{{slide.slug}}">
@@ -138,10 +138,10 @@
 	        			<div class="empty encap"></div>
         			{% endif %}
 	        	</a>
-	        	<p>{{slide.title}}<br />
-	        	<span style="color: #898989">
-	        		{% if slide.area %}{{slide.area.title}}{% else %}&nbsp;{%endif%}
-        		</span></p>
+	        	<div class="slide-teasers">
+                    <h3><a href="/locations/{{slide.slug}}">{{slide.title}}</a></h3>
+                    <p>{% if slide.area %}{{slide.area.title}}{% else %}&nbsp;{%endif%}</p>
+                </div>
 	      	</li>
 			{%endfor%}
 	    </ul><!--//.image-teaser-slides-->
