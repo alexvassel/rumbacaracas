@@ -5,13 +5,19 @@
 {% block colleft %}
 <div class="node-container eventos-para-hoy box-shadows encap">
 <div class="title-wrap encap">
-	<span class="flt-left"><h2 class="title">{% trans "Events"%}</h2></span>
+	<span class="flt-left">
+		<h2 class="title">
+		{% if period == "day"%}{% trans "Events For Today"%}{% endif %}
+		{% if period == "tomorrow"%}{% trans "Events For Tomorrow"%}{% endif %}
+		{% if period == "week" %}{% trans "Events For a Week"%}{% endif %}
+		{% if period == "month" %}{% trans "Events For a Month"%}{% endif %}
+		</h2></span>
 	<span class="flt-right">
 	  
 	</span>
 </div><!--//.title-wrap-->
   <div class="event-meta">
-    <span class="meta-publish-date">{% now "l, F j" %}</span>
+    <span class="meta-publish-date">{{repr}}</span>
   </div>
   <div class="node bb-none encap">
     <div class="images-preview outnone">
