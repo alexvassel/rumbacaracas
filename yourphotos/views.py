@@ -17,19 +17,23 @@ def photos( request, category ):
 
     request.breadcrumbs( _( 'Your Photos' ) , '/yourphotos' )
 
-    if category == 'sexy':
-        request.breadcrumbs( _( 'Sexy' ) , request.path_info )
-    elif category == 'rumbas':
-        request.breadcrumbs( _( 'Rumbas' ) , request.path_info )
-    elif category == 'amigos':
-        request.breadcrumbs( _( 'Amigos' ) , request.path_info )
-    elif category == 'humor':
-        request.breadcrumbs( _( 'Humor' ) , request.path_info )
+    if category == 'latest':
+        request.breadcrumbs( _( 'Latest Photos' ) , request.path_info )
+        photos = Photo.objects.filter( status = 1 ).order_by( '-datetime_added' )
     else:
-        category = 'sexy'
-        request.breadcrumbs( _( 'Sexy' ) , request.path_info )
+        if category == 'sexy':
+            request.breadcrumbs( _( 'Sexy' ) , request.path_info )
+        elif category == 'rumbas':
+            request.breadcrumbs( _( 'Rumbas' ) , request.path_info )
+        elif category == 'amigos':
+            request.breadcrumbs( _( 'Amigos' ) , request.path_info )
+        elif category == 'humor':
+            request.breadcrumbs( _( 'Humor' ) , request.path_info )
+        else:
+            category = 'sexy'
+            request.breadcrumbs( _( 'Sexy' ) , request.path_info )
 
-    photos = Photo.objects.filter( status = 1 ).filter( category = category )
+        photos = Photo.objects.filter( status = 1 ).filter( category = category )
 
     paginator = Paginator( photos, 12 )
     try:

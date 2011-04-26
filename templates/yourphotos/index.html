@@ -29,6 +29,7 @@
   </div><!--//.title-wrap-->
 	<div class="node">
 		<div class="wrapper encap">
+			<h2 class="title"><a href="/yourphotos/{{latest.id}}">{{latest.description}}</a></h2>
 			<span class="submitted">{{latest.datetime_added|date:"d/m/Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{latest.get_user_link}}</span></span>
 		</div><!--//.wrapper-->
 		<div class="content">
@@ -44,6 +45,11 @@
 		<div class="merged-contents">
 			<div class="tab-titles encap" id="photo-anchor">
 		      <ul class="outnone encap">
+		        <li class="box-shadows">
+		        	<a href="/yourphotos/latest#photo-anchor" {% if active_tab == "latest" %} class="active"{% endif %}>
+		        		{% trans "Latest Photos"%}
+		    		</a>
+		        </li>
 		        <li class="box-shadows">
 		        	<a href="/yourphotos/sexy#photo-anchor" {% if active_tab == "sexy" %} class="active"{% endif %}>
 		        		{% trans "Sexy"%}

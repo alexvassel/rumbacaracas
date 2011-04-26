@@ -2,6 +2,7 @@
 <div class="node gente bb-none encap">
 	<div class="wrapper encap">
 	  <div class="c75l">
+	  	<h2 class="title">{{photo.description}}</h2>
 	    <span class="submitted">{{photo.datetime_added|date:"d/m/Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{photo.get_user_link}}</span></span>
 	  </div><!--//.c75l-->
 	  <div class="c20r txt-right mt15 outnone">
@@ -14,9 +15,9 @@
 	  <a href="/yourphotos/{{photo.get_next.id}}" class="gente-next" title="Next image"><span class="hidden">Next</span></a>
 	</div>
 	<div class="images-preview outnone" style="height:600px">
-		<h6>{{photo.description}}</h6>
+		
 	  <ul class="image-teaser-slides encap">
-	    <li><img  height="532" src="{{photo.bigimg.url}}"/></li>
+	    <li><img src="{{photo.bigimg.url}}"/></li>
 	  </ul><!--//.image-teaser-slides-->
 	</div><!--//.images-preview-->
 	<div class="ratings fivestar-form-item fivestar-user-text fivestar-smart-stars fivestar-average-stars fivestar-labels-hover fivestar-processed" style="border-bottom: none;">

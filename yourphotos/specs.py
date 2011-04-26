@@ -8,9 +8,10 @@ class ResizeThumb( processors.Resize ):
     crop = True
 
 class BigImage( processors.Resize ):
-    width = 363
-    height = 516
-    crop = True
+    width = 540
+    height = 540
+    upscale = False
+    crop = False
 
 # now let's create an adjustment processor to enhance the image at small sizes
 class EnchanceThumb( processors.Adjustment ):
