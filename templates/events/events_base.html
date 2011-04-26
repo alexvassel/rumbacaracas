@@ -21,7 +21,7 @@
         		<a href="/events/{{slide.slug}}"><img src="{{slide.bigimg.url}}" alt="imgs_10"/></a>
         		<div class="slide-teasers">
                     <h3><a href="/events/{{slide.slug}}">{{slide.title}}</a></h3>
-                    <p>{{slide.description|truncate:100}}<br />
+                    <p>{{slide.description|truncate:90}}<br />
                     	{% if slide.from_date == slide.to_date %}
 			        		{{slide.from_date}}
 			    		{% else %}
