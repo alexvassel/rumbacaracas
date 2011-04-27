@@ -29,9 +29,19 @@
 	                    <div class="events-listing">
 	                      <ul class="events">
 	                      	{% for item, date in items|slice:":4" %}
-		                        <li>
-		                          <a href="/events/{{item.slug}}"><span class="event-image"><img src="{{item.square.url}}"></span></a>
-		                          <a href="/events/{{item.slug}}" class="anchor-event-name"><span class="event-name">{{ item.title }}</span></a>
+		                        <li
+		                        {% if forloop.first %}
+		                         class="selected"
+		                         {% endif %}
+		                         >
+		                          <a href="/events/{{item.slug}}">
+		                          	<span class="event-image">
+		                          		<img src="{{item.square.url}}">
+	                          		</span>
+	                          	  </a>
+		                          <a href="/events/{{item.slug}}" class="anchor-event-name">
+		                          	<span class="event-name">{{ item.title }}</span>
+	                          	  </a>
 		                        </li>
 	                        {% endfor %}
 	                      </ul>
@@ -48,12 +58,34 @@
       </tbody>
     </table>
     <script type="text/javascript" charset="utf-8">
-		jQuery('#main-contents .tab-containers table.events-calendar tbody td .events-listing ul').accordion({
-      		header: 'a.anchor-event-name',
-      		fillSpace: false,
-      		animation: 'easeslide',
-      		autoheight: true
-    	});
+    	
+    	jQuery(document).ready(function(){
+    		var last_active = [];
+    		$('#main-contents .tab-containers table.events-calendar tbody td .events-listing ul').each(function(ul_index) {
+    			var current_ul = this;
+    			last_active[ul_index] = $('li.selected', current_ul).get(0);
+    			
+    			$('li a.anchor-event-name', current_ul).click(function(){
+    				var current_li = $(this).parent().get(0);
+    				
+    				if ( current_li == last_active[ul_index]) {
+    					return true;
+    				}
+
+    				$('img', last_active[ul_index]).hide("blind", { direction: "vertical" }, 500, function(){
+    					$(last_active[ul_index]).removeClass('selected');
+    				});
+    				
+    				$('img', current_li).show("blind", { direction: "vertical" }, 500, function(){
+    					$(last_active[ul_index]).removeClass('selected');
+    					$(current_li).addClass('selected');
+    				});
+    				
+					last_active[ul_index] = current_li;
+    				return false;	
+    			})
+  			});
+		});
 		</script>
   </li>
 </ul>

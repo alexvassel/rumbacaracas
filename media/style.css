@@ -2701,6 +2701,10 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 #main-contents .merged-contents .tab-containers table.events-calendar tbody td .events-listing ul li.selected img{
   display: block;
 }
+#main-contents .merged-contents .tab-containers table.events-calendar tbody td .events-listing ul li span.event-image{
+	width:100px;
+}
+
 #main-contents .merged-contents .tab-containers table.events-calendar tbody td .events-listing ul li span{
   display: block;
 }
