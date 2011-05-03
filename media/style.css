@@ -1914,6 +1914,9 @@ div.breadcrumb a.active {
     margin: -60px 3px 0;
 }
 
+.section-locations #main-contents #col-left .node .logo-slides li .slide-teasers{
+    margin: -59px 0 0;
+} 
 
 #main-contents #col-left .node .logo-slides li .slide-teasers,
 #main-contents #col-left .node .logo-slides li .slide-teasers *,
