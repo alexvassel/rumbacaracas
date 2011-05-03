@@ -4,91 +4,122 @@
 {% load tools %}
 {% load listtools %}
 {% block colleft %}
-<style>
-	.formset {
-		padding: 20px 0 20px;
-		border-bottom: 1px dotted #9F9F9F;
-	}
-	.formelement_wrap {
-		padding: 5px 0 0
-	}
-	.formelement_wrap ul{
-		margin: 0 !important;
-		padding: 0 !important;
-	}
-	.label_wrap {
-		width: 160px;
-		float: left;
-		margin: 0 0 0 20px;
-		line-height: 28px;
-		color: #666666;
-		font-size: 14px;
-	}
-	.label_wrap label{
-		color: #666666;
-		font-size: 14px;
-	}
-	.formelement input{
-		width: 393px;
-		margin-left: 2px;
-	}
-	.formelement {
-		display: block;
-		float: right;
-		width: 400px;
-		margin-right: 20px
-	}
-	.formbtns {
-		padding: 30px 0 30px;
-		text-align: center;
-	}
-	.addphotohdr {
-		padding-left: 35px;
-		background: transparent url("/media/images/sprites/sprites_social_1.gif") no-repeat scroll 0 -427px;	
-	}
-	.errorlist {
-		color: #666666;
-	}
-	
-	
-</style>
 <div class="node-container gente box-shadows encap">
   <div class="title-wrap encap">
+
     <span class="flt-left"><h2 class="title addphotohdr">{% trans "Add Photos"%}</h2></span>
     <span class="flt-right">
+	  <img src="/media/images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
       <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
       </ul>
     </span>
   </div><!--//.title-wrap-->
-  <div class="node gente bb-none encap">
-  	{% if completed %}<h5>{% trans "Your photos successfully uploaded and will be reviewed shortly!"%}</h5>{% endif %}
+  <div class="node gente bb-none encap" id="add-form">
+	<br />
+  	{% if completed %}<h2>{% trans "Your photos successfully uploaded and will be reviewed shortly!"%}</h2>{% endif %}
+	<h2>{% trans "Post up to 5 photos at once:"%}</h2>
   	<form enctype="multipart/form-data" method="post" action="" id="addform">
     	{% csrf_token %}
 	    {{ formsets.management_form }}
 	    {% for form in formsets.forms %}
-	    <div class="formset" >
-	        {% for field in form %}
-		        <div class="formelement_wrap" {% if field.is_hidden %}style="display:none"{% endif %}>
-		        	
-	            	<div class="label_wrap">{{ field.label_tag }}:</div>
-	            	<div class="formelement">
-	            		{{ field }}
-	            		{% if field.errors %}
-			        		<br/>{{ field.errors }}
-			        	{% endif%}
-	            	</div>
-	            	
-	            	<div class="cflt"></div>
-	            </div>
-	        {% endfor %}
-        </div>
+
+
+		<div id="set{{forloop.counter0}}" {%if not forloop.first %}style="display:none"{% endif %}>
+		  
+	      <table border="0" cellpadding="7" cellspacing="0" width="100%">
+	        <tr>
+		      	<td width="250">
+					{{ form.description.label_tag }}
+					{% if form.description.errors %}
+			        		<br/>{{ form.description.errors }}
+		        	{% endif%}
+				</td>
+				<td class="textbox">{{ form.description }}</td>
+	        </tr>
+	        <tr valign="top">
+		      	<td  valign="top">
+					{{ form.image.label_tag }}
+					{% if form.image.errors %}
+			        		<br/>{{ form.image.errors }}
+		        	{% endif%}
+				</td>
+
+				<td class="file">
+					{{ form.image }}
+					<div class="br10"></div>
+					{% if not forloop.last%}
+			        	<a href="#" onclick="$('#set{{forloop.counter}}').show('blind'); $(this).remove( ); return false;">{% trans "Upload more photos"%}</a>
+					{% endif%}
+				</td>
+	        </tr>
+	      </table>
+		  <hr />
+		</div>
 	    {% endfor %}
-	    <div class="formbtns" >
-		    <input type="submit" value="{% trans "Submit"%}" />
-		    <input type="reset" value="{% trans "Reset"%}" />
-	    </div>
+		<table border="0" cellpadding="7" cellspacing="0" width="100%">
+	      <tr>
+	        <td width="100%" align="center">
+	          <br />
+	          <input type="reset" id="BtnClear" value="{% trans "Reset"%}" class="button" />
+	          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	          <input type="submit" id="BtnSubmit" value="{% trans "Submit"%}" class="button" />
+	        </td>
+	      </tr>
+	    </table>
 	</form>
+{% if photos%}
+		  <br />
+		  <br />
+		  <br />
+		  <h2 class="red">Fotos que has subido</h2>
+		  <div class="br10"></div>
+
+		  <table border="0" cellpadding="7" cellspacing="0" width="100%">
+		    <tr>
+			{% for newphoto in photos %}
+		      <td width="123">
+		        <div class="photoThumb">
+		          <div class="pic"><img src="{{newphoto.thumbnail.url}}" width="107" height="107" alt="{{newphoto.description}}" title="{{newphoto.description}}" /></div>
+		          <div class="close"><a class="delete-photo" href="/yourphotos/delete/{{newphoto.id}}"><img src="/media/images/close.jpg" width="15" height="15" alt="{% trans "Delete"%}" title="{% trans "Delete"%}" /></a></div>
+		        </div>
+		      </td>
+				{% if not forloop.last%}
+			      <td></td>
+				{% endif %}
+			{% endfor %}
+		    </tr>
+		  </table>
+		<script>
+			$(document).ready(function () {
+				$("a.delete-photo").click(function(){
+					var parent = $(this).closest('td');
+					var url = $(this).attr('href');
+					$.ajax({
+						type: 'get',
+						url: url,
+						beforeSend: function() {
+							parent.animate({'backgroundColor':'#fb6c6c'},300);
+						},
+						success: function(data) {
+							if (typeof data.success != "undefined" && data.success == true){
+								parent.fadeOut(300,function() {
+									parent.remove();
+								});
+							} else if (typeof data.text != "undefined"){
+								alert(text);
+							}
+						}
+					});
+					return false;	
+				});
+			})
+		</script>
+
+{% endif %}
+		<br />
+		<br />
 	<div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
+	
       <a href="#"><img src="/media/images/banners/banner_8.jpg" alt="Ads"></a>
     </div>
   </div><!--//.node-->
@@ -96,11 +127,6 @@
 
 <script>
 	$(document).ready(function () {
-		$("div.formelement input:file").uniform();
-		$("div.formelement input:text").uniform();
-		$("div.formbtns input:submit").uniform();
-		$("div.formbtns input:reset").uniform();
-		
 		$('#addform input[type=reset]').click(function(){
 			$(':input','#addform')
 			 .not(':button, :submit, :reset, :hidden')

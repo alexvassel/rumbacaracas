@@ -1,0 +1,243 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Rumba Bogota</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Language" content="en-us" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+
+  <meta name="revisit-after" content="1 Weeks" />
+  <meta name="distribution" content="global" />
+  <meta name="robots" content="all" />
+  <meta name="rating" content="general" />
+  <meta http-equiv="imagetoolbar" content="no" />
+  <meta http-equiv="cache-control" content="max-age=3600, must-revalidate" />
+  <meta http-equiv="pragma" content="no-cache" />
+
+  <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+  <script type="text/javascript" src="scripts/jquery.js"></script>
+  <script type="text/javascript" src="scripts/common.js"></script>
+</head>
+
+<body>
+
+<div id="MainDiv">
+
+<!--  Body Section Starts Here  -->
+  <div id="BodyTop">
+    <div id="BodyBottom">
+      <div id="Body">
+        <div id="Contents">
+
+          <div id="Page">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tr>
+                <td><h1><img src="images/icons/food.jpg" width="30" height="28" alt="" title="" />Envía tu Sitio</h1></td>
+                <td width="76"><a href="#"><img src="images/logo.png" width="76" height="40" vspace="6" alt="" title="" /></a></td>
+              </tr>
+            </table>
+          </div>
+
+          <br />
+
+		  <form name="frmData" id="frmData" method="post" action="" enctype="multipart/form-data">
+		    <table border="0" cellpadding="7" cellspacing="0" width="100%">
+		      <tr>
+			    <td width="250"><span class="mandatory">*</span> <label for="txt1">Categoría</label></td>
+
+			    <td>
+			      <select name="dd" id="dd">
+			        <option value="">Seleccione</option>
+			      </select>
+			    </td>
+		      </tr>
+
+		      <tr>
+			    <td><span class="mandatory">*</span> <label for="txt1">Tipo de Restaurant</label></td>
+
+			    <td>
+			      <select name="dd" id="dd">
+			        <option value="">Seleccione</option>
+			      </select>
+			    </td>
+		      </tr>
+
+		      <tr>
+			    <td><span class="mandatory">*</span> <label for="txt1">Dirección</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		      </tr>
+
+		      <tr valign="top">
+			    <td><span class="mandatory">*</span> <label for="txt1">Zona</label></td>
+
+			    <td>
+			      <select name="dd" id="dd">
+			        <option value="">Seleccione</option>
+			      </select>
+
+			      &nbsp;
+			      <a href="#"><img src="images/icons/map.jpg" width="24" height="23" alt="" title="" align="absmiddle" /></a>
+			      <a href="#">Mapa</a>
+			    </td>
+		      </tr>
+
+		      <tr>
+			    <td><span class="space"></span> <label for="txt1">Teléfono</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" style="width:70%;" /> &nbsp; <a href="#" onclick="$('#Phone2').show('blind'); $(this).remove( ); return false;">Agregar otros</a></td>
+		      </tr>
+		    </table>
+
+		    <div id="Phone2" style="display:none;">
+		      <table border="0" cellpadding="7" cellspacing="0" width="100%">
+		        <tr>
+			      <td width="250"><span class="space"></span> <label for="txt1">Teléfono # 2</label></td>
+			      <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" style="width:70%;" /> &nbsp; <a href="#" onclick="$('#Phone3').show('blind'); $(this).remove( ); return false;">Agregar otros</a></td>
+		        </tr>
+		      </table>
+		    </div>
+
+		    <div id="Phone3" style="display:none;">
+		      <table border="0" cellpadding="7" cellspacing="0" width="100%">
+		        <tr>
+			      <td width="250"><span class="space"></span> <label for="txt1">Teléfono # 3</label></td>
+			      <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" style="width:70%;" /></td>
+		        </tr>
+		      </table>
+		    </div>
+
+		    <table border="0" cellpadding="7" cellspacing="0" width="100%">
+		      <tr>
+			    <td width="250"><span class="space"></span> <label for="txt1">Web</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		      </tr>
+
+		      <tr>
+			    <td><span class="space"></span> <label for="txt1">Email</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		      </tr>
+
+		      <tr valign="top">
+			    <td><span class="mandatory">*</span> <label for="txt1">Horario</label></td>
+
+			    <td>
+
+			      <table border="0" cellpadding="2" cellspacing="0" width="100%">
+			        <tr>
+			          <td width="22"><input type="checkbox" name="cb" id="cb" value="Y" /></td>
+			          <td>Lunes</td>
+			          <td width="22"><input type="checkbox" name="cb" id="cb" value="Y" /></td>
+			          <td>Martes</td>
+			          <td width="22"><input type="checkbox" name="cb" id="cb" value="Y" /></td>
+			          <td>Miércoles</td>
+			          <td width="22"><input type="checkbox" name="cb" id="cb" value="Y" /></td>
+			          <td>Jueves</td>
+			        </tr>
+
+			        <tr>
+			          <td><input type="checkbox" name="cb" id="cb" value="Y" /></td>
+			          <td>Viernes</td>
+			          <td><input type="checkbox" name="cb" id="cb" value="Y" /></td>
+			          <td>Sábado</td>
+			          <td><input type="checkbox" name="cb" id="cb" value="Y" /></td>
+			          <td>Domingo</td>
+			          <td></td>
+			          <td></td>
+			        </tr>
+			      </table>
+
+			    </td>
+		      </tr>
+
+		      <tr>
+			    <td align="right"><label for="txt1">Desde:</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" style="width:35%;" /></td>
+		      </tr>
+
+		      <tr>
+			    <td align="right"><label for="txt1">Hasta:</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" style="width:35%;" /></td>
+		      </tr>
+
+		      <tr>
+			    <td><span class="mandatory">*</span> <label for="txt1">Tipo de Música</label></td>
+
+			    <td>
+			      <select name="dd" id="dd">
+			        <option value="">Seleccione</option>
+			      </select>
+			    </td>
+		      </tr>
+
+		      <tr valign="top">
+			    <td><span class="mandatory">*</span> <label for="txt1">Imagen/logo del Sitio</label></td>
+			    <td><input type="file" name="txt" id="txt1" value="" size="38" class="file" /></td>
+		      </tr>
+
+		      <tr>
+			    <td colspan="2"><span class="mandatory">*</span> <label for="txt1">Descripción del Sitio</label></td>
+		      </tr>
+
+		      <tr>
+		        <td colspan="2"><textarea name="txt" id="txt" rows="8" cols="100"></textarea></td>
+		      </tr>
+
+		      <tr>
+		        <td colspan="2"><h2 class="red">Información de Contacto</h2></td>
+		      </tr>
+
+		      <tr>
+			    <td><span class="space"></span> <label for="txt1">Dueño o Gerente</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		      </tr>
+
+		      <tr>
+			    <td><span class="space"></span> <label for="txt1">Forma de Contacto</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		      </tr>
+
+		      <tr>
+			    <td><span class="space"></span> <label for="txt1">Contacto para Actualizaciones</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		      </tr>
+
+		      <tr>
+			    <td><span class="space"></span> <label for="txt1">Teléfonos</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		      </tr>
+
+		      <tr>
+			    <td><span class="space"></span> <label for="txt1">Email</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		      </tr>
+
+		      <tr>
+		        <td colspan="2"><small>Los campos marcados con <span class="mandatory">*</span> son obligatorios </small></td>
+		      </tr>
+
+		      <tr>
+		        <td colspan="2" align="center">
+		          <br />
+		          <input type="reset" id="BtnClear" value="Cancelar" class="button" />
+		          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		          <input type="submit" id="BtnSubmit" value=" Enviar " class="button" />
+		        </td>
+		      </tr>
+		    </table>
+		  </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  Body Section Ends Here  -->
+
+</div>
+
+</body>
+</html>

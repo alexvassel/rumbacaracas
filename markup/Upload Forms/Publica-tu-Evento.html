@@ -1,0 +1,220 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Rumba Bogota</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Language" content="en-us" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+
+  <meta name="revisit-after" content="1 Weeks" />
+  <meta name="distribution" content="global" />
+  <meta name="robots" content="all" />
+  <meta name="rating" content="general" />
+  <meta http-equiv="imagetoolbar" content="no" />
+  <meta http-equiv="cache-control" content="max-age=3600, must-revalidate" />
+  <meta http-equiv="pragma" content="no-cache" />
+
+  <link type="text/css" rel="stylesheet" href="css/style.css" />
+  <link type="text/css" rel="stylesheet" href="css/jquery-ui.css" />
+
+  <script type="text/javascript" src="scripts/jquery.js"></script>
+  <script type="text/javascript" src="scripts/jquery-ui.js"></script>
+  <script type="text/javascript" src="scripts/common.js"></script>
+</head>
+
+<body>
+
+<div id="MainDiv">
+
+<!--  Body Section Starts Here  -->
+  <div id="BodyTop">
+    <div id="BodyBottom">
+      <div id="Body">
+        <div id="Contents">
+
+          <div id="Page">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tr>
+                <td><h1><img src="images/icons/event.jpg" width="27" height="32" alt="" title="" />Publica un Evento</h1></td>
+                <td width="76"><a href="#"><img src="images/logo.png" width="76" height="40" vspace="6" alt="" title="" /></a></td>
+              </tr>
+            </table>
+          </div>
+
+          <div><a href="#"><img class="facebook" src="images/buttons/facebook.jpg" width="312" height="53" vspace="20" alt="" title="" /></a></div>
+
+		  <form name="frmData" id="frmData" method="post" action="" enctype="multipart/form-data">
+		    <table border="0" cellpadding="7" cellspacing="0" width="100%">
+		      <tr>
+			    <td width="250"><span class="mandatory">*</span> <label for="txt1">Título del Evento</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		      </tr>
+		    </table>
+
+		    <div id="Date" style="display:block;">
+		      <table border="0" cellpadding="7" cellspacing="0" width="100%">
+		        <tr>
+			      <td width="250"><span class="mandatory">*</span> <label for="txt1">Fecha del Evento</label></td>
+
+			      <td>
+			        <div class="calendar"><input type="text" name="txtDate" id="txtDate" value="" maxlength="10" class="textbox" /></div>
+			        <div class="br5"></div>
+			        <a href="#" onclick="$('#Date').hide( ); $('#DateRange').show('blind'); return false;"><small>El evento es por más de un (1) día</small></a>
+			      </td>
+		        </tr>
+		      </table>
+		    </div>
+
+		    <div id="DateRange" style="display:none;">
+		      <table border="0" cellpadding="7" cellspacing="0" width="100%">
+		        <tr>
+			      <td width="250"><span class="mandatory">*</span> <label for="txt1">Desde el</label></td>
+			      <td><div class="calendar"><input type="text" name="txtFromDate" id="txtFromDate" value="" maxlength="10" class="textbox" /></div></td>
+		        </tr>
+
+		        <tr>
+			      <td><span class="mandatory">*</span> <label for="txt1">Hasta el</label></td>
+			      <td><div class="calendar"><input type="text" name="txtToDate" id="txtToDate" value="" maxlength="10" class="textbox" /></div></td>
+		        </tr>
+		      </table>
+		    </div>
+
+		    <table border="0" cellpadding="7" cellspacing="0" width="100%">
+		      <tr valign="top">
+			    <td width="250"><span class="mandatory">*</span> <label for="txt1">Hora</label></td>
+
+			    <td>
+			      <select name="dd" id="dd">
+			        <option value="">01</option>
+			      </select>
+
+			      <select name="dd" id="dd">
+			        <option value="AM">AM</option>
+			        <option value="PM">PM</option>
+			      </select>
+			    </td>
+		      </tr>
+
+		      <tr valign="top">
+			    <td><span class="mandatory">*</span> <label for="txt1">Sitio</label></td>
+
+			    <td>
+			      <select name="dd" id="dd">
+			        <option value="">Seleccione un Sitio</option>
+			      </select>
+
+			      &nbsp;
+			      <a href="#" onclick="$('#Place').toggle('blind'); return false;"><small>El sitio no está listado</small></a>
+			    </td>
+			  </tr>
+		    </table>
+
+		    <div id="Place" style="display:none;">
+		      <table border="0" cellpadding="7" cellspacing="0" width="100%">
+		        <tr>
+			      <td width="250"><span class="space"></span> <label for="txt1">Nombre del Sitio</label></td>
+			      <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		        </tr>
+
+		        <tr>
+			      <td><span class="mandatory">*</span> <label for="txt1">Dirección</label></td>
+			      <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		        </tr>
+
+		        <tr valign="top">
+			      <td><span class="mandatory">*</span> <label for="txt1">Zona</label></td>
+
+			      <td>
+			        Bogotá, &nbsp;
+
+			        <select name="dd" id="dd">
+			          <option value="">Seleccione una Zona</option>
+			        </select>
+
+			        &nbsp;
+			        <a href="#"><img src="images/icons/map.jpg" width="24" height="23" alt="" title="" align="absmiddle" /></a>
+			        <a href="#">Mapa</a>
+			      </td>
+		        </tr>
+		      </table>
+		    </div>
+
+		    <table border="0" cellpadding="7" cellspacing="0" width="100%">
+		      <tr>
+			    <td width="250"><span class="space"></span> <label for="txt1">Entrada</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		      </tr>
+
+		      <tr>
+			    <td><span class="space"></span> <label for="txt1">Email</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		      </tr>
+
+		      <tr>
+			    <td><span class="space"></span> <label for="txt1">Web</label></td>
+			    <td><input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" /></td>
+		      </tr>
+
+		      <tr valign="top">
+			    <td><span class="space"></span> <label for="txt1">Otra Info </label></td>
+
+			    <td>
+			      <input type="text" name="txt" id="txt1" value="" maxlength="100" class="textbox" />
+			      <div class="br5"></div>
+			      <small><i>(Tel, Fax, URL Twitter, FB, etc)</i></small>
+			    </td>
+		      </tr>
+
+		      <tr valign="top">
+			    <td><span class="mandatory">*</span> <label for="txt1">Imagen del Evento</label></td>
+			    <td><input type="file" name="txt" id="txt1" value="" size="38" class="file" /></td>
+		      </tr>
+
+		      <tr>
+			    <td colspan="2"><span class="mandatory">*</span> <label for="txt1">Descripción del Evento</label></td>
+		      </tr>
+
+		      <tr>
+		        <td colspan="2"><textarea name="txt" id="txt" rows="8" cols="100"></textarea></td>
+		      </tr>
+
+		      <tr>
+		        <td colspan="2">
+		          <small>
+		            Si te faltan datos para el evento, puedes enviar luego un correo a rumba@rumbabogota.com con el nombre del evento en el asunto del mensaje y especificar en el cuerpo los cambios que deseas hacerle a tu evento.<br />
+		            <br />
+		            Los campos marcados con <span class="mandatory">*</span> son obligatorios<br />
+		          </small>
+		        </td>
+		      </tr>
+
+		      <tr>
+		        <td colspan="2" align="center">
+		          <br />
+		          <br />
+		          <input type="reset" id="BtnClear" value="Cancelar" class="button" />
+		          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		          <input type="submit" id="BtnSubmit" value=" Enviar " class="button" />
+		          <br />
+		          <br />
+		          <br />
+		        </td>
+		      </tr>
+		    </table>
+		  </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  Body Section Ends Here  -->
+
+</div>
+
+</body>
+</html>

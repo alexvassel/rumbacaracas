@@ -1,0 +1,339 @@
+body
+{   
+  margin      :  0px auto 0px auto;
+  background  :  #f3f4f6 url('../images/page-bg.jpg') center top;
+}
+
+table
+{
+  border-collapse  :  collapse;
+  border-spacing   :  0;
+  table-layout     :  fixed;  
+
+  font-family      :  arial, verdana, sans-serif;
+  font-size        :  13px;
+  color            :  #666666;
+}
+
+td, div
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-size    :  13px;
+  color        :  #666666;
+}
+
+h1
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-weight  :  normal;
+  font-size    :  19px;
+  color        :  #cd2222;
+   
+  line-height  :  32px;
+  padding      :  0px;  
+  margin       :  0px;
+}
+
+h1 img
+{
+  float         :  left;
+  margin-right  :  10px;
+}
+
+h2
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-weight  :  bold;
+  font-size    :  17px;
+  color        :  #666666;
+  
+  padding      :  0px;
+  margin       :  0px 0px 8px 0px;
+}
+
+h2.red
+{
+  color  :  #cd2222;
+}
+
+h3
+{
+  font-family  :  Calibri, arial, verdana, sans-serif;
+  font-weight  :  bold;
+  font-size    :  15px;
+  color        :  #666666;
+  
+  padding      :  5px 0px 5px 8px;
+  margin       :  0px 0px 8px 0px;
+  background   :  #f3f3f3;
+  border-left  :  solid 5px #cccccc;
+}
+
+h4
+{
+  font-family    :  arial, verdana, sans-serif;
+  font-weight    :  bold;
+  font-size      :  12px;
+  color          :  #444444;
+  
+  padding        :  0px 0px 2px 0px;
+  margin         :  0px 0px 5px 0px;
+  border-bottom  :  solid 1px #666666;
+}
+
+a
+{
+  font-family      :  arial, verdana, sans-serif;
+  font-size        :  13px;
+  color            :  #cd2222;
+   
+  text-decoration  :  none;
+}
+  
+a:hover
+{
+  font-family      :  arial, verdana, sans-serif;
+  font-size        :  13px;
+  color            :  #333333;
+   
+  text-decoration  :  underline;
+}
+
+a img
+{
+  border  :  none;
+}
+
+hr
+{
+  border-top     :  dotted 1px #888888;
+  border-left    :  solid 1px #ffffff;
+  border-right   :  solid 1px #ffffff;
+  border-bottom  :  dotted 1px #ffffff;
+  padding        :  0px;
+  margin         :  15px 0px 15px 0px;
+  font-size      :  1px;
+}
+
+small
+{
+  font-size  :  11px;
+}
+
+.br5
+{
+  clear        :  both;
+  padding      :  0px;
+  margin       :  0px;
+  font-size    :  1px;
+  height       :  5px;
+  line-height  :  5px;
+  overflow     :  hidden;
+}
+
+.br10
+{
+  clear        :  both;
+  padding      :  0px;
+  margin       :  0px;
+  font-size    :  1px;
+  height       :  10px;
+  line-height  :  10px;
+  overflow     :  hidden;
+}
+
+ul, ol
+{
+  margin      :  5px 0px 0px 0px;
+  padding     :  0px;
+  list-style  :  none;
+}
+
+li
+{
+  margin      :  0px;
+  padding     :  0px 0px 4px 15px;
+  background  :  url('../images/bullet.gif') 0px 6px no-repeat;
+}
+
+form
+{
+  margin  :  0px;  
+}
+
+label
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-size    :  16px;
+  color        :  #666666;
+}
+
+input.textbox, select, textarea
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-size    :  16px;
+  color        :  #666666;
+  
+  padding      :  5px;
+  background   :  #f5f5f5;
+  border       :  solid 1px #cccccc;
+  width        :  97%;
+}
+
+select
+{
+  width  :  auto;
+}
+
+textarea
+{
+  min-height  :  50px;
+}
+
+input.file
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-size    :  16px;
+  color        :  #666666;
+  
+  padding      :  5px;
+  background   :  #f5f5f5;
+  border       :  solid 1px #cccccc;
+  width        :  100%;
+}
+
+input.button
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-size    :  17px;
+  font-weight  :  normal;
+  color        :  #ffffff;
+  
+  padding      :  7px;
+  background   :  #cd2222;
+  border       :  solid 1px #cd2222;
+  cursor       :  pointer;
+  min-width    :  90px;
+}
+
+.mandatory
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-size    :  18px;
+  font-weight  :  bold;
+  color        :  #cd2222;
+}
+
+.space
+{
+  padding-left  :  10px;
+}
+
+#MainDiv
+{
+  margin  :  0px auto 0px auto;
+  width   :  707px;
+}
+
+#BodyTop
+{
+  background  :  url('../images/body-top-bg.png') left top no-repeat;
+}
+
+#BodyBottom
+{
+  background  :  url('../images/body-bottom-bg.png') left bottom no-repeat;
+  padding     :  1px 0px 5px 0px;  
+}
+
+#Body
+{
+  background  :  url('../images/body-middle-bg.png') left top repeat-y;
+  padding     :  0px 5px 0px 2px;  
+}
+
+#Body #Contents
+{
+  border-top     :  solid 5px #ce2222;  
+  border-bottom  :  solid 5px #ce2222;    
+  padding        :  0px 20px 20px 20px;
+  min-height     :  400px;
+}
+
+#Page
+{
+  border-bottom  :  dotted 1px #9f9f9f;
+}
+
+
+.videoThumb
+{
+  background  :  #000000;
+  position    :  relative;
+  width       :  109px;
+  height      :  109px;
+}
+
+.videoThumb:hover
+{
+  background  :  #cd2222;
+}
+
+.videoThumb .pic img
+{
+  margin  :  1px;
+  width   :  107px;
+  height  :  107px;  
+}
+
+.videoThumb .close
+{
+  position  :  absolute;
+  right     :  0px;
+  top       :  0px;
+  width     :  15px;
+  height    :  15px;  
+  cursor    :  pointer;
+}
+
+
+.photoThumb
+{
+  background  :  #000000;
+  position    :  relative;
+  width       :  109px;
+  height      :  109px;
+}
+
+.photoThumb:hover
+{
+  background  :  #cd2222;
+}
+
+.photoThumb .pic img
+{
+  margin  :  1px;
+  width   :  107px;
+  height  :  107px;  
+}
+
+.photoThumb .close
+{
+  position  :  absolute;
+  right     :  0px;
+  top       :  0px;
+  width     :  15px;
+  height    :  15px;  
+  cursor    :  pointer;
+}
+
+.calendar input.textbox
+{
+  width  :  85%;
+}
+
+.calendar img
+{
+  float   :  right;
+  cursor  :  pointer;
+}

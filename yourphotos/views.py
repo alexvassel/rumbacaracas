@@ -1,11 +1,13 @@
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from yourphotos.models import Photo
 from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
-from decorators import render_to
+from decorators import render_to, json_view
 from django.forms import ModelForm
 from django.forms.models import modelformset_factory
 from django.http import HttpResponseRedirect
+from datetime import *;
+from dateutil.relativedelta import *
 
 @render_to( 'yourphotos/index.html' )
 def photos( request, category ):
@@ -55,6 +57,13 @@ def detail( request , id ):
     request.breadcrumbs( photo.description , request.path_info )
     return {'photo': photo}
 
+@json_view
+def delete( request , id ):
+    add_time = datetime.now() + relativedelta( hours = -6 )
+    #delete only my photo, uploaded let's say 6 hours ago maximum
+    photo = get_object_or_404( Photo, pk = id, user = request.user, datetime_added__gt = add_time )
+    photo.delete()
+    return {'success': True}
 
 
 
@@ -81,6 +90,7 @@ def add( request ):
             return {
                     "formsets": formset,
                     "completed": True,
+                    "photos": photos
             }
 
             # Do something.
