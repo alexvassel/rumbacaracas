@@ -63,15 +63,60 @@
     		var last_active = [];
     		$('#main-contents .tab-containers table.events-calendar tbody td .events-listing ul').each(function(ul_index) {
     			var current_ul = this;
+				
     			last_active[ul_index] = $('li.selected', current_ul).get(0);
     			
+				function slide(options, additions) {
+					options = $.extend({
+						easing: "swing",
+						duration: 500
+					}, options, additions);
+					if ( !options.toHide.size() ) {
+						options.toShow.animate({height: "show"}, options);
+						return;
+					}
+					var hideHeight = options.toHide.height(),
+						showHeight = options.toShow.height(),
+						difference = showHeight / hideHeight;
+					
+
+					options.toShow.css({ height: 0, overflow: 'hidden' }).show();
+					options.toHide.filter(":hidden")
+						.end()
+						.filter(":visible")
+						.animate({height:"hide"}
+					,{
+						step: function(now) {
+							var current = (hideHeight - now) * difference;
+							if ($.browser.msie || $.browser.opera) {
+								current = Math.ceil(current);
+							}
+							options.toShow.height( current );
+						},
+						duration: options.duration,
+						easing: options.easing,
+						complete: function() {
+							options.toShow.css("height", "auto");
+						}
+					});
+				};
+
     			$('li a.anchor-event-name', current_ul).click(function(){
     				var current_li = $(this).parent().get(0);
     				
     				if ( current_li == last_active[ul_index]) {
     					return true;
     				}
+					
+					var options = {}, additions = {};
+					options['toShow'] = $('span.event-image', current_li);
+					options['toHide'] = $('span.event-image', last_active[ul_index]);
 
+					$(current_li).addClass('selected');
+					
+					slide(options, additions);
+ 
+					/*
     				$('img', last_active[ul_index]).hide("blind", { direction: "vertical" }, 500, function(){
     					$(last_active[ul_index]).removeClass('selected');
     				});
@@ -80,7 +125,8 @@
     					$(last_active[ul_index]).removeClass('selected');
     					$(current_li).addClass('selected');
     				});
-    				
+    				*/
+
 					last_active[ul_index] = current_li;
     				return false;	
     			})
