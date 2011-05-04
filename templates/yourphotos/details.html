@@ -47,6 +47,16 @@
 		 	
 		 	return false;
 		 });
+		$('.image-teaser-slides img').live('mouseover',
+			function(){
+				$(this).css("border-color","#C52121");
+			}
+		);
+		$('.image-teaser-slides img').live('mouseout',
+			function() {
+				$(this).css("border-color","#898989");
+			}	
+		)
 	})
 </script>
 {% endblock %}

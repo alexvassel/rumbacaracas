@@ -96,6 +96,18 @@
 			</div>
 		</div><!--//.merged-contents-->
 	</div><!--//.merged-container-->
+<script>
+	$(document).ready(function () {
+		$('.std-thumbnail img').hover(
+			function(){
+				$(this).css("border-color","#C52121");
+			},
+			function() {
+				$(this).css("border-color","#898989");
+			}	
+		);
+	})
+</script>
 {% endblock %}
 
 {% block colright %}
