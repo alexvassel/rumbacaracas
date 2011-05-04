@@ -33,7 +33,7 @@ class Photo( ImageModel ):
     def get_user_link ( self ):
         try :
             facebook_user = FacebookProfile.objects.get( user = self.user )
-            return mark_safe( u'<fb:name uid="%s" />' % ( facebook_user.uid ) )
+            return mark_safe( u'<fb:name uid="%s"  target="_blank" />' % ( facebook_user.uid ) )
         except FacebookProfile.DoesNotExist:
             return mark_safe( self.user.username )
 
