@@ -166,7 +166,7 @@
 #add-form .br10
 {
   clear        :  both;
-  padding      :  0px;
+  padding      :  0px !important;
   margin       :  0px;
   font-size    :  1px;
   height       :  10px;
