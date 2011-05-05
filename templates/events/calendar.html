@@ -24,7 +24,7 @@
             {% for day,items in row  %}
         	<td{% ifequal day today.day  %} class="today"{% endifequal %}>
         		{% if day %}
-                    <h3><a href="/events/by-category/day/{{year}}/{{month}}/{{day}}">{{ day }}</a></h3>
+                    <h3><a href="/events/by-category/day/{{year}}/{{month}}/{{day}}#event-anchor">{{ day }}</a></h3>
                     {% if items %}
 	                    <div class="events-listing">
 	                      <ul class="events">
@@ -45,7 +45,7 @@
 		                        </li>
 	                        {% endfor %}
 	                      </ul>
-	                      <div class="event-count decou"><a href="/events/by-category/day/{{year}}/{{month}}/{{day}}">{{items|length}} {% trans "Events"%}</a></div>
+	                      <div class="event-count decou"><a href="/events/by-category/day/{{year}}/{{month}}/{{day}}#event-anchor">{{items|length}} {% trans "Events"%}</a></div>
 	                    </div><!--//.events-listing-->
                     {% endif %}
           		{% else %}
