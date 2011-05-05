@@ -94,6 +94,10 @@ def add( request ):
             }
 
             # Do something.
+        return {
+                "formsets": formset,
+                "errors": True
+        }
     else:
         formset = PhotoFormSet( queryset = Photo.objects.none() )
     return {

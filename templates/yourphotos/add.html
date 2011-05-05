@@ -24,7 +24,7 @@
 	    {% for form in formsets.forms %}
 
 
-		<div id="set{{forloop.counter0}}" {%if not forloop.first %}style="display:none"{% endif %}>
+		<div id="set{{forloop.counter0}}" {%if not forloop.first and not completed and not errors%}style="display:none"{% endif %}>
 		  
 	      <table border="0" cellpadding="7" cellspacing="0" width="100%">
 	        <tr>
@@ -47,7 +47,7 @@
 				<td class="file">
 					{{ form.image }}
 					<div class="br10"></div>
-					{% if not forloop.last%}
+					{% if not forloop.last and not completed and not errors%}
 			        	<a href="#" onclick="$('#set{{forloop.counter}}').show('blind'); $(this).remove( ); return false;">{% trans "Upload more photos"%}</a>
 					{% endif%}
 				</td>

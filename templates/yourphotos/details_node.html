@@ -15,9 +15,13 @@
 	  <a href="/yourphotos/{{photo.get_next.id}}" class="gente-next" title="Next image"><span class="hidden">Next</span></a>
 	</div>
 	<div class="images-preview outnone" style="height:600px">
-		
 	  <ul class="image-teaser-slides encap">
-	    <li><img src="{{photo.bigimg.url}}"/></li>
+	    <li>
+			<div class="wraptocenter">
+				<span></span>
+				<img src="{{photo.bigimg.url}}"/>
+			</div>
+		</li>
 	  </ul><!--//.image-teaser-slides-->
 	</div><!--//.images-preview-->
 	<div class="ratings fivestar-form-item fivestar-user-text fivestar-smart-stars fivestar-average-stars fivestar-labels-hover fivestar-processed" style="border-bottom: none;">
