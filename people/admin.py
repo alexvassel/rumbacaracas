@@ -1,4 +1,4 @@
-from people.models import PhotoEvent
+from people.models import PhotoEvent, Photo
 from django.contrib import admin
 
 
