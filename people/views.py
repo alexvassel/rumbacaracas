@@ -4,13 +4,13 @@ from django.conf import settings
 import os, glob, string, re
 import shutil
 
-from peoples.models import PhotoEvent, Photo
+from people.models import PhotoEvent, Photo
 from django.shortcuts import get_object_or_404
 from django.core.files.base import ContentFile
 from django.contrib.auth.decorators import login_required
 
 @login_required
-@render_to( 'peoples/select.html' )
+@render_to( 'people/select.html' )
 def import_select ( request, event_id ):
     event = get_object_or_404( PhotoEvent, pk = event_id )
 
@@ -52,5 +52,5 @@ def import_finish ( request, event_id, folder ):
 
     shutil.rmtree( settings.OLDBOGOTA_PHOTO_PATH + '/' + folder )
 
-    return HttpResponseRedirect( '/admin/peoples/photoevent/%s' % ( event.id ) )
+    return HttpResponseRedirect( '/admin/people/photoevent/%s' % ( event.id ) )
 

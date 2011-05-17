@@ -141,7 +141,7 @@ INSTALLED_APPS = (
     'events',
     'locations',
     'yourphotos',
-    'peoples',
+    'people',
     'debug_toolbar',
     #'photologue',
     #'tagging',

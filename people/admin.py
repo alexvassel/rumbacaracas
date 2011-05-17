@@ -1,4 +1,4 @@
-from peoples.models import PhotoEvent, Photo
+from people.models import PhotoEvent
 from django.contrib import admin
 
 
@@ -14,5 +14,4 @@ class EventAdmin( admin.ModelAdmin ):
     ]
 
 admin.site.register( PhotoEvent, EventAdmin )
-admin.site.register( Photo )
 

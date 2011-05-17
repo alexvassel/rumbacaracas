@@ -25,7 +25,7 @@ class PhotoEvent( models.Model ):
 
 
     def import_photo( self ):
-        return u'<a href="/peoples/import_select/%s">%s</a>' % ( str( self.id ), _( "Import page" ) )
+        return u'<a href="/people/import_select/%s">%s</a>' % ( str( self.id ), _( "Import page" ) )
 
     import_photo.allow_tags = True
     import_photo.short_description = _( 'Import page link' )
@@ -40,8 +40,8 @@ class PhotoEvent( models.Model ):
 class Photo( ImageModel ):
     description = models.CharField( _( 'Description' ), max_length = 256 )
     event = models.ForeignKey( PhotoEvent )
-    image = models.ImageField( upload_to = 'images/peoples' )
-    thumb = models.ImageField( upload_to = 'images/peoples' )
+    image = models.ImageField( upload_to = 'images/people' )
+    thumb = models.ImageField( upload_to = 'images/people' )
 
     def thumb_tag( self ):
         return '<img src="%s">' % ( self.thumb.url )
@@ -50,7 +50,7 @@ class Photo( ImageModel ):
     thumb_tag.short_description = _( 'Preview' )
 
     class IKOptions:
-        spec_module = 'peoples.specs'
+        spec_module = 'people.specs'
         cache_dir = 'photos/'
         image_field = 'image'
 
