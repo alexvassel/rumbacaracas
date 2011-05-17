@@ -101,6 +101,8 @@ FACEBOOK_API_KEY = '15d12186d338568b8b5634e27aafb7cd'
 FACEBOOK_SECRET_KEY = 'e450064cd78715d484825ed6c3b4e304'
 SOCIALREGISTRATION_GENERATE_USERNAME = True
 
+OLDBOGOTA_PHOTO_PATH = '/home/maksim/Documents/Develop/oldbogota/processed'
+
 LOGIN_REDIRECT_URL = "/"
 
 INTERNAL_IPS = ( '127.0.0.1', )
@@ -139,6 +141,7 @@ INSTALLED_APPS = (
     'events',
     'locations',
     'yourphotos',
+    'peoples',
     'debug_toolbar',
     #'photologue',
     #'tagging',
