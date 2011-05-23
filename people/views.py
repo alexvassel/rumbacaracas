@@ -20,10 +20,9 @@ def index ( request ):
     groups = []
     for group, description in PHOTO_CATEGORIES:
         events = PhotoEvent.objects.filter( category = group ).order_by( 'datetime_added' )[:5]
-
-        latest_event_photo = events[0]
-
-        groups.append( ( group, description, latest_event_photo, events, ) )
+        if events:
+            latest_event_photo = events[0]
+            groups.append( ( group, description, latest_event_photo, events, ) )
 
     latest = PhotoEvent.objects.latest( 'datetime_added' )
     return {'groups': groups, 'latest' : latest}
