@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "People | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load paging %}
+
+{% block colleft %}
+<div class="node-container videos box-shadows encap"> 
+  <div class="title-wrap encap"> 
+    <span class="flt-left"><h2 class="title">{{group_name}}</h2></span> 
+    <span class="flt-right"> 
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0"> 
+      </ul> 
+    </span> 
+  </div><!--//.title-wrap--> 
+  <div class="node bb-none encap"> 
+		<div class="photo-archives encap" style="border-top:none; margin-top:0px;"> 
+			<div class="node-mini-left photos-mod" style="border-right: none;"> 
+				<div class="encap"> 
+					<ul class="photo-archives-list encap outnone"> 
+                    {% for event in current_page.object_list %}
+						<li> 
+	                      <div class="photo-thumbnail">
+							<a href="{%url people_details slug=event.slug%}"><img alt="{{event.title}}" src="{{event.smallthumb.url}}"></a>
+						  </div> 
+	                      <div class="photo-details decou"> 
+	                        <h6><a href="{%url people_details slug=event.slug%}">{{event.title}}</a></h6> 
+	                        <span class="author-meta">{{event.city}} {{event.date|date:"d.m.y"}}</span> 
+	                      </div><!--//.photo-details--> 
+	                    </li> 
+                     {% endfor %}
+					</ul><!--//.photo-archives-list--> 
+			</div><!--//.encap--> 
+		</div><!--//.node-mini-left--> 
+	</div><!--//.video-archives--> 
+
+	{% if current_page.object_list%}
+		{% common_paginator%}
+	{% endif%}
+
+  </div><!--//.node--> 
+</div><!--//.node-container-->
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+	<a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

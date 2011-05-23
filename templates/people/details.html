@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "People | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load paging %}
+
+{% block colleft %}
+<div class="node-container eventos box-shadows encap">
+  <div class="title-wrap encap">
+    <span class="flt-left"><h2 class="title">{%trans "Event"%}</h2></span>
+    <span class="flt-right">
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+      </ul>
+    </span>
+  </div><!--//.title-wrap-->
+  <div class="node encap">
+    <div class="eventos-left c58l outnone">
+      <span class="teaser-image"><img src="{{event.widethumb.url}}" alt="{{event.title}}"/></span>
+    </div>
+    <div class="content eventos">
+      <h2 class="title">{{event.title}}</h2>
+      <span class="submitted">{% if event.city%}{{event.city}} {%endif%}{{event.date|date:"d.m.y"}}</span>
+      {% if event.article%}  
+		{{event.article|linebreaks}}
+	  {%endif%}
+
+	  {% if event.author or event.author_email%}	
+	      <p><strong>Reporter@:</strong> 
+			{% if event.author%}<span class="brickred">{{event.author}}</span>{%endif%}
+			{% if event.author and event.author_email%}<br />{%endif%}
+			{% if event.author_email%}<strong>{{event.author_email}}</strong>{%endif%}
+		  </p>
+	  {%endif%}
+    </div><!--//.content-->
+  </div><!--//.node-->
+  <div class="recent-events-list">
+	{% for photo in current_page.object_list    %}
+		{% if forloop.counter0|divisibleby:3 %}
+			{% if not forloop.first%}
+					</div><!--//.list-part-->
+				</div><!--//.encap-->
+			{% endif %}
+			<div class="encap row outnone">
+		{% else %}
+			</div><!--//.list-part-->
+		{% endif %}
+		<div class="list-part {% if forloop.counter0|divisibleby:3 %}first{% else %}{% if forloop.counter|divisibleby:3 %}last{% endif %}{% endif %}">
+
+        <a href="/people/slider/{{photo.id}}"><img src="{{photo.thumb.url}}" alt="{{photo.description}}" /></a>
+        <div class="teaser">
+          <p>{{photo.description}}</p>
+        </div><!--//.teaser-->
+		
+		{% if forloop.last %}
+				</div><!--//.list-part-->
+			</div><!--//.encap-->
+		{% endif %}
+
+	{% endfor %}
+
+	{% if current_page.object_list%}
+		{% common_paginator%}
+	{% endif%}
+  </div><!--//.recent-events-list-->
+</div><!--//.node-container-->
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+	<a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

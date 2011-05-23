@@ -329,16 +329,19 @@ jQuery(document).ready(function(){
   });
 	jQuery('.vcenter').vAlign();
 	jQuery(window).bind('resize', function(){jQuery('.vcenter').vAlign();});
-	jQuery('#main-contents #col-right #whats-today .box-contents ul.recent li a, #main-contents #col-right .more-news ol li a,#main-contents #col-left .node-mini-right .other-news li a, #main-contents #col-left h5.red-title a, #main-contents #col-left .locales .events-duo ul li a').poshytip({
+/*	
+	jQuery('#main-contents #col-right #whats-today .box-contents ul.recent li a, #main-contents #col-right .more-news ol li a,#main-contents #col-left .node-mini-right .other-news li a, #main-contents #col-left h5.red-title a, #main-contents #col-left .locales .events-duo ul li a')
+	.poshytip({
 		content: '<img width="80" height="70" alt="imgs_6" src="images/content/imgs_9.jpg"> And the day came when the risk<br />to remain tight in a bud became<br />more painful than the risk<br />it took to blossom.',
-    showTimeout: 10,
-    fade: false,
-    slide: false,
+    	showTimeout: 10,
+    	fade: false,
+    	slide: false,
 		className: 'tip-darkgray',
 		bgImageFrameSize: 11,
 		offsetX: -5,
 		offsetY: 10
 	});
+	*/
 });
 
 (function ($) {

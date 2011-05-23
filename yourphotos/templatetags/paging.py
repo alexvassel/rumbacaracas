@@ -2,7 +2,7 @@ from django import template
 register = template.Library()
 
 
-def common_paginator( context, adjacent_pages = 2 ):
+def common_paginator( context, adjacent_pages = 2, anchor = None ):
 
     current_page = context['current_page']
     current_paginator = context['current_paginator']
@@ -26,6 +26,7 @@ def common_paginator( context, adjacent_pages = 2 ):
         'has_previous': current_page.has_previous(),
         'show_first': 1 not in page_numbers,
         'show_last': current_paginator.num_pages  not in page_numbers,
+        'anchor': anchor
     }
 
 register.inclusion_tag( 'common_paginator.html', takes_context = True )( common_paginator )

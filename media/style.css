@@ -2261,9 +2261,7 @@ body.section-videos #main-contents #col-left .item-list ul li a{
   margin: 0 0 8px;
 }
 #main-contents #col-left .recent-fotos-list .row ul li span.last{
-  background: url("images/sprites/sprites_teaser_options.png") no-repeat scroll left -263px transparent;
   border-right: none;
-  text-indent: 22px;
 }
 .ie #main-contents #col-left .recent-fotos-list .row ul li span.last{
   text-indent: 10px;

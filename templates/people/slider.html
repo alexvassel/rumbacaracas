@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "People | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load listtools %}
+{% block colleft %}
+
+<style type="text/css">
+.wraptocenter {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 640px;
+    height: 600px;
+}
+.wraptocenter * {
+    vertical-align: middle;
+}
+/*\*//*/
+.wraptocenter {
+    display: block;
+}
+.wraptocenter span {
+    display: inline-block;
+    height: 100%;
+    width: 1px;
+}
+/**/
+</style>
+<!--[if lt IE 8]><style>
+.wraptocenter span {
+    display: inline-block;
+    height: 100%;
+}
+</style><![endif]-->
+
+
+<div class="node-container gente box-shadows encap">
+  <div class="title-wrap encap">
+    <span class="flt-left"><h2 class="title">{% trans "People"%}</h2></span>
+    <span class="flt-right">
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+      </ul>
+    </span>
+  </div><!--//.title-wrap-->
+  <div  id="details-node">
+  	{% include "people/slider_node.html" with show_img="1" %}
+  </div>
+</div><!--//.node-container-->
+<script>
+	$(document).ready(function () {
+		 $('.gente-prev').live('click', function(){
+		 	var addr = $(this).attr('href');
+		 	$('.images-preview ul').hide('slide', {direction: 'right'}, 500, function(){
+			 	$('#details-node').load(addr,function(){
+			 		$('.images-preview ul').show('slide', {direction: 'left'}, 500);
+			 	});	
+		 	});
+		 	return false;
+		 });
+		 $('.gente-next').live('click', function(){
+		 	var addr = $(this).attr('href');
+		 	$('.images-preview ul').hide('slide', {direction: 'left'}, 500, function(){
+			 	$('#details-node').load(addr,function(){
+			 		$('.images-preview ul').show('slide', {direction: 'right'}, 500);
+			 	});	
+		 	});
+		 	
+		 	return false;
+		 });
+		$('.image-teaser-slides img').live('mouseover',
+			function(){
+				$(this).css("border-color","#C52121");
+			}
+		);
+		$('.image-teaser-slides img').live('mouseout',
+			function() {
+				$(this).css("border-color","#898989");
+			}	
+		)
+	})
+</script>
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

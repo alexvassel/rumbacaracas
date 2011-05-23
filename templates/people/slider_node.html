@@ -1,0 +1,35 @@
+{% load i18n %}
+<div class="node gente bb-none encap">
+	<div class="wrapper encap">
+	  <div class="c75l">
+	  	<h2 class="title">{{photo.event.title}}</h2>
+	    <span class="submitted">
+			{%if photo.event and photo.event.city%}{{photo.event.city}} {%endif%}{{photo.datetime_added|date:"d.m.y"}}
+		</span>
+	  </div><!--//.c75l-->
+	  <div class="c20r txt-right mt15 outnone">
+	    
+	  </div><!--//.c20l-->
+	</div><!--//.wrapper-->
+	<h6>{{photo.description}}</h6>
+	<div class="image-navigations encap outnone">
+	  <a href="/people/slider/{{photo.get_prev.id}}" class="gente-prev" title="{% trans "Previous image"%}"><span class="hidden">{% trans "Previous"%}</span></a>
+	  <a href="/people/slider/{{photo.get_next.id}}" class="gente-next" title="{% trans "Next image"%}"><span class="hidden">{% trans "Next"%}</span></a>
+	</div>
+	<div class="images-preview outnone" style="height:600px">
+	  <ul class="image-teaser-slides encap">
+	    <li>
+			<div class="wraptocenter">
+				<span></span>
+				<img src="{{photo.bigimg.url}}"/>
+			</div>
+		</li>
+	  </ul><!--//.image-teaser-slides-->
+	</div><!--//.images-preview-->
+	<div class="ratings fivestar-form-item fivestar-user-text fivestar-smart-stars fivestar-average-stars fivestar-labels-hover fivestar-processed" style="border-bottom: none;">
+		
+	</div>
+	<div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
+	  <a href="#"><img src="/media/images/banners/banner_8.jpg" alt="Ads"></a>
+	</div>
+</div><!--//.node-->
