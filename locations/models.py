@@ -61,7 +61,7 @@ class Location( ImageModel ):
     type = models.ManyToManyField( LocationType )
     restaurant = models.ManyToManyField( RestaurantType, blank = True , null = True )
     address = models.CharField( _( 'Address' ), max_length = 256 , blank = True )
-    city = models.CharField( _( 'City' ), max_length = 256 , blank = True )
+    city = models.CharField( _( 'City' ), max_length = 256 , blank = True, default = 'Bogota' )
     district = models.CharField( _( 'District' ), max_length = 256 , blank = True )
     phone_1 = models.CharField( _( 'Telephone 1' ), max_length = 256 , blank = True )
     phone_2 = models.CharField( _( 'Telephone 2' ), max_length = 256 , blank = True )

@@ -57,7 +57,7 @@
 		{% endif %}
 		
     	<h3>{{description}}</h3>
-		    <a href="{%url people_details slug=latest_event.slug%}">
+		    <a href="{%url people_details slug=latest_event.slug%}" class="recent-image">
 				{% if latest_event.image%}
 					<img alt="{{latest_event.title}}" src="{{latest_event.squarethumb.url}}" />
 				{%else%}
@@ -88,6 +88,21 @@
 	{%endfor%}
   </div><!--//.recent-events-list-->
 </div><!--//.node-container-->
+<script>
+	$(document).ready(function () {
+		$('.teaser-image img, .recent-image img').live('mouseover',
+			function(){
+				$(this).css("border-color","#C52121");
+			}
+		);
+		$('.teaser-image img, .recent-image img').live('mouseout',
+			function() {
+				$(this).css("border-color","#898989");
+			}	
+		)
+	})
+</script>
+
 {% endblock %}
 
 {% block colright %}

@@ -63,6 +63,20 @@
 	{% endif%}
   </div><!--//.recent-events-list-->
 </div><!--//.node-container-->
+<script>
+	$(document).ready(function () {
+		$('.teaser-image img, .list-part img').live('mouseover',
+			function(){
+				$(this).css("border-color","#C52121");
+			}
+		);
+		$('.teaser-image img, .list-part img').live('mouseout',
+			function() {
+				$(this).css("border-color","#898989");
+			}	
+		)
+	})
+</script>
 {% endblock %}
 
 {% block colright %}
