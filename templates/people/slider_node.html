@@ -2,7 +2,7 @@
 <div class="node gente bb-none encap">
 	<div class="wrapper encap">
 	  <div class="c75l">
-	  	<h2 class="title">{{photo.event.title}}</h2>
+	  	<h2 class="title"><a href="{%url people_details slug=photo.event.slug%}">{{photo.event.title}}</a></h2>
 	    <span class="submitted">
 			{%if photo.event and photo.event.city%}{{photo.event.city}} {%endif%}{{photo.datetime_added|date:"d.m.y"}}
 		</span>

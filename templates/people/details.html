@@ -25,7 +25,7 @@
 	  {%endif%}
 
 	  {% if event.author or event.author_email%}	
-	      <p><strong>Reporter@:</strong> 
+	      <p><strong>{% trans "Reporter"%}@:</strong> 
 			{% if event.author%}<span class="brickred">{{event.author}}</span>{%endif%}
 			{% if event.author and event.author_email%}<br />{%endif%}
 			{% if event.author_email%}<strong>{{event.author_email}}</strong>{%endif%}
