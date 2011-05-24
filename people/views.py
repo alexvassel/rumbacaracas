@@ -19,18 +19,18 @@ def index ( request ):
     request.breadcrumbs( _( 'By Category' ) , request.path_info )
     groups = []
     for group, description in PHOTO_CATEGORIES:
-        events = PhotoEvent.objects.filter( category = group ).order_by( 'datetime_added' )[:5]
+        events = PhotoEvent.objects.filter( status = 1 ).filter( category = group ).order_by( 'datetime_added' )[:5]
         if events:
             latest_event_photo = events[0]
             groups.append( ( group, description, latest_event_photo, events, ) )
 
-    latest = PhotoEvent.objects.latest( 'datetime_added' )
+    latest = PhotoEvent.objects.filter( status = 1 ).latest( 'datetime_added' )
     return {'groups': groups, 'latest' : latest}
 
 @render_to( 'people/category.html' )
 def category ( request, group ):
 
-    events = PhotoEvent.objects.filter( category = group ).order_by( 'datetime_added' )
+    events = PhotoEvent.objects.filter( status = 1 ).filter( category = group ).order_by( 'datetime_added' )
 
     if events:
         group_name = events[0].get_category_display()
@@ -62,13 +62,13 @@ def slider( request , photo_id ):
         return render_to_response( 'people/slider_node.html', {'photo': photo} )
 
     request.breadcrumbs( _( 'People' ) , '/people' )
-    request.breadcrumbs( photo.description , request.path_info )
+    request.breadcrumbs( photo.event.title , request.path_info )
     return {'photo': photo}
 
 
 @render_to( 'people/details.html' )
 def details ( request, slug ):
-    event = get_object_or_404( PhotoEvent, slug = slug )
+    event = get_object_or_404( PhotoEvent, slug = slug, status = 1 )
 
     request.breadcrumbs( _( 'People' ) , '/people' )
     request.breadcrumbs( event.title , request.path_info )

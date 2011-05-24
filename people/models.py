@@ -12,6 +12,10 @@ PHOTO_CATEGORIES = (
     ( 'outside', _( 'Outside Bogota' ) ),
  )
 
+PEOPLE_STATUSES = ( 
+    ( '1', _( 'Published' ) ),
+    ( '2', _( 'Hidden/ Not Published' ) ),
+ )
 
 
 class PhotoEvent( ImageModel ):
@@ -25,6 +29,7 @@ class PhotoEvent( ImageModel ):
     author_email = models.CharField( _( 'Author Email' ) , max_length = 256 , blank = True )
     city = models.CharField( _( 'City' ), max_length = 256 , blank = True )
     image = models.ImageField( upload_to = 'images/people', blank = True )
+    status = models.CharField( max_length = 10, choices = PEOPLE_STATUSES, default = 2 )
     datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
 
     def import_photo( self ):
