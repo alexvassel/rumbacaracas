@@ -39,8 +39,36 @@
 	padding-left: 35px;
 	background: transparent url("/media/images/sprites/sprites_social_1.gif") no-repeat scroll 0 -427px;	
 }
+
+.addeventhdr {
+	padding-left: 35px;
+	background: transparent url("/media/images/icons/event.jpg") no-repeat scroll 0 3px;	
+}
+.addlocationhdr {
+	padding-left: 35px;
+	background: transparent url("/media/images/icons/food.jpg") no-repeat scroll 0 3px;
+}
+
 .errorlist {
 	color: #666666;
+}
+
+
+#add-form .phone input {
+	width: 70% !important;
+}
+
+#add-form .calendar {
+	display: block;
+}
+
+#add-form .calendar input {
+    width: 84% !important;
+}
+
+#add-form .calendar img {
+    cursor: pointer;
+    float: right;
 }
 
 #add-form table
@@ -199,6 +227,10 @@
   width        :  97%;
 }
 
+#add-form select option {
+	font-size    :  16px;
+	font-family  :  arial, verdana, sans-serif;
+}
 #add-form select
 {
   width  :  auto;
@@ -233,6 +265,20 @@
   border       :  solid 1px #cd2222;
   cursor       :  pointer;
   min-width    :  90px;
+}
+
+
+#add-form .mandatory
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-size    :  18px;
+  font-weight  :  bold;
+  color        :  #cd2222;
+}
+
+#add-form .space
+{
+  padding-left  :  10px;
 }
 
 

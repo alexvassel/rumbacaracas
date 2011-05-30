@@ -9,6 +9,10 @@ from datetime import datetime, timedelta, time
 import itertools
 from django.template.defaultfilters import date
 from dateutil.relativedelta import relativedelta
+import locale
+from django.forms import ModelForm
+from django.template.defaultfilters import slugify
+from django.http import HttpResponseRedirect
 
 months = {
         1 : "January",
@@ -32,6 +36,8 @@ def f7( seq ):
     seen = set()
     seen_add = seen.add
     return [ x for x in seq if x not in seen and not seen_add( x )]
+
+
 
 def _process( request, group_lambda, period , year = False, month = False, day = False ):
 
@@ -62,22 +68,25 @@ def _process( request, group_lambda, period , year = False, month = False, day =
         if ( pk not in tmp_closest_dates ):
             tmp_closest_dates[pk] = min( dts )
 
+    def sortList( list ):
+        list.sort( key = lambda a:a.position, reverse = False )
+        return list
 
     sorted_events = sorted( tmp_events , key = group_lambda )
 
     by_group = dict( [
-        ( group, list( items ) ) for group, items in itertools.groupby( sorted_events, group_lambda )
+        ( group, sortList( list( items ) ) ) for group, items in itertools.groupby( sorted_events, group_lambda )
     ] )
 
     current_year = datetime.today().year
     years = range( current_year - 3, current_year + 3 )
 
     # SELECT ONLY UPCOMING!!!
-    slider_events = Event.objects.filter( to_date__gte = datetime.today() ).order_by( '?' )[:5]
+    slider_events = Event.objects.filter( status = 1 ).filter( to_date__gte = datetime.today() ).order_by( '?' )[:5]
 
 
-    all_locations = Location.objects.all().order_by( 'title' )
-    all_events = Event.objects.all().order_by( 'title' )
+    all_locations = Location.objects.all().filter( status = 1 ).order_by( 'title' )
+    all_events = Event.objects.all().filter( status = 1 ).order_by( 'title' )
 
     #Seems like wrong
     year = from_date.year
@@ -98,7 +107,7 @@ def calendar_view(
  ):
     #year, month = int( year ), int( month )
 
-    all_events = Event.objects.all().order_by( 'title' )
+    all_events = Event.objects.all().filter( status = 1 ).order_by( 'title' )
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'Calendar' ) , request.path_info )
 
@@ -123,8 +132,8 @@ def calendar_view(
     current_year = datetime.today().year
     years = range( current_year - 3, current_year + 3 )
 
-    slider_events = Event.objects.filter( to_date__gte = datetime.today() ).order_by( '?' )[:5]
-    all_locations = Location.objects.all()
+    slider_events = Event.objects.filter( status = 1 ).filter( to_date__gte = datetime.today() ).order_by( '?' )[:5]
+    all_locations = Location.objects.all().filter( status = 1 )
 
     return dict( 
         today = datetime.now(),
@@ -194,7 +203,7 @@ def _process_period( period, year, month, day ):
 def category( request , period = 'day', date_parameter = 0 , year = False, month = False, day = False, fake_tomorrow = False ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Category' ) , request.path_info )
-    dict = _process( request, lambda o: o.category, period, year, month, day )
+    dict = _process( request, lambda o: o.category.title if o.category else None , period, year, month, day )
     dict['active_tab'] = 'category'
     if fake_tomorrow:
         dict['period'] = 'tomorrow'
@@ -205,7 +214,7 @@ def category( request , period = 'day', date_parameter = 0 , year = False, month
 def area( request , period = 'day' , year = False, month = False, day = False, fake_tomorrow = False ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Area' ) , request.path_info )
-    dict = _process( request, lambda o: o.area, period , year, month, day )
+    dict = _process( request, lambda o: o.area.title if o.area else None, period , year, month, day )
     dict['active_tab'] = 'area'
     if fake_tomorrow:
         dict['period'] = 'tomorrow'
@@ -216,7 +225,7 @@ def area( request , period = 'day' , year = False, month = False, day = False, f
 def location( request , period = 'day', year = False, month = False, day = False, fake_tomorrow = False ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Location' ) , request.path_info )
-    dict = _process( request, lambda o: o.location, period , year, month, day )
+    dict = _process( request, lambda o: o.location.title if o.location else None, period , year, month, day )
     dict['active_tab'] = 'location'
     if fake_tomorrow:
         dict['period'] = 'tomorrow'
@@ -227,7 +236,7 @@ def location( request , period = 'day', year = False, month = False, day = False
 def music( request, period = 'day' , year = False, month = False, day = False, fake_tomorrow = False ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Music' ) , request.path_info )
-    dict = _process( request, lambda o: o.music, period , year, month, day )
+    dict = _process( request, lambda o: o.music.title if o.music else None, period , year, month, day )
     dict['active_tab'] = 'music'
     if fake_tomorrow:
         dict['period'] = 'tomorrow'
@@ -238,7 +247,68 @@ def detail ( request, slug, period = 'day' ):
     event = get_object_or_404( Event, slug = slug )
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( event.title , request.path_info )
-    dict = _process( request, lambda o: o.category, period )
+    dict = _process( request, lambda o: o.category.title if o.category else None, period )
     dict['event'] = event
     dict['active_tab'] = 'category'
     return dict
+
+
+from django.contrib.auth.decorators import login_required
+
+
+@login_required( login_url = '/login/' )
+@render_to( 'events/add.html' )
+def add( request ):
+    request.breadcrumbs( _( 'Events' ) , '/events' )
+    request.breadcrumbs( _( 'Add event' ) , request.path_info )
+
+    class EventForm( ModelForm ):
+        class Meta:
+            model = Event
+
+            fields = ( 
+                'title',
+                'from_date',
+                'to_date',
+                'repeat',
+                'category',
+                'music',
+                'location',
+                'city',
+                'area',
+                'address',
+                'place',
+                'time',
+                'price',
+                'email',
+                'user',
+                'url',
+                'phone',
+
+                'image',
+                'description',
+            )
+
+
+    if request.method == 'POST': # If the form has been submitted...
+        form = EventForm( request.POST, request.FILES ) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            event = form.save( commit = False )
+            event.slug = slugify( event.title )
+            #For one day events
+            if not event.to_date:
+                event.to_date = event.from_date
+            #set moderation status
+            event.status = 2
+            event.save()
+            return HttpResponseRedirect( '/events/' ) # Redirect after POST
+        return {
+                "form": form,
+                "errors": True
+        }
+    else:
+        form = EventForm()
+    return {
+        'form': form,
+    }
+

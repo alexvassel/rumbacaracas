@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Events | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load listtools %}
+{% block colleft %}
+<link type="text/css" rel="stylesheet" href="/media/css/jquery-ui.css" />
+<div class="node-container gente box-shadows encap">
+  <div class="title-wrap encap">
+
+    <span class="flt-left"><h2 class="title addeventhdr">{% trans "Add Event"%}</h2></span>
+    <span class="flt-right">
+	  <img src="/media/images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+      </ul>
+    </span>
+  </div><!--//.title-wrap-->
+  <div class="node gente bb-none encap" id="add-form">
+	<br />
+  	{% if completed %}<h2>{% trans "Your event successfully added and will be reviewed shortly!"%}</h2>{% endif %}
+	<h2>{% trans "Submit Your Event:"%}</h2>
+  	<form enctype="multipart/form-data" method="post" action="" id="addform">
+    	{% csrf_token %}
+		<div>
+	      <table border="0" cellpadding="7" cellspacing="0" width="100%">
+	        {% for field in form %}
+				{% if field.name == 'description' %}
+				  	<tr>
+				    	<td colspan="2">
+							{% if field.field.required %}
+								<span class="mandatory">*</span>
+							{% else %}
+								<span class="space"></span>
+							{% endif %}
+							{{ field.label_tag }}
+							{% if field.errors %}	
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+			      	</tr>
+				  	<tr>
+				        <td colspan="2">{{ field }}</td>
+			      	</tr>
+				{% else %}
+				{% if field.name == 'from_date' %}
+					<tr id="start_date">
+						<td valign="top" width="250">
+							{% if field.field.required %}
+								<span class="mandatory">*</span>
+							{% else %}
+								<span class="space"></span>
+							{% endif %}
+							<label for="id_from_date">{% trans "Event date"%}</label>
+							{% if field.errors %}
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+						<td class="textbox">
+							<span class="calendar">
+								{{ field }}
+							</span>
+			        		{% if not errors%}<a href="#" onclick="$(this).remove(); $('#start_date label').html('{%trans  "Event start date"%}'); $('#to_date').show('blind'); $('#repeat').show('blind'); return false;"><small>{% trans "The event is more than one day"%}</small></a>{%endif%}
+						</td>
+		        	</tr>
+				{% else %}
+				{% if field.name == 'to_date' %}
+					<tr id="to_date" {% if not errors%}style="display:none"{%endif%}>
+						<td width="250">
+							{% if field.field.required %}
+								<span class="mandatory">*</span>
+							{% else %}
+								<span class="space"></span>
+							{% endif %}
+							{{ field.label_tag }}
+							{% if field.errors %}
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+						<td class="textbox">
+							<span class="calendar">
+								{{ field }}
+							</span>
+						</td>
+		        	</tr>
+				{% else %}
+				{% if field.name == 'repeat' %}
+					<tr id="repeat" {% if not errors%}style="display:none"{%endif%}>
+						<td width="250">
+							{% if field.field.required %}
+								<span class="mandatory">*</span>
+							{% else %}
+								<span class="space"></span>
+							{% endif %}
+							{{ field.label_tag }}
+							{% if field.errors %}
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+						<td class="textbox">
+							{{ field }}
+						</td>
+		        	</tr>
+				{% else %}
+				{% if field.name == 'location' %}
+					<tr id="location">
+						<td width="250">
+							{% if field.field.required %}
+								<span class="mandatory">*</span>
+							{% else %}
+								<span class="space"></span>
+							{% endif %}
+							{{ field.label_tag }}
+							{% if field.errors %}
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+						<td class="textbox">
+							{{ field }}&nbsp;
+			      			{% if not errors%}<a href="#" onclick="$(this).remove(); $('.additional_loc').toggle('blind'); return false;"><small>{% trans "Location is not listed"%}</small></a>{%endif%}
+						</td>
+		        	</tr>
+				{% else %}
+		        	<tr {% if not errors%}{% if field.name == 'city' or field.name == 'area' or field.name == 'address' or field.name == 'place'%} class="additional_loc" style="display:none"{%endif%}{%endif%}>
+						<td width="250">
+							{% if field.field.required %}
+								<span class="mandatory">*</span>
+							{% else %}
+								<span class="space"></span>
+							{% endif %}
+							{{ field.label_tag }}
+							{% if field.errors %}
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+						<td class="textbox">
+							{{ field }}
+							{% if field.name == 'address' %}
+			      				<small><i>({% trans "Tel, Fax, URL Twitter, FB, etc"%})</i></small>
+							{% endif %}
+						</td>
+		        	</tr>
+				{% endif %}
+				{% endif %}
+				{% endif %}
+				{% endif %}
+				{% endif %}
+				{% if field.name == 'description' %}
+					<tr>
+				        <td colspan="2">
+				          <small>
+				            Si te faltan datos para el evento, puedes enviar luego un correo a rumba@rumbabogota.com con el nombre del evento en el asunto del mensaje y especificar en el cuerpo los cambios que deseas hacerle a tu evento.<br />
+				            <br />
+				            Los campos marcados con <span class="mandatory">*</span> son obligatorios<br />
+				          </small>
+				        </td>
+					</tr>
+				{% endif %}
+			{% endfor %}
+			<tr>
+				<td colspan="2" align="center">
+				  <br />
+		          <input type="reset" id="BtnClear" value="{% trans "Reset"%}" class="button" />
+		          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		          <input type="submit" id="BtnSubmit" value="{% trans "Submit"%}" class="button" />
+				</td>
+			</tr>
+
+
+	      </table>
+		  <hr />
+		</div>
+	</form>
+	<br />
+	<br />
+	<div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
+	<a href="#"><img src="/media/images/banners/banner_8.jpg" alt="Ads"></a>
+    </div>
+  </div><!--//.node-->
+</div><!--//.node-container-->
+
+<script>
+	$(document).ready(function () {
+		$('#addform input[type=reset]').click(function(){
+			$(':input','#addform')
+			 .not(':button, :submit, :reset, :hidden')
+			 .val('')
+			 .removeAttr('checked')
+			 .removeAttr('selected');
+			 return false;	
+		});
+
+		$(".calendar input").datepicker({ 
+			showOn          : "button",
+			buttonImage     : "/media/images/icons/calendar.jpg",
+			buttonImageOnly : true,
+			dateFormat      : "yy-mm-dd"
+		});
+
+	})
+</script>
+
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

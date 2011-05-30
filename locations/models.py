@@ -54,6 +54,11 @@ class WeekDay( models.Model ):
         verbose_name = _( 'Week day' )
         verbose_name_plural = _( 'Week days' )
 
+LOCATION_STATUSES = ( 
+    ( '1', _( 'Published' ) ),
+    ( '2', _( 'Blocked/ Not Published' ) ),
+ )
+
 
 class Location( ImageModel ):
     title = models.CharField( _( 'Name of venue/club' ), max_length = 256 )
@@ -79,6 +84,7 @@ class Location( ImageModel ):
     contact = models.CharField( _( 'Contact for Updates' ), max_length = 256 , blank = True )
     phones = models.CharField( _( 'Telephones' ), max_length = 256 , blank = True )
     contact_email = models.EmailField( _( 'Email' ) , blank = True )
+    status = models.CharField( max_length = 10, choices = LOCATION_STATUSES, default = 1 )
 
     def view( self ):
         return u'<a target="_blank" href="/locations/%s">%s</a>' % ( self.slug, _( "View on site" ) )

@@ -131,6 +131,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 
 INSTALLED_APPS = ( 
+    'grappelli',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -143,6 +144,7 @@ INSTALLED_APPS = (
     'yourphotos',
     'people',
     'debug_toolbar',
+    'sortable',
     #'photologue',
     #'tagging',
     # Uncomment the next line to enable admin documentation:

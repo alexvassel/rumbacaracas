@@ -1,11 +1,24 @@
 from events.models import EventCategory, Event, WeekDay
 from django.contrib import admin
+from sortable.admin import SortableAdmin
+from django.utils.translation import ugettext_lazy as _
 
-class EventAdmin( admin.ModelAdmin ):
+
+
+def make_published( modeladmin, request, queryset ):
+    queryset.update( status = '1' )
+make_published.short_description = _( "Mark selected events as published" )
+
+
+
+
+class EventAdmin( SortableAdmin ):
     prepopulated_fields = {"slug": ( "title", )}
     filter_horizontal = ( "repeat", )
-    list_display = ( 'title', 'view', 'category', )
+    list_display = SortableAdmin.list_display + ( 'title', 'view', 'category', 'status', )
     list_display_links = ( 'title', )
+    list_filter = ( 'status', )
+    actions = [make_published]
     fields = ( 
         'title',
         'slug',
@@ -24,10 +37,11 @@ class EventAdmin( admin.ModelAdmin ):
         'url',
         'email',
         'music',
-        'sort_order',
+        'position',
         'image',
         'user',
         'description',
+        'status',
     )
 
 admin.site.register( Event, EventAdmin )

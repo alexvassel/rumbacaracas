@@ -1,5 +1,11 @@
 from people.models import PhotoEvent, Photo
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
+
+
+def make_published( modeladmin, request, queryset ):
+    queryset.update( status = '1' )
+make_published.short_description = _( "Mark selected photos as published" )
 
 
 class PhotoInline( admin.TabularInline ):
@@ -9,10 +15,11 @@ class PhotoInline( admin.TabularInline ):
 
 class EventAdmin( admin.ModelAdmin ):
     prepopulated_fields = {"slug": ( "title", )}
-    list_display = ( 'title', 'category', 'import_photo' )
+    list_display = ( 'title', 'category', 'import_photo', 'status' )
     inlines = [
         PhotoInline,
     ]
+    actions = [make_published]
 
 admin.site.register( PhotoEvent, EventAdmin )
 

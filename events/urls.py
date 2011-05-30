@@ -2,7 +2,7 @@ from django.conf.urls.defaults import patterns
 
 urlpatterns = patterns( 'events.views',
     ( r'^$', 'category', {'period': 'day'} ),
-
+    ( r'^add$', 'add' ),
     ( r'^by-category/$', 'category', {'period': 'day'} ),
     ( r'^by-category/day$', 'category', {'period': 'day'} ),
     ( r'^by-category/tomorrow$', 'category', {'period': 'tomorrow'} ),

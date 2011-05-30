@@ -1,9 +1,10 @@
 from yourphotos.models import  Photo
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 
 def make_published( modeladmin, request, queryset ):
     queryset.update( status = '1' )
-make_published.short_description = "Mark selected photos as published"
+make_published.short_description = _( "Mark selected photos as published" )
 
 
 class PhotoAdmin( admin.ModelAdmin ):

@@ -1,3 +1,8 @@
 *.class
 *.pyc
 *.pyo
+media/photos/*
+media/images/events/*
+media/images/people/*
+media/images/locations/*
+media/images/yourphotos/*

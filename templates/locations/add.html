@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Locations | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load listtools %}
+{% block colleft %}
+<div class="node-container gente box-shadows encap">
+  <div class="title-wrap encap">
+
+    <span class="flt-left"><h2 class="title addlocationhdr">{% trans "Add Location"%}</h2></span>
+    <span class="flt-right">
+	  <img src="/media/images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+      </ul>
+    </span>
+  </div><!--//.title-wrap-->
+  <div class="node gente bb-none encap" id="add-form">
+	<br />
+  	{% if completed %}<h2>{% trans "Your photos successfully uploaded and will be reviewed shortly!"%}</h2>{% endif %}
+	<h2>{% trans "Submit Your Location:"%}</h2>
+  	<form enctype="multipart/form-data" method="post" action="" id="addform">
+    	{% csrf_token %}
+		<div>
+	      <table border="0" cellpadding="7" cellspacing="0" width="100%">
+	        {% for field in form %}
+
+				{% if field.name == 'owner' %}
+					<tr>
+						<td colspan="2"><h2 class="red">{%trans "Contact Information"%}</h2></td>
+					</tr>
+				{% endif %}
+
+				{% if field.name == 'description' %}
+				  	<tr>
+				    	<td colspan="2">
+							{% if field.field.required %}
+								<span class="mandatory">*</span>
+							{% else %}
+								<span class="space"></span>
+							{% endif %}
+							{{ field.label_tag }}
+							{% if field.errors %}	
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+			      	</tr>
+				  	<tr>
+				        <td colspan="2">{{ field }}</td>
+			      	</tr>
+				{% else %}
+				{% if field.name == 'phone_1' %}
+					<tr>
+						<td width="250">
+							{% if field.field.required %}
+								<span class="mandatory">*</span>
+							{% else %}
+								<span class="space"></span>
+							{% endif %}
+							{{ field.label_tag }}
+							{% if field.errors %}
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+						<td class="textbox"><span class="phone">{{ field }}</span>&nbsp; 
+							{% if not errors%}<a href="#" onclick="$('#Phone2').show('blind'); $(this).remove( ); return false;">{% trans "Add other"%}</a>{%endif%}
+						</td>
+		        	</tr>
+				{% else %}
+				{% if field.name == 'phone_2' %}
+					<tr id="Phone2" {% if not errors%}style="display:none;"{%endif%}>
+						<td width="250">
+							{% if field.field.required %}
+								<span class="mandatory">*</span>
+							{% else %}
+								<span class="space"></span>
+							{% endif %}
+							{{ field.label_tag }}
+							{% if field.errors %}
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+						<td class="textbox"><span class="phone">{{ field }}</span></td>
+		        	</tr>
+				{% else %}
+					<tr>
+						<td width="250">
+							{% if field.field.required %}
+								<span class="mandatory">*</span>
+							{% else %}
+								<span class="space"></span>
+							{% endif %}
+							{{ field.label_tag }}
+							{% if field.errors %}
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+						<td class="textbox">{{ field }}</td>
+		        	</tr>
+				{% endif %}
+				{% endif %}
+				{% endif %}
+			{% endfor %}
+			<tr>
+		        <td colspan="2"><small><span class="space"> </span>{% trans "The fields marked with"%} <span class="mandatory">*</span> {% trans "are required"%}</small></td>
+		    </tr>
+			<tr>
+				<td colspan="2" align="center">
+				  <br />
+		          <input type="reset" id="BtnClear" value="{% trans "Reset"%}" class="button" />
+		          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		          <input type="submit" id="BtnSubmit" value="{% trans "Submit"%}" class="button" />
+				</td>
+			</tr>
+
+
+	      </table>
+		  <hr />
+		</div>
+	</form>
+	<br />
+	<br />
+	<div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
+	<a href="#"><img src="/media/images/banners/banner_8.jpg" alt="Ads"></a>
+    </div>
+  </div><!--//.node-->
+</div><!--//.node-container-->
+
+<script>
+	$(document).ready(function () {
+		$('#addform input[type=reset]').click(function(){
+			$(':input','#addform')
+			 .not(':button, :submit, :reset, :hidden')
+			 .val('')
+			 .removeAttr('checked')
+			 .removeAttr('selected');
+			 return false;	
+		});
+	})
+</script>
+
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}
