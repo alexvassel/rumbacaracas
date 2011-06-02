@@ -15,12 +15,12 @@ class LocationAdmin( admin.ModelAdmin ):
     filter_horizontal = ( "type", "restaurant", "days_of_operation" )
     list_display = ( 'title', 'view', 'status' )
     list_display_links = ( 'title', )
-    list_filter = ( 'status', )
+    list_filter = ( 'status', 'featured' )
     fieldsets = [
         ( 'Location data', {'fields': ( 
             'title', 'slug', 'type', 'restaurant', 'area', 'address', 'city', 'district', 'phone_1', 'phone_2',
             'fax', 'url', 'email', 'hours_of_operation', 'days_of_operation',
-             'music', 'image_logo', 'description', 'status',
+             'music', 'image_logo', 'description', 'status', 'featured',
         )} ),
         ( 'Contact Information', {'fields': ( 'owner', 'contact_type', 'contact', 'phones', 'contact_email' )} ),
     ]

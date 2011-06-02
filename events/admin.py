@@ -17,7 +17,7 @@ class EventAdmin( SortableAdmin ):
     filter_horizontal = ( "repeat", )
     list_display = SortableAdmin.list_display + ( 'title', 'view', 'category', 'status', )
     list_display_links = ( 'title', )
-    list_filter = ( 'status', )
+    list_filter = ( 'status', 'featured', )
     actions = [make_published]
     fields = ( 
         'title',
@@ -42,6 +42,7 @@ class EventAdmin( SortableAdmin ):
         'user',
         'description',
         'status',
+        'featured',
     )
 
 admin.site.register( Event, EventAdmin )

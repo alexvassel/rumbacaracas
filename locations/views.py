@@ -37,7 +37,7 @@ def _process( request, group ):
             groups.append( ( group.title , locations_page, paginator ) )
             counter = counter + 1
 
-    slider = Location.objects.filter( status = 1 ).order_by( '?' )[:3]
+    slider = Location.objects.filter( status = 1, featured = True ).order_by( '?' )[:3]
 
     all_locations = Location.objects.all().filter( status = 1 ).order_by( 'title' )
 
@@ -146,7 +146,6 @@ def add( request ):
         }
     else:
         form = LocationForm()
-        print form
     return {
         'form': form,
     }

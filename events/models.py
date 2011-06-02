@@ -119,6 +119,7 @@ class Event( ImageModel, Sortable ):
     user = models.CharField( 'User', max_length = 256 , blank = True )
     description = models.TextField( _( 'Event Description' ), blank = True )
     status = models.CharField( max_length = 10, choices = EVENT_STATUSES, default = 1 )
+    featured = models.BooleanField( default = False )
 
     def view( self ):
         return u'<a target="_blank" href="/events/%s">%s</a>' % ( self.slug, _( "View on site" ) )

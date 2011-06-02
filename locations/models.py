@@ -85,6 +85,7 @@ class Location( ImageModel ):
     phones = models.CharField( _( 'Telephones' ), max_length = 256 , blank = True )
     contact_email = models.EmailField( _( 'Email' ) , blank = True )
     status = models.CharField( max_length = 10, choices = LOCATION_STATUSES, default = 1 )
+    featured = models.BooleanField( default = False )
 
     def view( self ):
         return u'<a target="_blank" href="/locations/%s">%s</a>' % ( self.slug, _( "View on site" ) )
