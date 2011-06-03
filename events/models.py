@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 import calendar
 import itertools
 from dateutil import rrule
+from django.contrib.auth.models import User
 
 EVENT_STATUSES = ( 
     ( '1', _( 'Published' ) ),
@@ -118,6 +119,7 @@ class Event( ImageModel, Sortable ):
     image = models.ImageField( upload_to = 'images/events', blank = True )
     user = models.CharField( 'User', max_length = 256 , blank = True )
     description = models.TextField( _( 'Event Description' ), blank = True )
+    add_user = models.ForeignKey( User , blank = True , null = True )
     status = models.CharField( max_length = 10, choices = EVENT_STATUSES, default = 1 )
     featured = models.BooleanField( default = False )
 

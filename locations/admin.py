@@ -17,11 +17,13 @@ class LocationAdmin( admin.ModelAdmin ):
     list_editable = ( 'status', 'featured' )
     list_display_links = ( 'title', )
     list_filter = ( 'status', 'featured' )
+    readonly_fields = ( 'add_user', )
     fieldsets = [
         ( 'Location data', {'fields': ( 
             'title', 'slug', 'type', 'restaurant', 'area', 'address', 'city', 'district', 'phone_1', 'phone_2',
             'fax', 'url', 'email', 'hours_of_operation', 'days_of_operation',
              'music', 'image_logo', 'description', 'status', 'featured',
+             'add_user',
         )} ),
         ( 'Contact Information', {'fields': ( 'owner', 'contact_type', 'contact', 'phones', 'contact_email' )} ),
     ]

@@ -16,10 +16,11 @@ class EventAdmin( SortableAdmin ):
     prepopulated_fields = {"slug": ( "title", )}
     filter_horizontal = ( "repeat", )
     list_display = SortableAdmin.list_display + ( 'title', 'view', 'category', 'status', 'featured', )
-    list_editable = ( 'status', 'featured' )
+    list_editable = SortableAdmin.list_editable + ( 'status', 'featured' )
     list_display_links = ( 'title', )
     list_filter = ( 'status', 'featured', )
     actions = [make_published]
+    readonly_fields = ( 'add_user', )
     fields = ( 
         'title',
         'slug',
@@ -44,6 +45,7 @@ class EventAdmin( SortableAdmin ):
         'description',
         'status',
         'featured',
+        'add_user',
     )
 
 admin.site.register( Event, EventAdmin )

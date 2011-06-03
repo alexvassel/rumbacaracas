@@ -6,7 +6,7 @@ from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from decorators import render_to
 import random
-from django.forms import ModelForm, ModelMultipleChoiceField
+from django.forms import ModelForm
 from django.template.defaultfilters import slugify
 
 def _process( request, group ):
@@ -101,6 +101,8 @@ def add( request ):
     request.breadcrumbs( _( 'Add Location' ) , request.path_info )
 
     class LocationForm( ModelForm ):
+        #type = ModelMultipleChoiceField( queryset = LocationType.objects.all() )
+
         class Meta:
             model = Location
             fields = ( 
@@ -138,6 +140,7 @@ def add( request ):
             location.slug = slugify( location.title )
             #set moderation status
             location.status = 2
+            location.add_user = request.user
             location.save()
             form.save_m2m()
             return HttpResponseRedirect( '/locations/' ) # Redirect after POST

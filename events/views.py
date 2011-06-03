@@ -10,7 +10,7 @@ import itertools
 from django.template.defaultfilters import date
 from dateutil.relativedelta import relativedelta
 import locale
-from django.forms import ModelForm
+from django.forms import ModelForm, ModelMultipleChoiceField
 from django.template.defaultfilters import slugify
 from django.http import HttpResponseRedirect
 
@@ -264,6 +264,7 @@ def add( request ):
         class Meta:
             model = Event
 
+            location = ModelMultipleChoiceField( queryset = Location.objects.filter( status = 1 ) )
             fields = ( 
                 'title',
                 'from_date',
@@ -298,6 +299,7 @@ def add( request ):
                 event.to_date = event.from_date
             #set moderation status
             event.status = 2
+            event.add_user = request.user
             event.save()
             form.save_m2m()
             return HttpResponseRedirect( '/events/' ) # Redirect after POST

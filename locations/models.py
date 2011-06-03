@@ -1,7 +1,8 @@
 from django.db import models
 from imagekit.models import ImageModel
 from django.utils.translation import ugettext_lazy as _
-
+from django.contrib.auth.models import User
+from socialregistration.models import FacebookProfile
 
 class LocationType( models.Model ):
     title = models.CharField( _( 'Type of Venue/Club' ), max_length = 256 )
@@ -84,6 +85,7 @@ class Location( ImageModel ):
     contact = models.CharField( _( 'Contact for Updates' ), max_length = 256 , blank = True )
     phones = models.CharField( _( 'Telephones' ), max_length = 256 , blank = True )
     contact_email = models.EmailField( _( 'Email' ) , blank = True )
+    add_user = models.ForeignKey( User , blank = True , null = True )
     status = models.CharField( max_length = 10, choices = LOCATION_STATUSES, default = 1 )
     featured = models.BooleanField( default = False )
 
