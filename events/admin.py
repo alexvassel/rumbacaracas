@@ -15,7 +15,8 @@ make_published.short_description = _( "Mark selected events as published" )
 class EventAdmin( SortableAdmin ):
     prepopulated_fields = {"slug": ( "title", )}
     filter_horizontal = ( "repeat", )
-    list_display = SortableAdmin.list_display + ( 'title', 'view', 'category', 'status', )
+    list_display = SortableAdmin.list_display + ( 'title', 'view', 'category', 'status', 'featured', )
+    list_editable = ( 'status', 'featured' )
     list_display_links = ( 'title', )
     list_filter = ( 'status', 'featured', )
     actions = [make_published]

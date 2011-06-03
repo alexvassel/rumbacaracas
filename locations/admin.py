@@ -13,7 +13,8 @@ make_published.short_description = _( "Mark selected locations as published" )
 class LocationAdmin( admin.ModelAdmin ):
     prepopulated_fields = {"slug": ( "title", )}
     filter_horizontal = ( "type", "restaurant", "days_of_operation" )
-    list_display = ( 'title', 'view', 'status' )
+    list_display = ( 'title', 'view', 'status' , 'featured', )
+    list_editable = ( 'status', 'featured' )
     list_display_links = ( 'title', )
     list_filter = ( 'status', 'featured' )
     fieldsets = [
