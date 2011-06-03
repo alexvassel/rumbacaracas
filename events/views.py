@@ -299,6 +299,7 @@ def add( request ):
             #set moderation status
             event.status = 2
             event.save()
+            form.save_m2m()
             return HttpResponseRedirect( '/events/' ) # Redirect after POST
         return {
                 "form": form,
