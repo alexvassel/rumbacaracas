@@ -1,0 +1,44 @@
+{% load tagging_tags comments i18n %}
+
+<div class="image-teaser outnone">
+	<div class="left">
+		{% if object.image %}
+		<a href="{{ object.get_absolute_url }}" title="{{ object.title }}">
+			<img class="main-image"  src="{{ object.image.url }}" alt="{{ object.title }}" />
+		</a>
+		{% endif %}
+	</div>
+	<div class="right">
+		<h2 class="title">
+			<a href="{{ object.get_absolute_url }}" title="{{ object.title }}">
+				{{ object.title }}
+			</a>
+		</h2>
+        <span class="submitted">
+			{% trans "Written by" %} {% for author in object.authors.all %}
+		    <span class="vcard author">
+		      {{ author }}
+		    </span>{% if not forloop.last %}, {% endif %}
+		    {% endfor %}
+			{% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}
+		</span><br />
+		<span style="font-size:12px; overflow: hidden; height: 120px; display:block">{{ object_content }}</span>
+		<a href="{{ object.get_absolute_url }}" class="seguir-link">
+			<strong> {% trans "Continue Reading"%} &#187;</strong>
+		</a><br />
+		{%if tag_list%}
+		  <p class="entry-tags span-16 last">
+		    <strong>{% trans "Tags" %}</strong> :
+		    {% tags_for_object object as tag_list %}
+		    {% for tag in tag_list %}
+		    <a href="{% url zinnia_tag_detail tag %}" title="Tag {{ tag }}" rel="tag">
+		      {{ tag }}
+		    </a>
+		    {% endfor %}
+		  </p><br /><br />
+		{% endif %}
+		<hr style="color:#CCCCCC; margin:1 0 0 0" />
+	</div>
+</div>
+
+

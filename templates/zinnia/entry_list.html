@@ -1,0 +1,93 @@
+{% extends "zinnia/base.html" %}
+{% load i18n tagging_tags zinnia_tags %}
+
+
+{% block advbodycls %}section-blog{% endblock %}
+
+{% block title %}{% if category %}{% trans "Category" %} {{ category }}{% endif %}{% if tag %}{% trans "Tag" %} {{ tag }}{% endif %}{% if author %}{% trans "Author" %} {{ author }}{% endif %}{% if page_obj %}{% ifnotequal page_obj.number 1 %}{% trans "Page" %} {{ page_obj.number }}{% endifnotequal %}{% endif %}{% endblock %}
+
+{% block titlehdr %}
+{% if category %}
+	{{ category.title }}
+{% else %}
+	{{block.super}}
+{% endif %}
+{% endblock %}
+
+
+
+{% block content %}
+
+{% if tag %}
+<h1>{% trans "Tag" %} : {{ tag }}</h1>
+{% endif %}
+
+
+<div class="node entrevistas encap">
+	<div class="node-mini-left-news c65l">
+    	<ul class="node-mini-list">
+			{% for object in object_list %}
+			<li id="entry-{{ object.pk }}" class="hentry{% if object.featured %} featured{% endif %} span-16 last">
+			  {% with object.html_content|truncatewords_html:15|safe as object_content %}
+			  {% include "zinnia/_entry_detail.html" %}
+			  {% endwith %}
+			</li>
+			{% empty %}
+  				{% trans "No entries yet." %}
+			{% endfor %}
+		</ul>
+	</div><!--//.node-mini-left-->
+<!-- //.node-mini-right removed by saqib -->
+</div><!--//.node-->
+
+
+{% if is_paginated %}
+
+<div class="item-list outnone">
+	<ul class="pager encap">
+
+		{% if page_obj.has_previous %}
+			<li class="pager-previous"><a href="?page={{ page_obj.previous_page_number }}" class="active">{% trans "&lt; Prev"%}</a></li>
+	  	{% endif %}
+
+		{% for page in page_range %}
+		    {% ifequal page_obj.number page %}
+				<li class="pager-current">{{ page }}</li>
+		    {% else %}
+				<li class="pager-item"><a href="?page={{ page }}" class="active">{{ page }}</a></li>
+		    {% endifequal%}
+		{% endfor %}
+		{% if page_obj.has_next %}
+			<li class="pager-next"><a href="?page={{ page_obj.next_page_number }}" class="active">{% trans "Next &gt"%};</a></li>
+	  	{% endif %}
+		
+	</ul>
+</div><!--//.item-list-->
+
+{% endif %}
+{% endblock %}
+
+{% block admin_tools %}
+  {% if category and perms.zinnia.change_category %}
+  <li>
+    <a href="{% url admin:zinnia_category_change category.pk %}" title="{% trans "Edit the category" %}">
+      {% trans "Edit the category" %}
+    </a>
+  </li>
+  {% endif %}
+  {% if tag and perms.tagging.change_tag %}
+  <li>
+    <a href="{% url admin:tagging_tag_change tag.pk %}" title="{% trans "Edit the tag" %}">
+      {% trans "Edit the tag" %}
+    </a>
+  </li>
+  {% endif %}
+  {% if author and perms.auth.change_user %}
+  <li>
+    <a href="{% url admin:auth_user_change author.pk %}" title="{% trans "Edit the author" %}">
+      {% trans "Edit the author" %}
+    </a>
+  </li>
+  {% endif %}
+{% endblock %}
+

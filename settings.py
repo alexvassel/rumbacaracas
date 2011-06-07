@@ -127,6 +127,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.contrib.messages.context_processors.messages",
     'django.core.context_processors.request',
+    'zinnia.context_processors.version', # Optional
+    'zinnia.context_processors.media',
  )
 
 
@@ -134,6 +136,7 @@ INSTALLED_APPS = (
     'grappelli',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.comments',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.admin',
@@ -145,6 +148,9 @@ INSTALLED_APPS = (
     'people',
     'debug_toolbar',
     'sortable',
+    'tagging',
+    'mptt',
+    'zinnia',
     #'photologue',
     #'tagging',
     # Uncomment the next line to enable admin documentation:

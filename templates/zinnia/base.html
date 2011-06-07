@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load zinnia_tags tagging_tags i18n %}
+
+{% block breadcrumbs %}
+  {% zinnia_breadcrumbs "->" "News"%}
+{% endblock %}
+
+{% block colleft %}
+	<div class="node-container locales box-shadows encap">
+	<div class="title-wrap encap">
+		<span class="flt-left"><h2 class="title">{% block titlehdr %}{%trans "News"%}{% endblock %}</h2></span>
+		<span class="flt-right">
+		  <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+	        <li>
+				<a class="socializer-7" href="/news/add"><span style="padding-left:5px">{%trans "Add News"%}</span></a>
+			</li>
+	      </ul>
+		</span>
+	</div><!--//.title-wrap-->
+	{% block content %}
+	{% endblock %}
+	</div><!--//.node-container-->
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

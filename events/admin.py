@@ -9,9 +9,6 @@ def make_published( modeladmin, request, queryset ):
     queryset.update( status = '1' )
 make_published.short_description = _( "Mark selected events as published" )
 
-
-
-
 class EventAdmin( SortableAdmin ):
     prepopulated_fields = {"slug": ( "title", )}
     filter_horizontal = ( "repeat", )
@@ -20,6 +17,7 @@ class EventAdmin( SortableAdmin ):
     list_display_links = ( 'title', )
     list_filter = ( 'status', 'featured', )
     actions = [make_published]
+    ordering = ( 'position', )
     readonly_fields = ( 'add_user', )
     fields = ( 
         'title',

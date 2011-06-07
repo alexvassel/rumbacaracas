@@ -38,47 +38,50 @@
 		<noscript><link rel="stylesheet" href="/media/css/ie-fallback.css" /></noscript>
 	<![endif]-->
 </head>
-<body class="inner {% block advbodycls %}{% endblock %}">
+<body class=" {% block advbodycls %}{% endblock %}">
   <div id="header-primary" class="header-primary no-deco outnone">
     <div class="container">
     	<div class="rows encap">
-      	<div class="sec-left flt-left">
+
+         <div class="sec-left flt-left">
+
           <ul class="top-menu-social">
-            <li>{% facebook_button %}</li>
+          <li class="btnfacebook1"><a href="#" class="btnfacebook"></a></li>
+      	  <li class="opcion0"> o </li>
+          <li class="btntwitter1"><a href="#" class="btntwitter"></a></li>
+          <li class="sepL">&nbsp;</li>
+
           </ul>
+
           <ul id="top-menu-primary" class="top-menu-primary">
+
             <li>
-              <a href="#">Participa</a>
+              <a href="#">PUBLICA</a>
               <ul>
                 <li><a class="publica-tus-eventos" href="#">Publica tus Eventos</a></li>
                 <li><a class="sube-tus-fotos" href="#">Sube tus Fotos</a></li>
                 <li><a class="publica-una-noticia" href="#">Publica una Noticia</a></li>
-                <li><a class="envianos-tus-local" href="#">Envíanos tu Local</a></li>
-                <li><a class="monta-tus-videos" href="#">Sube tu Video</a></li>
-                <li><a class="en-el-blog" href="#">Blog</a></li>
+                <li><a class="envianos-tus-local" href="#">Registra un Sitio</a></li>
+                <li><a class="monta-tus-videos" href="#">Sube un Video</a></li>
+                <li><a class="en-el-blog" href="#">Publica en el Blog</a></li>
               </ul>
             </li>
-            <li class="otras-rumba">
-              <a class="otras-rumba" href="#">Otras Rumbas</a>
-              <ul>
-                <li><a class="rumba-caracas" href="#">RumbaCaracas.com</a></li>
-                <li><a class="rumba-bogota" href="#">RumbaBogotá.com</a></li>
-                <li><a class="rumba-venezuela" href="#">RumbaVenezuela.com</a></li>
-                <li><a class="rumba-miami" href="#">RumbaMiami.com</a></li>
-                <li><a class="rccs-mobi" href="#">Rccs.com</a></li>
-                <li><a class="top-djs" href="#">TopDjsVenezuela.com</a></li>
-              </ul>
-            </li>
+
           </ul>
-        </div><!--//.flt-left-->
+         </div><!--//.flt-left-->
+
         <div class="sec-right flt-right">
         	<ul class="encap flt-right fcml0 lcmr0">
+
+            <li class="sepRpar">&nbsp;</li>
+             <li class="sobre1"><a href="#" class="fotosobre1"></a></li>
           	<li class="newsletter-subscribe"><a href="#">E-RUMBA<br /><span>suscríbete</span></a></li>
-            <li class="sep">&nbsp;</li>
-            <li class="social-freak"><a class="facebook-fanpage" href="#"><span class="hidden">Share on Facebook</span></a></li>
-            <li class="sep">&nbsp;</li>
+           	<li class="sepB">&nbsp;</li>
+            <li class="siguenosft">Síguenos:</li>
+          	<li class="social-freak"><a class="facebook-fanpage" href="#"><span class="hidden">Share on Facebook</span></a></li>
             <li class="social-freak"><a class="twitter-page" href="#"><span class="hidden">Follow us on Twitter</span></a></li>
-            <li class="sep">&nbsp;</li>
+
+            <li class="sepBL">&nbsp;</li>
             <li class="top-search-form">
 							<form id="search-block-form" method="post" accept-charset="UTF-8" action="/">
 								<div>
@@ -87,9 +90,10 @@
 									</div>
 									<input type="submit" class="form-submit" value="Buscar" id="edit-submit-1" name="op">
 								</div>
+
               </form>
 						</li>
-						<li class="social-freak"><a class="rss-feed" href="#"><span class="hidden">RSS Feeds</span></a></li>
+
           </ul>
         </div><!--//.flt-right-->
       </div><!--//.rows-->
@@ -113,10 +117,20 @@
       	<h1><a href="#" title="Rumbabogota Home"><img src="/media/images/rb_logo.png" alt="Rumbabogota.com" /></a><span>El sitio de todas las rumbas</span></h1>
       </div><!--//.logo-->
       <div id="top-menus-wrapper" class="top-menus-wrapper outnone c75r">
-      	<ul class="top-menu-secondary flt-right encap fcpl0 lcpr0">
-        	<li><a href="/locations">{% trans "Locations" %}</a></li>
+      	<ul id="top-menu-secondary" class="top-menu-secondary flt-right encap fcpl0 lcpr0">
         	<li><a href="#">Videos</a></li>
-          <li><a href="#">Blog</a></li>
+          <li><a href="#">{% trans "Blog"%}</a></li>
+        	<li class="medios">
+        	  <a href="#">{% trans "Medios"%}</a>
+
+				<ul>
+				  <li><a href="#">Web</a></li>
+				  <li><a href="#">Boletín Electrónico</a></li>
+				  <li><a href="#">Cuaderno</a></li>
+				  <li><a href="#">Guía Impresa</a></li>
+				  <li><a href="#">Eventos</a></li>
+				</ul>
+       	  </li>
       	  <li><a href="#">Nosotros</a></li>
       	</ul>
         <div class="cflt"></div>
@@ -130,6 +144,17 @@
               <li><a href="/events/by-category/month">{% trans "For a Month"%}</a></li>
             </ul>
           </li>
+      	  <li class="secciones">
+          	<h3><a href="#">SITIOS</a></h3>
+			<ul>
+              <li><a href="#">Discotecas</a></li>
+              <li><a href="#">Lounge / Bares</a></li>
+              <li><a href="#">Restaurantes</a></li>
+              <li><a href="#">Cafés</a></li>
+			  <li><a href="#">Centro Cultural</a></li>
+              <li><a href="#">Otros Sitios</a></li>
+            </ul>
+          </li>
         	<li class="fotos">
           	<h3><a href="#">{%trans "Fotos"%}</a></h3>
             <ul>
@@ -138,19 +163,13 @@
             </ul>
           </li>
           <li class="noticias">
-          	<h3><a href="#">Noticias</a></h3>
+          	<h3><a href="#">NOTICIAS</a></h3>
             <ul>
-              <li><a href="#">Rumba News</a></li>
-              <li><a href="#">Music News</a></li>
-              <li><a href="#">Especiales</a></li>
-              <li><a href="#">Entrevistas</a></li>
-            </ul>
-          </li>
-      	  <li class="secciones">
-          	<h3><a href="#">Secciones</a></h3>
-            <ul>
-              <li><a href="#">DJ Mix</a></li>
-              <li><a href="#">Guía Impresa</a></li>
+              <li><a href="/news/categories/rumba-news/">Rumba News</a></li>
+              <li><a href="/news/categories/music-news">Music News</a></li>
+              <li><a href="/news/categories/news/">Actualidad</a></li>
+              <li><a href="/news/categories/interviews/">Entrevistas</a></li>
+			  <li><a href="/news/categories/dj-mix/">DJ Mix</a></li>
             </ul>
           </li>
       	</ul>
@@ -159,6 +178,7 @@
     </div><!--//.header-tertiary-->
     {{br}}
     <div class="breadcrumb">
+	{% block breadcrumbs %}
     	{% for breadcrumb in request.breadcrumbs %}
     		{% if forloop.last %}
     			<a class="active" href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a>
@@ -166,6 +186,7 @@
     			<a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a><span>&nbsp;→&nbsp;</span>
     		{% endif %}
 		{% endfor %}
+	{% endblock %}
     </div>
     <div id="main-contents" class="main-contents encap">
     	<div id="col-left" class="col-left">
@@ -184,7 +205,7 @@
     <div id="footer-secondary" class="footer-secondary">
       <div class="footer-links encap equal-width">
         <div class="c16_6l">
-          <h2>{% trans "Calendar"%}</h2>
+          <h2>{% trans "Events"%}</h2>
           <ul>
           	<li><a href="/events/by-category/day">{% trans "For Today"%}</a></li>
             <li><a href="/events/by-category/tomorrow">{% trans "For Tomorrow"%}</a></li>
@@ -193,21 +214,23 @@
           </ul>
         </div>
         <div class="c16_6l">
-          <h2>Locales</h2>
+          <h2>Sitios</h2>
           <ul>
-            <li><a href="#">Discoteca</a></li>
-            <li><a href="#">Lounge/Bar</a></li>
-            <li><a href="#">Restaurante</a></li>
-            <li><a href="#">Café</a></li>
-            <li><a href="#">Centro Cultural / Museo</a></li>
+            <li><a href="#">Discotecas</a></li>
+            <li><a href="#">Lounge / Bares</a></li>
+            <li><a href="#">Restaurantes</a></li>
+            <li><a href="#">Cafés</a></li>
+            <li><a href="#">Centros Culturales</a></li>
+			<li><a href="#">Otros Sitios</a></li>
           </ul>
         </div>
         <div class="c16_6l">
-          <h2>{% trans "Multimedia"%}</h2>
+          <h2>CONTENIDO</h2>
           <ul>
-            <li><a href="/people">{%trans "People & Events"%}</a></li>
-            <li><a href="/yourphotos">{% trans "Your photos"%}</a></li>
+            <li><a href="#">Fotos</a></li>
+            <li><a href="#">Tus Fotos</a></li>
             <li><a href="#">Videos</a></li>
+            <li><a href="#">Blog</a></li>
           </ul>
         </div>
         <div class="c16_6l">
@@ -215,33 +238,58 @@
           <ul>
             <li><a href="#">Rumba News</a></li>
             <li><a href="#">Music News</a></li>
-            <li><a href="#">Especiales</a></li>
-            <li><a href="#">Entrevistass</a></li>
+            <li><a href="#">Actualidad</a></li>
+            <li><a href="#">Entrevistas</a></li>
+            <li><a href="#">Dj Mix</a></li>
           </ul>
         </div>
         <div class="c16_6l">
-          <h2>Secciones</h2>
+          <h2>Medios</h2>
           <ul>
-            <li><a href="#">DJ Mix</a></li>
-            <li><a href="#">Ediciones Impresas</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="#">Web</a></li>
+            <li><a href="#">Cuaderno</a></li>
+            <li><a href="#">Guía Impresa</a></li>
+            <li><a href="#">Eventos</a></li>
           </ul>
         </div>
         <div class="c16_6r">
           <h2>Nosotros</h2>
           <ul>
             <li><a href="#">Productos</a></li>
-            <li><a href="#">Equipo</a></li>
             <li><a href="#">Alianzas</a></li>
             <li><a href="#">Contacto</a></li>
           </ul>
         </div>
       </div><!--//.footer-links-->
     </div><!--//.footer-secondary-->
-    <div id="footer-tertiary" class="footer-tertiary txt-right">
-      <p><span class="uppercase">Rumbabogota.com</span>, C.A. &copy; 2009-2011 Todos los Derechos Reservados<br /><a href="#">Terminos de Uso</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">email: rumba@rumbabogota.com</a></p>
+
+    <div id="footer-tertiary">
+      <span class="txt-left">
+        <a href="#"><img src="/media/images/logos/RB.png" width="100" alt="" title="" /></a>
+        <a href="http://www.rumbacaracas.com/" target="_blank"><img src="/media/images/logos/RC.png" width="100" alt="" title="" /></a>
+        <a href="http://www.rumbavenezuela.com/" target="_blank"><img src="/media/images/logos/RV.png" width="100" alt="" title="" /></a>
+        <a href="http://www.rumbamiami.com" target="_blank"><img src="/media/images/logos/RM.png" width="100" alt="" title="" /></a>
+      </span>
+
+      <span class="txt-right">
+        <p><span class="uppercase">Rumbabogota.com</span>, C.A. &copy; 2009-2011 Todos los Derechos Reservados<br /><a href="#">Terminos de Uso</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">rumba@rumbabogota.com</a></p>
+      </span>
     </div><!--//.footer-tertiary-->
   </div><!--//.container-->
   {% facebook_js %}
+<script>
+	$(document).ready(function () {
+		jQuery("#footer-tertiary .txt-left img").mouseover(function( )
+		{
+			$(this).attr("src", $(this).attr("src").replace(".png", "_on.png"));
+		});
+		
+		jQuery("#footer-tertiary .txt-left img").mouseout(function( )
+		{
+			$(this).attr("src", $(this).attr("src").replace("_on.png", ".png"));
+		});
+	})
+</script>
+
 </body>
 </html>

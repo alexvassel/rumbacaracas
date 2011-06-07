@@ -49,6 +49,14 @@
 	background: transparent url("/media/images/icons/food.jpg") no-repeat scroll 0 3px;
 }
 
+.addnewshdr {
+	padding-left: 35px;
+	background: transparent url("/media/images/icons/news.jpg") no-repeat scroll 0 3px;
+}
+
+
+
+
 .errorlist {
 	color: #666666;
 }
@@ -234,6 +242,7 @@
 #add-form select
 {
   width  :  auto;
+  max-width: 324px;
 }
 
 #add-form textarea
