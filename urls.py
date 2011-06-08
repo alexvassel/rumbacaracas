@@ -13,6 +13,7 @@ urlpatterns = patterns( '',
     ( r'^events/', include( 'events.urls' ) ),
     ( r'^people/', include( 'people.urls' ) ),
     ( r'^yourphotos/', include( 'yourphotos.urls' ) ),
+    ( r'^videos/', include( 'yourvideos.urls' ) ),
 
     url( r'^news/add', "news.views.add" ),
 

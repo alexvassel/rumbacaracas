@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Your photos | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load listtools %}
+{% load youtube %}
+{% block colleft %}
+<div class="node-container gente box-shadows encap">
+  <div class="title-wrap encap">
+
+    <span class="flt-left"><h2 class="title addvideohdr">{% trans "Add Videos"%}</h2></span>
+    <span class="flt-right">
+	  <img src="/media/images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+      </ul>
+    </span>
+  </div><!--//.title-wrap-->
+  <div class="node gente bb-none encap" id="add-form">
+	<br />
+  	{% if completed %}<h2>{% trans "Your videos successfully added and will be reviewed shortly!"%}</h2>{% endif %}
+	<h2>{% trans "Post up to 5 videos at once:"%}</h2>
+  	<form enctype="multipart/form-data" method="post" action="" id="addform">
+    	{% csrf_token %}
+	    {{ formsets.management_form }}
+	    {% for form in formsets.forms %}
+
+
+		<div id="set{{forloop.counter0}}" {%if not forloop.first and not completed and not errors%}style="display:none"{% endif %}>
+		  
+	      <table border="0" cellpadding="7" cellspacing="0" width="100%">
+	        <tr>
+		      	<td width="250">
+					{{ form.description.label_tag }}
+					{% if form.description.errors %}
+			        		<br/>{{ form.description.errors }}
+		        	{% endif%}
+				</td>
+				<td class="textbox">{{ form.description }}</td>
+	        </tr>
+	        <tr valign="top">
+		      	<td  valign="top">
+					{{ form.youtube_id.label_tag }}
+					{% if form.youtube_id.errors %}
+			        		<br/>{{ form.youtube_id.errors }}
+		        	{% endif%}
+				</td>
+
+				<td class="file">
+					{{ form.youtube_id }}
+					<div class="br10"></div>
+					{% if not forloop.last and not completed and not errors%}
+			        	<a href="#" onclick="$('#set{{forloop.counter}}').show('blind'); $(this).remove( ); return false;">{% trans "Upload more videos"%}</a>
+					{% endif%}
+				</td>
+	        </tr>
+	      </table>
+		  <hr />
+		</div>
+	    {% endfor %}
+		<table border="0" cellpadding="7" cellspacing="0" width="100%">
+	      <tr>
+	        <td width="100%" align="center">
+	          <br />
+	          <input type="reset" id="BtnClear" value="{% trans "Reset"%}" class="button" />
+	          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	          <input type="submit" id="BtnSubmit" value="{% trans "Submit"%}" class="button" />
+	        </td>
+	      </tr>
+	    </table>
+	</form>
+	{% if videos%}
+		  <br />
+		  <br />
+		  <br />
+		  <h2 class="red">{% trans "Uploaded videos:"%}</h2>
+		  <div class="br10"></div>
+
+		  <table border="0" cellpadding="7" cellspacing="0" width="100%">
+		    <tr>
+			{% for newvideo in videos %}
+		      <td width="123">
+		        <div class="photoThumb">
+		          <div class="pic">
+					<img width="107" height="107"  src="{{newvideo.youtube_id|youtube_img_from_id}}" alt="{{newvideo.description}}" title="{{newvideo.description}}" />
+				 </div>
+		          <div class="close"><a class="delete-photo" href="/videos/delete/{{newvideo.id}}"><img src="/media/images/close.jpg" width="15" height="15" alt="{% trans "Delete"%}" title="{% trans "Delete"%}" /></a></div>
+		        </div>
+		      </td>
+				{% if not forloop.last%}
+			      <td></td>
+				{% endif %}
+			{% endfor %}
+		    </tr>
+		  </table>
+		<script>
+			$(document).ready(function () {
+				$("a.delete-photo").click(function(){
+					var parent = $(this).closest('td');
+					var url = $(this).attr('href');
+					$.ajax({
+						type: 'get',
+						url: url,
+						beforeSend: function() {
+							parent.animate({'backgroundColor':'#fb6c6c'},300);
+						},
+						success: function(data) {
+							if (typeof data.success != "undefined" && data.success == true){
+								parent.fadeOut(300,function() {
+									parent.remove();
+								});
+							} else if (typeof data.text != "undefined"){
+								alert(text);
+							}
+						}
+					});
+					return false;	
+				});
+			})
+		</script>
+
+{% endif %}
+		<br />
+		<br />
+	<div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
+	
+      <a href="#"><img src="/media/images/banners/banner_8.jpg" alt="Ads"></a>
+    </div>
+  </div><!--//.node-->
+</div><!--//.node-container-->
+
+<script>
+	$(document).ready(function () {
+		$('#addform input[type=reset]').click(function(){
+			$(':input','#addform')
+			 .not(':button, :submit, :reset, :hidden')
+			 .val('')
+			 .removeAttr('checked')
+			 .removeAttr('selected');
+			 return false;	
+		});
+	})
+</script>
+
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

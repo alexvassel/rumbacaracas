@@ -40,6 +40,13 @@
 	background: transparent url("/media/images/sprites/sprites_social_1.gif") no-repeat scroll 0 -427px;	
 }
 
+
+
+.addvideohdr {
+	padding-left: 35px;
+	background: transparent url("/media/images/icons/video.jpg") no-repeat scroll 0 3px;	
+}
+
 .addeventhdr {
 	padding-left: 35px;
 	background: transparent url("/media/images/icons/event.jpg") no-repeat scroll 0 3px;	

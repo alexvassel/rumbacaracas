@@ -30,7 +30,7 @@
 	<div class="node">
 		<div class="wrapper encap">
 			<h2 class="title"><a href="/yourphotos/{{latest.id}}">{{latest.description}}</a></h2>
-			<span class="submitted">{{latest.datetime_added|date:"d/m/Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{latest.get_user_link}}</span></span>
+			<span class="submitted">{{latest.datetime_added|date:"d.m.Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{latest.get_user_link}}</span></span>
 		</div><!--//.wrapper-->
 		<div class="content">
 			<div class="std-thumbnail outnone"><a href="/yourphotos/{{latest.id}}"><img src="{{latest.bigimg.url}}"></a></div>

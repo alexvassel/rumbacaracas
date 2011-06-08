@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Your videos | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load paging %}
+{% load listtools %}
+{% load youtube %}
+
+{% block advbodycls %}section-videos{% endblock %}
+
+
+{% block colleft %}
+<div class="node-container videos box-shadows encap">
+	  <div class="title-wrap encap">
+	    <span class="flt-left"><h2 class="title">{% trans "Videos"%}</h2></span>
+	    <span class="flt-right">
+	      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+	        <li><a class="socializer-12 upload-video" href="/videos/add"><span>{%trans "Upload a video"%}</span></a></li>
+	      </ul>
+	    </span>
+	  </div><!--//.title-wrap-->
+	<div class="node bb-none encap">
+	{%if latest%}
+        <div class="wrapper encap">
+			<h2 class="title"><a href="/videos/{{latest.id}}">{{latest.description}}</a></h2>
+			<span class="submitted">{{latest.datetime_added|date:"d.m.Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{latest.get_user_link}}</span></span>
+        </div><!--//.wrapper-->
+		<div class="content">
+			{{latest.youtube_id|youtube_video_from_id}}
+		</div>
+	{%endif%}
+		<div class="video-archives encap">
+			<div class="node-mini-left videos-mod" style="border-right: none;">
+				<div class="encap">
+					<ul class="video-archives-list encap outnone">
+					{% for video in current_page.object_list    %}
+	 					<li>
+	                      <div class="video-thumbnail">
+								<a href="/videos/{{video.id}}">
+									<img width="180" src="{{video.youtube_id|youtube_img_from_id}}">
+							    </a>
+						  </div>
+	                      <div class="video-details decou">
+	                        <h6><a href="/videos/{{video.id}}">{{video.description}}</a></h6>
+	                        <span class="author-meta">{% trans "Submitted by"%} {{video.get_user_link}}</span>
+	                      </div><!--//.video-details-->
+	                    </li>
+					{% empty %}
+    						<li>{% trans "Sorry, there are no videos"%}</li>
+					{% endfor%}
+					</ul><!--//.video-archives-list-->
+				</div><!--//.encap-->
+			</div><!--//.node-mini-left-->
+		</div><!--//.video-archives-->
+		{% if current_page.object_list%}
+			{% common_paginator 2 "video-anchor"%}
+		{% endif%}
+  </div><!--//.node-->
+</div><!--//.node-container-->
+
+<script>
+	$(document).ready(function () {
+		$('.video-thumbnail img').hover(
+			function(){
+				$(this).css("border-color","#C52121");
+			},
+			function() {
+				$(this).css("border-color","#898989");
+			}	
+		);
+	})
+</script>
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}
