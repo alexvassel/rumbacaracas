@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 class SlideAdmin( admin.ModelAdmin ):
     list_display = ( 'title', 'datetime_added', 'get_is_actual', 'get_is_visible', 'status' )
     list_editable = ( 'status', )
-    list_filter = ( 'is_visible', )
+    list_filter = ( 'status', )
 
     def get_is_actual( self, slide ):
         """Admin wrapper for slide.is_actual"""
