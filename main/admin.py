@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
 class SlideAdmin( admin.ModelAdmin ):
-    list_display = ( 'title', 'datetime_added', 'get_is_actual', 'get_is_visible', 'status' )
+    list_display = ( 'title', 'datetime_added', 'get_is_actual', 'status', 'get_is_visible' )
     list_editable = ( 'status', )
     list_filter = ( 'status', )
 
