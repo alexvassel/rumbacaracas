@@ -5,7 +5,7 @@ from django.conf import settings
 admin.autodiscover()
 
 urlpatterns = patterns( '',
-    ( r'' , include( 'yourphotos.urls' ) ),
+    ( r'' , include( 'main.urls' ) ),
     ( r'^tinymce/', include( 'tinymce.urls' ) ),
     ( r'^social/', include( 'socialregistration.urls' ) ),
     ( r'^login/$', 'django.views.generic.simple.direct_to_template', {'template': 'login.html'} ),
