@@ -13,6 +13,13 @@ class BigImage( processors.Resize ):
     upscale = False
     crop = False
 
+class SlideImage( processors.Resize ):
+    width = 619
+    height = 258
+    upscale = True
+    crop = True
+
+
 # now let's create an adjustment processor to enhance the image at small sizes
 class EnchanceThumb( processors.Adjustment ):
     contrast = 1.2
@@ -30,3 +37,10 @@ class PhotoBig( ImageSpec ):
     access_as = 'bigimg'
     pre_cache = False
     processors = [BigImage]
+
+
+# now we can define our thumbnail spec
+class PhotoSlide( ImageSpec ):
+    access_as = 'slide'
+    pre_cache = False
+    processors = [SlideImage]

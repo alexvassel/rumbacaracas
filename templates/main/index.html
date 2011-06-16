@@ -1,0 +1,367 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load paging %}
+{% load listtools %}
+
+{% block advbodycls %}front{% endblock %}
+
+
+{% block colleft %}
+<div id="front-slides" class="front-slides box-shadows encap">
+        	<div class="nav-wrapper">
+	        	<div id="nav" class="encap outnone">&nbsp;</div>
+          </div><!--//.nav-wrapper-->
+        	<div id="slides" class="slides">
+            {% for slide in slides%}
+            <div class="slide">
+            	<img src="{{slide.slide.url}}" alt="{{slide.title}}" />
+              <div class="slide-info-wrapper">
+                <div class="slide-info">
+                  <h3><a href="{{slide.link}}">{{slide.title}}</a></h3>
+                  <p>{{slide.description|truncate:140}}</p>
+                  <a href="{{slide.link}}" class="read-more">{%trans "- Read More"%}</a>
+                </div><!--//.slide-info-->
+              </div><!--//.slide-info-wrapper-->
+            </div><!--//.slide-->
+            {%endfor%}
+          </div><!--//.slides-->
+        </div><!--//.front-slides-->
+        <div id="latest-photos" class="latest-photos encap tabs boxed-brief">
+        	<div class="wrapper encap">
+            <div class="title flt-left"><h2>ÚLTIMAS FOTOS</h2></div>
+            <div class="tab-titles flt-right fcml0 lcmr0">
+              <ul id="tab-photo-outline" class="outnone tab-navigation">
+                <li class="box-shadows"><a class="active" href="#tab-events">Eventos</a></li>
+                <li class="box-shadows"><a href="#tab-your-photos">Tus Fotos</a></li>
+              </ul>
+            </div><!--//.tab-titles-->
+          </div><!--//.wrapper-->
+
+          <div id="latest-photos-content" class="latest-photos-content tab-container box-shadows outnone">
+          	<div id="tab-events" class="tab-parts encap">
+            	<div class="photo-teasters">
+              	<ul id="phot-teaser-cycle" class="photo-teaser-cycle encap">
+                	<li>
+                    <div class="image c55l outnone"><a href="#"><img src="/media/images/content/imgs_1.jpg" alt="Eventos" /></a></div>
+                    <div class="photo-teaser c45r">
+                      <h4>21.11.2009</h4>
+                      <h3><a href="#">Colección La Senza 2009</a></h3>
+                      <p>El pasado 26 de noviembre, estuvimos compatiendo con la gente mas prestigiosa de la senza, en su desfile, marca reconocida nivel...</p>
+											<p class="bold fp11"><a href="#">Seguir Leyendo</a></p>
+                    </div><!--//.photo-teaser-->
+                  </li>
+                	<li>
+                    <div class="image c55l outnone"><a href="#"><img src="/media/images/content/imgs_1.jpg" alt="Eventos" /></a></div>
+                    <div class="photo-teaser c45r">
+                      <h4>21.11.2009</h4>
+                      <h3><a href="#">Colección La Senza 2009</a></h3>
+                      <p>El pasado 26 de noviembre, estuvimos compatiendo con la gente mas prestigiosa de la senza, en su desfile, marca reconocida nivel...</p>
+											<p class="bold fp11"><a href="#">Seguir Leyendo</a></p>
+                    </div><!--//.photo-teaser-->
+                  </li>
+                	<li>
+                    <div class="image c55l outnone"><a href="#"><img src="/media/images/content/imgs_1.jpg" alt="Eventos" /></a></div>
+                    <div class="photo-teaser c45r">
+                      <h4>21.11.2009</h4>
+                      <h3><a href="#">Colección La Senza 2009</a></h3>
+                      <p>El pasado 26 de noviembre, estuvimos compatiendo con la gente mas prestigiosa de la senza, en su desfile, marca reconocida nivel...</p>
+											<p class="bold fp11"><a href="#">Seguir Leyendo</a></p>
+                    </div><!--//.photo-teaser-->
+                  </li>
+                	<li>
+                    <div class="image c55l outnone"><a href="#"><img src="/media/images/content/imgs_1.jpg" alt="Eventos" /></a></div>
+                    <div class="photo-teaser c45r">
+                      <h4>21.11.2009</h4>
+                      <h3><a href="#">Colección La Senza 2009</a></h3>
+                      <p>El pasado 26 de noviembre, estuvimos compatiendo con la gente mas prestigiosa de la senza, en su desfile, marca reconocida nivel...</p>
+											<p class="bold fp11"><a href="#">Seguir Leyendo</a></p>
+                    </div><!--//.photo-teaser-->
+                  </li>
+                </ul>
+              </div><!--//.photo-teasers-->
+
+              <div class="more-photos encap">
+                <a id="carousel-prev" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
+                <a id="carousel-next" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
+                <ul class="carousel-images ie-encap">
+                	<li>
+                    <ul class="carousel-slide fcml0 lcmr0">
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2.jpg" alt="Image" />Colección La Senza 2009<br />21.11.2009</a></h6></li>
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2.jpg" alt="Image" />Colección La Senza 2009<br />21.11.2009</a></h6></li>
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2.jpg" alt="Image" />Colección La Senza 2009<br />21.11.2009</a></h6></li>
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2.jpg" alt="Image" />Colección La Senza 2009<br />21.11.2009</a></h6></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul class="carousel-slide fcml0 lcmr0">
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2.jpg" alt="Image" />Colección La Senza 2009<br />21.11.2009</a></h6></li>
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2.jpg" alt="Image" />Colección La Senza 2009<br />21.11.2009</a></h6></li>
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2.jpg" alt="Image" />Colección La Senza 2009<br />21.11.2009</a></h6></li>
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2.jpg" alt="Image" />Colección La Senza 2009<br />21.11.2009</a></h6></li>
+                    </ul>
+                  </li>
+                </ul><!--//.carousel-images-->
+                <div class="cflt"></div>
+              </div><!--//.more-photos-->
+              <div class="cflt"></div>
+            </div><!--//.tab-parts-->
+
+          	<div id="tab-your-photos" class="tab-parts encap">
+
+            	<div class="photo-teasters">
+
+              	<ul id="phot-teaser-cycle" class="photo-teaser-cycle fotos encap">
+                	<li>
+                    <div class="image c55l outnone"><a href="#"><img src="/media/images/content/imgs_8.jpg" alt="Eventos" /></a></div>
+                    <div class="photo-teaser c45r">
+                      <h4>09.09.2009</h4>
+                      <h3><a href="#">Simba The Lion</a></h3>
+                      <p>Simba is a lion character and the protagonist of one of Disney's most famous animated feature films, The Lion King. He is the son of Mufasa and Sarabi, ...</p>
+											<p class="bold fp11"><a href="#">Seguir Leyendo</a></p>
+                    </div><!--//.photo-teaser-->
+                  </li>
+                	<li>
+                    <div class="image c55l outnone"><a href="#"><img src="/media/images/content/imgs_8.jpg" alt="Eventos" /></a></div>
+                    <div class="photo-teaser c45r">
+                      <h4>09.09.2009</h4>
+                      <h3><a href="#">Simba The Lion</a></h3>
+                      <p>Simba is a lion character and the protagonist of one of Disney's most famous animated feature films, The Lion King. He is the son of Mufasa and Sarabi, ...</p>
+											<p class="bold fp11"><a href="#">Seguir Leyendo</a></p>
+                    </div><!--//.photo-teaser-->
+                  </li>
+                	<li>
+                    <div class="image c55l outnone"><a href="#"><img src="/media/images/content/imgs_8.jpg" alt="Eventos" /></a></div>
+                    <div class="photo-teaser c45r">
+                      <h4>09.09.2009</h4>
+                      <h3><a href="#">Simba The Lion</a></h3>
+                      <p>Simba is a lion character and the protagonist of one of Disney's most famous animated feature films, The Lion King. He is the son of Mufasa and Sarabi, ...</p>
+											<p class="bold fp11"><a href="#">Seguir Leyendo</a></p>
+                    </div><!--//.photo-teaser-->
+                  </li>
+                	<li>
+                    <div class="image c55l outnone"><a href="#"><img src="/media/images/content/imgs_8.jpg" alt="Eventos" /></a></div>
+                    <div class="photo-teaser c45r">
+                      <h4>09.09.2009</h4>
+                      <h3><a href="#">Simba The Lion</a></h3>
+                      <p>Simba is a lion character and the protagonist of one of Disney's most famous animated feature films, The Lion King. He is the son of Mufasa and Sarabi, ...</p>
+											<p class="bold fp11"><a href="#">Seguir Leyendo</a></p>
+                    </div><!--//.photo-teaser-->
+                  </li>
+                </ul>
+              </div><!--//.photo-teasers-->
+
+              <div class="more-photos encap">
+                <a id="carousel-prev2" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
+                <a id="carousel-next2" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
+                <ul class="carousel-images fotos ie-encap">
+                	<li>
+                    <ul class="carousel-slide fcml0 lcmr0">
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2_2.jpg" alt="Image" />Simba The Lion<br />09.09.2009</a></h6></li>
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2_2.jpg" alt="Image" />Simba The Lion<br />09.09.2009</a></h6></li>
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2_2.jpg" alt="Image" />Simba The Lion<br />09.09.2009</a></h6></li>
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2_2.jpg" alt="Image" />Simba The Lion<br />09.09.2009</a></h6></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul class="carousel-slide fcml0 lcmr0">
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2_2.jpg" alt="Image" />Simba The Lion<br />09.09.2009</a></h6></li>
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2_2.jpg" alt="Image" />Simba The Lion<br />09.09.2009</a></h6></li>
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2_2.jpg" alt="Image" />Simba The Lion<br />09.09.2009</a></h6></li>
+                      <li><h6><a href="#"><img src="/media/images/content/imgs_2_2.jpg" alt="Image" />Simba The Lion<br />09.09.2009</a></h6></li>
+                    </ul>
+                  </li>
+                </ul><!--//.carousel-images-->
+                <div class="cflt"></div>
+              </div><!--//.more-photos-->
+              <div class="cflt"></div>
+
+            </div><!--//.tab-parts-->
+
+          </div><!--//.latest-photos-content-->
+        </div><!--//.latest-photos-->
+
+        <div class="banner-container box-shadows outnone" style="width: 468px; height: 60px;margin: 0 auto;"><a href="#"><img src="/media/images/banners/banner_4.jpg" alt="Ads" /></a></div><!--//.banner-container-->
+        <div id="outline-briefs" class="outline-briefs boxed-brief">
+        	<div class="outline-navigation">
+            <ul id="outline-titles" class="encap outnone box-shadows equal-width">
+              <li><a href="#">Noticias</a><div class="pointer-tip"></div></li>
+              <li><a href="#">Sitios</a><div class="pointer-tip"></div></li>
+              <li><a href="#">Blog</a><div class="pointer-tip"></div></li>
+              <li><a href="#">Arte y Cultura</a><div class="pointer-tip"></div></li>
+            </ul>
+          </div>
+          <div id="outline-slides" class="outnone encap">
+          	<div class="outline-slide">
+              <dl class="encap">
+                <dt class="c40l"><a href="#"><img src="/media/images/content/imgs_3.jpg" alt="Image" /></a></dt>
+                <dd class="c60r">
+                  <h3><a href="#">James Zabiela y Henry saiz en el teatro metro de Bogotá</a></h3>
+                  <p class="published">17.09.2009 / 10 Comentarios</p>
+                  <p>El próximo viernes 9 de Julio en el Teatro Metro de Bogotá llega, James Zabiela, quien viene a promocionar su nuevo EP Renaissance...</p>
+                  <a class="read-more" href="#">Seguir Leyendo</a>
+                </dd>
+              </dl>
+              <dl class="encap">
+                <dt class="c40l"><a href="#"><img src="/media/images/content/imgs_4.jpg" alt="Image" /></a></dt>
+                <dd class="c60r">
+                  <h3><a href="#">James Zabiela y Henry saiz en el teatro metro de Bogotá</a></h3>
+                  <p class="published">17.09.2009 / 10 Comentarios</p>
+                  <p>El próximo viernes 9 de Julio en el Teatro Metro de Bogotá llega, James Zabiela, quien viene a promocionar su nuevo EP Renaissance...</p>
+                  <a class="read-more" href="#">Seguir Leyendo</a>
+                </dd>
+              </dl>
+              <dl class="encap">
+                <dt class="c40l"><a href="#"><img src="/media/images/content/imgs_5.jpg" alt="Image" /></a></dt>
+                <dd class="c60r">
+                  <h3><a href="#">James Zabiela y Henry saiz en el teatro metro de Bogotá</a></h3>
+                  <p class="published">17.09.2009 / 10 Comentarios</p>
+                  <p>El próximo viernes 9 de Julio en el Teatro Metro de Bogotá llega, James Zabiela, quien viene a promocionar su nuevo EP Renaissance...</p>
+                  <a class="read-more" href="#">Seguir Leyendo</a>
+                </dd>
+              </dl>
+            </div><!--//.outline-slide-->
+          	<div class="outline-slide">
+              <dl class="encap">
+                <dt class="c40l"><a href="#"><img src="/media/images/content/imgs_5.jpg" alt="Image" /></a></dt>
+                <dd class="c60r">
+                  <h3><a href="#">James Zabiela y Henry saiz en el teatro metro de Bogotá</a></h3>
+                  <p class="published">17.09.2009 / 10 Comentarios</p>
+                  <p>El próximo viernes 9 de Julio en el Teatro Metro de Bogotá llega, James Zabiela, quien viene a promocionar su nuevo EP Renaissance...</p>
+                  <a class="read-more" href="#">Seguir Leyendo</a>
+                </dd>
+              </dl>
+              <dl class="encap">
+                <dt class="c40l"><a href="#"><img src="/media/images/content/imgs_3.jpg" alt="Image" /></a></dt>
+                <dd class="c60r">
+                  <h3><a href="#">James Zabiela y Henry saiz en el teatro metro de Bogotá</a></h3>
+                  <p class="published">17.09.2009 / 10 Comentarios</p>
+                  <p>El próximo viernes 9 de Julio en el Teatro Metro de Bogotá llega, James Zabiela, quien viene a promocionar su nuevo EP Renaissance...</p>
+                  <a class="read-more" href="#">Seguir Leyendo</a>
+                </dd>
+              </dl>
+              <dl class="encap">
+                <dt class="c40l"><a href="#"><img src="/media/images/content/imgs_4.jpg" alt="Image" /></a></dt>
+                <dd class="c60r">
+                  <h3><a href="#">James Zabiela y Henry saiz en el teatro metro de Bogotá</a></h3>
+                  <p class="published">17.09.2009 / 10 Comentarios</p>
+                  <p>El próximo viernes 9 de Julio en el Teatro Metro de Bogotá llega, James Zabiela, quien viene a promocionar su nuevo EP Renaissance...</p>
+                  <a class="read-more" href="#">Seguir Leyendo</a>
+                </dd>
+              </dl>
+            </div><!--//.outline-slide-->
+          	<div class="outline-slide">
+              <dl class="encap">
+                <dt class="c40l"><a href="#"><img src="/media/images/content/imgs_4.jpg" alt="Image" /></a></dt>
+                <dd class="c60r">
+                  <h3><a href="#">James Zabiela y Henry saiz en el teatro metro de Bogotá</a></h3>
+                  <p class="published">17.09.2009 / 10 Comentarios</p>
+                  <p>El próximo viernes 9 de Julio en el Teatro Metro de Bogotá llega, James Zabiela, quien viene a promocionar su nuevo EP Renaissance...</p>
+                  <a class="read-more" href="#">Seguir Leyendo</a>
+                </dd>
+              </dl>
+              <dl class="encap">
+                <dt class="c40l"><a href="#"><img src="/media/images/content/imgs_3.jpg" alt="Image" /></a></dt>
+                <dd class="c60r">
+                  <h3><a href="#">James Zabiela y Henry saiz en el teatro metro de Bogotá</a></h3>
+                  <p class="published">17.09.2009 / 10 Comentarios</p>
+                  <p>El próximo viernes 9 de Julio en el Teatro Metro de Bogotá llega, James Zabiela, quien viene a promocionar su nuevo EP Renaissance...</p>
+                  <a class="read-more" href="#">Seguir Leyendo</a>
+                </dd>
+              </dl>
+              <dl class="encap">
+                <dt class="c40l"><a href="#"><img src="/media/images/content/imgs_5.jpg" alt="Image" /></a></dt>
+                <dd class="c60r">
+                  <h3><a href="#">James Zabiela y Henry saiz en el teatro metro de Bogotá</a></h3>
+                  <p class="published">17.09.2009 / 10 Comentarios</p>
+                  <p>El próximo viernes 9 de Julio en el Teatro Metro de Bogotá llega, James Zabiela, quien viene a promocionar su nuevo EP Renaissance...</p>
+                  <a class="read-more" href="#">Seguir Leyendo</a>
+                </dd>
+              </dl>
+            </div><!--//.outline-slide-->
+          	<div class="outline-slide">
+              <dl class="encap">
+                <dt class="c40l"><a href="#"><img src="/media/images/content/imgs_3.jpg" alt="Image" /></a></dt>
+                <dd class="c60r">
+                  <h3><a href="#">James Zabiela y Henry saiz en el teatro metro de Bogotá</a></h3>
+                  <p class="published">17.09.2009 / 10 Comentarios</p>
+                  <p>El próximo viernes 9 de Julio en el Teatro Metro de Bogotá llega, James Zabiela, quien viene a promocionar su nuevo EP Renaissance...</p>
+                  <a class="read-more" href="#">Seguir Leyendo</a>
+                </dd>
+              </dl>
+              <dl class="encap">
+                <dt class="c40l"><a href="#"><img src="/media/images/content/imgs_4.jpg" alt="Image" /></a></dt>
+                <dd class="c60r">
+                  <h3><a href="#">James Zabiela y Henry saiz en el teatro metro de Bogotá</a></h3>
+                  <p class="published">17.09.2009 / 10 Comentarios</p>
+                  <p>El próximo viernes 9 de Julio en el Teatro Metro de Bogotá llega, James Zabiela, quien viene a promocionar su nuevo EP Renaissance...</p>
+                  <a class="read-more" href="#">Seguir Leyendo</a>
+                </dd>
+              </dl>
+              <dl class="encap">
+                <dt class="c40l"><a href="#"><img src="/media/images/content/imgs_5.jpg" alt="Image" /></a></dt>
+                <dd class="c60r">
+                  <h3><a href="#">James Zabiela y Henry saiz en el teatro metro de Bogotá</a></h3>
+                  <p class="published">17.09.2009 / 10 Comentarios</p>
+                  <p>El próximo viernes 9 de Julio en el Teatro Metro de Bogotá llega, James Zabiela, quien viene a promocionar su nuevo EP Renaissance...</p>
+                  <a class="read-more" href="#">Seguir Leyendo</a>
+                </dd>
+              </dl>
+            </div><!--//.outline-slide-->
+          </div><!--//.outline-slides-->
+          <div id="outlines-list" class="outlines-list outnone box-shadows">
+          	<ul class="encap">
+            	<li><a href="#">Rumba News</a></li>
+              <li><a href="#">Music News</a></li>
+          	  <li><a href="#">Actualidad</a></li>
+          	  <li><a href="#">Entrevistas</a></li>
+          	  <li><a href="#">Guía Impresa</a></li>
+          	  <li><a href="#">DJ Mix</a></li>
+          	  <li><a href="#">Sitios</a></li>
+          	  <li><a href="#">Blog</a></li>
+          	</ul>
+          </div><!--//.outlines-list-->
+        </div><!--//.outline-briefs-->
+        <div id="front-videos" class="front-videos encap tabs boxed-brief">
+        	<div class="wrapper encap">
+            <div class="title flt-left"><h2>Videos</h2></div>
+            <div class="tab-titles flt-right fcml0 lcmr0">
+              <ul id="tab-videos-outline" class="outnone tab-navigation">
+                <li><a class="active" href="#">Ver + Videos</a></li>
+                <li><a class="decou sube-un-video" href="#">Sube un Video</a></li>
+              </ul>
+            </div><!--//.tab-titles-->
+          </div><!--//.wrapper-->
+          <div id="videos-content" class="videos-content tab-container box-shadows outnone">
+          	<div id="tab-all-videos" class="outnone tab-parts encap">
+              <div class="video-slides c58l">
+                <ul>
+                  <li><a href="#"><img src="/media/images/content/youtube.jpg" width="350" height="288" alt="youtube"/></a></li>
+                  <li><a href="#"><img src="/media/images/content/youtube.jpg" width="350" height="288" alt="youtube"/></a></li>
+                  <li><a href="#"><img src="/media/images/content/youtube.jpg" width="350" height="288" alt="youtube"/></a></li>
+                  <li><a href="#"><img src="/media/images/content/youtube.jpg" width="350" height="288" alt="youtube"/></a></li>
+                  <li><a href="#"><img src="/media/images/content/youtube.jpg" width="350" height="288" alt="youtube"/></a></li>
+                </ul>
+              </div><!--//.video-slides-->
+              <div class="recent-video-list c42r">
+                <ul>
+                  <li><a href="#">Video musical mr. bipolar de cerobitdes - <span>por jark</span></a></li>
+                  <li><a href="#">Video musical mr. bipolar de cerobitdes - <span>por jark</span></a></li>
+                  <li><a href="#">Video musical mr. bipolar de cerobitdes - <span>por jark</span></a></li>
+                  <li><a href="#">Video musical mr. bipolar de cerobitdes - <span>por jark</span></a></li>
+                  <li><a href="#">Video musical mr. bipolar de cerobitdes - <span>por jark</span></a></li>
+                </ul>
+              </div><!--//.recent-video-list-->
+            </div><!--//.tab-parts-->
+          	<div id="tab-upload-video" class="tab-parts encap">
+            </div><!--//.tab-parts-->
+          </div><!--//.latest-photos-content-->
+        </div><!--//.latest-photos-->
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}
