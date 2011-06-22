@@ -91,6 +91,7 @@ MIDDLEWARE_CLASSES = (
 
 AUTHENTICATION_BACKENDS = ( 
  'socialregistration.auth.FacebookAuth',
+ 'socialregistration.auth.TwitterAuth',
  'django.contrib.auth.backends.ModelBackend',
  )
 
@@ -99,13 +100,24 @@ AUTHENTICATION_BACKENDS = (
 FACEBOOK_APP_ID = '195992407109917'
 FACEBOOK_API_KEY = '15d12186d338568b8b5634e27aafb7cd'
 FACEBOOK_SECRET_KEY = 'e450064cd78715d484825ed6c3b4e304'
-SOCIALREGISTRATION_GENERATE_USERNAME = True
+FACEBOOK_REQUEST_PERMISSIONS = 'email'
+
+
+TWITTER_CONSUMER_KEY = 'zSTLzRjnKz2uQvSX5AgQ'
+TWITTER_CONSUMER_SECRET_KEY = 'nwE8Y5CNllSMocUDom1K3k4FyVml8l5FU2W1uH0o'
+TWITTER_REQUEST_TOKEN_URL = 'https://api.twitter.com/oauth/request_token'
+TWITTER_ACCESS_TOKEN_URL = 'https://api.twitter.com/oauth/access_token'
+TWITTER_AUTHORIZATION_URL = 'https://api.twitter.com/oauth/authorize'
+
 
 OLDBOGOTA_PHOTO_PATH = '/home/maksim/Documents/Develop/oldbogota/processed'
 
-LOGIN_REDIRECT_URL = "/"
+ZINNIA_ENTRY_BASE_MODEL = 'news.zinniaModels.MyEntry'
+
+#LOGIN_REDIRECT_URL = "/"
 
 INTERNAL_IPS = ( '127.0.0.1', )
+
 
 ROOT_URLCONF = 'urls'
 
@@ -122,13 +134,13 @@ FIXTURE_DIRS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = ( 
     "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.contrib.messages.context_processors.messages",
     'django.core.context_processors.request',
     'zinnia.context_processors.version', # Optional
     'zinnia.context_processors.media',
+    "django.core.context_processors.debug",
  )
 
 
@@ -141,16 +153,23 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.sites',
+    'tinymce',
     'socialregistration',
     'events',
     'locations',
     'yourphotos',
+    'yourvideos',
     'people',
-    'debug_toolbar',
+    'main',
+
     'sortable',
     'tagging',
     'mptt',
     'zinnia',
+    'news',
+    'preferences',
+    'googlesearch',
+    'debug_toolbar',
     #'photologue',
     #'tagging',
     # Uncomment the next line to enable admin documentation:
