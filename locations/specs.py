@@ -101,3 +101,17 @@ class EventLogo( ImageSpec ):
     processors = [EventBigHighThumb, EnchanceThumb]
 
 
+
+class SlideImage( processors.Resize ):
+    width = 619
+    height = 258
+    upscale = True
+    crop = True
+
+
+# now we can define our thumbnail spec
+class PhotoSlide( ImageSpec ):
+    access_as = 'slide'
+    pre_cache = False
+    processors = [SlideImage]
+

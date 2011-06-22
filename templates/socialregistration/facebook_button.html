@@ -1,20 +1,11 @@
 {% load socialregistration_tags %}
 {% load i18n %}
-{% comment %}
-<fb:login-button autologoutlink="true" perms="email,user_birthday,status_update,publish_stream"></fb:login-button>
-{% endcomment %}
-
-{% if logged_in %}
-    <a href="{% url social_logout %}">
-		{% trans "Logout" %}
-	</a>
-{% else %}
-	<form class="connect-button" name="login" method="post" action="{% if logged_in %}{% url facebook_connect %}{% else %}{% url facebook_login %}{% endif %}">
-	{% social_csrf_token %}
-	{% if next %}
-	    <input type="hidden" name="next" value="{{ next }}" />
-	{% endif %}
-	<input type="image" onclick="facebookConnect(this.form);return false;" src="http://static.ak.fbcdn.net/images/fbconnect/login-buttons/connect_light_large_long.gif" />
-	</form>
+<form class="connect-button" name="login" method="post" action="{% if logged_in %}{% url facebook_connect %}{% else %}{% url facebook_login %}{% endif %}">
+{% social_csrf_token %}
+{% if next %}
+    <input type="hidden" name="next" value="{{ next }}" />
 {% endif %}
+<input type="image" class="btnfacebook" onclick="facebookConnect(this.form);return false;" src="/media/images/s.gif" />
+</form>
+
 

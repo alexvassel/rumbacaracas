@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load googlesearch_inclusion_tags %}
+{% load i18n %}
+
+{% block title %}{% trans "Search | Rumbabogota" %}{% endblock %}
+
+{% block colleft %}
+<div class="node-container videos box-shadows encap">
+	  <div class="title-wrap encap">
+	    <span class="flt-left"><h2 class="title">{{ title }}</h2></span>
+	    <span class="flt-right">
+	    </span>
+	  </div><!--//.title-wrap-->
+	<div class="node bb-none encap">
+		<div class="generic">
+		    <h2>{% trans "You searched for "%}"{{ request.GET.q }}"</h2>
+			<div class="rich">
+				{% googlesearch_input %}
+				<div class="rich" style="height:1000px; width:600px; overflow: hidden; clear:both">
+                	{% googlesearch_results %}
+                </div>
+			</div>
+		</div><!--/generic-->
+  </div><!--//.node-->
+</div><!--//.node-container-->
+
+{% endblock %}
+
+{% block colright %}
+<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
+          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
+</div><!--//.banner-container-->
+{% endblock %}

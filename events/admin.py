@@ -12,10 +12,10 @@ make_published.short_description = _( "Mark selected events as published" )
 class EventAdmin( SortableAdmin ):
     prepopulated_fields = {"slug": ( "title", )}
     filter_horizontal = ( "repeat", )
-    list_display = SortableAdmin.list_display + ( 'title', 'view', 'category', 'status', 'featured', )
-    list_editable = SortableAdmin.list_editable + ( 'status', 'featured' )
+    list_display = SortableAdmin.list_display + ( 'title', 'view', 'category', 'get_dates', 'status', 'show_in_events_slider', 'show_in_main_slider', )
+    list_editable = SortableAdmin.list_editable + ( 'status', 'show_in_events_slider', 'show_in_main_slider', )
     list_display_links = ( 'title', )
-    list_filter = ( 'status', 'featured', )
+    list_filter = ( 'status', 'show_in_events_slider', 'show_in_main_slider', )
     actions = [make_published]
     ordering = ( 'position', )
     readonly_fields = ( 'add_user', )
@@ -42,7 +42,7 @@ class EventAdmin( SortableAdmin ):
         'user',
         'description',
         'status',
-        'featured',
+        'show_in_events_slider', 'show_in_main_slider',
         'add_user',
     )
 

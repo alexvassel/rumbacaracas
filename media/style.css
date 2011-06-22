@@ -416,7 +416,7 @@ header-primary a.facebookbtn:hover {
 
 #header-primary .rows .sec-right ul{
 	font-size: 12px;
-	width: 550px;	
+	width: 540px;	
 }
 .ie #header-primary .rows .sec-right ul{
 	width: 548px;
@@ -505,13 +505,33 @@ li.sobre1 a.fotosobre1:hover {
 #header-primary .sec-right .top-search-form input[type=submit],
 #main-contents #col-left #outline-briefs #outline-slides .outline-slide a.read-more,
 #main-contents #col-left .node ul.teaser-options li a.read-more,
-#main-contents #col-left a.read-more-red, #main-contents #col-right a.read-more-red{
+#main-contents #col-left a.read-more-red, #main-contents #col-right a.read-more-red,
+#main-contents #col-left #googleSearch input[type=submit]
+{
 	background: #BC1D1D url(images/btn_red.gif) repeat-x scroll center top;
 	border: 1px solid #801A1A;
 	font-size: 13px;
 	text-transform: uppercase;
 	color: #FFFFFF;
 }
+
+
+#main-contents #col-left #googleSearch input[type=submit]{
+	width: 70px;
+	float: right;
+}
+#main-contents #col-left #googleSearch #edit-search-block-form-1-wrapper {
+	float: left;
+	width: 520px;
+	padding-bottom: 10px;
+}
+
+#main-contents #col-left #googleSearch input.form-text
+{
+	width: 520px;
+}
+
+
 #header-primary .sec-right .top-search-form input.submit:hover,
 #header-primary .sec-right .top-search-form input.button:hover,
 #header-primary .sec-right .top-search-form input[type=button]:hover,
@@ -1871,6 +1891,14 @@ div.breadcrumb a.active {
   line-height: 30px !important;
   width: auto !important;
 }
+#main-contents a.socializer-15{
+  background: transparent url("images/icons/article.jpg") no-repeat;
+  color: #898989 !important;
+  padding: 0 0 0 35px !important;
+  line-height: 30px !important;
+  width: auto !important;
+}
+
 #main-contents a.socializer-8{
   background: transparent url("images/sprites/sprites_social_1.gif") no-repeat scroll center -375px;
 }
@@ -3733,20 +3761,21 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 }
 
 
-li.btnfacebook1 a.btnfacebook {
-	background: url(images/facebook.png) no-repeat scroll; width:126px; height:28px; margin-top:8px; margin-right:5px;
+
+li.btnfacebook1 input.btnfacebook {
+	background: url(images/facebook.png) no-repeat scroll; width:126px; margin-top:8px; margin-right:5px;
 }
-li.btnfacebook1 a.btnfacebook:hover {
-	background: url(images/facebook_hov.png) no-repeat scroll; width:126px; height:28px;  margin-top:8px; margin-right:5px;
+li.btnfacebook1 input.btnfacebook:hover {
+	background: url(images/facebook_hov.png) no-repeat scroll; width:126px;  margin-top:8px; margin-right:5px;
 
 }
 
-li.btntwitter1 a.btntwitter {
-	background: url(images/twitter.png) no-repeat scroll; width:126px; height:28px;  margin-top:9px; margin-right:5px; margin-left:5px;
+li.btntwitter1 input.btntwitter {
+	background: url(images/twitter.png) no-repeat scroll; width:126px; margin-top:9px; margin-right:5px; margin-left:5px;
 
 }
-li.btntwitter1 a.btntwitter:hover{
-	background: url(images/twitter_hov.png) no-repeat scroll; width:126px; height:28px;  margin-top:9px; margin-right:5px;margin-left:5px;
+li.btntwitter1 input.btntwitter:hover{
+	background: url(images/twitter_hov.png) no-repeat scroll; width:126px;  margin-top:9px; margin-right:5px;margin-left:5px;
 
 }
 

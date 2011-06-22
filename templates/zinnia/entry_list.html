@@ -4,7 +4,7 @@
 
 {% block advbodycls %}section-blog{% endblock %}
 
-{% block title %}{% if category %}{% trans "Category" %} {{ category }}{% endif %}{% if tag %}{% trans "Tag" %} {{ tag }}{% endif %}{% if author %}{% trans "Author" %} {{ author }}{% endif %}{% if page_obj %}{% ifnotequal page_obj.number 1 %}{% trans "Page" %} {{ page_obj.number }}{% endifnotequal %}{% endif %}{% endblock %}
+{% block title %}{% if category %}{{ category }}{% endif %}{% if tag %}{% trans "Tag" %} {{ tag }}{% endif %}{% if author %}{% trans "Author" %} {{ author }}{% endif %}{% if page_obj %}{% ifnotequal page_obj.number 1 %}{% trans "Page" %} {{ page_obj.number }}{% endifnotequal %}{% endif %}{% endblock %}
 
 {% block titlehdr %}
 {% if category %}

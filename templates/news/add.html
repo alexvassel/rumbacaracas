@@ -1,13 +1,22 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}{% trans "Locations | Rumbabogota" %}{% endblock %}
+{% block title %}{% trans "News | Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load listtools %}
 {% block colleft %}
 <div class="node-container gente box-shadows encap">
   <div class="title-wrap encap">
-
-    <span class="flt-left"><h2 class="title addnewshdr">{% trans "Add News"%}</h2></span>
+    <span class="flt-left">
+		{%if type == 'blog'%}
+			<h2 class="title addbloghdr">
+				{% trans "Add Article"%}
+			</h2>
+		{% else %}
+			<h2 class="title addnewshdr">
+				{% trans "Add News"%}
+			</h2>
+		{% endif %}
+	</span>
     <span class="flt-right">
 	  <img src="/media/images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
       <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
@@ -20,6 +29,7 @@
 	<h2>{% trans "Submit Your News:"%}</h2>
   	<form enctype="multipart/form-data" method="post" action="" id="addform">
     	{% csrf_token %}
+    	{{ imagesForm.management_form }}
 		<div>
 	      <table border="0" cellpadding="7" cellspacing="0" width="100%">
 	        {% for field in form %}
@@ -59,6 +69,42 @@
 						</td>
 		        	</tr>
 				{% else %}
+				{% if field.name == 'image' %}
+					<tr>
+						<td width="250">
+							{% if field.field.required %}
+								<span class="mandatory">*</span>
+							{% else %}
+								<span class="space"></span>
+							{% endif %}
+							{{ field.label_tag }}
+							{% if field.errors %}
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+						<td class="textbox">{{ field }}
+							{% if not forloop.last and not completed and not errors%}
+		        				<a href="#" onclick="$('#set0').show('blind'); $(this).remove( ); return false;">{% trans "Upload additional image"%}</a>
+							{% endif%}
+						</td>
+		        	</tr>
+		        	{% for form in imagesForm.forms %}
+		        		<tr id="set{{forloop.counter0}}" {%if not completed and not errors%}style="display:none"{% endif %}>
+							<td width="250">
+								<span class="space"></span>
+								{{ form.image.label_tag }}
+								{% if form.image.errors %}
+						        		<br/>{{ form.image.errors }}
+					        	{% endif%}
+							</td>
+							<td class="textbox">{{ form.image }}
+								{% if not forloop.last and not completed and not errors%}
+			        				<a href="#" onclick="$('#set{{forloop.counter}}').show('blind'); $(this).remove( ); return false;">{% trans "Upload more additional images"%}</a>
+								{% endif%}
+							</td>
+			        	</tr>
+					{% endfor %}
+				{% else %}
 					<tr>
 						<td width="250">
 							{% if field.field.required %}
@@ -75,7 +121,9 @@
 		        	</tr>
 				{% endif %}
 				{% endif %}
+				{% endif %}
 			{% endfor %}
+			
 			<tr>
 		        <td colspan="2"><small><span class="space"> </span>{% trans "The fields marked with"%} <span class="mandatory">*</span> {% trans "are required"%}</small></td>
 		    </tr>

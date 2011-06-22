@@ -1,5 +1,10 @@
 {% load i18n %}
 {% load facebook_tags %}
+{% load twitter_tags %}
+{% load socialregistration_tags %}
+{% load googlesearch_inclusion_tags %}
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -46,10 +51,18 @@
          <div class="sec-left flt-left">
 
           <ul class="top-menu-social">
-          <li class="btnfacebook1"><a href="#" class="btnfacebook"></a></li>
-      	  <li class="opcion0"> o </li>
-          <li class="btntwitter1"><a href="#" class="btntwitter"></a></li>
-          <li class="sepL">&nbsp;</li>
+		{% if logged_in %}
+		    <li class="opcion0">
+		    	<a href="{% url social_logout %}">
+					{% trans "Logout" %}
+				</a>
+			</li>
+		{% else %}
+            <li class="btnfacebook1">{% facebook_button %}</li>
+            <li class="opcion0"> {%trans "or"%} </li>
+            <li class="btntwitter1">{% twitter_button %}</li>
+		{% endif %}            
+            <li class="sepL">&nbsp;</li>
 
           </ul>
 
@@ -78,21 +91,17 @@
           	<li class="newsletter-subscribe"><a href="#">E-RUMBA<br /><span>suscríbete</span></a></li>
            	<li class="sepB">&nbsp;</li>
             <li class="siguenosft">Síguenos:</li>
+
+            
+            
           	<li class="social-freak"><a class="facebook-fanpage" href="#"><span class="hidden">Share on Facebook</span></a></li>
             <li class="social-freak"><a class="twitter-page" href="#"><span class="hidden">Follow us on Twitter</span></a></li>
+            
 
             <li class="sepBL">&nbsp;</li>
             <li class="top-search-form">
-							<form id="search-block-form" method="post" accept-charset="UTF-8" action="/">
-								<div>
-                	<div id="edit-search-block-form-1-wrapper" class="form-item">
-										<input type="text" class="form-text" title="Buscar" value="" size="15" id="edit-search-block-form-1" name="search_block_form" maxlength="128">
-									</div>
-									<input type="submit" class="form-submit" value="Buscar" id="edit-submit-1" name="op">
-								</div>
-
-              </form>
-						</li>
+            	{% googlesearch_input %}
+			</li>
 
           </ul>
         </div><!--//.flt-right-->

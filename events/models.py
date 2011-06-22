@@ -27,11 +27,14 @@ class EventCategory( models.Model ):
 class OccurrenceManager( models.Manager ):
     use_for_related_fields = True
 
-    def get_occuriences( self, start_date = None, end_date = None ):
+    def get_occuriences( self, start_date = None, end_date = None, qs = None ):
 
         results = list()
 
-        qs = self.filter( 
+        if qs is None:
+            qs = self.all()
+
+        qs = qs.filter( 
             models.Q( 
                 from_date__gte = start_date,
                 to_date__lte = end_date,
@@ -121,7 +124,8 @@ class Event( ImageModel, Sortable ):
     description = models.TextField( _( 'Event Description' ), blank = True )
     add_user = models.ForeignKey( User , blank = True , null = True )
     status = models.CharField( max_length = 10, choices = EVENT_STATUSES, default = 1 )
-    featured = models.BooleanField( default = False )
+    show_in_events_slider = models.BooleanField( _( 'Show in Events Slider' ), default = False )
+    show_in_main_slider = models.BooleanField( _( 'Show in Main Slider' ), default = False )
 
     def view( self ):
         return u'<a target="_blank" href="/events/%s">%s</a>' % ( self.slug, _( "View on site" ) )
@@ -136,6 +140,27 @@ class Event( ImageModel, Sortable ):
 
     def __unicode__( self ):
         return self.title
+
+
+    @models.permalink
+    def get_absolute_url( self ):
+        """Return entry's URL"""
+        return ( 'event_details', (), {
+            'slug': self.slug} )
+
+
+
+    def get_dates ( self ):
+        if self.from_date == self.to_date:
+                str_repr = str( self.from_date )
+        else:
+            str_repr = str( self.from_date ) + u' to ' + str( self.to_date )
+
+        if self.repeat.all():
+            str_repr = str_repr + " ( " + ", ".join( [weekday.title for weekday in self.repeat.all()] ) + " )"
+        return str_repr
+    get_dates.short_description = _( 'Event Dates' )
+
     class Meta( Sortable.Meta ):
         verbose_name = _( 'Event' )
         verbose_name_plural = _( 'Events' )

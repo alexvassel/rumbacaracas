@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load zinnia_tags tagging_tags i18n %}
+{% load dumper tools%}
 
 {% block breadcrumbs %}
   {% zinnia_breadcrumbs "->" "News"%}
@@ -12,7 +13,23 @@
 		<span class="flt-right">
 		  <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
 	        <li>
-				<a class="socializer-7" href="/news/add"><span style="padding-left:5px">{%trans "Add News"%}</span></a>
+	        	{% if category.slug == "blog" %}
+	        		<a class="socializer-15" href="/news/blog/add">
+						<span style="padding-left:5px">{%trans "Add Article"%}</span>
+					</a>
+        		{%else%}
+        		{% with first_cat=object.categories.all|first %}
+					{% if first_cat.slug == "blog"%}
+						<a class="socializer-15" href="/news/blog/add">
+							<span style="padding-left:5px">{%trans "Add Article"%}</span>
+						</a>
+					{%else%}
+						<a class="socializer-7" href="/news/add">
+							<span style="padding-left:5px">{%trans "Add News"%}</span>
+						</a>
+					{% endif %}
+				{% endwith %}
+        		{% endif %}
 			</li>
 	      </ul>
 		</span>

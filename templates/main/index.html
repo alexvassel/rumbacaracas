@@ -14,17 +14,21 @@
 	        	<div id="nav" class="encap outnone">&nbsp;</div>
           </div><!--//.nav-wrapper-->
         	<div id="slides" class="slides">
-            {% for slide in slides%}
-            <div class="slide">
-            	<img src="{{slide.slide.url}}" alt="{{slide.title}}" />
-              <div class="slide-info-wrapper">
-                <div class="slide-info">
-                  <h3><a href="{{slide.link}}">{{slide.title}}</a></h3>
-                  <p>{{slide.description|truncate:140}}</p>
-                  <a href="{{slide.link}}" class="read-more">{%trans "- Read More"%}</a>
-                </div><!--//.slide-info-->
-              </div><!--//.slide-info-wrapper-->
-            </div><!--//.slide-->
+            {% for slide, type in slides%}
+	            <div class="slide">
+	            	<img src="{{slide.slide.url}}" alt="{{slide.title}}" />
+	              <div class="slide-info-wrapper">
+	                <div class="slide-info">
+	                  <h3><a href="{{slide.get_absolute_url}}">{{slide.title}}</a></h3>
+	                  {%if type == 'event'%}
+	                  	<p>{{slide.description|truncate:140}}</p>
+	                  {% else %}
+	                  	<p>{{slide.short|truncate:140}}</p>
+	                  {% endif %}
+	                  <a href="{{slide.get_absolute_url}}" class="read-more">{%trans "- Read More"%}</a>
+	                </div><!--//.slide-info-->
+	              </div><!--//.slide-info-wrapper-->
+	            </div><!--//.slide-->
             {%endfor%}
           </div><!--//.slides-->
         </div><!--//.front-slides-->
