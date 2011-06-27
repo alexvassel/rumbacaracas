@@ -2144,7 +2144,11 @@ padding-top:2px;
   display: block;
   margin: 15px auto 20px;
   border: 2px solid #898989;
-  width:250px; height:200px;
+  
+}
+
+#main-contents #col-left .node ul.node-mini-list div.blog img.main-image{ /* updated by saqib */
+	width:250px; height:200px;
 }
 
 a.seguir-link{  /* updated by saqib */
