@@ -24,7 +24,11 @@ from django.forms.models import inlineformset_factory
 @render_to( 'news/add.html' )
 def add( request, type ):
     request.breadcrumbs( _( 'News' ) , '/news' )
-    request.breadcrumbs( _( 'Add news' ) , request.path_info )
+
+    if type == 'blog':
+        request.breadcrumbs( _( 'Add Article' ) , request.path_info )
+    else :
+        request.breadcrumbs( _( 'Add News' ) , request.path_info )
 
     EntryImageFormSet = inlineformset_factory( 
         Entry,

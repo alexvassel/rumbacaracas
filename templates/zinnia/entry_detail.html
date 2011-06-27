@@ -35,6 +35,13 @@
 			<img class="main-image2" src="{{ object.image.url }}" alt="{{ object.title }}" />
 		{% endif %}
 		{{object_content}}
+		{% if object.source%}
+		<p> 
+			<strong>
+				{% trans "+ info: " %}{{object.source}}
+			</strong>
+        </p>
+        {% endif %}                    
 	</div><!--//.content-->
 </div><!--//.node-->
 <div class="encap" id="disqus_thread">

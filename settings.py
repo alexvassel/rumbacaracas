@@ -148,7 +148,6 @@ INSTALLED_APPS = (
     'yourvideos',
     'people',
     'main',
-
     'sortable',
     'tagging',
     'mptt',

@@ -28,7 +28,7 @@
     	<ul class="node-mini-list">
 			{% for object in object_list %}
 			<li id="entry-{{ object.pk }}" class="hentry{% if object.featured %} featured{% endif %} span-16 last">
-			  {% with object.html_content|truncatewords_html:15|safe as object_content %}
+			  {% with object.short as object_content %}
 			  {% include "zinnia/_entry_detail.html" %}
 			  {% endwith %}
 			</li>
