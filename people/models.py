@@ -38,6 +38,12 @@ class PhotoEvent( ImageModel ):
     import_photo.allow_tags = True
     import_photo.short_description = _( 'Import page link' )
 
+    @models.permalink
+    def get_absolute_url( self ):
+        """Return entry's URL"""
+        return ( 'people_details', (), {
+            'slug': self.slug} )
+
     def __unicode__( self ):
         return self.title
 
@@ -56,6 +62,13 @@ class Photo( ImageModel ):
     image = models.ImageField( upload_to = 'images/people' )
     thumb = models.ImageField( upload_to = 'images/people' )
     datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
+
+
+    @models.permalink
+    def get_absolute_url( self ):
+        """Return entry's URL"""
+        return ( 'people_slider', (), {
+            'photo_id': self.id} )
 
     def thumb_tag( self ):
         if self.id:

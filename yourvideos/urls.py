@@ -4,5 +4,5 @@ urlpatterns = patterns( 'yourvideos.views',
     ( r'^$', 'index' ),
     ( r'^add$', 'add' ),
     ( r'^delete/(?P<id>\d+)$', 'delete' ),
-    ( r'^(?P<id>\d+)$', 'detail' ),
+    url( r'^(?P<id>\d+)$', 'detail' , name = "video_details" ),
  )

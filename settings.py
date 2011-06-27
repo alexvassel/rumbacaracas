@@ -9,17 +9,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'bogota', # Or path to database file if using sqlite3.
-        'USER': 'root', # Not used with sqlite3.
-        'PASSWORD': 'cleopatra', # Not used with sqlite3.
-        'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '', # Set to empty string for default. Not used with sqlite3.
-    }
-}
-
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -33,9 +22,7 @@ TIME_ZONE = 'America/Chicago'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
-LOCALE_PATHS = ( 
-    '/home/maksim/Documents/Develop/rumbabogota/locale',
- )
+
 
 SITE_ID = 1
 
@@ -49,9 +36,7 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/home/maksim/Documents/Develop/rumbabogota/media'
 
-STATIC_DOC_ROOT = '/home/maksim/Documents/Develop/rumbabogota/media'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -103,6 +88,7 @@ FACEBOOK_SECRET_KEY = 'e450064cd78715d484825ed6c3b4e304'
 FACEBOOK_REQUEST_PERMISSIONS = 'email'
 
 
+
 TWITTER_CONSUMER_KEY = 'zSTLzRjnKz2uQvSX5AgQ'
 TWITTER_CONSUMER_SECRET_KEY = 'nwE8Y5CNllSMocUDom1K3k4FyVml8l5FU2W1uH0o'
 TWITTER_REQUEST_TOKEN_URL = 'https://api.twitter.com/oauth/request_token'
@@ -110,9 +96,18 @@ TWITTER_ACCESS_TOKEN_URL = 'https://api.twitter.com/oauth/access_token'
 TWITTER_AUTHORIZATION_URL = 'https://api.twitter.com/oauth/authorize'
 
 
-OLDBOGOTA_PHOTO_PATH = '/home/maksim/Documents/Develop/oldbogota/processed'
+
 
 ZINNIA_ENTRY_BASE_MODEL = 'news.zinniaModels.MyEntry'
+
+
+OPENX_URL = 'http://ads.2rumba.com/www/api/v2/xmlrpc/'
+#OPENX_URL = 'http://ads.2rumba.com/www/delivery/axmlrpc.php'
+OPENX_USERNAME = 'eli'
+OPENX_PASSWORD = 'adminbanners'
+
+
+
 
 #LOGIN_REDIRECT_URL = "/"
 
@@ -121,16 +116,8 @@ INTERNAL_IPS = ( '127.0.0.1', )
 
 ROOT_URLCONF = 'urls'
 
-TEMPLATE_DIRS = ( 
-    '/home/maksim/Documents/Develop/rumbabogota/templates',
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
- )
 
-FIXTURE_DIRS = ( 
-   '/home/maksim/Documents/Develop/rumbabogota/locations/fixtures/',
- )
+
 
 TEMPLATE_CONTEXT_PROCESSORS = ( 
     "django.contrib.auth.context_processors.auth",
@@ -175,3 +162,10 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
  )
+
+try:
+    import socket
+    hostname = socket.gethostname().replace( '.', '_' ).replace( '-', '_' )
+    exec "from host_settings.%s import *" % hostname
+except ImportError, e:
+    raise e

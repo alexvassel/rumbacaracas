@@ -1,6 +1,8 @@
 {% load i18n %}
 {% load facebook_tags %}
+{% load facebook %}
 {% load twitter_tags %}
+{% load openx %}
 {% load socialregistration_tags %}
 {% load googlesearch_inclusion_tags %}
 
@@ -12,6 +14,8 @@
 	<title>{% block title %}{% endblock %}</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
+	<meta property="fb:app_id" content="195992407109917">
+	
 	<link rel="shortcut icon" href="favicon.ico" />
 	
 	<link href="/media/css/base.css" rel="stylesheet" type="text/css" media="screen, projection" />
@@ -44,6 +48,7 @@
 	<![endif]-->
 </head>
 <body class=" {% block advbodycls %}{% endblock %}">
+	{% facebook_js_tag %}
   <div id="header-primary" class="header-primary no-deco outnone">
     <div class="container">
     	<div class="rows encap">
@@ -118,7 +123,11 @@
           <p class="year fp13">2009</p>
          </h2>
       </div><!--//.date-->
-      <div class="banner-container txt-right outnone" align="right"><a href="#"><img src="/media/images/banners/banner_1.jpg" alt="Banner" /></a></div><!--//.banner-container-->
+      <div class="banner-container txt-right outnone" align="right">
+      		<a href="#">
+      			<img src="/media/images/banners/banner_1.jpg" alt="Banner" />
+  			</a>
+	</div><!--//.banner-container-->
       <br class="cflt" />
     </div><!--//.header-secondary-->
     <div id="header-tertiary" class="header-tertiary encap">
@@ -285,7 +294,7 @@
       </span>
     </div><!--//.footer-tertiary-->
   </div><!--//.container-->
-  {% facebook_js %}
+  
 <script>
 	$(document).ready(function () {
 		jQuery("#footer-tertiary .txt-left img").mouseover(function( )

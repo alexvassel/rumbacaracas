@@ -3,7 +3,9 @@
 {% block title %}{% trans "Events | Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load listtools %}
+{% load facebook %}
 {% block colleft %}
+
 <div class="node-container eventos box-shadows encap">
 <div class="title-wrap encap">
 <span class="flt-left"><h2 class="title">{% trans "Events"%}</h2></span>
@@ -13,6 +15,10 @@
 <div class="node-mini-left c65l">
 <div class="contents">
 <h2>{{event.title}}</h2>
+<div class="social-share mb10">
+	{% facebook_like event.get_absolute_url%}
+</div><!--//.social-share-->
+
 <div class="event-desc">
   <table cellpadding="0" cellspacing="0" border="0" width="100%">
     <tbody>
@@ -132,6 +138,10 @@
   </div><!--//.event-info-->
 </div><!--//.node-mini-right-->
   </div><!--//.node-->
+  <div class="encap" id="disqus_thread">
+  	{%facebook_comments event.get_absolute_url%}
+  </div>
+  
   <div class="tab-containers event-detail-filters">
 <table class="event-filters ptb8" width="100%" border="0" cellpadding="0" cellspacing="0">
   <tbody>

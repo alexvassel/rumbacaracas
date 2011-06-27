@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block title %}{% trans "People | Rumbabogota" %}{% endblock %}
 {% load tools %}
-
+{% load facebook %}
 {% block colleft %}
 
 <div class="node-container box-shadows encap">
@@ -20,6 +20,17 @@
 		{% if latest.image %}<img src="{{latest.widethumb.url}}" alt="{{latest.title}}"/> {% else %} <br /> {% endif %}
 		</a></span>
 	  <ul class="lfleft encap outnone fcml0 lcmr0">
+	  	<li class="mr10">
+	  		{% facebook_like latest.get_absolute_url 'auto'%}
+  		</li>
+  		<li>
+	  		<a class="socializer-10" href="{{latest.get_absolute_url}}#disqus_thread">
+				<span>{%facebook_comments_count latest.get_absolute_url%}</span>
+			</a>
+		</li>
+  		
+  		
+		
 	    <li><a class="socializer-11" href="{%url people_details slug=latest.slug%}">
 			<span>{% trans "Photos:"%} {{latest.photo_set.all|length}}</span></a>
 		</li>

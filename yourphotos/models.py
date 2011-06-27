@@ -30,6 +30,12 @@ class Photo( ImageModel ):
     thumb.allow_tags = True
     thumb.short_description = _( 'Preview' )
 
+    @models.permalink
+    def get_absolute_url( self ):
+        """Return entry's URL"""
+        return ( 'yourphoto_details', (), {
+            'id': self.id} )
+
     def get_user_link ( self ):
         try :
             facebook_user = FacebookProfile.objects.get( user = self.user )

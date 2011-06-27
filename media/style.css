@@ -1935,8 +1935,12 @@ div.breadcrumb a.active {
 #main-contents a.socializer-10{
   background: transparent url("images/sprites/sprites_teaser_options.png") no-repeat scroll left 5px;
   display: block;
-  width: auto;;
+  width: auto;
 }
+#main-contents a.socializer-10 span.fb_comments_count{
+	padding:0 !important;
+}
+
 #main-contents a.socializer-11{
   background: transparent url("images/sprites/sprites_teaser_options.png") no-repeat scroll left -222px;
   display: block;

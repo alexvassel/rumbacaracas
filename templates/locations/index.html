@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load facebook %}
 {% block title %}{% trans "Locales | Rumbabogota" %}{% endblock %}
 
 {% load tools %}
@@ -108,11 +109,14 @@
     <div class="locales-image-teaser">
     	{% if location.image_logo%} 
       	<a class="image" href="{{location.maxs.url}}"><img src="{{location.logo.url}}" />
-		  	<span class="lightbox" href="{{event.image.url}}">{% trans "Zoom"%}</span>
+		  	<span class="lightbox" href="{{location.image.url}}">{% trans "Zoom"%}</span>
 	  	</a>
 	  	
       	{% endif %}
     </div><!--//.event-image-teaser-->
+    <div class="ratings">
+    	{% facebook_like location.get_absolute_url%}
+	</div>
   </div><!--//.event-info-->
 </div><!--//.node-mini-right-->
 </div><!--//.node-->
@@ -123,6 +127,10 @@
 		$('div.locales-desc tr:even').addClass('even');		
 	});
 </script>
+
+<div class="encap" id="disqus_thread">
+	{%facebook_comments location.get_absolute_url%}
+</div>
 
 
 {% else %}
@@ -227,6 +235,9 @@
 	              	  </h4>
 		              <h3 class="decou"><a href="/locations/{{location.slug}}">{{location.title}}</a></h3>
 		              <p>{{location.description|truncate:70}}</p>
+		              <div class="ratings fivestar-form-item fivestar-user-text fivestar-smart-stars fivestar-average-stars fivestar-labels-hover fivestar-processed">
+                      	{% facebook_like location.get_absolute_url%}
+                      </div>
 		            </li>
 				{% endfor %}
 			  </ul>

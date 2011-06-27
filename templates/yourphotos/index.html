@@ -4,6 +4,7 @@
 {% load tools %}
 {% load paging %}
 {% load listtools %}
+{% load facebook %}
 
 {% block advbodycls %}section-yourphotos{% endblock %}
 
@@ -37,6 +38,14 @@
 		</div>
 		<div class="photos-share-options">
 			<ul class="teaser-options encap outnone fcml0 lcmr0">
+				<li class="pl0">
+					<a class="socializer-1 with-comment-count" href="{{latest.get_absolute_url}}#disqus_thread">
+						<span>{%facebook_comments_count latest.get_absolute_url%}</span>
+					</a>
+				</li>
+				<li>
+					{% facebook_like latest.get_absolute_url%}
+				</li>
 			</ul><!--//.teaser-options-->
 		</div><!--//.photos-share-options-->
 	</div><!--//.node-->
@@ -81,6 +90,9 @@
 								<div class="std-details decou">
 									<h6><a href="/yourphotos/{{photo.id}}">{{photo.description}}</a></h6>
 									<span class="author-meta">{% trans "Submitted by"%} {{photo.get_user_link}}</span>
+									<div class="fivestar-widget clear-block fivestar-widget-5">
+										{% facebook_like photo.get_absolute_url 184%}
+									</div>
 								</div><!--//.std-details-->
 							</li>
 						{% empty %}

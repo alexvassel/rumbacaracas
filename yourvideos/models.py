@@ -28,6 +28,12 @@ class Video( models.Model ):
     video.allow_tags = True
     video.short_description = _( 'Video Preview' )
 
+    @models.permalink
+    def get_absolute_url( self ):
+        """Return entry's URL"""
+        return ( 'video_details', (), {
+            'id': self.id} )
+
     def get_user_link ( self ):
         if self.user is None:
             return ""

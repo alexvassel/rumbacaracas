@@ -5,5 +5,5 @@ urlpatterns = patterns( 'yourphotos.views',
     ( r'^add$', 'add' ),
     ( r'^delete/(?P<id>\d+)$', 'delete' ),
     ( r'^(?P<category>(latest|sexy|rumbas|amigos|humor))$', 'photos' ),
-    ( r'^(?P<id>\d+)$', 'detail' ),
+    url( r'^(?P<id>\d+)$', 'detail' , name = "yourphoto_details" ),
  )

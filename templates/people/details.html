@@ -3,6 +3,7 @@
 {% block title %}{% trans "People | Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load paging %}
+{% load facebook %}
 
 {% block colleft %}
 <div class="node-container eventos box-shadows encap">
@@ -16,6 +17,14 @@
   <div class="node encap">
     <div class="eventos-left c58l outnone">
       <span class="teaser-image"><img src="{{event.widethumb.url}}" alt="{{event.title}}"/></span>
+      <ul class="lfleft encap outnone fcml0 lcmr0">
+        <li class="mr10">
+        	{% facebook_like event.get_absolute_url 80%}
+    	</li>
+        <li>
+    		<a class="socializer-10" href="{{event.get_absolute_url}}#disqus_thread"><span>{% facebook_comments_count event.get_absolute_url%}</span></a>
+		</li>
+      </ul>
     </div>
     <div class="content eventos">
       <h2 class="title">{{event.title}}</h2>
@@ -62,7 +71,12 @@
 		{% common_paginator%}
 	{% endif%}
   </div><!--//.recent-events-list-->
+  <div class="encap" id="disqus_thread">
+  	{%facebook_comments event.get_absolute_url%}
+  </div>
+					
 </div><!--//.node-container-->
+
 <script>
 	$(document).ready(function () {
 		$('.teaser-image img, .list-part img').live('mouseover',

@@ -8,4 +8,5 @@ urlpatterns = patterns( 'locations.views',
     ( r'^by-music$', 'music' ),
     ( r'^by-food$', 'food' ),
     ( r'^(?P<slug>[-\w]+)/$', 'detail' ),
+    url( r'^(?P<slug>[-\w]+)/$', "detail", name = "location_details" ),
  )

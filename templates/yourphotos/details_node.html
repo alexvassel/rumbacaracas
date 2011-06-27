@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load facebook %}
 <div class="node gente bb-none encap">
 	<div class="wrapper encap">
 	  <div class="c75l">
@@ -6,7 +7,7 @@
 	    <span class="submitted">{{photo.datetime_added|date:"d/m/Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{photo.get_user_link}}</span></span>
 	  </div><!--//.c75l-->
 	  <div class="c20r txt-right mt15 outnone">
-	    
+		{% facebook_like photo.get_absolute_url%}
 	  </div><!--//.c20l-->
 	</div><!--//.wrapper-->
 	
@@ -29,5 +30,8 @@
 	</div>
 	<div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
 	  <a href="#"><img src="/media/images/banners/banner_8.jpg" alt="Ads"></a>
+	</div>
+	<div class="encap" id="disqus_thread">
+		{%facebook_comments photo.get_absolute_url%}
 	</div>
 </div><!--//.node-->

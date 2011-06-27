@@ -89,6 +89,12 @@ class Location( ImageModel ):
     status = models.CharField( max_length = 10, choices = LOCATION_STATUSES, default = 1 )
     featured = models.BooleanField( default = False )
 
+    @models.permalink
+    def get_absolute_url( self ):
+        """Return entry's URL"""
+        return ( 'location_details', (), {
+            'slug': self.slug} )
+
     def view( self ):
         return u'<a target="_blank" href="/locations/%s">%s</a>' % ( self.slug, _( "View on site" ) )
     view.allow_tags = True

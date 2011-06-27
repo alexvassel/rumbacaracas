@@ -3,8 +3,6 @@ from zinnia.models import EntryAbstractClass
 from django.utils.translation import ugettext_lazy as _
 
 from zinnia.settings import UPLOAD_TO
-EntryAbstractClass.image = models.ImageField( _( 'image' ), upload_to = UPLOAD_TO,
-                              blank = False, help_text = _( 'used for illustration' ) )
 
 class MyEntry( EntryAbstractClass ):
     short = models.TextField( _( 'short description' ) )

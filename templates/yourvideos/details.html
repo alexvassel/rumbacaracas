@@ -4,7 +4,7 @@
 {% load tools %}
 {% load listtools %}
 {% load youtube %}
-
+{% load facebook%}
 
 {% block colleft %}
 <div class="node-container videos box-shadows encap">
@@ -24,12 +24,25 @@
 	<div class="content">
 		{{video.youtube_id|youtube_video_from_id}}
 	</div>
-	<br /><br />
-
-    <div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
+	<div class="video-share-options">
+		<ul class="teaser-options encap outnone fcml0 lcmr0">
+			<li class="facebook">
+				{% facebook_like video.get_absolute_url%}
+			</li>
+			<li class="pl0">
+				<a href="{{video.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
+					<span>{%facebook_comments_count video.get_absolute_url%}</span>
+				</a>
+			</li>
+		</ul><!--//.teaser-options-->
+	</div>
+  </div><!--//.node-->
+  <div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
       <a href="#"><img src="/media/images/banners/banner_8.jpg" alt="Ads"></a>
     </div>
-  </div><!--//.node-->
+  <div class="encap" id="disqus_thread">
+	{%facebook_comments video.get_absolute_url%}
+  </div>
 </div><!--//.node-container-->
 {% endblock %}
 
