@@ -17,7 +17,7 @@ EntryAdmin.fieldsets = ( ( _( 'Content' ), {'fields': ( 'title', 'short' , 'cont
                                  'classes': ( 'collapse', 'collapse-closed' )} ),
                  ( _( 'Publication' ), {'fields': ( 'categories',
                                                 'sites', 'slug' )} ) )
-EntryAdmin.list_filter = ( 'categories', 'authors', 'status', 'featured',
+EntryAdmin.list_filter = ( 'categories', 'authors', 'status', 'featured', 'show_in_main_slider',
                'creation_date', 'start_publication',
                'end_publication' )
 EntryAdmin.list_display = ( 'get_title', 'get_authors', 'get_categories',

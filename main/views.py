@@ -1,5 +1,4 @@
 from django.shortcuts import render_to_response, get_object_or_404, redirect
-from main.models import Slide
 from zinnia.models import Entry
 from events.models import Event
 from django.utils.translation import ugettext as _
