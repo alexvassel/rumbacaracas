@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load zinnia_tags tagging_tags i18n %}
 {% load dumper tools%}
+{% load facebook%}
 
 {% block breadcrumbs %}
   {% zinnia_breadcrumbs "->" "News"%}
@@ -43,4 +44,10 @@
 <div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
           <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
 </div><!--//.banner-container-->
+
+<div class="banner-container box-shadows outnone widget" style="width: 300px;">
+  {% facebook_group %}
+</div>
+
+        
 {% endblock %}

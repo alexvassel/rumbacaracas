@@ -1,6 +1,6 @@
 {% extends "zinnia/base.html" %}
 {% load i18n tagging_tags comments zinnia_tags %}
-{% load facebook%}
+{% load facebook twitter%}
 {% block title %}{{ object.title }}{% endblock %}
 
 
@@ -29,6 +29,7 @@
 		<a href="{{object.get_absolute_url}}#disqus_thread" class="comment" style="float: left;line-height: 21px;display: block;width: 30px;height: 21px;padding:0 0 0 30px !important;">
 			<span style="color:#666666"> {%facebook_comments_count object.get_absolute_url%} </span>
 		</a>
+		{% twitter_share object.get_absolute_url object.title%}
 	<hr style="clear:both;color:#CCCCCC; margin:1 0 0 0" />
 	<div class="content encap">
 		{% if object.image %}

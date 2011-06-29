@@ -1,5 +1,5 @@
 {% load tagging_tags comments i18n %}
-{% load facebook%}
+{% load facebook twitter%}
 <div class="image-teaser outnone blog">
 	<div class="left">
 		{% if object.image %}
@@ -38,10 +38,14 @@
 		  </p><br /><br />
 		{% endif %}
 		<hr style="color:#CCCCCC; margin:1 0 0 0" />
-		{% facebook_like object.get_absolute_url%}
-		<a href="{{object.get_absolute_url}}#disqus_thread" class="comment" style="float: left;line-height: 21px;display: block;width: 30px;height: 21px;padding:0 0 0 30px !important;">
-			<span style="color:#666666"> {%facebook_comments_count object.get_absolute_url%} </span>
-		</a>
+		{% facebook_like object.get_absolute_url "50px"%}
+		<a class="socializer-10" href="{{object.get_absolute_url}}#disqus_thread" style="float: left; margin-right: 10px">
+			<span>{%facebook_comments_count object.get_absolute_url%}</span>
+      	</a>
+      	
+      	<div style="float: left; margin-right: 1px">
+      		{% twitter_share object.get_absolute_url object.title%}
+		</div>
 		<hr style="clear:both;color:#CCCCCC; margin:1 0 0 0" />
 	</div>
 </div>

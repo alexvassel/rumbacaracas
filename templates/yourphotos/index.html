@@ -4,7 +4,7 @@
 {% load tools %}
 {% load paging %}
 {% load listtools %}
-{% load facebook %}
+{% load facebook twitter %}
 
 {% block advbodycls %}section-yourphotos{% endblock %}
 
@@ -36,6 +36,7 @@
 		<div class="content">
 			<div class="std-thumbnail outnone"><a href="/yourphotos/{{latest.id}}"><img src="{{latest.bigimg.url}}"></a></div>
 		</div>
+		
 		<div class="photos-share-options">
 			<ul class="teaser-options encap outnone fcml0 lcmr0">
 				<li class="pl0">
@@ -45,6 +46,9 @@
 				</li>
 				<li>
 					{% facebook_like latest.get_absolute_url%}
+				</li>
+				<li class="br-none">
+					{% twitter_share latest.get_absolute_url latest.description%}
 				</li>
 			</ul><!--//.teaser-options-->
 		</div><!--//.photos-share-options-->

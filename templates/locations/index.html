@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load facebook %}
+{% load facebook twitter%}
 {% block title %}{% trans "Locales | Rumbabogota" %}{% endblock %}
 
 {% load tools %}
@@ -114,10 +114,22 @@
 	  	
       	{% endif %}
     </div><!--//.event-image-teaser-->
-    <div class="ratings">
-    	{% facebook_like location.get_absolute_url%}
-	</div>
   </div><!--//.event-info-->
+  <div class="share-options">
+    <ul class="socializer encap outnone">
+      	<li>
+      	<a href="{{location.get_absolute_url}}#disqus_thread" class="socializer-14">
+      		({%facebook_comments_count location.get_absolute_url%}) {% trans "comments"%}
+      	</a>
+  		</li>
+  		<li>
+  			{% facebook_like location.get_absolute_url%}
+		</li>
+  		<li>
+  			{% twitter_share location.get_absolute_url location.title%}
+		</li>
+    </ul>
+  </div>
 </div><!--//.node-mini-right-->
 </div><!--//.node-->
 

@@ -1941,6 +1941,8 @@ div.breadcrumb a.active {
 	padding:0 !important;
 }
 
+
+
 #main-contents a.socializer-11{
   background: transparent url("images/sprites/sprites_teaser_options.png") no-repeat scroll left -222px;
   display: block;
@@ -2506,6 +2508,11 @@ body.section-videos #main-contents #col-left .item-list ul li a{
 #main-contents #col-left .recent-events-list .teaser ul.teaser-options li a{
   height: 18px;
 }
+
+#main-contents #col-left .recent-events-list .teaser ul.teaser-options li div{
+  padding: 5px;
+}
+
 #main-contents #col-left .recent-events-list .teaser ul.teaser-options > li.first-child,
 #main-contents #col-left .recent-events-list .teaser ul.teaser-options > li:first-child{
   padding-left: 0 !important;
@@ -2583,9 +2590,19 @@ body.section-videos #main-contents #col-left .item-list ul li a{
   border-right: none;
   text-indent: 22px;
 }
+#main-contents #col-left .recent-fotos-list .row ul li span.fb_comments_count {
+  border-right: none;
+}
+
 .ie #main-contents #col-left .recent-fotos-list .row ul li span.last{
   text-indent: 10px;
 }
+
+#main-contents span.last span.fb_comments_count{
+	text-indent: 5px;
+}
+
+
 /* Blog listings */
 #main-contents #col-left .type-blog div.node-thumbnail,
 #main-contents #col-left .type-blog div.node-share{

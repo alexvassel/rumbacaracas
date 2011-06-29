@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block title %}{% trans "People | Rumbabogota" %}{% endblock %}
 {% load tools %}
-{% load facebook %}
+{% load facebook twitter %}
 {% block colleft %}
 
 <div class="node-container box-shadows encap">
@@ -20,20 +20,21 @@
 		{% if latest.image %}<img src="{{latest.widethumb.url}}" alt="{{latest.title}}"/> {% else %} <br /> {% endif %}
 		</a></span>
 	  <ul class="lfleft encap outnone fcml0 lcmr0">
-	  	<li class="mr10">
-	  		{% facebook_like latest.get_absolute_url 'auto'%}
-  		</li>
+	  	
   		<li>
 	  		<a class="socializer-10" href="{{latest.get_absolute_url}}#disqus_thread">
 				<span>{%facebook_comments_count latest.get_absolute_url%}</span>
 			</a>
 		</li>
-  		
-  		
-		
+  		<li>
+			{% twitter_share latest.get_absolute_url latest.title%}
+		</li>
 	    <li><a class="socializer-11" href="{%url people_details slug=latest.slug%}">
 			<span>{% trans "Photos:"%} {{latest.photo_set.all|length}}</span></a>
 		</li>
+		<li class="mr10">
+	  		{% facebook_like latest.get_absolute_url 60 0%}
+  		</li>
 	  </ul>
 	</div>
 	<div class="content c42r fotos">
@@ -79,12 +80,17 @@
 				{% for event in events %}
 			      <li>
 			        <h5 class="red-title"><a href="{%url people_details slug=event.slug%}">{{event.title}}</a></h5>
-			        <p><span {% if not event.location%}class="last"{%endif%}>{{event.date|date:"d.m.y"}}</span>
+			        <p><span>{{event.date|date:"d.m.y"}}</span>
 					{% if event.location%}
-						<span class="bold last">
+						<span class="bold">
 							<a href="/locations/{{event.location.slug}}">{{event.location.title}}</a>
 						</span>
 					{%endif%}
+					<span class="last">
+						<a href="{{event.get_absolute_url}}#disqus_thread">
+							{%facebook_comments_count event.get_absolute_url%}
+						</a>
+					</span>
 					</p>
 			      </li>
 				{%endfor%}

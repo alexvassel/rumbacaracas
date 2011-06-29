@@ -5,7 +5,7 @@
 {% load paging %}
 {% load listtools %}
 {% load youtube %}
-{% load facebook %}
+{% load facebook twitter %}
 
 {% block advbodycls %}section-videos{% endblock %}
 
@@ -36,6 +36,9 @@
 				</li>
 				<li class="pl0">
 					<a href="{{latest.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count"><span>{%facebook_comments_count latest.get_absolute_url%}</span></a>
+				</li>
+				<li class="twitter">
+					{% twitter_share latest.get_absolute_url latest.description%}	
 				</li>
 			</ul><!--//.teaser-options-->
 		</div>

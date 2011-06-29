@@ -1,0 +1,35 @@
+<div class="widget-latest-tweets box-shadows outnone widget  box-contents">
+	<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+	<script>
+	new TWTR.Widget({
+	  version: 2,
+	  type: 'profile',
+	  rpp: 4,
+	  interval: 6000,
+	  width: 300,
+	  height: 300,
+	  theme: {
+	    shell: {
+	      background: '#e0e0e0',
+	      color: '#000000'
+	    },
+	    tweets: {
+	      background: '#ffffff',
+	      color: '#000000',
+	      links: '#267dc5'
+	    }
+	  },
+	  features: {
+	    scrollbar: true,
+	    loop: false,
+	    live: true,
+	    hashtags: true,
+	    timestamp: true,
+	    avatars: false,
+	    behavior: 'all'
+	  }
+	}).render().setUser('rumbabogota').start();
+	</script>
+</div>
+        
+        

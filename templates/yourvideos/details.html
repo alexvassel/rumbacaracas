@@ -4,7 +4,7 @@
 {% load tools %}
 {% load listtools %}
 {% load youtube %}
-{% load facebook%}
+{% load facebook twitter %}
 
 {% block colleft %}
 <div class="node-container videos box-shadows encap">
@@ -33,6 +33,9 @@
 				<a href="{{video.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
 					<span>{%facebook_comments_count video.get_absolute_url%}</span>
 				</a>
+			</li>
+			<li class="twitter">
+				{% twitter_share video.get_absolute_url video.description%}	
 			</li>
 		</ul><!--//.teaser-options-->
 	</div>

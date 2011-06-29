@@ -3,7 +3,7 @@
 {% block title %}{% trans "Events | Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load listtools %}
-{% load facebook %}
+{% load facebook twitter%}
 {% block colleft %}
 
 <div class="node-container eventos box-shadows encap">
@@ -16,7 +16,6 @@
 <div class="contents">
 <h2>{{event.title}}</h2>
 <div class="social-share mb10">
-	{% facebook_like event.get_absolute_url%}
 </div><!--//.social-share-->
 
 <div class="event-desc">
@@ -136,6 +135,23 @@
   
 </div><!--//.event-image-teaser-->
   </div><!--//.event-info-->
+  <div class="share-options">
+    <ul class="socializer encap outnone">
+      <li>
+      	<a href="{{event.get_absolute_url}}#disqus_thread" class="socializer-14">
+      		({%facebook_comments_count event.get_absolute_url%}) {% trans "comments"%}
+      	</a>
+  	</li>
+  	<li>
+		{% facebook_like event.get_absolute_url%}
+	</li>
+	<li>
+		{% twitter_share event.get_absolute_url event.title%}
+	</li>
+	
+    </ul>
+  </div>
+  
 </div><!--//.node-mini-right-->
   </div><!--//.node-->
   <div class="encap" id="disqus_thread">

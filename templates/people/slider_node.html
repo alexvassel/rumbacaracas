@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load facebook %}
+{% load facebook twitter%}
 <div class="node gente bb-none encap">
 	<div class="wrapper encap">
 	  <div class="c75l">
@@ -27,9 +27,26 @@
 		</li>
 	  </ul><!--//.image-teaser-slides-->
 	</div><!--//.images-preview-->
-	<div class="ratings fivestar-form-item fivestar-user-text fivestar-smart-stars fivestar-average-stars fivestar-labels-hover fivestar-processed" style="border-bottom: none;">
-		
+
+	<div class="photos-share-options">
+		<ul class="teaser-options encap outnone fcml0 lcmr0">
+			<li class="pl0">
+				<a href="{{photo.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
+					<span>{%facebook_comments_count photo.get_absolute_url%}</span>
+				</a>
+			</li>
+			<li>
+				{% facebook_like photo.get_absolute_url 50%}
+			</li>
+			<li>
+				{% twitter_share photo.get_absolute_url photo.description%}
+			</li>
+			<li class="br-none">
+				<a href="{%url people_details slug=photo.event.slug%}" class="decou me-gusta">{% trans "All photos"%}</a>
+			</li>
+		</ul><!--//.teaser-options-->
 	</div>
+    
 	<div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
 	  <a href="#"><img src="/media/images/banners/banner_8.jpg" alt="Ads"></a>
 	</div>

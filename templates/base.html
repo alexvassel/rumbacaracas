@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load facebook_tags %}
 {% load facebook %}
+{% load twitter %}
 {% load twitter_tags %}
 {% load openx %}
 {% load socialregistration_tags %}
@@ -49,6 +50,7 @@
 </head>
 <body class=" {% block advbodycls %}{% endblock %}">
 	{% facebook_js_tag %}
+	{% twitter_js_tag %}
   <div id="header-primary" class="header-primary no-deco outnone">
     <div class="container">
     	<div class="rows encap">
@@ -95,12 +97,12 @@
              <li class="sobre1"><a href="#" class="fotosobre1"></a></li>
           	<li class="newsletter-subscribe"><a href="#">E-RUMBA<br /><span>suscríbete</span></a></li>
            	<li class="sepB">&nbsp;</li>
-            <li class="siguenosft">Síguenos:</li>
-
+            <li class="siguenosft">{%trans "Follow:"%}</li>
             
+			<!-- http://twitter.com/about/resources/followbutton -->
             
-          	<li class="social-freak"><a class="facebook-fanpage" href="#"><span class="hidden">Share on Facebook</span></a></li>
-            <li class="social-freak"><a class="twitter-page" href="#"><span class="hidden">Follow us on Twitter</span></a></li>
+          	<li class="social-freak"><a class="facebook-fanpage" href="http://www.facebook.com/pages/Rumbabogotacom/135039689865358"><span class="hidden">{% trans "Share on Facebook"%}</span></a></li>
+            <li class="social-freak"><a class="twitter-page" href="http://twitter.com/#!/rumbabogota"><span class="hidden">{% trans "Follow us on Twitter"%}</span></a></li>
             
 
             <li class="sepBL">&nbsp;</li>
