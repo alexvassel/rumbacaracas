@@ -20,6 +20,24 @@ class SlideImage( processors.Resize ):
     crop = True
 
 
+class BlogThumb( processors.Resize ):
+    width = 228
+    height = 168
+    upscale = True
+    crop = True
+
+class MainThumb( processors.Resize ):
+    width = 295
+    height = 185
+    crop = True
+
+class MainMiniThumb( processors.Resize ):
+    width = 126
+    height = 78
+    crop = True
+
+
+
 # now let's create an adjustment processor to enhance the image at small sizes
 class EnchanceThumb( processors.Adjustment ):
     contrast = 1.2
@@ -44,3 +62,21 @@ class PhotoSlide( ImageSpec ):
     access_as = 'slide'
     pre_cache = False
     processors = [SlideImage]
+
+# now we can define our thumbnail spec
+class PhotoThumbSlide( ImageSpec ):
+    access_as = 'blogthumb'
+    pre_cache = False
+    processors = [BlogThumb]
+
+
+class MainThumbnail( ImageSpec ):
+    access_as = 'mainthumb'
+    pre_cache = False
+    processors = [MainThumb]
+
+class MainMiniThumbnail( ImageSpec ):
+    access_as = 'mainminithumb'
+    pre_cache = False
+    processors = [MainMiniThumb, EnchanceThumb]
+

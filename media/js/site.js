@@ -232,22 +232,7 @@ jQuery(document).ready(function(){
     },
 		delay: -2000
 	});
-	
-	jQuery('#main-contents #col-left #front-videos #videos-content div.video-slides ul').cycle({
-		fx: 'scrollVert',
-		speed: 1000,
-		timeout: 0,
-		sync: 1,
-		activePagerClass: 'active', //-- class name used for the active pager link
-		easing: 'easeInOutBack',
-		containerResize: 1,
-    pager:  '#main-contents #col-left #front-videos #videos-content div.recent-video-list ul',
-    pagerAnchorBuilder: function(idx, slide) {
-     //-- return selector string for existing anchor
-     return '#main-contents #col-left #front-videos #videos-content div.recent-video-list ul li:eq(' + idx + ') a';
-    },
-		delay: -2000
-	});
+
 	jQuery('#main-contents #col-right #whats-today .box-contents .parts-wrapper').cycle({
 		fx: 'scrollHorz',
 		speed: 1000,

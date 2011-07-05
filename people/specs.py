@@ -23,6 +23,16 @@ class SmallThumb( processors.Resize ):
     crop = True
 
 
+class MainThumb( processors.Resize ):
+    width = 295
+    height = 185
+    crop = True
+
+class MainMiniThumb( processors.Resize ):
+    width = 126
+    height = 78
+    crop = True
+
 class EnchanceThumb( processors.Adjustment ):
     contrast = 1.2
     sharpness = 1.1
@@ -47,3 +57,16 @@ class SquareThumbnail( ImageSpec ):
     access_as = 'squarethumb'
     pre_cache = False
     processors = [SquareThumb, EnchanceThumb]
+
+class MainThumbnail( ImageSpec ):
+    access_as = 'mainthumb'
+    pre_cache = False
+    processors = [MainThumb, EnchanceThumb]
+
+class MainMiniThumbnail( ImageSpec ):
+    access_as = 'mainminithumb'
+    pre_cache = False
+    processors = [MainMiniThumb, EnchanceThumb]
+
+
+

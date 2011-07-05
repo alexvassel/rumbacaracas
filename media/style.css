@@ -1126,7 +1126,16 @@ a.carousel-next{
   background: transparent url(images/sprites/sptires-videos-list.gif) no-repeat scroll left -54px;
   display: block;
   padding: 11px 15px 12px 30px;
+  min-height: 28px;
   color: #FFFFFF !important;
+  font-weight: bold;
+}
+#main-contents #col-left #front-videos div.videos-content .recent-video-list ul li span a{
+  background: transparent;
+  display: inline;
+  padding: 0;
+  min-height: 0;
+  color: #000000 !important;
   font-weight: bold;
 }
 .ie #main-contents #col-left #front-videos div.videos-content .recent-video-list ul li a{
@@ -1136,11 +1145,11 @@ a.carousel-next{
 #main-contents #col-left #front-videos div.videos-content .recent-video-list ul li a:hover{
   background: transparent url(images/sprites/sptires-videos-list.gif) no-repeat scroll left top;
 }
-#main-contents #col-left #front-videos div.videos-content .recent-video-list ul li a span{
-  color: #000000;
+#main-contents #col-left #front-videos div.videos-content .recent-video-list ul li a a{
+  color: #000000 !important;
 }
-#main-contents #col-left #front-videos div.videos-content .recent-video-list ul li.active a span{
-  color: #6B0C0B;
+#main-contents #col-left #front-videos div.videos-content .recent-video-list ul li.active a a{
+  color: #6B0C0B !important;
 }
 #main-contents #col-right .widget {
 	margin: 20px 0 30px;

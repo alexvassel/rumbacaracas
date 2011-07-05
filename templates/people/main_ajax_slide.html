@@ -1,0 +1,11 @@
+{% load i18n %}
+{% load tools %}
+<div class="photo-node"  style="height: 195px;">
+    <div class="image c55l outnone"><a href="{{ event.get_absolute_url }}"><img src="{{ event.mainthumb.url }}" alt="{{ event.title }}" /></a></div>
+    <div class="photo-teaser c45r">
+      <h4>{{event.date|date:"d.m.y"}}</h4>
+      <h3><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h3>
+      <p>{{ event.article|truncate:130 }}</p>
+       <p class="bold fp11"><a href="{{ event.get_absolute_url }}">{%  trans "Read More" %}</a></p>
+    </div>
+</div><!--//.photo-teaser-->

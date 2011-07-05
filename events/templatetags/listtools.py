@@ -149,9 +149,38 @@ def columns( thelist, n ):
         split += 1
     return [thelist[i::split] for i in range( split )]
 
+def chunks(l, n):
+    """ Yield successive n-sized chunks from l.
+    """
+    for i in xrange(0, len(l), n):
+        yield l[i:i+n]
+        
+def main_slider_split(thelist, n):
+    """
+    Break a list into ``n`` peices, but "horizontally." That is,
+    ``partition_horizontal(range(10), 3)`` gives::
+
+        [[1, 2, 3],
+         [4, 5, 6],
+         [7, 8, 9],
+         [10]]
+
+    Clear as mud?
+    """
+    try:
+        n = int(n)
+        thelist = list(thelist)
+    except (ValueError, TypeError):
+        return [thelist]
+    return chunks(thelist, n)
+
+
+
+
 register.filter( rows )
 register.filter( rows_distributed )
 register.filter( columns )
+register.filter( main_slider_split )
 
 def _test():
     import doctest

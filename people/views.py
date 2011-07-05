@@ -66,6 +66,16 @@ def slider( request , photo_id ):
     return {'photo': photo}
 
 
+@render_to( 'people/main_ajax_slide.html' )
+def main_slide( request , event_id ):
+    if not request.is_ajax():
+        return HttpResponseRedirect( '/' )
+    
+    event = get_object_or_404( PhotoEvent, pk = event_id )
+    return {'event': event}
+
+
+
 @render_to( 'people/details.html' )
 def details ( request, slug ):
     event = get_object_or_404( PhotoEvent, slug = slug, status = 1 )

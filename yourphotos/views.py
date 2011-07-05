@@ -57,6 +57,18 @@ def detail( request , id ):
     request.breadcrumbs( photo.description , request.path_info )
     return {'photo': photo}
 
+
+@render_to( 'yourphotos/main_ajax_slide.html' )
+def main_slide( request , photo_id ):
+    if not request.is_ajax():
+        return HttpResponseRedirect( '/' )
+
+    photo = get_object_or_404( Photo, pk = photo_id )
+    return {'photo': photo}
+
+
+
+
 @json_view
 def delete( request , id ):
     add_time = datetime.now() + relativedelta( hours = -6 )

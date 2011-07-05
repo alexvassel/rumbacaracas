@@ -52,6 +52,7 @@ class OccurrenceManager( models.Manager ):
             )
         )
 
+        
         for event in qs.select_related().all().filter( status = 1 ):
             #Error!!!
             rrule_start = max( event.from_date, start_date.date() )
@@ -126,6 +127,7 @@ class Event( ImageModel, Sortable ):
     status = models.CharField( max_length = 10, choices = EVENT_STATUSES, default = 1 )
     show_in_events_slider = models.BooleanField( _( 'Show in Events Slider' ), default = False )
     show_in_main_slider = models.BooleanField( _( 'Show in Main Slider' ), default = False )
+    datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
 
     def view( self ):
         return u'<a target="_blank" href="/events/%s">%s</a>' % ( self.slug, _( "View on site" ) )

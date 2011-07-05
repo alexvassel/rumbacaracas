@@ -42,6 +42,14 @@ class EventMaxS( processors.Resize ):
     width = 800
     crop = False
 
+
+class BlogThumb( processors.Resize ):
+    width = 228
+    height = 168
+    upscale = True
+    crop = True
+
+
 # now let's create an adjustment processor to enhance the image at small sizes
 class EnchanceThumb( processors.Adjustment ):
     contrast = 1.2
@@ -115,3 +123,9 @@ class PhotoSlide( ImageSpec ):
     pre_cache = False
     processors = [SlideImage]
 
+
+# now we can define our thumbnail spec
+class PhotoThumbSlide( ImageSpec ):
+    access_as = 'blogthumb'
+    pre_cache = False
+    processors = [BlogThumb]

@@ -1,6 +1,10 @@
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from zinnia.models import Entry
 from events.models import Event
+from yourvideos.models import Video
+from locations.models import Location
+from people.models import PhotoEvent
+from yourphotos.models import Photo
 from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from decorators import render_to, json_view
@@ -31,12 +35,32 @@ def index( request ):
     event_qs = Event.objects.filter( show_in_main_slider = True )
     event_slides = Event.objects.get_occuriences( start_date = current_date, end_date = current_date , qs = event_qs )
 
-    def sortList( list ):
+    def sortEventList( list ):
         list.sort( key = lambda a:a.position, reverse = False )
         return list
 
-    events_slides = sortList( [event for event, date in event_slides] )[:get_events]
+    events_slides = sortEventList( [event for event, date in event_slides] )[:get_events]
     blog_slides = Entry.published.filter( show_in_main_slider = True ).order_by( '-creation_date' )[:get_news]
 
-    return {'slides': [( blog, 'blog', ) for blog in blog_slides] + [( event, 'event', ) for event in events_slides] }
+    videos = Video.objects.order_by( '-datetime_added' )[:5]
+
+    blog = Entry.published.filter(categories__slug = "blog").order_by( '-creation_date' )[:4]
+    news = Entry.published.exclude(categories__slug = "blog").order_by( '-creation_date' )[:4]
+
+    locations = Location.objects.filter( status = 1 ).order_by( '?' )[:4]
+
+
+    art_culture_qs = Event.objects.filter(category=4)
+    art_culture_raw = Event.objects.get_occuriences( start_date = current_date, end_date = current_date , qs = art_culture_qs )
+
+    art_culture = sortEventList( [event for event, date in art_culture_raw] )[:4]
+
+    people = PhotoEvent.objects.filter( status = 1 ).order_by( '-datetime_added' )[:40]
+
+    photos = Photo.objects.filter( status = 1 ).order_by( '-datetime_added' )[:40]
+
+    return {'people': people, 'news': news,'blog': blog,'locations': locations, 'art_culture': art_culture,
+            'videos':videos, 'photos': photos,
+            'slides': [( blog, 'blog', ) for blog in blog_slides] + [( event, 'event', ) for event in events_slides] }
+
 

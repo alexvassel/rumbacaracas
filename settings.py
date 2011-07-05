@@ -156,6 +156,7 @@ INSTALLED_APPS = (
     'preferences',
     'googlesearch',
     'debug_toolbar',
+    'legacy',
     #'photologue',
     #'tagging',
     # Uncomment the next line to enable admin documentation:

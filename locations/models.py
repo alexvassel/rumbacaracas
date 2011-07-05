@@ -88,6 +88,7 @@ class Location( ImageModel ):
     add_user = models.ForeignKey( User , blank = True , null = True )
     status = models.CharField( max_length = 10, choices = LOCATION_STATUSES, default = 1 )
     featured = models.BooleanField( default = False )
+    datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
 
     @models.permalink
     def get_absolute_url( self ):

@@ -5,6 +5,16 @@ from django.utils.safestring import mark_safe
 
 register = template.Library()
 
+
+
+@register.inclusion_tag('main/youtube_video.html')
+def youtube_video( youtube_id, width = 600 , height=390 ):
+    return dict( youtube_id = youtube_id, width = width, height = height )
+
+
+
+
+
 @register.filter
 def youtube_video_from_id( video_id ):
     #return """
