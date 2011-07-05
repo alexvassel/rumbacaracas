@@ -3,6 +3,7 @@
 {% block title %}{% trans "Your videos | Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load listtools %}
+{% load openx %}
 {% load youtube %}
 {% load facebook twitter %}
 
@@ -40,17 +41,11 @@
 		</ul><!--//.teaser-options-->
 	</div>
   </div><!--//.node-->
-  <div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
-      <a href="#"><img src="/media/images/banners/banner_8.jpg" alt="Ads"></a>
+    <div style="margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
+        {% banner_zone 103 %}
     </div>
   <div class="encap" id="disqus_thread">
 	{%facebook_comments video.get_absolute_url%}
   </div>
 </div><!--//.node-container-->
-{% endblock %}
-
-{% block colright %}
-<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
-          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
-</div><!--//.banner-container-->
 {% endblock %}

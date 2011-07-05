@@ -2,6 +2,7 @@
 {% load i18n %}
 {% block title %}{% trans "People | Rumbabogota" %}{% endblock %}
 {% load tools %}
+{% load openx %}
 {% load facebook twitter %}
 {% block colleft %}
 
@@ -50,8 +51,8 @@
 	  <div class="mt15"><a href="{%url people_details slug=latest.slug%}" class="read-more-red">{%trans "Read More"%}</a></div>
 	</div><!--//.content-->
 	  </div><!--//.node-->
-	  <div class="banner-container box-border box-contents outnone widget" style="width: 598px; height: 59px;">
-	  <a href="#"><img alt="Ads" src="/media/images/banners/banner_7.jpg" /></a>
+	  <div class="banner-container box-border box-contents outnone widget">
+          {% banner_zone 102 %}
 	  </div><!--//.banner-container-->
 	  <div class="recent-fotos-list">
 	{% for group, description,latest_event, events in groups %}
@@ -122,8 +123,3 @@
 
 {% endblock %}
 
-{% block colright %}
-<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
-	<a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
-</div><!--//.banner-container-->
-{% endblock %}

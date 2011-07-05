@@ -2,14 +2,22 @@ from django_openx import Zone
 from django import template
 from django.utils.safestring import mark_safe
 
+from decorators import cache
+
 register = template.Library()
+
+@cache(600)
+def get_tag_for_zone_raw (zone_id):
+    zone = Zone.get( zone_id )
+    tag = zone.generate_tag()
+    return tag
+
 
 @register.filter
 def get_tag_for_zone( zone_id ):
     try:
         zone_id = int( zone_id )
-        zone = Zone.get( zone_id )
-        return mark_safe( zone.generate_tag() )
+        return mark_safe( get_tag_for_zone_raw(zone_id) )
     except:
         return "" # Fail silently.
 
@@ -23,10 +31,10 @@ class ZoneNode( template.Node ):
         self.zone_id = zone_id
         self.type = type
 
+
     def render( self, context ):
         try:
-            zone = Zone.get( self.zone_id )
-            return mark_safe( zone.generate_tag( code_type = self.type ) )
+            return mark_safe( get_tag_for_zone_raw(self.zone_id) )
         except Exception, e:
             return "" # Fail silently.
 

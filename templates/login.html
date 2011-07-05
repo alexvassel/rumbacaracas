@@ -3,6 +3,7 @@
 {% block title %}{% trans "Login| Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load listtools %}
+{% load openx %}
 {% block colleft %}
 <div class="node-container gente box-shadows encap">
   <div class="title-wrap encap">
@@ -17,10 +18,4 @@
   	<p>{% trans 'You should be logged in to perform this operation. Click "Connect with Facebook" to log in.'%}</p>
   </div><!--//.node-->
 </div><!--//.node-container-->
-{% endblock %}
-
-{% block colright %}
-<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
-          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
-</div><!--//.banner-container-->
 {% endblock %}

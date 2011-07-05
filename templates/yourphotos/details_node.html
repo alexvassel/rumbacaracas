@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load openx %}
 {% load facebook twitter%}
 <div class="node gente bb-none encap">
 	<div class="wrapper encap">
@@ -40,8 +41,8 @@
 		</ul><!--//.teaser-options-->
 	</div>
 						
-	<div style="width: 472px; height: 60px; margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
-	  <a href="#"><img src="/media/images/banners/banner_8.jpg" alt="Ads"></a>
+	<div style="margin: 0 auto;" class="banner-container box-border box-contents outnone widget p5">
+        {% banner_zone 103 %}
 	</div>
 	<div class="encap" id="disqus_thread">
 		{%facebook_comments photo.get_absolute_url%}

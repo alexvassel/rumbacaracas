@@ -3,6 +3,7 @@
 {% block title %}{% trans "Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load paging %}
+{% load openx %}
 {% load youtube %}
 {% load listtools %}
 {% load facebook %}
@@ -118,7 +119,9 @@
           </div><!--//.latest-photos-content-->
         </div><!--//.latest-photos-->
 
-        <div class="banner-container box-shadows outnone" style="width: 468px; height: 60px;margin: 0 auto;"><a href="#"><img src="/media/images/banners/banner_4.jpg" alt="Ads" /></a></div><!--//.banner-container-->
+        <div class="banner-container box-shadows outnone" style="margin: 0 auto;">
+            {% banner_zone 103 %}
+        </div><!--//.banner-container-->
         <div id="outline-briefs" class="outline-briefs boxed-brief">
         	<div class="outline-navigation">
             <ul id="outline-titles" class="encap outnone box-shadows equal-width">
@@ -271,11 +274,101 @@
 {% endblock %}
 
 {% block colright %}
-<div class="banner-container box-shadows outnone widget" style="width: 297px; height: 247px;">
-          <a href="#"><img alt="Ads" src="/media/images/banners/banner_3.jpg" /></a>
-</div><!--//.banner-container-->
+{{ block.super }}
 <div class="banner-container box-shadows outnone widget" style="width: 300px;">
   {% facebook_group %}
 </div>
+
+<div class="split-sidebars encap">
+  <div class="c57l left">
+    <div id="your-photos" class="your-photos outnone">
+      <div class="box-title">
+        <h2>Más Eventos</h2>
+      </div>
+      <div class="box-border box-contents box-shadows decou">
+        <ul>
+          <li>
+            <a href="#"><img src="/media/images/content/imgs_6.jpg" width="148" height="118" alt="imgs_6"/></a>
+            <h6><a href="#">Con el vocalista del doctor krapula</a></h6>
+            <p><a href="#">Vodketería Barrabés</a></p>
+            <p>03.06.2010</p>
+          </li>
+          <li>
+            <a href="#"><img src="/media/images/content/imgs_7.jpg" width="148" height="118" alt="imgs_6"/></a>
+            <h6><a href="#">Con el vocalista del doctor krapula</a></h6>
+            <p><a href="#">Vodketería Barrabés</a></p>
+            <p>03.06.2010</p>
+          </li>
+          <li><a href="#"><img src="/media/images/content/imgs_6.jpg" width="148" height="118" alt="imgs_6"/></a>
+            <h6><a href="#">Con el vocalista del doctor krapula</a></h6>
+            <p><a href="#">Vodketería Barrabés</a></p>
+            <p>03.06.2010</p>
+          </li>
+          <li><a href="#"><img src="/media/images/content/imgs_6.jpg" width="148" height="118" alt="imgs_6"/></a>
+            <h6><a href="#">Con el vocalista del doctor krapula</a></h6>
+            <p><a href="#">Vodketería Barrabés</a></p>
+            <p>03.06.2010</p>
+          </li>
+        </ul>
+      </div><!--//.box-contents-->
+    </div><!--//.your-photos-->
+    <div class="block-poll" id="block-poll-0">
+      <div class="box-title"><h2>Encuesta</h2></div>
+      <div class="box-border box-contents box-shadows">
+        <form id="poll-view-voting-1" method="post" accept-charset="UTF-8" action="/">
+          <div>
+            <div class="poll">
+              <div class="vote-form">
+                <div class="choices">
+                  <div class="title">¿Donde has visto los juegos del Mundial</div>
+                  <div class="form-radios">
+                    <div id="edit-choice-0-1-wrapper" class="form-item">
+                      <label for="edit-choice-0-1" class="option"><input type="radio" class="form-radio" value="0" name="choice" id="edit-choice-0-1"> House MD</label>
+                    </div>
+                    <div id="edit-choice-1-1-wrapper" class="form-item">
+                      <label for="edit-choice-1-1" class="option"><input type="radio" class="form-radio" value="1" name="choice" id="edit-choice-1-1"> Prison Break</label>
+                    </div>
+                    <div id="edit-choice-2-1-wrapper" class="form-item">
+                      <label for="edit-choice-2-1" class="option"><input type="radio" class="form-radio" value="2" name="choice" id="edit-choice-2-1"> Supernatural</label>
+                    </div>
+                    <div id="edit-choice-3-1-wrapper" class="form-item">
+                      <label for="edit-choice-3-1" class="option"><input type="radio" class="form-radio" value="3" name="choice" id="edit-choice-3-1"> CSI Miami</label>
+                    </div>
+                  </div>
+                </div>
+                <input type="submit" class="form-submit" value="Vota" id="edit-vote-1" name="op">
+              </div>
+              <input type="hidden" value="form-f64fcbd9209901d8a2afb2b497432aa0" id="form-f64fcbd9209901d8a2afb2b497432aa0" name="form_build_id">
+              <input type="hidden" value="d0abf89c0d6cd87b4887a34bf3a09882" id="edit-poll-view-voting-form-token-1" name="form_token">
+              <input type="hidden" value="poll_view_voting" id="edit-poll-view-voting-1" name="form_id">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div><!--//.block-poll-->
+    <div id="print-guide" class="print-guide outnone">
+      <div class="box-title"><h2>CUADERNOS</h2></div>
+      <div class="box-border box-contents box-shadows decou">
+      <a href="#"><img src="/media/images/nosotros/cuaderno-1.jpg" width="145" height="149" alt="cuaderno-1"/></a></div>
+      <!--//.box-contents-->
+    </div><!--//.print-guide-->
+  </div><!--//.left-->
+  <div class="c40r right">
+    <div class="placeholders mt30">
+      <div class="box-border box-contents box-shadows">
+        {% banner_zone 104 %}
+      </div><!--//.box-contents-->
+    </div><!--//.placeholder-->
+    <div class="placeholders mt10">
+      <div class="box-border box-contents box-shadows">
+        {% banner_zone 105 %}
+      </div>
+      <!--//.box-contents-->
+    </div><!--//.placeholder-->
+    <div class="banner-container box-shadows outnone widget">
+        {% banner_zone 101 %}
+    </div><!--//.banner-container-->
+  </div><!--//.right-->
+</div><!--//.split-sidebars-->
 
 {% endblock %}

@@ -126,15 +126,13 @@
          </h2>
       </div><!--//.date-->
       <div class="banner-container txt-right outnone" align="right">
-      		<a href="#">
-      			<img src="/media/images/banners/banner_1.jpg" alt="Banner" />
-  			</a>
+          {% banner_zone 99 %}
 	</div><!--//.banner-container-->
       <br class="cflt" />
     </div><!--//.header-secondary-->
     <div id="header-tertiary" class="header-tertiary encap">
     	<div class="rumba-logo outnone c25l">
-      	<h1><a href="#" title="Rumbabogota Home"><img src="/media/images/rb_logo.png" alt="Rumbabogota.com" /></a><span>El sitio de todas las rumbas</span></h1>
+      	<h1><a href="/" title="{% trans "Rumbabogota Home"%}"><img src="/media/images/rb_logo.png" alt="Rumbabogota.com" /></a><span>El sitio de todas las rumbas</span></h1>
       </div><!--//.logo-->
       <div id="top-menus-wrapper" class="top-menus-wrapper outnone c75r">
       	<ul id="top-menu-secondary" class="top-menu-secondary flt-right encap fcpl0 lcpr0">
@@ -213,13 +211,17 @@
 			{% block colleft %}{% endblock %}
       	</div><!--//.col-left-->
 	  <div id="col-right" class="col-right">
-        {% block colright %}{% endblock %}
+        {% block colright %}
+            <div class="banner-container box-shadows outnone widget">
+                {% banner_zone 100 %}
+            </div><!--//.banner-container-->
+        {% endblock %}
       </div><!--//.col-left-->
     	<br class="cflt" />
     </div><!--//.main-contents-->
     <div id="footer-primary" class="footer-primary box-shadows">
       <div class="banner-container outnone">
-        <a href="#"><img alt="Ad" src="/media/images/banners/banner_1.jpg" /></a>
+        {% banner_zone 99 %}
       </div><!--//.banner-container-->
     </div><!--//.footer-primary-->
     <div id="footer-secondary" class="footer-secondary">
