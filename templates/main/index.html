@@ -260,6 +260,7 @@
                     $('.photo-node', tab).hide('slide', {direction: 'left'}, 500, function(){
                         $('.photo-teasters', tab).load(addr,function(){
                             $('.photo-node', tab).show('slide', {direction: 'right'}, 500);
+                            FB.XFBML.parse( $('.photo-teasters', tab).get(0) );
                         });
                     });
                 }

@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load tools %}
 <div class="photo-node"  style="height: 195px;">
-    <div class="image c55l outnone"><a href="#"><img src="{{ photo.mainthumb.url }}" alt="{{ photo.description }}" /></a></div>
+    <div class="image c55l outnone"><a href="{{ photo.get_absolute_url }}"><img src="{{ photo.mainthumb.url }}" alt="{{ photo.description }}" /></a></div>
     <div class="photo-teaser c45r">
       <h4>{{photo.datetime_added|date:"d.m.y"}}</h4>
         {% if photo.category %}
