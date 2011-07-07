@@ -54,6 +54,8 @@
 		 	$('.images-preview ul').hide('slide', {direction: 'right'}, 500, function(){
 			 	$('#details-node').load(addr,function(){
 			 		$('.images-preview ul').show('slide', {direction: 'left'}, 500);
+                     FB.XFBML.parse(document.getElementById('details-node'));
+                     $.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
                      $('.opnx_banner').each(function(idx, el){
                         $(el).attr("src", $(el).attr("src"));
                     })
@@ -61,19 +63,21 @@
 		 	});
 		 	return false;
 		 });
-		 $('.gente-next').live('click', function(){
-		 	var addr = $(this).attr('href');
-		 	$('.images-preview ul').hide('slide', {direction: 'left'}, 500, function(){
-			 	$('#details-node').load(addr,function(){
-			 		$('.images-preview ul').show('slide', {direction: 'right'}, 500);
-                     $('.opnx_banner').each(function(idx, el){
+        $('.gente-next').live('click', function() {
+            var addr = $(this).attr('href');
+            $('.images-preview ul').hide('slide', {direction: 'left'}, 500, function() {
+                $('#details-node').load(addr, function() {
+                    $('.images-preview ul').show('slide', {direction: 'right'}, 500);
+                    FB.XFBML.parse(document.getElementById('details-node'));
+                    $.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
+                    $('.opnx_banner').each(function(idx, el) {
                         $(el).attr("src", $(el).attr("src"));
                     })
-			 	});	
-		 	});
-		 	
-		 	return false;
-		 });
+                });
+            });
+
+            return false;
+        });
 		$('.image-teaser-slides img').live('mouseover',
 			function(){
 				$(this).css("border-color","#C52121");
