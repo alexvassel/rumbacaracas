@@ -7,6 +7,14 @@
 	  	<h2 class="title"><a href="{%url people_details slug=photo.event.slug%}">{{photo.event.title}}</a></h2>
 	    <span class="submitted">
 			{%if photo.event and photo.event.city%}{{photo.event.city}} {%endif%}{{photo.datetime_added|date:"d.m.y"}}
+
+            {%if photo.event and photo.event.location%}
+                <span>&nbsp;|&nbsp;</span>
+                <a class="author-link" href="{{photo.event.location.get_absolute_url}}">
+                    {{photo.event.location.title}}
+                </a>
+            {%endif%}
+
 		</span>
 	  </div><!--//.c75l-->
 	  <div class="c20r txt-right mt15 outnone">
