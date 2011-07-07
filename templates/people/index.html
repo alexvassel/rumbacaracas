@@ -15,7 +15,7 @@
 	</span>
 	  </div><!--//.title-wrap-->
 	  <div class="node encap">
-	<div class="fotos-left c58l outnone">
+	<div class="fotos-left c60l outnone">
 	  <h3>{% trans "Latest photos"%}</h3>
 	  <span class="teaser-image"><a href="{%url people_details slug=latest.slug%}">
 		{% if latest.image %}<img src="{{latest.widethumb.url}}" alt="{{latest.title}}"/> {% else %} <br /> {% endif %}
@@ -30,15 +30,17 @@
   		<li>
 			{% twitter_share latest.get_absolute_url latest.title%}
 		</li>
+        {% comment %}
 	    <li><a class="socializer-11" href="{%url people_details slug=latest.slug%}">
 			<span>{% trans "Photos:"%} {{latest.photo_set.all|length}}</span></a>
 		</li>
+		{% endcomment %}
 		<li class="mr10">
-	  		{% facebook_like latest.get_absolute_url 60 0%}
+	  		{% facebook_like latest.get_absolute_url 60%}
   		</li>
 	  </ul>
 	</div>
-	<div class="content c42r fotos">
+	<div class="content c40r fotos">
 	  <h2 class="title"><a href="{%url people_details slug=latest.slug%}">{{latest.title}}</a></h2>
 	  <span class="submitted">
 		{% if latest.city%}{{latest.city}} {% endif %}{{latest.date|date:"d.m.y"}}

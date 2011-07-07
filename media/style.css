@@ -3454,6 +3454,8 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 #main-contents #col-left .locales-details .node-mini-right .share-options{
   padding: 10px 0;
 }
+
+
 #main-contents #col-left .evento-details .node-mini-right .share-options ul,
 #main-contents #col-left .evento-details .node-mini-right .share-options ul li,
 #main-contents #col-left .locales-details .node-mini-right .share-options ul,
@@ -3464,7 +3466,18 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 #main-contents #col-left .evento-details .node-mini-right .share-options ul li,
 #main-contents #col-left .locales-details .node-mini-right .share-options ul li{
   display: block;
-  margin: 0 0 10px;
+    padding: 5px 0;
+    border-bottom: 1px dotted black;
+
+}
+#main-contents #col-left .evento-details .node-mini-right .share-options ul li iframe ,
+#main-contents #col-left .locales-details .node-mini-right .share-options ul li iframe {
+    padding: 8px 0;
+}
+
+#main-contents #col-left .evento-details .node-mini-right .share-options ul li:first-child ,
+#main-contents #col-left .locales-details .node-mini-right .share-options ul li:first-child {
+    border-top: 1px dotted black;
 }
 #main-contents #col-left .evento-details .node-mini-right .share-options ul li a,
 #main-contents #col-left .locales-details .node-mini-right .share-options ul li a {
