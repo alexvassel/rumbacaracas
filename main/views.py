@@ -42,7 +42,7 @@ def index( request ):
     events_slides = sortEventList( [event for event, date in event_slides] )[:get_events]
     blog_slides = Entry.published.filter( show_in_main_slider = True ).order_by( '-creation_date' )[:get_news]
 
-    videos = Video.objects.order_by( '-datetime_added' )[:5]
+    videos = Video.objects.filter( status = 1 ).order_by( '-datetime_added' )[:5]
 
     blog = Entry.published.filter(categories__slug = "blog").order_by( '-creation_date' )[:4]
     news = Entry.published.exclude(categories__slug = "blog").order_by( '-creation_date' )[:4]
