@@ -2,6 +2,7 @@
 {% load i18n %}
 {% block title %}{% trans "Your photos | Rumbabogota" %}{% endblock %}
 {% load tools %}
+{% load widgets %}
 {% load listtools %}
 {% block colleft %}
 
@@ -62,7 +63,10 @@
 		 	$('.images-preview ul').hide('slide', {direction: 'right'}, 500, function(){
 			 	$('#details-node').load(addr,function(){
 			 		$('.images-preview ul').show('slide', {direction: 'left'}, 500);
-			 		FB.XFBML.parse(document.getElementById('details-node'));	
+			 		FB.XFBML.parse(document.getElementById('details-node'));
+                     $('.opnx_banner').each(function(idx, el){
+                        $(el).attr("src", $(el).attr("src"));
+                    })
 			 	});	
 		 	});
 		 	return false;
@@ -72,7 +76,11 @@
 		 	$('.images-preview ul').hide('slide', {direction: 'left'}, 500, function(){
 			 	$('#details-node').load(addr,function(){
 			 		$('.images-preview ul').show('slide', {direction: 'right'}, 500);
-			 		FB.XFBML.parse(document.getElementById('details-node'));	
+			 		FB.XFBML.parse(document.getElementById('details-node'));
+                    $('.opnx_banner').each(function(idx, el){
+                        $(el).attr("src", $(el).attr("src"));
+                    })
+
 			 	});	
 		 	});
 		 	
@@ -90,4 +98,9 @@
 		)
 	})
 </script>
+{% endblock %}
+
+{% block colright %}
+    {{ block.super }}
+    {% yourphotos_block %}
 {% endblock %}

@@ -49,7 +49,7 @@
     <div class="image-teaser-nav encap outnone">
       <ul class="image-teaser-nav encap fcml0 fcmr0">
       	{% for slide in slider_events%}
-        	<li><h6><a href="/events/{{slide.slug}}"><img src="{{slide.smallimg.url}}" alt="Image" /></a></h6></li>
+        	<li><h6><a href="/events/{{slide.slug}}"><img src="{{slide.smallimg.url}}"/></a></h6></li>
         {% endfor %}
       </ul><!--//.image-teaser-nav-->
       <div class="cflt"></div>
@@ -249,4 +249,10 @@
 
 
 </div><!--//.node-container-->
+{% endblock %}
+
+{% block colright %}
+    <div class="banner-container box-shadows outnone widget">
+        {% banner_zone_iframe 100 300 250%}
+    </div><!--//.banner-container-->
 {% endblock %}

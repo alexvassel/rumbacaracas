@@ -4,6 +4,7 @@
 {% load twitter %}
 {% load twitter_tags %}
 {% load openx %}
+{% load widgets %}
 {% load socialregistration_tags %}
 {% load googlesearch_inclusion_tags %}
 
@@ -126,7 +127,7 @@
          </h2>
       </div><!--//.date-->
       <div class="banner-container txt-right outnone" align="right">
-          {% banner_zone 99 %}
+          {% banner_zone_iframe 99 800 100 %}
 	</div><!--//.banner-container-->
       <br class="cflt" />
     </div><!--//.header-secondary-->
@@ -213,15 +214,18 @@
 	  <div id="col-right" class="col-right">
         {% block colright %}
             <div class="banner-container box-shadows outnone widget">
-                {% banner_zone 100 %}
+                {% banner_zone_iframe 100 300 250%}
             </div><!--//.banner-container-->
+            <div class="clear-block block block-views widget widget-calendar">
+                {% month_cal%}
+            </div>
         {% endblock %}
       </div><!--//.col-left-->
     	<br class="cflt" />
     </div><!--//.main-contents-->
     <div id="footer-primary" class="footer-primary box-shadows">
       <div class="banner-container outnone">
-        {% banner_zone 99 %}
+        {% banner_zone_iframe 99 800 100 %}
       </div><!--//.banner-container-->
     </div><!--//.footer-primary-->
     <div id="footer-secondary" class="footer-secondary">

@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load facebook %}
+<div class="box-generic widget outnone more-photos">
+    <div class="box-title"><h2>{% trans "More photos" %}</h2></div>
+    <div class="box-border box-contents decou">
+        <ul>
+            {% for photo in photos %}
+                <li>
+                    <a href="{{photo.get_absolute_url}}"><img src="{{photo.thinthumb.url}}" alt="{{photo.description}}"/></a>
+                    <h6><a href="{{photo.get_absolute_url}}">{{photo.description}}</a></h6>
+                    <span class="author-meta">{% trans "Submitted by"%} {{photo.get_user_link}}</span>
+                    <div class="fivestar-widget clear-block fivestar-widget-5">
+                        {% facebook_like photo.get_absolute_url 184%}
+                    </div>
+                </li>
+            {% endfor%}
+        </ul>
+    </div><!--//.box-contents-->
+</div><!--//.box-generic-->

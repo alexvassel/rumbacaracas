@@ -7,6 +7,12 @@ class ResizeThumb( processors.Resize ):
     height = 168
     crop = True
 
+# first we define our thumbnail resize processor
+class ThinThumb( processors.Resize ):
+    width = 168
+    height = 99
+    crop = True
+
 class BigImage( processors.Resize ):
     width = 540
     height = 540
@@ -80,3 +86,7 @@ class MainMiniThumbnail( ImageSpec ):
     pre_cache = False
     processors = [MainMiniThumb, EnchanceThumb]
 
+class ThinThumbnail( ImageSpec ):
+    access_as = 'thinthumb'
+    pre_cache = False
+    processors = [ThinThumb, EnchanceThumb]

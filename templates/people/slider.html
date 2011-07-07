@@ -54,6 +54,9 @@
 		 	$('.images-preview ul').hide('slide', {direction: 'right'}, 500, function(){
 			 	$('#details-node').load(addr,function(){
 			 		$('.images-preview ul').show('slide', {direction: 'left'}, 500);
+                     $('.opnx_banner').each(function(idx, el){
+                        $(el).attr("src", $(el).attr("src"));
+                    })
 			 	});	
 		 	});
 		 	return false;
@@ -63,6 +66,9 @@
 		 	$('.images-preview ul').hide('slide', {direction: 'left'}, 500, function(){
 			 	$('#details-node').load(addr,function(){
 			 		$('.images-preview ul').show('slide', {direction: 'right'}, 500);
+                     $('.opnx_banner').each(function(idx, el){
+                        $(el).attr("src", $(el).attr("src"));
+                    })
 			 	});	
 		 	});
 		 	

@@ -1600,6 +1600,12 @@ a.carousel-next{
   width: 12%;
   min-width: 12%;
 }
+.calendar-calendar table.mini td.cal_not_in_month {
+   color: #808080;
+   font-style: italic;
+}
+
+
 .calendar-calendar td a {
   font-weight: bold;
   text-decoration: none;
