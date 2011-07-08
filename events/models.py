@@ -109,7 +109,7 @@ class Event( ImageModel, Sortable ):
     to_date = models.DateField( _( 'Event end date' ), blank = True )
     repeat = models.ManyToManyField( WeekDay , blank = True )
     category = models.ForeignKey( EventCategory )
-    time = models.TimeField( _( 'Event time' ) , blank = True , null = True )
+    time = models.CharField( _( 'Event time' ) , blank = True , null = True )
     price = models.CharField( _( 'Entrance fee, ticket, cost/price' ), max_length = 256 , blank = True )
     address = models.CharField( _( 'Address' ), max_length = 256 , blank = True )
     location = models.ForeignKey( Location , blank = True , null = True )
