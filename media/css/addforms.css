@@ -236,6 +236,13 @@
   color        :  #666666;
 }
 
+span.citytext {
+    font-family  :  arial, verdana, sans-serif;
+    font-size    :  16px;
+    color        :  #666666;
+}
+
+
 #add-form input.textbox, #add-form select, #add-form textarea, #add-form .textbox input
 {
   font-family  :  arial, verdana, sans-serif;

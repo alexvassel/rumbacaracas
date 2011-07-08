@@ -8,6 +8,8 @@ from decorators import render_to
 import random
 from django.forms import ModelForm
 from django.template.defaultfilters import slugify
+from django.forms import forms
+
 
 def _process( request, group ):
     try:
@@ -111,8 +113,6 @@ def add( request ):
                 'restaurant',
                 'address',
                 'area',
-                'city',
-                'district',
                 'phone_1',
                 'phone_2',
                 'fax',
@@ -130,6 +130,71 @@ def add( request ):
                 'phones',
                 'contact_email',
             )
+        #Set required
+        def clean_type(self):
+            type = self.cleaned_data.get("type")
+            if not type:
+                raise forms.ValidationError( _("This field is required"))
+            return type
+
+        #Set required
+        def clean_address(self):
+            address = self.cleaned_data.get("address")
+            if not address:
+                raise forms.ValidationError( _("This field is required"))
+            return address
+        #Set required
+        def clean_area(self):
+            area = self.cleaned_data.get("area")
+            if not area:
+                raise forms.ValidationError( _("This field is required"))
+            return area
+        #Set required
+        def clean_days_of_operation(self):
+            days_of_operation = self.cleaned_data.get("days_of_operation")
+            if not days_of_operation:
+                raise forms.ValidationError( _("This field is required"))
+            return days_of_operation
+        #Set required
+        def clean_hours_of_operation(self):
+            hours_of_operation = self.cleaned_data.get("hours_of_operation")
+            if not hours_of_operation:
+                raise forms.ValidationError( _("This field is required"))
+            return hours_of_operation
+        #Set required
+        def clean_music(self):
+            music = self.cleaned_data.get("music")
+            if not music:
+                raise forms.ValidationError( _("This music is required"))
+            return music
+        #Set required
+        def clean_image_logo(self):
+            image_logo = self.cleaned_data.get("image_logo")
+            if not image_logo:
+                raise forms.ValidationError( _("This field is required"))
+            return image_logo
+        #Set required
+        def clean_description(self):
+            description = self.cleaned_data.get("description")
+            if not description:
+                raise forms.ValidationError( _("This field is required"))
+            return description
+
+        #Set required type of restaurant if type is restaurant
+        def clean(self):
+            cleaned_data = self.cleaned_data
+
+            type = cleaned_data.get("type")
+            restaurant = cleaned_data.get("restaurant")
+
+            if not type:
+                return cleaned_data
+            #TODO Remove Magic number
+            elif 11 in [typ.pk for typ in type]:
+                if not restaurant:
+                    raise forms.ValidationError( _("Type of restaurant can't be empty for restaurant"))
+                
+            return cleaned_data
 
 #LocationForm.visible_fields
             #django.forms.fields.CharField

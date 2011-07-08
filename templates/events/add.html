@@ -20,6 +20,12 @@
 	<br />
   	{% if completed %}<h2>{% trans "Your event successfully added and will be reviewed shortly!"%}</h2>{% endif %}
 	<h2>{% trans "Submit Your Event:"%}</h2>
+    {% if form.non_field_errors %}
+        <div id="form-error">
+            {% trans "The operation could not be performed because one or more error(s) occurred.<br />Please resubmit the form after review the following errors:" %}
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
   	<form enctype="multipart/form-data" method="post" action="" id="addform">
     	{% csrf_token %}
 		<div>
@@ -28,11 +34,7 @@
 				{% if field.name == 'description' %}
 				  	<tr>
 				    	<td colspan="2">
-							{% if field.field.required %}
-								<span class="mandatory">*</span>
-							{% else %}
-								<span class="space"></span>
-							{% endif %}
+                            <span class="mandatory">*</span>
 							{{ field.label_tag }}
 							{% if field.errors %}	
 					        		<br/>{{ field.errors }}
@@ -67,11 +69,7 @@
 				{% if field.name == 'to_date' %}
 					<tr id="to_date" {% if not errors%}style="display:none"{%endif%}>
 						<td width="250">
-							{% if field.field.required %}
-								<span class="mandatory">*</span>
-							{% else %}
-								<span class="space"></span>
-							{% endif %}
+                            <span class="mandatory">*</span>
 							{{ field.label_tag }}
 							{% if field.errors %}
 					        		<br/>{{ field.errors }}
@@ -105,11 +103,7 @@
 				{% if field.name == 'location' %}
 					<tr id="location">
 						<td width="250">
-							{% if field.field.required %}
-								<span class="mandatory">*</span>
-							{% else %}
-								<span class="space"></span>
-							{% endif %}
+                            <span class="mandatory">*</span>
 							{{ field.label_tag }}
 							{% if field.errors %}
 					        		<br/>{{ field.errors }}
@@ -121,19 +115,21 @@
 						</td>
 		        	</tr>
 				{% else %}
-		        	<tr {% if not errors%}{% if field.name == 'city' or field.name == 'area' or field.name == 'address' or field.name == 'place'%} class="additional_loc" style="display:none"{%endif%}{%endif%}>
+		        	<tr {% if not errors%}{% if field.name == 'area' or field.name == 'address' or field.name == 'place'%} class="additional_loc" style="display:none"{%endif%}{%endif%}>
 						<td width="250">
-							{% if field.field.required %}
+							{% if field.field.required or field.name == 'time' or field.name == 'description' or field.name == 'address' or field.name == 'area' or field.name == 'image' %}
 								<span class="mandatory">*</span>
 							{% else %}
 								<span class="space"></span>
 							{% endif %}
+                            {% if field.name == 'area'%}<span class="citytext">{% trans "City" %} / </span>{% endif %}
 							{{ field.label_tag }}
 							{% if field.errors %}
 					        		<br/>{{ field.errors }}
 				        	{% endif%}
 						</td>
 						<td class="textbox">
+                            {% if field.name == 'area'%}<span class="citytext">{% trans "Bogota" %} / </span>{% endif %}
 							{{ field }}
 							{% if field.name == 'address' %}
 			      				<small><i>({% trans "Tel, Fax, URL Twitter, FB, etc"%})</i></small>

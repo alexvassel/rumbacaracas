@@ -19,6 +19,12 @@
 	<br />
   	{% if completed %}<h2>{% trans "Your photos successfully uploaded and will be reviewed shortly!"%}</h2>{% endif %}
 	<h2>{% trans "Submit Your Location:"%}</h2>
+    {% if form.non_field_errors %}
+        <div id="form-error">
+            {% trans "The operation could not be performed because one or more error(s) occurred.<br />Please resubmit the form after review the following errors:" %}
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
   	<form enctype="multipart/form-data" method="post" action="" id="addform">
     	{% csrf_token %}
 		<div>
@@ -34,11 +40,7 @@
 				{% if field.name == 'description' %}
 				  	<tr>
 				    	<td colspan="2">
-							{% if field.field.required %}
-								<span class="mandatory">*</span>
-							{% else %}
-								<span class="space"></span>
-							{% endif %}
+                            <span class="mandatory">*</span>
 							{{ field.label_tag }}
 							{% if field.errors %}	
 					        		<br/>{{ field.errors }}
@@ -67,6 +69,18 @@
 						</td>
 		        	</tr>
 				{% else %}
+				{% if field.name == 'area' %}
+					<tr>
+						<td width="250">
+                            <span class="mandatory">*</span>
+							<span class="citytext">{% trans "City" %} / </span>{{ field.label_tag }}
+							{% if field.errors %}
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+						<td class="textbox"><span class="citytext">Bogota / </span>{{ field }}</td>
+                    </tr>
+				{% else %}
 				{% if field.name == 'phone_2' %}
 					<tr id="Phone2" {% if not errors%}style="display:none;"{%endif%}>
 						<td width="250">
@@ -83,9 +97,9 @@
 						<td class="textbox"><span class="phone">{{ field }}</span></td>
 		        	</tr>
 				{% else %}
-					<tr>
+					<tr  {% if field.name == 'restaurant' and not field.errors %}style="display: none;" class="hidden_restaurant" {% endif %}>
 						<td width="250">
-							{% if field.field.required %}
+							{% if field.field.required or field.name == 'restaurant' or field.name == 'address' or field.name == 'hours_of_operation' or field.name == 'days_of_operation' or field.name == 'music' or field.name == 'image_logo' %}
 								<span class="mandatory">*</span>
 							{% else %}
 								<span class="space"></span>
@@ -99,6 +113,7 @@
 		        	</tr>
 				{% endif %}
 				{% endif %}
+                {% endif %}
 				{% endif %}
 			{% endfor %}
 			<tr>
@@ -127,6 +142,23 @@
 </div><!--//.node-container-->
 
 <script>
+    Array.prototype.hasObject = (
+      !Array.indexOf ? function (o)
+      {
+        var l = this.length + 1;
+        while (l -= 1)
+        {
+            if (this[l - 1] === o)
+            {
+                return true;
+            }
+        }
+        return false;
+      } : function (o)
+      {
+        return (this.indexOf(o) !== -1);
+      }
+    );
 	$(document).ready(function () {
 		$('#addform input[type=reset]').click(function(){
 			$(':input','#addform')
@@ -136,6 +168,21 @@
 			 .removeAttr('selected');
 			 return false;	
 		});
+
+        function renderRestaurant(element){
+            var selected = $(element).val();
+            // #TODO Remove Magic number
+            if(selected.hasObject('11')) {
+                $('#addform .hidden_restaurant').show();
+            } else {
+                $('#addform .hidden_restaurant').hide();
+                $('#addform .hidden_restaurant select').val('');
+            }
+        }
+        $('#addform #id_type').change(function() {
+            renderRestaurant(this);
+        });
+        renderRestaurant($('#addform #id_type').get(0));
 	})
 </script>
 

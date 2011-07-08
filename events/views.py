@@ -13,6 +13,8 @@ import locale
 from django.forms import ModelForm, ModelMultipleChoiceField
 from django.template.defaultfilters import slugify
 from django.http import HttpResponseRedirect
+from django.forms import forms
+
 
 months = {
         1 : "January",
@@ -273,21 +275,50 @@ def add( request ):
                 'category',
                 'music',
                 'location',
-                'city',
+                'place',
                 'area',
                 'address',
-                'place',
+
                 'time',
                 'price',
                 'email',
-                'user',
                 'url',
                 'phone',
 
                 'image',
                 'description',
             )
+        #Set required
+        def clean_time(self):
+            time = self.cleaned_data.get("time")
+            if not time:
+                raise forms.ValidationError( _("This field is required"))
+            return time
+        #Set required
+        def clean_description(self):
+            description = self.cleaned_data.get("description")
+            if not description:
+                raise forms.ValidationError( _("This field is required"))
+            return description
+        #Set required
+        def clean_image(self):
+            image = self.cleaned_data.get("image")
+            if not image:
+                raise forms.ValidationError( _("This field is required"))
+            return image
 
+        #Set required location or address and area
+        def clean(self):
+            cleaned_data = self.cleaned_data
+
+            location = cleaned_data.get("location")
+            address = cleaned_data.get("address")
+            area = cleaned_data.get("area")
+
+            if location or (address and area):
+                return cleaned_data
+            else:
+                raise forms.ValidationError( _("Location or Address and Area are required"))
 
     if request.method == 'POST': # If the form has been submitted...
         form = EventForm( request.POST, request.FILES ) # A form bound to the POST data

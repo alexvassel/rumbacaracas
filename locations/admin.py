@@ -20,7 +20,7 @@ class LocationAdmin( admin.ModelAdmin ):
     readonly_fields = ( 'add_user', )
     fieldsets = [
         ( 'Location data', {'fields': ( 
-            'title', 'slug', 'type', 'restaurant', 'area', 'address', 'city', 'district', 'phone_1', 'phone_2',
+            'title', 'slug', 'type', 'restaurant', 'area', 'address', 'city', 'phone_1', 'phone_2',
             'fax', 'url', 'email', 'hours_of_operation', 'days_of_operation',
              'music', 'image_logo', 'description', 'status', 'featured',
              'add_user',
