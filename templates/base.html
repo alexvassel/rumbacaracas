@@ -59,9 +59,9 @@
          <div class="sec-left flt-left">
 
           <ul class="top-menu-social">
-		{% if logged_in %}
+		{% if request.user.is_authenticated %}
 		    <li class="opcion0">
-		    	<a href="{% url social_logout %}">
+		    	<a href="{% url social_logout %}" class="logout">
 					{% trans "Logout" %}
 				</a>
 			</li>

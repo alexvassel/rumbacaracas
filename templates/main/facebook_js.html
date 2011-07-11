@@ -15,4 +15,11 @@
     e.async = true;
     document.getElementById('fb-root').appendChild(e);
   }());
+  
+  function facebookConnect(form){
+      function handleResponse(response){
+          form.submit();
+      }
+      FB.login(handleResponse,{perms:'email,user_birthday'});
+  }
 </script>

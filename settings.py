@@ -75,16 +75,16 @@ MIDDLEWARE_CLASSES = (
  )
 
 AUTHENTICATION_BACKENDS = ( 
- 'socialregistration.auth.FacebookAuth',
- 'socialregistration.auth.TwitterAuth',
- 'django.contrib.auth.backends.ModelBackend',
+    'socialregistration.auth.FacebookAuth',
+    'socialregistration.auth.TwitterAuth',
+    'django.contrib.auth.backends.ModelBackend',
  )
 
 
 
 FACEBOOK_APP_ID = '195992407109917'
-FACEBOOK_API_KEY = '15d12186d338568b8b5634e27aafb7cd'
-FACEBOOK_SECRET_KEY = 'e450064cd78715d484825ed6c3b4e304'
+FACEBOOK_API_KEY = FACEBOOK_APP_ID #'15d12186d338568b8b5634e27aafb7cd'
+FACEBOOK_SECRET_KEY = '4266850c560e8f9266b07eb9d4e4137f'
 FACEBOOK_REQUEST_PERMISSIONS = 'email'
 
 
@@ -95,8 +95,9 @@ TWITTER_REQUEST_TOKEN_URL = 'https://api.twitter.com/oauth/request_token'
 TWITTER_ACCESS_TOKEN_URL = 'https://api.twitter.com/oauth/access_token'
 TWITTER_AUTHORIZATION_URL = 'https://api.twitter.com/oauth/authorize'
 
+SOCIALREGISTRATION_GENERATE_USERNAME = False
 
-
+AUTH_PROFILE_MODULE = 'main.models.UserProfile'
 
 ZINNIA_ENTRY_BASE_MODEL = 'news.zinniaModels.MyEntry'
 
@@ -109,7 +110,7 @@ OPENX_PASSWORD = 'adminbanners'
 
 
 
-#LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/"
 
 INTERNAL_IPS = ( '127.0.0.1', )
 
@@ -156,7 +157,7 @@ INSTALLED_APPS = (
     'preferences',
     'googlesearch',
     'debug_toolbar',
-    'legacy',
+    #'legacy',
     #'photologue',
     #'tagging',
     # Uncomment the next line to enable admin documentation:

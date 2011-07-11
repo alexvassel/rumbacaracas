@@ -262,7 +262,11 @@ input[type="button"], input[type="submit"], button{
 	margin-left: 5px;
 }
 #header-primary .rows .sec-left ul.top-menu-social li a{
-	padding: 10px 0px !important;
+	padding: 10px 0px;
+}
+
+#header-primary .rows .sec-left ul.top-menu-social li a.logout{
+	padding: 3px 0px !important;
 }
 
 #header-primary .rows .sec-left ul li a{
