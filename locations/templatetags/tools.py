@@ -1,5 +1,7 @@
 from django import template
+from socialregistration.models import FacebookProfile, TwitterProfile
 register = template.Library()
+from django.utils.safestring import mark_safe
 
 @register.filter
 def truncate( value, arg ):
@@ -19,6 +21,31 @@ def truncate( value, arg ):
         return mark_safe( '<span title="' + value + '">' + value[:length] + "..." + '</span>' )
     else:
         return value
+
+
+
+@register.filter
+def user_link( value):
+    if value is None:
+        return ""
+    try :
+        facebook_user = FacebookProfile.objects.get( user = value )
+    except FacebookProfile.DoesNotExist:
+        facebook_user = None
+
+    try :
+        twitter_user = TwitterProfile.objects.get( user = value )
+    except TwitterProfile.DoesNotExist:
+        twitter_user = None
+
+    if facebook_user is not None:
+        return mark_safe( u'<fb:name uid="%s"  target="_blank" />' % ( facebook_user.uid ) )
+    elif twitter_user is not None:
+        return mark_safe( value.username )
+    elif value.first_name or value.last_name:
+        return mark_safe( '%s %s' % (value.first_name, value.last_name))
+    else:
+        return mark_safe( value.username )
 
 
 def locations_paginator( context, adjacent_pages = 2 ):

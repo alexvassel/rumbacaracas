@@ -20,7 +20,7 @@
   <div class="node bb-none encap">
 	<div class="wrapper encap">
 		<h2 class="title">{{video.description}}</h2>
-		<span class="submitted">{{video.datetime_added|date:"d.m.Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{video.get_user_link}}</span></span>
+		<span class="submitted">{{video.datetime_added|date:"d.m.Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{video.user|user_link}}</span></span>
     </div><!--//.wrapper-->
 	<div class="content">
 		{{video.youtube_id|youtube_video_from_id}}

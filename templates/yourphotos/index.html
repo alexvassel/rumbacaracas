@@ -31,7 +31,7 @@
 	<div class="node">
 		<div class="wrapper encap">
 			<h2 class="title"><a href="/yourphotos/{{latest.id}}">{{latest.description}}</a></h2>
-			<span class="submitted">{{latest.datetime_added|date:"d.m.Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{latest.get_user_link}}</span></span>
+			<span class="submitted">{{latest.datetime_added|date:"d.m.Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{latest.user|user_link}}</span></span>
 		</div><!--//.wrapper-->
 		<div class="content">
 			<div class="std-thumbnail outnone"><a href="/yourphotos/{{latest.id}}"><img src="{{latest.bigimg.url}}"></a></div>
@@ -93,7 +93,7 @@
 								<div class="std-thumbnail"><a href="/yourphotos/{{photo.id}}"><img src="{{photo.thumbnail.url}}"></a></div>
 								<div class="std-details decou">
 									<h6><a href="/yourphotos/{{photo.id}}">{{photo.description}}</a></h6>
-									<span class="author-meta">{% trans "Submitted by"%} {{photo.get_user_link}}</span>
+									<span class="author-meta">{% trans "Submitted by"%} {{photo.user|user_link}}</span>
 									<div class="fivestar-widget clear-block fivestar-widget-5">
 										{% facebook_like photo.get_absolute_url 184%}
 									</div>

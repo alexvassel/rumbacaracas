@@ -1,11 +1,12 @@
 {% load i18n %}
 {% load openx %}
+{% load tools %}
 {% load facebook twitter%}
 <div class="node gente bb-none encap">
 	<div class="wrapper encap">
 	  <div class="c75l">
 	  	<h2 class="title">{{photo.description}}</h2>
-	    <span class="submitted">{{photo.datetime_added|date:"d/m/Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{photo.get_user_link}}</span></span>
+	    <span class="submitted">{{photo.datetime_added|date:"d/m/Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{photo.user|user_link}}</span></span>
 	  </div><!--//.c75l-->
 	  <div class="c20r txt-right mt15 outnone">
 	  </div><!--//.c20l-->

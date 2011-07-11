@@ -9,6 +9,6 @@
         {% endif %}
       <p>{{ photo.description|truncate:130 }}</p>
 
-        <p class="submitted bold fp11"><span style="color: #000000;">{% trans "Submitted by" %} {{photo.get_user_link}}</span></p>
+        <p class="submitted bold fp11"><span style="color: #000000;">{% trans "Submitted by" %} {{photo.user|user_link}}</span></p>
     </div>
 </div><!--//.photo-teaser-->
