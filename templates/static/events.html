@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "About Us Events" %}{% endblock %}
+{% block breadcrumbs %}
+    <a href="/">{% trans "Home" %}</a>
+    <span>&nbsp;→&nbsp;</span>
+    <a href="/about/products">{% trans "Products" %}</a>
+    <span>&nbsp;→&nbsp;</span>
+    <a class="active" href="/products/events">{% trans "Events" %}</a>
+{% endblock %}
+
+{% block colleft %}
+<div class="node-container nosotros box-shadows encap">
+    <div class="title-wrap encap">
+        <span class="flt-left"><h2 class="title">Productos</h2></span>
+    </div><!--//.title-wrap-->
+
+    <div class="node bb-none encap">
+        <div class="nosotros encap">
+            <div class="node-mini-left c65l">
+
+                <div class="rumba-families encap outnone" style="margin-top:0px;">
+                    <ul>
+                        <li>
+                            <h3>Eventos</h3>
+
+                            <h3 class="red-ul">Servicios</h3>
+                            <ul class="lh20">
+                                <li>» Conceptualización</li>
+                                <li>» Diseño de comunicación y estrategia</li>
+                                <li>» Booking y contratación de talentos nacionales e internacionales</li>
+                                <li>» Convocatoria especializada (VIP, personalidades, rumberos)</li>
+                                <li>» Manejo y convocatoria de prensa / medios</li>
+                                <li>» Producción general</li>
+                                <li>» Asesoría especializada</li>
+                            </ul>
+
+                            <br />
+                            <br />
+
+                            <h3 class="red-ul">Eventos Realizados</h3>
+                            <b class="px13">2007</b><br />
+                            <div class="mrgn8x0"><a href="#"><img src="/media/images/eventos/top-djs.jpg" alt="Rumba" /></a></div>
+                            <a href="#" class="redBold">TOP DJS 3ª EDICION</a><br />
+                            <ul class="lh20">
+                                <li><b>Fecha:</b> Diciembre, 2007</li>
+                                <li><b>Locación:</b> ENVIVO</li>
+                                <li><b>Convocatoria:</b> 400 personas</li>
+                                <li><b>Servicios:</b> Ejecución Completa</li>
+                                <li><b>Cliente:</b> Renault</li>
+                            </ul>
+                            <a href="#" class="red">Pisa aquí para ver las fotos</a><br />
+                            <br />
+
+                            <div class="mrgn8x0"><a href="#"><img src="/media/images/eventos/pisa-aqui.jpg" alt="Rumba" /></a></div>
+                            <a href="#" class="redBold">CASETA DE RUMBAVENEZUELA.COM EN LA FERIA DE VALENCIA</a><br />
+                            <ul class="lh20">
+                                <li><b>Fecha:</b> Diciembre, 2007</li>
+                                <li><b>Locación:</b> ENVIVO</li>
+                                <li><b>Convocatoria:</b> 400 personas</li>
+                                <li><b>Servicios:</b> Ejecución Completa</li>
+                                <li><b>Cliente:</b> Renault</li>
+                            </ul>
+                            <a href="#" class="red">Pisa aquí para ver las fotos</a><br />
+
+                            <h3 class="red-ul">&nbsp;</h3>
+                            <b class="px13">2006</b><br />
+                            <div class="mrgn8x0"><a href="#"><img src="/media/images/eventos/top-djs.jpg" alt="Rumba" /></a></div>
+                            <a href="#" class="redBold">TOP DJS 3ª EDICION</a><br />
+                            <ul class="lh20">
+                                <li><b>Fecha:</b> Diciembre, 2007</li>
+                                <li><b>Locación:</b> ENVIVO</li>
+                                <li><b>Convocatoria:</b> 400 personas</li>
+                                <li><b>Servicios:</b> Ejecución Completa</li>
+                                <li><b>Cliente:</b> Renault</li>
+                            </ul>
+                            <a href="#" class="red">Pisa aquí para ver las fotos</a><br />
+                            <br />
+
+                            <div class="mrgn8x0"><a href="#"><img src="/media/images/eventos/pisa-aqui.jpg" alt="Rumba" /></a></div>
+                            <a href="#" class="redBold">CASETA DE RUMBAVENEZUELA.COM EN LA FERIA DE VALENCIA</a><br />
+                            <ul class="lh20">
+                                <li><b>Fecha:</b> Diciembre, 2007</li>
+                                <li><b>Locación:</b> ENVIVO</li>
+                                <li><b>Convocatoria:</b> 400 personas</li>
+                                <li><b>Servicios:</b> Ejecución Completa</li>
+                                <li><b>Cliente:</b> Renault</li>
+                            </ul>
+                            <a href="#" class="red">Pisa aquí para ver las fotos</a><br />
+
+                            <br />
+
+                </div><!--//.rumba-families-->
+            </div><!--//.node-mini-left-->
+            <div class="node-mini-right c32r">
+                {% include "static/about_menu.html" with current="events"%}
+                {% include "static/social_contacts.html" %}
+            </div><!--//.node-mini-right-->
+        </div><!--//.video-archives-->
+    </div><!--//.node-->
+</div><!--//.node-container-->
+
+{% endblock %}
+

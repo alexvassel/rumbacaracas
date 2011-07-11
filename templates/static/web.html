@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "About Us Web" %}{% endblock %}
+{% block breadcrumbs %}
+    <a href="/">{% trans "Home" %}</a>
+    <span>&nbsp;→&nbsp;</span>
+    <a href="/about/products">{% trans "Products" %}</a>
+    <span>&nbsp;→&nbsp;</span>
+    <a class="active" href="/about/products/web">{% trans "Web" %}</a>
+{% endblock %}
+
+{% block colleft %}
+<style type="text/css">
+<!--
+.inner .container.encap #main-contents #col-left .node-container.nosotros.box-shadows.encap .node.bb-none.encap .nosotros.encap .node-mini-left.c65l .content p b {
+	font-size: 14pt;
+	color: #CA2121;
+}
+.inner .container.encap #main-contents #col-left .node-container.nosotros.box-shadows.encap .node.bb-none.encap .nosotros.encap .node-mini-left.c65l .content p {
+	font-size: 12pt;
+	color: #CA2121;
+}
+-->
+</style>
+
+<div class="node-container nosotros box-shadows encap">
+    <div class="title-wrap encap">
+        <span class="flt-left">
+        <h2 class="title">{% trans "Products" %}</h2></span>
+    </div><!--//.title-wrap-->
+    <div class="node bb-none encap">
+        <div class="nosotros encap">
+            <div class="node-mini-left c65l">
+                <div class="content">
+                    <p><b>Web</b>
+
+                </div><!--//.content-->
+                <div class="rumba-families encap outnone">
+                    <ul><li>
+                        <div class="wrapper encap nbpad">
+                            <div class="encap mb10">
+                                <a href="#" class="redBold">RumbaBogota.com en FACEBOOK:</a><br />
+                                <div class="alianzas-thumb"></div>
+                                <div class="textoboletin">
+                                    <p><a href="http://twitter.com/#!/rumbabogota">http://facebook.com/rumbabogota</a>
+                                        <!--//.wrapper-->
+                                    <div class="wrapper encap nbpad">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                        <li><div class="encap mb10">
+                            <a href="#" class="redBold"></a>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10"> <a href="#" class="redBold">RumbaBogota.com en TWITTER:</a><br />
+                                    <div class="alianzas-thumb"></div>
+                                    <div class="textoboletin">
+                                        <p><a href="http://twitter.com/#!/rumbabogota">http://twitter.com/rumbabogota</a> <br />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10"> <a href="#" class="redBold">ESTADÍSTICAS en RumbaBogotá.com:</a><br />
+                                    <div class="alianzas-thumb"></div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="alianzas-thumb"><a href="#"></a></div>
+                            <!--//.textoboletin-->
+                        </div>
+                            <!--//.encap-->
+                            <div class="rumba-cats">                      </div>
+                            <!--//.wrapper-->
+                            <!--//.wrapper-->
+                        </li>
+                    </ul>
+                </div><!--//.rumba-families-->
+            </div><!--//.node-mini-left-->
+            <div class="node-mini-right c32r">
+                {% include "static/about_menu.html" with current="web" %}
+                {% include "static/social_contacts.html" %}
+            </div><!--//.node-mini-right-->
+        </div><!--//.video-archives-->
+    </div><!--//.node-->
+</div><!--//.node-container-->
+
+{% endblock %}
+

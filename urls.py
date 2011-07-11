@@ -16,6 +16,17 @@ urlpatterns = patterns( '',
     ( r'^videos/', include( 'yourvideos.urls' ) ),
     ( r'^search/', include( 'googlesearch.urls' ) ),
 
+    ( r'^about/$', 'django.views.generic.simple.direct_to_template', {'template': 'static/aboutus.html'} ),
+    ( r'^about/partners$', 'django.views.generic.simple.direct_to_template', {'template': 'static/partners.html'} ),
+
+    ( r'^about/products/newsletter$', 'django.views.generic.simple.direct_to_template', {'template': 'static/newsletter.html'} ),
+    ( r'^about/products/notebook$', 'django.views.generic.simple.direct_to_template', {'template': 'static/notebook.html'} ),
+    ( r'^about/products/events$', 'django.views.generic.simple.direct_to_template', {'template': 'static/events.html'} ),
+    ( r'^about/products/magazine$', 'django.views.generic.simple.direct_to_template', {'template': 'static/magazine.html'} ),
+    ( r'^about/products/web$', 'django.views.generic.simple.direct_to_template', {'template': 'static/web.html'} ),
+    #extra_context
+
+
 
     url( r'^news/add', "news.views.add", {'type': 'news'} ),
     url( r'^news/blog/add', "news.views.add", {'type': 'blog'} ),

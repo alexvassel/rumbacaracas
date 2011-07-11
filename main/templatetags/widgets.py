@@ -25,9 +25,6 @@ def yourphotos_block( ):
     return dict(photos=photos)
 
 
-
-
-
 def get_last_day_of_month(year, month):
     if (month == 12):
         year += 1

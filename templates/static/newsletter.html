@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "About Us Newsletter" %}{% endblock %}
+{% block breadcrumbs %}
+    <a href="/">{% trans "Home" %}</a>
+    <span>&nbsp;→&nbsp;</span>
+    <a href="/about/products">{% trans "Products" %}</a>
+    <span>&nbsp;→&nbsp;</span>
+    <a class="active" href="/about/products/newsletter">{% trans "Newsletter" %}</a>
+{% endblock %}
+
+{% block colleft %}
+<style type="text/css">
+<!--
+.inner .container.encap #main-contents #col-left .node-container.nosotros.box-shadows.encap .node.bb-none.encap .nosotros.encap .node-mini-left.c65l .content p b {
+	font-size: 14pt;
+	color: #CA2121;
+}
+.inner .container.encap #main-contents #col-left .node-container.nosotros.box-shadows.encap .node.bb-none.encap .nosotros.encap .node-mini-left.c65l .content p {
+	font-size: 12pt;
+	color: #CA2121;
+}
+-->
+</style>
+
+<div class="node-container nosotros box-shadows encap">
+    <div class="title-wrap encap"> 
+        <span class="flt-left">
+        <h2 class="title">PRODUCTOS</h2></span>
+    </div><!--//.title-wrap-->
+    <div class="node bb-none encap">
+        <div class="nosotros encap">
+            <div class="node-mini-left c65l">
+                <div class="content">
+                    <p><b>Boletín Electrónico</b>
+
+                </div><!--//.content-->
+                <div class="rumba-families encap outnone">
+                    <ul>
+                        <li>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10">
+                                    <a href="#" class="redBold">Boletín Semanal:</a><br /> <br />
+                                    <div class="alianzas-thumb"><a href="#"><img src="/media/images/boletinsemanal.jpg" alt="Rumba" /></a></div>
+                                    <div class="textoboletin"><p>Envío masivo semanal que se hace a la base de datos de <a href="http" class="linkfotos">rumbabogota.com</a> <span class="textoboldfotos">10.000 usuarios</span></p> <span class="textoboldfotos">Espacios Publicitarios:</span> <br /> <br /> <p>1ra. Posición: Bs.3.500 <br />2da. Posición: Bs.2.500<br />3ra. Posición: Bs.2.500</p></div> <!--//.textoboletin-->
+
+                                </div><!--//.encap-->
+                            </div><!--//.wrapper-->
+                        </li>
+                        <li>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10">
+                                    <a href="#" class="redBold">Boletín Especial:</a><br /> <br />
+                                    <div class="alianzas-thumb"><a href="#"><img src="/media/images/boletinespecial.jpg" alt="Rumba" /></a></div>
+                                    <div class="textoboletin"><p>Envío exclusivo (Presencia de sólo un -1- cliente) a la base de datos de <a href="http" class="linkfotos">rumbabogota.com</a> o de cliente. <br /> <br /> <span class="textoboldfotos">Costo Bs. 6.000</span></p> </div> <!--//.textoboletin-->
+                                </div><!--//.encap-->
+                            </div><!--//.wrapper-->
+                        </li>
+                        <li>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10">
+                                    <a href="#" class="redBold"></a><br />
+                                    <div class="alianzas-thumb"><a href="#"></a></div>
+                                    <div class="textoboletin"><p></p> </div> <!--//.textoboletin-->
+                                </div><!--//.encap-->
+                                <div class="rumba-cats">
+                                </div><!--//.wrapper-->
+                        </li>
+                        <li>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10">
+                                    <a href="#" class="redBold"></a><br />
+                                    <div class="alianzas-thumb"><a href="#"></a></div>
+                                    <div class="textoboletin"><p></p> </div> <!--//.textoboletin-->
+                                </div><!--//.encap-->
+                            </div><!--//.wrapper-->
+                        </li>
+                        <li>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10">
+                                    <a href="#" class="redBold"></a><br />
+                                    <div class="alianzas-thumb"></div>
+                                    <div class="textoboletin"><p></p> </div> <!--//.textoboletin-->
+                                </div><!--//.encap-->
+                            </div><!--//.wrapper-->
+                        </li>
+                        <li>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10">
+                                    <a href="#" class="redBold"></a><br />
+                                    <div class="alianzas-thumb"><a href="#"></a></div>
+                                    <div class="textoboletin"><p></p> </div> <!--//.textoboletin-->
+                                </div><!--//.encap-->
+                            </div><!--//.wrapper-->
+                        </li>
+                    </ul>
+                </div><!--//.rumba-families-->
+            </div><!--//.node-mini-left-->
+            <div class="node-mini-right c32r">
+                {% include "static/about_menu.html" with current="newsletter"%}
+                {% include "static/social_contacts.html" %}
+            </div><!--//.node-mini-right-->
+        </div><!--//.video-archives-->
+    </div><!--//.node-->
+</div><!--//.node-container--> 
+
+{% endblock %}
+

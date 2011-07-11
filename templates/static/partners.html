@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "About Us Partners" %}{% endblock %}
+{% block breadcrumbs %}
+    <a href="/">{% trans "Home" %}</a>
+    <span>&nbsp;→&nbsp;</span>
+    <a class="active" href="/about/partners">{% trans "Partners" %}</a>
+{% endblock %}
+
+{% block colleft %}
+<div class="node-container nosotros box-shadows encap">
+    <div class="title-wrap encap">
+        <span class="flt-left"><h2 class="title">{% trans "Partners" %}</h2></span>
+    </div><!--//.title-wrap-->
+    <div class="node bb-none encap">
+        <div class="nosotros encap">
+            <div class="node-mini-left c65l">
+                <div class="content">
+                    <p><b>Sea por la radio, celular y hasta en el periódico, el contenido actual y completo de RUMBACARACAS.COM sigue y seguirá demostrando por qué somos los líderes en cubrir la vida nocturna nacional.</b>
+                    <p>Mantenemos alianzas con otros medios líderes para llevar lo mejor del entretenimiento a cientos de miles de rumberos a nivel nacional.</p>
+                </div><!--//.content-->
+                <div class="rumba-families encap outnone">
+                    <ul>
+                        <li>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10">
+                                    <a href="#" class="redBold">El Mundo</a><br />
+                                    <div class="alianzas-thumb"><a href="#"><img src="/media/images/alianzas/el-mundo.jpg" alt="Rumba" /></a></div>
+                                    <p>Todos los viernes publicamos una sección especial con las principales rumbas, eventos y conciertos del fin de semana, junto con las últimas noticias, locales y fotos de la vida nocturna de Caracas</p>
+                                </div><!--//.encap-->
+                            </div><!--//.wrapper-->
+                        </li>
+                        <li>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10">
+                                    <a href="#" class="redBold">Digitel</a><br />
+                                    <div class="alianzas-thumb"><a href="#"><img src="/media/images/alianzas/digitel.jpg" alt="Rumba" /></a></div>
+                                    <p>Gracias al desarrollo de la tecnología WAP, ahora podrás obtener información actualizada de las mejores rumbas, donde quieras que estés, a través de Info 412 desde tu celular.</p>
+                                </div><!--//.encap-->
+                            </div><!--//.wrapper-->
+                        </li>
+                        <li>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10">
+                                    <a href="#" class="redBold">La Mega</a><br />
+                                    <div class="alianzas-thumb"><a href="#"><img src="/media/images/alianzas/la-mega.jpg" alt="Rumba" /></a></div>
+                                    <p>Todos los viernes publicamos una sección especial con las principales rumbas, eventos y conciertos del fin de semana, junto con las últimas noticias, locales y fotos de la vida nocturna de Caracas</p>
+                                </div><!--//.encap-->
+                                <div class="rumba-cats">
+                                </div><!--//.wrapper-->
+                        </li>
+                        <li>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10">
+                                    <a href="#" class="redBold">VitaGraphics.net</a><br />
+                                    <div class="alianzas-thumb"><a href="#"><img src="/media/images/alianzas/vita-graphics.jpg" alt="Rumba" /></a></div>
+                                    <p>Gracias al desarrollo de la tecnología WAP, ahora podrás obtener información actualizada de las mejores rumbas, donde quieras que estés, a través de Info 412 desde tu celular.</p>
+                                </div><!--//.encap-->
+                            </div><!--//.wrapper-->
+                        </li>
+                        <li>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10">
+                                    <a href="#" class="redBold">Oidos Sucios</a><br />
+                                    <div class="alianzas-thumb"><a href="#"><img src="/media/images/alianzas/oidos.jpg" alt="Rumba" /></a></div>
+                                    <p>Todos los viernes publicamos una sección especial con las principales rumbas, eventos y conciertos del fin de semana, junto con las últimas noticias, locales y fotos de la vida nocturna de Caracas</p>
+                                </div><!--//.encap-->
+                            </div><!--//.wrapper-->
+                        </li>
+                        <li>
+                            <div class="wrapper encap nbpad">
+                                <div class="encap mb10">
+                                    <a href="#" class="redBold">TuTicket.com</a><br />
+                                    <div class="alianzas-thumb"><a href="#"><img src="/media/images/alianzas/tu-ticket.jpg" alt="Rumba" /></a></div>
+                                    <p>Gracias al desarrollo de la tecnología WAP, ahora podrás obtener información actualizada de las mejores rumbas, donde quieras que estés, a través de Info 412 desde tu celular.</p>
+                                </div><!--//.encap-->
+                            </div><!--//.wrapper-->
+                        </li>
+                    </ul>
+                </div><!--//.rumba-families-->
+            </div><!--//.node-mini-left-->
+            <div class="node-mini-right c32r">
+                {% include "static/about_menu.html" with current="partners"%}
+                {% include "static/social_contacts.html" %}
+            </div><!--//.node-mini-right-->
+        </div><!--//.video-archives-->
+    </div><!--//.node-->
+</div><!--//.node-container-->
+
+{% endblock %}
+
