@@ -16,6 +16,8 @@ urlpatterns = patterns( '',
     ( r'^videos/', include( 'yourvideos.urls' ) ),
     ( r'^search/', include( 'googlesearch.urls' ) ),
 
+    ( r'^magazine/$',  "magazine.views.index" ),
+
     ( r'^about/$', 'django.views.generic.simple.direct_to_template', {'template': 'static/aboutus.html'} ),
     ( r'^about/partners$', 'django.views.generic.simple.direct_to_template', {'template': 'static/partners.html'} ),
 

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Magazine | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load paging %}
+{% load listtools %}
+{% load facebook twitter %}
+
+
+{% block breadcrumbs %}
+    <a href="/">{% trans "Home" %}</a>
+    <span>&nbsp;→&nbsp;</span>
+    <a class="active" href="/magazine">{% trans "Magazine" %}</a>
+{% endblock %}
+
+{% block colleft %}
+    <div class="node-container guia-impressa box-shadows encap">
+    <div class="title-wrap encap">
+        <span class="flt-left"><h2 class="title">{% trans "Magazine"%}</h2></span>
+            <span class="flt-right">
+              <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+              </ul>
+            </span>
+    </div><!--//.title-wrap-->
+    <div class="node encap">
+        <div class="printed-guide">
+            <div class="edition encap">
+                <h2 class="title">{% trans "Last Edition" %}</h2>
+                <div class="current-edition c35l outnone">
+                    <!--Empieza fotosguia, aqui va el embedded code de Issuu-->
+                    <div id="fotoguia">
+                        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" style="width:188px;height:376px" id="18243ebe-a98c-6dd0-69f4-f306493a31e1" >
+                            <param name="movie" value="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf?mode=mini&amp;shareMenuEnabled=false&amp;documentId=110325002334-6b4813d2eec94267be82fbf522ffe4c5" />
+                            <param name="allowfullscreen" value="true"/>
+                            <param name="menu" value="false"/>
+                            <param name="wmode" value="transparent"/>
+                            <embed src="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf" type="application/x-shockwave-flash" allowfullscreen="true" menu="false" wmode="transparent" style="width:188px;height:376px" flashvars="mode=mini&amp;shareMenuEnabled=false&amp;documentId=110325002334-6b4813d2eec94267be82fbf522ffe4c5" />
+                        </object>
+                    </div><!--Termina fotosguia, aqui va el embedded code de Issuu-->
+                </div><!--//.current-edition-->
+                <div class="current-edition-desc c65r outnone">
+                    {{ last_magazine_anotate }}
+                </div><!--//.current-edition-desc-->
+            </div><!--//.edition-->
+
+    <div class="recent-guides encap outnone edition" style="border-top: 1px dotted black;padding: 15px 0;margin-top: 15px">
+
+        <h2 class="title">{% trans "Previous Editions" %}</h2>
+
+            <div id="bibliotecaguia">
+        <iframe src="http://static.issuu.com/widgets/shelf/index.html?folderId=93216828-8789-40e8-b71f-9209a9ccdafa&amp;theme=theme3&amp;rows=1&amp;thumbSize=medium&amp;roundedCorners=false&amp;showTitle=true&amp;showAuthor=false&amp;shadow=true&amp;effect3d=true" width="100%" height="185" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+            </div><!--termina biblioteca -->
+
+
+        
+    </div><!--//.recent-guides-->
+    <div class="recent-guides encap outnone edition" style="border-top: 1px dotted black;padding: 15px 0;">
+
+
+
+<h2 class="title">{% trans "Notebook" %} </h2>
+
+<div id="cuadernos">
+<iframe src="http://static.issuu.com/widgets/shelf/index.html?folderId=d20945df-4fe8-4530-83ae-e5457f2fc4c2&amp;theme=theme3&amp;rows=2&amp;thumbSize=medium&amp;roundedCorners=false&amp;showTitle=true&amp;showAuthor=false&amp;shadow=true&amp;effect3d=true" width="100%" height="370" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+</div><!--termina cuaderno -->
+
+
+        
+    </div><!--//.recent-guides-->
+        </div><!--//.printed-guide-->
+    </div><!--//.node-->
+    </div><!--//.node-container-->
+{% endblock %}

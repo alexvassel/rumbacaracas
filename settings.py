@@ -157,6 +157,7 @@ INSTALLED_APPS = (
     'preferences',
     'googlesearch',
     'debug_toolbar',
+    'magazine',
     #'legacy',
     #'photologue',
     #'tagging',
