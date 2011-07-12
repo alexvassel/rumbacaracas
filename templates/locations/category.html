@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Locations | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load facebook %}
+{% load paging %}
+
+{% block advbodycls %}section-videos{% endblock %}
+
+{% block colleft %}
+<div class="node-container videos box-shadows encap"> 
+  <div class="title-wrap encap"> 
+    <span class="flt-left"><h2 class="title">{{group_name}}</h2></span>
+    <span class="flt-right"> 
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0"> 
+      </ul> 
+    </span> 
+  </div><!--//.title-wrap--> 
+  <div class="node bb-none encap"> 
+		<div class="photo-archives encap" style="border-top:none; margin-top:0px;"> 
+			<div class="node-mini-left photos-mod" style="border-right: none;"> 
+				<div class="encap"> 
+					<ul class="photo-archives-list encap outnone"> 
+                    {% for location in current_page.object_list %}
+						<li> 
+	                      <div class="photo-thumbnail">
+							<a href="/locations/{{location.slug}}"><img alt="{{location.title}}" src="{{location.smallthumb.url}}"></a>
+						  </div> 
+	                      <div class="photo-details decou"> 
+	                        <h6><a href="/locations/{{location.slug}}">{{location.title}}</a></h6>
+	                        <span class="author-meta">{{location.description|truncate:70}}</span>
+	                      </div><!--//.photo-details-->
+	                    </li>
+                     {% endfor %}
+					</ul><!--//.photo-archives-list--> 
+			</div><!--//.encap--> 
+		</div><!--//.node-mini-left--> 
+	</div><!--//.video-archives--> 
+
+	{% if current_page.object_list%}
+		{% common_paginator%}
+	{% endif%}
+
+  </div><!--//.node--> 
+</div><!--//.node-container-->
+<script>
+	$(document).ready(function () {
+		$('.photo-thumbnail img').live('mouseover',
+			function(){
+				$(this).css("border-color","#C52121");
+			}
+		);
+		$('.photo-thumbnail img').live('mouseout',
+			function() {
+				$(this).css("border-color","#898989");
+			}	
+		)
+	})
+</script>
+{% endblock %}
+

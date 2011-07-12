@@ -6,6 +6,8 @@ from socialregistration.models import FacebookProfile
 
 class LocationType( models.Model ):
     title = models.CharField( _( 'Type of Venue/Club' ), max_length = 256 )
+    slug = models.SlugField ( _( 'Url name for location type' ) )
+    show_in_menu = models.BooleanField(_('Show in menu'), default = True )
     def __unicode__( self ):
         return self.title
     class Meta:

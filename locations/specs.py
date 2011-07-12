@@ -7,6 +7,11 @@ class ResizeThumb( processors.Resize ):
     height = 98
     crop = True
 
+class SmallThumb( processors.Resize ):
+    width = 135
+    height = 135
+    crop = True
+
 class LogoThumb( processors.Resize ):
     width = 188
     crop = False
@@ -129,3 +134,8 @@ class PhotoThumbSlide( ImageSpec ):
     access_as = 'blogthumb'
     pre_cache = False
     processors = [BlogThumb]
+
+class SmallThumbnail( ImageSpec ):
+    access_as = 'smallthumb'
+    pre_cache = False
+    processors = [SmallThumb, EnchanceThumb]

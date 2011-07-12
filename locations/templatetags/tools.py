@@ -2,6 +2,7 @@ from django import template
 from socialregistration.models import FacebookProfile, TwitterProfile
 register = template.Library()
 from django.utils.safestring import mark_safe
+from locations.models import LocationType
 
 @register.filter
 def truncate( value, arg ):
@@ -46,6 +47,12 @@ def user_link( value):
         return mark_safe( '%s %s' % (value.first_name, value.last_name))
     else:
         return mark_safe( value.username )
+
+@register.inclusion_tag( 'main/location_menu.html' )
+def show_location_menu( ):
+    categories = LocationType.objects.filter(show_in_menu=True).order_by( 'title' )
+    return dict( categories = categories)
+
 
 
 def locations_paginator( context, adjacent_pages = 2 ):

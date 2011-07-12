@@ -1,0 +1,7 @@
+{% load i18n %}
+
+<ul>
+    {% for category in categories %}
+        <li><a href="{% url location_category group=category.slug %}">{{category.title}}</a></li>
+    {% endfor %}
+</ul>

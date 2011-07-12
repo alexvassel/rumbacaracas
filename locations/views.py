@@ -58,6 +58,34 @@ def category( request ):
     return dict
 
 
+@render_to( 'locations/category.html' )
+def category_details ( request, group ):
+
+    locations = Location.objects.filter( status = 1 ).filter( type__slug = group ).order_by( 'title' )
+
+    group_name = LocationType.objects.get(slug=group)
+    
+    request.breadcrumbs( _( 'Locations' ) , '/locations' )
+    request.breadcrumbs( group_name , request.path_info )
+
+    try:
+        page = int( request.GET.get( 'page', '1' ) )
+    except ValueError:
+        page = 1
+
+    if locations:
+        paginator = Paginator( locations, 12 )
+        try:
+            locations_page = paginator.page( page )
+        except ( EmptyPage, InvalidPage ):
+            locations_page = paginator.page( paginator.num_pages )
+    else:
+        locations_page = None
+        paginator = None
+    return {'group_name': group_name, 'current_page': locations_page, 'current_paginator': paginator }
+
+
+
 @render_to( 'locations/index.html' )
 def area( request ):
     request.breadcrumbs( _( 'Locations' ) , '/locations' )

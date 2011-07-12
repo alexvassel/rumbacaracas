@@ -9,6 +9,13 @@ make_published.short_description = _( "Mark selected locations as published" )
 
 
 
+class LocationTypeAdmin( admin.ModelAdmin ):
+    prepopulated_fields = {"slug": ( "title", )}
+    list_display = ( 'title', 'slug', 'show_in_menu', )
+    list_editable = ( 'show_in_menu', )
+admin.site.register( LocationType, LocationTypeAdmin )
+
+
 
 class LocationAdmin( admin.ModelAdmin ):
     prepopulated_fields = {"slug": ( "title", )}
@@ -33,7 +40,6 @@ admin.site.register( Location, LocationAdmin )
 
 
 admin.site.register( LocationArea )
-admin.site.register( LocationType )
 admin.site.register( DressType )
 admin.site.register( RestaurantType )
 admin.site.register( LocationMusic )

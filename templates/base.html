@@ -2,6 +2,7 @@
 {% load facebook_tags %}
 {% load facebook %}
 {% load twitter %}
+{% load tools %}
 {% load twitter_tags %}
 {% load openx %}
 {% load widgets %}
@@ -77,7 +78,7 @@
           <ul id="top-menu-primary" class="top-menu-primary">
 
             <li>
-              <a href="#">PUBLICA</a>
+              <a href="/">{% trans "Public" %}</a>
               <ul>
                 <li><a class="publica-tus-eventos" href="/events/add">{% trans "Add Event" %}</a></li>
                 <li><a class="sube-tus-fotos" href="/yourphotos/add">{% trans "Upload Your Photo" %}</a></li>
@@ -120,10 +121,10 @@
     <div id="header-secondary" class="header-secondary encap">
       <div class="date c14l txt-right mr10">
         <h2>
-        	<p class="week fp24">Viernes</p>
-          <p class="day fp29">27</p>
-          <p class="month fp13">noviembre</p>
-          <p class="year fp13">2009</p>
+          <p class="week fp24">{% now "l" %}</p>
+          <p class="day fp29">{% now "j" %}</p>
+          <p class="month fp13">{% now "F" %}</p>
+          <p class="year fp13">{% now "Y" %}</p>
          </h2>
       </div><!--//.date-->
       <div class="banner-container txt-right outnone" align="right">
@@ -140,17 +141,15 @@
         	<li><a href="/videos">Videos</a></li>
           <li><a href="/news/categories/blog">{% trans "Blog"%}</a></li>
         	<li class="medios">
-        	  <a href="#">{% trans "Medios"%}</a>
-
-				<ul>
-				  <li><a href="#">Web</a></li>
-				  <li><a href="#">Boletín Electrónico</a></li>
-				  <li><a href="#">Cuaderno</a></li>
-				  <li><a href="#">Guía Impresa</a></li>
-				  <li><a href="#">Eventos</a></li>
-				</ul>
+                <a href="/products">{% trans "Media" %}</a>
+                <ul>
+                  <li><a href="/about/products/web">{% trans "Web" %}</a></li>
+                  <li><a href="/about/products/notebook">{% trans "Notebook" %}</a></li>
+                  <li><a href="/about/products/magazine">{% trans "Magazine" %}</a></li>
+                  <li><a href="/about/products/events">{% trans "Events" %}</a></li>
+                </ul>
        	  </li>
-      	  <li><a href="#">Nosotros</a></li>
+      	  <li><a href="/about">{% trans "About Us" %}</a></li>
       	</ul>
         <div class="cflt"></div>
       	<ul id="top-menu-tertiary" class="top-menu-tertiary flt-right encap">
@@ -164,15 +163,9 @@
             </ul>
           </li>
       	  <li class="secciones">
-          	<h3><a href="/locations/">SITIOS</a></h3>
-			<ul>
-              <li><a href="#">Discotecas</a></li>
-              <li><a href="#">Lounge / Bares</a></li>
-              <li><a href="#">Restaurantes</a></li>
-              <li><a href="#">Cafés</a></li>
-			  <li><a href="#">Centro Cultural</a></li>
-              <li><a href="#">Otros Sitios</a></li>
-            </ul>
+
+          	<h3><a href="/locations/">{% trans "Location" %}</a></h3>
+            {% show_location_menu %}
           </li>
         	<li class="fotos">
           	<h3><a href="#">{%trans "Fotos"%}</a></h3>
@@ -182,13 +175,13 @@
             </ul>
           </li>
           <li class="noticias">
-          	<h3><a href="#">NOTICIAS</a></h3>
+          	<h3><a href="/news">{% trans "News" %}</a></h3>
             <ul>
-              <li><a href="/news/categories/rumba-news/">Rumba News</a></li>
-              <li><a href="/news/categories/music-news">Music News</a></li>
-              <li><a href="/news/categories/news/">Actualidad</a></li>
-              <li><a href="/news/categories/interviews/">Entrevistas</a></li>
-			  <li><a href="/news/categories/dj-mix/">DJ Mix</a></li>
+              <li><a href="/news/categories/rumba-news">{% trans "Rumba News" %}</a></li>
+            <li><a href="/news/categories/music-news">{% trans "Music News" %}</a></li>
+            <li><a href="/news/categories/news">{% trans "Actual" %}</a></li>
+            <li><a href="/news/categories/interviews">{% trans "Interviews" %}</a></li>
+            <li><a href="/news/categories/dj-mix">{% trans "Dj Mix" %}</a></li>
             </ul>
           </li>
       	</ul>
@@ -240,50 +233,43 @@
           </ul>
         </div>
         <div class="c16_6l">
-          <h2>Sitios</h2>
+            <h2>{% trans "Locations" %}</h2>
+          {% show_location_menu %}
+        </div>
+        <div class="c16_6l">
+          <h2>{% trans "Content" %}</h2>
           <ul>
-            <li><a href="#">Discotecas</a></li>
-            <li><a href="#">Lounge / Bares</a></li>
-            <li><a href="#">Restaurantes</a></li>
-            <li><a href="#">Cafés</a></li>
-            <li><a href="#">Centros Culturales</a></li>
-			<li><a href="#">Otros Sitios</a></li>
+            <li><a href="/people">{% trans "Photos" %}</a></li>
+            <li><a href="/yourphotos">{% trans "Your photos" %}</a></li>
+            <li><a href="/videos">{%  trans "Videos" %}</a></li>
+            <li><a href="/news/categories/blog">{% trans "Blog" %}</a></li>
           </ul>
         </div>
         <div class="c16_6l">
-          <h2>CONTENIDO</h2>
+          <h2>{% trans "News" %}</h2>
           <ul>
-            <li><a href="#">Fotos</a></li>
-            <li><a href="#">Tus Fotos</a></li>
-            <li><a href="#">Videos</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="/news/categories/rumba-news">{% trans "Rumba News" %}</a></li>
+            <li><a href="/news/categories/music-news">{% trans "Music News" %}</a></li>
+            <li><a href="/news/categories/news">{% trans "Actual" %}</a></li>
+            <li><a href="/news/categories/interviews">{% trans "Interviews" %}</a></li>
+            <li><a href="/news/categories/dj-mix">{% trans "Dj Mix" %}</a></li>
           </ul>
         </div>
         <div class="c16_6l">
-          <h2>Noticias</h2>
+          <h2>{% trans "Media" %}</h2>
           <ul>
-            <li><a href="#">Rumba News</a></li>
-            <li><a href="#">Music News</a></li>
-            <li><a href="#">Actualidad</a></li>
-            <li><a href="#">Entrevistas</a></li>
-            <li><a href="#">Dj Mix</a></li>
-          </ul>
-        </div>
-        <div class="c16_6l">
-          <h2>Medios</h2>
-          <ul>
-            <li><a href="#">Web</a></li>
-            <li><a href="#">Cuaderno</a></li>
-            <li><a href="#">Guía Impresa</a></li>
-            <li><a href="#">Eventos</a></li>
+            <li><a href="/about/products/web">{% trans "Web" %}</a></li>
+            <li><a href="/about/products/notebook">{% trans "Notebook" %}</a></li>
+            <li><a href="/about/products/magazine">{% trans "Magazine" %}</a></li>
+            <li><a href="/about/products/events">{% trans "Events" %}</a></li>
           </ul>
         </div>
         <div class="c16_6r">
-          <h2>Nosotros</h2>
+          <h2>{% trans "About Us" %}</h2>
           <ul>
-            <li><a href="#">Productos</a></li>
-            <li><a href="#">Alianzas</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="/about/products">{% trans "Products" %}</a></li>
+            <li><a href="/about/partners">{% trans "Partners" %}</a></li>
+            <li><a href="/about/contacts">{% trans "Contacts" %}</a></li>
           </ul>
         </div>
       </div><!--//.footer-links-->
@@ -291,7 +277,7 @@
 
     <div id="footer-tertiary">
       <span class="txt-left">
-        <a href="#"><img src="/media/images/logos/RB.png" width="100" alt="" title="" /></a>
+        <a href="/"><img src="/media/images/logos/RB.png" width="100" alt="" title="" /></a>
         <a href="http://www.rumbacaracas.com/" target="_blank"><img src="/media/images/logos/RC.png" width="100" alt="" title="" /></a>
         <a href="http://www.rumbavenezuela.com/" target="_blank"><img src="/media/images/logos/RV.png" width="100" alt="" title="" /></a>
         <a href="http://www.rumbamiami.com" target="_blank"><img src="/media/images/logos/RM.png" width="100" alt="" title="" /></a>
