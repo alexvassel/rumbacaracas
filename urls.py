@@ -15,6 +15,7 @@ urlpatterns = patterns( '',
     ( r'^yourphotos/', include( 'yourphotos.urls' ) ),
     ( r'^videos/', include( 'yourvideos.urls' ) ),
     ( r'^search/', include( 'googlesearch.urls' ) ),
+    ( r'^subscribe/', include( 'subscribe.urls' ) ),
 
     ( r'^magazine/$',  "magazine.views.index" ),
 

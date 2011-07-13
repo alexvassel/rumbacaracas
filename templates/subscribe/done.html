@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Subscription| Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load listtools %}
+{% load openx %}
+{% block colleft %}
+<div class="node-container gente box-shadows encap">
+  <div class="title-wrap encap">
+    <span class="flt-left"><h2 class="title">{% trans "Subscription"%}</h2></span>
+    <span class="flt-right">
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+      </ul>
+    </span>
+  </div><!--//.title-wrap-->
+  <div class="node gente bb-none encap">
+	<br />
+  	<p>{% trans 'You succesfully subscribed to our weekly newsletter.'%}</p>
+  </div><!--//.node-->
+</div><!--//.node-container-->
+{% endblock %}
