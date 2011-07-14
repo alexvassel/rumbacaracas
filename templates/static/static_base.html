@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load facebook %}
+{% block colright %}
+    {{ block.super }}
+    <div class="banner-container box-shadows outnone widget" style="width: 300px;">
+      {% facebook_group %}
+    </div>
+    {% include "main/twitter_list.html" %}
+{% endblock %}

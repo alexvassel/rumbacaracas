@@ -3,6 +3,7 @@
 {% block title %}{% trans "Locales | Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load openx %}
+{% load widgets %}
 
 {% block colleft %}
 <div class="node-container eventos-para-hoy box-shadows encap">
@@ -255,4 +256,5 @@
     <div class="banner-container box-shadows outnone widget">
         {% banner_zone_iframe 100 300 250%}
     </div><!--//.banner-container-->
+    {% subscribe_block %}
 {% endblock %}
