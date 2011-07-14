@@ -16,10 +16,13 @@ class PhotoInline( admin.TabularInline ):
 class EventAdmin( admin.ModelAdmin ):
     prepopulated_fields = {"slug": ( "title", )}
     list_display = ( 'title', 'category', 'import_photo', 'status' )
+
     inlines = [
         PhotoInline,
     ]
     actions = [make_published]
+    class Media:
+        js = ("/media/js/people_admin_hacks.js",)
 
 admin.site.register( PhotoEvent, EventAdmin )
 
