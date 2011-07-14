@@ -7,6 +7,7 @@ import calendar
 import itertools
 from dateutil import rrule
 from django.contrib.auth.models import User
+from django.template.defaultfilters import date
 
 EVENT_STATUSES = ( 
     ( '1', _( 'Published' ) ),
@@ -151,15 +152,14 @@ class Event( ImageModel, Sortable ):
             'slug': self.slug} )
 
 
-
     def get_dates ( self ):
         if self.from_date == self.to_date:
-                str_repr = str( self.from_date )
+                str_repr = date( self.from_date,"d.m.Y" )
         else:
-            str_repr = str( self.from_date ) + u' to ' + str( self.to_date )
+            str_repr = date( self.from_date, "d.m.Y" ) + u' to ' + date( self.to_date,"d.m.Y" )
 
         if self.repeat.all():
-            str_repr = str_repr + " ( " + ", ".join( [weekday.title for weekday in self.repeat.all()] ) + " )"
+            str_repr = str_repr + " ( on " + ", ".join( [weekday.title for weekday in self.repeat.all()] ) + " )"
         return str_repr
     get_dates.short_description = _( 'Event Dates' )
 

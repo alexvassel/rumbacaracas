@@ -19,6 +19,11 @@ class BigImage( processors.Resize ):
     upscale = False
     crop = False
 
+class WidgetImage( processors.Resize ):
+    width = 148
+    height = 118
+    crop = True
+
 class SlideImage( processors.Resize ):
     width = 619
     height = 258
@@ -90,3 +95,8 @@ class ThinThumbnail( ImageSpec ):
     access_as = 'thinthumb'
     pre_cache = False
     processors = [ThinThumb, EnchanceThumb]
+
+class WidgetThumbnail( ImageSpec ):
+    access_as = 'widgetethumb'
+    pre_cache = False
+    processors = [WidgetImage, EnchanceThumb]

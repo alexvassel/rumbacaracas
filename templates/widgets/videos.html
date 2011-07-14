@@ -1,0 +1,21 @@
+{% load i18n %}
+{% load tools %}
+{% load youtube %}
+{% load facebook %}
+<div class="box-generic widget outnone more-photos">
+    <div class="box-title"><h2>{% trans "More Videos" %}</h2></div>
+    <div class="box-border box-contents decou">
+        <ul>
+            {% for video in videos %}
+                <li>
+                    <a href="{{video.get_absolute_url}}"><img width="168" src="{{video.youtube_id|youtube_img_from_id}}" alt="{{video.description}}"/></a>
+                    <h6><a href="{{video.get_absolute_url}}">{{video.description}}</a></h6>
+                    <span class="author-meta">{% trans "Submitted by"%} {{video.user|user_link}}</span>
+                    <div class="fivestar-widget clear-block fivestar-widget-5">
+                        {% facebook_like video.get_absolute_url 184%}
+                    </div>
+                </li>
+            {% endfor%}
+        </ul>
+    </div><!--//.box-contents-->
+</div><!--//.box-generic-->

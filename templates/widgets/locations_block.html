@@ -1,0 +1,17 @@
+{% load i18n %}
+{% load tools %}
+{% load facebook %}
+
+<div id="locales" class="your-photos outnone">
+  <div class="box-title"><h2>{% trans "Locations" %}</h2></div>
+  <div class="box-border box-contents box-shadows decou">
+    <ul>
+        {% for location in locations %}
+            <li>
+                <a href="{{ location.get_absolute_url }}"><img src="{{ location.widgetethumb.url }}" alt="{{ location.title }}"/></a>
+                <h6><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></h6>
+            </li>
+        {% endfor %}
+    </ul>
+  </div><!--//.box-contents-->
+</div><!--//.art-culture-->

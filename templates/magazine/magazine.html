@@ -3,6 +3,7 @@
 {% block title %}{% trans "Magazine | Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load paging %}
+{% load widgets %}
 {% load listtools %}
 {% load facebook twitter %}
 
@@ -70,4 +71,10 @@
         </div><!--//.printed-guide-->
     </div><!--//.node-->
     </div><!--//.node-container-->
+{% endblock %}
+
+{% block colright %}
+    {{ block.super }}
+    {% location_block %}
+    {% art_culture_block %}
 {% endblock %}

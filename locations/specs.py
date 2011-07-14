@@ -54,7 +54,11 @@ class BlogThumb( processors.Resize ):
     upscale = True
     crop = True
 
-
+class WidgetImage( processors.Resize ):
+    width = 148
+    height = 118
+    crop = True
+    
 # now let's create an adjustment processor to enhance the image at small sizes
 class EnchanceThumb( processors.Adjustment ):
     contrast = 1.2
@@ -139,3 +143,8 @@ class SmallThumbnail( ImageSpec ):
     access_as = 'smallthumb'
     pre_cache = False
     processors = [SmallThumb, EnchanceThumb]
+
+class WidgetThumbnail( ImageSpec ):
+    access_as = 'widgetethumb'
+    pre_cache = False
+    processors = [WidgetImage, EnchanceThumb]

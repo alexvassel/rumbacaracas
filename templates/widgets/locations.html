@@ -1,0 +1,11 @@
+{% load i18n %}
+<div class="more-news outnone tbfat">
+  <div class="box-title"><h2>{% trans "More Locations" %}</h2></div>
+  <div class="decou pl5 pr2">
+    <ol>
+        {% for location in locations %}
+            <li><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></li>
+        {% endfor %}
+    </ol>
+  </div><!--//.box-contents-->
+</div>

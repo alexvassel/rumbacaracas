@@ -1,0 +1,23 @@
+{% load i18n %}
+{% load tools %}
+{% load facebook %}
+<div class="tbfat upcoming-events widget outnone">
+  <div class="box-title"><h2>{% trans "Upcoming Events" %}</h2></div>
+  <div class="decou pl5 pr2">
+    <ul>
+        {% for event in events %}
+          <li>
+            <h6><a href="{{event.get_absolute_url}}" title="{{event.title}}">{{event.title}}</a></h6>
+            <p>{{event.get_dates}}</p>
+            <p>
+                {% if event.location %}
+                    <a href="{{event.location.get_absolute_url}}">{{ event.location.title }}</a>
+                {% else %}
+                    {{ event.place }}
+                {% endif %}
+            </p>
+          </li>
+        {% endfor%}
+    </ul>
+  </div><!--//.box-contents-->
+</div><!--//.upcoming-events-->

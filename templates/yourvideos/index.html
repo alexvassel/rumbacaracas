@@ -5,6 +5,8 @@
 {% load paging %}
 {% load listtools %}
 {% load youtube %}
+{% load openx %}
+{% load widgets %}
 {% load facebook twitter %}
 
 {% block advbodycls %}section-videos{% endblock %}
@@ -88,3 +90,40 @@
 	})
 </script>
 {% endblock %}
+
+
+{% block colright %}
+    <div class="banner-container box-shadows outnone widget">
+        {% banner_zone_iframe 100 300 250%}
+    </div><!--//.banner-container-->
+    <div class="clear-block block block-views widget widget-calendar">
+        {% month_cal%}
+    </div>
+    {% subscribe_block %}
+
+    <div class="split-sidebars encap">
+      <div class="c57l left">
+        {% news_list %}
+        {% yourphotos_block %}
+      </div><!--//.left-->
+      <div class="c40r right">
+        <div class="placeholders mt30">
+          <div class="box-border box-contents box-shadows">
+            {% banner_zone_iframe 104 120 60 %}
+          </div><!--//.box-contents-->
+        </div><!--//.placeholder-->
+        <div class="placeholders mt10">
+          <div class="box-border box-contents box-shadows">
+            {% banner_zone_iframe 105 120 240 %}
+          </div>
+          <!--//.box-contents-->
+        </div><!--//.placeholder-->
+        <div class="banner-container box-shadows outnone widget">
+            {% banner_zone_iframe 101 120 600 %}
+        </div><!--//.banner-container-->
+      </div><!--//.right-->
+    </div><!--//.split-sidebars-->
+{% endblock %}
+
+
+

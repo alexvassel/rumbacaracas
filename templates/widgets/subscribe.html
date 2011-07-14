@@ -3,21 +3,14 @@
   <div class="box-title"><h5>{% trans "Sign up to receive our free emails" %}</h5><span>E-Rumba</span></div>
   <div class="box-border box-contents">
     <p>{% trans "Newsletter with a calendar of events for the week" %}</p>
-    <form id="simplenews-block-form-7" method="post" accept-charset="UTF-8" action="">
+    <form  method="post" action="/subscribe/">
+        {% csrf_token %}
       <div>
         <div id="edit-mail-wrapper" class="form-item">
-          <label for="edit-mail">Email: <span title="This field is required." class="form-required">*</span></label>
-          <input type="text" class="form-text required" value="" size="28" id="edit-mail" name="mail" maxlength="128" />
+          <label for="widget_email">{% trans "Email:" %} <span title="This field is required." class="form-required">*</span></label>
+          <input type="text" class="form-text required" value="" size="28" id="edit-mail" name="widget_email" maxlength="128" />
         </div>
-        <div class="form-radios">
-          <div id="edit-action-subscribe-wrapper" class="form-item">
-            <label for="edit-action-subscribe" class="option"><input type="radio" class="form-radio" checked="checked" value="subscribe" name="action" id="edit-action-subscribe" /> Subscribe</label>
-          </div>
-          <div id="edit-action-unsubscribe-wrapper" class="form-item">
-            <label for="edit-action-unsubscribe" class="option"><input type="radio" class="form-radio" value="unsubscribe" name="action" id="edit-action-unsubscribe" /> Unsubscribe</label>
-          </div>
-        </div>
-        <input type="submit" class="form-submit" value="{% trans "Registrate" %}" id="edit-submit" name="op" />
+        <input type="submit" class="form-submit" value="{% trans "Subscribe" %}" id="edit-submit" name="op" />
       </div>
     </form>
   </div>

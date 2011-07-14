@@ -1,0 +1,34 @@
+{% load i18n %}
+<div id="whats-today" class="whats-today widget outnone">
+    <div class="box-title"><h2>{% trans "What's today"%}</h2></div><!--//.box-title-->
+    <div class="box-border box-contents box-shadows">
+        <div class="parts-wrapper">
+            {% for day_name,day in days %}
+                <ul class="recent zebra-ul" style="height: 216px;overflow-y: auto;">
+                    {% for event, dt in day %}
+                        <li>
+                            <a href="{{ event.get_absolute_url }}">
+                                {{ event.title }} - <span>{% if event.location %}{{ event.location.title }}{% else %}{{ event.place }}{% endif %}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </div><!--//.parts-wrapper-->
+        <div class="whats-today-taxonomy encap">
+            <ul class="taxonomies fcpl0 lcpr0">
+                {% for day_name,day in days %}
+                    <li><a href="#">{{ day_name }}</a></li>
+                {% endfor %}
+
+            </ul>
+            <ul class="fcpl0 lcpr0">
+                <li class="all-events" ><a href="/events/calendar">{% trans "All Events" %}</a></li>
+            </ul>
+            <div class="navigation flt-right pt5">
+                <a href="#" class="navi-prev"><span class="hidden">{%  trans "Previous"%}</span></a>
+                <a href="#" class="navi-next"><span class="hidden">{% trans "Next"%}</span></a>
+            </div>
+        </div><!--//.whats-today-taxonomy-->
+    </div><!--//.box-contents-->
+</div><!--//.whats-today-->

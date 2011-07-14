@@ -9,7 +9,8 @@ import random
 from django.forms import ModelForm
 from django.template.defaultfilters import slugify
 from django.forms import forms
-
+from people.models import PhotoEvent
+from datetime import datetime, timedelta, time
 
 def _process( request, group ):
     try:
@@ -114,11 +115,22 @@ def food( request ):
 @render_to( 'locations/index.html' )
 def detail ( request, slug ):
     location = get_object_or_404( Location, slug = slug )
+
+    today = datetime.today().date()
+    
+    location_events_raw = Event.objects.filter(status=1, location=location)[:5]
+    
+    #TODO wrong check if upcoming
+    location_events = [((event.from_date >= today), event) for event in location_events_raw ]
+    location_photos = PhotoEvent.objects.filter(status=1, location=location).order_by('-datetime_added')[:5]
+    
     request.breadcrumbs( _( 'Locations' ) , '/locations' )
     request.breadcrumbs( location.title , request.path_info )
     dict = _process( request, LocationType )
     dict['location'] = location
     dict['active_tab'] = 'category'
+    dict['location_events'] = location_events
+    dict['location_photos'] = location_photos
     return dict
 
 from django.contrib.auth.decorators import login_required

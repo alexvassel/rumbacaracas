@@ -33,7 +33,8 @@ def subscribe( request ):
             else:
                 raise forms.ValidationError(_('This email is already in use.'))
 
-    if request.method == 'POST': # If the form has been submitted...
+
+    if request.method == 'POST' and 'widget_email' not in request.POST: # If the form has been submitted...
         form = SubscribeForm( request.POST ) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             subscribe = form.save()
@@ -43,9 +44,17 @@ def subscribe( request ):
                 "errors": True
         }
     else:
-        if request.facebook.uid is not None:
-            data_dict=request.facebook.graph.get_object('me')
-        form = SubscribeForm(data_dict)
+        if 'widget_email' in request.POST:
+            data_dict = dict(email= request.POST['widget_email'])
+        else:
+            data_dict = dict()
+            try:
+                if request.facebook.uid is not None:
+                    data_dict=request.facebook.graph.get_object('me')
+            except :
+                pass
+
+        form = SubscribeForm(initial= data_dict )
     return {
         'form': form,
     }

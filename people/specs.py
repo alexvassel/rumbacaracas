@@ -12,6 +12,12 @@ class ResizeThumb( processors.Resize ):
     height = 196
     crop = True
 
+class ThinThumb( processors.Resize ):
+    width = 168
+    height = 99
+    crop = True
+
+
 class SquareThumb( processors.Resize ):
     width = 286
     height = 196
@@ -70,3 +76,7 @@ class MainMiniThumbnail( ImageSpec ):
 
 
 
+class ThinThumbnail( ImageSpec ):
+    access_as = 'thinthumb'
+    pre_cache = False
+    processors = [ThinThumb, EnchanceThumb]

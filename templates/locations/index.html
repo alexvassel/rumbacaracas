@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load facebook twitter%}
 {% block title %}{% trans "Locales | Rumbabogota" %}{% endblock %}
-
+{% load widgets %}
 {% load tools %}
 
 {% block advbodycls %}section-locations{% endblock %}
@@ -132,7 +132,40 @@
   </div>
 </div><!--//.node-mini-right-->
 </div><!--//.node-->
-
+<div class="events-duo encap">
+    <div class="latest-events c48l">
+        {% if location_events %}
+            <div class="box-title"><h2>{% trans "Events for Location" %}</h2></div>
+            <div class="box-contents decou">
+                <ul>
+                    {% for is_next, event in location_events %}
+                        <li>
+                            {% if is_next %}
+                                <span class="proximos">{% trans "Next" %}: </span>
+                            {%  else %}
+                                {% trans "After" %}:
+                            {%  endif %}
+                            <a href="{{ event.get_absolute_url}}">{{ event.title }}</a><br />{{ event.get_dates }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div><!--//.box-contents-->
+        {% endif %}
+    </div><!--//.c45l-->
+    <div class="latest-fotos c48r">
+        {% if location_photos %}
+            <div class="box-title"><h2>{% trans "Latest Photos" %}</h2></div>
+            <div class="box-contents decou">
+                <ul>
+                    {% for photoevent in location_photos %}
+                        <li>{{photoevent.date|date:"d/m/Y"}} | <a href="{{ photoevent.get_absolute_url}}">{{ photoevent.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div><!--//.box-contents-->
+        {% endif %}
+    </div><!--//.c45l-->
+    <br class="clr-all"/>
+</div><!--//.events-duo-->
 <script type="text/javascript" charset="utf-8">
 	jQuery(document).ready(function(){
 		$('div.locales-desc tr:odd').addClass('odd');
@@ -170,6 +203,7 @@
 	  </div><!--//.images-preview-->
 	</div><!--//.contents-->
 </div><!--//.node-->
+
 {% endif %}
 
 <div class="tab-containers event-detail-filters">
@@ -301,3 +335,12 @@
 </script>
 </div><!--//.node-container-->
 {% endblock %}
+
+
+{% block colright %}
+    {{ block.super }}
+    {% subscribe_block %}
+    {% location_list %}
+{% endblock %}
+
+

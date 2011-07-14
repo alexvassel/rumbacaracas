@@ -3,7 +3,7 @@
 {% block title %}{% trans "Events | Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load openx %}
-
+{% load widgets %}
 {% load listtools %}
 {% load facebook twitter%}
 {% block colleft %}
@@ -250,3 +250,7 @@
 </div><!--//.node-container-->
 {% endblock %}
 
+{% block colright %}
+    {{ block.super }}
+    {% upcoming_events_list %}
+{% endblock %}

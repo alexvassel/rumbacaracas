@@ -3,6 +3,7 @@
 {% block title %}{% trans "People | Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load listtools %}
+{% load widgets %}
 {% block colleft %}
 
 <style type="text/css">
@@ -90,4 +91,9 @@
 		)
 	})
 </script>
+{% endblock %}
+
+{% block colright %}
+    {{ block.super }}
+    {% people_list %}
 {% endblock %}

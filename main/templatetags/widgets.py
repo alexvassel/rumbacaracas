@@ -3,11 +3,14 @@ register = template.Library()
 
 from events.models import Event 
 from yourphotos.models import Photo
-
+from yourvideos.models import Video
+from locations.models import Location
+from zinnia.models import Entry
+from people.models import PhotoEvent
 import calendar
 from datetime import datetime, timedelta, time
-
-
+import itertools
+from django.template.defaultfilters import date
 
 
 @register.inclusion_tag( 'widgets/magazine.html' )
@@ -21,8 +24,92 @@ def subscribe_block( ):
 
 @register.inclusion_tag( 'widgets/yourphotos.html' )
 def yourphotos_block( ):
-    photos = Photo.objects.filter(status=1).order_by('-datetime_added')[:4]
+    photos = Photo.objects.filter(status=1).order_by('-datetime_added')[:2]
     return dict(photos=photos)
+
+
+@register.inclusion_tag( 'widgets/people.html' )
+def people_block( ):
+    events = PhotoEvent.objects.filter(status=1).order_by('-datetime_added')[:4]
+    return dict(events=events)
+
+@register.inclusion_tag( 'widgets/people_list.html' )
+def people_list( ):
+    events = PhotoEvent.objects.filter(status=1).order_by('-datetime_added')[:6]
+    return dict(events=events)
+
+
+
+@register.inclusion_tag( 'widgets/latest_news.html' )
+def news_list( ):
+    news = Entry.published.all()[:8]
+    return dict(news=news)
+
+
+
+@register.inclusion_tag( 'widgets/locations.html' )
+def location_list( ):
+    locations = Location.objects.filter(status=1).order_by('?')[:8]
+    return dict(locations=locations)
+
+@register.inclusion_tag( 'widgets/locations_block.html' )
+def location_block( ):
+    locations = Location.objects.filter(status=1).order_by('?')[:2]
+    return dict(locations=locations)
+
+@register.inclusion_tag( 'widgets/art_culture.html' )
+def art_culture_block( ):
+    today = datetime.today()
+    #TODO wrong check if upcoming
+    events = Event.objects.filter(status=1, category=4, to_date__gte = today)[:2]
+    return dict(events=events)
+
+
+@register.inclusion_tag('widgets/today_events_list.html')
+def get_event_list(number=5):
+    """Return the most recent entries"""
+    return {'entries': Entry.published.all()[:number]}
+
+
+
+@register.inclusion_tag( 'widgets/videos.html' )
+def yourvideos_block( ):
+    videos = Video.objects.filter(status=1).order_by('-datetime_added')[:4]
+    return dict(videos=videos)
+
+
+@register.inclusion_tag('widgets/upcoming_events_list.html')
+def upcoming_events_list( ):
+    today = datetime.today()
+    #TODO wrong check if upcoming
+    event_list = Event.objects.filter(status=1,to_date__gte = today)[:6]
+    return dict(events = event_list)
+
+
+
+@register.inclusion_tag('widgets/events_today_block.html')
+def events_today_block( ):
+
+    today = datetime.today()
+    zdat_day = datetime.today() + timedelta(2)
+
+    dtstart = datetime( today.year, today.month, today.day )
+    dtend = datetime( zdat_day.year, zdat_day.month, zdat_day.day )
+
+    event_list = Event.objects.get_occuriences(start_date=dtstart, end_date=dtend)
+    sorted_events = sorted( event_list, key = lambda o: date(o[1], "l"))
+
+    def sortList( list ):
+        list.sort( key = lambda a:a[0].position, reverse = False )
+        return list
+
+    by_day = list([
+        ( dom, sortList( list( items ) ) ) for dom, items in itertools.groupby( sorted_events, lambda o: date(o[1], "l") )
+    ])
+    by_day.reverse()
+
+    return dict(days = by_day)
+
 
 
 def get_last_day_of_month(year, month):
