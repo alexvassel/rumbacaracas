@@ -24,13 +24,22 @@
 	    {% endfor %}
 		{% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}
 	</span>
-	<hr style="color:#CCCCCC; margin:1 0 0 0" />
-		{% facebook_like object.get_absolute_url%}
-		<a href="{{object.get_absolute_url}}#disqus_thread" class="comment" style="float: left;line-height: 21px;display: block;width: 30px;height: 21px;padding:0 0 0 30px !important;">
-			<span style="color:#666666"> {%facebook_comments_count object.get_absolute_url%} </span>
-		</a>
-		{% twitter_share object.get_absolute_url object.title%}
-	<hr style="clear:both;color:#CCCCCC; margin:1 0 0 0" />
+    <div class="photos-share-options" style="border-top: 1px dotted black;padding: 7px 0 7px;margin: 0">
+		<ul class="teaser-options encap outnone fcml0 lcmr0">
+			<li class="pl0">
+				<a href="{{object.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
+					<span>{%facebook_comments_count object.get_absolute_url%}</span>
+				</a>
+			</li>
+			<li>
+				{% facebook_like object.get_absolute_url 50%}
+			</li>
+			<li class="br-none">
+				{% twitter_share object.get_absolute_url object.title%}
+			</li>
+		</ul><!--//.teaser-options-->
+	</div>
+    
 	<div class="content encap">
 		{% if object.image %}
 			<img class="main-image2" src="{{ object.image.url }}" alt="{{ object.title }}" />
