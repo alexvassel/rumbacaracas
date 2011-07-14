@@ -4,7 +4,10 @@ django.jQuery(document).ready(function () {
         var length = el.text().length;
         if (length > 10) {
             el.css('display','block');
-            el.text(el.text().substring(0,30))
+            var cropped =  el.text().substring(0,30)
+            if (cropped != el.text()){
+                el.text(cropped + '...')
+            }
         }
     })
 })
