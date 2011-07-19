@@ -1,6 +1,7 @@
 {% extends "zinnia/base.html" %}
 {% load i18n tagging_tags zinnia_tags %}
-
+{% load tools %}
+{% load openx widgets facebook %}
 
 {% block advbodycls %}section-blog{% endblock %}
 
@@ -43,26 +44,7 @@
 
 {% if is_paginated %}
 
-<div class="item-list outnone">
-	<ul class="pager encap">
-
-		{% if page_obj.has_previous %}
-			<li class="pager-previous"><a href="?page={{ page_obj.previous_page_number }}" class="active">{% trans "&lt; Prev"%}</a></li>
-	  	{% endif %}
-
-		{% for page in page_range %}
-		    {% ifequal page_obj.number page %}
-				<li class="pager-current">{{ page }}</li>
-		    {% else %}
-				<li class="pager-item"><a href="?page={{ page }}" class="active">{{ page }}</a></li>
-		    {% endifequal%}
-		{% endfor %}
-		{% if page_obj.has_next %}
-			<li class="pager-next"><a href="?page={{ page_obj.next_page_number }}" class="active">{% trans "Next &gt"%};</a></li>
-	  	{% endif %}
-		
-	</ul>
-</div><!--//.item-list-->
+    {% zinnie_paginator %}
 
 {% endif %}
 {% endblock %}
@@ -91,3 +73,38 @@
   {% endif %}
 {% endblock %}
 
+
+{% block colright %}
+    <div class="banner-container box-shadows outnone widget">
+        {% banner_zone_iframe 100 300 250%}
+    </div><!--//.banner-container-->
+    <div class="clear-block block block-views widget widget-calendar">
+        {% month_cal%}
+    </div>
+
+    <div class="banner-container box-shadows outnone widget" style="width: 300px;">
+      {% facebook_group %}
+    </div>
+
+    <div class="split-sidebars encap">
+      <div class="c57l left">
+        {% upcoming_events_list %}
+      </div><!--//.left-->
+      <div class="c40r right">
+        <div class="placeholders">
+          <div class="box-border box-contents box-shadows">
+            {% banner_zone_iframe 104 120 60 %}
+          </div><!--//.box-contents-->
+        </div><!--//.placeholder-->
+        <div class="placeholders mt10">
+          <div class="box-border box-contents box-shadows">
+            {% banner_zone_iframe 105 120 240 %}
+          </div>
+          <!--//.box-contents-->
+        </div><!--//.placeholder-->
+        <div class="banner-container box-shadows outnone widget">
+            {% banner_zone_iframe 101 120 600 %}
+        </div><!--//.banner-container-->
+      </div><!--//.right-->
+    </div><!--//.split-sidebars-->
+{% endblock %}

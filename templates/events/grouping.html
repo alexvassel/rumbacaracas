@@ -16,7 +16,9 @@
 	                  	{% for subevents in events|rows:2 %}
 					        {% for event in subevents %}
 		                    	<li><a href="/events/{{event.slug}}">
-		                    		<a href="/events/{{event.slug}}"><span class="event-name">{{event.title}}</span></a> | 
+		                    		<a href="/events/{{event.slug}}"><span class="event-name">{{event.title}}</span></a>
+                                {% if event.location or event.place%}
+                                    |
 		                    		<span class="event-venue">
 		                    			{% if event.location%}
 		                    				<a href="/locations/{{event.location.slug}}"><span>{{event.location}}</span></a>
@@ -27,6 +29,7 @@
 		                    				- {{closest_dates|hash:event.pk}}
 							    		{% endif %}
 		                    		</span></li>
+                                {% endif %}
 							{% endfor %}
 					        	</ul>
 							</div><!--//.c46l--> 

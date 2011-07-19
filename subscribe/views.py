@@ -1,4 +1,4 @@
-from subscribe.models import Users
+from subscribe.models import User
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext as _
 from decorators import render_to
@@ -11,7 +11,7 @@ def subscribe( request ):
     request.breadcrumbs( _( 'Subscription' ) , request.path_info )
     class SubscribeForm( ModelForm ):
         class Meta:
-            model = Users
+            model = User
             fields = (
                 'first_name',
                 'last_name',
@@ -25,10 +25,10 @@ def subscribe( request ):
         def clean_email(self):
             email = self.cleaned_data.get('email')
             try:
-                email = Users.objects.get(email=email)
-            except Users.DoesNotExist:
+                email = User.objects.get(email=email)
+            except User.DoesNotExist:
                 return email
-            except Users.MultipleObjectsReturned:
+            except User.MultipleObjectsReturned:
                 raise forms.ValidationError(_('This email is already in use.'))
             else:
                 raise forms.ValidationError(_('This email is already in use.'))

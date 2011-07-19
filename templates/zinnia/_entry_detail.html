@@ -38,7 +38,7 @@
 		  </p><br /><br />
 		{% endif %}
 		<hr style="color:#CCCCCC; margin:1 0 0 0" />
-		{% facebook_like object.get_absolute_url "50px"%}
+		{% facebook_like object.get_absolute_url 90 0%}
 		<a class="socializer-10" href="{{object.get_absolute_url}}#disqus_thread" style="float: left; margin-right: 10px">
 			<span>{%facebook_comments_count object.get_absolute_url%}</span>
       	</a>

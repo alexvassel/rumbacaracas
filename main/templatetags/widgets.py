@@ -79,11 +79,20 @@ def yourvideos_block( ):
 
 
 @register.inclusion_tag('widgets/upcoming_events_list.html')
-def upcoming_events_list( ):
+def upcoming_events_list(count = 6 ):
     today = datetime.today()
     #TODO wrong check if upcoming
-    event_list = Event.objects.filter(status=1,to_date__gte = today)[:6]
+    event_list = Event.objects.filter(status=1,to_date__gte = today)[:count]
     return dict(events = event_list)
+
+
+@register.inclusion_tag('widgets/upcoming_events_block.html')
+def upcoming_events_block(count = 4 ):
+    today = datetime.today()
+    #TODO wrong check if upcoming
+    event_list = Event.objects.filter(status=1,to_date__gte = today)[:count]
+    return dict(events = event_list)
+
 
 
 

@@ -17,19 +17,25 @@
     </span>
   </div><!--//.title-wrap-->
   <div class="node encap">
-    <div class="eventos-left c58l outnone">
+    <div class="photos-share-options" style="padding: 7px 0 7px;margin-top: -20px; margin-bottom: 20px">
+		<ul class="teaser-options encap outnone fcml0 lcmr0">
+			<li class="pl0">
+				<a href="{{event.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
+					<span>{%facebook_comments_count event.get_absolute_url%}</span>
+				</a>
+			</li>
+			<li>
+				{% facebook_like event.get_absolute_url 50%}
+			</li>
+			<li class="br-none">
+				{% twitter_share event.get_absolute_url event.title%}
+			</li>
+		</ul><!--//.teaser-options-->
+	</div>
+
+    <div class="eventos-left c60l outnone">
       <span class="teaser-image"><img src="{{event.widethumb.url}}" alt="{{event.title}}"/></span>
-      <ul class="lfleft encap outnone fcml0 lcmr0">
-        <li class="mr10">
-        	{% facebook_like event.get_absolute_url 80%}
-    	</li>
-    	<li>
-			{% twitter_share event.get_absolute_url event.title%}
-		</li>
-        <li>
-    		<a class="socializer-10" href="{{event.get_absolute_url}}#disqus_thread"><span>{% facebook_comments_count event.get_absolute_url%}</span></a>
-		</li>
-      </ul>
+      
     </div>
     <div class="content eventos">
       <h2 class="title">{{event.title}}</h2>
@@ -60,7 +66,7 @@
 		{% endif %}
 		<div class="list-part {% if forloop.counter0|divisibleby:3 %}first{% else %}{% if forloop.counter|divisibleby:3 %}last{% endif %}{% endif %}">
 
-        <a href="/people/slider/{{photo.id}}"><img src="{{photo.thumb.url}}" alt="{{photo.description}}" /></a>
+        <a href="/people/slider/{{photo.id}}"><img width="185" src="{{photo.thumb.url}}" alt="{{photo.description}}" /></a>
         <div class="teaser">
           <p>{{photo.description}}</p>
           <ul class="teaser-options encap outnone ptb5 fcml0 lcmr0">

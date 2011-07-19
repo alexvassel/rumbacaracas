@@ -3,6 +3,8 @@ from socialregistration.models import FacebookProfile, TwitterProfile
 register = template.Library()
 from django.utils.safestring import mark_safe
 from locations.models import LocationType
+from django.utils.html import strip_tags
+
 
 @register.filter
 def truncate( value, arg ):
@@ -17,9 +19,9 @@ def truncate( value, arg ):
         return value # Fail silently.
     if not isinstance( value, basestring ):
         value = str( value )
-    if ( len( value ) > length ):
+    if ( len( strip_tags(value) ) > length ):
         from django.utils.safestring import mark_safe
-        return mark_safe( '<span title="' + value + '">' + value[:length] + "..." + '</span>' )
+        return mark_safe( '<span title="' + strip_tags(value) + '">' + strip_tags(value)[:length] + "..." + '</span>' )
     else:
         return value
 
@@ -43,8 +45,8 @@ def user_link( value):
         return mark_safe( u'<fb:name uid="%s"  target="_blank" />' % ( facebook_user.uid ) )
     elif twitter_user is not None:
         return mark_safe( value.username )
-    elif value.first_name or value.last_name:
-        return mark_safe( '%s %s' % (value.first_name, value.last_name))
+    #elif value.first_name or value.last_name:
+        #return mark_safe( '%s %s' % (value.first_name, value.last_name))
     else:
         return mark_safe( value.username )
 
@@ -92,6 +94,31 @@ def locations_paginator( context, adjacent_pages = 2 ):
     }
 
 register.inclusion_tag( 'paginator.html', takes_context = True )( locations_paginator )
+
+
+
+def zinnie_paginator( context, adjacent_pages = 2, anchor = None ):
+
+    page_numbers = [n for n in \
+                    range(context['page'] - adjacent_pages, context['page'] + adjacent_pages + 1) \
+                    if n > 0 and n <= context['pages']]
+    return {
+        'hits': context['hits'],
+        'results_per_page': context['results_per_page'],
+        'page': context['page'],
+        'pages': context['pages'],
+        'page_numbers': page_numbers,
+        'next': context['next'],
+        'previous': context['previous'],
+        'has_next': context['has_next'],
+        'has_previous': context['has_previous'],
+        'show_first': 1 not in page_numbers,
+        'show_last': context['pages'] not in page_numbers,
+        'anchor': anchor
+    }
+
+register.inclusion_tag( 'common_paginator.html', takes_context = True )( zinnie_paginator )
+
 
 
 @register.filter

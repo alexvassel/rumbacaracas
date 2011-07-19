@@ -12,7 +12,7 @@ SEX_STATUSES = (
  )
 
 
-class Users( models.Model ):
+class User( models.Model ):
     first_name = models.CharField(_('First name'), max_length = 256)
     last_name = models.CharField(_('Last name'), max_length = 256)
     company = models.CharField(_('Company'), max_length = 256, blank = True)

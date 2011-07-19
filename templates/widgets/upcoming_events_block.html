@@ -1,0 +1,23 @@
+{% load i18n %}
+{% load tools %}
+{% load facebook %}
+
+<div class="your-photos outnone">
+  <div class="box-title"><h2>{% trans "More events" %}</h2></div>
+  <div class="box-border box-contents box-shadows decou">
+    <ul>
+        {% for event in events %}
+            <li>
+                <a href="{{ event.get_absolute_url }}"><img src="{{ event.widgetethumb.url }}" alt="{{ event.title }}"/></a>
+                <h6><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h6>
+                {% if event.location %}
+                    <p><a href="{{ event.location.get_absolute_url }}">{{ event.location.title }}</a></p>
+                {% else %}
+                    <p>{{ event.place }}</p>
+                {% endif %}
+                <p>{{ event.get_dates }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+  </div><!--//.box-contents-->
+</div><!--//.art-culture-->

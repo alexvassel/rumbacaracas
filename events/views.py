@@ -150,7 +150,8 @@ def calendar_view(
         all_events = all_events,
         all_locations = all_locations,
         slider_events = slider_events,
-        active_tab = 'calendar'
+        active_tab = 'calendar',
+        period = period
     )
 
 

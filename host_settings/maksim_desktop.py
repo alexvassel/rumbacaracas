@@ -17,7 +17,7 @@ MEDIA_ROOT = '/home/maksim/Documents/Develop/rumbabogota/media'
 STATIC_DOC_ROOT = '/home/maksim/Documents/Develop/rumbabogota/media'
 
 LOCALE_PATHS = ( 
-    '/home/maksim/Documents/Develop/rumbabogota/locale',
+    '/home/maksim/Documents/Develop/rumbabogota/locale/',
  )
 
 

@@ -1,4 +1,4 @@
-from subscribe.models import  Users
+from subscribe.models import  User
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
@@ -11,4 +11,4 @@ class SubscribeAdmin( admin.ModelAdmin ):
     list_filter = ( 'status', )
     actions = [make_unsubscribed]
 
-admin.site.register( Users, SubscribeAdmin )
+admin.site.register( User, SubscribeAdmin )

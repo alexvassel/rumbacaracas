@@ -348,7 +348,13 @@
 
     <div class="split-sidebars encap">
       <div class="c57l left">
-        {% location_list %}
+          {% if location %}
+            {% location_list %}
+          {% else %}
+            {% upcoming_events_block 2 %}
+          {% endif %}
+
+
       </div><!--//.left-->
       <div class="c40r right">
         <div class="placeholders">
