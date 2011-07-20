@@ -313,7 +313,7 @@ def import_people ():
     #TODO Carefully import locations
     #TODO Import second date
 
-    for oldevent in oldevents[:30]:
+    for oldevent in oldevents[:15]:
         if oldevent.titulo:
             #oldevent = L.Fotos()
             event = P.PhotoEvent(
@@ -341,7 +341,7 @@ def import_people ():
 
             main_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' +  oldevent.imagen_principal
             basename, extension = os.path.splitext(oldevent.imagen_principal)
-
+            from PIL import Image
 
             if extension == '.gif':
                 new_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' +  basename + '.jpg'
@@ -432,6 +432,8 @@ class Command( NoArgsCommand ):
 
         print "Importing legacy specials"
         #import_blog_category (L.Especial)
+
+        Z.Entry.objects.filter(categories=5).delete()
 
         print "Importing legacy your photos"
         #import_yourphotos()
