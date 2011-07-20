@@ -78,6 +78,7 @@ def import_yourphotos ():
     YP.Photo.objects.all().delete()
     oldphotos = L.Tusfotos.objects.all()
 
+    wrong_ids = list()
     for oldphoto in oldphotos:
         photo = YP.Photo(
                       user = get_user_instance(hack_for_user_id(oldphoto.usuario)),
@@ -86,12 +87,22 @@ def import_yourphotos ():
                       datetime_added = compile_date( oldphoto.dia, oldphoto.mes, oldphoto.ano )
                       )
 
-        fi_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
-        #fi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/' + oldphoto.archivo, 'r' ).read() )
 
-        photo.image.save( oldphoto.archivo[:-100], fi_content, save = False )
-        photo.save()
+        if oldphoto.archivo:
+            file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'comunidad/' + string.lower(oldphoto.user_name).replace(' ','') + '/fotos/' + oldphoto.archivo
 
+            if os.path.isfile(file_name):
+                fi_content = ContentFile( open( file_name, 'r' ).read() )
+                photo.image.save( oldphoto.archivo[-75:], fi_content, save = False )
+                photo.save()
+            else:
+                print "wrong file for yourphotos!!!!!!!!!!\n"
+                wrong_ids.append(str(oldphoto.id))
+
+
+        
+    if wrong_ids:
+        print ",".join(wrong_ids)
 
 
 def import_events ():
@@ -134,9 +145,16 @@ def import_events ():
 
             #TODO Investigate where main image is
 
-            ei_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
-            #ei_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldevent.imagen, 'r' ).read() )
-            event.image.save( oldevent.imagen, ei_content, save = False )
+
+
+            if oldevent.imagen:
+                file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'eventos/' + oldevent.imagen
+                if os.path.isfile(file_name):
+                    ei_content = ContentFile( open( file_name, 'r' ).read() )
+                    event.image.save( oldevent.imagen, ei_content, save = False )
+                else:
+                    print "wrong file for event!!!!!!!!!!\n"
+                    print oldevent.titulo + "\n"
             event.save()
 
             event.repeat.add(*parse_event_weekday(oldevent.dias))
@@ -200,19 +218,9 @@ def import_blog_category (table):
             #import one photo as main, insert other in bottom
             additional_image = False
             if oldarticle.imagen1:
-                bi_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
-                #bi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldarticle.imagen1, 'r' ).read() )
+                #bi_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
+                bi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'contenido/' + oldarticle.imagen1, 'r' ).read() )
                 article.image.save( oldarticle.imagen1, bi_content, save = False )
-                if oldarticle.imagen2:
-                    #Add second image as external
-                    article.save()
-                    #additional_image = N.EntryImage(entry=article)
-                    #bii_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldarticle.imagen2, 'r' ).read() )
-                    #additional_image.image.save( oldarticle.imagen2, bii_content, save = False )
-            elif oldarticle.imagen2:
-                bi_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
-                #bi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldarticle.imagen2, 'r' ).read() )
-                article.image.save( oldarticle.imagen2, bi_content, save = False )
 
             #Import subtitle as part of content!!!!!!
             article.content = compile_news_content(oldarticle.contenido,oldarticle.subtitulo, additional_image)
@@ -227,6 +235,8 @@ def import_locations ():
     LS.Location.objects.all().delete()
 
     oldlocations = L.Local.objects.all()
+    wrong_ids = list()
+    
     for oldlocation in oldlocations:
         #oldlocation = L.Local()1
 
@@ -270,14 +280,25 @@ def import_locations ():
         #Import old image
 
         #TODO Investigate where main image is
-        li_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
-        #li_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldlocation.imagen, 'r' ).read() )
-        location.image_logo.save( oldlocation.imagen, li_content, save = False )
+        #li_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
+
+        if oldlocation.imagen:
+            file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'locales/' + oldlocation.imagen
+            if os.path.isfile(file_name):
+                li_content = ContentFile( open( file_name, 'r' ).read() )
+                location.image_logo.save( oldlocation.imagen, li_content, save = False )
+            else:
+                print "wrong file for location!!!!!!!!!!\n"
+                print oldlocation.nombre + "\n"
+                wrong_ids.append(str(oldlocation.id))
+
         location.save()
 
         location.restaurant.add(*parse_location_food(oldlocation.restaurant))
         location.type.add(*parse_location_type(oldlocation.tipo))
 
+    if wrong_ids:
+        print ",".join(wrong_ids)
 
 
 
@@ -314,21 +335,28 @@ def import_people ():
                 event.date = people_date
 
             #TODO Investigate where main image is
-            ei_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
-            #ei_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldevent.imagen_principal, 'r' ).read() )
+            #ei_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
+            ei_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' +  oldevent.imagen_principal, 'r' ).read() )
+
             event.image.save( oldevent.imagen_principal, ei_content, save = False )
 
             event.save()
             
             #Then import images
 
-            os.chdir( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldevent.directorio )
+            os.chdir( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio )
 
             images_list = list()
 
-            #TODO Investigate where description is
+            legends_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/resena.dat'
+            legends = open( legends_file, "r" ).readlines()
 
-            legends = list()
+            fileencoding = "iso-8859-1"
+
+            ulegends = list()
+            for legend in legends:
+                ulegends.append(legend.decode(fileencoding))
+
 
             def byNumbers( str ):
                 g = re.search( r'_(\d+)\.jpg', str )
@@ -341,11 +369,11 @@ def import_people ():
                 images_list.append( image_file )
                 legends.append ( '' )
 
-            for photo in zip( legends, images_list, thumb_list ) :
-                p = P.Photo( description = photo[0], event = event )
+            for photo in zip( ulegends, images_list, thumb_list ) :
+                p = P.Photo( description = photo[0][:256], event = event )
 
-                fi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldevent.directorio + '/' + photo[1], 'r' ).read() )
-                ft_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldevent.directorio + '/' + photo[2], 'r' ).read() )
+                fi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' + photo[1], 'r' ).read() )
+                ft_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' + photo[2], 'r' ).read() )
 
                 p.image.save( photo[1][:-100], fi_content, save = False )
                 p.thumb.save( photo[2][:-100], ft_content, save = False )
@@ -364,33 +392,33 @@ class Command( NoArgsCommand ):
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        import_users()
+        #import_users()
 
 
         print "Importing legacy subscriptions"
-        import_subscriptions()
+        #import_subscriptions()
 
 
         print "Importing legacy people"
-        import_people()
+        #import_people()
 
         print "Importing legacy locations"
-        import_locations()
+        #import_locations()
 
         print "Importing legacy events"
-        import_events()
+        #import_events()
 
         print "Importing legacy rumba news"
-        import_blog_category (L.RumbaNews)
+        #import_blog_category (L.RumbaNews)
 
         print "Importing legacy music news"
-        import_blog_category (L.MusicNews)
+        #import_blog_category (L.MusicNews)
 
         print "Importing legacy interviews"
-        import_blog_category (L.Entrevista)
+        #import_blog_category (L.Entrevista)
 
         print "Importing legacy specials"
-        import_blog_category (L.Especial)
+        #import_blog_category (L.Especial)
 
         print "Importing legacy your photos"
         import_yourphotos()

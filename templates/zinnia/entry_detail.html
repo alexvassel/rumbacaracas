@@ -42,7 +42,7 @@
     
 	<div class="content encap">
 		{% if object.image %}
-			<img class="main-image2" src="{{ object.image.url }}" alt="{{ object.title }}" />
+			<img class="main-image2" src="{{ object.newsthumb.url }}" alt="{{ object.title }}" />
 		{% endif %}
 		{{object_content}}
 		{% if object.source%}

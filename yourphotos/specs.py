@@ -48,6 +48,12 @@ class MainMiniThumb( processors.Resize ):
     crop = True
 
 
+class NewsThumb( processors.Resize ):
+    width = 250
+    height = 200
+    crop = True
+
+
 
 # now let's create an adjustment processor to enhance the image at small sizes
 class EnchanceThumb( processors.Adjustment ):
@@ -100,3 +106,9 @@ class WidgetThumbnail( ImageSpec ):
     access_as = 'widgetethumb'
     pre_cache = False
     processors = [WidgetImage, EnchanceThumb]
+
+
+class NewsThumbnail( ImageSpec ):
+    access_as = 'newsthumb'
+    pre_cache = False
+    processors = [NewsThumb]

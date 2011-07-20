@@ -4,7 +4,7 @@
 	<div class="left">
 		{% if object.image %}
 		<a href="{{ object.get_absolute_url }}" title="{{ object.title }}">
-			<img class="main-image"  src="{{ object.image.url }}" alt="{{ object.title }}" />
+			<img class="main-image"  src="{{ object.newsthumb.url }}" alt="{{ object.title }}" />
 		</a>
 		{% endif %}
 	</div>
