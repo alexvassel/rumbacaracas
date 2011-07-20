@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from zinnia.settings import UPLOAD_TO
 
 class MyEntry( EntryAbstractClass ):
-    short = models.TextField( _( 'short description' ) )
+    short = models.TextField( _( 'short description' ), max_length=50 )
     source = models.CharField( _( 'source' ), blank = True, max_length = 255 )
     author = models.CharField( _( 'author' ), blank = True, max_length = 255 )
     show_in_main_slider = models.BooleanField( _( 'Show in Main Slider' ), default = False )

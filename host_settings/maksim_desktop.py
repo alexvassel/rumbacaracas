@@ -9,6 +9,8 @@ TEMPLATE_DIRS = (
 OLDBOGOTA_PHOTO_PATH = '/home/maksim/Documents/Develop/oldbogota/processed'
 
 OLDDATABOGOTA_PHOTO_PATH = '/home/maksim/Documents/Develop/rumbabogota/olddata/'
+FAKE_IMPORT_IMAGE = '/home/maksim/test_images/tst_imgs/1.jpg'
+
 
 FULL_BASE_URL = 'http://localhost.td'
 
@@ -19,6 +21,7 @@ STATIC_DOC_ROOT = '/home/maksim/Documents/Develop/rumbabogota/media'
 LOCALE_PATHS = ( 
     '/home/maksim/Documents/Develop/rumbabogota/locale/',
  )
+
 
 
 DATABASES = {

@@ -86,7 +86,7 @@ def import_yourphotos ():
                       datetime_added = compile_date( oldphoto.dia, oldphoto.mes, oldphoto.ano )
                       )
 
-        fi_content = ContentFile( open( '/home/maksim/test_images/tst_imgs/1.jpg', 'r' ).read() )
+        fi_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
         #fi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/' + oldphoto.archivo, 'r' ).read() )
 
         photo.image.save( oldphoto.archivo[:-100], fi_content, save = False )
@@ -134,7 +134,7 @@ def import_events ():
 
             #TODO Investigate where main image is
 
-            ei_content = ContentFile( open( '/home/maksim/test_images/tst_imgs/1.jpg', 'r' ).read() )
+            ei_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
             #ei_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldevent.imagen, 'r' ).read() )
             event.image.save( oldevent.imagen, ei_content, save = False )
             event.save()
@@ -200,7 +200,7 @@ def import_blog_category (table):
             #import one photo as main, insert other in bottom
             additional_image = False
             if oldarticle.imagen1:
-                bi_content = ContentFile( open( '/home/maksim/test_images/tst_imgs/1.jpg', 'r' ).read() )
+                bi_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
                 #bi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldarticle.imagen1, 'r' ).read() )
                 article.image.save( oldarticle.imagen1, bi_content, save = False )
                 if oldarticle.imagen2:
@@ -210,7 +210,7 @@ def import_blog_category (table):
                     #bii_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldarticle.imagen2, 'r' ).read() )
                     #additional_image.image.save( oldarticle.imagen2, bii_content, save = False )
             elif oldarticle.imagen2:
-                bi_content = ContentFile( open( '/home/maksim/test_images/tst_imgs/1.jpg', 'r' ).read() )
+                bi_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
                 #bi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldarticle.imagen2, 'r' ).read() )
                 article.image.save( oldarticle.imagen2, bi_content, save = False )
 
@@ -270,7 +270,7 @@ def import_locations ():
         #Import old image
 
         #TODO Investigate where main image is
-        li_content = ContentFile( open( '/home/maksim/test_images/tst_imgs/1.jpg', 'r' ).read() )
+        li_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
         #li_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldlocation.imagen, 'r' ).read() )
         location.image_logo.save( oldlocation.imagen, li_content, save = False )
         location.save()
@@ -314,7 +314,7 @@ def import_people ():
                 event.date = people_date
 
             #TODO Investigate where main image is
-            ei_content = ContentFile( open( '/home/maksim/test_images/tst_imgs/1.jpg', 'r' ).read() )
+            ei_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
             #ei_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + '/fotos/' + oldevent.imagen_principal, 'r' ).read() )
             event.image.save( oldevent.imagen_principal, ei_content, save = False )
 
