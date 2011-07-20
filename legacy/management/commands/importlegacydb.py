@@ -40,9 +40,9 @@ def import_users ():
 
         user = DU.User(
             id = hack_for_user_id(olduser.id),
-            first_name = olduser.nombre,
-            last_name = olduser.apellido,
-            username = olduser.user,
+            first_name = olduser.nombre[:30],
+            last_name = olduser.apellido[:30],
+            username = olduser.user[:30],
             email = olduser.email
         )
         user.set_password(olduser.pais)
