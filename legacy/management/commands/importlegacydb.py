@@ -392,33 +392,33 @@ class Command( NoArgsCommand ):
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        #import_users()
+        import_users()
 
 
         print "Importing legacy subscriptions"
-        #import_subscriptions()
+        import_subscriptions()
 
 
         print "Importing legacy people"
-        #import_people()
+        import_people()
 
         print "Importing legacy locations"
-        #import_locations()
+        import_locations()
 
         print "Importing legacy events"
-        #import_events()
+        import_events()
 
         print "Importing legacy rumba news"
-        #import_blog_category (L.RumbaNews)
+        import_blog_category (L.RumbaNews)
 
         print "Importing legacy music news"
-        #import_blog_category (L.MusicNews)
+        import_blog_category (L.MusicNews)
 
         print "Importing legacy interviews"
-        #import_blog_category (L.Entrevista)
+        import_blog_category (L.Entrevista)
 
         print "Importing legacy specials"
-        #import_blog_category (L.Especial)
+        import_blog_category (L.Especial)
 
         print "Importing legacy your photos"
         import_yourphotos()
