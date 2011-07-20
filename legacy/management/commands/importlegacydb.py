@@ -336,7 +336,20 @@ def import_people ():
 
             #TODO Investigate where main image is
             #ei_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
-            ei_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' +  oldevent.imagen_principal, 'r' ).read() )
+
+            import os
+
+            main_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' +  oldevent.imagen_principal
+            basename, extension = os.path.splitext(oldevent.imagen_principal)
+
+
+            if extension == '.gif':
+                new_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' +  basename + '.jpg'
+                Image.open(main_file).convert('RGB').save(new_file)
+                main_file = new_file
+                oldevent.imagen_principal = basename + '.jpg'
+
+            ei_content = ContentFile( open( main_file, 'r' ).read() )
 
             event.image.save( oldevent.imagen_principal, ei_content, save = False )
 
@@ -392,35 +405,35 @@ class Command( NoArgsCommand ):
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        import_users()
+        #import_users()
 
 
         print "Importing legacy subscriptions"
-        import_subscriptions()
+        #import_subscriptions()
 
 
         print "Importing legacy people"
         import_people()
 
         print "Importing legacy locations"
-        import_locations()
+        #import_locations()
 
         print "Importing legacy events"
-        import_events()
+        #import_events()
 
         print "Importing legacy rumba news"
-        import_blog_category (L.RumbaNews)
+        #import_blog_category (L.RumbaNews)
 
         print "Importing legacy music news"
-        import_blog_category (L.MusicNews)
+        #import_blog_category (L.MusicNews)
 
         print "Importing legacy interviews"
-        import_blog_category (L.Entrevista)
+        #import_blog_category (L.Entrevista)
 
         print "Importing legacy specials"
-        import_blog_category (L.Especial)
+        #import_blog_category (L.Especial)
 
         print "Importing legacy your photos"
-        import_yourphotos()
+        #import_yourphotos()
 
         print "------------------------------------------------- \nDone."
