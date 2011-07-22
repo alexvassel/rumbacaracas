@@ -433,7 +433,7 @@ class Command( NoArgsCommand ):
         print "Importing legacy specials"
         #import_blog_category (L.Especial)
 
-        Z.Entry.objects.filter(categories=5).delete()
+        #Z.Entry.objects.filter(categories=5).delete()
 
         print "Importing legacy your photos"
         #import_yourphotos()
