@@ -2910,7 +2910,7 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
   line-height: 30px !important;
   width: auto !important;
 	text-align: left;
-  background-position: right -375px;
+  background: url("/media/images/icons/event.jpg") no-repeat scroll 60px 3px transparent;
 }
 #main-contents #col-left .eventos-para-hoy .event-meta{
   font-size: 12px;
@@ -3166,12 +3166,12 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
   width: 7px;
   margin: 10px 0 0 0;
 }
-#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion a.selected span.status{
+#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion a.ui-state-active  span.status{
   background: transparent url("images/sprites/sprites_accordion_status.gif") repeat-x scroll center top;
   margin: 8px 0 0 0;
 }
 #main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion > a:hover span.category-title,
-#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion > a.selected span.category-title{
+#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion > a.ui-state-active span.category-title{
   color: #CA2121;
 }
 #main-contents .tab-containers .events-category-wrapper .events-listing{
@@ -3644,6 +3644,7 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
   float: left;
   display: block;
   width: 31%;
+    min-height: 220px;
   padding: 0 0 18px;
   border-bottom: 1px solid #D1D1D1;
   margin: 0 10px 20px;
