@@ -424,10 +424,10 @@ class Command( NoArgsCommand ):
         #import_people()
 
         print "Importing legacy locations"
-        #import_locations()
+        import_locations()
 
         print "Importing legacy events"
-        #import_events()
+        import_events()
 
         print "Importing legacy rumba news"
         #import_blog_category (L.RumbaNews)
