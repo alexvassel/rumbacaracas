@@ -42,7 +42,7 @@ def parse_city_area (value):
         u'Bogota / Occidente': 8,
         u'Bogota / Usaquén': 9,
         u'Bogota / Zona G y Quinta Camacho': 10,
-        u'Bogota / Tuesaquillo y La Soledad': 11
+        u'Bogota / Tuesaquillo y La Soledad': 11,
         u'Bogota / 72': 12
     }[unicode(value).strip()]
 
