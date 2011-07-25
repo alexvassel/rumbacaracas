@@ -160,6 +160,11 @@ def parse_location_food(token):
                 "Mejicano": 27,
                 "Pizzeria": 29,
                 "Vegetariano": 34,
+                #NEW!
+                u'Pollo en Brasa': '',
+                u'Japonés': 24,
+                u'Francés': 15,
+                u'Tex-Mex': '',
             }[type]
             if type_id:
                 id_list.append(type_id)
