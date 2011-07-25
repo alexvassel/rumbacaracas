@@ -128,7 +128,7 @@ def parse_location_music ( input_value ):
         "Reggae / Ska": 8,
         "Salsa Cabilla": 10,
         "Variada" : 12,
-        u'Criolla Folklórica': '',
+        u'Criolla Folklórica': None,
     }[input_value]
     if result:
         result = LocationMusic.objects.get(pk=result)
