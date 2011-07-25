@@ -357,9 +357,9 @@ def import_people ():
                 main_file = new_file
                 oldevent.imagen_principal = basename + '.jpg'
 
-            ei_content = ContentFile( open( main_file, 'r' ).read() )
-
-            event.image.save( oldevent.imagen_principal, ei_content, save = False )
+            if os.path.isfile(main_file):
+                ei_content = ContentFile( open( main_file, 'r' ).read() )
+                event.image.save( oldevent.imagen_principal, ei_content, save = False )
 
             event.save()
             
