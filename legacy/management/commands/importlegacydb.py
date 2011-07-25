@@ -317,7 +317,7 @@ def import_people ():
     #TODO Carefully import locations
     #TODO Import second date
 
-    for oldevent in oldevents:
+    for oldevent in oldevents[:20]:
         if oldevent.titulo:
             #oldevent = L.Fotos()
             event = P.PhotoEvent(
