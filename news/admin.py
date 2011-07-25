@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 #
 EntryAdmin.fieldsets = ( ( _( 'Content' ), {'fields': ( 'title', 'short' , 'content', 'author', 'source',
-                                            'image', 'status' )} ),
+                                            'image','slider_image', 'status' )} ),
                  ( _( 'Options' ), {'fields': ( 'show_in_main_slider',
                                             'authors',
                                             'creation_date', 'start_publication',
@@ -37,7 +37,7 @@ class EntryImageInline( admin.TabularInline ):
 
 class EntryAdminImage( EntryAdmin ):
     inlines = ( EntryImageInline, )
-
+    search_fields = ['title']
     def save_model( self, request, entry, form, change ):
         entry.last_update = datetime.now()
         entry.save()

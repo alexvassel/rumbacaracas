@@ -20,10 +20,10 @@
         	<div id="slides" class="slides">
             {% for slide, type in slides%}
 	            <div class="slide">
-	            	<img src="{{slide.slide.url}}" alt="{{slide.title}}" />
+	            	<img src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.slide.url}}{% endif %}" alt="{{slide.title}}" />
 	              <div class="slide-info-wrapper">
 	                <div class="slide-info">
-	                  <h3><a href="{{slide.get_absolute_url}}">{{slide.title}}</a></h3>
+	                  <h3><a href="{{slide.get_absolute_url}}">{{slide.title|truncate:60}}</a></h3>
 	                  {%if type == 'event'%}
 	                  	<p>{{slide.description|truncate:140}}</p>
 	                  {% else %}
@@ -68,7 +68,7 @@
                                         <li>
                                     {% endif %}
                                     <h6>
-                                        <a href="/people/main_slide/{{ event.id }}"><img src="{{ event.mainminithumb.url }}" alt="{{event.title}}" />{{event.title}}<br />{{event.date|date:"d.m.y"}}</a>
+                                        <a href="/people/main_slide/{{ event.id }}"><img src="{{ event.mainminithumb.url }}" alt="{{event.title}}" />{{event.title|truncate:15}}<br />{{event.date|date:"d.m.y"}}</a>
                                     </h6>
                                 </li>
                             {% endfor %}
@@ -102,7 +102,7 @@
                                         <li>
                                     {% endif %}
                                     <h6>
-                                        <a href="/yourphotos/main_slide/{{ photo.id }}"><img src="{{ photo.mainminithumb.url }}" alt="{{photo.description}}" />{{photo.description}}<br />{{photo.datetime_added|date:"d.m.y"}}</a>
+                                        <a href="/yourphotos/main_slide/{{ photo.id }}"><img src="{{ photo.mainminithumb.url }}" alt="{{photo.description}}" />{{photo.description|truncate:15}}<br />{{photo.datetime_added|date:"d.m.y"}}</a>
                                     </h6>
                                 </li>
                             {% endfor %}
@@ -133,25 +133,25 @@
             </ul>
           </div>
           <div id="outline-slides" class="outnone encap">
-          	<div class="outline-slide">
+          	<div class="outline-slide" style="height: 880px">
               {% for object in news %}
                   {% include "main/blog_entry.html"%}
               {% endfor %}
             <p>&nbsp;</p>
             </div><!--//.outline-slide-->
-          	<div class="outline-slide">
+          	<div class="outline-slide" style="height: 880px">
               {% for object in locations %}
                   {% include "main/location_entry.html"%}
               {% endfor %}
             <p>&nbsp;</p>
             </div><!--//.outline-slide-->
-          	<div class="outline-slide">
+          	<div class="outline-slide" style="height: 880px">
               {% for object in blog %}
                   {% include "main/blog_entry.html"%}
               {% endfor %}
             </div><!--//.outline-slide-->
             <p>&nbsp;</p>
-          	<div class="outline-slide">
+          	<div class="outline-slide" style="height: 880px">
               {% for object in art_culture %}
                   {% include "main/event_entry.html"%}
               {% endfor %}
@@ -315,7 +315,11 @@
     {% banner_zone_iframe 100 300 250%}
 </div><!--//.banner-container-->
 <div class="banner-container box-shadows outnone widget" style="width: 300px;">
-  {% facebook_group %}
+    {% if 0.5|randomv%}
+        {% facebook_group %}
+    {% else %}
+        {% include "main/twitter_list.html" %}
+    {% endif %}
 </div>
 
 <div class="split-sidebars encap">

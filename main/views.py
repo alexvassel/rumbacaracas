@@ -40,6 +40,10 @@ def index( request ):
         return list
 
     events_slides = sortEventList( [event for event, date in event_slides] )[:get_events]
+
+    if get_events== 3 and (len(events_slides) < get_events):
+        get_news = 5 - len(events_slides)
+
     blog_slides = Entry.published.filter( show_in_main_slider = True ).order_by( '-creation_date' )[:get_news]
 
     videos = Video.objects.filter( status = 1 ).order_by( '-datetime_added' )[:5]

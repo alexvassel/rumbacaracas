@@ -98,12 +98,15 @@
 	          		{% if period == "week"%}
 	              		<a href="/events/by-{{active_tab}}/{{period}}/{{prev_date.year}}/{{prev_date.month}}/{{prev_date.day}}#event-anchor" class="day-prev">{% trans "Previous week"%}</a>
 	          		{% endif %}
+	          		{% comment %}
 	          		{% if period == "month"  %}
 	              		<a href="/events/by-{{active_tab}}/{{period}}/{{prev_date.year}}/{{prev_date.month}}#event-anchor" class="day-prev">{% trans "Previous month"%}</a>
 	          		{% endif %}
+                    {% endcomment %}
 	          		{% if active_tab == "calendar"  %}
 	              		<a href="/events/calendar/{{prev_date.year}}/{{prev_date.month}}#event-anchor" class="day-prev">{% trans "Previous month"%}</a>
 	          		{% endif %}
+
           		  &nbsp;&nbsp;&nbsp;&nbsp;
           		  	{% if period == "day" or period == "tomorrow"  %}
                   		<a href="/events/by-{{active_tab}}/{{period}}/{{next_date.year}}/{{next_date.month}}/{{next_date.day}}#event-anchor" class="day-next">{% trans "Next day"%}</a>
@@ -111,12 +114,15 @@
               		{% if period == "week"%}
                   		<a href="/events/by-{{active_tab}}/{{period}}/{{next_date.year}}/{{next_date.month}}/{{next_date.day}}#event-anchor" class="day-next">{% trans "Next week"%}</a>
               		{% endif %}
+              		{% comment %}
               		{% if period == "month"  %}
                   		<a href="/events/by-{{active_tab}}/{{period}}/{{next_date.year}}/{{next_date.month}}#event-anchor" class="day-next">{% trans "Next month"%}</a>
              		{% endif %}
-             		{% if active_tab == "calendar"  %}
+             		{% endcomment %}
+                    {% if active_tab == "calendar"  %}
 	              		<a href="/events/calendar/{{next_date.year}}/{{next_date.month}}#event-anchor" class="day-next">{% trans "Next month"%}</a>
 	          		{% endif %}
+
                 </div>
               </td>
               <td valign="middle" align="right">

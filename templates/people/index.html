@@ -12,7 +12,8 @@
 	<span class="flt-left"><h2 class="title">{% trans "Photos"%}</h2></span>
 	<span class="flt-right">
 	  <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
-	  </ul>
+        	<li><a class="socializer-8 publish-event" href="/events/add"><span>{% trans "Add event"%}</span></a></li>
+      	</ul>
 	</span>
 	  </div><!--//.title-wrap-->
 	  <div class="node encap">
@@ -41,7 +42,18 @@
 	<div class="content c40r fotos">
 	  <h2 class="title"><a href="{%url people_details slug=latest.slug%}">{{latest.title}}</a></h2>
 	  <span class="submitted">
-		{% if latest.city%}{{latest.city}} {% endif %}{{latest.date|date:"d.m.y"}}
+		{% if latest.city%}{{latest.city}}<span>&nbsp;</span>{% endif %}
+        {{latest.date|date:"d.m.y"}}
+        <span>&nbsp;|&nbsp;</span>
+        {% if latest.location%}
+            <a class="author-link" href="{{ latest.location.get_absolute_url }}">{{latest.location}}</a>
+        {% else %}
+            {% if latest.place %}
+                {{latest.place}}
+            {% else %}
+                {% trans "Other"%}
+            {% endif %}
+        {% endif %}
 	  </span>
 	  <p>
 		{% if latest.article %}
@@ -86,7 +98,12 @@
 						<span class="bold">
 							<a href="/locations/{{event.location.slug}}">{{event.location.title}}</a>
 						</span>
-					{%endif%}
+					{%else%}
+                        <span class="bold">
+                            {% trans "Other"%}
+                        </span>
+                    {% endif %}
+                    
 					<span class="last">
 						<a href="{{event.get_absolute_url}}#disqus_thread">
 							{%facebook_comments_count event.get_absolute_url%}

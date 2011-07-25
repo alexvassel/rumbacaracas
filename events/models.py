@@ -122,6 +122,7 @@ class Event( ImageModel, Sortable ):
     url = models.URLField( _( 'Url' ) , blank = True )
     email = models.EmailField( _( 'Email' ) , blank = True )
     image = models.ImageField( upload_to = 'images/events', blank = True )
+    slider_image = models.ImageField( _( 'Slider image 619x258' ), upload_to = 'images/slider' , blank = True )
     user = models.CharField( 'User', max_length = 256 , blank = True )
     description = models.TextField( _( 'Event Description' ), blank = True )
     add_user = models.ForeignKey( User , blank = True , null = True )

@@ -509,6 +509,7 @@ li.sobre1 a.fotosobre1:hover {
 #header-primary .sec-right .top-search-form input[type=submit],
 #main-contents #col-left #outline-briefs #outline-slides .outline-slide a.read-more,
 #main-contents #col-left .node ul.teaser-options li a.read-more,
+#main-contents #col-left .news-list a.read-more,
 #main-contents #col-left a.read-more-red, #main-contents #col-right a.read-more-red,
 #main-contents #col-left #googleSearch input[type=submit]
 {
@@ -1063,16 +1064,19 @@ a.carousel-next{
 #main-contents #col-left #outline-briefs #outline-slides .outline-slide img{
 	border: 1px solid #000000;
 }
-#main-contents #col-left #outline-briefs #outline-slides .outline-slide h3{
+#main-contents #col-left #outline-briefs #outline-slides .outline-slide h3,
+#main-contents #col-left .news-list h3{
 	color: #D22323;
 	font-size: 20px;
 	margin: 0 0 10px;
 }
 #main-contents #col-left #outline-briefs #outline-slides .outline-slide h3 a,
+#main-contents #col-left .news-list h3 a,
 #main-contents #col-left #outline-briefs #outline-slides .outline-slide p.published{
 	color: #D22323 !important;
 }
-#main-contents #col-left #outline-briefs #outline-slides .outline-slide h3 a:hover{
+#main-contents #col-left #outline-briefs #outline-slides .outline-slide h3 a:hover,
+#main-contents #col-left .news-list h3 a:hover{
 	text-decoration: underline;
 }
 #main-contents #col-left #outline-briefs #outline-slides .outline-slide p{
@@ -1093,6 +1097,7 @@ a.carousel-next{
 	font-weight: bold;
 }
 #main-contents #col-left #outline-briefs #outline-slides .outline-slide a.read-more,
+#main-contents #col-left .news-list a.read-more,
 #main-contents #col-left a.read-more-red, #main-contents #col-right a.read-more-red{
 	padding: 3px 15px;
 	margin: 5px 0 0 0;

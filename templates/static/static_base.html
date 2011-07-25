@@ -1,9 +1,13 @@
 {% extends "base.html" %}
-{% load facebook %}
+{% load facebook tools %}
 {% block colright %}
     {{ block.super }}
     <div class="banner-container box-shadows outnone widget" style="width: 300px;">
-      {% facebook_group %}
+        {% if 0.5|randomv%}
+            {% facebook_group %}
+        {% else %}
+            {% include "main/twitter_list.html" %}
+        {% endif %}
     </div>
     {% include "main/twitter_list.html" %}
 {% endblock %}

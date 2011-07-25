@@ -37,10 +37,10 @@
 		{% endif %}
 		{% if location.area or location.city%}
           <tr>
-            <td><strong>{% trans "City, Area"%}:</strong></td>
+            <td><strong>{% trans "Area, City"%}:</strong></td>
             <td>{% if location.area%}{{location.area.title}}{% endif %}{% if location.city and location.area%}, {% endif %}{% if location.city%}{{location.city}}{% endif %}
             	<span class="location-map outnone ml25">
-            		<a target="_blank" href="http://map.google.es/maps?q={{location.address|add:" "|add:location.area|add:" "|add:location.city|urlencode }}">{% trans "Map"%}</a>
+            		<a target="_blank" href="{{location|google_map_link}}">{% trans "Map"%}</a>
         		</span>
             </td>
           </tr>
@@ -252,7 +252,7 @@
 	      <li{% if active_tab == "area" %} class="active"{% endif %}><a href="/locations/by-area#locations-anchor">{% trans "By Area"%}</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
 	      <li{% if active_tab == "music" %} class="active"{% endif %}><a href="/locations/by-music#locations-anchor">{% trans "By Music"%}</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
 	      <li{% if active_tab == "food" %} class="active"{% endif %}><a href="/locations/by-food#locations-anchor">{% trans "By Type of Food"%}</a><div {% if active_tab == "food" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li><a href="#">{% trans "By Rating"%}</a><div class="pointer-tip"></div></li>
+	      {% comment %}<li><a href="#">{% trans "By Rating"%}</a><div class="pointer-tip"></div></li>{% endcomment %}
 	    </ul>
 	  </div><!--//.outline-navigation-->
 	</div><!--//#outline-briefs-->

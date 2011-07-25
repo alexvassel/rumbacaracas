@@ -1,7 +1,7 @@
 {% extends "zinnia/base.html" %}
-{% load i18n tagging_tags zinnia_tags %}
+{% load i18n zinnia_tags %}
 {% load tools %}
-{% load openx widgets facebook %}
+{% load openx widgets facebook twitter%}
 
 {% block advbodycls %}section-blog{% endblock %}
 
@@ -24,20 +24,74 @@
 {% endif %}
 
 
-<div class="node entrevistas encap">
-	<div class="node-mini-left-news c65l">
-    	<ul class="node-mini-list">
-			{% for object in object_list %}
-			<li id="entry-{{ object.pk }}" class="hentry{% if object.featured %} featured{% endif %} span-16 last">
-			  {% with object.short as object_content %}
-			  {% include "zinnia/_entry_detail.html" %}
-			  {% endwith %}
-			</li>
-			{% empty %}
-  				{% trans "No entries yet." %}
-			{% endfor %}
-		</ul>
-	</div><!--//.node-mini-left-->
+
+
+<style type="text/css">
+.news-list .photos-share-options {
+    padding: 7px 0 7px !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    border-top: 1px dotted black;
+}
+.news-list dl.encap {
+     border-bottom: 1px dotted #9F9F9F;
+}
+.news-list img.main-image {
+    border: 1px solid #898989;
+}
+.news-list div.mnh {
+    min-height: 145px;
+}
+</style>
+    
+<div class="node entrevistas encap news-list">
+	{% for object in object_list %}
+        <dl class="encap">
+            <dt class="c45l">
+                <a href="{{ object.get_absolute_url }}">
+                    <img class="main-image" alt="{{ object.title }}" src="{{ object.newsthumb.url }}">
+                </a>
+            </dt>
+            <dd class="c55r">
+            <div class="mnh">
+                <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h3>
+                <span class="submitted">
+                    {% if object.authors.all %}
+                        {% trans "Written by" %}
+                    {% else %}
+                        {% trans "Written" %} 
+                    {% endif %}
+                    {% for author in object.authors.all %}
+                        <span class="vcard author">
+                          {{ author }}
+                        </span>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+
+                    {% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}
+                </span>
+                <p>{{ object.short }}</p>
+                <a href="#" class="read-more">{% trans "Read More" %}</a>
+            </div>
+                <div class="photos-share-options">
+                    <ul class="teaser-options encap outnone fcml0 lcmr0">
+                        <li class="pl0">
+                            <a href="{{object.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
+                                <span>{%facebook_comments_count object.get_absolute_url%}</span>
+                            </a>
+                        </li>
+                        <li>
+                            {% facebook_like object.get_absolute_url 50 0%}
+                        </li>
+                        <li class="br-none">
+                            {% twitter_share object.get_absolute_url object.title%}
+                        </li>
+                    </ul><!--//.teaser-options-->
+                </div>
+            </dd>
+        </dl>
+    {% empty %}
+        {% trans "No entries yet." %}
+    {% endfor %}
 <!-- //.node-mini-right removed by saqib -->
 </div><!--//.node-->
 
@@ -83,7 +137,11 @@
     </div>
 
     <div class="banner-container box-shadows outnone widget" style="width: 300px;">
-      {% facebook_group %}
+        {% if 0.5|randomv%}
+            {% facebook_group %}
+        {% else %}
+            {% include "main/twitter_list.html" %}
+        {% endif %}
     </div>
 
     <div class="split-sidebars encap">

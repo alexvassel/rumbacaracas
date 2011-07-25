@@ -13,7 +13,11 @@
                 {% if event.location %}
                     <a href="{{event.location.get_absolute_url}}">{{ event.location.title }}</a>
                 {% else %}
-                    {{ event.place }}
+                    {% if event.place %}
+                        {{event.place}}
+                    {% else %}
+                        {% trans "Other"%}
+                    {% endif %}
                 {% endif %}
             </p>
           </li>

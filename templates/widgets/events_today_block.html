@@ -8,7 +8,18 @@
                     {% for event, dt in day %}
                         <li>
                             <a href="{{ event.get_absolute_url }}">
-                                {{ event.title }} - <span>{% if event.location %}{{ event.location.title }}{% else %}{{ event.place }}{% endif %}</span>
+                                {{ event.title }} -
+                                <span>
+                                    {% if event.location %}
+                                        {{ event.location.title }}
+                                    {% else %}
+                                        {% if event.place %}
+                                            {{event.place}}
+                                        {% else %}
+                                            {% trans "Other"%}
+                                        {% endif %}
+                                    {% endif %}
+                                </span>
                             </a>
                         </li>
                     {% endfor %}

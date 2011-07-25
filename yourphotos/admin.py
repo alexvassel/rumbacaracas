@@ -8,6 +8,7 @@ make_published.short_description = _( "Mark selected photos as published" )
 
 
 class PhotoAdmin( admin.ModelAdmin ):
+    search_fields = ['description']
     list_display = ( 'thumb', 'user', 'description', 'category', 'datetime_added', 'status' )
     list_editable = ( 'description', 'category', 'status' )
     list_filter = ( 'status', )

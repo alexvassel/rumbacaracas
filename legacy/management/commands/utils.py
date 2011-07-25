@@ -3,7 +3,7 @@
 from django.contrib.auth.models import User
 from events.models import EventCategory
 import legacy.models as L
-from locations.models import LocationMusic, Location
+from locations.models import LocationMusic, Location, LocationArea
 
 import os, glob, string, re, sys
 from datetime import datetime, timedelta
@@ -27,6 +27,27 @@ def compile_date ( day, month, year ,dt = False):
 def convert_status ( oldstatus ):
     return oldstatus
 
+
+def parse_city_area (value):
+
+    result = {
+        u'': None,
+        u'Bogota / 82 y Calle T': 1,
+        u'Bogota / 93 y Chico': 2,
+        u'Bogota / Centro': 3,
+        u'Bogota / Chapineros': 4,
+        u'Bogota / Fuera de la Ciudad': 5,
+        u'Bogota / Macarena': 6,
+        u'Bogota / Norte': 7,
+        u'Bogota / Occidente': 8,
+        u'Bogota / Usaquén': 9,
+        u'Bogota / Zona G y Quinta Camacho': 10,
+    }[unicode(value).strip()]
+
+    if result:
+        result = LocationArea.objects.get(pk=result)
+
+    return 'Bogota', result,
 
 
 

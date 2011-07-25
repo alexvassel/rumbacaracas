@@ -13,7 +13,8 @@
     <span class="flt-left"><h2 class="title">{%trans "Event"%}</h2></span>
     <span class="flt-right">
       <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
-      </ul>
+        	<li><a class="socializer-8 publish-event" href="/events/add"><span>{% trans "Add event"%}</span></a></li>
+      	</ul>
     </span>
   </div><!--//.title-wrap-->
   <div class="node encap">
@@ -130,9 +131,13 @@
     </div>
 
     <div class="banner-container box-shadows outnone widget" style="width: 300px;">
-      {% facebook_group %}
+          {% if 0.5|randomv%}
+            {% facebook_group %}
+        {% else %}
+            {% include "main/twitter_list.html" %}
+        {% endif %}
     </div>
-    {% include "main/twitter_list.html" %}
+
 
 
     <div class="split-sidebars encap">

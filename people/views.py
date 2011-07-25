@@ -19,7 +19,7 @@ def index ( request ):
     request.breadcrumbs( _( 'By Category' ) , request.path_info )
     groups = []
     for group, description in PHOTO_CATEGORIES:
-        events = PhotoEvent.objects.filter( status = 1 ).filter( category = group ).order_by( 'datetime_added' )[:5]
+        events = PhotoEvent.objects.filter( status = 1 ).filter( category = group ).order_by( 'date' )[:5]
         if events:
             latest_event_photo = events[0]
             groups.append( ( group, description, latest_event_photo, events, ) )

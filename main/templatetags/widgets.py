@@ -42,14 +42,14 @@ def people_list( ):
 
 @register.inclusion_tag( 'widgets/latest_news.html' )
 def news_list( ):
-    news = Entry.published.all()[:8]
+    news = Entry.published.all()[:10]
     return dict(news=news)
 
 
 
 @register.inclusion_tag( 'widgets/locations.html' )
 def location_list( ):
-    locations = Location.objects.filter(status=1).order_by('?')[:8]
+    locations = Location.objects.filter(status=1).order_by('?')[:20]
     return dict(locations=locations)
 
 @register.inclusion_tag( 'widgets/locations_block.html' )
@@ -73,9 +73,13 @@ def get_event_list(number=5):
 
 
 @register.inclusion_tag( 'widgets/videos.html' )
-def yourvideos_block( ):
-    videos = Video.objects.filter(status=1).order_by('-datetime_added')[:4]
-    return dict(videos=videos)
+def yourvideos_block( exclude = None ):
+    videos = Video.objects.filter(status=1).order_by('-datetime_added')
+
+    if exclude:
+        videos = videos.exclude(pk=exclude.id)
+
+    return dict(videos=videos[:4])
 
 
 @register.inclusion_tag('widgets/upcoming_events_list.html')

@@ -19,6 +19,7 @@ admin.site.register( LocationType, LocationTypeAdmin )
 
 class LocationAdmin( admin.ModelAdmin ):
     prepopulated_fields = {"slug": ( "title", )}
+    search_fields = ['title']
     filter_horizontal = ( "type", "restaurant", "days_of_operation" )
     list_display = ( 'title', 'view', 'status' , 'featured', )
     list_editable = ( 'status', 'featured' )

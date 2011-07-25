@@ -246,7 +246,7 @@ def import_locations ():
             slug = slugify(oldlocation.nombre),
 
             address = oldlocation.direccion,
-            city = oldlocation.ciudad,
+
             #district
             phone_1 = oldlocation.telefono,
             #phone_2
@@ -273,6 +273,10 @@ def import_locations ():
             status = 1,
             datetime_added = compile_date(oldlocation.da, oldlocation.ma, oldlocation.aa),
         )
+
+        location.city, location.area = parse_city_area(oldlocation.ciudad)
+
+
 
         if oldlocation.url:
             location.url = 'http://' + oldlocation.url
@@ -413,10 +417,10 @@ class Command( NoArgsCommand ):
 
 
         print "Importing legacy people"
-        import_people()
+        #import_people()
 
         print "Importing legacy locations"
-        #import_locations()
+        import_locations()
 
         print "Importing legacy events"
         #import_events()

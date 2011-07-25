@@ -1,4 +1,4 @@
-{% load tagging_tags comments i18n %}
+{% load i18n %}
 {% load facebook twitter%}
 <div class="image-teaser outnone blog">
 	<div class="left">
@@ -15,28 +15,20 @@
 			</a>
 		</h2>
         <span class="submitted">
-			{% trans "Written by" %} {% for author in object.authors.all %}
-		    <span class="vcard author">
-		      {{ author }}
-		    </span>{% if not forloop.last %}, {% endif %}
-		    {% endfor %}
+            {% if object.authors.all %}
+                {% trans "Written by" %} {% for author in object.authors.all %}
+                <span class="vcard author">
+                  {{ author }}
+                </span>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            {% endif %}
 			{% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}
 		</span><br />
 		<span style="font-size:12px; overflow: hidden; height: 90px; display:block">{{ object_content }}</span>
 		<a href="{{ object.get_absolute_url }}" class="seguir-link">
 			<strong> {% trans "Continue Reading"%} &#187;</strong>
 		</a><br />
-		{%if tag_list%}
-		  <p class="entry-tags span-16 last">
-		    <strong>{% trans "Tags" %}</strong> :
-		    {% tags_for_object object as tag_list %}
-		    {% for tag in tag_list %}
-		    <a href="{% url zinnia_tag_detail tag %}" title="Tag {{ tag }}" rel="tag">
-		      {{ tag }}
-		    </a>
-		    {% endfor %}
-		  </p><br /><br />
-		{% endif %}
+		
 		<hr style="color:#CCCCCC; margin:1 0 0 0" />
 		{% facebook_like object.get_absolute_url 90 0%}
 		<a class="socializer-10" href="{{object.get_absolute_url}}#disqus_thread" style="float: left; margin-right: 10px">

@@ -1,8 +1,11 @@
 from django import template
+from django.template import TemplateSyntaxError
+from django.template.defaultfilters import urlencode
 from socialregistration.models import FacebookProfile, TwitterProfile
 register = template.Library()
 from django.utils.safestring import mark_safe
-from locations.models import LocationType
+from locations.models import LocationType, Location
+from events.models import Event
 from django.utils.html import strip_tags
 
 
@@ -49,6 +52,41 @@ def user_link( value):
         #return mark_safe( '%s %s' % (value.first_name, value.last_name))
     else:
         return mark_safe( value.username )
+
+@register.filter
+def google_map_link( value):
+
+    if value is None:
+        return ""
+    
+    query = list()
+    if isinstance(value, Location):
+        if value.address:
+            query.append(value.address)
+
+        if value.city:
+            query.append(value.city)
+
+    elif isinstance(value, Event):
+        if value.location:
+            if value.location.address:
+                query.append(value.location.address)
+
+            if value.location.city:
+                query.append(value.location.city)
+        else:
+            if value.address:
+                query.append(value.address)
+
+            if value.city:
+                query.append(value.city)
+    else:
+        return ""
+
+    query.append("Colombia")
+
+    return 'http://map.google.es/maps?q=%s' % (urlencode(" ".join(query)))
+
 
 @register.inclusion_tag( 'main/location_menu.html' )
 def show_location_menu( ):
@@ -127,4 +165,19 @@ def hash( h, key ):
         return h[key]
     except KeyError: # invalid literal for int()
         return '' # Fail silently.
+
+
+
+
+import random
+@register.filter
+def randomv(value):
+    if not value:
+        value = 0.5
+    if random.random() <= value:
+        return True
+    else:
+        return False
+
+
 

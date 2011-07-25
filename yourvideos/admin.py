@@ -7,6 +7,7 @@ def make_published( modeladmin, request, queryset ):
 make_published.short_description = _( "Mark selected videos as published" )
 
 class VideoAdmin( admin.ModelAdmin ):
+    search_fields = ['description']
     list_display = ( 'thumb', 'description', 'datetime_added', 'status' )
     list_editable = ( 'description', 'status' )
     list_filter = ( 'status', )

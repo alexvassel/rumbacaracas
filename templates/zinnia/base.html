@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load zinnia_tags tagging_tags i18n %}
+{% load zinnia_tags i18n %}
 {% load dumper tools%}
 {% load facebook%}
 {% load openx%}
@@ -53,7 +53,11 @@
     </div>
 
     <div class="banner-container box-shadows outnone widget" style="width: 300px;">
-      {% facebook_group %}
+        {% if 0.5|randomv%}
+            {% facebook_group %}
+        {% else %}
+            {% include "main/twitter_list.html" %}
+        {% endif %}
     </div>
 
     <div class="split-sidebars encap">

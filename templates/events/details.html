@@ -11,7 +11,11 @@
 <div class="node-container eventos box-shadows encap">
 <div class="title-wrap encap">
 <span class="flt-left"><h2 class="title">{% trans "Events"%}</h2></span>
-<span class="flt-right"></span>
+<span class="flt-right">
+    <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+        <li><a class="socializer-8 publish-event" href="/events/add"><span>{% trans "Add event"%}</span></a></li>
+    </ul>
+</span>
 </div><!--//.title-wrap-->
 <div class="node evento-details encap">
 <div class="node-mini-left c65l">
@@ -61,7 +65,13 @@
 	    {% if event.location %}
 		    <td><a href="/locations/{{event.location.slug}}">{{event.location.title}}</a></td>
 	    {%else%}
-		    <td>{{event.place}}</td>
+		    <td>
+                {% if event.place %}
+                    {{event.place}}
+                {% else %}
+                    {% trans "Other"%}
+                {% endif %}
+            </td>
 	    {%endif%}        	
       </tr>
 	{%endif%}
@@ -76,7 +86,7 @@
         <td><strong>{% trans "City, Area"%}:</strong></td>
         <td>{% if event.city%}{{event.city}}, {% endif %}{% if event.area%}{{event.area.title}}{% endif %}
         	<span class="location-map outnone ml25">
-        		<a target="_blank" href="http://map.google.es/maps?q={{event.address|add:" "|add:event.area|add:" "|add:event.city|urlencode }}">{% trans "Map"%}</a>
+        		<a target="_blank" href="{{ event|google_map_link}}">{% trans "Map"%}</a>
     		</span>
         </td>
       </tr>

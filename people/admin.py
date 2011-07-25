@@ -14,6 +14,7 @@ class PhotoInline( admin.TabularInline ):
 
 
 class EventAdmin( admin.ModelAdmin ):
+    search_fields = ['title']
     prepopulated_fields = {"slug": ( "title", )}
     list_display = ( 'title', 'category', 'import_photo', 'status' )
 

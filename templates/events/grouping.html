@@ -23,7 +23,11 @@
 		                    			{% if event.location%}
 		                    				<a href="/locations/{{event.location.slug}}"><span>{{event.location}}</span></a>
 		                    			{% else %}
-		                    				{{event.place}}
+		                    				{% if event.place %}
+                                                {{event.place}}
+                                            {% else %}
+                                                {% trans "Other"%}
+                                            {% endif %}
 		                    			{% endif%}
 		                    			{% if period == "week" or period == "month" %}
 		                    				- {{closest_dates|hash:event.pk}}

@@ -13,7 +13,11 @@
                 <a class="author-link" href="{{photo.event.location.get_absolute_url}}">
                     {{photo.event.location.title}}
                 </a>
+            {%else%}
+                <span>&nbsp;|&nbsp;</span>
+                {% trans "Other"%}
             {%endif%}
+
 
 		</span>
 	  </div><!--//.c75l-->
