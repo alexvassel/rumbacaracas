@@ -421,7 +421,7 @@ class Command( NoArgsCommand ):
 
 
         print "Importing legacy people"
-        import_people()
+        #import_people()
 
         print "Importing legacy locations"
         import_locations()
