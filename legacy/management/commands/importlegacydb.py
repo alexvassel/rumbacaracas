@@ -370,7 +370,10 @@ def import_people ():
             images_list = list()
 
             legends_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/resena.dat'
-            legends = open( legends_file, "r" ).readlines()
+            if os.path.isfile(legends_file):
+                legends = open( legends_file, "r" ).readlines()
+            else:
+                legends = list()
 
             fileencoding = "iso-8859-1"
 
