@@ -2,24 +2,24 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 TEMPLATE_DIRS = (
-    '/web/rumbabogota/templates',
+    '/web/apps/rumbabogota/templates',
  )
 
 FIXTURE_DIRS = (
-   '/web/rumbabogota/locations/fixtures/',
+   '/web/apps/rumbabogota/locations/fixtures/',
  )
 
 
-OLDBOGOTA_PHOTO_PATH = '/web/oldbogota/processed'
+OLDBOGOTA_PHOTO_PATH = '/web/apps/oldbogota/processed'
 
 FULL_BASE_URL = 'http://rumbacr.com'
 
-MEDIA_ROOT = '/web/rumbabogota/media'
+MEDIA_ROOT = '/web/apps/rumbabogota/media'
 
-STATIC_DOC_ROOT = '/web/rumbabogota/media'
+STATIC_DOC_ROOT = '/web/apps/rumbabogota/media'
 
 LOCALE_PATHS = (
-    '/web/rumbabogota/locale',
+    '/web/apps/rumbabogota/locale',
  )
 
 OLDDATABOGOTA_PHOTO_PATH = '/mnt/rumbacaracas.com/var/www/vhosts/rumbabogota.com/httpdocs/'
