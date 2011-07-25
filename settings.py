@@ -145,7 +145,7 @@ INSTALLED_APPS = (
     'grappelli',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    #'django.contrib.comments',
+    'django.contrib.comments',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.admin',
