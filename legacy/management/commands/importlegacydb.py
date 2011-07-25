@@ -396,8 +396,8 @@ def import_people ():
                 fi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' + photo[1], 'r' ).read() )
                 ft_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' + photo[2], 'r' ).read() )
 
-                p.image.save( photo[1][:-100], fi_content, save = False )
-                p.thumb.save( photo[2][:-100], ft_content, save = False )
+                p.image.save( photo[1][-75:], fi_content, save = False )
+                p.thumb.save( photo[2][-75:], ft_content, save = False )
 
                 p.save()
 
