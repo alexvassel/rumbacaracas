@@ -317,7 +317,7 @@ def import_people ():
     #TODO Carefully import locations
     #TODO Import second date
 
-    for oldevent in oldevents[:20]:
+    for oldevent in oldevents:
         if oldevent.titulo:
             #oldevent = L.Fotos()
             event = P.PhotoEvent(
@@ -410,6 +410,8 @@ class Command( NoArgsCommand ):
         """
         Read data from legacy db to new db.
         """
+        print datetime.datetime.now()
+        print "\n"
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
@@ -447,3 +449,5 @@ class Command( NoArgsCommand ):
         import_yourphotos()
 
         print "------------------------------------------------- \nDone."
+        print datetime.datetime.now()
+        print "\n"
