@@ -177,9 +177,9 @@ INSTALLED_APPS = (
 
 DATABASE_ROUTERS = ['db_router.MyAppRouter']
 
-try:
-    import socket
-    hostname = socket.gethostname().replace( '.', '_' ).replace( '-', '_' )
-    exec "from host_settings.%s import *" % hostname
-except ImportError, e:
-    raise e
+#try:
+#    import socket
+#    hostname = socket.gethostname().replace( '.', '_' ).replace( '-', '_' )
+#    exec "from host_settings.%s import *" % hostname
+#except ImportError, e:
+#    raise e
