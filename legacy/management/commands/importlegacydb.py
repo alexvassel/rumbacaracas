@@ -410,7 +410,7 @@ class Command( NoArgsCommand ):
         """
         Read data from legacy db to new db.
         """
-        print datetime.datetime.now()
+        print datetime.now()
         print "\n"
         print "Importing legacy data \n-----------------------------------------------"
 
@@ -449,5 +449,5 @@ class Command( NoArgsCommand ):
         import_yourphotos()
 
         print "------------------------------------------------- \nDone."
-        print datetime.datetime.now()
+        print datetime.now()
         print "\n"
