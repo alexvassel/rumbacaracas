@@ -317,7 +317,7 @@ def import_people ():
     #TODO Carefully import locations
     #TODO Import second date
 
-    for oldevent in oldevents[:15]:
+    for oldevent in oldevents:
         if oldevent.titulo:
             #oldevent = L.Fotos()
             event = P.PhotoEvent(
@@ -347,8 +347,12 @@ def import_people ():
             basename, extension = os.path.splitext(oldevent.imagen_principal)
             from PIL import Image
 
+            #MEDIA_ROOT
             if extension == '.gif':
-                new_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' +  basename + '.jpg'
+                new_dir = settings.MEDIA_ROOT + '/people_fotos/' + oldevent.directorio + ''
+                new_file =  new_dir +  basename + '.jpg'
+                if not os.path.isdir(new_dir):
+                    os.makedirs(new_dir)
                 Image.open(main_file).convert('RGB').save(new_file)
                 main_file = new_file
                 oldevent.imagen_principal = basename + '.jpg'
@@ -409,37 +413,37 @@ class Command( NoArgsCommand ):
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        #import_users()
+        import_users()
 
 
         print "Importing legacy subscriptions"
-        #import_subscriptions()
+        import_subscriptions()
 
 
         print "Importing legacy people"
-        #import_people()
+        import_people()
 
         print "Importing legacy locations"
         import_locations()
 
         print "Importing legacy events"
-        #import_events()
+        import_events()
 
         print "Importing legacy rumba news"
-        #import_blog_category (L.RumbaNews)
+        import_blog_category (L.RumbaNews)
 
         print "Importing legacy music news"
-        #import_blog_category (L.MusicNews)
+        import_blog_category (L.MusicNews)
 
         print "Importing legacy interviews"
-        #import_blog_category (L.Entrevista)
+        import_blog_category (L.Entrevista)
 
         print "Importing legacy specials"
-        #import_blog_category (L.Especial)
+        import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "Importing legacy your photos"
-        #import_yourphotos()
+        import_yourphotos()
 
         print "------------------------------------------------- \nDone."
