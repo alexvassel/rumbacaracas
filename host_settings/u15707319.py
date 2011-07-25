@@ -1,3 +1,6 @@
+DEBUG = False
+TEMPLATE_DEBUG = False
+
 TEMPLATE_DIRS = (
     '/web/rumbabogota/templates',
  )
