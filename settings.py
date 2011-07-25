@@ -159,7 +159,7 @@ INSTALLED_APPS = (
     'people',
     'main',
     'sortable',
-    #'tagging',
+    'tagging',
     #'mptt',
     'zinnia',
     'news',
