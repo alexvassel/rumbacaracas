@@ -260,6 +260,7 @@ input[type="button"], input[type="submit"], button{
 	margin-top: 0;
 	margin-bottom: 0;
 	margin-left: 5px;
+    width: 302px;
 }
 #header-primary .rows .sec-left ul.top-menu-social li a{
 	padding: 10px 0px;
@@ -3938,4 +3939,18 @@ li.siguenosft {
 	padding-top:7px;
 	font-family:Arial, Helvetica, sans-serif;
 	font-weight:lighter;
+}
+
+.force-right{
+    float:right!important;
+}
+
+li.greating {
+    padding: 3px 0px !important;
+    width:160px;
+    overflow: hidden;
+}
+
+li.greating_pic {
+  padding: 3px 5px !important
 }

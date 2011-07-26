@@ -62,8 +62,26 @@
 
           <ul class="top-menu-social">
 		{% if request.user.is_authenticated %}
-		    <li class="opcion0">
-		    	<a href="{% url social_logout %}" class="logout">
+            {% if request.facebook and  request.facebook.uid%}
+                <li class="greating_pic">
+                    <fb:profile-pic uid="{{ request.facebook.uid }}" facebook-logo="true" linked="false" size="square" width="40" height="40"></fb:profile-pic>
+                </li>
+            {% endif %}
+		    <li class="opcion0 greating">
+                {% trans "Hello" %}
+                {% if request.facebook and  request.facebook.uid%}
+                    <fb:name uid="{{ request.facebook.uid }}" linked="false" useyou="false"></fb:name>
+                {% else %}
+                    {% if request.user.first_name and  request.user.last_name%}
+                        {{ request.user.first_name }} {{ request.user.last_name}}
+                    {% else %}
+                        {{ request.user.username }}
+                    {% endif %}
+                {% endif %}
+            </li>
+            <li class="sepL force-right">&nbsp;</li>
+            <li class="opcion0 force-right">
+                <a href="{% url social_logout %}" class="logout">
 					{% trans "Logout" %}
 				</a>
 			</li>
@@ -71,8 +89,9 @@
             <li class="btnfacebook1">{% facebook_button %}</li>
             <li class="opcion0"> {%trans "or"%} </li>
             <li class="btntwitter1">{% twitter_button %}</li>
-		{% endif %}            
             <li class="sepL">&nbsp;</li>
+		{% endif %}            
+
 
           </ul>
 
