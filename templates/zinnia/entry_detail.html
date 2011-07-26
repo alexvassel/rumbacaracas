@@ -1,5 +1,6 @@
 {% extends "zinnia/base.html" %}
 {% load i18n zinnia_tags %}
+{% load gplus %}
 {% load facebook twitter%}
 {% block title %}{{ object.title }}{% endblock %}
 
@@ -34,8 +35,11 @@
 			<li>
 				{% facebook_like object.get_absolute_url 50%}
 			</li>
-			<li class="br-none">
+			<li>
 				{% twitter_share object.get_absolute_url object.title%}
+			</li>
+            <li class="br-none">
+				{% gplus object.get_absolute_url%}
 			</li>
 		</ul><!--//.teaser-options-->
 	</div>

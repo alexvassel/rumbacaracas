@@ -3,6 +3,7 @@
 {% block title %}{% trans "Events | Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load openx %}
+{% load gplus %}
 {% load widgets %}
 {% load listtools %}
 {% load facebook twitter%}
@@ -159,6 +160,9 @@
 	</li>
 	<li>
 		{% twitter_share event.get_absolute_url event.title%}
+	</li>
+    <li style="height:36px">
+		{% gplus event.get_absolute_url%}
 	</li>
 	
     </ul>

@@ -3,6 +3,7 @@
 {% block title %}{% trans "People | Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load paging %}
+{% load gplus %}
 {% load openx %}
 {% load widgets %}
 {% load facebook twitter%}
@@ -28,9 +29,12 @@
 			<li>
 				{% facebook_like event.get_absolute_url 50%}
 			</li>
-			<li class="br-none">
+			<li>
 				{% twitter_share event.get_absolute_url event.title%}
 			</li>
+            <li class="br-none">
+                {% gplus event.get_absolute_url%}
+            </li>
 		</ul><!--//.teaser-options-->
 	</div>
 
@@ -92,6 +96,7 @@
                 <li><div>{% twitter_share photo.get_absolute_url photo.description%}</div></li>
                 <li><div>{% facebook_like photo.get_absolute_url 90 0%}</div></li>
                 <li><div>{% facebook_send photo.get_absolute_url%}</div></li>
+                <li><div>{% gplus photo.get_absolute_url%}</div></li>
               </ul>
             </li>
             

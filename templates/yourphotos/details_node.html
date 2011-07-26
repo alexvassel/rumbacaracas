@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load openx %}
 {% load tools %}
+{% load gplus %}
 {% load facebook twitter%}
 <div class="node gente bb-none encap">
 	<div class="wrapper encap">
@@ -36,8 +37,11 @@
 			<li>
 				{% facebook_like photo.get_absolute_url 50%}
 			</li>
-			<li class="br-none">
+			<li>
 				{% twitter_share photo.get_absolute_url photo.description%}
+			</li>
+            <li class="br-none">
+				{% gplus photo.get_absolute_url%}
 			</li>
 		</ul><!--//.teaser-options-->
 	</div>

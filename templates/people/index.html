@@ -2,6 +2,7 @@
 {% load i18n %}
 {% block title %}{% trans "People | Rumbabogota" %}{% endblock %}
 {% load tools %}
+{% load gplus %}
 {% load openx %}
 {% load widgets %}
 {% load facebook twitter %}
@@ -27,9 +28,13 @@
 			<li>
 				{% facebook_like latest.get_absolute_url 50%}
 			</li>
-			<li class="br-none">
+			<li>
 				{% twitter_share latest.get_absolute_url latest.title%}
 			</li>
+            <li class="br-none">
+				{% gplus latest.get_absolute_url%}
+			</li>
+
 		</ul><!--//.teaser-options-->
 	</div>
 

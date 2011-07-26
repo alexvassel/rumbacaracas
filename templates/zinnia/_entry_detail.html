@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load gplus %}
 {% load facebook twitter%}
 <div class="image-teaser outnone blog">
 	<div class="left">
@@ -38,6 +39,9 @@
       	<div style="float: left; margin-right: 1px">
       		{% twitter_share object.get_absolute_url object.title%}
 		</div>
+
+        {% gplus object.get_absolute_url%}
+
 		<hr style="clear:both;color:#CCCCCC; margin:1 0 0 0" />
 	</div>
 </div>

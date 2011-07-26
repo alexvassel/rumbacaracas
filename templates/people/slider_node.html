@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load openx %}
+{% load gplus %}
 {% load facebook twitter%}
 <div class="node gente bb-none encap">
 	<div class="wrapper encap">
@@ -53,6 +54,9 @@
 			</li>
 			<li>
 				{% twitter_share photo.get_absolute_url photo.description%}
+			</li>
+            <li>
+				{% gplus photo.get_absolute_url%}
 			</li>
 			<li class="br-none">
 				<a href="{%url people_details slug=photo.event.slug%}" class="decou me-gusta">{% trans "All photos"%}</a>

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load openx %}
+{% load gplus %}
 {% load facebook twitter%}
 {% block title %}{% trans "Locales | Rumbabogota" %}{% endblock %}
 {% load widgets %}
@@ -129,6 +130,9 @@
   		<li>
   			{% twitter_share location.get_absolute_url location.title%}
 		</li>
+        <li style="height:36px">
+            {% gplus location.get_absolute_url%}
+        </li>
     </ul>
   </div>
 </div><!--//.node-mini-right-->

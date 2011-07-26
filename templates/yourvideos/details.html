@@ -4,6 +4,7 @@
 {% load tools %}
 {% load listtools %}
 {% load openx %}
+{% load gplus %}
 {% load youtube %}
 {% load widgets %}
 {% load facebook twitter %}
@@ -38,6 +39,9 @@
 			</li>
 			<li class="twitter">
 				{% twitter_share video.get_absolute_url video.description%}	
+			</li>
+            <li>
+				{% gplus video.get_absolute_url%}
 			</li>
 		</ul><!--//.teaser-options-->
 	</div>

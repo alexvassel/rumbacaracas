@@ -3,6 +3,7 @@
 {% block title %}{% trans "Your photos | Rumbabogota" %}{% endblock %}
 {% load tools %}
 {% load openx %}
+{% load gplus %}
 {% load widgets %}
 {% load paging %}
 {% load listtools %}
@@ -58,9 +59,12 @@
 				<li>
 					{% facebook_like latest.get_absolute_url%}
 				</li>
-				<li class="br-none">
+				<li>
 					{% twitter_share latest.get_absolute_url latest.description%}
 				</li>
+                <li class="br-none">
+                    {% gplus photo.get_absolute_url%}
+                </li>
 			</ul><!--//.teaser-options-->
 		</div><!--//.photos-share-options-->
 	</div><!--//.node-->
