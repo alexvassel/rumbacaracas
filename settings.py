@@ -109,15 +109,15 @@ OPENX_USERNAME = 'eli'
 OPENX_PASSWORD = 'adminbanners'
 
 
-TINYMCE_COMPRESSOR=True
+#TINYMCE_COMPRESSOR=True
 
-TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,spellchecker,paste,searchreplace",
-    'theme': "advanced",
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 10,
-}
-ZINNIA_WYSIWYG = 'tinymce'
+#TINYMCE_DEFAULT_CONFIG = {
+#    'plugins': "table,spellchecker,paste,searchreplace",
+#    'theme': "advanced",
+#    'cleanup_on_startup': True,
+#    'custom_undo_redo_levels': 10,
+#}
+#ZINNIA_WYSIWYG = 'tinymce'
 
 LOGIN_REDIRECT_URL = "/"
 
