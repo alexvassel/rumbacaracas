@@ -35,7 +35,8 @@ class PhotoEvent( ImageModel ):
     def photo_count( self ):
         from django.db.models import Count
         data = Photo.objects.filter(event=self).annotate(num_photos=Count('image'))
-        return data[0].num_photos
+        if data and data[0]:
+            return data[0].num_photos
 
     photo_count.short_description = _( 'Photos count')
 
