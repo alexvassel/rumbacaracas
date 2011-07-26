@@ -40,7 +40,18 @@
     </div>
     <div class="content eventos">
       <h2 class="title">{{event.title}}</h2>
-      <span class="submitted">{% if event.city%}{{event.city}} {%endif%}{{event.date|date:"d.m.y"}}</span>
+      <span class="submitted">{% if event.city%}{{event.city}} {%endif%}{{event.date|date:"d.m.y"}}
+        <span>&nbsp;|&nbsp;</span>
+        {% if event.location%}
+            <a class="author-link" href="{{ event.location.get_absolute_url }}">{{event.location}}</a>
+        {% else %}
+            {% if event.place %}
+                {{event.place}}
+            {% else %}
+                {% trans "Other"%}
+            {% endif %}
+        {% endif %}
+      </span>
       {% if event.article%}  
 		{{event.article|linebreaks}}
 	  {%endif%}
