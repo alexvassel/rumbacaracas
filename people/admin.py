@@ -16,7 +16,7 @@ class PhotoInline( admin.TabularInline ):
 class EventAdmin( admin.ModelAdmin ):
     search_fields = ['title']
     prepopulated_fields = {"slug": ( "title", )}
-    list_display = ( 'title', 'category','status','photo_count' )
+    list_display = ( 'title', 'category','status', )
     change_form_template = "people/admin_change_form.html"
     inlines = [
         PhotoInline,

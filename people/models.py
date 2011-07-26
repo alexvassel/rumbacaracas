@@ -32,15 +32,6 @@ class PhotoEvent( ImageModel ):
     status = models.CharField( max_length = 10, choices = PEOPLE_STATUSES, default = 2 )
     datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
 
-    def photo_count( self ):
-        from django.db.models import Count
-        data = Photo.objects.filter(event=self).annotate(num_photos=Count('image'))
-        if data and data[0]:
-            return data[0].num_photos
-
-    photo_count.short_description = _( 'Photos count')
-
-
     @models.permalink
     def get_absolute_url( self ):
         """Return entry's URL"""
