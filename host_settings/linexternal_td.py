@@ -42,3 +42,4 @@ DATABASES = {
         }
     }
 
+LANGUAGE_CODE = 'es'
