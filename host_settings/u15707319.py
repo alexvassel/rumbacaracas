@@ -1,4 +1,7 @@
-DEBUG = False
+
+DEBUG = True
+INTERNAL_IPS = ( '127.0.0.1', '213.33.244.154',)
+
 TEMPLATE_DEBUG = False
 
 TEMPLATE_DIRS = (
