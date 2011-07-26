@@ -32,11 +32,13 @@ class PhotoEvent( ImageModel ):
     status = models.CharField( max_length = 10, choices = PEOPLE_STATUSES, default = 2 )
     datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
 
-    def import_photo( self ):
-        return u'<a href="/people/import_select/%s">%s</a>' % ( str( self.id ), _( "Import page" ) )
+    def photo_count( self ):
+        from django.db.models import Count
+        data = Photo.objects.filter(event=self).annotate(num_photos=Count('image'))
+        return data[0].num_photos
 
-    import_photo.allow_tags = True
-    import_photo.short_description = _( 'Import page link' )
+    photo_count.short_description = _( 'Photos count')
+
 
     @models.permalink
     def get_absolute_url( self ):
