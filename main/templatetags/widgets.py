@@ -11,9 +11,8 @@ import calendar
 from datetime import datetime, timedelta, time
 import itertools
 from django.template.defaultfilters import date
-from decorators import cache
 
-@cache(600)
+
 @register.inclusion_tag( 'widgets/magazine.html' )
 def magazine_block( ):
     return dict()
@@ -22,45 +21,40 @@ def magazine_block( ):
 def subscribe_block( ):
     return dict()
 
-@cache(600)
+
 @register.inclusion_tag( 'widgets/yourphotos.html' )
 def yourphotos_block( ):
     photos = Photo.objects.filter(status=1).order_by('-datetime_added')[:2]
     return dict(photos=photos)
 
-@cache(600)
+
 @register.inclusion_tag( 'widgets/people.html' )
 def people_block( ):
     events = PhotoEvent.objects.filter(status=1).order_by('-datetime_added')[:4]
     return dict(events=events)
 
-@cache(600)
 @register.inclusion_tag( 'widgets/people_list.html' )
 def people_list( ):
     events = PhotoEvent.objects.filter(status=1).order_by('-datetime_added')[:6]
     return dict(events=events)
 
 
-@cache(600)
 @register.inclusion_tag( 'widgets/latest_news.html' )
 def news_list( ):
     news = Entry.published.all()[:10]
     return dict(news=news)
 
 
-@cache(600)
 @register.inclusion_tag( 'widgets/locations.html' )
 def location_list( ):
     locations = Location.objects.filter(status=1).order_by('?')[:20]
     return dict(locations=locations)
 
-@cache(600)
 @register.inclusion_tag( 'widgets/locations_block.html' )
 def location_block( ):
     locations = Location.objects.filter(status=1).order_by('?')[:2]
     return dict(locations=locations)
 
-@cache(600)
 @register.inclusion_tag( 'widgets/art_culture.html' )
 def art_culture_block( ):
     today = datetime.today()
@@ -68,14 +62,12 @@ def art_culture_block( ):
     events = Event.objects.filter(status=1, category=4, to_date__gte = today)[:2]
     return dict(events=events)
 
-@cache(600)
 @register.inclusion_tag('widgets/today_events_list.html')
 def get_event_list(number=5):
     """Return the most recent entries"""
     return {'entries': Entry.published.all()[:number]}
 
 
-@cache(600)
 @register.inclusion_tag( 'widgets/videos.html' )
 def yourvideos_block( exclude = None ):
     videos = Video.objects.filter(status=1).order_by('-datetime_added')
@@ -85,7 +77,6 @@ def yourvideos_block( exclude = None ):
 
     return dict(videos=videos[:4])
 
-@cache(600)
 @register.inclusion_tag('widgets/upcoming_events_list.html')
 def upcoming_events_list(count = 6 ):
     today = datetime.today()
@@ -93,7 +84,6 @@ def upcoming_events_list(count = 6 ):
     event_list = Event.objects.filter(status=1,to_date__gte = today)[:count]
     return dict(events = event_list)
 
-@cache(600)
 @register.inclusion_tag('widgets/upcoming_events_block.html')
 def upcoming_events_block(count = 4 ):
     today = datetime.today()
@@ -103,7 +93,6 @@ def upcoming_events_block(count = 4 ):
 
 
 
-@cache(600)
 @register.inclusion_tag('widgets/events_today_block.html')
 def events_today_block( ):
 
@@ -137,7 +126,7 @@ def get_last_day_of_month(year, month):
         month += 1
     return date(year, month, 1) - timedelta(1)
 
-@cache(600)
+
 @register.inclusion_tag('widgets/calendar.html')
 def month_cal(year=None, month=None):
 
