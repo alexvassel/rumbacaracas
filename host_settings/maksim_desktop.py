@@ -41,3 +41,4 @@ DATABASES = {
     }
 }
 
+#DEBUG=False
