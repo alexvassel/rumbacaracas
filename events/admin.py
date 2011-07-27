@@ -17,8 +17,10 @@ class EventAdmin( SortableAdmin ):
     list_editable = SortableAdmin.list_editable + ( 'status', 'show_in_events_slider', 'show_in_main_slider', )
     list_display_links = ( 'title', )
     list_filter = ( 'status', 'show_in_events_slider', 'show_in_main_slider', )
+    date_hierarchy = 'from_date'
+    ordering = ('-from_date',)
     actions = [make_published]
-    ordering = ( 'position', )
+    #ordering = ( 'position', )
     readonly_fields = ( 'add_user', )
     fields = ( 
         'title',
