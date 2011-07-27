@@ -159,19 +159,19 @@
                   <div class="outline-navigation">
                     <ul id="outline-titles" class="encap outnone">
                       <li{% if active_tab == "category" %} class="active"{% endif %}>
-                      	<a href="/events/by-category/{{period}}{{filter_date}}#event-anchor">By Category</a>
+                      	<a href="/events/by-category/{{period}}{{filter_date}}#event-anchor">{% trans "By Category" %}</a>
                       	<div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div>
                   	  </li>
                       <li{% if active_tab == "location" %} class="active"{% endif %}>
-                        <a href="/events/by-location/{{period}}{{filter_date}}#event-anchor">By Location</a>
+                        <a href="/events/by-location/{{period}}{{filter_date}}#event-anchor">{% trans "By Location" %}</a>
                         <div {% if active_tab == "location" %}style="display: block"{% endif %} class="pointer-tip"></div>
                       </li>
                       <li{% if active_tab == "area" %} class="active"{% endif %}>
-                      	<a href="/events/by-area/{{period}}{{filter_date}}#event-anchor">By Area</a>
+                      	<a href="/events/by-area/{{period}}{{filter_date}}#event-anchor">{% trans "By Area" %}</a>
                       	<div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div>
                       </li>
                       <li{% if active_tab == "music" %} class="active"{% endif %}>
-                      	<a href="/events/by-music/{{period}}{{filter_date}}#event-anchor">By Music</a>
+                      	<a href="/events/by-music/{{period}}{{filter_date}}#event-anchor">{% trans "By Music" %}</a>
                       	<div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div>
                       </li>
                       <li{% if active_tab == "calendar" %} class="active"{% endif %}>

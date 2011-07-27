@@ -217,10 +217,14 @@ def import_blog_category (table):
 
             #import one photo as main, insert other in bottom
             additional_image = False
-            if oldarticle.imagen1:
+            image_name = oldarticle.imagen1
+            if oldarticle.imagen2:
+                image_name = oldarticle.imagen2
+
+            if image_name:
                 #bi_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
-                bi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'contenido/' + oldarticle.imagen1, 'r' ).read() )
-                article.image.save( oldarticle.imagen1, bi_content, save = False )
+                bi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'contenido/' + image_name, 'r' ).read() )
+                article.image.save( image_name, bi_content, save = False )
 
             #Import subtitle as part of content!!!!!!
             article.content = compile_news_content(oldarticle.contenido,oldarticle.subtitulo, additional_image)
@@ -418,21 +422,21 @@ class Command( NoArgsCommand ):
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        import_users()
+        #import_users()
 
 
         print "Importing legacy subscriptions"
-        import_subscriptions()
+        #import_subscriptions()
 
 
         print "Importing legacy people"
-        import_people()
+        #import_people()
 
         print "Importing legacy locations"
-        import_locations()
+        #import_locations()
 
         print "Importing legacy events"
-        import_events()
+        #import_events()
 
         print "Importing legacy rumba news"
         import_blog_category (L.RumbaNews)
@@ -449,7 +453,7 @@ class Command( NoArgsCommand ):
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "Importing legacy your photos"
-        import_yourphotos()
+        #import_yourphotos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()
