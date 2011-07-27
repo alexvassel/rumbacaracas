@@ -62,7 +62,7 @@
 	  </span>
 	  <p>
 		{% if latest.article %}
-			{{latest.article|truncate:300|linebreaks}}
+			{{latest.article|truncate:300}}
 	    {% endif %}
 	  </p>
 	  <div class="mt15"><a href="{%url people_details slug=latest.slug%}" class="read-more-red">{%trans "Read More"%}</a></div>

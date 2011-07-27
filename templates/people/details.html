@@ -56,9 +56,11 @@
             {% endif %}
         {% endif %}
       </span>
-      {% if event.article%}  
-		{{event.article|linebreaks}}
-	  {%endif%}
+      {% autoescape off%}
+          {% if event.article%}
+            {{event.article|linebreaks}}
+          {%endif%}
+      {% endautoescape %}
 
 	  {% if event.author or event.author_email%}	
 	      <p><strong>{% trans "Reporter"%}@:</strong> 
@@ -84,7 +86,7 @@
 
         <a href="/people/slider/{{photo.id}}"><img width="185" src="{{photo.thumb.url}}" alt="{{photo.description}}" /></a>
         <div class="teaser">
-          <p>{{photo.description}}</p>
+          {{photo.description}}
           <ul class="teaser-options encap outnone ptb5 fcml0 lcmr0">
 			<li><a class="to1 with-comment-count" href="{{photo.get_absolute_url}}#disqus_thread">
 					<span style="padding-right: 10px">{%facebook_comments_count photo.get_absolute_url%}</span>

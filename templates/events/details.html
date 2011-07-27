@@ -131,7 +131,9 @@
     </tbody>
   </table>
   <div class="event-contents">
-    {{event.description|linebreaks}}
+      {% autoescape off%}
+        {{event.description|linebreaks}}
+      {% endautoescape %}
   </div><!--//.event-contents-->
 </div><!--//.event-desc-->
   </div><!--//.contents-->

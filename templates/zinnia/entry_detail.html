@@ -48,7 +48,9 @@
 		{% if object.image %}
 			<img class="main-image2" src="{{ object.newsthumb.url }}" alt="{{ object.title }}" />
 		{% endif %}
-		{{object_content}}
+        {% autoescape off%}
+		    {{object_content}}
+        {% endautoescape %}
 		{% if object.source%}
 		<p> 
 			<strong>
