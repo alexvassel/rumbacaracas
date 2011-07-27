@@ -119,10 +119,7 @@
 
           </div><!--//.latest-photos-content-->
         </div><!--//.latest-photos-->
-
-        <div class="banner-container box-shadows outnone" style="width:468px;height:60px;margin: 0 auto;">
-            {% banner_zone_iframe 103 468 60 %}
-        </div><!--//.banner-container-->
+        {% include "main/banner_103.html" %}
         <div id="outline-briefs" class="outline-briefs boxed-brief">
         	<div class="outline-navigation">
             <ul id="outline-titles" class="encap outnone box-shadows equal-width">
@@ -314,12 +311,8 @@
 <div class="banner-container box-shadows outnone widget">
     {% banner_zone_iframe 100 300 250%}
 </div><!--//.banner-container-->
-<div class="banner-container box-shadows outnone widget" style="width: 300px;">
-    {% if 0.5|randomv%}
-        {% facebook_group %}
-    {% else %}
-        {% include "main/twitter_list.html" %}
-    {% endif %}
+<div class="clear-block block block-views widget widget-calendar">
+    {% month_cal%}
 </div>
 
 <div class="split-sidebars encap">
@@ -343,6 +336,14 @@
     </div><!--//.banner-container-->
   </div><!--//.right-->
 </div><!--//.split-sidebars-->
+
+<div class="banner-container box-shadows outnone" style="width: 300px;">
+    {% if 0.5|randomv%}
+        {% facebook_group %}
+    {% else %}
+        {% include "main/twitter_list.html" %}
+    {% endif %}
+</div>
 
 {% endblock %}
 

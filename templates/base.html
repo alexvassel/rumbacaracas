@@ -164,11 +164,11 @@
         	<li><a href="/videos">{% trans "Videos" %}</a></li>
           <li><a href="/news/categories/blog">{% trans "Blog"%}</a></li>
         	<li class="medios">
-                <a href="/products">{% trans "Media" %}</a>
+                <a href="#">{% trans "Media" %}</a>
                 <ul>
                   <li><a href="/about/products/web">{% trans "Web" %}</a></li>
-                  <li><a href="/about/products/notebook">{% trans "Notebook" %}</a></li>
-                  <li><a href="/magazine">{% trans "Magazine" %}</a></li>
+                  <li><a href="/about/products/newsletter">{% trans "Newsletter" %}</a></li>
+                  <li><a href="/magazine">{% trans "Printed Editions" %}</a></li>
                   <li><a href="/about/products/events">{% trans "Events" %}</a></li>
                 </ul>
        	  </li>
@@ -281,10 +281,10 @@
         <div class="c16_6l">
           <h2>{% trans "Media" %}</h2>
           <ul>
-            <li><a href="/about/products/web">{% trans "Web" %}</a></li>
-            <li><a href="/about/products/notebook">{% trans "Notebook" %}</a></li>
-            <li><a href="/magazine">{% trans "Magazine" %}</a></li>
-            <li><a href="/about/products/events">{% trans "Events" %}</a></li>
+              <li><a href="/about/products/web">{% trans "Web" %}</a></li>
+              <li><a href="/about/products/newsletter">{% trans "Newsletter" %}</a></li>
+              <li><a href="/magazine">{% trans "Printed Editions" %}</a></li>
+              <li><a href="/about/products/events">{% trans "Events" %}</a></li>
           </ul>
         </div>
         <div class="c16_6r">
@@ -307,7 +307,7 @@
       </span>
 
       <span class="txt-right">
-        <p><span class="uppercase">Rumbabogota.com</span>, C.A. &copy; 2009-2011 Todos los Derechos Reservados<br /><a href="#">Terminos de Uso</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">rumba@rumbabogota.com</a></p>
+        <p><span class="uppercase">Rumbabogota.com</span>, C.A. &copy; 2009-{% now "Y" %} Todos los Derechos Reservados<br /><a href="/terms_of_use">{% trans "Terms of Use" %}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:rumba@rumbabogota.com">rumba@rumbabogota.com</a></p>
       </span>
     </div><!--//.footer-tertiary-->
   </div><!--//.container-->
