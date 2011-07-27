@@ -56,15 +56,14 @@ class Photo( ImageModel ):
         if ( next_rows ):
             return next_rows[0]
         else:
-            return Photo.objects.filter( status = 1 ).order_by( 'datetime_added' )[0]
+            return Photo.objects.filter( status = 1 ).order_by( 'datetime_added', 'id' )[0]
 
     def get_prev( self ):
         prev_rows = Photo.objects.filter( status = 1 ).order_by( '-datetime_added', '-id' ).filter( datetime_added__lte = self.datetime_added , pk__lt = self.id )
         if ( prev_rows ):
             return prev_rows[0]
         else:
-            return Photo.objects.filter( status = 1 ).latest( 'datetime_added' )
-            return False
+            return Photo.objects.filter( status = 1 ).order_by( '-datetime_added', '-id' )[0]
 
     def __unicode__( self ):
         return self.description

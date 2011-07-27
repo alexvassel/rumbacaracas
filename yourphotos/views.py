@@ -21,7 +21,7 @@ def photos( request, category ):
 
     if category == 'latest':
         request.breadcrumbs( _( 'Latest Photos' ) , request.path_info )
-        photos = Photo.objects.filter( status = 1 ).order_by( '-datetime_added' )
+        photos = Photo.objects.filter( status = 1 ).order_by( '-datetime_added', '-id' )
     else:
         if category == 'sexy':
             request.breadcrumbs( _( 'Sexy' ) , request.path_info )
@@ -43,7 +43,7 @@ def photos( request, category ):
     except ( EmptyPage, InvalidPage ):
         photos_page = paginator.page( paginator.num_pages )
 
-    latest = Photo.objects.filter( status = 1 ).latest( 'datetime_added' )
+    latest = Photo.objects.filter( status = 1 ).order_by( '-datetime_added', '-id' )[0]
 
     return {'latest': latest, 'current_page': photos_page, 'current_paginator': paginator, 'active_tab': category}
 
