@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load tools %}
 {% load facebook %}
-<dl class="encap" style="width: 640px; height: 880px;">
+<dl class="encap" style="width: 640px;">
     <dt class="c40l">
         <a href="{{ object.get_absolute_url }}">
             {% if object.image_logo %}
@@ -12,7 +12,13 @@
         </a></dt>
     <dd class="c60r">
       <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h3>
-      <p class="published">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</p>
+      <p class="published">
+          {% for cat in object.type.all%}
+              <a class="force-red" href="{% url location_category group=cat.slug %}">{{cat.title}}</a>
+              {% if not forloop.last %}, {% endif %}
+          {% endfor %} /
+          {%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}
+      </p>
       <p>{{ object.description|truncate:150 }}</p>
       <a class="read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
     </dd>
