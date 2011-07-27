@@ -59,18 +59,35 @@
 .ui-widget { font-family: Arial,sans-serif; font-size: 1.1em; }
 .ui-widget .ui-widget { font-size: 1em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Arial,sans-serif; font-size: 1em; }
-.ui-widget-content { border: 1px solid #000000; background: #6c6c6c url(images/ui-bg_flat_75_6c6c6c_40x100.png) 50% 50% repeat-x; color: #ffffff; }
-.ui-widget-content a { color: #ffffff; }
-.ui-widget-header { border: 1px solid #000000; background: #080808 url(images/ui-bg_highlight-soft_15_080808_1x100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
-.ui-widget-header a { color: #ffffff; }
+#datepicker .ui-widget-content { border: 1px solid #000000; background: #6c6c6c url(images/ui-bg_flat_75_6c6c6c_40x100.png) 50% 50% repeat-x; color: #ffffff; }
+#datepicker .ui-widget-content a { color: #ffffff; }
+#datepicker .ui-widget-header { border: 1px solid #000000; background: #080808 url(images/ui-bg_highlight-soft_15_080808_1x100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
+#datepicker .ui-widget-header a { color: #ffffff; }
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #d8dcdf; background: #c8c6c6 url(images/ui-bg_highlight-hard_100_c8c6c6_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #cb2323; }
-.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #cb2323; text-decoration: none; }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #cdd5da; background: #d7d5d5 url(images/ui-bg_highlight-hard_100_d7d5d5_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #111111; }
-.ui-state-hover a, .ui-state-hover a:hover { color: #111111; text-decoration: none; }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #eeeeee; background: #ffffff url(images/ui-bg_flat_65_ffffff_40x100.png) 50% 50% repeat-x; font-weight: bold; color: #cc0000; }
+#datepicker .ui-state-default,
+#datepicker .ui-widget-content .ui-state-default,
+#datepicker .ui-widget-header .ui-state-default { border: 1px solid #d8dcdf; background: #c8c6c6 url(images/ui-bg_highlight-hard_100_c8c6c6_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #cb2323; }
+
+#datepicker .ui-state-default a,
+#datepicker .ui-state-default a:link,
+#datepicker .ui-state-default a:visited { color: #cb2323; text-decoration: none; }
+
+#datepicker .ui-state-hover,
+#datepicker .ui-widget-content .ui-state-hover,
+#datepicker .ui-widget-header .ui-state-hover,
+#datepicker .ui-state-focus,
+#datepicker .ui-widget-content .ui-state-focus,
+#datepicker .ui-widget-header .ui-state-focus { border: 1px solid #cdd5da; background: #d7d5d5 url(images/ui-bg_highlight-hard_100_d7d5d5_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #111111; }
+
+#datepicker .ui-state-hover a,
+#datepicker .ui-state-hover a:hover { color: #111111; text-decoration: none; }
+
+#datepicker .ui-state-active,
+#datepicker .ui-widget-content .ui-state-active,
+#datepicker .ui-widget-header .ui-state-active { border: 1px solid #eeeeee; background: #ffffff url(images/ui-bg_flat_65_ffffff_40x100.png) 50% 50% repeat-x; font-weight: bold; color: #cc0000; }
+
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #cc0000; text-decoration: none; }
 .ui-widget :active { outline: none; }
 
@@ -89,14 +106,14 @@
 ----------------------------------*/
 
 /* states and images */
-.ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_cb2323_256x240.png); }
-.ui-widget-content .ui-icon {background-image: url(images/ui-icons_cb2323_256x240.png); }
-.ui-widget-header .ui-icon {background-image: url(images/ui-icons_cb2323_256x240.png); }
-.ui-state-default .ui-icon { background-image: url(images/ui-icons_cb2323_256x240.png); }
-.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_cb2323_256x240.png); }
-.ui-state-active .ui-icon {background-image: url(images/ui-icons_cc0000_256x240.png); }
-.ui-state-highlight .ui-icon {background-image: url(images/ui-icons_004276_256x240.png); }
-.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(images/ui-icons_cc0000_256x240.png); }
+#datepicker .ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_cb2323_256x240.png); }
+#datepicker .ui-widget-content .ui-icon {background-image: url(images/ui-icons_cb2323_256x240.png); }
+#datepicker .ui-widget-header .ui-icon {background-image: url(images/ui-icons_cb2323_256x240.png); }
+#datepicker .ui-state-default .ui-icon { background-image: url(images/ui-icons_cb2323_256x240.png); }
+#datepicker .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_cb2323_256x240.png); }
+#datepicker .ui-state-active .ui-icon {background-image: url(images/ui-icons_cc0000_256x240.png); }
+#datepicker .ui-state-highlight .ui-icon {background-image: url(images/ui-icons_004276_256x240.png); }
+#datepicker .ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(images/ui-icons_cc0000_256x240.png); }
 
 /* positioning */
 .ui-icon-carat-1-n { background-position: 0 0; }
@@ -113,6 +130,7 @@
 .ui-icon-triangle-1-ne { background-position: -16px -16px; }
 .ui-icon-triangle-1-e { background-position: -32px -16px; }
 .ui-icon-triangle-1-se { background-position: -48px -16px; }
+.ui-icon-triangle-1-s { background-position: -64px -16px; }
 .ui-icon-triangle-1-s { background-position: -64px -16px; }
 .ui-icon-triangle-1-sw { background-position: -80px -16px; }
 .ui-icon-triangle-1-w { background-position: -96px -16px; }
@@ -325,7 +343,7 @@
  *
  * http://docs.jquery.com/UI/Datepicker#theming
  */
-.ui-datepicker {  padding: .2em .2em 0; display: none; }
+.ui-datepicker { width: 17em; padding: .2em .2em 0; display: none; }
 .ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
 .ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
 .ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover { top: 1px; }
