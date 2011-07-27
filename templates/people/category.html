@@ -22,7 +22,10 @@
 				<div class="encap"> 
 					<ul class="photo-archives-list encap outnone"> 
                     {% for event in current_page.object_list %}
-						<li> 
+						{% if forloop.counter0 and forloop.counter0|divisibleby:4 %}
+                            <li style="clear: both; width:100%;padding: 0"></li>
+                        {% endif %}
+                        <li>
 	                      <div class="photo-thumbnail">
 							<a href="{%url people_details slug=event.slug%}"><img alt="{{event.title}}" src="{{event.smallthumb.url}}"></a>
 						  </div> 
@@ -30,7 +33,8 @@
 	                        <h6><a href="{%url people_details slug=event.slug%}">{{event.title}}</a></h6> 
 	                        <span class="author-meta">{{event.city}} {{event.date|date:"d.m.y"}}</span> 
 	                      </div><!--//.photo-details--> 
-	                    </li> 
+	                    </li>
+
                      {% endfor %}
 					</ul><!--//.photo-archives-list--> 
 			</div><!--//.encap--> 

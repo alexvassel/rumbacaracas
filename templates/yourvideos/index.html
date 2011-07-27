@@ -54,6 +54,9 @@
 				<div class="encap">
 					<ul class="video-archives-list encap outnone">
 					{% for video in current_page.object_list    %}
+                        {% if forloop.counter0 and forloop.counter0|divisibleby:3 %}
+                            <li style="clear: both; width:100%;padding: 0"></li>
+                        {% endif %}
 	 					<li>
 	                      <div class="video-thumbnail">
 								<a href="/videos/{{video.id}}">
@@ -64,7 +67,7 @@
 	                        <h6><a href="/videos/{{video.id}}">{{video.description}}</a></h6>
 	                        <span class="author-meta">{% trans "Submitted by"%} {{video.user|user_link}}</span>
 	                        <div class="fivestar-widget clear-block fivestar-widget-5">
-	                          {% facebook_like video.get_absolute_url%}
+	                          {% facebook_like video.get_absolute_url 90 0%}
 	                        </div>
 	                      </div><!--//.video-details-->
 	                    </li>

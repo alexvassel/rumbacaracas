@@ -22,6 +22,9 @@
 				<div class="encap"> 
 					<ul class="photo-archives-list encap outnone"> 
                     {% for location in current_page.object_list %}
+                        {% if forloop.counter0 and forloop.counter0|divisibleby:4 %}
+                            <li style="clear: both; width:100%;padding: 0"></li>
+                        {% endif %}
 						<li> 
 	                      <div class="photo-thumbnail">
 							<a href="/locations/{{location.slug}}"><img alt="{{location.title}}" src="{{location.smallthumb.url}}"></a>

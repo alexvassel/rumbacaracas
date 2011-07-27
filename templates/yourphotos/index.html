@@ -104,6 +104,9 @@
 				<div class="std-archives yourphotos-tab-contents encap">
 					<ul class="std-archives-list  encap outnone">
 						{% for photo in current_page.object_list    %}
+                            {% if forloop.counter0 and forloop.counter0|divisibleby:4 %}
+                                <li style="clear: both; width:100%;padding: 0"></li>
+                            {% endif %}
 							<li>
 								<div class="std-thumbnail"><a href="/yourphotos/{{photo.id}}"><img src="{{photo.thumbnail.url}}"></a></div>
 								<div class="std-details decou">
