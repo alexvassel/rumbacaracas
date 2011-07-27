@@ -2920,9 +2920,9 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
   color: #898989 !important;
   padding: 0 35px 0 0 !important;
   line-height: 30px !important;
-  width: auto !important;
-	text-align: left;
-  background: url("/media/images/icons/event.jpg") no-repeat scroll 60px 3px transparent;
+  width: 110px !important;
+	text-align: right;
+  background: url("/media/images/icons/event.jpg") no-repeat scroll 115px 3px transparent;
 }
 #main-contents #col-left .eventos-para-hoy .event-meta{
   font-size: 12px;
