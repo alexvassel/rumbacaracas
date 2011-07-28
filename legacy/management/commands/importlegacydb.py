@@ -439,21 +439,21 @@ class Command( NoArgsCommand ):
         #import_events()
 
         print "Importing legacy rumba news"
-        import_blog_category (L.RumbaNews)
+        #import_blog_category (L.RumbaNews)
 
         print "Importing legacy music news"
-        import_blog_category (L.MusicNews)
+        #import_blog_category (L.MusicNews)
 
         print "Importing legacy interviews"
-        import_blog_category (L.Entrevista)
+        #import_blog_category (L.Entrevista)
 
         print "Importing legacy specials"
-        import_blog_category (L.Especial)
+        #import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "Importing legacy your photos"
-        #import_yourphotos()
+        import_yourphotos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()
