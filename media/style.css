@@ -3953,8 +3953,10 @@ li.siguenosft {
 
 li.greating {
     padding: 3px 0px !important;
-    width:160px;
+    width:156px;
     overflow: hidden;
+    margin-top: 5px !important;
+    text-align: center;
 }
 
 li.greating_pic {

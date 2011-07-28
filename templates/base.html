@@ -71,7 +71,7 @@
                 </li>
             {% endif %}
 		    <li class="opcion0 greating">
-                {% trans "Hello" %}
+                {% trans "Hello" %}<br />
                 {% if request.facebook and  request.facebook.uid%}
                     <fb:name uid="{{ request.facebook.uid }}" linked="false" useyou="false"></fb:name>
                 {% else %}
