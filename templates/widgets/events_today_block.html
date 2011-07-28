@@ -4,7 +4,7 @@
     <div class="box-title"><h2>{% trans "What's today"%}</h2></div><!--//.box-title-->
     <div class="box-border box-contents box-shadows">
         <div class="parts-wrapper">
-            {% for day_name,day in days %}
+            {% for day_name,day, dlength in days %}
                 <ul class="recent zebra-ul inner-cycle" style="height: 214px;overflow: hidden;{% if not forloop.first %}display:none;{% endif %}">
                     {% for row in day|main_slider_split:5 %}
                         <ul>
@@ -29,10 +29,12 @@
 
                         </ul>
                     {% endfor %}
+                    {% if day|length > 5 %}
                         <div class="navigation flt-right pt5">
                             <a href="#" class="navi-prev"><span class="hidden">{%  trans "Previous"%}</span></a>
                             <a href="#" class="navi-next"><span class="hidden">{% trans "Next"%}</span></a>
                         </div>
+                    {% endif %}
                 </ul>
             {% endfor %}
         </div><!--//.parts-wrapper-->
