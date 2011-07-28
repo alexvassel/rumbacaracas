@@ -59,7 +59,7 @@
                 <ul class="carousel-images peoples ie-encap">
                     {% for row in people|main_slider_split:4 %}
                         {% if row %}
-                        <li>
+                        <li {% if not forloop.first %}style="display:none"{% endif %}>
                             <ul class="carousel-slide fcml0 lcmr0" style="width: 575px;">
                             {% for event in row %}
                                     {% if forloop.parentloop.first and  forloop.first%}
@@ -93,7 +93,7 @@
                 <ul class="carousel-images fotos ie-encap">
                 	{% for row in photos|main_slider_split:4 %}
                         {% if row %}
-                        <li>
+                        <li {% if not forloop.first %}style="display:none"{% endif %}>
                             <ul class="carousel-slide fcml0 lcmr0" style="width: 562px;">
                             {% for photo in row %}
                                     {% if forloop.parentloop.first and  forloop.first%}
@@ -184,7 +184,7 @@
               <div class="video-slides c58l">
                 <ul>
                     {% for video in videos %}
-                        <li>
+                        <li {% if not forloop.first %}style="display:none"{% endif %}>
                             {%youtube_video video.youtube_id 350 288%}
                         </li>
                     {% endfor %}

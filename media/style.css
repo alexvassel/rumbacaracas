@@ -1711,7 +1711,7 @@ table .mini-day-on a {
 .date-nav td.date-prev{padding:10px 0px 10px 15px;}
 .date-nav td.date-next{padding:10px 15px 10px 0px;}
 .date-nav td.date-heading{padding: 10px 0px;}
-.widget-calendar .feed-icon{padding: 5px 10px 10px;}
+.widget-calendar .feed-icon{padding: 0px 10px 10px;}
 a.ical-icon img{
   margin: 0 5px 0 0;
   vertical-align: middle;
