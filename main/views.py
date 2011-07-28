@@ -62,7 +62,7 @@ def index( request ):
     people = PhotoEvent.objects.filter( status = 1 ).order_by( '-datetime_added' )[:40]
 
     photos = Photo.objects.filter( status = 1 ).order_by( '-datetime_added' )[:40]
-
+    
     return {'people': people, 'news': news,'blog': blog,'locations': locations, 'art_culture': art_culture,
             'videos':videos, 'photos': photos,
             'slides': [( blog, 'blog', ) for blog in blog_slides] + [( event, 'event', ) for event in events_slides] }
