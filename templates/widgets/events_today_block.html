@@ -1,28 +1,38 @@
 {% load i18n %}
+{% load listtools %}
 <div id="whats-today" class="whats-today widget outnone">
     <div class="box-title"><h2>{% trans "What's today"%}</h2></div><!--//.box-title-->
     <div class="box-border box-contents box-shadows">
         <div class="parts-wrapper">
             {% for day_name,day in days %}
-                <ul class="recent zebra-ul" style="height: 216px;overflow-y: auto;{% if not forloop.first %}display:none;{% endif %}">
-                    {% for event, dt in day %}
-                        <li>
-                            <a href="{{ event.get_absolute_url }}">
-                                {{ event.title }} -
-                                <span>
-                                    {% if event.location %}
-                                        {{ event.location.title }}
-                                    {% else %}
-                                        {% if event.place %}
-                                            {{event.place}}
-                                        {% else %}
-                                            {% trans "Other"%}
-                                        {% endif %}
-                                    {% endif %}
-                                </span>
-                            </a>
-                        </li>
+                <ul class="recent zebra-ul inner-cycle" style="height: 214px;overflow: hidden;{% if not forloop.first %}display:none;{% endif %}">
+                    {% for row in day|main_slider_split:5 %}
+                        <ul>
+                            {% for event, dt in row%}
+                                <li>
+                                    <a href="{{ event.get_absolute_url }}">
+                                        {{ event.title }} -
+                                        <span>
+                                            {% if event.location %}
+                                                {{ event.location.title }}
+                                            {% else %}
+                                                {% if event.place %}
+                                                    {{event.place}}
+                                                {% else %}
+                                                    {% trans "Other"%}
+                                                {% endif %}
+                                            {% endif %}
+                                        </span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+
+                        </ul>
                     {% endfor %}
+                        <div class="navigation flt-right pt5" style="position: absolute;height: 214px;top: 0px;right:0px;z-index: 10;">
+                            <a href="#" class="navi-prev"><span class="hidden">{%  trans "Previous"%}</span></a>
+                            <a href="#" class="navi-next"><span class="hidden">{% trans "Next"%}</span></a>
+                        </div>
                 </ul>
             {% endfor %}
         </div><!--//.parts-wrapper-->
@@ -36,10 +46,102 @@
             <ul class="fcpl0 lcpr0">
                 <li class="all-events" ><a href="/events/calendar">{% trans "All Events" %}</a></li>
             </ul>
-            <div class="navigation flt-right pt5">
-                <a href="#" class="navi-prev"><span class="hidden">{%  trans "Previous"%}</span></a>
-                <a href="#" class="navi-next"><span class="hidden">{% trans "Next"%}</span></a>
-            </div>
+            
         </div><!--//.whats-today-taxonomy-->
     </div><!--//.box-contents-->
 </div><!--//.whats-today-->
+
+
+<script>
+    $.fn.cycle.transitions.scrollBothWays = function($cont, $slides, opts) {
+        $cont.css('overflow', 'hidden');
+        opts.before.push($.fn.cycle.commonReset);
+        // custom transition fn (trying to get it to scroll forward and backward)
+        opts.fxFn = function(curr, next, opts, cb, fwd) {
+            var w = $cont.width();
+            opts.cssFirst = { top: 0 };
+            opts.animIn = { top: 0 };
+            if (fwd) {
+                opts.cssBefore = { top: w, left: 0 };
+                opts.animOut = { top: 0 - w };
+            } else {
+                opts.cssBefore = { top: -w, left: 0 };
+                opts.animOut = { top: w };
+            }
+            ;
+            var $l = $(curr), $n = $(next);
+            var speedIn = opts.speedIn, speedOut = opts.speedOut, easeIn = opts.easeIn, easeOut = opts.easeOut, animOut = opts.animOut, animIn = opts.animIn;
+            $n.css(opts.cssBefore);
+            var fn = function() {
+                $n.show();
+                $n.animate(animIn, speedIn, easeIn, cb);
+            };
+            $l.animate(animOut, speedOut, easeOut, function() {
+                if (opts.cssAfter) $l.css(opts.cssAfter);
+                if (!opts.sync) fn();
+            });
+            if (opts.sync) fn();
+        };
+    };
+
+    $(document).ready(function () {
+        jQuery('#main-contents #col-right #whats-today .box-contents .parts-wrapper').cycle({
+            fx: 'scrollHorz',
+            speed: 1000,
+            timeout: 0,
+            sync: 1,
+            activePagerClass: 'active', //-- class name used for the active pager link
+            easing: 'easeOutQuint',
+            containerResize: 1,
+            pager: '#main-contents #col-right #whats-today .box-contents div.whats-today-taxonomy ul.taxonomies',
+            //next: '#main-contents #col-right #whats-today .box-contents .whats-today-taxonomy a.navi-next',
+            //prev: '#main-contents #col-right #whats-today .box-contents .whats-today-taxonomy a.navi-prev',
+            pagerAnchorBuilder: function(idx, slide) {
+                //-- return selector string for existing anchor
+                return '#main-contents #col-right #whats-today .box-contents .whats-today-taxonomy ul li:eq(' + idx + ') a';
+            },
+            delay: -2000
+        });
+
+        $('#main-contents #col-right #whats-today .box-contents .parts-wrapper ul.inner-cycle').each(function(){
+            var day_el = $(this);
+            day_el.cycle({
+                fx: 'scrollBothWays',
+                speed: 1000,
+                timeout: 0,
+                sync: 1,
+                activePagerClass: 'active', //-- class name used for the active pager link
+                easing: 'easeOutQuint',
+                containerResize: 1,
+                slideExpr: 'ul',
+                next: $('a.navi-next',day_el),
+                prev: $('a.navi-prev',day_el),
+                delay: -2000
+            });
+        })
+
+
+	})
+</script>
+{% comment %}
+$('div.child-slideshow').cycle({
+		fx: 'turnLeft',
+		timeout: 2000,
+		slideExpr: 'img'
+	}).cycle('pause');
+
+    $('div.parent-slideshow').cycle({
+		fx: 'scrollUp',
+		speed: 300,
+		timeout: 0,
+		slideExpr: '>div.slide',
+		pager: 1,
+		pagerAnchorBuilder: function(i) {
+			return $('div.parent-pager a:eq(' + i + ')');
+    	},
+		after: function(curr,next,opts) {
+			var cmd = opts.currSlide == 1 ? 'resume' : 'pause';
+			$('div.child-slideshow').cycle(cmd);
+		}
+	});
+{% endcomment %}

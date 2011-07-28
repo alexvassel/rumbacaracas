@@ -41,4 +41,4 @@ DATABASES = {
     }
 }
 
-LANGUAGE_CODE = 'es'
+#LANGUAGE_CODE = 'es'

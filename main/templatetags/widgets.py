@@ -97,20 +97,20 @@ def upcoming_events_block(count = 4 ):
 def events_today_block( ):
 
     today = datetime.today()
-    zdat_day = datetime.today() + timedelta(2)
+    zdat_day = datetime.today() + timedelta(4)
 
     dtstart = datetime( today.year, today.month, today.day )
     dtend = datetime( zdat_day.year, zdat_day.month, zdat_day.day )
 
     event_list = Event.objects.get_occuriences(start_date=dtstart, end_date=dtend)
-    sorted_events = sorted( event_list, key = lambda o: date(o[1], "l"))
+    sorted_events = sorted( event_list, key = lambda o: o[1], reverse=True)
 
     def sortList( list ):
         list.sort( key = lambda a:a[0].position, reverse = False )
         return list
 
     by_day = list([
-        ( dom, sortList( list( items ) ) ) for dom, items in itertools.groupby( sorted_events, lambda o: date(o[1], "l") )
+        ( dom, sortList( list( items ) ) ) for dom, items in itertools.groupby( sorted_events, lambda o: date(o[1], "D") )
     ])
     by_day.reverse()
 

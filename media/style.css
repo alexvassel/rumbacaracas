@@ -1275,21 +1275,22 @@ a.carousel-next{
 
 
 
-#main-contents #col-right #whats-today .box-border .whats-today-taxonomy a.navi-prev,
-#main-contents #col-right #whats-today .box-border .whats-today-taxonomy a.navi-next{
+#main-contents #col-right #whats-today .box-border .inner-cycle a.navi-prev,
+#main-contents #col-right #whats-today .box-border .inner-cycle a.navi-next{
   display: block;
-  float: left;
   height: 14px;
   width: 14px;
+    margin: 5px;
   text-decoration: none;
   outline: none;
 }
-#main-contents #col-right #whats-today .box-border .whats-today-taxonomy a.navi-prev{
-  background: transparent url("images/sprites/sprites_arrows_3.gif") no-repeat scroll left -70px;
+#main-contents #col-right #whats-today .box-border .inner-cycle a.navi-prev{
+  background: transparent url("images/sprites/sprites_arrows_4.gif") no-repeat scroll left 0px;
 }
-#main-contents #col-right #whats-today .box-border .whats-today-taxonomy a.navi-next{
-  background: transparent url("images/sprites/sprites_arrows_3.gif") no-repeat scroll left 0px;
-  margin: 0 0 0 5px;
+#main-contents #col-right #whats-today .box-border .inner-cycle a.navi-next{
+  background: transparent url("images/sprites/sprites_arrows_4.gif") no-repeat scroll left -15px;
+    position: absolute;
+    bottom: 0px;
 }
 /* Block Your Photos, Generic News */
 #main-contents #col-right .your-photos{
