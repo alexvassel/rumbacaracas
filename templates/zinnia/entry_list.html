@@ -72,7 +72,7 @@
                         {% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}
                     </span>
                     <p>{{ object.short }}</p>
-                    <a href="#" class="read-more">{% trans "Read More" %}</a>
+                    <a href="{{ object.get_absolute_url }}" class="read-more">{% trans "Read More" %}</a>
                 </div>
 
                 </dd>
