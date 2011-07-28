@@ -1239,6 +1239,12 @@ a.carousel-next{
 #main-contents #col-right #whats-today .box-border .parts-wrapper ul{
   width: 100% !important;
 }
+
+#main-contents #col-right #whats-today .box-border .parts-wrapper .navigation{
+    position: absolute;height: 214px;top: 0px;right:0px;z-index: 10;
+}
+
+
 #main-contents #col-right #whats-today .box-border .whats-today-taxonomy{
   background: #898989;
   padding: 8px 15px 12px;
