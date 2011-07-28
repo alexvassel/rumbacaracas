@@ -1,11 +1,12 @@
 {% load i18n %}
 {% load listtools %}
+{% load tools %}
 <div id="whats-today" class="whats-today widget outnone">
     <div class="box-title"><h2>{% trans "What's today"%}</h2></div><!--//.box-title-->
     <div class="box-border box-contents box-shadows">
         <div class="parts-wrapper">
             {% for day_name,day, dlength in days %}
-                <ul class="recent zebra-ul inner-cycle" style="height: 214px;overflow: hidden;{% if not forloop.first %}display:none;{% endif %}">
+                <ul class="recent zebra-ul inner-cycle" style="height: 216px;overflow: hidden;{% if not forloop.first %}display:none;{% endif %}">
                     {% for row in day|main_slider_split:5 %}
                         <ul>
                             {% for event, dt in row%}
@@ -60,7 +61,7 @@
         opts.before.push($.fn.cycle.commonReset);
         // custom transition fn (trying to get it to scroll forward and backward)
         opts.fxFn = function(curr, next, opts, cb, fwd) {
-            var w = $cont.width();
+            var w = $cont.height();
             opts.cssFirst = { top: 0 };
             opts.animIn = { top: 0 };
             if (fwd) {
@@ -114,6 +115,7 @@
                 sync: 1,
                 activePagerClass: 'active', //-- class name used for the active pager link
                 easing: 'easeOutQuint',
+                //continuous: true,
                 containerResize: 1,
                 slideExpr: 'ul',
                 next: $('a.navi-next',day_el),
