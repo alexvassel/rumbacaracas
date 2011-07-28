@@ -19,7 +19,7 @@
           </div><!--//.nav-wrapper-->
         	<div id="slides" class="slides">
             {% for slide, type in slides%}
-	            <div class="slide">
+	            <div class="slide" {% if not forloop.first %}style="display:none"{% endif %}>
 	            	<img src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.slide.url}}{% endif %}" alt="{{slide.title}}" />
 	              <div class="slide-info-wrapper">
 	                <div class="slide-info">

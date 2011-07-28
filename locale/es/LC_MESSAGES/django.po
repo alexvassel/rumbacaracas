@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-28 04:01-0500\n"
+"POT-Creation-Date: 2011-07-28 04:27-0500\n"
 "PO-Revision-Date: 2011-07-27 13:21-0500\n"
 "Last-Translator: Eli <elibacter@gmail.com>\n"
 "Language-Team: td <td>\n"
@@ -1319,7 +1319,7 @@ msgstr "Favor enviar información adicional para completar el registro"
 msgid "Art and culture"
 msgstr "Arte y cultura"
 
-#: templates/widgets/calendar.html:4
+#: templates/widgets/calendar.html:19
 msgid "Events for the month"
 msgstr "Eventos para el mes"
 

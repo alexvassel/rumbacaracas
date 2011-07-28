@@ -4,8 +4,18 @@
          <h2>{% trans "Events for the month" %}</h2>
      </a>
 </div>
-<div id="datepicker" class="box-contents box-shadows outnone">
+<div class="box-contents box-shadows outnone" style="background-color: #6C6C6C">
+    <div id="datepicker">
+    </div>
+    <div class="feed-icon">
+        <div style="text-align: left;">
+            <a title="ical" class="ical-icon" href="/events/calendar">
+                <img title="{% trans "Expand CALENDAR" %}" alt="{% trans "Expand CALENDAR" %}" src="/media/images/sprites/browse-calendar.gif">
+                {% trans "Expand CALENDAR" %}
+            </a></div>
+    </div>
 </div>
+
 <script type="text/javascript">
     $(function(){
         // Datepicker
