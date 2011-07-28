@@ -30,12 +30,12 @@
 <style type="text/css">
 .news-list .photos-share-options {
     padding: 7px 0 7px !important;
-    margin-top: 20px !important;
-    margin-bottom: 20px !important;
+    
+    margin-bottom: 30px !important;
     border-top: 1px dotted black;
 }
 .news-list dl.encap {
-     border-bottom: 1px dotted #9F9F9F;
+    margin: 0 !important;
 }
 .news-list img.main-image {
     border: 1px solid #898989;
@@ -47,52 +47,56 @@
     
 <div class="node entrevistas encap news-list">
 	{% for object in object_list %}
-        <dl class="encap">
-            <dt class="c45l">
-                <a href="{{ object.get_absolute_url }}">
-                    <img class="main-image" alt="{{ object.title }}" src="{{ object.newsthumb.url }}">
-                </a>
-            </dt>
-            <dd class="c55r">
-            <div class="mnh">
-                <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h3>
-                <span class="submitted">
-                    {% if object.authors.all %}
-                        {% trans "Written by" %}
-                    {% else %}
-                        {% trans "Written" %} 
-                    {% endif %}
-                    {% for author in object.authors.all %}
-                        <span class="vcard author">
-                          {{ author }}
-                        </span>{% if not forloop.last %}, {% endif %}
-                    {% endfor %}
+        <div class="encap">
+            <dl class="encap">
+                <dt class="c45l">
+                    <a href="{{ object.get_absolute_url }}">
+                        <img class="main-image" alt="{{ object.title }}" src="{{ object.newsthumb.url }}">
+                    </a>
+                </dt>
+                <dd class="c55r">
+                <div class="mnh">
+                    <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h3>
+                    <span class="submitted">
+                        {% if object.authors.all %}
+                            {% trans "Written by" %}
+                        {% else %}
+                            {% trans "Written" %}
+                        {% endif %}
+                        {% for author in object.authors.all %}
+                            <span class="vcard author">
+                              {{ author }}
+                            </span>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
 
-                    {% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}
-                </span>
-                <p>{{ object.short }}</p>
-                <a href="#" class="read-more">{% trans "Read More" %}</a>
-            </div>
-                <div class="photos-share-options">
-                    <ul class="teaser-options encap outnone fcml0 lcmr0">
-                        <li class="pl0">
-                            <a href="{{object.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
-                                <span>{%facebook_comments_count object.get_absolute_url%}</span>
-                            </a>
-                        </li>
-                        <li>
-                            {% facebook_like object.get_absolute_url 50 0%}
-                        </li>
-                        <li>
-                            {% twitter_share object.get_absolute_url object.title%}
-                        </li>
-                        <li class="br-none">
-                            {% gplus object.get_absolute_url%}
-                        </li>
-                    </ul><!--//.teaser-options-->
+                        {% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}
+                    </span>
+                    <p>{{ object.short }}</p>
+                    <a href="#" class="read-more">{% trans "Read More" %}</a>
                 </div>
-            </dd>
-        </dl>
+
+                </dd>
+
+            </dl>
+            <div class="photos-share-options">
+                <ul class="teaser-options encap outnone fcml0 lcmr0">
+                    <li class="pl0">
+                        <a href="{{object.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
+                            <span>{%facebook_comments_count object.get_absolute_url%}</span>
+                        </a>
+                    </li>
+                    <li>
+                        {% facebook_like object.get_absolute_url%}
+                    </li>
+                    <li>
+                        {% twitter_share object.get_absolute_url object.title%}
+                    </li>
+                    <li class="br-none">
+                        {% gplus object.get_absolute_url%}
+                    </li>
+                </ul><!--//.teaser-options-->
+            </div>
+        </div>
     {% empty %}
         {% trans "No entries yet." %}
     {% endfor %}
