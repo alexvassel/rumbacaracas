@@ -3968,6 +3968,8 @@ li.greating {
     width:106px;
     overflow: hidden;
     margin-top: 5px !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
     text-align: center;
 }
 
