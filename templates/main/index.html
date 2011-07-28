@@ -60,7 +60,7 @@
                     {% for row in people|main_slider_split:4 %}
                         {% if row %}
                         <li {% if not forloop.first %}style="display:none"{% endif %}>
-                            <ul class="carousel-slide fcml0 lcmr0" style="width: 575px;">
+                            <ul class="carousel-slide fcml0 lcmr0">
                             {% for event in row %}
                                     {% if forloop.parentloop.first and  forloop.first%}
                                         <li class="active">

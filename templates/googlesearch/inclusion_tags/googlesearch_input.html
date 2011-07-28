@@ -5,7 +5,7 @@
     	<input name="cof" value="FORID:11" type="hidden">
         <input name="ie" value="ISO-8859-1" type="hidden">
         <div id="edit-search-block-form-1-wrapper" class="form-item">
-			<input type="text" class="form-text" name="q" size="12" maxlength="128" id="edit-search-block-form-1" value="{% if request.GET.q %}{{ request.GET.q }}{% else %}{% trans "Search"%}{% endif %}" class="search_txt" onfocus="if (this.value == '{% trans "Search"%}') {this.value = '';}" onblur="if (this.value == '') {this.value = '{% trans "Search"%}';}" />
+			<input type="text" class="form-text" name="q" size="8" maxlength="128" id="edit-search-block-form-1" value="{% if request.GET.q %}{{ request.GET.q }}{% else %}{% trans "Search"%}{% endif %}" class="search_txt" onfocus="if (this.value == '{% trans "Search"%}') {this.value = '';}" onblur="if (this.value == '') {this.value = '{% trans "Search"%}';}" />
 		</div>
         <input type="submit" name="submit" value="{%trans "Search"%}" class="form-submit" id="edit-submit-1"/>
 </div>

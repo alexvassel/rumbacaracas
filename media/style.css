@@ -261,6 +261,7 @@ input[type="button"], input[type="submit"], button{
 	margin-bottom: 0;
 	margin-left: 5px;
     width: 302px;
+    overflow: hidde
 }
 #header-primary .rows .sec-left ul.top-menu-social li a{
 	padding: 10px 0px;
@@ -421,11 +422,17 @@ header-primary a.facebookbtn:hover {
 
 #header-primary .rows .sec-right ul{
 	font-size: 12px;
-	width: 540px;	
+	width: 534px;
+    overflow: hidden;
 }
 .ie #header-primary .rows .sec-right ul{
-	width: 548px;
+	width: 534px;
 	display: inline;
+}
+
+#header-primary .rows .sec-left {
+    width: 426px;
+    overflow: hidden;
 }
 #header-primary .rows .sec-right ul li{
 	color: #FFF;
@@ -957,6 +964,11 @@ li.sobre1 a.fotosobre1:hover {
 	color: #FFFFFF;
 	padding: 0 0 5px;
 }
+.more-photos ul.carousel-images {
+    margin-left: -1px;
+    margin-right: -1px;
+}
+
 .more-photos ul.carousel-images li ul.carousel-slide li{
 	margin: 0 7px;
 	width: 130px;
@@ -3846,7 +3858,7 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 
 
 li.btnfacebook1 input.btnfacebook {
-	background: url(images/facebook.png) no-repeat scroll; width:126px; margin-top:8px; margin-right:5px;
+	background: url(images/facebook.png) no-repeat scroll; width:126px; margin-top:8px; margin-right:5px;height:30px;
 }
 li.btnfacebook1 input.btnfacebook:hover {
 	background: url(images/facebook_hov.png) no-repeat scroll; width:126px;  margin-top:8px; margin-right:5px;
@@ -3854,11 +3866,11 @@ li.btnfacebook1 input.btnfacebook:hover {
 }
 
 li.btntwitter1 input.btntwitter {
-	background: url(images/twitter.png) no-repeat scroll; width:126px; margin-top:9px; margin-right:5px; margin-left:5px;
+	background: url(images/twitter.png) no-repeat scroll; width:126px; margin-top:9px; margin-right:5px; margin-left:5px; height:30px;
 
 }
 li.btntwitter1 input.btntwitter:hover{
-	background: url(images/twitter_hov.png) no-repeat scroll; width:126px;  margin-top:9px; margin-right:5px;margin-left:5px;
+	background: url(images/twitter_hov.png) no-repeat scroll; width:126px;  margin-top:9px; margin-right:5px;margin-left:5px
 
 }
 
@@ -3953,7 +3965,7 @@ li.siguenosft {
 
 li.greating {
     padding: 3px 0px !important;
-    width:156px;
+    width:106px;
     overflow: hidden;
     margin-top: 5px !important;
     text-align: center;
