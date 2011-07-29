@@ -3,7 +3,7 @@
 from django.contrib.auth.models import User
 from events.models import EventCategory
 import legacy.models as L
-from locations.models import LocationMusic, Location, LocationArea
+from locations.models import LocationMusic, Location, LocationArea, WeekDay
 
 import os, glob, string, re, sys
 from datetime import datetime, timedelta
@@ -187,7 +187,8 @@ def parse_event_weekday(token):
                 u'Sábados':5,
                 "Domingos":6,
             }[day]
-            id_list.append(type_id)
+            real_day = WeekDay.objects.get(value=type_id)
+            id_list.append(real_day)
     return id_list
 
 

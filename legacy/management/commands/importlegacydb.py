@@ -107,6 +107,7 @@ def import_yourphotos ():
 
 def import_events ():
     E.Event.objects.all().delete()
+    return False
     oldevents = L.Eventos.objects.all()
     for oldevent in oldevents:
         #oldevent = L.Eventos()
@@ -436,7 +437,7 @@ class Command( NoArgsCommand ):
         #import_locations()
 
         print "Importing legacy events"
-        #import_events()
+        import_events()
 
         print "Importing legacy rumba news"
         #import_blog_category (L.RumbaNews)
@@ -453,7 +454,7 @@ class Command( NoArgsCommand ):
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "Importing legacy your photos"
-        import_yourphotos()
+        #import_yourphotos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()
