@@ -19,7 +19,7 @@
           </div><!--//.nav-wrapper-->
         	<div id="slides" class="slides">
             {% for slide, type in slides%}
-	            <div class="slide" {% if not forloop.first %}style="display:none"{% endif %}>
+	            <div class="slide" {% if not forloop.first %}style="display:none;width: 619px;height: 258px; overflow: hidden"{% endif %}>
 	            	<img src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.slide.url}}{% endif %}" alt="{{slide.title}}" />
 	              <div class="slide-info-wrapper">
 	                <div class="slide-info">
@@ -56,11 +56,11 @@
               <div class="more-photos encap">
                 <a id="carousel-prev" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
                 <a id="carousel-next" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
-                <ul class="carousel-images peoples ie-encap">
+                <ul class="carousel-images peoples ie-encap" style="width: 562px;height: 130px;">
                     {% for row in people|main_slider_split:4 %}
                         {% if row %}
-                        <li {% if not forloop.first %}style="display:none"{% endif %}>
-                            <ul class="carousel-slide fcml0 lcmr0" style="width: 570px;">
+                        <li style="{% if not forloop.first %};display:none{% endif %}">
+                            <ul class="carousel-slide fcml0 lcmr0">
                             {% for event in row %}
                                     {% if forloop.parentloop.first and  forloop.first%}
                                         <li class="active">
@@ -90,11 +90,11 @@
               <div class="more-photos encap">
                 <a id="carousel-prev2" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
                 <a id="carousel-next2" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
-                <ul class="carousel-images fotos ie-encap">
+                <ul class="carousel-images fotos ie-encap" style="width: 562px;height: 130px;">
                 	{% for row in photos|main_slider_split:4 %}
                         {% if row %}
-                        <li {% if not forloop.first %}style="display:none"{% endif %}>
-                            <ul class="carousel-slide fcml0 lcmr0" style="width: 562px;">
+                        <li style="{% if not forloop.first %};display:none{% endif %}">
+                            <ul class="carousel-slide fcml0 lcmr0">
                             {% for photo in row %}
                                     {% if forloop.parentloop.first and  forloop.first%}
                                         <li class="active">
@@ -224,7 +224,32 @@
             },
             delay: -2000
         });
+        jQuery('#tab-events ul.carousel-images').cycle({
+            fx: 'scrollHorz',
+            activePagerClass: 'active', //-- class name used for the active pager link
+            speed: 1000,
+            timeout: 0,
+            sync: 1,
+            //containerResize: 1,
+            easing: 'easeOutExpo',
+            next: '#carousel-next',
+            prev: '#carousel-prev',
+            delay: -2000
+        });
+        jQuery('#tab-your-photos ul.carousel-images').cycle({
+            fx: 'scrollHorz',
+            activePagerClass: 'active', //-- class name used for the active pager link
+            speed: 1000,
+            timeout: 0,
+            sync: 1,
+            //containerResize: 1,
+            easing: 'easeOutExpo',
+            next: '#carousel-next2',
+            prev: '#carousel-prev2',
+            delay: -2000
+        });
 
+        /*
         jQuery('#latest-photos-content ul.peoples').cycle({
             fx: 'scrollHorz',
             activePagerClass: 'active', //-- class name used for the active pager link
@@ -237,8 +262,9 @@
             prev: '#carousel-prev',
             delay: -2000
 	    });
-
-        jQuery('#latest-photos-content ul.fotos').cycle({
+        */
+        /*
+        jQuery('#latest-photos-content ul.fotos1').cycle({
             fx: 'scrollHorz',
             activePagerClass: 'active', //-- class name used for the active pager link
             speed: 1000,
@@ -250,7 +276,7 @@
             prev: '#carousel-prev2',
             delay: -2000
 	    });
-
+        */
 
         jQuery('.latest-photos div.tab-parts').each(function (idx, el){
             var tab = $(el);
