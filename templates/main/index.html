@@ -13,10 +13,12 @@
 
 
 {% block colleft %}
-<div id="front-slides" class="front-slides box-shadows encap">
+    {% if slides %}
+        <div id="front-slides" class="front-slides box-shadows encap">
         	<div class="nav-wrapper">
 	        	<div id="nav" class="encap outnone">&nbsp;</div>
           </div><!--//.nav-wrapper-->
+
         	<div id="slides" class="slides">
             {% for slide, type in slides%}
 	            <div class="slide" {% if not forloop.first %}style="display:none;width: 619px;height: 258px; overflow: hidden"{% endif %}>
@@ -36,6 +38,7 @@
             {%endfor%}
           </div><!--//.slides-->
         </div><!--//.front-slides-->
+    {%  endif %}
         <div id="latest-photos" class="latest-photos encap tabs boxed-brief">
         	<div class="wrapper encap">
             <div class="title flt-left"><h2>{% trans "LATEST PHOTOS" %}</h2></div>
