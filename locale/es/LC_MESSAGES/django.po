@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-28 04:27-0500\n"
-"PO-Revision-Date: 2011-07-27 13:21-0500\n"
-"Last-Translator: Eli <elibacter@gmail.com>\n"
+"POT-Creation-Date: 2011-07-29 07:41-0500\n"
+"PO-Revision-Date: 2011-07-29 16:40+0300\n"
+"Last-Translator: Nagaev Maksim <nagaev.maksim@gmail.com>\n"
 "Language-Team: td <td>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -102,7 +102,7 @@ msgstr "Email"
 
 #: events/models.py:125 news/zinniaModels.py:11
 msgid "Slider image 619x258"
-msgstr ""
+msgstr "Deslizador de la imagen 619x258"
 
 #: events/models.py:127
 msgid "Event Description"
@@ -139,8 +139,9 @@ msgstr "Evento"
 #: events/views.py:235 events/views.py:249 templates/base.html:172
 #: templates/base.html.py:180 templates/base.html:250
 #: templates/base.html.py:287 templates/events/calendar.html:48
-#: templates/events/details.html:14 templates/main/index.html:161
-#: templates/static/about_menu.html:13 templates/static/events.html:9
+#: templates/events/details.html:14 templates/main/index.html:164
+#: templates/static/about_menu.html:12 templates/static/aboutus.html:49
+#: templates/static/events.html:9
 msgid "Events"
 msgstr "Eventos"
 
@@ -323,8 +324,8 @@ msgstr "Sitios"
 #: locations/models.py:116 locations/views.py:55 locations/views.py:69
 #: locations/views.py:92 locations/views.py:101 locations/views.py:109
 #: locations/views.py:127 locations/views.py:142 templates/base.html:259
-#: templates/locations/index.html:15 templates/main/index.html:127
-#: templates/main/index.html.py:162 templates/widgets/locations_block.html:6
+#: templates/locations/index.html:15 templates/main/index.html:130
+#: templates/main/index.html.py:165 templates/widgets/locations_block.html:6
 msgid "Locations"
 msgstr "Sitios"
 
@@ -364,7 +365,7 @@ msgstr "Publicación"
 #: news/admin.py:47
 #, python-format
 msgid "%(title)s (%(word_count)i words)"
-msgstr ""
+msgstr "%(title)s (%(word_count)i palabras)"
 
 #: news/admin.py:50
 msgid "title"
@@ -391,7 +392,7 @@ msgid "News and Events"
 msgstr "Noticias y Eventos"
 
 #: news/views.py:26 templates/base.html:201 templates/base.html.py:272
-#: templates/main/index.html:126 templates/zinnia/base.html:15
+#: templates/main/index.html:129 templates/zinnia/base.html:15
 msgid "News"
 msgstr "Noticias"
 
@@ -569,9 +570,8 @@ msgid "Sorry, but the requested page could not be found."
 msgstr "Disculpe, la página solicitada no se puede encontrar"
 
 #: templates/500.html:6 templates/500.html.py:9
-#, fuzzy
 msgid "Server error"
-msgstr "Error interno"
+msgstr "error del servidor"
 
 #: templates/500.html:11
 msgid "Sorry, but the requested page could not be executed."
@@ -614,8 +614,8 @@ msgid "Follow:"
 msgstr "Síguenos:"
 
 #: templates/base.html:129
-msgid "Share on Facebook"
-msgstr "Comparte en Facebook"
+msgid "Follow us on Facebook"
+msgstr "Síguenos en Twitter"
 
 #: templates/base.html:130
 msgid "Follow us on Twitter"
@@ -626,13 +626,13 @@ msgid "Rumbabogota Home"
 msgstr "Rumbabogota Inicio"
 
 #: templates/base.html:164 templates/base.html.py:267
-#: templates/main/index.html:174 templates/yourvideos/details.html:15
+#: templates/main/index.html:177 templates/yourvideos/details.html:15
 #: templates/yourvideos/index.html:19 yourvideos/models.py:51
 msgid "Videos"
 msgstr "Videos"
 
 #: templates/base.html:165 templates/base.html.py:268
-#: templates/main/index.html:128 templates/main/index.html.py:168
+#: templates/main/index.html:131 templates/main/index.html.py:171
 msgid "Blog"
 msgstr "Blog"
 
@@ -642,23 +642,25 @@ msgstr "Medios"
 
 #: templates/base.html:169 templates/base.html.py:284
 #: templates/events/details.html:115 templates/locations/index.html:63
-#: templates/static/about_menu.html:9 templates/static/web.html:9
+#: templates/static/about_menu.html:9 templates/static/aboutus.html:46
+#: templates/static/web.html:9
 msgid "Web"
 msgstr "Web"
 
 #: templates/base.html:170 templates/base.html.py:285
-#: templates/static/about_menu.html:10 templates/static/newsletter.html:9
+#: templates/static/about_menu.html:10 templates/static/aboutus.html:47
+#: templates/static/newsletter.html:9
 msgid "Newsletter"
 msgstr "Boletín Electrónico"
 
 #: templates/base.html:171 templates/base.html.py:286
-#, fuzzy
+#: templates/static/about_menu.html:11 templates/static/aboutus.html:48
 msgid "Printed Editions"
-msgstr "Ediciones Anteriores"
+msgstr "Ediciones Impresas"
 
 #: templates/base.html:175 templates/base.html.py:291
 #: templates/static/about_menu.html:5 templates/static/aboutus.html:7
-#: templates/static/aboutus.html.py:14
+#: templates/static/aboutus.html.py:13
 msgid "About Us"
 msgstr "Nosotros"
 
@@ -695,22 +697,22 @@ msgid "Your photos"
 msgstr "Tus Fotos"
 
 #: templates/base.html:203 templates/base.html.py:274
-#: templates/main/index.html:163
+#: templates/main/index.html:166
 msgid "Rumba News"
 msgstr "Rumba News"
 
 #: templates/base.html:204 templates/base.html.py:275
-#: templates/main/index.html:164
+#: templates/main/index.html:167
 msgid "Music News"
 msgstr "Music News"
 
 #: templates/base.html:205 templates/base.html.py:276
-#: templates/main/index.html:165
+#: templates/main/index.html:168
 msgid "Actual"
 msgstr "Actualidad"
 
 #: templates/base.html:206 templates/base.html.py:277
-#: templates/main/index.html:166
+#: templates/main/index.html:169
 msgid "Interviews"
 msgstr "Entrevistas"
 
@@ -723,24 +725,27 @@ msgid "Photos"
 msgstr "Fotos"
 
 #: templates/base.html:293 templates/static/about_menu.html:7
-#: templates/static/events.html:7 templates/static/magazine.html:7
-#: templates/static/newsletter.html:7 templates/static/notebook.html:7
-#: templates/static/web.html:7 templates/static/web.html.py:29
+#: templates/static/events.html:7 templates/static/events.html.py:16
+#: templates/static/magazine.html:7 templates/static/magazine.html.py:16
+#: templates/static/newsletter.html:7 templates/static/newsletter.html:30
+#: templates/static/notebook.html:7 templates/static/web.html:7
+#: templates/static/web.html.py:29
 msgid "Products"
 msgstr "Productos"
 
-#: templates/base.html:294 templates/static/about_menu.html:16
-#: templates/static/partners.html:7 templates/static/partners.html.py:13
+#: templates/base.html:294 templates/static/about_menu.html:15
+#: templates/static/partners.html:7 templates/static/partners.html.py:14
 msgid "Partners"
 msgstr "Alianzas"
 
-#: templates/base.html:295 templates/static/about_menu.html:17
+#: templates/base.html:295 templates/static/about_menu.html:16
+#: templates/static/contacts.html:7 templates/static/contacts.html.py:15
 msgid "Contacts"
 msgstr "Contactos"
 
 #: templates/base.html:310 templates/static/term_of_use.html:7
 msgid "Terms of Use"
-msgstr ""
+msgstr "Terminos de Uso"
 
 #: templates/common_paginator.html:5 templates/paginator.html:5
 msgid "First"
@@ -756,7 +761,7 @@ msgstr "Ir a la página"
 
 #: templates/common_paginator.html:19 templates/paginator.html:19
 #: templates/locations/index.html:151 templates/people/slider_node.html:32
-#: templates/widgets/events_today_block.html:41
+#: templates/widgets/events_today_block.html:36
 msgid "Next"
 msgstr "Próximo"
 
@@ -880,7 +885,7 @@ msgstr "Hora"
 #: templates/events/details.html:73 templates/events/grouping.html:27
 #: templates/people/details.html:55 templates/people/index.html:59
 #: templates/people/index.html.py:108 templates/people/slider_node.html:19
-#: templates/widgets/events_today_block.html:19
+#: templates/widgets/events_today_block.html:23
 #: templates/widgets/people_list.html:18
 #: templates/widgets/upcoming_events_block.html:20
 #: templates/widgets/upcoming_events_list.html:19
@@ -1077,16 +1082,16 @@ msgid "Magazine | Rumbabogota"
 msgstr "Revista | Rumbabogota"
 
 #: templates/magazine/magazine.html:13 templates/static/aboutus.html:5
-#: templates/static/events.html:5 templates/static/magazine.html:5
-#: templates/static/newsletter.html:5 templates/static/notebook.html:5
-#: templates/static/partners.html:5 templates/static/term_of_use.html:5
-#: templates/static/web.html:5 templates/zinnia/tags/breadcrumbs.html:2
+#: templates/static/contacts.html:5 templates/static/events.html:5
+#: templates/static/magazine.html:5 templates/static/newsletter.html:5
+#: templates/static/notebook.html:5 templates/static/partners.html:5
+#: templates/static/term_of_use.html:5 templates/static/web.html:5
+#: templates/zinnia/tags/breadcrumbs.html:2
 msgid "Home"
 msgstr "Inicio"
 
 #: templates/magazine/magazine.html:15 templates/magazine/magazine.html:21
-#: templates/static/about_menu.html:11 templates/static/magazine.html:9
-#: templates/widgets/magazine.html:3
+#: templates/static/magazine.html:9 templates/widgets/magazine.html:3
 msgid "Magazine"
 msgstr "Revista"
 
@@ -1098,8 +1103,7 @@ msgstr "Última Edición"
 msgid "Previous Editions"
 msgstr "Ediciones Anteriores"
 
-#: templates/magazine/magazine.html:63 templates/static/about_menu.html:12
-#: templates/static/notebook.html:9
+#: templates/magazine/magazine.html:63 templates/static/notebook.html:9
 msgid "Notebook"
 msgstr "Cuaderno"
 
@@ -1118,33 +1122,33 @@ msgstr "Leer Más"
 msgid "Rumbabogota"
 msgstr "Rumbabogotá.com"
 
-#: templates/main/index.html:32
+#: templates/main/index.html:34
 msgid "- Read More"
 msgstr "- Leer Más"
 
-#: templates/main/index.html:41
+#: templates/main/index.html:44
 msgid "LATEST PHOTOS"
 msgstr "ÚLTIMAS FOTOS"
 
-#: templates/main/index.html:44
+#: templates/main/index.html:47
 msgid "People and Events"
 msgstr "Gente y Eventos"
 
-#: templates/main/index.html:45 templates/yourphotos/details.html:42
+#: templates/main/index.html:48 templates/yourphotos/details.html:42
 #: templates/yourphotos/index.html:29 yourphotos/models.py:72
 #: yourphotos/views.py:20 yourphotos/views.py:56 yourphotos/views.py:87
 msgid "Your Photos"
 msgstr "Tus Fotos"
 
-#: templates/main/index.html:129
+#: templates/main/index.html:132
 msgid "Art and Culture"
 msgstr "Arte y Cultura"
 
-#: templates/main/index.html:177
+#: templates/main/index.html:180
 msgid "See + Videos"
 msgstr "Ver + Videos"
 
-#: templates/main/index.html:178
+#: templates/main/index.html:181
 msgid "Upload a Video"
 msgstr "Publica un Vídeo"
 
@@ -1220,7 +1224,7 @@ msgid "Previous image"
 msgstr "Imagen anterior"
 
 #: templates/people/slider_node.html:31
-#: templates/widgets/events_today_block.html:40
+#: templates/widgets/events_today_block.html:35
 msgid "Previous"
 msgstr "Anterior"
 
@@ -1260,6 +1264,10 @@ msgstr "Favor enviar información adicional para completar el registro"
 msgid "Rumbabogota About Us"
 msgstr "Rumbabogota Nosotros"
 
+#: templates/static/contacts.html:3
+msgid "Rumbabogota Contacts"
+msgstr "Rumbabogota Contacto"
+
 #: templates/static/events.html:3
 msgid "About Us Events"
 msgstr "Sobre Nosotros Eventos"
@@ -1289,9 +1297,8 @@ msgid "Follow us on <br /><span class='fp18'>Twitter</span>"
 msgstr "Síguenos en <br /><span class='fp18'>Twitter</ span>"
 
 #: templates/static/term_of_use.html:3
-#, fuzzy
 msgid "Rumbabogota Terms of Use"
-msgstr "Rumbabogota Nosotros"
+msgstr "Rumbabogota Terminos de Uso"
 
 #: templates/static/web.html:3
 msgid "About Us Web"
@@ -1319,15 +1326,19 @@ msgstr "Favor enviar información adicional para completar el registro"
 msgid "Art and culture"
 msgstr "Arte y cultura"
 
-#: templates/widgets/calendar.html:19
+#: templates/widgets/calendar.html:3
 msgid "Events for the month"
 msgstr "Eventos para el mes"
 
-#: templates/widgets/events_today_block.html:3
+#: templates/widgets/calendar.html:11 templates/widgets/calendar.html.py:12
+msgid "Expand CALENDAR"
+msgstr "Ampliar CALENDARIO"
+
+#: templates/widgets/events_today_block.html:5
 msgid "What's today"
 msgstr "¿QUÉ HAY PA' HOY?"
 
-#: templates/widgets/events_today_block.html:37
+#: templates/widgets/events_today_block.html:50
 msgid "All Events"
 msgstr "Todos los Eventos"
 
@@ -1373,9 +1384,8 @@ msgid "Subscribe"
 msgstr "Regístrese"
 
 #: templates/widgets/upcoming_events_block.html:6
-#, fuzzy
 msgid "More events"
-msgstr "Más Fotos"
+msgstr "Más Eventos"
 
 #: templates/widgets/upcoming_events_list.html:5
 msgid "Upcoming Events"
@@ -1498,8 +1508,8 @@ msgstr "categorías"
 #, fuzzy, python-format
 msgid "%(entry_count)s entry"
 msgid_plural "%(entry_count)s entries"
-msgstr[0] "%(entry_count)s de entrada"
-msgstr[1] "%(entry_count)s de entrada"
+msgstr[0] "%(entry_count)s entrado"
+msgstr[1] "%(entry_count)s entrado"
 
 #: templates/zinnia/entry_detail.html:57
 msgid "+ info: "
@@ -1522,7 +1532,6 @@ msgid "Page"
 msgstr "Página"
 
 #: templates/zinnia/entry_list.html:64
-#, fuzzy
 msgid "Written"
 msgstr "Escrito por"
 
@@ -1566,8 +1575,8 @@ msgstr "Tus Videos"
 msgid "Add Video"
 msgstr "Añadir Video"
 
-#~ msgid "Expand CALENDAR"
-#~ msgstr "Ampliar CALENDARIO"
+#~ msgid "Share on Facebook"
+#~ msgstr "Comparte en Facebook"
 
 #~ msgid "Import page"
 #~ msgstr "Page import"
