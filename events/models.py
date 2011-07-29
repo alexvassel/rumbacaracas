@@ -157,10 +157,15 @@ class Event( ImageModel, Sortable ):
         if self.from_date == self.to_date:
                 str_repr = date( self.from_date,"d.m.Y" )
         else:
-            str_repr = date( self.from_date, "d.m.Y" ) + u' to ' + date( self.to_date,"d.m.Y" )
+            from_d = date( self.from_date, "d.m.Y" )
+            to_d = date( self.to_date,"d.m.Y" )
+            #from date to date
+            str_repr = _('%(from_date)s to %(to_date)s') % dict(from_date=from_d, to_date=to_d)
 
         if self.repeat.all():
-            str_repr = str_repr + " ( on " + ", ".join( [weekday.title for weekday in self.repeat.all()] ) + " )"
+            days = ", ".join( [weekday.title for weekday in self.repeat.all()] )
+            #On days
+            str_repr = str_repr + _(" ( on %(week_days)s )") % dict(week_days=days)
         return str_repr
     get_dates.short_description = _( 'Event Dates' )
 
