@@ -27,6 +27,9 @@ LOCALE_PATHS = (
     '/web/apps/rumbabogota/locale',
  )
 
+
+
+
 OLDDATABOGOTA_PHOTO_PATH = '/mnt/rumbacaracas.com/var/www/vhosts/rumbabogota.com/httpdocs/'
 
 DATABASES = {
