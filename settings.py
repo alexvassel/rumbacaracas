@@ -49,9 +49,6 @@ MEDIA_URL = '/media/'
 #ADMIN_MEDIA_PREFIX = '/admin-media/'
 ADMIN_MEDIA_PREFIX = MEDIA_URL + "grappelli/"
 
-TINYMCE_JS_ROOT =  ADMIN_MEDIA_PREFIX + 'tinymce/jscripts/tiny_mce'
-TINYMCE_JS_URL =  ADMIN_MEDIA_PREFIX + 'tinymce/jscripts/tiny_mce/tiny_mce.js'
-
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'xk(sgv%96^$2)1h_c#^vx0svfqufou8)-8#^2n6nn590sw(a)3'
 
