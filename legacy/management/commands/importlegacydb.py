@@ -107,7 +107,6 @@ def import_yourphotos ():
 
 def import_events ():
     E.Event.objects.all().delete()
-    return False
     oldevents = L.Eventos.objects.all()
     for oldevent in oldevents:
         #oldevent = L.Eventos()
