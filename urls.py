@@ -23,9 +23,10 @@ urlpatterns = patterns( '',
     ( r'^terms_of_use/$', 'django.views.generic.simple.direct_to_template', {'template': 'static/term_of_use.html'} ),
 
     ( r'^about/partners$', 'django.views.generic.simple.direct_to_template', {'template': 'static/partners.html'} ),
+    ( r'^about/contacts$', 'django.views.generic.simple.direct_to_template', {'template': 'static/contacts.html'} ),
 
     ( r'^about/products/newsletter$', 'django.views.generic.simple.direct_to_template', {'template': 'static/newsletter.html'} ),
-    ( r'^about/products/notebook$', 'django.views.generic.simple.direct_to_template', {'template': 'static/notebook.html'} ),
+    #( r'^about/products/notebook$', 'django.views.generic.simple.direct_to_template', {'template': 'static/notebook.html'} ),
     ( r'^about/products/events$', 'django.views.generic.simple.direct_to_template', {'template': 'static/events.html'} ),
     ( r'^about/products/magazine$', 'django.views.generic.simple.direct_to_template', {'template': 'static/magazine.html'} ),
     ( r'^about/products/web$', 'django.views.generic.simple.direct_to_template', {'template': 'static/web.html'} ),
