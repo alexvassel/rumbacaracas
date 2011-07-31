@@ -20,7 +20,8 @@
         $('#datepicker').datepicker({
             inline: true,
             onSelect: function(dateText, inst) {
-                document.location.href = "/events/by-category/day"+"/"+inst.selectedYear+"/"+inst.selectedMonth+"/"+inst.selectedDay + "#event-anchor"
+                var url = "/events/by-category/day"+"/"+inst.selectedYear+"/"+(inst.selectedMonth+1)+"/"+inst.selectedDay + "#event-anchor"
+                document.location.href = url;
                 return false;
             }
         });
