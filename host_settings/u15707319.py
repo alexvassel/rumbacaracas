@@ -4,7 +4,7 @@ DEBUG = True
 
 LANGUAGE_CODE = 'es'
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
 TEMPLATE_DIRS = (
     '/web/apps/rumbabogota/templates',
