@@ -105,7 +105,7 @@ from sortable.models import Sortable
 
 class Event( ImageModel, Sortable ):
     title = models.CharField( _( 'Event Name or Title' ), max_length = 256 )
-    slug = models.SlugField ( _( 'Url name for event' ) )
+    slug = models.SlugField ( _( 'Url name for event' ) , unique=True)
     from_date = models.DateField( _( 'Event start date' ) )
     to_date = models.DateField( _( 'Event end date' ), blank = True )
     repeat = models.ManyToManyField( WeekDay , blank = True )

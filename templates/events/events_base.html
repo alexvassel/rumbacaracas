@@ -98,11 +98,9 @@
 	          		{% if period == "week"%}
 	              		<a href="/events/by-{{active_tab}}/{{period}}/{{prev_date.year}}/{{prev_date.month}}/{{prev_date.day}}#event-anchor" class="day-prev">{% trans "Previous week"%}</a>
 	          		{% endif %}
-	          		{% comment %}
-	          		{% if period == "month"  %}
+	          		{% if period == "month" and active_tab != "calendar" %}
 	              		<a href="/events/by-{{active_tab}}/{{period}}/{{prev_date.year}}/{{prev_date.month}}#event-anchor" class="day-prev">{% trans "Previous month"%}</a>
 	          		{% endif %}
-                    {% endcomment %}
 	          		{% if active_tab == "calendar"  %}
 	              		<a href="/events/calendar/{{prev_date.year}}/{{prev_date.month}}#event-anchor" class="day-prev">{% trans "Previous month"%}</a>
 	          		{% endif %}
@@ -114,11 +112,9 @@
               		{% if period == "week"%}
                   		<a href="/events/by-{{active_tab}}/{{period}}/{{next_date.year}}/{{next_date.month}}/{{next_date.day}}#event-anchor" class="day-next">{% trans "Next week"%}</a>
               		{% endif %}
-              		{% comment %}
-              		{% if period == "month"  %}
+              		{% if period == "month" and active_tab != "calendar" %}
                   		<a href="/events/by-{{active_tab}}/{{period}}/{{next_date.year}}/{{next_date.month}}#event-anchor" class="day-next">{% trans "Next month"%}</a>
              		{% endif %}
-             		{% endcomment %}
                     {% if active_tab == "calendar"  %}
 	              		<a href="/events/calendar/{{next_date.year}}/{{next_date.month}}#event-anchor" class="day-next">{% trans "Next month"%}</a>
 	          		{% endif %}

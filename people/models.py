@@ -20,7 +20,7 @@ PEOPLE_STATUSES = (
 
 class PhotoEvent( ImageModel ):
     title = models.CharField( _( 'Event title' ) , max_length = 256 )
-    slug = models.SlugField ( _( 'Url name for event' ) )
+    slug = models.SlugField ( _( 'Url name for event' ),unique=True )
     date = models.DateField( _( 'Event date' ) )
     category = models.CharField( 'Category', max_length = 50, choices = PHOTO_CATEGORIES )
     article = models.TextField( _( 'Description' ) , blank = True )

@@ -16,7 +16,7 @@ from zinnia.managers import DRAFT
 from django.utils.html import strip_tags
 from locations.templatetags.tools import truncate
 from django.forms.models import inlineformset_factory
-
+from main.modelFields import SlugifyUniquely
 
 
 
@@ -54,7 +54,7 @@ def add( request, type ):
             article = form.save( commit = False )
             article.short = truncate( strip_tags( article.content ), 100 )
             article.content = strip_tags( article.content )
-            article.slug = slugify( article.title )
+            article.slug = SlugifyUniquely( article.title, article.__class__)
             #set moderation status
             article.status = DRAFT
             #article.save()

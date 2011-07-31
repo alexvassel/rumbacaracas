@@ -14,7 +14,7 @@ from django.forms import ModelForm, ModelMultipleChoiceField
 from django.template.defaultfilters import slugify
 from django.http import HttpResponseRedirect
 from django.forms import forms
-
+from main.modelFields import SlugifyUniquely
 from django.utils.dates import MONTHS as months
 
 calendar.setfirstweekday( 6 )
@@ -128,7 +128,7 @@ def calendar_view(
         repr = date( dtstart, 'F, Y' ),
         next_date = dtstart + timedelta( days = +last_day ),
         prev_date = dtstart + timedelta( days = -1 ),
-        filter_date = 'month/' + str( year ) + '/' + str( month ),
+        filter_date = '/' + str( year ) + '/' + str( month ),
         years = years,
         year = year,
         months = months,
@@ -311,7 +311,9 @@ def add( request ):
         form = EventForm( request.POST, request.FILES ) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             event = form.save( commit = False )
-            event.slug = slugify( event.title )
+            event.slug = SlugifyUniquely( event.title, event.__class__)
+
+
             #For one day events
             if not event.to_date:
                 event.to_date = event.from_date

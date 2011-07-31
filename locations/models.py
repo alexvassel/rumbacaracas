@@ -65,7 +65,7 @@ LOCATION_STATUSES = (
 
 class Location( ImageModel ):
     title = models.CharField( _( 'Name of venue/club' ), max_length = 256 )
-    slug = models.SlugField ( _( 'Url name for location' ) )
+    slug = models.SlugField ( _( 'Url name for location' ), unique=True )
     type = models.ManyToManyField( LocationType )
     restaurant = models.ManyToManyField( RestaurantType, blank = True , null = True )
     address = models.CharField( _( 'Address' ), max_length = 256 , blank = True )

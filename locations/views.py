@@ -11,6 +11,7 @@ from django.template.defaultfilters import slugify
 from django.forms import forms
 from people.models import PhotoEvent
 from datetime import datetime, timedelta, time
+from main.modelFields import SlugifyUniquely
 
 def _process( request, group ):
     try:
@@ -242,7 +243,7 @@ def add( request ):
         form = LocationForm( request.POST, request.FILES ) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             location = form.save( commit = False )
-            location.slug = slugify( location.title )
+            location.slug = SlugifyUniquely(location.title, location.__class__)
             #set moderation status
             location.status = 2
             location.add_user = request.user
