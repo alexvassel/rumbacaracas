@@ -284,6 +284,8 @@ input[type="button"], input[type="submit"], button{
 
 #header-primary .top-menu-primary {
 	margin-left:10px;
+    width: 109px;
+    overflow: hidden;
 }
 
 
