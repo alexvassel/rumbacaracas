@@ -170,7 +170,7 @@
         function renderRestaurant(element){
             var selected = $(element).val();
             // #TODO Remove Magic number
-            if(selected.hasObject('11')) {
+            if(selected && selected.hasObject('11')) {
                 $('#addform .hidden_restaurant').show();
             } else {
                 $('#addform .hidden_restaurant').hide();
