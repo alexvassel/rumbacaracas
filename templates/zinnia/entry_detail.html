@@ -18,11 +18,11 @@
 <div id="entry-{{ object.pk }}" class="node music-news encap {% if object.featured %} featured{% endif %}">
     <h2 class="title">{{object.title }}</h2>
     <span class="submitted">
-		{% trans "Written by" %} {% for author in object.authors.all %}
-	    <span class="vcard author">
-	      {{ author }}
-	    </span>{% if not forloop.last %}, {% endif %}
-	    {% endfor %}
+        {% if object.author %}
+            {% trans "Written by" %} <span class="vcard author">{{ object.author }}</span>
+        {% else %}
+            {% trans "Written" %}
+        {% endif %}
 		{% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}
 	</span>
     <div class="photos-share-options" style="border-top: 1px dotted black;padding: 7px 0 7px;margin: 0">
