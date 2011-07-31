@@ -19,6 +19,7 @@ from django.core.files.base import ContentFile
 
 from django.conf import settings
 from django.template.defaultfilters import slugify
+from main.modelFields import SlugifyUniquely
 
 import os, glob, string, re, sys
 from utils import *
@@ -115,7 +116,7 @@ def import_events ():
                 oldevent.email = oldevent.email[:75]
             event = E.Event(
                 title = oldevent.titulo,
-                slug = slugify(oldevent.titulo)[:50],
+
                 from_date = compile_date(oldevent.dia, oldevent.mes, oldevent.ano),
                 to_date = compile_date(oldevent.dia2, oldevent.mes2, oldevent.ano2),
 
@@ -139,6 +140,8 @@ def import_events ():
                 status = 1,
                 datetime_added = compile_date(oldevent.da, oldevent.ma, oldevent.aa),
             )
+            
+            event.slug = SlugifyUniquely(oldevent.titulo[:50], event.__class__)
 
             if oldevent.url:
                 event.url = 'http://' + oldevent.url
@@ -201,6 +204,7 @@ def import_blog_category (table):
                 #author
             )
 
+            
 
             last_update = compile_date(oldarticle.du, oldarticle.mu, oldarticle.au)
             creation_date = compile_date(oldarticle.da, oldarticle.ma, oldarticle.aa)
@@ -247,7 +251,7 @@ def import_locations ():
         location = LS.Location(
             id = oldlocation.id,
             title = oldlocation.nombre,
-            slug = slugify(oldlocation.nombre),
+            #slug = slugify(oldlocation.nombre),
 
             address = oldlocation.direccion,
 
@@ -277,6 +281,8 @@ def import_locations ():
             status = 1,
             datetime_added = compile_date(oldlocation.da, oldlocation.ma, oldlocation.aa),
         )
+
+        location.slug = SlugifyUniquely(oldlocation.nombre, location.__class__)
 
         location.city, location.area = parse_city_area(oldlocation.ciudad)
 
@@ -326,7 +332,7 @@ def import_people ():
             #oldevent = L.Fotos()
             event = P.PhotoEvent(
                         title = oldevent.titulo,
-                        slug = slugify( oldevent.titulo )[:50],
+                        #slug = slugify( oldevent.titulo )[:50],
 
                         category = parse_people_category( oldevent.categoria ),
                         article = oldevent.resena,
@@ -337,6 +343,8 @@ def import_people ():
                         status = 1,
                         datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa ),
                       )
+
+            event.slug = SlugifyUniquely(oldevent.titulo[:50], event.__class__)
 
             people_date = compile_date( oldevent.dia, oldevent.mes, oldevent.ano )
             if people_date:
