@@ -68,7 +68,11 @@ def embed_zone_tag( parser, token ):
     return ZoneNode( zone_id, type )
 
 
+import random
+
+
 #Simplest iframe integration
 @register.inclusion_tag( 'main/openx_banner.html' )
 def banner_zone_iframe( zone_id, width=None, height=None ):
-    return dict( zone_id = zone_id, width = width, height=height )
+    rand = random.random()
+    return dict( zone_id = zone_id, width = width, height=height,rand =rand  )
