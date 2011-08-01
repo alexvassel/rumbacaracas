@@ -180,7 +180,7 @@ def randomv(value):
         return False
 
 
-
+from django.conf import settings 
 @register.tag
 def value_from_settings(parser, token):
     try:
