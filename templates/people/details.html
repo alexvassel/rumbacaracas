@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}{% trans "People | Rumbabogota" %}{% endblock %}
+{% block title %}{% trans "People | Rumbabogota" %}{% if event %} | {{ event.title }}{% endif %}{% endblock %}
 {% load tools %}
 {% load paging %}
 {% load gplus %}

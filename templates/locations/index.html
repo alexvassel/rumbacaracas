@@ -3,17 +3,20 @@
 {% load openx %}
 {% load gplus %}
 {% load facebook twitter%}
-{% block title %}{% trans "Locales | Rumbabogota" %}{% endblock %}
+{% block title %}{% trans "Locales | Rumbabogota" %}{% if location %} | {{ location.title }}{% endif %}{% endblock %}
+
+
 {% load widgets %}
 {% load tools %}
 
-
+{% comment %}
 {% if location %}
     {% block fbmeta %}
         <meta property="og:title" content="{{ location.title }}"/>
         <meta property="og:image" content="{% value_from_settings "FULL_BASE_URL" %}{{ location.thumbnail.url }}"/>
     {% endblock %}
 {% endif %}
+{% endcomment %}
 
 {% block advbodycls %}section-locations{% endblock %}
 
