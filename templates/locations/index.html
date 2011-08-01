@@ -201,7 +201,7 @@
         			{% endif %}
 	        	</a>
 	        	<div class="slide-teasers">
-                    <h3><a href="/locations/{{slide.slug}}">{{slide.title}}</a></h3>
+                    <h3><a href="/locations/{{slide.slug}}">{{slide.title|truncate:"20"}}</a></h3>
                     <p>{% if slide.area %}{{slide.area.title}}{% else %}&nbsp;{%endif%}</p>
                 </div>
 	      	</li>
