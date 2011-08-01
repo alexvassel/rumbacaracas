@@ -171,7 +171,7 @@
             <div class="box-contents decou">
                 <ul>
                     {% for photoevent in location_photos %}
-                        <li>{{photoevent.date|date:"d/m/Y"}} | <a href="{{ photoevent.get_absolute_url}}">{{ photoevent.title }}</a></li>
+                        <li>{{photoevent.date|date:"d.m.Y"}} | <a href="{{ photoevent.get_absolute_url}}">{{ photoevent.title }}</a></li>
                     {% endfor %}
                 </ul>
             </div><!--//.box-contents-->
