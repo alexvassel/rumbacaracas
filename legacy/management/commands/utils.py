@@ -56,8 +56,13 @@ def parse_city_area (value):
 def not_empty_or_null( value ):
     if not value:
         return None
-    result = Location.objects.get(pk=value)
-    return result
+    try :
+        result = Location.objects.get(pk=value)
+        return result
+    except Location.DoesNotExist:
+        return None
+
+
 
 def parse_people_category ( input_value ):
     result = {
