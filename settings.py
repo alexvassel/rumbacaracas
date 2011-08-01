@@ -126,7 +126,7 @@ INTERNAL_IPS = ( '127.0.0.1', )
 
 ROOT_URLCONF = 'urls'
 
-FULL_BASE_URL = 'http://rumbabogota.com'
+#FULL_BASE_URL = 'http://rumbabogota.com'
 
 
 TEMPLATE_CONTEXT_PROCESSORS = ( 
