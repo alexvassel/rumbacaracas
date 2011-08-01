@@ -18,6 +18,8 @@ MANAGERS = ADMINS
 # system time zone.
 TIME_ZONE = 'America/Chicago'
 
+SHORT_DATE_FORMAT = 'd.m.Y'
+
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
