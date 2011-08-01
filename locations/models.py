@@ -73,7 +73,7 @@ class Location( ImageModel ):
     phone_1 = models.CharField( _( 'Telephone 1' ), max_length = 256 , blank = True )
     phone_2 = models.CharField( _( 'Telephone 2' ), max_length = 256 , blank = True )
     fax = models.CharField( _( 'Fax' ), max_length = 256 , blank = True )
-    url = models.URLField( _( 'Url' ) , blank = True )
+    url = models.URLField( _( 'Url' ) , blank = True, verify_exists=False )
     email = models.EmailField( _( 'Email' ) , blank = True )
     hours_of_operation = models.CharField( _( 'Working hours' ), max_length = 256 , blank = True )
     days_of_operation = models.ManyToManyField( WeekDay , blank = True )

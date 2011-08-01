@@ -119,7 +119,7 @@ class Event( ImageModel, Sortable ):
     place = models.CharField( _( 'Name of venue / place' ), max_length = 256, blank = True )
     city = models.CharField( _( 'City' ), max_length = 256 , blank = True, default = 'Bogota' )
     phone = models.CharField( _( 'Info' ), max_length = 256 , blank = True )
-    url = models.URLField( _( 'Url' ) , blank = True )
+    url = models.URLField( _( 'Url' ) , blank = True, verify_exists=False )
     email = models.EmailField( _( 'Email' ) , blank = True )
     image = models.ImageField( upload_to = 'images/events', blank = True )
     slider_image = models.ImageField( _( 'Slider image 619x258' ), upload_to = 'images/slider' , blank = True )
