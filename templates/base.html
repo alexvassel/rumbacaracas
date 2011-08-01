@@ -18,8 +18,14 @@
 	<title>{% block title %}{% endblock %}</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
-	<meta property="fb:app_id" content="195992407109917">
-	
+
+    <meta property="fb:app_id" content="195992407109917">
+    <meta property="og:site_name" content="Rumbabogota.com"/>
+    {% block fbmeta %}
+        <meta property="og:title" content="Rumbabogota.com"/>
+        <meta property="og:image" content="/media/images/logos/RB.png"/>
+	{% endblock %}
+
 	<link rel="shortcut icon" href="favicon.ico" />
 	
 	<link href="/media/css/base.css" rel="stylesheet" type="text/css" media="screen, projection" />

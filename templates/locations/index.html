@@ -7,6 +7,14 @@
 {% load widgets %}
 {% load tools %}
 
+
+{% if location %}
+    {% block fbmeta %}
+        <meta property="og:title" content="{{ location.title }}"/>
+        <meta property="og:image" content="{{ location.thumbnail.url }}"/>
+    {% endblock %}
+{% endif %}
+
 {% block advbodycls %}section-locations{% endblock %}
 
 {% block colleft %}
