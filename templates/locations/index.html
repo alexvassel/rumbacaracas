@@ -11,7 +11,7 @@
 {% if location %}
     {% block fbmeta %}
         <meta property="og:title" content="{{ location.title }}"/>
-        <meta property="og:image" content="{{ location.thumbnail.url }}"/>
+        <meta property="og:image" content="{% value_from_settings "FULL_BASE_URL" %}{{ location.thumbnail.url }}"/>
     {% endblock %}
 {% endif %}
 

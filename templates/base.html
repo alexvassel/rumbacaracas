@@ -23,7 +23,7 @@
     <meta property="og:site_name" content="Rumbabogota.com"/>
     {% block fbmeta %}
         <meta property="og:title" content="Rumbabogota.com"/>
-        <meta property="og:image" content="/media/images/logos/RB.png"/>
+        <meta property="og:image" content="{% value_from_settings "FULL_BASE_URL" %}/media/images/logos/RB.png"/>
 	{% endblock %}
 
 	<link rel="shortcut icon" href="favicon.ico" />
