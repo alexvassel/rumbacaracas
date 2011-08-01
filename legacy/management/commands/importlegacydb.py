@@ -318,7 +318,7 @@ def import_locations ():
 def reimport_people_locations ():
     oldevents = L.Fotos.objects.all()
     for oldevent in oldevents:
-        if oldevent.article:
+        if oldevent.resena:
             event = P.PhotoEvent.objects.get(article=oldevent.resena)
             event.location = not_empty_or_null( oldevent.lugar )
         else:
