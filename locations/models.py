@@ -112,5 +112,6 @@ class Location( ImageModel ):
         return self.title
 
     class Meta:
+        ordering = ['title']
         verbose_name = _( 'Location' )
         verbose_name_plural = _( 'Locations' )
