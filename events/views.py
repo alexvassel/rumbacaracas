@@ -69,7 +69,7 @@ def _process( request, group_lambda, period , year = False, month = False, day =
     current_year = datetime.today().year
     years = range( current_year - 3, current_year + 3 )
 
-    slider_events = Event.objects.filter( status = 1 , show_in_events_slider = True ).filter( to_date__gte = datetime.today() ).order_by( '?' )[:5]
+    slider_events = Event.objects.filter( status = 1 , show_in_events_slider = True ).filter( to_date__gte = datetime.today() ).order_by( 'from_date' )[:5]
 
     all_locations = Location.objects.all().filter( status = 1 ).order_by( 'title' )
     all_events = Event.objects.all().filter( status = 1 ).order_by( 'title' )
