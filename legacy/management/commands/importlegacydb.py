@@ -315,9 +315,17 @@ def import_locations ():
         print ",".join(wrong_ids)
 
 
-
-
-
+def reimport_people_locations ():
+    oldevents = L.Fotos.objects.all()
+    for oldevent in oldevents:
+        if oldevent.article:
+            event = P.PhotoEvent.objects.get(article=oldevent.resena)
+            event.location = not_empty_or_null( oldevent.lugar )
+        else:
+            event = P.PhotoEvent.objects.get(title=oldevent.titulo)
+            event.location = not_empty_or_null( oldevent.lugar )
+        event.save()
+        
 def import_people ():
 
     P.PhotoEvent.objects.all().delete()
@@ -439,12 +447,13 @@ class Command( NoArgsCommand ):
 
         print "Importing legacy people"
         #import_people()
+        reimport_people_locations()
 
         print "Importing legacy locations"
         #import_locations()
 
         print "Importing legacy events"
-        import_events()
+        #import_events()
 
         print "Importing legacy rumba news"
         #import_blog_category (L.RumbaNews)

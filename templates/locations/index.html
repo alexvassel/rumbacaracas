@@ -156,14 +156,9 @@
             <div class="box-title"><h2>{% trans "Events for Location" %}</h2></div>
             <div class="box-contents decou">
                 <ul>
-                    {% for is_next, event in location_events %}
+                    {% for event in location_events %}
                         <li>
-                            {% if is_next %}
-                                <span class="proximos">{% trans "Next" %}: </span>
-                            {%  else %}
-                                {% trans "After" %}:
-                            {%  endif %}
-                            <a href="{{ event.get_absolute_url}}">{{ event.title }}</a><br />{{ event.get_dates }}
+                            {{ event.get_dates }} | <a href="{{ event.get_absolute_url}}">{{ event.title }}</a>
                         </li>
                     {% endfor %}
                 </ul>
