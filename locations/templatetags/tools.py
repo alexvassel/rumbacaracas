@@ -7,7 +7,7 @@ from django.utils.safestring import mark_safe
 from locations.models import LocationType, Location
 from events.models import Event
 from django.utils.html import strip_tags
-
+from django.conf import settings
 
 @register.filter
 def truncate( value, arg ):
@@ -180,7 +180,7 @@ def randomv(value):
         return False
 
 
-from django.conf import settings 
+
 @register.tag
 def value_from_settings(parser, token):
     try:
