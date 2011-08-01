@@ -120,7 +120,7 @@ def detail ( request, slug ):
     today = datetime.today().date()
 
     #TODO wrong check if upcoming
-    location_events = Event.objects.filter(status=1, location=location,to_date__gte = today)[:5]
+    location_events = Event.objects.filter(status=1, location=location, to_date__gte = today).all()[:5]
     
     #location_events = [((event.from_date >= today), event) for event in location_events_raw ]
     location_photos = PhotoEvent.objects.filter(status=1, location=location).order_by('-date')[:5]
