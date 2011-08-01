@@ -94,7 +94,7 @@
     {% endif %}
 	{% if event.price%}
       <tr>
-        <td><strong>Fee:</strong></td>
+        <td><strong>{% trans "Fee" %}:</strong></td>
         <td>{{event.price}}</td>
       </tr>
 	{%endif%}
@@ -118,7 +118,7 @@
 	{%endif%}
 	{% if event.location.phone_1 or event.location.phone_2 or event.phone%}
       <tr>
-        <td><strong>Info:</strong></td>
+        <td><strong>{% trans "Info"%}:</strong></td>
         <td>
         	{% if event.location.phone_1 or event.location.phone_2 %}
         		{% if event.location.phone_1 %}{{event.location.phone_1}}, {% endif%}{% if event.location.phone_2 %}{{event.location.phone_2}}{% endif%}
