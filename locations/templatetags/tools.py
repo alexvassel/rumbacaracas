@@ -188,7 +188,9 @@ def value_from_settings(parser, token):
         tag_name, var = token.split_contents()
     except ValueError:
         raise template.TemplateSyntaxError, "%r tag requires a single argument" % token.contents.split()[0]
-    return ValueFromSettings(var)
+    if not (token[0] == token[-1] and token[0] in ('"', "'")):
+        raise template.TemplateSyntaxError("%r tag's argument should be in quotes" % tag_name)
+    return ValueFromSettings(var[1:-1])
 
 class ValueFromSettings(template.Node):
     def __init__(self, var):
