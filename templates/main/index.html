@@ -4,6 +4,7 @@
 {% load tools %}
 {% load paging %}
 {% load openx %}
+{% load cache %}
 {% load widgets %}
 {% load youtube %}
 {% load listtools %}
@@ -60,6 +61,7 @@
                 <a id="carousel-prev" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
                 <a id="carousel-next" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
                 <ul class="carousel-images peoples ie-encap" style="width: 562px;height: 130px;">
+                    {% cache 60 main_people %}
                     {% for row in people|main_slider_split:4 %}
                         {% if row %}
                         <li style="{% if not forloop.first %};display:none{% endif %}">
@@ -79,6 +81,7 @@
                         </li>
                         {% endif %}
                     {% endfor %}
+                    {% endcache %}
                 </ul><!--//.carousel-images-->
                 <div class="cflt"></div>
               </div><!--//.more-photos-->
@@ -94,6 +97,7 @@
                 <a id="carousel-prev2" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
                 <a id="carousel-next2" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
                 <ul class="carousel-images fotos ie-encap" style="width: 562px;height: 130px;">
+                    {% cache 60 main_yourphoto %}
                 	{% for row in photos|main_slider_split:4 %}
                         {% if row %}
                         <li style="{% if not forloop.first %};display:none{% endif %}">
@@ -113,6 +117,7 @@
                         </li>
                         {% endif %}
                     {% endfor %}
+                {% endcache %}
                 </ul><!--//.carousel-images-->
                 <div class="cflt"></div>
               </div><!--//.more-photos-->
@@ -133,6 +138,7 @@
             </ul>
           </div>
           <div id="outline-slides" class="outnone encap">
+          {% cache 60 main_content %}
           	<div class="outline-slide" style="height: 880px">
               {% for object in news %}
                   {% include "main/blog_entry.html"%}
@@ -158,6 +164,7 @@
               {% endfor %}
               <p>&nbsp;</p>
             </div><!--//.outline-slide-->
+          {% endcache %}
           </div><!--//.outline-slides-->
           <div id="outlines-list" class="outlines-list outnone box-shadows">
           	<ul class="encap">
