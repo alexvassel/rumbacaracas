@@ -829,8 +829,7 @@ li.sobre1 a.fotosobre1:hover {
 	width: 640px;
 }
 .ie #col-left #front-slides #slides .slide-info-wrapper{
-	top: 0;
-	left: 0;
+	
 }
 #col-left #front-slides #slides .slide-info {
 	width: 60%;
@@ -843,7 +842,7 @@ li.sobre1 a.fotosobre1:hover {
 	opacity: 0.85;
 }
 .ie #col-left #front-slides #slides .slide-info {
-	margin: 135px 0 0 15px;
+	
 	outline: none;
 }
 #col-left #front-slides #slides .slide-info h3{
