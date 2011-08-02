@@ -110,9 +110,11 @@
                     {% endif %}
                     
 					<span class="last">
+                        {% comment %}
 						<a href="{{event.get_absolute_url}}#disqus_thread">
 							{%facebook_comments_count event.get_absolute_url%}
 						</a>
+						{% endcomment %}
 					</span>
 					</p>
 			      </li>
