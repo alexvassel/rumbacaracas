@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block title %}{% trans "Locales | Rumbabogota" %}{% endblock %}
+{% load cache %}
 {% load tools %}
 {% load openx %}
 {% load widgets %}
@@ -124,10 +125,12 @@
               <td valign="middle" align="right">
                 <label for="events-list">{% trans "List of Events"%}:</label>
                 <select name="events-list" id="events-list">
-                	<option value="">{% trans "Select an Event"%}</option>
-                	{% for event in all_events %}
-                  		<option value="{{event.slug}}">{{event.title}}</option>
-              		{% endfor %}
+                    {% cache 60 events_select %}
+                        <option value="">{% trans "Select a event"%}</option>
+                        {% for event in all_events %}
+                            <option value="{{event.slug}}">{{event.title}}</option>
+                        {% endfor %}
+                    {% endcache %}
                 </select>
               </td>
             </tr>
@@ -138,10 +141,12 @@
 			<td valign="middle" align="right" style="width: 420px;">
 	            <label for="by-name">{% trans "List of Locations"%}:</label>
 	            <select name="locations-list" id="locations-list">
-                	<option value="">{% trans "Select a Location"%}</option>
-                	{% for location in all_locations %}
-                  		<option value="{{location.slug}}">{{location.title}}</option>
-              		{% endfor %}
+                    {% cache 60 location_select %}
+                        <option value="">{% trans "Select a location"%}</option>
+                        {% for location in all_locations %}
+                            <option value="{{location.slug}}">{{location.title}}</option>
+                        {% endfor %}
+                    {% endcache %}
                 </select>
           	</td>
         	</tr>

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load cache %}
 {% load openx %}
 {% load gplus %}
 {% load facebook twitter%}
@@ -233,10 +234,12 @@
 	      </td>
 	      <td valign="middle" align="left" style="width: 300px;" colspan="2">
 	        <select name="locations-list" id="locations-list" style="width: 300px;">
-	        	<option value="">{% trans "Select a location"%}</option>
-	        	{% for location in all_locations %}
-	        		<option value="{{location.slug}}">{{location.title}}</option>
-				{% endfor %}
+                {% cache 60 location_select %}
+                    <option value="">{% trans "Select a location"%}</option>
+                    {% for location in all_locations %}
+                        <option value="{{location.slug}}">{{location.title}}</option>
+                    {% endfor %}
+                {% endcache %}
 	        </select>
 	      </td>
 	    </tr>
@@ -246,10 +249,12 @@
 		    </td>
 		    <td valign="middle" align="left" style="width: 300px;" colspan="2">
             	<select name="events-list" id="events-list"  style="width: 300px;">
-                	<option value="">{% trans "Select an Event"%}</option>
-                	{% for event in all_events %}
-                  		<option value="{{event.slug}}">{{event.title}}</option>
-              		{% endfor %}
+                    {% cache 60 events_select %}
+                        <option value="">{% trans "Select a event"%}</option>
+                        {% for event in all_events %}
+                            <option value="{{event.slug}}">{{event.title}}</option>
+                        {% endfor %}
+                    {% endcache %}
                 </select>
               </td>
             </tr>

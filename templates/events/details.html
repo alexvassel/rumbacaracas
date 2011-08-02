@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load cache %}
 {% block title %}{% trans "Events | Rumbabogota" %}{% if event %} | {{ event.title }}{% endif %}{% endblock %}
 {% load tools %}
 {% load openx %}
@@ -189,12 +190,16 @@
     <label for="events-list">{% trans "List of Events"%}:</label>
   </td>
   <td valign="middle" align="left" style="width: 420px;">
+
     <select name="events-list" id="events-list" style="width: 300px;">
+    {% cache 60 events_select %}
 		<option value="">{% trans "Select a event"%}</option>
     	{% for event in all_events %}
       		<option value="{{event.slug}}">{{event.title}}</option>
   		{% endfor %}
+    {% endcache %}
     </select>
+
   </td>
 </tr>
 <tr>
@@ -202,12 +207,17 @@
     <label for="events-list">{% trans "List of Locations"%}:</label>
   </td>
   <td valign="middle" align="left" style="width: 420px;">
+
+
     <select name="locations-list" id="locations-list" style="width: 300px;">
+    {% cache 60 location_select %}
 		<option value="">{% trans "Select a location"%}</option>
     	{% for location in all_locations %}
       		<option value="{{location.slug}}">{{location.title}}</option>
   		{% endfor %}
+    {% endcache %}
     </select>
+
   </td>
 </tr>
   </tbody>
@@ -251,7 +261,7 @@
 			header: 'a.accordion-title',
 	      	fillSpace: false,
 	      	navigation: true,
-	      	autoheight: true,
+	      	autoheight: true
 	    });
 
 		$('.event-image-teaser a.image').lightBox({
