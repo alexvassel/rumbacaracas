@@ -1,7 +1,7 @@
 # Django settings for rumbabogota project.
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+DEBUG = False
+TEMPLATE_DEBUG = False
 
 ADMINS = ( 
     # ('Your Name', 'your_email@domain.com'),
@@ -75,7 +75,12 @@ MIDDLEWARE_CLASSES = (
     'breadcrumbs.middleware.BreadcrumbsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'socialregistration.middleware.FacebookMiddleware',
+    'profiler_middleware.ProfileMiddleware',
  )
+
+PROFILE_MIDDLEWARE_SORT = 'cumulative',
+PROFILE_MIDDLEWARE_RESTRICTIONS = (10,)
+
 
 AUTHENTICATION_BACKENDS = ( 
     'socialregistration.auth.FacebookAuth',
