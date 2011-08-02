@@ -17,7 +17,7 @@ FIXTURE_DIRS = (
 
 OLDBOGOTA_PHOTO_PATH = '/web/apps/oldbogota/processed'
 
-FULL_BASE_URL = 'http://rumbacr.com'
+FULL_BASE_URL = 'http://rumbabogota.com'
 
 MEDIA_ROOT = '/web/apps/rumbabogota/media'
 
