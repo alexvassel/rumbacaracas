@@ -1,6 +1,6 @@
 
 DEBUG = False
-#INTERNAL_IPS = ( '127.0.0.1', '213.33.244.154',)
+INTERNAL_IPS = ( '127.0.0.1', '213.33.244.154',)
 
 LANGUAGE_CODE = 'es'
 
