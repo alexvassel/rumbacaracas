@@ -55,9 +55,12 @@ ADMIN_MEDIA_PREFIX = MEDIA_URL + "grappelli/"
 SECRET_KEY = 'xk(sgv%96^$2)1h_c#^vx0svfqufou8)-8#^2n6nn590sw(a)3'
 
 # List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = ( 
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
+
+TEMPLATE_LOADERS = (
+    ('django.template.loaders.cached.Loader',(
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )),
 #     'django.template.loaders.eggs.Loader',
  )
 
@@ -79,7 +82,7 @@ MIDDLEWARE_CLASSES = (
  )
 
 PROFILE_MIDDLEWARE_SORT = 'cumulative',
-PROFILE_MIDDLEWARE_RESTRICTIONS = (40,)
+PROFILE_MIDDLEWARE_RESTRICTIONS = (50,)
 
 
 AUTHENTICATION_BACKENDS = ( 
@@ -175,14 +178,14 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'magazine',
     'subscribe',
-    #'legacy',
+    'legacy',
     #'photologue',
     #'tagging',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
  )
 
-#DATABASE_ROUTERS = ['db_router.MyAppRouter']
+DATABASE_ROUTERS = ['db_router.MyAppRouter']
 
 try:
     import socket

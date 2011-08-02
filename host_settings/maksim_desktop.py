@@ -41,4 +41,5 @@ DATABASES = {
     }
 }
 
+DEBUG=True
 #LANGUAGE_CODE = 'es'
