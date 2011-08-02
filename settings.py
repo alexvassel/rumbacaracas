@@ -78,7 +78,7 @@ MIDDLEWARE_CLASSES = (
     'profiler_middleware.ProfileMiddleware',
  )
 
-PROFILE_MIDDLEWARE_SORT = 'tottime',
+PROFILE_MIDDLEWARE_SORT = 'cumulative',
 PROFILE_MIDDLEWARE_RESTRICTIONS = (40,)
 
 
