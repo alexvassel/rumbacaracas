@@ -108,14 +108,13 @@
                             {% trans "Other"%}
                         </span>
                     {% endif %}
-                    
-					<span class="last">
-                        {% comment %}
+                    {% comment %}
+            	    <span class="last">
 						<a href="{{event.get_absolute_url}}#disqus_thread">
 							{%facebook_comments_count event.get_absolute_url%}
 						</a>
-						{% endcomment %}
 					</span>
+					{% endcomment %}
 					</p>
 			      </li>
 				{%endfor%}
