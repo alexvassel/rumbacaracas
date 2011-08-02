@@ -73,9 +73,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'breadcrumbs.middleware.BreadcrumbsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
     'socialregistration.middleware.FacebookMiddleware',
-    'profiler_middleware.ProfileMiddleware',
+    #'profiler_middleware.ProfileMiddleware',
  )
 
 PROFILE_MIDDLEWARE_SORT = 'cumulative',
@@ -175,14 +175,14 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'magazine',
     'subscribe',
-    'legacy',
+    #'legacy',
     #'photologue',
     #'tagging',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
  )
 
-DATABASE_ROUTERS = ['db_router.MyAppRouter']
+#DATABASE_ROUTERS = ['db_router.MyAppRouter']
 
 try:
     import socket
