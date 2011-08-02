@@ -59,7 +59,7 @@
 .ui-widget { font-family: Arial,sans-serif; font-size: 1.1em; }
 .ui-widget .ui-widget { font-size: 1em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Arial,sans-serif; font-size: 1em; }
-#datepicker .ui-widget-content { background: #6c6c6c url(images/ui-bg_flat_75_6c6c6c_40x100.png) 50% 50% repeat-x; color: #ffffff; }
+#datepicker .ui-widget-content { background: #6c6c6c url(images/ui-bg_flat_75_6c6c6c_40x100.png) 50% 50% repeat-x; color: #ffffff;border: 0 }
 #datepicker .ui-widget-content a { color: #ffffff; }
 #datepicker .ui-widget-header { border: 1px solid #000000; background: #080808 url(images/ui-bg_highlight-soft_15_080808_1x100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
 #datepicker .ui-widget-header a { color: #ffffff; }
