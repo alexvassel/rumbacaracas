@@ -194,6 +194,9 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
  )
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+
+
 DATABASE_ROUTERS = ['db_router.MyAppRouter']
 
 try:
