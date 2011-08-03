@@ -1,4 +1,5 @@
 # Django settings for rumbabogota project.
+from django.middleware.cache import FetchFromCacheMiddleware
 
 DEBUG = False
 TEMPLATE_DEBUG = False
@@ -69,7 +70,10 @@ BREADCRUMBS_AUTO_HOME = True
 
 
 
-MIDDLEWARE_CLASSES = ( 
+MIDDLEWARE_CLASSES = (
+
+    'django.middleware.cache.UpdateCacheMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -79,7 +83,12 @@ MIDDLEWARE_CLASSES = (
     #'debug_toolbar.middleware.DebugToolbarMiddleware',
     'socialregistration.middleware.FacebookMiddleware',
     #'profiler_middleware.ProfileMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
  )
+
+CACHE_MIDDLEWARE_SECONDS = 60
+CACHE_MIDDLEWARE_SECONDS = True
+
 
 PROFILE_MIDDLEWARE_SORT = 'cumulative',
 PROFILE_MIDDLEWARE_RESTRICTIONS = (50,)
