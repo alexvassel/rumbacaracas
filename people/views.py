@@ -24,13 +24,13 @@ def index ( request ):
             latest_event_photo = events[0]
             groups.append( ( group, description, latest_event_photo, events, ) )
 
-    latest = PhotoEvent.objects.filter( status = 1 ).latest( 'datetime_added' )
+    latest = PhotoEvent.objects.filter( status = 1 ).latest( 'date' )
     return {'groups': groups, 'latest' : latest}
 
 @render_to( 'people/category.html' )
 def category ( request, group ):
 
-    events = PhotoEvent.objects.filter( status = 1 ).filter( category = group ).order_by( 'datetime_added' )
+    events = PhotoEvent.objects.filter( status = 1 ).filter( category = group ).order_by( 'date' )
 
     if events:
         group_name = events[0].get_category_display()

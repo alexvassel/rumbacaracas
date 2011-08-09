@@ -30,12 +30,12 @@ def yourphotos_block( ):
 
 @register.inclusion_tag( 'widgets/people.html' )
 def people_block( ):
-    events = PhotoEvent.objects.filter(status=1).order_by('-datetime_added')[:4]
+    events = PhotoEvent.objects.filter(status=1).order_by('-date')[:4]
     return dict(events=events)
 
 @register.inclusion_tag( 'widgets/people_list.html' )
 def people_list( ):
-    events = PhotoEvent.objects.filter(status=1).order_by('-datetime_added')[:6]
+    events = PhotoEvent.objects.filter(status=1).order_by('-date')[:6]
     return dict(events=events)
 
 

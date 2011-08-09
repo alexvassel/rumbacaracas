@@ -59,7 +59,7 @@ def index( request ):
 
     art_culture = sortEventList( [event for event, date in art_culture_raw] )[:4]
 
-    people = PhotoEvent.objects.filter( status = 1 ).order_by( '-datetime_added' )[:40]
+    people = PhotoEvent.objects.filter( status = 1 ).order_by( '-date' )[:40]
 
     photos = Photo.objects.filter( status = 1 ).order_by( '-datetime_added' )[:40]
     
