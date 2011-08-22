@@ -19,7 +19,9 @@ from preferences import preferences
 
 
 from socialregistration.views import setup
+from django.views.decorators.csrf import csrf_protect
 
+@csrf_protect
 def custom_social_setup( request ):
     initial = dict()
     try:
