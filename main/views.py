@@ -16,6 +16,20 @@ from dateutil.relativedelta import *
 
 from preferences import preferences
 
+
+
+from socialregistration.views import setup
+
+def custom_social_setup( request ):
+    initial = dict()
+    try:
+        if request.facebook.uid is not None:
+            initial=request.facebook.graph.get_object('me')
+    except :
+        pass
+    return setup(request, initial=initial)
+
+
 @render_to( 'main/index.html' )
 def index( request ):
     current_date = datetime.today()

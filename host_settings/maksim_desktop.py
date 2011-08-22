@@ -43,3 +43,15 @@ DATABASES = {
 
 DEBUG=True
 #LANGUAGE_CODE = 'es'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
+
+FACEBOOK_APP_ID = '237180929639489'
+FACEBOOK_API_KEY = FACEBOOK_APP_ID #'15d12186d338568b8b5634e27aafb7cd'
+FACEBOOK_SECRET_KEY = '68e652ad4024ba1c2a563e7ff833f856'
+

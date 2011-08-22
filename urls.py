@@ -7,7 +7,13 @@ admin.autodiscover()
 urlpatterns = patterns( '',
     ( r'' , include( 'main.urls' ) ),
     ( r'^tinymce/', include( 'tinymce.urls' ) ),
+
+    #Changes in setup proccess
+    url(r'^social/setup', 'main.views.custom_social_setup', name='socialregistration_setup'),
+    #/Changes in setup proccess
+
     url(r'^social/', include('socialregistration.urls')),
+
     ( r'^login/$', 'django.views.generic.simple.direct_to_template', {'template': 'login.html'} ),
     ( r'^locations/', include( 'locations.urls' ) ),
     ( r'^events/', include( 'events.urls' ) ),

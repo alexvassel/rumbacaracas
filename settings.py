@@ -1,5 +1,5 @@
 # Django settings for rumbabogota project.
-from django.middleware.cache import FetchFromCacheMiddleware
+#from django.middleware.cache import FetchFromCacheMiddleware
 
 DEBUG = False
 TEMPLATE_DEBUG = False
