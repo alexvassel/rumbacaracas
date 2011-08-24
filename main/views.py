@@ -21,6 +21,7 @@ from preferences import preferences
 from socialregistration.views import setup
 from django.views.decorators.csrf import csrf_protect
 from django.template.defaultfilters import slugify
+from main.forms import UserForm
 
 @csrf_protect
 def custom_social_setup( request ):
@@ -32,7 +33,7 @@ def custom_social_setup( request ):
                 initial['username'] = slugify(initial['name'])
     except :
         pass
-    return setup(request, initial=initial)
+    return setup(request, initial=initial,form_class=UserForm)
 
 
 @render_to( 'main/index.html' )
