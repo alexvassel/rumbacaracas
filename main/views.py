@@ -27,8 +27,8 @@ def custom_social_setup( request ):
     try:
         if request.facebook.uid is not None:
             initial=request.facebook.graph.get_object('me')
-            if initial and not initial.username and initial.name:
-                initial.username = initial.name
+            if initial and not initial['username'] and initial['name']:
+                initial['username'] = initial['name']
     except :
         pass
     return setup(request, initial=initial)
