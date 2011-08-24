@@ -20,6 +20,7 @@ from preferences import preferences
 
 from socialregistration.views import setup
 from django.views.decorators.csrf import csrf_protect
+from django.template.defaultfilters import slugify
 
 @csrf_protect
 def custom_social_setup( request ):
@@ -27,8 +28,8 @@ def custom_social_setup( request ):
     try:
         if request.facebook.uid is not None:
             initial=request.facebook.graph.get_object('me')
-            if initial and not initial['username'] and initial['name']:
-                initial['username'] = initial['name']
+            if "username" not in initial:
+                initial['username'] = slugify(initial['name'])
     except :
         pass
     return setup(request, initial=initial)
