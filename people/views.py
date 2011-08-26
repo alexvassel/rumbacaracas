@@ -139,7 +139,9 @@ def import_finish ( request, event_id, folder ):
         images_list.append( image_file )
 
     for photo in zip( legends, images_list, thumb_list ) :
-        p = Photo( description = photo[0], event = event )
+        udescription = unicode(photo[0], "latin-1")
+
+        p = Photo( description = udescription, event = event )
 
         fi_content = ContentFile( open( settings.OLDBOGOTA_PHOTO_PATH + '/' + folder + '/' + photo[1], 'r' ).read() )
         ft_content = ContentFile( open( settings.OLDBOGOTA_PHOTO_PATH + '/' + folder + '/' + photo[2], 'r' ).read() )
