@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-01 08:01-0500\n"
-"PO-Revision-Date: 2011-08-01 17:01+0300\n"
+"POT-Creation-Date: 2011-08-30 06:35-0500\n"
+"PO-Revision-Date: 2011-08-30 15:35+0300\n"
 "Last-Translator: Nagaev Maksim <nagaev.maksim@gmail.com>\n"
 "Language-Team: td <td>\n"
 "Language: \n"
@@ -81,8 +81,8 @@ msgstr "Precio de la entrada, boleto, costo/precio"
 
 #: events/models.py:115
 #: locations/models.py:71
-#: templates/events/details.html:81
-#: templates/locations/index.html:46
+#: templates/events/details.html:82
+#: templates/locations/index.html:47
 msgid "Address"
 msgstr "Dirección"
 
@@ -100,7 +100,7 @@ msgid "City"
 msgstr "Ciudad"
 
 #: events/models.py:121
-#: templates/events/details.html:121
+#: templates/events/details.html:122
 msgid "Info"
 msgstr "Info"
 
@@ -113,8 +113,8 @@ msgstr "URL"
 #: locations/models.py:77
 #: locations/models.py:88
 #: subscribe/models.py:23
-#: templates/events/details.html:109
-#: templates/locations/index.html:80
+#: templates/events/details.html:110
+#: templates/locations/index.html:81
 msgid "Email"
 msgstr "Email"
 
@@ -183,8 +183,8 @@ msgstr "Evento"
 #: templates/base.html:273
 #: templates/base.html.py:310
 #: templates/events/calendar.html:48
-#: templates/events/details.html:14
-#: templates/main/index.html:164
+#: templates/events/details.html:15
+#: templates/main/index.html:170
 #: templates/static/about_menu.html:12
 #: templates/static/aboutus.html:49
 #: templates/static/events.html:9
@@ -192,45 +192,45 @@ msgid "Events"
 msgstr "Eventos"
 
 #: events/views.py:98
-#: templates/events/details.html:222
-#: templates/events/events_base.html:174
+#: templates/events/details.html:232
+#: templates/events/events_base.html:179
 msgid "Calendar"
 msgstr "Calendario"
 
 #: events/views.py:192
 #: locations/views.py:57
 #: people/views.py:19
-#: templates/events/details.html:218
-#: templates/events/events_base.html:158
-#: templates/locations/index.html:263
+#: templates/events/details.html:228
+#: templates/events/events_base.html:163
+#: templates/locations/index.html:268
 msgid "By Category"
 msgstr "Por Categoría"
 
 #: events/views.py:203
 #: locations/views.py:94
-#: templates/events/details.html:220
-#: templates/events/events_base.html:166
-#: templates/locations/index.html:264
+#: templates/events/details.html:230
+#: templates/events/events_base.html:171
+#: templates/locations/index.html:269
 msgid "By Area"
 msgstr "Por Zona"
 
 #: events/views.py:214
-#: templates/events/details.html:219
-#: templates/events/events_base.html:162
+#: templates/events/details.html:229
+#: templates/events/events_base.html:167
 msgid "By Location"
 msgstr "Por Sitio"
 
 #: events/views.py:225
 #: locations/views.py:103
-#: templates/events/details.html:221
-#: templates/events/events_base.html:170
-#: templates/locations/index.html:265
+#: templates/events/details.html:231
+#: templates/events/events_base.html:175
+#: templates/locations/index.html:270
 msgid "By Music"
 msgstr "Por Música"
 
 #: events/views.py:250
-#: templates/events/details.html:17
-#: templates/events/events_base.html:20
+#: templates/events/details.html:18
+#: templates/events/events_base.html:21
 #: templates/people/category.html:15
 #: templates/people/details.html:17
 #: templates/people/index.html:16
@@ -357,7 +357,7 @@ msgid "Fax"
 msgstr "Fax"
 
 #: locations/models.py:78
-#: templates/locations/index.html:86
+#: templates/locations/index.html:87
 msgid "Working hours"
 msgstr "Horario"
 
@@ -391,7 +391,7 @@ msgstr "Teléfonos"
 
 #: locations/models.py:116
 #: templates/base.html:213
-#: templates/events/details.html:65
+#: templates/events/details.html:66
 msgid "Location"
 msgstr "Sitios"
 
@@ -404,22 +404,22 @@ msgstr "Sitios"
 #: locations/views.py:128
 #: locations/views.py:143
 #: templates/base.html:282
-#: templates/locations/index.html:26
-#: templates/main/index.html:130
-#: templates/main/index.html.py:165
+#: templates/locations/index.html:27
+#: templates/main/index.html:134
+#: templates/main/index.html.py:171
 #: templates/widgets/locations_block.html:6
 msgid "Locations"
 msgstr "Sitios"
 
 #: locations/views.py:111
-#: templates/locations/index.html:266
+#: templates/locations/index.html:271
 msgid "By Type of Food"
 msgstr "Por tipo de Comida"
 
 #: locations/views.py:144
 #: templates/base.html:132
 #: templates/locations/add.html:11
-#: templates/locations/index.html:29
+#: templates/locations/index.html:30
 msgid "Add Location"
 msgstr "Publica un Sitio"
 
@@ -434,6 +434,19 @@ msgstr "Tipo de restaurante no puede estar vacío para la categoría Restaurante
 #: magazine/models.py:8
 msgid "Last Magazine Anotation"
 msgstr "Anotación Última Revista "
+
+#: main/forms.py:8
+msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+
+#: main/forms.py:9
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr ""
+
+#: main/forms.py:26
+#, fuzzy
+msgid "This username is already in use."
+msgstr "Este correo electrónico ya está en uso."
 
 #: news/admin.py:11
 #: templates/base.html:286
@@ -480,7 +493,7 @@ msgstr "Noticias y Eventos"
 #: news/views.py:26
 #: templates/base.html:224
 #: templates/base.html.py:295
-#: templates/main/index.html:129
+#: templates/main/index.html:133
 #: templates/zinnia/base.html:15
 msgid "News"
 msgstr "Noticias"
@@ -734,7 +747,7 @@ msgstr "Rumbabogota Inicio"
 
 #: templates/base.html:187
 #: templates/base.html.py:290
-#: templates/main/index.html:177
+#: templates/main/index.html:183
 #: templates/yourvideos/details.html:15
 #: templates/yourvideos/index.html:19
 #: yourvideos/models.py:51
@@ -743,8 +756,8 @@ msgstr "Videos"
 
 #: templates/base.html:188
 #: templates/base.html.py:291
-#: templates/main/index.html:131
-#: templates/main/index.html.py:171
+#: templates/main/index.html:135
+#: templates/main/index.html.py:177
 msgid "Blog"
 msgstr "Blog"
 
@@ -755,8 +768,8 @@ msgstr "Medios"
 
 #: templates/base.html:192
 #: templates/base.html.py:307
-#: templates/events/details.html:115
-#: templates/locations/index.html:74
+#: templates/events/details.html:116
+#: templates/locations/index.html:75
 #: templates/static/about_menu.html:9
 #: templates/static/aboutus.html:46
 #: templates/static/web.html:9
@@ -788,19 +801,19 @@ msgstr "Nosotros"
 
 #: templates/base.html:205
 #: templates/base.html.py:275
-#: templates/events/events_base.html:67
+#: templates/events/events_base.html:68
 msgid "For Today"
 msgstr "Para Hoy"
 
 #: templates/base.html:206
 #: templates/base.html.py:276
-#: templates/events/events_base.html:72
+#: templates/events/events_base.html:73
 msgid "For Tomorrow"
 msgstr "Para Mañana"
 
 #: templates/base.html:207
 #: templates/base.html.py:277
-#: templates/events/events_base.html:77
+#: templates/events/events_base.html:78
 msgid "For a Week"
 msgstr "Para Esta Semana"
 
@@ -825,31 +838,31 @@ msgstr "Tus Fotos"
 
 #: templates/base.html:226
 #: templates/base.html.py:297
-#: templates/main/index.html:166
+#: templates/main/index.html:172
 msgid "Rumba News"
 msgstr "Rumba News"
 
 #: templates/base.html:227
 #: templates/base.html.py:298
-#: templates/main/index.html:167
+#: templates/main/index.html:173
 msgid "Music News"
 msgstr "Music News"
 
 #: templates/base.html:228
 #: templates/base.html.py:299
-#: templates/main/index.html:168
+#: templates/main/index.html:174
 msgid "Actual"
 msgstr "Actualidad"
 
 #: templates/base.html:229
 #: templates/base.html.py:300
-#: templates/main/index.html:169
+#: templates/main/index.html:175
 msgid "Interviews"
 msgstr "Entrevistas"
 
 #: templates/base.html:230
 #: templates/base.html.py:301
-msgid "Dj Mix"
+msgid "DJ Mix"
 msgstr "Dj Mix"
 
 #: templates/base.html:288
@@ -858,6 +871,10 @@ msgid "Photos"
 msgstr "Fotos"
 
 #: templates/base.html:316
+msgid "About us page"
+msgstr "Sobre Nosotros"
+
+#: templates/base.html:317
 #: templates/static/about_menu.html:7
 #: templates/static/events.html:7
 #: templates/static/events.html.py:24
@@ -871,21 +888,21 @@ msgstr "Fotos"
 msgid "Products"
 msgstr "Productos"
 
-#: templates/base.html:317
+#: templates/base.html:318
 #: templates/static/about_menu.html:15
 #: templates/static/partners.html:7
 #: templates/static/partners.html.py:14
 msgid "Partners"
 msgstr "Alianzas"
 
-#: templates/base.html:318
+#: templates/base.html:319
 #: templates/static/about_menu.html:16
 #: templates/static/contacts.html:7
 #: templates/static/contacts.html.py:15
 msgid "Contacts"
 msgstr "Contactos"
 
-#: templates/base.html:333
+#: templates/base.html:334
 #: templates/static/term_of_use.html:7
 msgid "Terms of Use"
 msgstr "Términos de Uso"
@@ -931,7 +948,7 @@ msgstr "Debe estar logeado para realizar esta operación. Haga clic en \"Conéct
 
 #: templates/events/add.html:3
 #: templates/events/calendar.html:3
-#: templates/events/details.html:3
+#: templates/events/details.html:4
 #: templates/events/grouping.html:3
 msgid "Events | Rumbabogota"
 msgstr "Eventos | Rumbabogota"
@@ -1013,24 +1030,24 @@ msgstr "viernes"
 msgid "Saturday"
 msgstr "sábado"
 
-#: templates/events/details.html:33
-#: templates/locations/index.html:108
+#: templates/events/details.html:34
+#: templates/locations/index.html:109
 msgid "Category"
 msgstr "Categoría"
 
-#: templates/events/details.html:39
+#: templates/events/details.html:40
 msgid "Date"
 msgstr "Fecha"
 
-#: templates/events/details.html:51
+#: templates/events/details.html:52
 msgid "Days of week"
 msgstr "Días de la semana"
 
-#: templates/events/details.html:59
+#: templates/events/details.html:60
 msgid "Time"
 msgstr "Hora"
 
-#: templates/events/details.html:73
+#: templates/events/details.html:74
 #: templates/events/grouping.html:27
 #: templates/people/details.html:55
 #: templates/people/index.html:59
@@ -1043,119 +1060,113 @@ msgstr "Hora"
 msgid "Other"
 msgstr "Otros"
 
-#: templates/events/details.html:87
+#: templates/events/details.html:88
 msgid "City, Area"
 msgstr "Ciudad, Zona"
 
-#: templates/events/details.html:90
-#: templates/locations/index.html:55
+#: templates/events/details.html:91
+#: templates/locations/index.html:56
 msgid "Map"
 msgstr "Mapa"
 
-#: templates/events/details.html:97
+#: templates/events/details.html:98
 msgid "Fee"
 msgstr "Entrada"
 
-#: templates/events/details.html:103
-#: templates/locations/index.html:102
+#: templates/events/details.html:104
+#: templates/locations/index.html:103
 msgid "Music type"
 msgstr "Tipo de música"
 
-#: templates/events/details.html:147
-#: templates/locations/index.html:127
+#: templates/events/details.html:148
+#: templates/locations/index.html:128
 msgid "Zoom"
 msgstr "Ampliar"
 
-#: templates/events/details.html:157
-#: templates/locations/index.html:137
+#: templates/events/details.html:158
+#: templates/locations/index.html:138
 msgid "comments"
 msgstr "comentarios"
 
-#: templates/events/details.html:184
+#: templates/events/details.html:185
 msgid "Find Events"
 msgstr "Buscar eventos"
 
-#: templates/events/details.html:189
-#: templates/events/events_base.html:125
-#: templates/locations/index.html:245
+#: templates/events/details.html:190
+#: templates/events/events_base.html:126
+#: templates/locations/index.html:248
 msgid "List of Events"
 msgstr "Listado de Eventos"
 
-#: templates/events/details.html:193
+#: templates/events/details.html:196
+#: templates/events/events_base.html:129
+#: templates/locations/index.html:253
 msgid "Select a event"
 msgstr "Seleccione un evento"
 
-#: templates/events/details.html:202
-#: templates/events/events_base.html:139
+#: templates/events/details.html:207
+#: templates/events/events_base.html:142
 msgid "List of Locations"
 msgstr "Listado de Sitios"
 
-#: templates/events/details.html:206
-#: templates/locations/index.html:236
+#: templates/events/details.html:214
+#: templates/events/events_base.html:145
+#: templates/locations/index.html:238
 msgid "Select a location"
 msgstr "Seleccione un sitio"
 
 #: templates/events/events_base.html:3
-#: templates/locations/index.html:6
+#: templates/locations/index.html:7
 msgid "Locales | Rumbabogota"
 msgstr "Sitios | Rumbabogota"
 
-#: templates/events/events_base.html:13
+#: templates/events/events_base.html:14
 msgid "Events For Today"
 msgstr "Eventos para Hoy"
 
-#: templates/events/events_base.html:14
+#: templates/events/events_base.html:15
 msgid "Events For Tomorrow"
 msgstr "Eventos para Mañana"
 
-#: templates/events/events_base.html:15
+#: templates/events/events_base.html:16
 msgid "Events For a Week"
 msgstr "Eventos para la Semana"
 
-#: templates/events/events_base.html:16
+#: templates/events/events_base.html:17
 msgid "Events For a Month"
 msgstr "Eventos para el Mes"
 
-#: templates/events/events_base.html:82
+#: templates/events/events_base.html:83
 msgid "For a month"
 msgstr "Para este mes"
 
-#: templates/events/events_base.html:96
+#: templates/events/events_base.html:97
 msgid "Previous day"
 msgstr "Día anterior"
 
-#: templates/events/events_base.html:99
+#: templates/events/events_base.html:100
 msgid "Previous week"
 msgstr "Semana anterior"
 
-#: templates/events/events_base.html:102
-#: templates/events/events_base.html:105
+#: templates/events/events_base.html:103
+#: templates/events/events_base.html:106
 msgid "Previous month"
 msgstr "Mes anterior"
 
-#: templates/events/events_base.html:110
+#: templates/events/events_base.html:111
 msgid "Next day"
 msgstr "Día siguiente"
 
-#: templates/events/events_base.html:113
+#: templates/events/events_base.html:114
 msgid "Next week"
 msgstr "Próxima semana "
 
-#: templates/events/events_base.html:116
-#: templates/events/events_base.html:119
+#: templates/events/events_base.html:117
+#: templates/events/events_base.html:120
 msgid "Next month"
 msgstr "Próximo mes "
 
-#: templates/events/events_base.html:127
-#: templates/locations/index.html:249
-msgid "Select an Event"
-msgstr "Seleccione un Evento"
-
-#: templates/events/events_base.html:141
-msgid "Select a Location"
-msgstr "Seleccione un Sitio"
-
-#: templates/events/events_base.html:196
+#: templates/events/events_base.html:201
 msgid "Go"
 msgstr "Ir"
 
@@ -1208,39 +1219,39 @@ msgstr "Los campos marcados con"
 msgid "are required"
 msgstr "se requieren"
 
-#: templates/locations/index.html:52
+#: templates/locations/index.html:53
 msgid "Area, City"
 msgstr "Zona, Ciudad"
 
-#: templates/locations/index.html:62
-#: templates/locations/index.html.py:68
+#: templates/locations/index.html:63
+#: templates/locations/index.html.py:69
 msgid "Phone"
 msgstr "Teléfono"
 
-#: templates/locations/index.html:96
+#: templates/locations/index.html:97
 msgid "Restaurant"
 msgstr "Restaurante"
 
-#: templates/locations/index.html:156
+#: templates/locations/index.html:157
 msgid "Events for Location"
 msgstr "Eventos en el Sitio"
 
-#: templates/locations/index.html:170
+#: templates/locations/index.html:171
 #: templates/widgets/people_list.html:5
 #: templates/yourphotos/index.html:78
 #: yourphotos/views.py:23
 msgid "Latest Photos"
 msgstr "Últimas Fotos"
 
-#: templates/locations/index.html:197
+#: templates/locations/index.html:198
 msgid "Locations of the day"
 msgstr "Sitios destacados del día"
 
-#: templates/locations/index.html:227
+#: templates/locations/index.html:228
 msgid "Find locations"
 msgstr "Buscar sitios"
 
-#: templates/locations/index.html:232
+#: templates/locations/index.html:233
 msgid "List of all locations"
 msgstr "Listado de sitios"
 
@@ -1282,13 +1293,13 @@ msgstr "Ediciones Anteriores"
 msgid "Notebook"
 msgstr "Cuaderno"
 
-#: templates/main/blog_entry.html:21
+#: templates/main/blog_entry.html:22
 #: templates/main/event_entry.html:23
 #: templates/main/location_entry.html:20
 msgid "Comments"
 msgstr "Comentarios"
 
-#: templates/main/blog_entry.html:24
+#: templates/main/blog_entry.html:25
 #: templates/main/event_entry.html:26
 #: templates/main/location_entry.html:23
 #: templates/people/index.html:68
@@ -1300,10 +1311,6 @@ msgstr "Leer Más"
 #: templates/main/index.html:3
 msgid "Rumbabogota"
 msgstr "Rumbabogotá.com"
-
-#: templates/main/index.html:34
-msgid "- Read More"
-msgstr "- Leer Más"
 
 #: templates/main/index.html:44
 msgid "LATEST PHOTOS"
@@ -1323,15 +1330,15 @@ msgstr "Gente y Eventos"
 msgid "Your Photos"
 msgstr "Tus Fotos"
 
-#: templates/main/index.html:132
+#: templates/main/index.html:136
 msgid "Art and Culture"
 msgstr "Arte y Cultura"
 
-#: templates/main/index.html:180
+#: templates/main/index.html:186
 msgid "See + Videos"
 msgstr "Ver + Videos"
 
-#: templates/main/index.html:181
+#: templates/main/index.html:187
 msgid "Upload a Video"
 msgstr "Publica un Vídeo"
 
@@ -1390,7 +1397,7 @@ msgstr "Comparte"
 msgid "Latest photos"
 msgstr "Últimas fotos"
 
-#: templates/people/index.html:121
+#: templates/people/index.html:123
 msgid "View more"
 msgstr "Ver más"
 
@@ -1774,6 +1781,15 @@ msgstr "Tus Videos"
 #: yourvideos/views.py:59
 msgid "Add Video"
 msgstr "Publica un Video"
+
+#~ msgid "Select an Event"
+#~ msgstr "Seleccione un Evento"
+
+#~ msgid "Select a Location"
+#~ msgstr "Seleccione un Sitio"
+
+#~ msgid "- Read More"
+#~ msgstr "- Leer Más"
 
 #~ msgid "After"
 #~ msgstr "siguiente"
