@@ -16,7 +16,12 @@ from django.http import HttpResponseRedirect
 from django.forms import forms
 from main.modelFields import SlugifyUniquely
 from django.utils.dates import MONTHS as months
-from collections import OrderedDict
+
+#TODO remove backported version
+try:
+    from collections import OrderedDict
+except :
+    from events.ordereddict import OrderedDict
 
 
 calendar.setfirstweekday( 6 )
