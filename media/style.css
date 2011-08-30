@@ -1195,8 +1195,10 @@ a.carousel-next{
 	z-index: 10;
 }
 #main-contents #col-right #whats-today{
-  margin: 0!important;
-  height: 335px;
+  margin: 0 !important;
+    position: relative;
+    top: -27px;
+  height: 415px;
 }
 .ie #main-contents #col-right #whats-today{
   margin: 0 0 55px 0;
@@ -1242,7 +1244,7 @@ a.carousel-next{
 }
 
 #main-contents #col-right #whats-today .box-border .parts-wrapper .navigation{
-    position: absolute;height: 214px;top: 0px;right:0px;z-index: 10;
+    position: absolute;height: 320px;top: 0px;right:0px;z-index: 10;
 }
 
 

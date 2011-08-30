@@ -6,8 +6,8 @@
     <div class="box-border box-contents box-shadows">
         <div class="parts-wrapper">
             {% for day_name,day, dlength in days %}
-                <ul class="recent zebra-ul inner-cycle" style="height: 216px;overflow: hidden;{% if not forloop.first %}display:none;{% endif %}">
-                    {% for row in day|main_slider_split:5 %}
+                <ul class="recent zebra-ul inner-cycle" style="height: 322px;overflow: hidden;{% if not forloop.first %}display:none;{% endif %}">
+                    {% for row in day|main_slider_split:8 %}
                         <ul>
                             {% for event, dt in row%}
                                 <li>
@@ -30,7 +30,7 @@
 
                         </ul>
                     {% endfor %}
-                    {% if day|length > 5 %}
+                    {% if day|length > 8 %}
                         <div class="navigation flt-right pt5">
                             <a href="#" class="navi-prev"><span class="hidden">{%  trans "Previous"%}</span></a>
                             <a href="#" class="navi-next"><span class="hidden">{% trans "Next"%}</span></a>
