@@ -290,28 +290,7 @@ jQuery(document).ready(function(){
     },
 		delay: -2000
 	});
-	jQuery('#main-contents #col-left #outline-briefs #outline-slides').cycle({
-		fx: 'scrollHorz',
-		speed: 1000,
-		timeout: 0,
-		sync: 1,
-		activePagerClass: 'active', //-- class name used for the active pager link
-		easing: 'easeOutExpo',
-    pager: '#main-contents #col-left #outline-briefs ul#outline-titles',
-		cleartypeNoBg: true,
-		containerResize: 1,
-    pagerAnchorBuilder: function(idx, slide) {
-     //-- return selector string for existing anchor
-     return '#main-contents #col-left #outline-briefs ul#outline-titles li:eq(' + idx + ') a'; 
-    },
-		updateActivePagerLink: function(pager, currSlideIndex) {
-			$(pager).find('li').removeClass('active')
-				.filter('li:eq('+currSlideIndex+')').addClass('active');
-			$(pager).find('li').find('div.pointer-tip').hide();
-			$(pager).find('li:eq('+currSlideIndex+')').find('div.pointer-tip').show();
-		},
-		delay: -2000
-	});
+
   /* Events Tabs */
 //	jQuery('#main-contents .merged-contents ul.event-tab-contents').cycle({
 //		fx: 'fade',

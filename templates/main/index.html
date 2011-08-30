@@ -137,35 +137,35 @@
               <li><a href="#">{% trans "Art and Culture" %}</a><div class="pointer-tip"></div></li>
             </ul>
           </div>
-          <div id="outline-slides" class="outnone encap">
-          {% cache 60 main_content %}
-          	<div class="outline-slide" style="height: 880px">
-              {% for object in news %}
-                  {% include "main/blog_entry.html"%}
-              {% endfor %}
-            <p>&nbsp;</p>
-            </div><!--//.outline-slide-->
-          	<div class="outline-slide" style="height: 880px">
-              {% for object in locations %}
-                  {% include "main/location_entry.html"%}
-              {% endfor %}
-                <p>&nbsp;</p>
-            </div><!--//.outline-slide-->
-          	<div class="outline-slide" style="height: 880px">
-              {% for object in blog %}
-                  {% include "main/blog_entry.html"%}
-              {% endfor %}
-              <p>&nbsp;</p>
-            </div><!--//.outline-slide-->
+            <div id="outline-slides" class="outnone encap">
+                {% cache 60 main_content %}
+                    <div class="outline-slide" style="height: 880px>
+                        {% for object in news %}
+                            {% include "main/blog_entry.html"%}
+                        {% endfor %}
+                        <p>&nbsp;</p>
+                    </div><!--//.outline-slide-->
+                    <div class="outline-slide" style="height: 880px>
+                        {% for object in locations %}
+                            {% include "main/location_entry.html"%}
+                        {% endfor %}
+                        <p>&nbsp;</p>
+                    </div><!--//.outline-slide-->
+                    <div class="outline-slide" style="height: 880px>
+                        {% for object in blog %}
+                            {% include "main/blog_entry.html"%}
+                        {% endfor %}
+                        <p>&nbsp;</p>
+                    </div><!--//.outline-slide-->
 
-          	<div class="outline-slide" style="height: 880px">
-              {% for object in art_culture %}
-                  {% include "main/event_entry.html"%}
-              {% endfor %}
-              <p>&nbsp;</p>
-            </div><!--//.outline-slide-->
-          {% endcache %}
-          </div><!--//.outline-slides-->
+                    <div class="outline-slide" style="height: 880px>
+                        {% for object in art_culture %}
+                            {% include "main/event_entry.html"%}
+                        {% endfor %}
+                        <p>&nbsp;</p>
+                    </div><!--//.outline-slide-->
+                {% endcache %}
+            </div><!--//.outline-slides-->
           <div id="outlines-list" class="outlines-list outnone box-shadows">
           	<ul class="encap">
               <li><a href="/events">{% trans "Events" %}</a></li>
@@ -219,7 +219,34 @@
 
 <script>
 	$(document).ready(function () {
-		jQuery('#main-contents #col-left #front-videos #videos-content div.video-slides ul').cycle({
+
+        jQuery('#main-contents #col-left #outline-briefs #outline-slides').cycle({
+            fx: 'scrollHorz',
+            speed: 1000,
+            timeout: 0,
+            sync: 1,
+            activePagerClass: 'active', //-- class name used for the active pager link
+            easing: 'easeOutExpo',
+            pager: '#main-contents #col-left #outline-briefs ul#outline-titles',
+            cleartypeNoBg: true,
+            containerResize: 1,
+            fit: 1,
+            height: 'auto',
+            pagerAnchorBuilder: function(idx, slide) {
+                //-- return selector string for existing anchor
+                return '#main-contents #col-left #outline-briefs ul#outline-titles li:eq(' + idx + ') a';
+            },
+            updateActivePagerLink: function(pager, currSlideIndex) {
+                $(pager).find('li').removeClass('active')
+                        .filter('li:eq('+currSlideIndex+')').addClass('active');
+                $(pager).find('li').find('div.pointer-tip').hide();
+                $(pager).find('li:eq('+currSlideIndex+')').find('div.pointer-tip').show();
+            },
+            delay: -2000
+        });
+
+
+        jQuery('#main-contents #col-left #front-videos #videos-content div.video-slides ul').cycle({
             fx: 'scrollVert',
             speed: 1000,
             timeout: 0,
