@@ -2091,14 +2091,14 @@ div.breadcrumb a.active {
   color: #000000;
   font-size: 12px;
   text-align: center;
-  padding: 10px 0 0;
+  padding: 0 0 20px;
   margin: 0;
 }
 #main-contents #col-left .image-navigations{
   position: absolute;
   z-index: 99999;
   width: 640px;
-  margin: 245px 0 0 -20px;
+  margin: 25px 0 0 -20px;
 }
 #main-contents #col-left a.gente-prev, #main-contents #col-left a.gente-next{
   display: block;

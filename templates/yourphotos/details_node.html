@@ -17,13 +17,10 @@
 	  <a href="/yourphotos/{{photo.get_prev.id}}?resetCache" class="gente-prev" title="Previous image"><span class="hidden">Previous</span></a>
 	  <a href="/yourphotos/{{photo.get_next.id}}?resetCache" class="gente-next" title="Next image"><span class="hidden">Next</span></a>
 	</div>
-	<div class="images-preview outnone" style="height:600px">
+	<div class="images-preview outnone" style="min-height:150px">
 	  <ul class="image-teaser-slides encap">
 	    <li>
-			<div class="wraptocenter">
-				<span></span>
-				<img src="{{photo.bigimg.url}}"/>
-			</div>
+            <img src="{{photo.bigimg.url}}"/>
 		</li>
 	  </ul><!--//.image-teaser-slides-->
 	</div><!--//.images-preview-->

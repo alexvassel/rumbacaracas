@@ -26,22 +26,19 @@
 	    
 	  </div><!--//.c20l-->
 	</div><!--//.wrapper-->
-	<h6>{{photo.description}}</h6>
+
 	<div class="image-navigations encap outnone">
 	  <a href="/people/slider/{{photo.get_prev.id}}?resetCache" class="gente-prev" title="{% trans "Previous image"%}"><span class="hidden">{% trans "Previous"%}</span></a>
 	  <a href="/people/slider/{{photo.get_next.id}}?resetCache" class="gente-next" title="{% trans "Next image"%}"><span class="hidden">{% trans "Next"%}</span></a>
 	</div>
-	<div class="images-preview outnone" style="height:600px">
+	<div class="images-preview outnone" style="min-height:150px">
 	  <ul class="image-teaser-slides encap">
 	    <li>
-			<div class="wraptocenter">
-				<span></span>
-				<img src="{{photo.bigimg.url}}"/>
-			</div>
+            <img src="{{photo.bigimg.url}}"/>
 		</li>
 	  </ul><!--//.image-teaser-slides-->
 	</div><!--//.images-preview-->
-
+    <h6>{{photo.description}}</h6>
 	<div class="photos-share-options">
 		<ul class="teaser-options encap outnone fcml0 lcmr0">
 			<li class="pl0">
