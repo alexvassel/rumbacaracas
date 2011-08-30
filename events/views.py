@@ -16,6 +16,8 @@ from django.http import HttpResponseRedirect
 from django.forms import forms
 from main.modelFields import SlugifyUniquely
 from django.utils.dates import MONTHS as months
+from collections import OrderedDict
+
 
 calendar.setfirstweekday( 6 )
 #MO, TU, WE, TH, FR, SA, SU
@@ -27,12 +29,15 @@ def f7( seq ):
 
 
 
-def _process( request, group_lambda, period , year = False, month = False, day = False ):
+def _process( request, group_lambda, period , year = False, month = False, day = False, sort_category = False ):
 
     from_date, to_date, repr, prev_date, next_date = _process_period( period, year, month, day )
 
     events = Event.objects.get_occuriences( start_date = from_date, end_date = to_date )
 
+    if not sort_category:
+        sort_category = group_lambda
+        
     tmp_events = list()
     tmp_dates = dict()
     tmp_closest_dates = dict()
@@ -60,9 +65,9 @@ def _process( request, group_lambda, period , year = False, month = False, day =
         list.sort( key = lambda a:a.position, reverse = False )
         return list
 
-    sorted_events = sorted( tmp_events , key = group_lambda )
+    sorted_events = sorted( tmp_events , key = sort_category )
 
-    by_group = dict( [
+    by_group = OrderedDict( [
         ( group, sortList( list( items ) ) ) for group, items in itertools.groupby( sorted_events, group_lambda )
     ] )
 
@@ -190,7 +195,7 @@ def _process_period( period, year, month, day ):
 def category( request , period = 'day', date_parameter = 0 , year = False, month = False, day = False, fake_tomorrow = False ):
     request.breadcrumbs( _( 'Events' ) , '/events' )
     request.breadcrumbs( _( 'By Category' ) , request.path_info )
-    dict = _process( request, lambda o: o.category.title if o.category else None , period, year, month, day )
+    dict = _process( request, lambda o: o.category.title if o.category else None , period, year, month, day, sort_category = lambda o: o.category.position )
     dict['active_tab'] = 'category'
     if fake_tomorrow:
         dict['period'] = 'tomorrow'

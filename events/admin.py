@@ -50,7 +50,12 @@ class EventAdmin( SortableAdmin ):
         'add_user',
     )
 
+class EventCategoryAdmin( SortableAdmin ):
+    #list_editable = SortableAdmin.list_editable + ( 'status', 'show_in_events_slider', 'show_in_main_slider', )
+    list_display = SortableAdmin.list_display + ( 'title', )
+    list_display_links = ( 'title', )
+
 admin.site.register( Event, EventAdmin )
 admin.site.register( WeekDay )
-admin.site.register( EventCategory )
+admin.site.register( EventCategory, EventCategoryAdmin )
 

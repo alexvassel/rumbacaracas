@@ -8,6 +8,9 @@ import itertools
 from dateutil import rrule
 from django.contrib.auth.models import User
 from django.template.defaultfilters import date
+from sortable.models import Sortable
+#https://github.com/ff0000/django-sortablereadme
+
 
 EVENT_STATUSES = ( 
     ( '1', _( 'Published' ) ),
@@ -16,11 +19,12 @@ EVENT_STATUSES = (
 
 
 
-class EventCategory( models.Model ):
+class EventCategory( Sortable ):
     title = models.CharField( _( 'Event Category Title' ), max_length = 256 )
     def __unicode__( self ):
         return self.title
-    class Meta:
+    
+    class Meta( Sortable.Meta ):
         verbose_name = _( 'Event type' )
         verbose_name_plural = _( 'Event types' )
 
@@ -100,8 +104,6 @@ class OccurrenceManager( models.Manager ):
         return calendars
 
 
-from sortable.models import Sortable
-#https://github.com/ff0000/django-sortablereadme
 
 class Event( ImageModel, Sortable ):
     title = models.CharField( _( 'Event Name or Title' ), max_length = 256 )
