@@ -139,26 +139,26 @@
           </div>
             <div id="outline-slides" class="outnone encap">
                 {% cache 60 main_content %}
-                    <div class="outline-slide" style="height: 880px>
+                    <div class="outline-slide" style="min-height: 880px">
                         {% for object in news %}
                             {% include "main/blog_entry.html"%}
                         {% endfor %}
                         <p>&nbsp;</p>
                     </div><!--//.outline-slide-->
-                    <div class="outline-slide" style="height: 880px>
+                    <div class="outline-slide" style="min-height: 880px">
                         {% for object in locations %}
                             {% include "main/location_entry.html"%}
                         {% endfor %}
                         <p>&nbsp;</p>
                     </div><!--//.outline-slide-->
-                    <div class="outline-slide" style="height: 880px>
+                    <div class="outline-slide" style="min-height: 880px">
                         {% for object in blog %}
                             {% include "main/blog_entry.html"%}
                         {% endfor %}
                         <p>&nbsp;</p>
                     </div><!--//.outline-slide-->
 
-                    <div class="outline-slide" style="height: 880px>
+                    <div class="outline-slide" style="min-height: 880px">
                         {% for object in art_culture %}
                             {% include "main/event_entry.html"%}
                         {% endfor %}

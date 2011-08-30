@@ -21,7 +21,7 @@
           {% endfor %} /
           <a href="{{ object.get_absolute_url }}#disqus_thread" class="force-red">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
       </p>
-      <p>{{ object.short }}</p>
+      <p>{{ object.short|truncate:150 }}</p>
       <a class="read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
     </dd>
 </dl>
