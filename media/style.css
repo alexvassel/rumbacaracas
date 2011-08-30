@@ -2824,15 +2824,22 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 	padding: 15px 0 20px;
 	margin: 0 0 10px;
 }
+#main-contents #col-left .video-share-options {
+	margin: 20px 0 20px 0;
+    padding: 7px 0 7px;
+	border-top: 1px dotted #000000;
+	border-bottom: 1px dotted #000000;
+}
+
 #main-contents #col-left .photos-share-options{
-	padding: 20px 0 10px;
+	padding: 7px 0 7px;
 	margin: 0 0 20px 0;
+    border-top: 1px dotted #000000;
 	border-bottom: 1px dotted #000000;
 }
 #main-contents #col-left .video-archives{
-	padding: 20px 0 0;
-	margin: 20px 0 0 0;
-	border-top: 1px dotted #000000;
+	padding: 0;
+	margin: 0;
 }
 #main-contents #col-left .photo-archives{
 	padding: 20px 0 0;
