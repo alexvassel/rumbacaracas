@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-30 06:35-0500\n"
-"PO-Revision-Date: 2011-08-30 15:35+0300\n"
+"PO-Revision-Date: 2011-08-30 15:58+0300\n"
 "Last-Translator: Nagaev Maksim <nagaev.maksim@gmail.com>\n"
 "Language-Team: td <td>\n"
 "Language: \n"
@@ -863,7 +863,7 @@ msgstr "Entrevistas"
 #: templates/base.html:230
 #: templates/base.html.py:301
 msgid "DJ Mix"
-msgstr "Dj Mix"
+msgstr "DJ Mix"
 
 #: templates/base.html:288
 #: templates/people/index.html:13
