@@ -192,16 +192,7 @@ jQuery(document).ready(function(){
     jQuery(this).find('div.pointer-tip').css("margin-left", (ml-8) + "px");
   });
   jQuery("a[rel=external]").each(function(){jQuery(this).attr('target', '_blank');});
-	jQuery('div#front-slides div#slides').cycle({
-			fx: 'scrollHorz',
-			speed: 1500,
-			timeout: 0,
-			sync: 1,
-			containerResize: 1,
-			pager: '#nav',
-			easing: 'easeOutQuint',
-			delay: -2000
-	});
+	
     /*
 	jQuery('ul.photo-teaser-cycle').cycle({
 		fx: 'scrollHorz',

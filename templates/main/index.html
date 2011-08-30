@@ -22,17 +22,16 @@
 
         	<div id="slides" class="slides">
             {% for slide, type in slides%}
-	            <div class="slide" {% if not forloop.first %}style="display:none;width: 619px;height: 258px; overflow: hidden"{% endif %}>
-	            	<img src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.slide.url}}{% endif %}" alt="{{slide.title}}" />
+	            <div class="slide" {% if not forloop.first %}style="display:none;width: 619px;height: 338px; overflow: hidden"{% else %}style="height: 338px;"{% endif %}>
+	            	<img  width="619" height="258" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.slide.url}}{% endif %}" alt="{{slide.title}}" />
 	              <div class="slide-info-wrapper">
 	                <div class="slide-info">
-	                  <h3><a href="{{slide.get_absolute_url}}">{{slide.title|truncate:60}}</a></h3>
+	                  <h3><a href="{{slide.get_absolute_url}}">{{slide.title|truncate:55}}</a></h3>
 	                  {%if type == 'event'%}
-	                  	<p>{{slide.description|truncate:140}}</p>
+	                  	<p>{{slide.description|truncate:200}}</p>
 	                  {% else %}
-	                  	<p>{{slide.short|truncate:140}}</p>
+	                  	<p>{{slide.short|truncate:200}}</p>
 	                  {% endif %}
-	                  <a href="{{slide.get_absolute_url}}" class="read-more">{%trans "- Read More"%}</a>
 	                </div><!--//.slide-info-->
 	              </div><!--//.slide-info-wrapper-->
 	            </div><!--//.slide-->
@@ -219,6 +218,17 @@
 
 <script>
 	$(document).ready(function () {
+
+        jQuery('div#front-slides div#slides').cycle({
+			fx: 'scrollHorz',
+			speed: 1500,
+			timeout: 0,
+			sync: 1,
+			containerResize: 1,
+			pager: '#nav',
+			easing: 'easeOutQuint',
+			delay: -2000
+	    });
 
         jQuery('#main-contents #col-left #outline-briefs #outline-slides').cycle({
             fx: 'scrollHorz',
