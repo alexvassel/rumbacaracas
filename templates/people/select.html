@@ -19,7 +19,7 @@ body
 <div style="width:500px;margin:auto">
 <h2>{% trans "Select what folder to import for:"%} {{event.title}}<br /></h2>
 {%for dir in dirs%}
-	<a href="/people/import_finish/{{event.id}}/{{dir}}">{{dir}}</a><br />
+	<a href="{% url people_admin_finish event.id dir %}">{{dir}}</a><br />
 {% endfor%}
 <br />
 <br />

@@ -5,7 +5,23 @@
     <div class="photo-teaser c45r">
       <h4>{{photo.datetime_added|date:"d.m.y"}}</h4>
         {% if photo.category %}
-        <h3><a href="/yourphotos/{{ photo.category }}">{{ photo.get_category_display }}</a></h3>
+            <h3><a href="
+            {% if photo.category == 'sexy'%}
+                {% url yourphoto_category_sexy %}
+            {% else %}
+                {% if photo.category == 'rumbas'%}
+                    {% url yourphoto_category_rumbas %}
+                {% else %}
+                    {% if photo.category == 'amigos'%}
+                        {% url yourphoto_category_amigos %}
+                    {% else %}
+                        {% if photo.category == 'humor'%}
+                            {% url yourphoto_category_humor %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        ">{{ photo.get_category_display }}</a></h3>
         {% endif %}
       <p>{{ photo.description|truncate:130 }}</p>
 

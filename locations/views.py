@@ -12,6 +12,7 @@ from django.forms import forms
 from people.models import PhotoEvent
 from datetime import datetime, timedelta, time
 from main.modelFields import SlugifyUniquely
+from django.core.urlresolvers import reverse
 
 def _process( request, group ):
     try:
@@ -53,7 +54,7 @@ def _process( request, group ):
 
 @render_to( 'locations/index.html' )
 def category( request ):
-    request.breadcrumbs( _( 'Locations' ) , '/locations' )
+    request.breadcrumbs( _( 'Locations' ) , reverse('location_main') )
     request.breadcrumbs( _( 'By Category' ) , request.path_info )
     dict = _process( request, LocationType )
     dict['active_tab'] = 'category'
@@ -67,7 +68,7 @@ def category_details ( request, group ):
 
     group_name = LocationType.objects.get(slug=group)
     
-    request.breadcrumbs( _( 'Locations' ) , '/locations' )
+    request.breadcrumbs( _( 'Locations' ) , reverse('location_main') )
     request.breadcrumbs( group_name , request.path_info )
 
     try:
@@ -90,7 +91,7 @@ def category_details ( request, group ):
 
 @render_to( 'locations/index.html' )
 def area( request ):
-    request.breadcrumbs( _( 'Locations' ) , '/locations' )
+    request.breadcrumbs( _( 'Locations' ) , reverse('location_main') )
     request.breadcrumbs( _( 'By Area' ) , request.path_info )
     dict = _process( request, LocationArea )
     dict['active_tab'] = 'area'
@@ -99,7 +100,7 @@ def area( request ):
 
 @render_to( 'locations/index.html' )
 def music( request ):
-    request.breadcrumbs( _( 'Locations' ) , '/locations' )
+    request.breadcrumbs( _( 'Locations' ) , reverse('location_main') )
     request.breadcrumbs( _( 'By Music' ) , request.path_info )
     dict = _process( request, LocationMusic )
     dict['active_tab'] = 'music'
@@ -107,7 +108,7 @@ def music( request ):
 
 @render_to( 'locations/index.html' )
 def food( request ):
-    request.breadcrumbs( _( 'Locations' ) , '/locations' )
+    request.breadcrumbs( _( 'Locations' ) , reverse('location_main') )
     request.breadcrumbs( _( 'By Type of Food' ) , request.path_info )
     dict = _process( request, RestaurantType )
     dict['active_tab'] = 'food'
@@ -125,7 +126,7 @@ def detail ( request, slug ):
     #location_events = [((event.from_date >= today), event) for event in location_events_raw ]
     location_photos = PhotoEvent.objects.filter(status=1, location=location).order_by('-date')[:5]
 
-    request.breadcrumbs( _( 'Locations' ) , '/locations' )
+    request.breadcrumbs( _( 'Locations' ) , reverse('location_main') )
     request.breadcrumbs( location.title , request.path_info )
     dict = _process( request, LocationType )
     dict['location'] = location
@@ -140,7 +141,7 @@ from django.contrib.auth.decorators import login_required
 @login_required( login_url = '/login/' )
 @render_to( 'locations/add.html' )
 def add( request ):
-    request.breadcrumbs( _( 'Locations' ) , '/locations' )
+    request.breadcrumbs( _( 'Locations' ) , reverse('location_main') )
     request.breadcrumbs( _( 'Add Location' ) , request.path_info )
 
     class LocationForm( ModelForm ):
@@ -249,7 +250,7 @@ def add( request ):
             location.add_user = request.user
             location.save()
             form.save_m2m()
-            return HttpResponseRedirect( '/locations/' ) # Redirect after POST
+            return HttpResponseRedirect( reverse('location_main') ) # Redirect after POST
         return {
                 "form": form,
                 "errors": True

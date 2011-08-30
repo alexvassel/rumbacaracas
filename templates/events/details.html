@@ -65,7 +65,7 @@
       <tr>
         <td><strong>{% trans "Location"%}:</strong></td>
 	    {% if event.location %}
-		    <td><a href="/locations/{{event.location.slug}}">{{event.location.title}}</a></td>
+		    <td><a href="{% url location_details event.location.slug %}">{{event.location.title}}</a></td>
 	    {%else%}
 		    <td>
                 {% if event.place %}
@@ -254,7 +254,7 @@
         $("#locations-list").change(function () {
 			var slug = $("#locations-list").val();
 			if (slug != '') {
-				window.location.href = '/locations/'+ slug;	
+				window.location.href = '{% url location_main %}' + slug;
 			}
         })
         jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion').accordion({

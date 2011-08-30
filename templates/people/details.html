@@ -84,7 +84,7 @@
 		{% endif %}
 		<div class="list-part {% if forloop.counter0|divisibleby:3 %}first{% else %}{% if forloop.counter|divisibleby:3 %}last{% endif %}{% endif %}">
 
-        <a href="/people/slider/{{photo.id}}"><img width="185" src="{{photo.thumb.url}}" alt="{{photo.description}}" /></a>
+        <a href="{% url  people_slider photo.id %}"><img width="185" src="{{photo.thumb.url}}" alt="{{photo.description}}" /></a>
         <div class="teaser">
           {{photo.description}}
           <ul class="teaser-options encap outnone ptb5 fcml0 lcmr0">

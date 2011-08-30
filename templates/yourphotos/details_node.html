@@ -14,8 +14,8 @@
 	</div><!--//.wrapper-->
 	
 	<div class="image-navigations encap outnone">
-	  <a href="/yourphotos/{{photo.get_prev.id}}?resetCache" class="gente-prev" title="Previous image"><span class="hidden">Previous</span></a>
-	  <a href="/yourphotos/{{photo.get_next.id}}?resetCache" class="gente-next" title="Next image"><span class="hidden">Next</span></a>
+	  <a href="{% url yourphoto_details photo.get_prev.id %}?resetCache" class="gente-prev" title="Previous image"><span class="hidden">Previous</span></a>
+	  <a href="{% url yourphoto_details photo.get_next.id %}?resetCache" class="gente-next" title="Next image"><span class="hidden">Next</span></a>
 	</div>
 	<div class="images-preview outnone" style="min-height:150px">
 	  <ul class="image-teaser-slides encap">

@@ -4,7 +4,7 @@
 {% block breadcrumbs %}
     <a href="/">{% trans "Home" %}</a>
     <span>&nbsp;→&nbsp;</span>
-    <a href="/about/products">{% trans "Products" %}</a>
+    <a href="{% url about_products %}">{% trans "Products" %}</a>
     <span>&nbsp;→&nbsp;</span>
     <a class="active" href="/products/events">{% trans "Events" %}</a>
 {% endblock %}
@@ -50,8 +50,8 @@
 
                                 <h3 class="red-ul">Eventos Realizados</h3>
                                 <p class="red-ul"><b class="px13">2011</b></p>
-                                <div class="mrgn8x0"><a href="/people/concierto-de-los-amigos-invisibles-en-teatro-metro"><img src="/media/images/eventos/lai-20anos.jpg" alt="Rumba" /></a></div>
-                                <a href="/people/concierto-de-los-amigos-invisibles-en-teatro-metro" class="redBold">CONCIERTO LOS AMIGOS INVISIBLES EN TEATRO METRO</a>
+                                <div class="mrgn8x0"><a href="{% url people_details "concierto-de-los-amigos-invisibles-en-teatro-metro" %}"><img src="/media/images/eventos/lai-20anos.jpg" alt="Rumba" /></a></div>
+                                <a href="{% url people_details "concierto-de-los-amigos-invisibles-en-teatro-metro" %}" class="redBold">CONCIERTO LOS AMIGOS INVISIBLES EN TEATRO METRO</a>
                                 <ul class="lh20">
                                     <li><b>Fecha:</b> 5 de Agosto, 2011</li>
                                     <li><b>Lugar:</b> Teatro Metro</li>
@@ -59,12 +59,12 @@
                                     <li><b>Servicios:</b> Booking, producción artística, patrocinios, convocatoria</li>
                                     <li><b>Cliente:</b> Hotel Marriott, Red Label, Miller, Lancaster House, Ultravans, Tequesitos.</li>
                                 </ul>
-                                <a href="/people/concierto-de-los-amigos-invisibles-en-teatro-metro" class="red">Pisa aquí para ver las fotos</a><br />
+                                <a href="{% url people_details "concierto-de-los-amigos-invisibles-en-teatro-metro" %}" class="red">Pisa aquí para ver las fotos</a><br />
                                 <h3 class="red-ul">&nbsp;</h3>
                                 <p class="red-ul"><b class="px13">2010</b><br />
                                 </p>
-                                <div class="mrgn8x0"><a href="/people/una-noche-con-absolut-vodka"><img src="/media/images/eventos/cata-vodka.jpg" alt="Rumba" /></a></div>
-                                <a href="/people/una-noche-con-absolut-vodka" class="redBold">CATA ABSOLUT</a>
+                                <div class="mrgn8x0"><a href="{% url people_details "una-noche-con-absolut-vodka" %}"><img src="/media/images/eventos/cata-vodka.jpg" alt="Rumba" /></a></div>
+                                <a href="{% url people_details "una-noche-con-absolut-vodka" %}" class="redBold">CATA ABSOLUT</a>
                                 <ul class="lh20">
                                     <li><b>Fecha:</b>13, 14, 20 de octubre y 3 de noviembre de 2010</li>
                                     <li><b>Lugar:</b>  Hotel Grand House, Salón Macana</li>
@@ -72,22 +72,22 @@
                                     <li><b>Servicios:</b> Ejecución Completa</li>
                                     <li><b>Cliente:</b> Absolut Vodka</li>
                                 </ul>
-                                <a href="/people/una-noche-con-absolut-vodka" class="red">Pisa aquí para ver las fotos</a><br />
+                                <a href="{% url people_details "una-noche-con-absolut-vodka" %}" class="red">Pisa aquí para ver las fotos</a><br />
                                 <br />
-                                <div class="mrgn8x0"><a href="/people/caravana-heineken"><img src="/media/images/eventos/caravana-heineken.jpg" alt="Rumba" /></a></div>
-                                <a href="/people/caravana-heineken" class="redBold">CARAVANA HEINEKEN</a>
+                                <div class="mrgn8x0"><a href="{% url people_details "caravana-heineken" %}"><img src="/media/images/eventos/caravana-heineken.jpg" alt="Rumba" /></a></div>
+                                <a href="{% url people_details "caravana-heineken" %}" class="redBold">CARAVANA HEINEKEN</a>
                                 <ul class="lh20">
                                     <li><b>Fecha:</b> 24 y 30 de abril de 2010</li>
                                     <li><b>Lugar:</b> Zona T, Bogotá</li>
                                     <li><b>Servicios:</b> Registro en video y fotográfico</li>
                                     <li><b>Cliente:</b> Heineken</li>
                                 </ul>
-                                <a href="/people/caravana-heineken" class="red">Pisa aquí para ver las fotos</a><br />
+                                <a href="{% url people_details "caravana-heineken" %}" class="red">Pisa aquí para ver las fotos</a><br />
                                 <h3 class="red-ul">&nbsp;</h3>
                                 <p class="red-ul"><b class="px13">2009</b><br />
                                 </p>
-                                <div class="mrgn8x0"><div class="mrgn8x0"><a href="/people/concierto-de-los-amigos-invisibles-en-teatro-metro"><img src="/media/images/eventos/lai.jpg" alt="Rumba" /></a></div>
-                                    <a href="/people/concierto-de-los-amigos-invisibles-en-teatro-metro" class="redBold">CONCIERTO LOS AMIGOS INVISIBLES</a>
+                                <div class="mrgn8x0"><div class="mrgn8x0"><a href="{% url people_details "concierto-de-los-amigos-invisibles-en-teatro-metro" %}"><img src="/media/images/eventos/lai.jpg" alt="Rumba" /></a></div>
+                                    <a href="{% url people_details "concierto-de-los-amigos-invisibles-en-teatro-metro" %}" class="redBold">CONCIERTO LOS AMIGOS INVISIBLES</a>
                                     <ul class="lh20">
                                         <li><b>Fecha:</b> 19 de Noviembre, 2009</li>
                                         <li><b>Lugar:</b> Teatro Metro</li>
@@ -95,11 +95,11 @@
                                         <li><b>Servicios: </b>Booking, producción artistas, patrocinio, convocatoria.</li>
                                         <li><b>Cliente: </b>Radionica, Lancaster House, Ultravans, Aguardiente 180°, Something   Special.</li>
                                     </ul>
-                                    <a href="/people/concierto-de-los-amigos-invisibles-en-teatro-metro" class="red">Pisa aquí para ver las fotos</a><br />
+                                    <a href="{% url people_details "concierto-de-los-amigos-invisibles-en-teatro-metro" %}" class="red">Pisa aquí para ver las fotos</a><br />
                                     <p>&nbsp;</p>
-                                    <p><a href="/people/noche-skyytini-en-buenvivir"><img src="/media/images/eventos/sky-vodka.jpg" alt="Rumba" /></a></p>
+                                    <p><a href="{% url people_details "noche-skyytini-en-buenvivir" %}"><img src="/media/images/eventos/sky-vodka.jpg" alt="Rumba" /></a></p>
                                 </div>
-                                <a href="/people/noche-skyytini-en-buenvivir" class="redBold">CATA SKY VODKA</a>
+                                <a href="{% url people_details "noche-skyytini-en-buenvivir" %}" class="redBold">CATA SKY VODKA</a>
                                 <ul class="lh20">
                                     <li><b>Fecha:</b> 15 de diciembre, 2009</li>
                                     <li><b>Locación:</b> Bogotá</li>
@@ -107,10 +107,10 @@
                                     <li><b>Servicios:</b> Ejecución Completa</li>
                                     <li><b>Cliente:</b> Sky Vodka </li>
                                 </ul>
-                                <a href="/people/noche-skyytini-en-buenvivir" class="red">Pisa aquí para ver las fotos</a><br />
+                                <a href="{% url people_details "noche-skyytini-en-buenvivir" %}" class="red">Pisa aquí para ver las fotos</a><br />
                                 <br />
-                                <div class="mrgn8x0"><a href="/people/lanzamiento-de-rumbabogotacom"><img src="/media/images/eventos/lanzamiento-rb.jpg" alt="Rumba" /></a></div>
-                                <a href="/people/lanzamiento-de-rumbabogotacom" class="redBold">LANZAMIENTO RUMBABOGOTÁ.COM</a>
+                                <div class="mrgn8x0"><a href="{% url people_details "lanzamiento-de-rumbabogotacom" %}"><img src="/media/images/eventos/lanzamiento-rb.jpg" alt="Rumba" /></a></div>
+                                <a href="{% url people_details "lanzamiento-de-rumbabogotacom" %}" class="redBold">LANZAMIENTO RUMBABOGOTÁ.COM</a>
                                 <ul class="lh20">
                                     <li><b>Fecha:</b> 2 de Septiembre, 2009</li>
                                     <li><b>Locación:</b> Penthouse</li>
@@ -118,7 +118,7 @@
                                     <li><b>Servicios:</b> Ejecución Completa</li>
                                     <li><b>Cliente:</b> Pernod Ricard</li>
                                 </ul>
-                                <a href="/people/lanzamiento-de-rumbabogotacom" class="red">Pisa aquí para ver las fotos</a><br />
+                                <a href="{% url people_details "lanzamiento-de-rumbabogotacom" %}" class="red">Pisa aquí para ver las fotos</a><br />
                                 <br />
                                 <br />
                                 <br />

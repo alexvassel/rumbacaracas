@@ -19,7 +19,7 @@
 		                    		<a href="/events/{{event.slug}}"><span class="event-name">{{event.title}}</span></a> | 
                                     <span class="event-venue">
 		                    			{% if event.location%}
-		                    				<a href="/locations/{{event.location.slug}}"><span>{{event.location}}</span></a>
+		                    				<a href="{% url location_details event.location.slug %}"><span>{{event.location}}</span></a>
 		                    			{% else %}
 		                    				{% if event.place %}
                                                 {{event.place}}

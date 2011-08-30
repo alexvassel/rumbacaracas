@@ -72,7 +72,7 @@
                                         <li>
                                     {% endif %}
                                     <h6>
-                                        <a href="/people/main_slide/{{ event.id }}"><img src="{{ event.mainminithumb.url }}" alt="{{event.title}}" />{{event.title|truncate:15}}<br />{{event.date|date:"d.m.y"}}</a>
+                                        <a href="{% url people_main_slide event.id %}"><img src="{{ event.mainminithumb.url }}" alt="{{event.title}}" />{{event.title|truncate:15}}<br />{{event.date|date:"d.m.y"}}</a>
                                     </h6>
                                 </li>
                             {% endfor %}
@@ -108,7 +108,7 @@
                                         <li>
                                     {% endif %}
                                     <h6>
-                                        <a href="/yourphotos/main_slide/{{ photo.id }}"><img src="{{ photo.mainminithumb.url }}" alt="{{photo.description}}" />{{photo.description|truncate:15}}<br />{{photo.datetime_added|date:"d.m.y"}}</a>
+                                        <a href="{% url yourphoto_main_slide photo.id %}"><img src="{{ photo.mainminithumb.url }}" alt="{{photo.description}}" />{{photo.description|truncate:15}}<br />{{photo.datetime_added|date:"d.m.y"}}</a>
                                     </h6>
                                 </li>
                             {% endfor %}
@@ -131,8 +131,8 @@
         	<div class="outline-navigation">
             <ul id="outline-titles" class="encap outnone box-shadows equal-width">
               <li><a href="#">{% trans "News" %}</a><div class="pointer-tip"></div></li>
-              <li><a href="/locations">{% trans "Locations" %}</a><div class="pointer-tip"></div></li>
-              <li><a href="/news/categories/blog">{% trans "Blog"%}</a><div class="pointer-tip"></div></li>
+              <li><a href="{% url location_main %}">{% trans "Locations" %}</a><div class="pointer-tip"></div></li>
+              <li><a href="{% url zinnia_category_detail "blog" %}">{% trans "Blog"%}</a><div class="pointer-tip"></div></li>
               <li><a href="#">{% trans "Art and Culture" %}</a><div class="pointer-tip"></div></li>
             </ul>
           </div>
@@ -168,13 +168,12 @@
           <div id="outlines-list" class="outlines-list outnone box-shadows">
           	<ul class="encap">
               <li><a href="/events">{% trans "Events" %}</a></li>
-              <li><a href="/locations">{% trans "Locations"%}</a></li>
-              <li><a href="/news/categories/rumba-news/">{% trans "Rumba News"%}</a></li>
-              <li><a href="/news/categories/music-news/">{% trans "Music News" %}</a></li>
-          	  <li><a href="/news/categories/news">{% trans "Actual" %}</a></li>
-          	  <li><a href="/news/categories/interviews/">{% trans "Interviews" %}</a></li>
-          	  <li><a href="#">Medios</a></li>
-          	  <li><a href="/news/categories/blog">{% trans "Blog" %}</a></li>
+              <li><a href="{% url location_main %}">{% trans "Locations"%}</a></li>
+              <li><a href="{% url zinnia_category_detail "rumba-news" %}">{% trans "Rumba News"%}</a></li>
+              <li><a href="{% url zinnia_category_detail "music-news" %}">{% trans "Music News" %}</a></li>
+          	  <li><a href="{% url zinnia_category_detail "news" %}">{% trans "Actual" %}</a></li>
+          	  <li><a href="{% url zinnia_category_detail "interviews" %}">{% trans "Interviews" %}</a></li>
+          	  <li><a href="{% url zinnia_category_detail "blog" %}">{% trans "Blog" %}</a></li>
           	</ul>
           </div><!--//.outlines-list-->
         </div><!--//.outline-briefs-->
@@ -183,8 +182,8 @@
             <div class="title flt-left"><h2>{% trans "Videos" %}</h2></div>
             <div class="tab-titles flt-right fcml0 lcmr0">
               <ul id="tab-videos-outline" class="outnone tab-navigation">
-                <li><a class="active" href="/videos">{%  trans "See + Videos"%}</a></li>
-                <li><a class="decou sube-un-video" href="/videos/add">{%  trans "Upload a Video"%}</a></li>
+                <li><a class="active" href="{% url video_main %}">{%  trans "See + Videos"%}</a></li>
+                <li><a class="decou sube-un-video" href="{% url video_add %}">{%  trans "Upload a Video"%}</a></li>
               </ul>
             </div><!--//.tab-titles-->
           </div><!--//.wrapper-->

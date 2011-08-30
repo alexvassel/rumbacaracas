@@ -29,18 +29,18 @@
     <span class="flt-left"><h2 class="title">{% trans "Your Photos"%}</h2></span>
     <span class="flt-right">
       <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
-        <li><a class="socializer-9 upload-photo" href="/yourphotos/add"><span>{%trans "Upload a Photo"%}</span></a></li>
+        <li><a class="socializer-9 upload-photo" href="{% url yourphoto_add %}"><span>{%trans "Upload a Photo"%}</span></a></li>
       </ul>
     </span>
   </div><!--//.title-wrap-->
 	<div class="node">
 		<div class="wrapper encap">
-			<h2 class="title"><a href="/yourphotos/{{latest.id}}">{{latest.description}}</a></h2>
+			<h2 class="title"><a href="{% url yourphoto_details latest.id %}">{{latest.description}}</a></h2>
 			<span class="submitted">{{latest.datetime_added|date:"d.m.Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{latest.user|user_link}}</span></span>
 		</div><!--//.wrapper-->
 		<div class="content" style="min-height: 375px;">
 			<div class="std-thumbnail outnone">
-                <a href="/yourphotos/{{latest.id}}">
+                <a href="{% url yourphoto_details latest.id %}">
                 <div class="wraptocenter">
                     <span></span>
                     <img src="{{latest.bigimg.url}}">
@@ -74,27 +74,27 @@
 			<div class="tab-titles encap" id="photo-anchor">
 		      <ul class="outnone encap">
 		        <li class="box-shadows">
-		        	<a href="/yourphotos/latest#photo-anchor" {% if active_tab == "latest" %} class="active"{% endif %}>
+		        	<a href="{% url yourphoto_category_latest %}#photo-anchor" {% if active_tab == "latest" %} class="active"{% endif %}>
 		        		{% trans "Latest Photos"%}
 		    		</a>
 		        </li>
 		        <li class="box-shadows">
-		        	<a href="/yourphotos/sexy#photo-anchor" {% if active_tab == "sexy" %} class="active"{% endif %}>
+		        	<a href="{% url yourphoto_category_sexy %}#photo-anchor" {% if active_tab == "sexy" %} class="active"{% endif %}>
 		        		{% trans "Sexy"%}
 		    		</a>
 		        </li>
 		        <li class="box-shadows">
-		        	<a href="/yourphotos/rumbas#photo-anchor" {% if active_tab == "rumbas" %} class="active"{% endif %}>
+		        	<a href="{% url yourphoto_category_rumbas %}#photo-anchor" {% if active_tab == "rumbas" %} class="active"{% endif %}>
 		        		{% trans "Rumbas"%}
 		    		</a>
 		        </li>
 		        <li class="box-shadows">
-		        	<a href="/yourphotos/amigos#photo-anchor" {% if active_tab == "amigos" %} class="active"{% endif %}>
+		        	<a href="{% url yourphoto_category_amigos %}#photo-anchor" {% if active_tab == "amigos" %} class="active"{% endif %}>
 		        		{%trans "Amigos"%}
 		    		</a>
 		        </li>
 		        <li class="box-shadows">
-		        	<a href="/yourphotos/humor#photo-anchor" {% if active_tab == "humor" %} class="active"{% endif %}>
+		        	<a href="{% url yourphoto_category_humor %}#photo-anchor" {% if active_tab == "humor" %} class="active"{% endif %}>
 		        		{% trans "Humor"%}
 		    		</a>
 				</li>
@@ -108,9 +108,9 @@
                                 <li style="clear: both; width:100%;padding: 0"></li>
                             {% endif %}
 							<li>
-								<div class="std-thumbnail"><a href="/yourphotos/{{photo.id}}"><img src="{{photo.thumbnail.url}}"></a></div>
+								<div class="std-thumbnail"><a href="{% url yourphoto_details photo.id %}"><img src="{{photo.thumbnail.url}}"></a></div>
 								<div class="std-details decou">
-									<h6><a href="/yourphotos/{{photo.id}}">{{photo.description}}</a></h6>
+									<h6><a href="{% url yourphoto_details photo.id %}">{{photo.description}}</a></h6>
 									<span class="author-meta">{% trans "Submitted by"%} {{photo.user|user_link}}</span>
 									<div class="fivestar-widget clear-block fivestar-widget-5">
 										{% facebook_like photo.get_absolute_url 184%}

@@ -2,18 +2,18 @@
 <div class="box-generic nosotros-menu outnone">
     <div class="box-border box-contents decou">
         <ul>
-            <li class="odd {% ifequal current "about" %}current{% endifequal %}"><a href="/about">{% trans "About Us" %}</a></li>
+            <li class="odd {% ifequal current "about" %}current{% endifequal %}"><a href="{% url about_main %}">{% trans "About Us" %}</a></li>
             <li class="even">
                 <a href="#">{% trans "Products" %}</a>
                 <ul>
-                    <li class="{% ifequal current "web" %}current{% endifequal %}"><a href="/about/products/web">{% trans "Web" %}</a></li>
-                    <li class="{% ifequal current "newsletter" %}current{% endifequal %}"><a href="/about/products/newsletter">{% trans "Newsletter" %}</a></li>
-                    <li class="{% ifequal current "magazine" %}current{% endifequal %}"><a href="/about/products/magazine">{% trans "Printed Editions" %}</a></li>
-                    <li class="{% ifequal current "events" %}current{% endifequal %}"><a href="/about/products/events">{% trans "Events" %}</a></li>
+                    <li class="{% ifequal current "web" %}current{% endifequal %}"><a href="{% url about_products_web %}">{% trans "Web" %}</a></li>
+                    <li class="{% ifequal current "newsletter" %}current{% endifequal %}"><a href="{% url about_products_news %}">{% trans "Newsletter" %}</a></li>
+                    <li class="{% ifequal current "magazine" %}current{% endifequal %}"><a href="{% url about_products_magazine %}">{% trans "Printed Editions" %}</a></li>
+                    <li class="{% ifequal current "events" %}current{% endifequal %}"><a href="{% url about_products_events %}">{% trans "Events" %}</a></li>
                 </ul>
             </li>
-            <li class="odd {% ifequal current "partners" %}current{% endifequal %}"><a href="/about/partners">{% trans "Partners" %}</a></li>
-            <li class="even {% ifequal current "contacts" %}current{% endifequal %}"><a href="/about/contacts">{% trans "Contacts" %}</a></li>
+            <li class="odd {% ifequal current "partners" %}current{% endifequal %}"><a href="{% url about_partners %}">{% trans "Partners" %}</a></li>
+            <li class="even {% ifequal current "contacts" %}current{% endifequal %}"><a href="{% url about_contacts %}">{% trans "Contacts" %}</a></li>
         </ul>
     </div><!--//.box-contents-->
 </div><!--//.box-generic-->

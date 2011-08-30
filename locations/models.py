@@ -3,6 +3,7 @@ from imagekit.models import ImageModel
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from socialregistration.models import FacebookProfile
+from django.core.urlresolvers import reverse
 
 class LocationType( models.Model ):
     title = models.CharField( _( 'Type of Venue/Club' ), max_length = 256 )
@@ -98,7 +99,8 @@ class Location( ImageModel ):
             'slug': self.slug} )
 
     def view( self ):
-        return u'<a target="_blank" href="/locations/%s">%s</a>' % ( self.slug, _( "View on site" ) )
+        return u'<a target="_blank" href="%s">%s</a>' % ( reverse('location_details', self.slug), _( "View on site" ) )
+    
     view.allow_tags = True
     view.short_description = _( 'Preview' )
     class IKOptions:

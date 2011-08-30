@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from locations.models import Location
 from imagekit.models import ImageModel
+from django.core.urlresolvers import reverse
 
 PHOTO_CATEGORIES = ( 
     ( 'rumbas', _( 'Rumbas' ) ),
@@ -75,7 +76,7 @@ class Photo( ImageModel ):
 
     def make_main_tag( self ):
         if self.id:
-            return u'<a href="/people/make_main/%s/%s">%s</a>' % ( self.event.id, self.id, _( 'Make Main' ) )
+            return u'<a href="%s">%s</a>' % ( reverse('make_main',  self.event.id, self.id), _( 'Make Main' ) )
         else:
             return ""
 

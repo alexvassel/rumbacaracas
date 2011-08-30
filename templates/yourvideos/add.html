@@ -84,7 +84,7 @@
 		          <div class="pic">
 					<img width="107" height="107"  src="{{newvideo.youtube_id|youtube_img_from_id}}" alt="{{newvideo.description}}" title="{{newvideo.description}}" />
 				 </div>
-		          <div class="close"><a class="delete-photo" href="/videos/delete/{{newvideo.id}}"><img src="/media/images/close.jpg" width="15" height="15" alt="{% trans "Delete"%}" title="{% trans "Delete"%}" /></a></div>
+		          <div class="close"><a class="delete-photo" href="{% url video_delete newvideo.id%}"><img src="/media/images/close.jpg" width="15" height="15" alt="{% trans "Delete"%}" title="{% trans "Delete"%}" /></a></div>
 		        </div>
 		      </td>
 				{% if not forloop.last%}

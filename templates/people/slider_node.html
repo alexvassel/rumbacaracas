@@ -28,8 +28,8 @@
 	</div><!--//.wrapper-->
 
 	<div class="image-navigations encap outnone">
-	  <a href="/people/slider/{{photo.get_prev.id}}?resetCache" class="gente-prev" title="{% trans "Previous image"%}"><span class="hidden">{% trans "Previous"%}</span></a>
-	  <a href="/people/slider/{{photo.get_next.id}}?resetCache" class="gente-next" title="{% trans "Next image"%}"><span class="hidden">{% trans "Next"%}</span></a>
+	  <a href="{% url people_slider photo.get_prev.id %}?resetCache" class="gente-prev" title="{% trans "Previous image"%}"><span class="hidden">{% trans "Previous"%}</span></a>
+	  <a href="{% url people_slider photo.get_next.id %}?resetCache" class="gente-next" title="{% trans "Next image"%}"><span class="hidden">{% trans "Next"%}</span></a>
 	</div>
 	<div class="images-preview outnone" style="min-height:150px">
 	  <ul class="image-teaser-slides encap">

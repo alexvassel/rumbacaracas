@@ -3,7 +3,7 @@
   <div class="box-title"><h5>{% trans "Sign up to receive our free emails" %}</h5><span>E-Rumba</span></div>
   <div class="box-border box-contents">
     <p>{% trans "Newsletter with a calendar of events for the week" %}</p>
-    <form  method="post" action="/subscribe/">
+    <form  method="post" action="{% url subscribe_main %}">
         {% csrf_token %}
       <div>
         <div id="edit-mail-wrapper" class="form-item">

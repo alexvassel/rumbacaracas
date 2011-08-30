@@ -17,13 +17,13 @@ from django.utils.html import strip_tags
 from locations.templatetags.tools import truncate
 from django.forms.models import inlineformset_factory
 from main.modelFields import SlugifyUniquely
-
+from django.core.urlresolvers import reverse
 
 
 @login_required( login_url = '/login/' )
 @render_to( 'news/add.html' )
 def add( request, type ):
-    request.breadcrumbs( _( 'News' ) , '/news' )
+    request.breadcrumbs( _( 'News' ) , reverse('zinnia_entry_archive_index'))
 
     if type == 'blog':
         request.breadcrumbs( _( 'Add Article' ) , request.path_info )
@@ -66,7 +66,7 @@ def add( request, type ):
             article.authors.add( request.user )
             form.save_m2m()
 
-            return HttpResponseRedirect( '/news/' ) # Redirect after POST
+            return HttpResponseRedirect( reverse('zinnia_entry_archive_index') ) # Redirect after POST
         else :
             images_formset = EntryImageFormSet( instance = Entry() )
 

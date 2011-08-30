@@ -4,9 +4,9 @@
 {% block breadcrumbs %}
     <a href="/">{% trans "Home" %}</a>
     <span>&nbsp;→&nbsp;</span>
-    <a href="/about/products">{% trans "Products" %}</a>
+    <a href="{% url about_products %}">{% trans "Products" %}</a>
     <span>&nbsp;→&nbsp;</span>
-    <a class="active" href="/about/products/newsletter">{% trans "Newsletter" %}</a>
+    <a class="active" href="{% url about_products_news %}">{% trans "Newsletter" %}</a>
 {% endblock %}
 
 {% block colleft %}

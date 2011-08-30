@@ -27,10 +27,10 @@
                         {% endif %}
 						<li> 
 	                      <div class="photo-thumbnail">
-							<a href="/locations/{{location.slug}}"><img alt="{{location.title}}" src="{{location.smallthumb.url}}"></a>
+							<a href="{% url location_details location.slug %}"><img alt="{{location.title}}" src="{{location.smallthumb.url}}"></a>
 						  </div> 
 	                      <div class="photo-details decou"> 
-	                        <h6><a href="/locations/{{location.slug}}">{{location.title}}</a></h6>
+	                        <h6><a href="{% url location_details location.slug %}">{{location.title}}</a></h6>
 	                        <span class="author-meta">{{location.description|truncate:70}}</span>
 	                      </div><!--//.photo-details-->
 	                    </li>

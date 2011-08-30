@@ -4,7 +4,7 @@
 {% block breadcrumbs %}
     <a href="/">{% trans "Home" %}</a>
     <span>&nbsp;→&nbsp;</span>
-    <a class="active" href="/about">{% trans "About Us" %}</a>
+    <a class="active" href="{% url about_main %}">{% trans "About Us" %}</a>
 {% endblock %}
 
 {% block colleft %}
@@ -43,10 +43,10 @@
                                     </div><!--//.encap-->
                                     <div class="rumba-cats">
                                         <ul>
-                                            <li><a href="/about/products/web">{% trans "Web" %}</a></li>
-                                            <li><a href="/about/products/newsletter">{% trans "Newsletter" %}</a></li>
-                                            <li><a href="/about/products/magazine">{% trans "Printed Editions" %}</a></li>
-                                            <li><a href="/about/products/events">{% trans "Events" %}</a></li>
+                                            <li><a href="{% url about_products_web %}">{% trans "Web" %}</a></li>
+                                            <li><a href="{% url about_products_news %}">{% trans "Newsletter" %}</a></li>
+                                            <li><a href="{% url about_products_magazine %}">{% trans "Printed Editions" %}</a></li>
+                                            <li><a href="{% url about_products_events %}">{% trans "Events" %}</a></li>
                                         </ul>
                                     </div><!--//.rumba-cats-->
                                 </div><!--//.wrapper-->

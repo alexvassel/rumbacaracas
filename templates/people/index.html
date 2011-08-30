@@ -101,7 +101,7 @@
 			        <p><span>{{event.date|date:"d.m.y"}}</span>
 					{% if event.location%}
 						<span class="bold">
-							<a href="/locations/{{event.location.slug}}">{{event.location.title}}</a>
+							<a href="{% url location_details event.location.slug %}">{{event.location.title}}</a>
 						</span>
 					{%else%}
                         <span class="bold">
@@ -119,7 +119,7 @@
 			      </li>
 				{%endfor%}
 		    </ul>
-		    <a class="read-more-red" href="/people/category/{{group}}">{%trans "View more"%}</a>
+		    <a class="read-more-red" href="{% url people_category group %}">{%trans "View more"%}</a>
 
 		{% if forloop.last %}
 				</div><!--//.c49r-->

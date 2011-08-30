@@ -4,7 +4,7 @@
 {% block breadcrumbs %}
     <a href="/">{% trans "Home" %}</a>
     <span>&nbsp;→&nbsp;</span>
-    <a href="/about/products">{% trans "Products" %}</a>
+    <a href="{% url about_products %}">{% trans "Products" %}</a>
     <span>&nbsp;→&nbsp;</span>
     <a class="active" href="/products/magazine">{% trans "Magazine" %}</a>
 {% endblock %}
@@ -230,23 +230,23 @@
 
         <h3 class="red">Los Cuadernos</h3>
 
-        <div><a href="/magazine"><img src="/media/images/nosotros/cuaderno-1.jpg" alt="Rumba" /></a></div>
+        <div><a href="{% url magazine_main %}"><img src="/media/images/nosotros/cuaderno-1.jpg" alt="Rumba" /></a></div>
         <br />
-        <div><a href="/magazine"><img src="/media/images/nosotros/cuaderno-2.jpg" alt="Rumba" /></a></div>
+        <div><a href="{% url magazine_main %}"><img src="/media/images/nosotros/cuaderno-2.jpg" alt="Rumba" /></a></div>
         <p><br />
-            <a href="/magazine" class="read-more-red">Ver más Cuadernos</a><br />
+            <a href="{% url magazine_main %}" class="read-more-red">Ver más Cuadernos</a><br />
         </p>
         <p>&nbsp;</p>
         <h3 class="red">Las Revistas</h3>
         <div>
-            <div><a href="/magazine"><img src="/media/images/nosotros/impresa-1.jpg" alt="Rumba" /></a></div>
+            <div><a href="{% url magazine_main %}"><img src="/media/images/nosotros/impresa-1.jpg" alt="Rumba" /></a></div>
             <br />
-            <div><a href="/magazine"><img src="/media/images/nosotros/impresa-2.jpg" alt="Rumba" /></a></div>
+            <div><a href="{% url magazine_main %}"><img src="/media/images/nosotros/impresa-2.jpg" alt="Rumba" /></a></div>
             <br />
-            <div><a href="/magazine"><img src="/media/images/nosotros/impresa-3.jpg" alt="Rumba" /></a></div>
+            <div><a href="{% url magazine_main %}"><img src="/media/images/nosotros/impresa-3.jpg" alt="Rumba" /></a></div>
             <br />
-            <div><a href="/magazine"><img src="/media/images/nosotros/impresa-4.jpg" alt="Rumba" /></a></div>
-            <a href="/magazine" class="read-more-red">Ver más Revistas</a><br />
+            <div><a href="{% url magazine_main %}"><img src="/media/images/nosotros/impresa-4.jpg" alt="Rumba" /></a></div>
+            <a href="{% url magazine_main %}" class="read-more-red">Ver más Revistas</a><br />
         </div>
         <p><br />
         </p>

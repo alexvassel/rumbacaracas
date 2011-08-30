@@ -8,6 +8,7 @@ from django.forms.models import modelformset_factory
 from django.http import HttpResponseRedirect
 from datetime import *;
 from dateutil.relativedelta import *
+from django.core.urlresolvers import reverse
 
 @render_to( 'yourvideos/index.html' )
 def index( request ):
@@ -17,7 +18,7 @@ def index( request ):
     except ValueError:
         page = 1
 
-    request.breadcrumbs( _( 'Your Videos' ) , '/videos' )
+    request.breadcrumbs( _( 'Your Videos' ) , reverse('video_main') )
 
     videos = Video.objects.filter( status = 1 ).order_by( '-datetime_added' )
 
@@ -36,7 +37,7 @@ def index( request ):
 @render_to( 'yourvideos/details.html' )
 def detail( request , id ):
     video = get_object_or_404( Video, pk = id )
-    request.breadcrumbs( _( 'Your Videos' ) , '/videos' )
+    request.breadcrumbs( _( 'Your Videos' ) , reverse('video_main') )
     request.breadcrumbs( video.description , request.path_info )
     return {'video': video}
 
@@ -55,7 +56,7 @@ from django.contrib.auth.decorators import login_required
 @login_required( login_url = '/login/' )
 @render_to( 'yourvideos/add.html' )
 def add( request ):
-    request.breadcrumbs( _( 'Your Videos' ) , '/videos' )
+    request.breadcrumbs( _( 'Your Videos' ) , reverse('video_main') )
     request.breadcrumbs( _( 'Add Video' ) , request.path_info )
 
     VideoFormSet = modelformset_factory( Video, fields = ( 'youtube_id', 'description' ), extra = 5, max_num = 5 )

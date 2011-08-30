@@ -11,11 +11,11 @@ from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext as _
 
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
-
+from django.core.urlresolvers import reverse
 
 @render_to( 'people/index.html' )
 def index ( request ):
-    request.breadcrumbs( _( 'People' ) , '/people' )
+    request.breadcrumbs( _( 'People' ) , reverse('people_main') )
     request.breadcrumbs( _( 'By Category' ) , request.path_info )
     groups = []
     for group, description in PHOTO_CATEGORIES:
@@ -37,7 +37,7 @@ def category ( request, group ):
     else:
         group_name = _( "Empty" )
 
-    request.breadcrumbs( _( 'People' ) , '/people' )
+    request.breadcrumbs( _( 'People' ) , reverse('people_main') )
     request.breadcrumbs( group_name , request.path_info )
 
     try:
@@ -61,7 +61,7 @@ def slider( request , photo_id ):
     if request.is_ajax():
         return render_to_response( 'people/slider_node.html', {'photo': photo} )
 
-    request.breadcrumbs( _( 'People' ) , '/people' )
+    request.breadcrumbs( _( 'People' ) , reverse('people_main') )
     request.breadcrumbs( photo.event.title , request.path_info )
     return {'photo': photo}
 
@@ -80,7 +80,7 @@ def main_slide( request , event_id ):
 def details ( request, slug ):
     event = get_object_or_404( PhotoEvent, slug = slug, status = 1 )
 
-    request.breadcrumbs( _( 'People' ) , '/people' )
+    request.breadcrumbs( _( 'People' ) , reverse('people_main') )
     request.breadcrumbs( event.title , request.path_info )
 
     try:

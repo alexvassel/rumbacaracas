@@ -19,14 +19,14 @@
 	    <span class="flt-left"><h2 class="title">{% trans "Videos"%}</h2></span>
 	    <span class="flt-right">
 	      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
-	        <li><a class="socializer-12 upload-video" href="/videos/add"><span>{%trans "Upload a video"%}</span></a></li>
+	        <li><a class="socializer-12 upload-video" href="{% url video_add %}"><span>{%trans "Upload a video"%}</span></a></li>
 	      </ul>
 	    </span>
 	  </div><!--//.title-wrap-->
 	<div class="node bb-none encap">
 	{%if latest%}
         <div class="wrapper encap">
-			<h2 class="title"><a href="/videos/{{latest.id}}">{{latest.description}}</a></h2>
+			<h2 class="title"><a href="{% url video_details latest.id %}">{{latest.description}}</a></h2>
 			<span class="submitted">{{latest.datetime_added|date:"d.m.Y"}}<span>&nbsp;|&nbsp;</span><span class="author-meta">{% trans "Submitted by"%} {{latest.user|user_link}}</span></span>
         </div><!--//.wrapper-->
 		<div class="content">
@@ -59,12 +59,12 @@
                         {% endif %}
 	 					<li>
 	                      <div class="video-thumbnail">
-								<a href="/videos/{{video.id}}">
+								<a href="{% url video_details video.id %}">
 									<img width="180" height="137" src="{{video.youtube_id|youtube_img_from_id}}">
 							    </a>
 						  </div>
 	                      <div class="video-details decou">
-	                        <h6><a href="/videos/{{video.id}}">{{video.description}}</a></h6>
+	                        <h6><a href="{% url video_details video.id %}">{{video.description}}</a></h6>
 	                        <span class="author-meta">{% trans "Submitted by"%} {{video.user|user_link}}</span>
 	                        <div class="fivestar-widget clear-block fivestar-widget-5">
 	                          {% facebook_like video.get_absolute_url 90 0%}

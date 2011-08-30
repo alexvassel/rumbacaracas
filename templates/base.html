@@ -126,11 +126,11 @@
               <a href="/">{% trans "Public" %}</a>
               <ul>
                 <li><a class="publica-tus-eventos" href="/events/add">{% trans "Add Event" %}</a></li>
-                <li><a class="sube-tus-fotos" href="/yourphotos/add">{% trans "Upload Your Photo" %}</a></li>
-                <li><a class="publica-una-noticia" href="/news/add">{% trans "Add News" %}</a></li>
-                <li><a class="envianos-tus-local" href="/locations/add">{% trans "Add Location" %}</a></li>
-                <li><a class="monta-tus-videos" href="/videos/add">{% trans "Upload Video" %}</a></li>
-                <li><a class="en-el-blog" href="/news/blog/add">{% trans "Add Article" %}</a></li>
+                <li><a class="sube-tus-fotos" href="{% url yourphoto_add %}">{% trans "Upload Your Photo" %}</a></li>
+                <li><a class="publica-una-noticia" href="{% url news_add %}">{% trans "Add News" %}</a></li>
+                <li><a class="envianos-tus-local" href="{% url location_add %}">{% trans "Add Location" %}</a></li>
+                <li><a class="monta-tus-videos" href="{% url video_add %}">{% trans "Upload Video" %}</a></li>
+                <li><a class="en-el-blog" href="{% url news_add_blog %}">{% trans "Add Article" %}</a></li>
               </ul>
             </li>
 
@@ -141,8 +141,8 @@
         	<ul class="encap flt-right fcml0 lcmr0">
 
             <li class="sepRpar">&nbsp;</li>
-             <li class="sobre1"><a href="/subscribe" class="fotosobre1"></a></li>
-          	<li class="newsletter-subscribe"><a href="/subscribe">E-RUMBA<br /><span>{% trans "subscription" %}</span></a></li>
+             <li class="sobre1"><a href="{% url subscribe_main %}" class="fotosobre1"></a></li>
+          	<li class="newsletter-subscribe"><a href="{% url subscribe_main %}">E-RUMBA<br /><span>{% trans "subscription" %}</span></a></li>
            	<li class="sepB">&nbsp;</li>
             <li class="siguenosft">{%trans "Follow:"%}</li>
             
@@ -183,18 +183,18 @@
       </div><!--//.logo-->
       <div id="top-menus-wrapper" class="top-menus-wrapper outnone c75r">
       	<ul id="top-menu-secondary" class="top-menu-secondary flt-right encap fcpl0 lcpr0">
-        	<li><a href="/videos">{% trans "Videos" %}</a></li>
-          <li><a href="/news/categories/blog">{% trans "Blog"%}</a></li>
+        	<li><a href="{% url video_main %}">{% trans "Videos" %}</a></li>
+          <li><a href="{% url zinnia_category_detail "blog" %}">{% trans "Blog"%}</a></li>
         	<li class="medios">
                 <a href="#">{% trans "Media" %}</a>
                 <ul>
-                  <li><a href="/about/products/web">{% trans "Web" %}</a></li>
-                  <li><a href="/about/products/newsletter">{% trans "Newsletter" %}</a></li>
-                  <li><a href="/magazine">{% trans "Printed Editions" %}</a></li>
-                  <li><a href="/about/products/events">{% trans "Events" %}</a></li>
+                  <li><a href="{% url about_products_web %}">{% trans "Web" %}</a></li>
+                  <li><a href="{% url about_products_news %}">{% trans "Newsletter" %}</a></li>
+                  <li><a href="{% url magazine_main %}">{% trans "Printed Editions" %}</a></li>
+                  <li><a href="{% url about_products_events %}">{% trans "Events" %}</a></li>
                 </ul>
        	  </li>
-      	  <li><a href="/about">{% trans "About Us" %}</a></li>
+      	  <li><a href="{% url about_main %}">{% trans "About Us" %}</a></li>
       	</ul>
         <div class="cflt"></div>
       	<ul id="top-menu-tertiary" class="top-menu-tertiary flt-right encap">
@@ -209,24 +209,24 @@
           </li>
       	  <li class="secciones">
 
-          	<h3><a href="/locations/">{% trans "Location" %}</a></h3>
+          	<h3><a href="{% url location_add %}">{% trans "Location" %}</a></h3>
             {% show_location_menu %}
           </li>
         	<li class="fotos">
-          	<h3><a href="/people">{%trans "Fotos"%}</a></h3>
+          	<h3><a href="{% url people_main %}">{%trans "Fotos"%}</a></h3>
             <ul>
-              <li><a href="/people">{%trans "People & Events"%}</a></li>
-              <li><a href="/yourphotos">{% trans "Your photos"%}</a></li>
+              <li><a href="{% url people_main %}">{%trans "People & Events"%}</a></li>
+              <li><a href="{% url yourphoto_main %}">{% trans "Your photos"%}</a></li>
             </ul>
           </li>
           <li class="noticias">
-          	<h3><a href="/news">{% trans "News" %}</a></h3>
+          	<h3><a href="{% url zinnia_entry_archive_index %}">{% trans "News" %}</a></h3>
             <ul>
-              <li><a href="/news/categories/rumba-news">{% trans "Rumba News" %}</a></li>
-            <li><a href="/news/categories/music-news">{% trans "Music News" %}</a></li>
-            <li><a href="/news/categories/news">{% trans "Actual" %}</a></li>
-            <li><a href="/news/categories/interviews">{% trans "Interviews" %}</a></li>
-            <li><a href="/news/categories/dj-mix">{% trans "DJ Mix" %}</a></li>
+              <li><a href="{% url zinnia_category_detail "rumba-news" %}">{% trans "Rumba News" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "music-news" %}">{% trans "Music News" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "news" %}">{% trans "Actual" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "interviews" %}">{% trans "Interviews" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "dj-mix" %}">{% trans "DJ Mix" %}</a></li>
             </ul>
           </li>
       	</ul>
@@ -284,38 +284,38 @@
         <div class="c16_6l">
           <h2>{% trans "Content" %}</h2>
           <ul>
-            <li><a href="/people">{% trans "Photos" %}</a></li>
-            <li><a href="/yourphotos">{% trans "Your photos" %}</a></li>
-            <li><a href="/videos">{%  trans "Videos" %}</a></li>
-            <li><a href="/news/categories/blog">{% trans "Blog" %}</a></li>
+            <li><a href="{% url people_main %}">{% trans "Photos" %}</a></li>
+            <li><a href="{% url yourphoto_main %}">{% trans "Your photos" %}</a></li>
+            <li><a href="{% url video_main %}">{%  trans "Videos" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "blog" %}">{% trans "Blog" %}</a></li>
           </ul>
         </div>
         <div class="c16_6l">
           <h2>{% trans "News" %}</h2>
           <ul>
-            <li><a href="/news/categories/rumba-news">{% trans "Rumba News" %}</a></li>
-            <li><a href="/news/categories/music-news">{% trans "Music News" %}</a></li>
-            <li><a href="/news/categories/news">{% trans "Actual" %}</a></li>
-            <li><a href="/news/categories/interviews">{% trans "Interviews" %}</a></li>
-            <li><a href="/news/categories/dj-mix">{% trans "DJ Mix" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "rumba-news" %}">{% trans "Rumba News" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "music-news" %}">{% trans "Music News" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "news" %}">{% trans "Actual" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "interviews" %}">{% trans "Interviews" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "dj-mix" %}">{% trans "DJ Mix" %}</a></li>
           </ul>
         </div>
         <div class="c16_6l">
           <h2>{% trans "Media" %}</h2>
           <ul>
-              <li><a href="/about/products/web">{% trans "Web" %}</a></li>
-              <li><a href="/about/products/newsletter">{% trans "Newsletter" %}</a></li>
-              <li><a href="/magazine">{% trans "Printed Editions" %}</a></li>
-              <li><a href="/about/products/events">{% trans "Events" %}</a></li>
+              <li><a href="{% url about_products_web %}">{% trans "Web" %}</a></li>
+              <li><a href="{% url about_products_news %}">{% trans "Newsletter" %}</a></li>
+              <li><a href="{% url magazine_main %}">{% trans "Printed Editions" %}</a></li>
+              <li><a href="{% url about_products_events %}">{% trans "Events" %}</a></li>
           </ul>
         </div>
         <div class="c16_6r">
           <h2>{% trans "About Us" %}</h2>
           <ul>
-            <li><a href="/about">{% trans "About us page" %}</a></li>
-            <li><a href="/about/products">{% trans "Products" %}</a></li>
-            <li><a href="/about/partners">{% trans "Partners" %}</a></li>
-            <li><a href="/about/contacts">{% trans "Contacts" %}</a></li>
+            <li><a href="{% url about_main %}">{% trans "About us page" %}</a></li>
+            <li><a href="{% url about_products %}">{% trans "Products" %}</a></li>
+            <li><a href="{% url about_partners %}">{% trans "Partners" %}</a></li>
+            <li><a href="{% url about_contacts %}">{% trans "Contacts" %}</a></li>
           </ul>
         </div>
       </div><!--//.footer-links-->
@@ -330,7 +330,7 @@
       </span>
 
       <span class="txt-right">
-        <p><span class="uppercase">Rumbabogota.com</span>, C.A. &copy; 2009-{% now "Y" %} Todos los Derechos Reservados<br /><a href="/terms_of_use">{% trans "Terms of Use" %}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:rumba@rumbabogota.com">rumba@rumbabogota.com</a></p>
+        <p><span class="uppercase">Rumbabogota.com</span>, C.A. &copy; 2009-{% now "Y" %} Todos los Derechos Reservados<br /><a href="{% url terms_of_use %}">{% trans "Terms of Use" %}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:rumba@rumbabogota.com">rumba@rumbabogota.com</a></p>
       </span>
     </div><!--//.footer-tertiary-->
   </div><!--//.container-->

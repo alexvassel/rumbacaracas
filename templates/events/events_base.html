@@ -221,7 +221,7 @@
         $("#locations-list").change(function () {
 			var slug = $("#locations-list").val();
 			if (slug != '') {
-				window.location.href = '/locations/'+ slug;	
+				window.location.href = '{% url location_main %}'+ slug;
 			}
         })
         

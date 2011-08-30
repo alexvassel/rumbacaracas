@@ -27,7 +27,7 @@
 	<span class="flt-left"><h2 class="title">{% trans "Locations"%}</h2></span>
 	<span class="flt-right">
 	  <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
-        <li><a class="socializer-13" href="/locations/add"><span>{% trans "Add Location"%}</span></a></li>
+        <li><a class="socializer-13" href="{% url location_add %}"><span>{% trans "Add Location"%}</span></a></li>
       </ul>
 	</span>
 </div><!--//.title-wrap-->
@@ -200,7 +200,7 @@
 	    <ul class="logo-slides  encap lcmr0">
 			{%for slide in slider%}
 	      	<li>
-	      		<a href="/locations/{{slide.slug}}">
+	      		<a href="{% url location_details slide.slug %}">
 	      			{% if slide.image_logo %}
 	        			<img src="{{slide.biglogo.url}}"/>
         			{% else %}
@@ -208,7 +208,7 @@
         			{% endif %}
 	        	</a>
 	        	<div class="slide-teasers">
-                    <h3><a href="/locations/{{slide.slug}}">{{slide.title|truncate:"17"}}</a></h3>
+                    <h3><a href="{% url location_details slide.slug %}">{{slide.title|truncate:"17"}}</a></h3>
                     <p>{% if slide.area %}{{slide.area.title}}{% else %}&nbsp;{%endif%}</p>
                 </div>
 	      	</li>
@@ -265,10 +265,10 @@
 	<div id="outline-briefs" class="outline-briefs eventos-outline">
 	  <div class="outline-navigation" id="locations-anchor">
 	    <ul id="outline-titles" class="encap outnone">
-	      <li{% if active_tab == "category" %} class="active"{% endif %}><a href="/locations/by-category#locations-anchor">{% trans "By Category"%}</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if active_tab == "area" %} class="active"{% endif %}><a href="/locations/by-area#locations-anchor">{% trans "By Area"%}</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if active_tab == "music" %} class="active"{% endif %}><a href="/locations/by-music#locations-anchor">{% trans "By Music"%}</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if active_tab == "food" %} class="active"{% endif %}><a href="/locations/by-food#locations-anchor">{% trans "By Type of Food"%}</a><div {% if active_tab == "food" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "category" %} class="active"{% endif %}><a href="{% url location_by_category %}#locations-anchor">{% trans "By Category"%}</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "area" %} class="active"{% endif %}><a href="{% url location_by_area %}#locations-anchor">{% trans "By Area"%}</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "music" %} class="active"{% endif %}><a href="{% url location_by_music %}#locations-anchor">{% trans "By Music"%}</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "food" %} class="active"{% endif %}><a href="{% url location_by_food %}#locations-anchor">{% trans "By Type of Food"%}</a><div {% if active_tab == "food" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
 	      {% comment %}<li><a href="#">{% trans "By Rating"%}</a><div class="pointer-tip"></div></li>{% endcomment %}
 	    </ul>
 	  </div><!--//.outline-navigation-->
@@ -289,7 +289,7 @@
 					{% endif %}		
 					<li class="location-preview">
 		              <h4>
-		              	<a href="/locations/{{location.slug}}">
+		              	<a href="{% url location_details location.slug %}">
 		              		{% if location.image_logo %}
 		              			<img src="{{ location.thumbnail.url }}" alt="{{location.title}}" />
 	              			{% else %}
@@ -297,7 +297,7 @@
 	              			{%endif%}
 	              	  	</a>
 	              	  </h4>
-		              <h3 class="decou"><a href="/locations/{{location.slug}}">{{location.title}}</a></h3>
+		              <h3 class="decou"><a href="{% url location_details location.slug %}">{{location.title}}</a></h3>
 		              <p>{{location.description|truncate:70}}</p>
 		              <div class="ratings fivestar-form-item fivestar-user-text fivestar-smart-stars fivestar-average-stars fivestar-labels-hover fivestar-processed">
                       	{% facebook_like location.get_absolute_url%}
@@ -338,7 +338,7 @@
         $("#locations-list").change(function () {
 			var slug = $("#locations-list").val();
 			if (slug != '') {
-				window.location.href = '/locations/'+ slug;	
+				window.location.href = '{% url location_main %}'+ slug;
 			}
         })
         $('.locales-image-teaser a.image').lightBox({
