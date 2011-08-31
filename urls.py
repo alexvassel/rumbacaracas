@@ -9,17 +9,15 @@ urlpatterns = patterns( '',
     ( r'^tinymce/', include( 'tinymce.urls' ) ),
 
     #Changes in setup proccess
-    url(r'^social/configuracion', 'main.views.custom_social_setup', name='socialregistration_setup'),
+    url(r'^social/setup', 'main.views.custom_social_setup', name='socialregistration_setup'),
     #/Changes in setup proccess
 
     url(r'^social/', include('socialregistration.urls')),
     ( r'^login/$', 'django.views.generic.simple.direct_to_template', {'template': 'login.html'} ),
     ( r'^sitios/', include( 'locations.urls' ) ),
-
-    ( r'^events/', include( 'events.urls' ) ),
-
+    ( r'^eventos/', include( 'events.urls' ) ),
     ( r'^gente/', include( 'people.urls' ) ),
-    ( r'^tus_fotos/', include( 'yourphotos.urls' ) ),
+    ( r'^tus-fotos/', include( 'yourphotos.urls' ) ),
     ( r'^videos/', include( 'yourvideos.urls' ) ),
     
     url(r'^busqueda/resultados/$', 'django.views.generic.simple.direct_to_template', {'template': 'googlesearch/googlesearch_results.html', 'extra_context': {'title' : 'Search Results'}}, name='googlesearch_results'),
@@ -27,7 +25,7 @@ urlpatterns = patterns( '',
     ( r'^suscribete/', include( 'subscribe.urls' ) ),
 
 
-    url( r'^magazine/$',  "magazine.views.index", name="magazine_main" ),
+    url( r'^revista/$',  "magazine.views.index", name="magazine_main" ),
 
     url( r'^nosotros/$', 'django.views.generic.simple.direct_to_template', {'template': 'static/aboutus.html'}, name="about_main" ),
     url( r'^terminos_de_uso/$', 'django.views.generic.simple.direct_to_template', {'template': 'static/term_of_use.html'}, name="terms_of_use" ),

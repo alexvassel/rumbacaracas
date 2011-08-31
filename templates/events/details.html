@@ -15,7 +15,7 @@
 <span class="flt-left"><h2 class="title">{% trans "Events"%}</h2></span>
 <span class="flt-right">
     <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
-        <li><a class="socializer-8 publish-event" href="/events/add"><span>{% trans "Add event"%}</span></a></li>
+        <li><a class="socializer-8 publish-event" href="{% url event_add %}"><span>{% trans "Add event"%}</span></a></li>
     </ul>
 </span>
 </div><!--//.title-wrap-->
@@ -225,11 +225,11 @@
 <div id="outline-briefs" class="outline-briefs eventos-outline">
   <div class="outline-navigation">
 <ul id="outline-titles" class="encap outnone">
-  <li><a href="/events/by-category#event-anchor">{% trans "By Category" %}</a><div class="pointer-tip"></div></li>
-  <li><a href="/events/by-location#event-anchor">{% trans "By Location" %}</a><div class="pointer-tip"></div></li>
-  <li><a href="/events/by-area#event-anchor">{% trans "By Area" %}</a><div class="pointer-tip"></div></li>
-  <li><a href="/events/by-music#event-anchor">{% trans "By Music" %}</a><div class="pointer-tip"></div></li>
-  <li><a href="/events/calendar#event-anchor"><img class="search-calendar" alt="{% trans "Calendar"%}" src="/media/images/blank.gif" />{% trans "Calendar"%}</a><div class="pointer-tip"></div></li>
+  <li><a href="{% url event_by_category %}#eventos-anclaje">{% trans "By Category" %}</a><div class="pointer-tip"></div></li>
+  <li><a href="{% url event_by_location %}#eventos-anclaje">{% trans "By Location" %}</a><div class="pointer-tip"></div></li>
+  <li><a href="{% url event_by_area %}#eventos-anclaje">{% trans "By Area" %}</a><div class="pointer-tip"></div></li>
+  <li><a href="{% url event_by_music %}#eventos-anclaje">{% trans "By Music" %}</a><div class="pointer-tip"></div></li>
+  <li><a href="{% url event_calendar %}#eventos-anclaje"><img class="search-calendar" alt="{% trans "Calendar"%}" src="/media/images/blank.gif" />{% trans "Calendar"%}</a><div class="pointer-tip"></div></li>
 </ul>
   </div><!--//.outline-navigation-->
 </div><!--//#outline-briefs-->
@@ -248,7 +248,7 @@
 		$("#events-list").change(function () {
 			var slug = $("#events-list").val();
 			if (slug != '') {
-				window.location.href = '/events/'+ slug;	
+				window.location.href = '{% url event_main %}'+ slug;
 			}
         })
         $("#locations-list").change(function () {

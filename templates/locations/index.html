@@ -263,12 +263,12 @@
 	  </tbody>
 	</table>
 	<div id="outline-briefs" class="outline-briefs eventos-outline">
-	  <div class="outline-navigation" id="locations-anchor">
+	  <div class="outline-navigation" id="sitios-anclaje">
 	    <ul id="outline-titles" class="encap outnone">
-	      <li{% if active_tab == "category" %} class="active"{% endif %}><a href="{% url location_by_category %}#locations-anchor">{% trans "By Category"%}</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if active_tab == "area" %} class="active"{% endif %}><a href="{% url location_by_area %}#locations-anchor">{% trans "By Area"%}</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if active_tab == "music" %} class="active"{% endif %}><a href="{% url location_by_music %}#locations-anchor">{% trans "By Music"%}</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
-	      <li{% if active_tab == "food" %} class="active"{% endif %}><a href="{% url location_by_food %}#locations-anchor">{% trans "By Type of Food"%}</a><div {% if active_tab == "food" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "category" %} class="active"{% endif %}><a href="{% url location_by_category %}#sitios-anclaje">{% trans "By Category"%}</a><div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "area" %} class="active"{% endif %}><a href="{% url location_by_area %}#sitios-anclaje">{% trans "By Area"%}</a><div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "music" %} class="active"{% endif %}><a href="{% url location_by_music %}#sitios-anclaje">{% trans "By Music"%}</a><div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
+	      <li{% if active_tab == "food" %} class="active"{% endif %}><a href="{% url location_by_food %}#sitios-anclaje">{% trans "By Type of Food"%}</a><div {% if active_tab == "food" %}style="display: block"{% endif %} class="pointer-tip"></div></li>
 	      {% comment %}<li><a href="#">{% trans "By Rating"%}</a><div class="pointer-tip"></div></li>{% endcomment %}
 	    </ul>
 	  </div><!--//.outline-navigation-->
@@ -332,7 +332,7 @@
 		$("#events-list").change(function () {
 			var slug = $("#events-list").val();
 			if (slug != '') {
-				window.location.href = '/events/'+ slug;	
+				window.location.href = '{% url event_main %}'+ slug;
 			}
         })
         $("#locations-list").change(function () {

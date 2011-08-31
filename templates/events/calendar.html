@@ -24,7 +24,7 @@
             {% for day,items in row  %}
         	<td{% ifequal day today.day  %} class="today"{% endifequal %}>
         		{% if day %}
-                    <h3><a href="/events/by-category/day/{{year}}/{{month}}/{{day}}#event-anchor">{{ day }}</a></h3>
+                    <h3><a href="{% url event_by_category_day_full year month day %}#eventos-anclaje">{{ day }}</a></h3>
                     {% if items %}
 	                    <div class="events-listing">
 	                      <ul class="events">
@@ -34,18 +34,18 @@
 		                         class="selected"
 		                         {% endif %}
 		                         >
-		                          <a href="/events/{{item.slug}}">
+		                          <a href="{% url event_details item.slug %}">
 		                          	<span class="event-image">
 		                          		<img src="{{item.square.url}}">
 	                          		</span>
 	                          	  </a>
-		                          <a href="/events/{{item.slug}}" class="anchor-event-name">
+		                          <a href="{% url event_details item.slug %}" class="anchor-event-name">
 		                          	<span class="event-name">{{ item.title }}</span>
 	                          	  </a>
 		                        </li>
 	                        {% endfor %}
 	                      </ul>
-	                      <div class="event-count decou"><a href="/events/by-category/day/{{year}}/{{month}}/{{day}}#event-anchor">{{items|length}} {% trans "Events"%}</a></div>
+	                      <div class="event-count decou"><a href="{% url event_by_category_day_full year month day %}#eventos-anclaje">{{items|length}} {% trans "Events"%}</a></div>
 	                    </div><!--//.events-listing-->
                     {% endif %}
           		{% else %}

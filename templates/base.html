@@ -125,7 +125,7 @@
             <li>
               <a href="/">{% trans "Public" %}</a>
               <ul>
-                <li><a class="publica-tus-eventos" href="/events/add">{% trans "Add Event" %}</a></li>
+                <li><a class="publica-tus-eventos" href="{% url event_add %}">{% trans "Add Event" %}</a></li>
                 <li><a class="sube-tus-fotos" href="{% url yourphoto_add %}">{% trans "Upload Your Photo" %}</a></li>
                 <li><a class="publica-una-noticia" href="{% url news_add %}">{% trans "Add News" %}</a></li>
                 <li><a class="envianos-tus-local" href="{% url location_add %}">{% trans "Add Location" %}</a></li>
@@ -199,12 +199,12 @@
         <div class="cflt"></div>
       	<ul id="top-menu-tertiary" class="top-menu-tertiary flt-right encap">
         	<li class="calendario">
-            <h3><a href="/events">{% trans "Events"%}</a></h3>
+            <h3><a href="{% url event_main %}">{% trans "Events"%}</a></h3>
             <ul>
-              <li><a href="/events/by-category/day">{% trans "For Today"%}</a></li>
-              <li><a href="/events/by-category/tomorrow">{% trans "For Tomorrow"%}</a></li>
-              <li><a href="/events/by-category/week">{% trans "For a Week"%}</a></li>
-              <li><a href="/events/by-category/month">{% trans "For a Month"%}</a></li>
+              <li><a href="{% url event_by_category_day %}">{% trans "For Today"%}</a></li>
+              <li><a href="{% url event_by_category_tomorrow %}">{% trans "For Tomorrow"%}</a></li>
+              <li><a href="{% url event_by_category_week %}">{% trans "For a Week"%}</a></li>
+              <li><a href="{% url event_by_category_month %}">{% trans "For a Month"%}</a></li>
             </ul>
           </li>
       	  <li class="secciones">
@@ -271,10 +271,10 @@
         <div class="c16_6l">
           <h2>{% trans "Events"%}</h2>
           <ul>
-          	<li><a href="/events/by-category/day">{% trans "For Today"%}</a></li>
-            <li><a href="/events/by-category/tomorrow">{% trans "For Tomorrow"%}</a></li>
-            <li><a href="/events/by-category/week">{% trans "For a Week"%}</a></li>
-            <li><a href="/events/by-category/month">{% trans "For a Month"%}</a></li>
+              <li><a href="{% url event_by_category_day %}">{% trans "For Today"%}</a></li>
+              <li><a href="{% url event_by_category_tomorrow %}">{% trans "For Tomorrow"%}</a></li>
+              <li><a href="{% url event_by_category_week %}">{% trans "For a Week"%}</a></li>
+              <li><a href="{% url event_by_category_month %}">{% trans "For a Month"%}</a></li>
           </ul>
         </div>
         <div class="c16_6l">

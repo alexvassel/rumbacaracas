@@ -7,7 +7,7 @@
     </div>
     <div class="feed-icon">
         <div style="text-align: left;">
-            <a title="ical" class="ical-icon" href="/events/calendar">
+            <a title="ical" class="ical-icon" href="{% url event_calendar %}">
                 <img title="{% trans "Expand CALENDAR" %}" alt="{% trans "Expand CALENDAR" %}" src="/media/images/sprites/browse-calendar.gif">
                 {% trans "Expand CALENDAR" %}
             </a></div>
@@ -20,7 +20,7 @@
         $('#datepicker').datepicker({
             inline: true,
             onSelect: function(dateText, inst) {
-                var url = "/events/by-category/day"+"/"+inst.selectedYear+"/"+(inst.selectedMonth+1)+"/"+inst.selectedDay + "#event-anchor"
+                var url = "{% url event_by_category_day %}"+"/"+inst.selectedYear+"/"+(inst.selectedMonth+1)+"/"+inst.selectedDay + "#eventos-anclaje"
                 document.location.href = url;
                 return false;
             }

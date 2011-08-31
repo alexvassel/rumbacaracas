@@ -8,6 +8,7 @@ from locations.models import LocationType, Location
 from events.models import Event
 from django.utils.html import strip_tags
 from django.conf import settings
+from django.core.urlresolvers import reverse
 
 @register.filter
 def truncate( value, arg ):
@@ -27,6 +28,26 @@ def truncate( value, arg ):
         return mark_safe( '<span title="' + strip_tags(value) + '">' + strip_tags(value)[:length] + "..." + '</span>' )
     else:
         return value
+
+
+
+@register.filter
+def get_event_url_by_tab( value, arg):
+    """
+    Get event url according to input category and arg as period
+    """
+    try:
+        tab = str( value )
+        period = str( arg )
+    except ValueError: # invalid literal for int()
+        return value # Fail silently.
+    if tab == 'calendar':
+        tab = 'category'
+
+    return reverse('event_by_'+ tab + '_' + period )
+
+
+
 
 
 

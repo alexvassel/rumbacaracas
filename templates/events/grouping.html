@@ -15,8 +15,8 @@
 	                  <ul>
 	                  	{% for subevents in events|rows:2 %}
 					        {% for event in subevents %}
-		                    	<li><a href="/events/{{event.slug}}">
-		                    		<a href="/events/{{event.slug}}"><span class="event-name">{{event.title}}</span></a> | 
+		                    	<li>
+		                    		<a href="{% url event_details event.slug %}"><span class="event-name">{{event.title}}</span></a> |
                                     <span class="event-venue">
 		                    			{% if event.location%}
 		                    				<a href="{% url location_details event.location.slug %}"><span>{{event.location}}</span></a>
@@ -30,32 +30,33 @@
 		                    			{% if period == "week" or period == "month" %}
 		                    				- {{closest_dates|hash:event.pk}}
 							    		{% endif %}
-		                    		</span></li>
+		                    		</span>
+                                </li>
 							{% endfor %}
-					        	</ul>
+                            </ul>
 							</div><!--//.c46l--> 
 		                	<div class="c46r">
-	                			<ul>
+                            <ul>
 					    {% endfor %}
-	                  </ul> 
+                        </ul>
 	                </div><!--//.c46r--> 
-	              </div><!--//.events-listing-->
+                </div><!--//.events-listing-->
               {% empty %}
     		  <li><p>There are no events in selected period.</p></li>
     		  
               {% endfor %} 
 		<div>
 		</div><!--//.events-accordion-->
-		<script type="text/javascript" charset="utf-8">
-			jQuery(document).ready(function(){
-				jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion').accordion({
-					header: 'a.accordion-title',
-			      	fillSpace: false,
-			      	navigation: true,
-			      	autoHeight: false
-			    });
-			});
-		</script>
+            <script type="text/javascript" charset="utf-8">
+                jQuery(document).ready(function(){
+                    jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion').accordion({
+                        header: 'a.accordion-title',
+                        fillSpace: false,
+                        navigation: true,
+                        autoHeight: false
+                    });
+                });
+            </script>
 		</li> 
 	</ul><!--//.event-tab-contents--> 
 </div><!--//.events-category-wrapper--> 

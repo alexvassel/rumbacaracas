@@ -71,30 +71,30 @@
 </div><!--//.node-container-->
 	<div class="merged-container box-shadows fotos-archives encap">
 		<div class="merged-contents">
-			<div class="tab-titles encap" id="photo-anchor">
+			<div class="tab-titles encap" id="foto-anclaje">
 		      <ul class="outnone encap">
 		        <li class="box-shadows">
-		        	<a href="{% url yourphoto_category_latest %}#photo-anchor" {% if active_tab == "latest" %} class="active"{% endif %}>
+		        	<a href="{% url yourphoto_category_latest %}#foto-anclaje" {% if active_tab == "latest" %} class="active"{% endif %}>
 		        		{% trans "Latest Photos"%}
 		    		</a>
 		        </li>
 		        <li class="box-shadows">
-		        	<a href="{% url yourphoto_category_sexy %}#photo-anchor" {% if active_tab == "sexy" %} class="active"{% endif %}>
+		        	<a href="{% url yourphoto_category_sexy %}#foto-anclaje" {% if active_tab == "sexy" %} class="active"{% endif %}>
 		        		{% trans "Sexy"%}
 		    		</a>
 		        </li>
 		        <li class="box-shadows">
-		        	<a href="{% url yourphoto_category_rumbas %}#photo-anchor" {% if active_tab == "rumbas" %} class="active"{% endif %}>
+		        	<a href="{% url yourphoto_category_rumbas %}#foto-anclaje" {% if active_tab == "rumbas" %} class="active"{% endif %}>
 		        		{% trans "Rumbas"%}
 		    		</a>
 		        </li>
 		        <li class="box-shadows">
-		        	<a href="{% url yourphoto_category_amigos %}#photo-anchor" {% if active_tab == "amigos" %} class="active"{% endif %}>
+		        	<a href="{% url yourphoto_category_amigos %}#foto-anclaje" {% if active_tab == "amigos" %} class="active"{% endif %}>
 		        		{%trans "Amigos"%}
 		    		</a>
 		        </li>
 		        <li class="box-shadows">
-		        	<a href="{% url yourphoto_category_humor %}#photo-anchor" {% if active_tab == "humor" %} class="active"{% endif %}>
+		        	<a href="{% url yourphoto_category_humor %}#foto-anclaje" {% if active_tab == "humor" %} class="active"{% endif %}>
 		        		{% trans "Humor"%}
 		    		</a>
 				</li>
@@ -124,7 +124,7 @@
 						
 					</ul><!--//.video-archives-list-->
 					{% if current_page.object_list%}
-						{% common_paginator 2 "photo-anchor"%}
+						{% common_paginator 2 "foto-anclaje"%}
 					{% endif%}
 				</div><!--//.encap-->
 			</div>

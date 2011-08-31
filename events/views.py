@@ -16,6 +16,7 @@ from django.http import HttpResponseRedirect
 from django.forms import forms
 from main.modelFields import SlugifyUniquely
 from django.utils.dates import MONTHS as months
+from django.core.urlresolvers import reverse
 
 #TODO remove backported version
 try:
@@ -104,7 +105,7 @@ def calendar_view(
     #year, month = int( year ), int( month )
 
     all_events = Event.objects.all().filter( status = 1 ).order_by( 'title' )
-    request.breadcrumbs( _( 'Events' ) , '/events' )
+    request.breadcrumbs( _( 'Events' ) , reverse('event_main') )
     request.breadcrumbs( _( 'Calendar' ) , request.path_info )
 
     if year == 0:
@@ -198,7 +199,7 @@ def _process_period( period, year, month, day ):
 
 @render_to( 'events/grouping.html' )
 def category( request , period = 'day', date_parameter = 0 , year = False, month = False, day = False, fake_tomorrow = False ):
-    request.breadcrumbs( _( 'Events' ) , '/events' )
+    request.breadcrumbs( _( 'Events' ) , reverse('event_main') )
     request.breadcrumbs( _( 'By Category' ) , request.path_info )
     dict = _process( request, lambda o: o.category.title if o.category else None , period, year, month, day, sort_category = lambda o: o.category.position )
     dict['active_tab'] = 'category'
@@ -209,7 +210,7 @@ def category( request , period = 'day', date_parameter = 0 , year = False, month
 
 @render_to( 'events/grouping.html' )
 def area( request , period = 'day' , year = False, month = False, day = False, fake_tomorrow = False ):
-    request.breadcrumbs( _( 'Events' ) , '/events' )
+    request.breadcrumbs( _( 'Events' ) , reverse('event_main') )
     request.breadcrumbs( _( 'By Area' ) , request.path_info )
     dict = _process( request, lambda o: o.area.title if o.area else None, period , year, month, day )
     dict['active_tab'] = 'area'
@@ -220,7 +221,7 @@ def area( request , period = 'day' , year = False, month = False, day = False, f
 
 @render_to( 'events/grouping.html' )
 def location( request , period = 'day', year = False, month = False, day = False, fake_tomorrow = False ):
-    request.breadcrumbs( _( 'Events' ) , '/events' )
+    request.breadcrumbs( _( 'Events' ) , reverse('event_main') )
     request.breadcrumbs( _( 'By Location' ) , request.path_info )
     dict = _process( request, lambda o: o.location.title if o.location else None, period , year, month, day )
     dict['active_tab'] = 'location'
@@ -231,7 +232,7 @@ def location( request , period = 'day', year = False, month = False, day = False
 
 @render_to( 'events/grouping.html' )
 def music( request, period = 'day' , year = False, month = False, day = False, fake_tomorrow = False ):
-    request.breadcrumbs( _( 'Events' ) , '/events' )
+    request.breadcrumbs( _( 'Events' ) , reverse('event_main') )
     request.breadcrumbs( _( 'By Music' ) , request.path_info )
     dict = _process( request, lambda o: o.music.title if o.music else None, period , year, month, day )
     dict['active_tab'] = 'music'
@@ -242,7 +243,7 @@ def music( request, period = 'day' , year = False, month = False, day = False, f
 @render_to( 'events/details.html' )
 def detail ( request, slug, period = 'day' ):
     event = get_object_or_404( Event, slug = slug )
-    request.breadcrumbs( _( 'Events' ) , '/events' )
+    request.breadcrumbs( _( 'Events' ) , reverse('event_main') )
     request.breadcrumbs( event.title , request.path_info )
     dict = _process( request, lambda o: o.category.title if o.category else None, period )
     dict['event'] = event
@@ -256,7 +257,7 @@ from django.contrib.auth.decorators import login_required
 @login_required( login_url = '/login/' )
 @render_to( 'events/add.html' )
 def add( request ):
-    request.breadcrumbs( _( 'Events' ) , '/events' )
+    request.breadcrumbs( _( 'Events' ) , reverse('event_main') )
     request.breadcrumbs( _( 'Add event' ) , request.path_info )
 
     class EventForm( ModelForm ):
@@ -332,7 +333,7 @@ def add( request ):
             event.add_user = request.user
             event.save()
             form.save_m2m()
-            return HttpResponseRedirect( '/events/' ) # Redirect after POST
+            return HttpResponseRedirect( reverse('event_main') ) # Redirect after POST
         return {
                 "form": form,
                 "errors": True

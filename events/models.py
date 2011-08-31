@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import date
 from sortable.models import Sortable
 #https://github.com/ff0000/django-sortablereadme
-
+from django.core.urlresolvers import reverse
 
 EVENT_STATUSES = ( 
     ( '1', _( 'Published' ) ),
@@ -134,7 +134,7 @@ class Event( ImageModel, Sortable ):
     datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
 
     def view( self ):
-        return u'<a target="_blank" href="/events/%s">%s</a>' % ( self.slug, _( "View on site" ) )
+        return u'<a target="_blank" href="%s">%s</a>' % ( reverse('event_details', self.slug), _( "View on site" ) )
     view.allow_tags = True
     view.short_description = _( 'Preview' )
     class IKOptions:

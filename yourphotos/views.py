@@ -54,7 +54,7 @@ def detail( request , id ):
     photo = get_object_or_404( Photo, pk = id )
     if request.is_ajax():
         return render_to_response( 'yourphotos/details_node.html', {'photo': photo} )
-    request.breadcrumbs( _( 'Your Photos' ) , reverse('yourphotos_main') )
+    request.breadcrumbs( _( 'Your Photos' ) , reverse('yourphoto_main') )
     request.breadcrumbs( photo.description , request.path_info )
     return {'photo': photo}
 
@@ -85,7 +85,7 @@ from django.contrib.auth.decorators import login_required
 @login_required( login_url = '/login/' )
 @render_to( 'yourphotos/add.html' )
 def add( request ):
-    request.breadcrumbs( _( 'Your Photos' ) , reverse('yourphotos_main') )
+    request.breadcrumbs( _( 'Your Photos' ) , reverse('yourphoto_main') )
     request.breadcrumbs( _( 'Add Photos' ) , request.path_info )
 
     PhotoFormSet = modelformset_factory( Photo, fields = ( 'image', 'description' ), extra = 5, max_num = 5 )

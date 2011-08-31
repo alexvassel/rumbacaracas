@@ -18,7 +18,7 @@
 		</h2></span>
 	<span class="flt-right">
 		<ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
-        	<li><a class="socializer-8 publish-event" href="/events/add"><span>{% trans "Add event"%}</span></a></li>
+        	<li><a class="socializer-8 publish-event" href="{% url event_add %}"><span>{% trans "Add event"%}</span></a></li>
       	</ul>
 	</span>
 </div><!--//.title-wrap-->
@@ -30,9 +30,9 @@
       <ul class="image-teaser-slides encap">
       	{% for slide in slider_events%}
         	<li>
-        		<a href="/events/{{slide.slug}}"><img  width="595" height="244" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.bigimg.url}}{% endif %}" alt="{{slide.title}}" /></a>
+        		<a href="{% url event_details slide.slug %}"><img  width="595" height="244" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.bigimg.url}}{% endif %}" alt="{{slide.title}}" /></a>
         		<div class="slide-teasers">
-                    <h3><a href="/events/{{slide.slug}}">{{slide.title}}</a></h3>
+                    <h3><a href="{% url event_details slide.slug %}">{{slide.title}}</a></h3>
                     <p>{{slide.description|truncate:90}}<br />
                     	{% if slide.from_date == slide.to_date %}
 			        		{{slide.from_date}}
@@ -51,35 +51,35 @@
     <div class="image-teaser-nav encap outnone">
       <ul class="image-teaser-nav encap fcml0 fcmr0">
       	{% for slide in slider_events%}
-        	<li><h6><a href="/events/{{slide.slug}}"><img src="{{slide.smallimg.url}}"/></a></h6></li>
+        	<li><h6><a href="{% url event_details slide.slug %}"><img src="{{slide.smallimg.url}}"/></a></h6></li>
         {% endfor %}
       </ul><!--//.image-teaser-nav-->
       <div class="cflt"></div>
     </div><!--//.image-teaser-nav-->
   </div><!--//.node-->
 </div><!--//.node-container-->
-<div class="merged-container box-shadows" id="event-anchor">
+<div class="merged-container box-shadows" id="eventos-anclaje">
   <div class="merged-contents">
     <div class="tab-titles encap">
       <ul class="outnone encap">
       	
         <li class="box-shadows">
-        	<a href="/events/by-{% if active_tab == 'calendar'%}category{%else%}{{active_tab}}{% endif %}/day#event-anchor" {% if period == "day" %} class="active"{% endif %}>
+        	<a href="{{active_tab|get_event_url_by_tab:'day'}}#eventos-anclaje" {% if period == "day" %} class="active"{% endif %}>
         		{% trans "For Today"%}
     		</a>
         </li>
         <li class="box-shadows">
-        	<a href="/events/by-{% if active_tab == 'calendar'%}category{%else%}{{active_tab}}{% endif %}/tomorrow#event-anchor" {% if period == "tomorrow" %} class="active"{% endif %}>
+        	<a href="{{active_tab|get_event_url_by_tab:'tomorrow'}}#eventos-anclaje" {% if period == "tomorrow" %} class="active"{% endif %}>
         		{% trans "For Tomorrow"%}
     		</a>
         </li>
         <li class="box-shadows">
-        	<a href="/events/by-{% if active_tab == 'calendar'%}category{%else%}{{active_tab}}{% endif %}/week#event-anchor" {% if period == "week" %} class="active"{% endif %}>
+        	<a href="{{active_tab|get_event_url_by_tab:'week'}}#eventos-anclaje" {% if period == "week" %} class="active"{% endif %}>
         		{%trans "For a Week"%}
     		</a>
         </li>
         <li class="box-shadows">
-        	<a href="/events/by-{% if active_tab == 'calendar'%}category{%else%}{{active_tab}}{% endif %}/month#event-anchor" {% if period == "month" or active_tab == "calendar" %} class="active"{% endif %}>
+        	<a href="{{active_tab|get_event_url_by_tab:'month'}}#eventos-anclaje" {% if period == "month" or active_tab == "calendar" %} class="active"{% endif %}>
         		{% trans "For a month"%}
     		</a>
 		</li>
@@ -94,30 +94,30 @@
                 <h3>{{repr}}</h3>
                 <div class="navigate-days">
 	              	{% if period == "day" or period == "tomorrow"  %}
-	              		<a href="/events/by-{{active_tab}}/{{period}}/{{prev_date.year}}/{{prev_date.month}}/{{prev_date.day}}#event-anchor" class="day-prev">{% trans "Previous day"%}</a>
+	              		<a href="{{active_tab|get_event_url_by_tab:period}}/{{prev_date.year}}/{{prev_date.month}}/{{prev_date.day}}#eventos-anclaje" class="day-prev">{% trans "Previous day"%}</a>
 	          		{% endif %}
 	          		{% if period == "week"%}
-	              		<a href="/events/by-{{active_tab}}/{{period}}/{{prev_date.year}}/{{prev_date.month}}/{{prev_date.day}}#event-anchor" class="day-prev">{% trans "Previous week"%}</a>
+	              		<a href="{{active_tab|get_event_url_by_tab:period}}/{{prev_date.year}}/{{prev_date.month}}/{{prev_date.day}}#eventos-anclaje" class="day-prev">{% trans "Previous week"%}</a>
 	          		{% endif %}
 	          		{% if period == "month" and active_tab != "calendar" %}
-	              		<a href="/events/by-{{active_tab}}/{{period}}/{{prev_date.year}}/{{prev_date.month}}#event-anchor" class="day-prev">{% trans "Previous month"%}</a>
+	              		<a href="{{active_tab|get_event_url_by_tab:period}}/{{prev_date.year}}/{{prev_date.month}}#eventos-anclaje" class="day-prev">{% trans "Previous month"%}</a>
 	          		{% endif %}
 	          		{% if active_tab == "calendar"  %}
-	              		<a href="/events/calendar/{{prev_date.year}}/{{prev_date.month}}#event-anchor" class="day-prev">{% trans "Previous month"%}</a>
+	              		<a href="{% url event_calendar_full prev_date.year prev_date.month %}#eventos-anclaje" class="day-prev">{% trans "Previous month"%}</a>
 	          		{% endif %}
 
           		  &nbsp;&nbsp;&nbsp;&nbsp;
           		  	{% if period == "day" or period == "tomorrow"  %}
-                  		<a href="/events/by-{{active_tab}}/{{period}}/{{next_date.year}}/{{next_date.month}}/{{next_date.day}}#event-anchor" class="day-next">{% trans "Next day"%}</a>
+                  		<a href="{{active_tab|get_event_url_by_tab:period}}/{{next_date.year}}/{{next_date.month}}/{{next_date.day}}#eventos-anclaje" class="day-next">{% trans "Next day"%}</a>
               		{% endif %}
               		{% if period == "week"%}
-                  		<a href="/events/by-{{active_tab}}/{{period}}/{{next_date.year}}/{{next_date.month}}/{{next_date.day}}#event-anchor" class="day-next">{% trans "Next week"%}</a>
+                  		<a href="{{active_tab|get_event_url_by_tab:period}}/{{next_date.year}}/{{next_date.month}}/{{next_date.day}}#eventos-anclaje" class="day-next">{% trans "Next week"%}</a>
               		{% endif %}
               		{% if period == "month" and active_tab != "calendar" %}
-                  		<a href="/events/by-{{active_tab}}/{{period}}/{{next_date.year}}/{{next_date.month}}#event-anchor" class="day-next">{% trans "Next month"%}</a>
+                  		<a href="{{active_tab|get_event_url_by_tab:period}}/{{next_date.year}}/{{next_date.month}}#eventos-anclaje" class="day-next">{% trans "Next month"%}</a>
              		{% endif %}
                     {% if active_tab == "calendar"  %}
-	              		<a href="/events/calendar/{{next_date.year}}/{{next_date.month}}#event-anchor" class="day-next">{% trans "Next month"%}</a>
+	              		<a href="{%  url event_calendar_full next_date.year next_date.month %}#eventos-anclaje" class="day-next">{% trans "Next month"%}</a>
 	          		{% endif %}
 
                 </div>
@@ -160,23 +160,23 @@
                   <div class="outline-navigation">
                     <ul id="outline-titles" class="encap outnone">
                       <li{% if active_tab == "category" %} class="active"{% endif %}>
-                      	<a href="/events/by-category/{{period}}{{filter_date}}#event-anchor">{% trans "By Category" %}</a>
+                      	<a href="{{active_tab|get_event_url_by_tab:period}}{{filter_date}}#eventos-anclaje">{% trans "By Category" %}</a>
                       	<div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div>
                   	  </li>
                       <li{% if active_tab == "location" %} class="active"{% endif %}>
-                        <a href="/events/by-location/{{period}}{{filter_date}}#event-anchor">{% trans "By Location" %}</a>
+                        <a href="{{active_tab|get_event_url_by_tab:period}}{{filter_date}}#eventos-anclaje">{% trans "By Location" %}</a>
                         <div {% if active_tab == "location" %}style="display: block"{% endif %} class="pointer-tip"></div>
                       </li>
                       <li{% if active_tab == "area" %} class="active"{% endif %}>
-                      	<a href="/events/by-area/{{period}}{{filter_date}}#event-anchor">{% trans "By Area" %}</a>
+                      	<a href="{{active_tab|get_event_url_by_tab:period}}{{filter_date}}#eventos-anclaje">{% trans "By Area" %}</a>
                       	<div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div>
                       </li>
                       <li{% if active_tab == "music" %} class="active"{% endif %}>
-                      	<a href="/events/by-music/{{period}}{{filter_date}}#event-anchor">{% trans "By Music" %}</a>
+                      	<a href="{{active_tab|get_event_url_by_tab:period}}{{filter_date}}#eventos-anclaje">{% trans "By Music" %}</a>
                       	<div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div>
                       </li>
                       <li{% if active_tab == "calendar" %} class="active"{% endif %}>
-                      	<a href="/events/calendar#event-anchor"><img class="search-calendar" alt="{% trans "Calendar"%}" src="/media/images/blank.gif" />{% trans "Calendar"%}</a>
+                      	<a href="{% url event_calendar %}#eventos-anclaje"><img class="search-calendar" alt="{% trans "Calendar"%}" src="/media/images/blank.gif" />{% trans "Calendar"%}</a>
                       	<div {% if active_tab == "calendar" %}style="display: block"{% endif %} class="pointer-tip"></div>
                       </li>
                     </ul>
@@ -203,7 +203,7 @@
             </tr>
           </tbody>
         </table>
-      </div><!--//#event-anchor-->
+      </div><!--//#eventos-anclaje-->
       {% block eventscontent %}{% endblock %}
     </div><!--//.tab-containers-->
     <div class="cflt"></div>
@@ -214,7 +214,7 @@
 		$("#events-list").change(function () {
 			var slug = $("#events-list").val();
 			if (slug != '') {
-				window.location.href = '/events/'+ slug;	
+				window.location.href = '{% url event_main %}'+ slug;
 			}
         })
         
@@ -229,7 +229,7 @@
 			var cur_month = $("#events-months").val();
 			var cur_year = $("#events-years").val();
 			if (cur_year != '' && cur_month != '') {
-				window.location.href = '/events/calendar/'+ cur_year+ '/'+ cur_month + '#event-anchor';	
+				window.location.href = '{% url event_calendar %}'+'/'+ cur_year+ '/'+ cur_month + '#eventos-anclaje';
 			}
         })
         jQuery('ul.image-teaser-slides').cycle({
