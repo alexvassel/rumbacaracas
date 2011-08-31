@@ -41,10 +41,8 @@ def get_event_url_by_tab( value, arg):
         period = str( arg )
     except ValueError: # invalid literal for int()
         return value # Fail silently.
-    print tab
     if tab == 'calendar':
         tab = 'category'
-    print 'event_by_'+ tab + '_' + period
     return reverse('event_by_'+ tab + '_' + period )
 
 
