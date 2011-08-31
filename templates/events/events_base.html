@@ -160,19 +160,19 @@
                   <div class="outline-navigation">
                     <ul id="outline-titles" class="encap outnone">
                       <li{% if active_tab == "category" %} class="active"{% endif %}>
-                      	<a href="{{active_tab|get_event_url_by_tab:period}}{{filter_date}}#eventos-anclaje">{% trans "By Category" %}</a>
+                      	<a href="{{"category"|get_event_url_by_tab:period}}{{filter_date}}#eventos-anclaje">{% trans "By Category" %}</a>
                       	<div {% if active_tab == "category" %}style="display: block"{% endif %} class="pointer-tip"></div>
                   	  </li>
                       <li{% if active_tab == "location" %} class="active"{% endif %}>
-                        <a href="{{active_tab|get_event_url_by_tab:period}}{{filter_date}}#eventos-anclaje">{% trans "By Location" %}</a>
+                        <a href="{{"location"|get_event_url_by_tab:period}}{{filter_date}}#eventos-anclaje">{% trans "By Location" %}</a>
                         <div {% if active_tab == "location" %}style="display: block"{% endif %} class="pointer-tip"></div>
                       </li>
                       <li{% if active_tab == "area" %} class="active"{% endif %}>
-                      	<a href="{{active_tab|get_event_url_by_tab:period}}{{filter_date}}#eventos-anclaje">{% trans "By Area" %}</a>
+                      	<a href="{{"area"|get_event_url_by_tab:period}}{{filter_date}}#eventos-anclaje">{% trans "By Area" %}</a>
                       	<div {% if active_tab == "area" %}style="display: block"{% endif %} class="pointer-tip"></div>
                       </li>
                       <li{% if active_tab == "music" %} class="active"{% endif %}>
-                      	<a href="{{active_tab|get_event_url_by_tab:period}}{{filter_date}}#eventos-anclaje">{% trans "By Music" %}</a>
+                      	<a href="{{"music"|get_event_url_by_tab:period}}{{filter_date}}#eventos-anclaje">{% trans "By Music" %}</a>
                       	<div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div>
                       </li>
                       <li{% if active_tab == "calendar" %} class="active"{% endif %}>
