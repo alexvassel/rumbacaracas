@@ -1,14 +1,29 @@
+{% extends "base.html" %}
 {% load i18n %}
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title>{% trans "Page not found" %}</title>
-</head>
-<body>
-<h2>{% trans "Page not found" %}</h2>
-
-<p>{% trans "Sorry, but the requested page could not be found." %}</p>
-
-</body>
-</html>
+{% load openx %}
+{% block title %}{% trans "Page not found" %}{% endblock %}
+{% block colleft %}
+<style>
+#main-contents #col-left, #main-contents #col-right {
+    min-height: 0px !important;
+}
+</style>
+<div class="node-container gente box-shadows encap">
+  <div class="title-wrap encap">
+    <span class="flt-left"><h2 class="title">{% trans "Page not found" %}</h2></span>
+    <span class="flt-right">
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+      </ul>
+    </span>
+  </div><!--//.title-wrap-->
+  <div class="node gente bb-none encap">
+    <br />
+    <p>{% trans "Sorry, but the requested page could not be found." %}</p>
+  </div><!--//.node-->
+</div><!--//.node-container-->
+{% endblock %}
+{% block colright %}
+    <div class="banner-container box-shadows outnone widget">
+        {% banner_zone_iframe 100 300 250%}
+    </div><!--//.banner-container-->
+{% endblock %}
