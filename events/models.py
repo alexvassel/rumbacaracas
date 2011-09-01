@@ -134,7 +134,7 @@ class Event( ImageModel, Sortable ):
     datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
 
     def view( self ):
-        return u'<a target="_blank" href="%s">%s</a>' % ( reverse('event_details', self.slug), _( "View on site" ) )
+        return u'<a target="_blank" href="%s">%s</a>' % ( unicode(self.get_absolute_url(), 'utf-8'), _( "View on site" ) )
     view.allow_tags = True
     view.short_description = _( 'Preview' )
     class IKOptions:

@@ -99,8 +99,8 @@ class Location( ImageModel ):
             'slug': self.slug} )
 
     def view( self ):
-        return u'<a target="_blank" href="%s">%s</a>' % ( reverse('location_details', self.slug), _( "View on site" ) )
-    
+        return u'<a target="_blank" href="%s">%s</a>' % ( unicode(self.get_absolute_url(), 'utf-8'), _( "View on site" ) )
+
     view.allow_tags = True
     view.short_description = _( 'Preview' )
     class IKOptions:
