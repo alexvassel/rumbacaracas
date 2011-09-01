@@ -5,11 +5,13 @@ from decorators import render_to
 from django.forms import ModelForm
 from django.forms import forms
 from django.core.urlresolvers import reverse
+from django.forms import DateField as dtf
 
 @render_to( 'subscribe/subscribe.html' )
 def subscribe( request ):
     request.breadcrumbs( _( 'Subscription' ) , request.path_info )
     class SubscribeForm( ModelForm ):
+        birthday = dtf(input_formats=['%d/%m/%Y',])
         class Meta:
             model = User
             fields = (
