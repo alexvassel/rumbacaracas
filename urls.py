@@ -52,6 +52,12 @@ urlpatterns = patterns( '',
     url(r'^noticias/', include('zinnia.urls.quick_entry')),
     url(r'^noticias/', include('zinnia.urls.entries')),
 
+    url(r'^trackback/', include('zinnia.urls.trackback')),
+    url(r'^noticias/alimenta/', include('zinnia.urls.feeds')),
+    url(r'^noticias/discusiones/', include('zinnia.urls.discussions')),
+
+
+
     url( r'^comentarios/', include( 'django.contrib.comments.urls' ) ),
 
     # Uncomment the admin/doc line below to enable admin documentation:
