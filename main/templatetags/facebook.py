@@ -1,6 +1,7 @@
 from django import template
 from django.conf import settings
 from socialregistration.utils import _https
+from django.utils.html import strip_tags
 
 register = template.Library()
 
@@ -45,6 +46,24 @@ def facebook_group():
 
 
 
+@register.filter
+def truncate_raw( value, arg ):
+    """
+    Truncates a string after a given number of chars
+    return abbr with title
+    Argument: Number of chars to truncate after
+    """
+    try:
+        length = int( arg )
+    except ValueError: # invalid literal for int()
+        return value # Fail silently.
+    if not isinstance( value, basestring ):
+        value = str( value )
+    if ( len( strip_tags(value) ) > length ):
+        from django.utils.safestring import mark_safe
+        return mark_safe( strip_tags(value)[:length] + "..." )
+    else:
+        return value
 
 
 

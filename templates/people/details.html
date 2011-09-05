@@ -8,6 +8,17 @@
 {% load widgets %}
 {% load facebook twitter%}
 
+{% if event %}
+    {% block fbmeta %}
+        <meta property="og:title" content="{{ event.title }}"/>
+        <meta property="og:image" content="{% value_from_settings "FULL_BASE_URL" %}{{ event.smallthumb.url }}"/>
+        <meta property="og:url" content="{% value_from_settings "FULL_BASE_URL" %}{{ event.get_absolute_url }}"/>
+        <meta property="og:type" content="article" />
+    {% endblock %}
+{% endif %}
+
+
+
 {% block colleft %}
 <div class="node-container eventos box-shadows encap">
   <div class="title-wrap encap">
