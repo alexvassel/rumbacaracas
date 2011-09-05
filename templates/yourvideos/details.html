@@ -9,6 +9,16 @@
 {% load widgets %}
 {% load facebook twitter %}
 
+{% if video %}
+    {% block fbmeta %}
+        <meta property="og:title" content="{{ video.description }}"/>
+        <meta property="og:image" content="{{video.youtube_id|youtube_img_from_id}}"/>
+        <meta property="og:url" content="{% value_from_settings "FULL_BASE_URL" %}{{ video.get_absolute_url }}"/>
+        <meta property="og:type" content="article" />
+    {% endblock %}
+{% endif %}
+
+
 {% block colleft %}
 <div class="node-container videos box-shadows encap">
   <div class="title-wrap encap">

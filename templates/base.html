@@ -22,7 +22,7 @@
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 
-    <meta property="fb:app_id" content="195992407109917">
+    <meta property="fb:app_id" content="{% value_from_settings "FACEBOOK_APP_ID" %}">
     <meta property="og:site_name" content="Rumbabogota.com"/>
     {% block fbmeta %}
         {% comment %}<meta property="og:title" content="Rumbabogota.com"/>{% endcomment %}

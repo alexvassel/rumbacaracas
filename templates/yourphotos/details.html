@@ -5,6 +5,18 @@
 {% load widgets %}
 {% load openx %}
 {% load listtools %}
+
+
+{% if photo %}
+    {% block fbmeta %}
+        <meta property="og:title" content="{{ photo.description }}"/>
+        <meta property="og:image" content="{% value_from_settings "FULL_BASE_URL" %}{{ photo.thumbnail.url }}"/>
+        <meta property="og:url" content="{% value_from_settings "FULL_BASE_URL" %}{{ photo.get_absolute_url }}"/>
+        <meta property="og:type" content="article" />
+    {% endblock %}
+{% endif %}
+
+
 {% block colleft %}
 
 
@@ -22,7 +34,7 @@
   </div>
 </div><!--//.node-container-->
 <script>
-	$(document).ready(function () {
+    $(document).ready(function () {
 		/*
 		$('#divContent').click(function(){
 		   $('#content').slideUp('slow').load('info.php', function() {

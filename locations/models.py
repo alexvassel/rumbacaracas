@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse
 class LocationType( models.Model ):
     title = models.CharField( _( 'Type of Venue/Club' ), max_length = 256 )
     slug = models.SlugField ( _( 'Url name for location type' ) )
+    fb_type = models.CharField( _( 'Facebook open graph type' ), max_length = 256,  blank = True )
     show_in_menu = models.BooleanField(_('Show in menu'), default = True )
     def __unicode__( self ):
         return self.title
