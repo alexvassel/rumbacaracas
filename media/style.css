@@ -2789,6 +2789,13 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 	font-size: 11px;
 	color: #CB271B;
 }
+#main-contents #col-left #events-accordion ul.photo-archives-list li h6 a {
+    font-size: 16px;
+    color: #CB271B;
+}
+
+
+
 #main-contents #col-right .box-generic .box-contents .fivestar-widget img,
 #main-contents #col-left .node-mini-right .block-latest-videos .fivestar-widget img{
 	border: none;
@@ -2861,6 +2868,7 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 }
 #main-contents #col-left .video-archives ul.video-archives-list li,
 #main-contents #col-left .photo-archives ul.photo-archives-list li,
+#main-contents #col-left #events-accordion ul.photo-archives-list li,
 #main-contents #col-left .std-archives ul.std-archives-list li{
 	padding: 0 0 20px;
 	margin: 0;
@@ -2871,8 +2879,24 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 #main-contents #col-left .video-archives .videos-mod ul.video-archives-list li{
 	width: 33.3%;
 }
+#main-contents #col-left #events-accordion ul.photo-archives-list li{
+  border-bottom: 1px solid #D1D1D1;
+  margin: 0 16px 20px 0;
+  width: 200px;
+
+}
+#main-contents #col-left #events-accordion ul.photo-archives-list li .photo-details {
+    min-height: 126px;
+}
+
+#main-contents #col-left #events-accordion ul.photo-archives-list li.last{
+    margin: 0 0px 20px 0;
+}
+
+
+
 #main-contents #col-left .photo-archives .photos-mod ul.photo-archives-list li{
-	width: 25%;
+    width: 25%;
 }
 #main-contents #col-left .video-archives ul.video-archives-list li .video-thumbnail a,
 #main-contents #col-left .photo-archives ul.photo-archives-list li .photo-thumbnail a,
@@ -3717,6 +3741,16 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
   text-align: left;
 	height: 20px;
 }
+
+#main-contents #col-left #events-accordion .ratings {
+  border: none;
+  margin: 5px 0;
+  padding: 0;
+  text-align: left;
+	height: 20px;
+}
+
+
 /* Eventos duo (in locales details) */
 #main-contents #col-left .locales .events-duo h2{
   font-size: 22px;

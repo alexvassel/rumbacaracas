@@ -1,0 +1,67 @@
+{% load tools %}
+{% load i18n %}
+{% load listtools %}
+{% load facebook %}
+{%  if events_thums %}
+    <ul class="photo-archives-list encap outnone">
+        {% for event in events_thums %}
+            {% if forloop.counter0 and forloop.counter0|divisibleby:4 %}
+                <li style="clear: both; width:100%;padding: 0; border: 0; margin:  0"></li>
+            {% endif %}
+            {% if forloop.counter and forloop.counter|divisibleby:4 %}
+                <li class="last">
+                    {% else %}
+                <li>
+            {% endif %}
+            <div class="photo-thumbnail">
+                <a href="{% url event_details event.slug %}">
+                    <img alt="{{event.title}}" src="{{event.thumbnail.url}}">
+                </a>
+            </div>
+            <div class="photo-details decou">
+                <h6><a href="{% url event_details event.slug %}">{{event.title}}</a></h6>
+                <span class="author-meta">{{event.description|truncate:90}}<br />
+                    {% if period == "week" or period == "month" %}
+                        {{closest_dates|hash:event.pk}}
+                    {% endif %}
+                </span>
+                <div class="ratings">
+                    {% facebook_like event.get_absolute_url%}
+                </div>
+            </div><!--//.photo-details-->
+            
+            </li>
+        {% endfor %}
+    </ul><!--//.photo-archives-list-->
+{%  endif %}
+<div class="c46l">
+  <ul>
+    {% for subevents in events_list|rows:2 %}
+        {% for event in subevents %}
+            <li>
+                <a href="{% url event_details event.slug %}"><span class="event-name">{{event.title}}</span></a> |
+                <span class="event-venue">
+                    {% if event.location%}
+                        <a href="{% url location_details event.location.slug %}"><span>{{event.location}}</span></a>
+                    {% else %}
+                        {% if event.place %}
+                            {{event.place}}
+                        {% else %}
+                            {% trans "Other"%}
+                        {% endif %}
+                    {% endif%}
+                    {% if period == "week" or period == "month" %}
+                        - {{closest_dates|hash:event.pk}}
+                    {% endif %}
+                </span>
+            </li>
+        {% endfor %}
+        </ul>
+        </div><!--//.c46l-->
+        <div class="c46r">
+        <ul>
+    {% endfor %}
+    </ul>
+
+</div><!--//.c46r-->
+<div style="clear: both; width:100%;padding-bottom: 10px; border: 0; margin:  0"></div>

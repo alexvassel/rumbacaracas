@@ -217,3 +217,16 @@ class ValueFromSettings(template.Node):
         self.arg = template.Variable(var)
     def render(self, context):
         return settings.__getattr__(str(self.arg))
+
+
+@register.inclusion_tag( 'events/group_block.html' )
+def show_event_group( events ):
+    events_thums = list()
+    events_list = list()
+    
+    if len(events) > 10:
+        events_thums = events[0:8]
+        events_list = events[8:]
+    else:
+        events_thums = events
+    return dict( events_list = events_list,events_thums = events_thums  )

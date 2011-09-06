@@ -176,7 +176,6 @@ def main_slider_split(thelist, n):
 
 
 
-
 register.filter( rows )
 register.filter( rows_distributed )
 register.filter( columns )

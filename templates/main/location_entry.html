@@ -16,7 +16,8 @@
           {% for cat in object.type.all%}
               <a class="force-red" href="{% url location_category group=cat.slug %}">{{cat.title}}</a>
               {% if not forloop.last %}, {% endif %}
-          {% endfor %}
+          {% endfor %} /
+          {%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}
       </p>
       <p>{{ object.description|truncate:150 }}</p>
       <a class="read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
