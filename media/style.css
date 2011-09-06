@@ -2889,6 +2889,12 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
     min-height: 126px;
 }
 
+#main-contents #col-left #events-accordion ul.photo-archives-list li .photo-details .close-date{
+    font-weight: bold;
+}
+
+
+
 #main-contents #col-left #events-accordion ul.photo-archives-list li.last{
     margin: 0 0px 20px 0;
 }

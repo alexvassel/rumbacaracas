@@ -220,7 +220,7 @@ class ValueFromSettings(template.Node):
 
 
 @register.inclusion_tag( 'events/group_block.html' )
-def show_event_group( events ):
+def show_event_group( events, period, closest_dates ):
     events_thums = list()
     events_list = list()
     
@@ -229,4 +229,4 @@ def show_event_group( events ):
         events_list = events[8:]
     else:
         events_thums = events
-    return dict( events_list = events_list,events_thums = events_thums  )
+    return dict( events_list = events_list,events_thums = events_thums, period = period, closest_dates = closest_dates  )
