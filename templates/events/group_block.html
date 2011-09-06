@@ -20,7 +20,7 @@
             </div>
             <div class="photo-details decou">
                 <h6><a href="{% url event_details event.slug %}">{{event.title}}</a></h6>
-                <span class="author-meta">{{event.description|truncate:90}}<br />
+                <span class="author-meta">{{event.description|truncate_raw:90}}<br />
                     {% if period == "week" or period == "month" %}
                         <span class="close-date"">{{closest_dates|hash:event.pk}}</span>
                     {% endif %}
