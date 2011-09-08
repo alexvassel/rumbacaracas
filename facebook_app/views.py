@@ -9,9 +9,11 @@ import urllib2
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 import dateutil.parser
 
+@csrf_exempt
 @render_to( 'facebook/events_list.html' )
 def events_list(request):
 
@@ -93,8 +95,6 @@ def photos_list(request, id):
             user_photo = Photo(
                 user = request.user,
             )
-
-            #if photo.
 
             user_photo.image.save(photo["id"] + "." + (photo["source"].split(".")[-1]), File(img_temp));
             user_photo.save()
