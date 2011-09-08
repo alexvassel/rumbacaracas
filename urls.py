@@ -19,6 +19,7 @@ urlpatterns = patterns( '',
     ( r'^gente/', include( 'people.urls' ) ),
     ( r'^tus-fotos/', include( 'yourphotos.urls' ) ),
     ( r'^videos/', include( 'yourvideos.urls' ) ),
+    ( r'^facebook/', include ( 'facebook_app.urls' ) ),
     
     url(r'^busqueda/resultados/$', 'django.views.generic.simple.direct_to_template', {'template': 'googlesearch/googlesearch_results.html', 'extra_context': {'title' : 'Search Results'}}, name='googlesearch_results'),
     

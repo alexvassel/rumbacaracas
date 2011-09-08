@@ -1,10 +1,40 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "facebook/base.html" %}
 
-</body>
-</html>
+{% block content %}
+<div id="main-contents" class="main-contents encap" style="padding-top: 0px;">
+    <div id="col-left" class="col-left">
+        <div class="node-container box-shadows encap" style="width: 750px;">
+            <div class="title-wrap encap">
+                <span class="flt-left"><h2 class="title">Albums</h2></span>
+            </div>
+
+            <div class="node encap">
+
+                <div class="albums">
+                    {% for album in albums.data %}
+                        {% if forloop.counter0|divisibleby:"4" %}
+                            <div class="albums-line" style="clear: both; overflow: hidden;">
+                        {% endif %}
+                        <div class="fotos-left outnone" style="float: left;">
+                            <h3>{{ album.name }}</h3>
+                            <span class="teaser-image">
+                                <a href="{% url facebook_photos_list album.id %}">
+                                    <img src="{{ album.picture_url }}" alt="{{ album.title }}" style="width: 160px; ">
+                                </a>
+                            </span>
+                        </div>
+                        {% if forloop.counter|divisibleby:"4" %}
+                            </div>
+                        {% endif %}
+
+                    {% endfor %}
+
+                    {% if not albums.data|length|divisibleby:"4" %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

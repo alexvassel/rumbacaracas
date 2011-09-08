@@ -1,10 +1,70 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "facebook/base.html" %}
 
-</body>
-</html>
+{% block content %}
+<div id="main-contents" class="main-contents encap" style="padding-top: 0px;">
+    <div id="col-left" class="col-left">
+        <form action="{% url facebook_photos_list album.id %}" method="post">
+            {% csrf_token %}
+            <div class="node-container box-shadows encap" style="width: 750px;">
+                <div class="title-wrap encap">
+                    <span class="flt-left"><h2 class="title">{{ album.name }}</h2></span>
+                    <span class="flt-right">
+                        <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+                            <li><a class="socializer-8 publish-event"><button type="submit" style="background-color: inherit;"><span>Publica un fotos</span></button></a></li>
+                        </ul>
+                    </span>
+                </div>
+
+                <div class="node encap">
+
+                    <div class="photos-share-options" style="border-top:none;margin-top: -20px; margin-bottom: 20px">
+                        <ul class="teaser-options encap outnone fcml0 lcmr0">
+                            <li>
+                                <a href="#" onclick="selectAll();" style="width: auto; display: inline;">
+                                Seleccionar todos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="deselectAll();" style="width: auto; display: inline;">
+                                    Deseleccionar todos
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="albums">
+                        {% for photo in photos.data %}
+                            {% if forloop.counter0|divisibleby:"4" %}
+                                <div class="albums-line" style="clear: both; overflow: hidden;">
+                            {% endif %}
+                            <div class="fotos-left outnone" style="float: left; text-align: center; vertical-align: bottom;">
+                                <input type="checkbox" name="object_photos" value="{{ photo.id }}" />
+                                <span class="teaser-image">
+                                    <img src="{{ photo.images.1.source}}" alt="{{ photo.name }}" style="max-width: 160px;">
+                                </span>
+                            </div>
+                            {% if forloop.counter|divisibleby:"4" %}
+                                </div>
+                            {% endif %}
+
+                        {% endfor %}
+
+                        {% if not albums.data|length|divisibleby:"4" %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="title-wrap encap">
+                    <span class="flt-right">
+                        <ul class="socializer encap outnone fcml0 lcmr0">
+                            <li><a class="socializer-8 publish-event"><button type="submit" style="background-color: inherit;"><span>Publica un fotos</span></button></a></li>
+                        </ul>
+                    </span>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

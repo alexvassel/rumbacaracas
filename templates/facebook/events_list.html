@@ -1,10 +1,80 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "facebook/base.html" %}
 
-</body>
-</html>
+{% block content %}
+<div id="main-contents" class="main-contents encap" style="padding-top: 0px;">
+    <div id="col-left" class="col-left">
+        <form action="." method="post">
+            {% csrf_token %}
+            <div class="node-container box-shadows encap" style="width: 750px;">
+                <div class="title-wrap encap">
+                    <span class="flt-left"><h2 class="title">Eventos</h2></span>
+                    <span class="flt-right">
+                        <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+                            <li><a class="socializer-8 publish-event"><button type="submit" style="background-color: inherit;"><span>Publica un evento</span></button></a></li>
+                        </ul>
+                    </span>
+                </div>
+
+                <div class="node encap">
+
+                    <div class="photos-share-options" style="border-top:none;margin-top: -20px; margin-bottom: 20px">
+                        <ul class="teaser-options encap outnone fcml0 lcmr0">
+                            <li>
+                                <a href="#" onclick="selectAll();" style="width: auto; display: inline;">
+                                Seleccionar todos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="deselectAll();" style="width: auto; display: inline;">
+                                    Deseleccionar todos
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="outline-briefs" class="outline-briefs boxed-brief" style="padding-top: 0px;">
+                        <div id="outline-slides" class="outnone encap" style="position: relative; overflow-x: hidden; overflow-y: hidden;">
+                            <div class="outline-slide" style="display: block;">
+
+                                {% for event in events.data %}
+                                <dl class="encap" style="width: 640px;">
+                                    <dt style="float: left; width: 140px;">
+                                        <input type="checkbox" name="object_events" value="{{ event.id }}" style="float: left; vertical-align: middle;" />
+                                        <img src="{{ event.picture_url }}" alt="{{ event.name }}">
+                                    </dt>
+                                    <dd style="float: left;">
+                                        <h3>
+                                            {{ event.name }}
+                                        </h3>
+                                        <p class="published">
+                                            {{ event.start_time|date:"d-m-Y"|lower }} - {{ event.end_time|date:"d-m-Y"|lower }}
+                                        </p>
+                                        <p class="published">
+                                            {{ event.location }}
+                                        </p>
+                                        <p>
+                                            <span>{{ event.description }}</span>
+                                        </p>
+                                    </dd>
+                                </dl>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="title-wrap encap">
+                    <span class="flt-left"></span>
+                    <span class="flt-right">
+                        <ul class="socializer encap outnone fcml0 lcmr0">
+                            <li><a class="socializer-8 publish-event"><button type="submit" style="background-color: inherit;"><span>Publica un evento</span></button></a></li>
+                        </ul>
+                    </span>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
