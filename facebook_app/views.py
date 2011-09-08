@@ -60,6 +60,7 @@ def events_list(request):
         events = events,
     )
 
+@csrf_exempt
 @render_to( 'facebook/albums_list.html' )
 def albums_list(request):
 
@@ -75,6 +76,7 @@ def albums_list(request):
         albums = albums,
     )
 
+@csrf_exempt
 @render_to( 'facebook/photos_list.html' )
 def photos_list(request, id):
 
