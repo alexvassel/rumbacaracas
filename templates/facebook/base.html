@@ -94,8 +94,8 @@
 
             <div id="top-menus-wrapper" class="top-menus-wrapper outnone c75r">
                 <ul id="top-menu-secondary" class="top-menu-secondary flt-right encap fcpl0 lcpr0">
-                    <li><a href="{% url facebook_events_list %}">Eventos</a></li>
-                    <li><a href="{% url facebook_albums_list %}">Fotos</a></li>
+                    <li><a href="{% url facebook_events_list %}">{% trans "Events"%}</a></li>
+                    <li><a href="{% url facebook_albums_list %}">{%trans "Fotos"%}</a></li>
                 </ul>
             </div>
         </div>
@@ -107,7 +107,7 @@
             <span class="txt-right">
                 <p>
                     <span class="uppercase">Rumbabogota.com</span>, C.A. © 2009-2011 Todos los Derechos Reservados<br>
-                    <a href="/terminos_de_uso/" target="_blank">Términos de Uso</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:rumba@rumbabogota.com">rumba@rumbabogota.com</a></p>
+                    <a href="{% url terms_of_use %}" target="_blank">{% trans "Terms of Use" %}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:rumba@rumbabogota.com">rumba@rumbabogota.com</a></p>
             </span>
         </div>
     </div>
