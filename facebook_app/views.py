@@ -100,7 +100,7 @@ def _init_facebook_app(request):
             parts = value.split("=")
             request.session[parts[0]] = parts[1]
 
-        return HttpResponseRedirect("http://apps.facebook.com/180051822005393/")
+        return HttpResponseRedirect("http://apps.facebook.com/"+ settings.FACEBOOK_APP_ID +"/")
 
     return False
 
@@ -114,7 +114,7 @@ def _get_facebook_app(request):
             request.session['socialregistration_user'] = User()
             request.session['socialregistration_profile'] = FacebookProfile(uid=user["id"])
             request.session['socialregistration_client'] = request.facebook
-            request.session['next'] = "http://apps.facebook.com/180051822005393/"
+            request.session['next'] = "http://apps.facebook.com/"+ settings.FACEBOOK_APP_ID +"/"
             return graph, user, None
 
         return graph, user, sys_user
@@ -135,7 +135,7 @@ def events_list(request):
             return HttpResponseRedirect("/facebook/setup/")
     except facebook.GraphAPIError:
         del request.session["access_token"]
-        return HttpResponseRedirect("http://apps.facebook.com/180051822005393/")
+        return HttpResponseRedirect("http://apps.facebook.com/"+ settings.FACEBOOK_APP_ID +"/")
 
     if request.method == 'POST':
         events_ids = request.POST.getlist("object_events")
@@ -192,7 +192,7 @@ def albums_list(request):
             return HttpResponseRedirect("/facebook/setup/")
     except facebook.GraphAPIError:
         del request.session["access_token"]
-        return HttpResponseRedirect("http://apps.facebook.com/180051822005393/")
+        return HttpResponseRedirect("http://apps.facebook.com/"+ settings.FACEBOOK_APP_ID +"/")
 
     albums = graph.get_connections(user["id"], "albums")
 
@@ -219,7 +219,7 @@ def photos_list(request, id):
             return HttpResponseRedirect("/facebook/setup/")
     except facebook.GraphAPIError:
         del request.session["access_token"]
-        return HttpResponseRedirect("http://apps.facebook.com/180051822005393/")
+        return HttpResponseRedirect("http://apps.facebook.com/"+ settings.FACEBOOK_APP_ID +"/")
 
     if request.method == 'POST':
         photos_ids = request.POST.getlist("object_photos")
