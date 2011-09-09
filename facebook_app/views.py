@@ -187,7 +187,9 @@ def albums_list(request):
         return func_return
 
     try:
-        graph, user = _get_facebook_app(request)
+        graph, user, sys_user = _get_facebook_app(request)
+        if sys_user is None:
+            return HttpResponseRedirect("/facebook/setup/")
     except facebook.GraphAPIError:
         del request.session["access_token"]
         return HttpResponseRedirect("http://apps.facebook.com/180051822005393/")
@@ -212,7 +214,9 @@ def photos_list(request, id):
         return func_return
 
     try:
-        graph, user = _get_facebook_app(request)
+        graph, user, sys_user = _get_facebook_app(request)
+        if sys_user is None:
+            return HttpResponseRedirect("/facebook/setup/")
     except facebook.GraphAPIError:
         del request.session["access_token"]
         return HttpResponseRedirect("http://apps.facebook.com/180051822005393/")
