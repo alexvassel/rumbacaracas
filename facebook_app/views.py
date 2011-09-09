@@ -197,7 +197,11 @@ def albums_list(request):
     albums = graph.get_connections(user["id"], "albums")
 
     for album in albums["data"]:
-        album["picture_url"] = "https://graph.facebook.com/" + album["id"] + "/picture?type=small"
+        if "cover_photo" in album:
+            cover = graph.get_object(album["cover_photo"])
+            album["picture_url"] = cover["images"][1]["source"]
+        else:
+            album["picture_url"] = "https://graph.facebook.com/" + album["id"] + "/picture?type=small"
 
     return dict(
         user = user,

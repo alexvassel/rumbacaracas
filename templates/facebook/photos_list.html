@@ -33,6 +33,7 @@
                     </div>
 
                     <div class="albums">
+                    {% if photos.data|length > 0 %}
                         {% for photo in photos.data %}
                             {% if forloop.counter0|divisibleby:"3" %}
                                 <div class="albums-line" style="clear: both; overflow: hidden;">
@@ -52,6 +53,9 @@
                         {% if not photos.data|length|divisibleby:"3" %}
                             </div>
                         {% endif %}
+                    {% else %}
+                        <div style="font-size: 16px;">El álbum no tiene fotos</div>
+                    {% endif %}
                     </div>
                 </div>
 

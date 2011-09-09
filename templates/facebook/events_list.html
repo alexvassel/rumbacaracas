@@ -35,7 +35,7 @@
                     <div id="outline-briefs" class="outline-briefs boxed-brief" style="padding-top: 0px;">
                         <div id="outline-slides" class="outnone encap" style="position: relative; overflow-x: hidden; overflow-y: hidden;">
                             <div class="outline-slide" style="display: block;">
-
+                            {% if events.data|length > 0 %}
                                 {% for event in events.data %}
                                 <dl class="encap" style="width: 640px;">
                                     <dt style="float: left; width: 140px;">
@@ -58,7 +58,9 @@
                                     </dd>
                                 </dl>
                                 {% endfor %}
-
+                            {% else %}
+                                <div style="font-size: 16px;">No tiene eventos</div>
+                            {% endif %}
                             </div>
                         </div>
                     </div>
