@@ -1,0 +1,85 @@
+{% extends "facebook/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Signup | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load listtools %}
+{% load openx %}
+{% load socialregistration_tags %}
+{% block content %}
+<div class="node-container gente box-shadows encap">
+  <div class="title-wrap encap">
+    <span class="flt-left">
+        <h2 class="title">
+            {% trans "Signup setup"%}
+        </h2>
+	</span>
+    <span class="flt-right">
+	  <img src="/media/images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+      </ul>
+    </span>
+  </div><!--//.title-wrap-->
+  <div class="node gente bb-none encap" id="add-form">
+	    <br />
+    	{% trans "Please provide additional information to complete registration"%}
+
+        {% if error %}
+            <p>Your session timed out. Please try again.</p>
+        {% else %}
+
+            <form action="." method="post"  id="addform">
+            {% social_csrf_token %}
+
+            <div>
+              <table border="0" cellpadding="7" cellspacing="0" width="100%">
+                {% for field in form %}
+                    <tr>
+                        <td width="250">
+                            <span class="mandatory">*</span>
+                            {{ field.label_tag }}
+                            {% if field.errors %}
+                                    <br/>{{ field.errors }}
+                            {% endif%}
+                        </td>
+                        <td class="textbox">{{ field }}</td>
+                    </tr>
+                {% endfor %}
+
+                <tr>
+                    <td colspan="2"><small><span class="space"> </span>{% trans "The fields marked with"%} <span class="mandatory">*</span> {% trans "are required"%}</small></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                      <br />
+                      <input type="reset" id="BtnClear" value="{% trans "Reset"%}" class="button" />
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      <input type="submit" id="BtnSubmit" value="{% trans "Submit"%}" class="button" />
+                    </td>
+                </tr>
+              </table>
+              <hr />
+            </div>
+        </form>
+    {% endif %}
+	<br />
+	<br />
+	{% include "main/banner_103.html" %}
+  </div><!--//.node-->
+</div><!--//.node-container-->
+
+
+<script>
+	$(document).ready(function () {
+		$('#addform input[type=reset]').click(function(){
+			$(':input','#addform')
+			 .not(':button, :submit, :reset, :hidden')
+			 .val('')
+			 .removeAttr('checked')
+			 .removeAttr('selected');
+			 return false;
+		});
+	})
+</script>
+
+
+{% endblock %}

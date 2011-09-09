@@ -7,7 +7,6 @@ admin.autodiscover()
 urlpatterns = patterns( '',
     ( r'' , include( 'main.urls' ) ),
     ( r'^tinymce/', include( 'tinymce.urls' ) ),
-
     #Changes in setup proccess
     url(r'^social/setup', 'main.views.custom_social_setup', name='socialregistration_setup'),
     #/Changes in setup proccess
@@ -19,6 +18,8 @@ urlpatterns = patterns( '',
     ( r'^gente/', include( 'people.urls' ) ),
     ( r'^tus-fotos/', include( 'yourphotos.urls' ) ),
     ( r'^videos/', include( 'yourvideos.urls' ) ),
+    ( r'^facebook/login/', 'django.views.generic.simple.direct_to_template', {'template': 'facebook/login.html'} ),
+    ( r'^facebook/setup/', 'main.views.custom_social_setup', {'template': 'facebook/setup.html'} ),
     ( r'^facebook/', include ( 'facebook_app.urls' ) ),
     
     url(r'^busqueda/resultados/$', 'django.views.generic.simple.direct_to_template', {'template': 'googlesearch/googlesearch_results.html', 'extra_context': {'title' : 'Search Results'}}, name='googlesearch_results'),

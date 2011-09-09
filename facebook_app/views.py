@@ -1,6 +1,17 @@
+import base64
+from datetime import time
+import hashlib
+import hmac
+import json
+import urllib
+from socialregistration.models import FacebookProfile
+from socialregistration.views import _get_next
+import facebook
+import md5
+from django.conf import settings
 from decorators import render_to
 import itertools
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from main.modelFields import SlugifyUniquely
 from django.core.urlresolvers import reverse
 from events.models import Event, EventCategory
@@ -10,15 +21,121 @@ from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate, logout as auth_logout
 
 import dateutil.parser
+
+# Find a JSON parser
+try:
+    import json
+    _parse_json = lambda s: json.loads(s)
+except ImportError:
+    try:
+        import simplejson
+        _parse_json = lambda s: simplejson.loads(s)
+    except ImportError:
+        # For Google AppEngine
+        from django.utils import simplejson
+        _parse_json = lambda s: simplejson.loads(s)
+
+def _get_next(request):
+    """
+    Returns a url to redirect to after the login
+    """
+    if 'next' in request.session:
+        next = request.session['next']
+        del request.session['next']
+        return next
+    elif 'next' in request.GET:
+        return request.GET.get('next')
+    elif 'next' in request.POST:
+        return request.POST.get('next')
+    else:
+        return getattr(settings, 'LOGIN_REDIRECT_URL', '/')
+
+def _init_facebook_app(request):
+
+    if "fb_sig" in request.POST:
+        fbsig = {}
+        for param in request.POST:
+            if param.startswith("fb_sig_"):
+                fbsig[param[7:]] = request.POST[param]
+
+        secret_string = ""
+        for key in sorted(fbsig.iterkeys()):
+           secret_string += key + "=" + fbsig[key]
+
+        secret_string += settings.FACEBOOK_SECRET_KEY
+
+        m = md5.new()
+        m.update(secret_string)
+
+        if "access_token" in request.session:
+            return False
+
+        if m.hexdigest() == request.POST["fb_sig"]:
+            args = {}
+            args["display"] = "page"
+            args["client_id"] = settings.FACEBOOK_APP_ID
+            args["redirect_uri"] = "http://" + request.META["HTTP_HOST"] + "/facebook/"
+            args["scope"] = settings.FACEBOOK_REQUEST_PERMISSIONS
+            redirect_url = "<script type='text/javascript'>top.location.href='https://www.facebook.com/dialog/oauth?" + urllib.urlencode(args) + "'</script>"
+            return HttpResponse(redirect_url)
+
+        return False
+
+    if "code" in request.GET:
+        args = {}
+        args["client_id"] = settings.FACEBOOK_APP_ID
+        args["redirect_uri"] = "http://" + request.META["HTTP_HOST"] + "/facebook/"
+        args["client_secret"] = settings.FACEBOOK_SECRET_KEY
+        args["code"] = request.GET["code"]
+        request_url = "https://graph.facebook.com/oauth/access_token?" + urllib.urlencode(args)
+
+        file = urllib.urlopen(request_url)
+
+        response = file.read().split("&")
+        for value in response:
+            parts = value.split("=")
+            request.session[parts[0]] = parts[1]
+
+        return HttpResponseRedirect("http://apps.facebook.com/180051822005393/")
+
+    return False
+
+def _get_facebook_app(request):
+    if "access_token" in request.session:
+        graph = facebook.GraphAPI(request.session["access_token"])
+        user  = graph.get_object("me")
+
+        sys_user = authenticate(uid=user["id"])
+        if sys_user is None:
+            request.session['socialregistration_user'] = User()
+            request.session['socialregistration_profile'] = FacebookProfile(uid=user["id"])
+            request.session['socialregistration_client'] = request.facebook
+            request.session['next'] = "http://apps.facebook.com/180051822005393/"
+            return graph, user, None
+
+        return graph, user, sys_user
+
+    return None, None, None
 
 @csrf_exempt
 @render_to( 'facebook/events_list.html' )
 def events_list(request):
 
-    graph = request.facebook.graph
-    user  = graph.get_object("me")
+    func_return = _init_facebook_app(request)
+    if(func_return != False):
+        return func_return
+
+    try:
+        graph, user, sys_user = _get_facebook_app(request)
+        if sys_user is None:
+            return HttpResponseRedirect("/facebook/setup/")
+    except facebook.GraphAPIError:
+        del request.session["access_token"]
+        return HttpResponseRedirect("http://apps.facebook.com/180051822005393/")
 
     if request.method == 'POST':
         events_ids = request.POST.getlist("object_events")
@@ -61,11 +178,20 @@ def events_list(request):
     )
 
 @csrf_exempt
+#@login_required( login_url = '/facebook/login/' )
 @render_to( 'facebook/albums_list.html' )
 def albums_list(request):
 
-    graph = request.facebook.graph
-    user = graph.get_object("me")
+    func_return = _init_facebook_app(request)
+    if(func_return != False):
+        return func_return
+
+    try:
+        graph, user = _get_facebook_app(request)
+    except facebook.GraphAPIError:
+        del request.session["access_token"]
+        return HttpResponseRedirect("http://apps.facebook.com/180051822005393/")
+
     albums = graph.get_connections(user["id"], "albums")
 
     for album in albums["data"]:
@@ -77,11 +203,19 @@ def albums_list(request):
     )
 
 @csrf_exempt
+#@login_required( login_url = '/facebook/login/' )
 @render_to( 'facebook/photos_list.html' )
 def photos_list(request, id):
 
-    graph = request.facebook.graph
-    user = graph.get_object("me")
+    func_return = _init_facebook_app(request)
+    if(func_return != False):
+        return func_return
+
+    try:
+        graph, user = _get_facebook_app(request)
+    except facebook.GraphAPIError:
+        del request.session["access_token"]
+        return HttpResponseRedirect("http://apps.facebook.com/180051822005393/")
 
     if request.method == 'POST':
         photos_ids = request.POST.getlist("object_photos")

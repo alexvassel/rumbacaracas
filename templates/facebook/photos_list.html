@@ -5,12 +5,12 @@
     <div id="col-left" class="col-left">
         <form action="{% url facebook_photos_list album.id %}" method="post">
             {% csrf_token %}
-            <div class="node-container box-shadows encap" style="width: 750px;">
+            <div class="node-container box-shadows encap" style="width: 695px;">
                 <div class="title-wrap encap">
                     <span class="flt-left"><h2 class="title">{{ album.name }}</h2></span>
                     <span class="flt-right">
                         <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
-                            <li><a class="socializer-8 publish-event"><button type="submit" style="background-color: inherit;"><span>Publica un fotos</span></button></a></li>
+                            <li><a class="socializer-8 publish-event" href="#"><button type="submit" style="background-color: inherit; margin: 5px 0;"><span>Publica un fotos</span></button></a></li>
                         </ul>
                     </span>
                 </div>
@@ -34,7 +34,7 @@
 
                     <div class="albums">
                         {% for photo in photos.data %}
-                            {% if forloop.counter0|divisibleby:"4" %}
+                            {% if forloop.counter0|divisibleby:"3" %}
                                 <div class="albums-line" style="clear: both; overflow: hidden;">
                             {% endif %}
                             <div class="fotos-left outnone" style="float: left; text-align: center; vertical-align: bottom;">
@@ -43,13 +43,13 @@
                                     <img src="{{ photo.images.1.source}}" alt="{{ photo.name }}" style="max-width: 160px;">
                                 </span>
                             </div>
-                            {% if forloop.counter|divisibleby:"4" %}
+                            {% if forloop.counter|divisibleby:"3" %}
                                 </div>
                             {% endif %}
 
                         {% endfor %}
 
-                        {% if not albums.data|length|divisibleby:"4" %}
+                        {% if not photos.data|length|divisibleby:"3" %}
                             </div>
                         {% endif %}
                     </div>
@@ -58,7 +58,7 @@
                 <div class="title-wrap encap">
                     <span class="flt-right">
                         <ul class="socializer encap outnone fcml0 lcmr0">
-                            <li><a class="socializer-8 publish-event"><button type="submit" style="background-color: inherit;"><span>Publica un fotos</span></button></a></li>
+                            <li><a class="socializer-8 publish-event" href="#"><button type="submit" style="background-color: inherit; margin: 5px 0;"><span>Publica un fotos</span></button></a></li>
                         </ul>
                     </span>
                 </div>

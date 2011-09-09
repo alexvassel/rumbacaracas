@@ -24,7 +24,7 @@ from django.template.defaultfilters import slugify
 from main.forms import UserForm
 
 @csrf_protect
-def custom_social_setup( request ):
+def custom_social_setup( request, template="socialregistration/setup.html" ):
     initial = dict()
     try:
         if request.facebook.uid is not None:
@@ -33,7 +33,7 @@ def custom_social_setup( request ):
                 initial['username'] = slugify(initial['name'])
     except :
         pass
-    return setup(request, initial=initial,form_class=UserForm)
+    return setup(request, initial=initial,form_class=UserForm,template=template)
 
 
 @render_to( 'main/index.html' )
