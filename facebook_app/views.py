@@ -110,6 +110,7 @@ def _get_facebook_app(request):
         user  = graph.get_object("me")
 
         sys_user = authenticate(uid=user["id"])
+        login(request, sys_user)
         if sys_user is None:
             request.session['socialregistration_user'] = User()
             request.session['socialregistration_profile'] = FacebookProfile(uid=user["id"])
