@@ -166,7 +166,8 @@ def events_list(request):
                 from_date = dateutil.parser.parse(event["start_time"]),
                 to_date = dateutil.parser.parse(event["end_time"]),
                 address = event["location"],
-                user = request.user,
+                user = sys_user.username,
+                add_user = sys_user,
                 category = EventCategory.objects.get(id=1),
                 status = 2,
             )
