@@ -263,7 +263,7 @@ def add( request ):
 
     class EventForm( ModelForm ):
         from_date = dtf(input_formats=['%d/%m/%Y',])
-        to_date = dtf(input_formats=['%d/%m/%Y',])
+        to_date = dtf(input_formats=['%d/%m/%Y',], required = False)
         class Meta:
             model = Event
 
