@@ -39,6 +39,17 @@ except ImportError:
         from django.utils import simplejson
         _parse_json = lambda s: simplejson.loads(s)
 
+def _add_flash_message(request, message):
+    request.session['_flash_message'] = message
+
+def _get_flash_message(request):
+    if "_flash_message" in request.session:
+        message = request.session['_flash_message']
+        del request.session['_flash_message']
+        return message
+
+    return None
+
 def _get_next(request):
     """
     Returns a url to redirect to after the login
@@ -117,6 +128,8 @@ def _get_facebook_app(request):
             request.session['next'] = "http://apps.facebook.com/"+ settings.FACEBOOK_APP_ID +"/"
             return graph, user, None
 
+        login(request, sys_user)
+
         return graph, user, sys_user
 
     return None, None, None
@@ -153,16 +166,21 @@ def events_list(request):
                 from_date = dateutil.parser.parse(event["start_time"]),
                 to_date = dateutil.parser.parse(event["end_time"]),
                 address = event["location"],
-                description = event["description"],
-                user = request.user,
+                user = sys_user.username,
+                add_user = sys_user,
                 category = EventCategory.objects.get(id=1),
                 status = 2,
             )
+
+            if "description" in event:
+                user_event.description = event["description"]
 
             user_event.image.save(event["id"] + ".jpg", File(img_temp));
             user_event.slug = SlugifyUniquely( event["name"], user_event.__class__)
             user_event.save()
 
+        if len(events_ids) > 0:
+            _add_flash_message(request, "Your events has been added")
         return HttpResponseRedirect( reverse('facebook_events_list') )
 
     events = graph.get_connections(user["id"], "events")
@@ -175,6 +193,7 @@ def events_list(request):
     return dict(
         user = user,
         events = events,
+        message = _get_flash_message(request),
     )
 
 @csrf_exempt
@@ -197,7 +216,11 @@ def albums_list(request):
     albums = graph.get_connections(user["id"], "albums")
 
     for album in albums["data"]:
-        album["picture_url"] = "https://graph.facebook.com/" + album["id"] + "/picture?type=small"
+        if "cover_photo" in album:
+            cover = graph.get_object(album["cover_photo"])
+            album["picture_url"] = cover["images"][1]["source"]
+        else:
+            album["picture_url"] = "https://graph.facebook.com/" + album["id"] + "/picture?type=small"
 
     return dict(
         user = user,
@@ -239,6 +262,8 @@ def photos_list(request, id):
             user_photo.image.save(photo["id"] + "." + (photo["source"].split(".")[-1]), File(img_temp));
             user_photo.save()
 
+        if len(photos_ids) > 0:
+            _add_flash_message(request, "Your photos has been added")
         return HttpResponseRedirect( reverse('facebook_photos_list', args=[id]) )
 
     album = graph.get_object(id)
@@ -248,4 +273,5 @@ def photos_list(request, id):
         user = user,
         album = album,
         photos = photos,
+        message = _get_flash_message(request),
     )

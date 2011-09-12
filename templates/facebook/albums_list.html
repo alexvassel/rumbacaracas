@@ -1,16 +1,19 @@
 {% extends "facebook/base.html" %}
 
+{% load i18n %}
+
 {% block content %}
 <div id="main-contents" class="main-contents encap" style="padding-top: 0px;">
     <div id="col-left" class="col-left">
         <div class="node-container box-shadows encap" style="width: 695px;">
             <div class="title-wrap encap">
-                <span class="flt-left"><h2 class="title">Albums</h2></span>
+                <span class="flt-left"><h2 class="title">{% trans "Albums" %}</h2></span>
             </div>
 
             <div class="node encap">
 
                 <div class="albums">
+                {% if albums.data|length > 0 %}
                     {% for album in albums.data %}
                         {% if forloop.counter0|divisibleby:"3" %}
                             <div class="albums-line" style="clear: both; overflow: hidden;">
@@ -32,6 +35,9 @@
                     {% if not albums.data|length|divisibleby:"3" %}
                         </div>
                     {% endif %}
+                {% else %}
+                    <div style="font-size: 16px;">{% trans "You have no albums" %}</div>
+                {% endif %}
                 </div>
             </div>
         </div>

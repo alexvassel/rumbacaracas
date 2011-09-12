@@ -1,5 +1,7 @@
 {% extends "facebook/base.html" %}
 
+{% load i18n %}
+
 {% block content %}
 <div id="main-contents" class="main-contents encap" style="padding-top: 0px;">
     <div id="col-left" class="col-left">
@@ -10,7 +12,7 @@
                     <span class="flt-left"><h2 class="title">{{ album.name }}</h2></span>
                     <span class="flt-right">
                         <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
-                            <li><a class="socializer-8 publish-event" href="#"><button type="submit" style="background-color: inherit; margin: 5px 0;"><span>Publica un fotos</span></button></a></li>
+                            <li><a class="socializer-8 publish-event" href="#"><button type="submit" style="background-color: inherit; margin: 5px 0;"><span>{% trans "Add Photos" %}</span></button></a></li>
                         </ul>
                     </span>
                 </div>
@@ -21,18 +23,25 @@
                         <ul class="teaser-options encap outnone fcml0 lcmr0">
                             <li>
                                 <a href="#" onclick="selectAll();" style="width: auto; display: inline;">
-                                Seleccionar todos
+                                {% trans "Select all" %}
                                 </a>
                             </li>
                             <li>
                                 <a href="#" onclick="deselectAll();" style="width: auto; display: inline;">
-                                    Deseleccionar todos
+                                {% trans "Deselect all" %}
                                 </a>
                             </li>
                         </ul>
                     </div>
 
                     <div class="albums">
+                        {% if message != None %}
+                            <div class="flash_message">
+                                {% trans message %}
+                            </div>
+                        {% endif %}
+
+                    {% if photos.data|length > 0 %}
                         {% for photo in photos.data %}
                             {% if forloop.counter0|divisibleby:"3" %}
                                 <div class="albums-line" style="clear: both; overflow: hidden;">
@@ -52,13 +61,16 @@
                         {% if not photos.data|length|divisibleby:"3" %}
                             </div>
                         {% endif %}
+                    {% else %}
+                        <div style="font-size: 16px;">{% trans "You have no photos in album" %}</div>
+                    {% endif %}
                     </div>
                 </div>
 
                 <div class="title-wrap encap">
                     <span class="flt-right">
                         <ul class="socializer encap outnone fcml0 lcmr0">
-                            <li><a class="socializer-8 publish-event" href="#"><button type="submit" style="background-color: inherit; margin: 5px 0;"><span>Publica un fotos</span></button></a></li>
+                            <li><a class="socializer-8 publish-event" href="#"><button type="submit" style="background-color: inherit; margin: 5px 0;"><span>{% trans "Add Photos" %}</span></button></a></li>
                         </ul>
                     </span>
                 </div>

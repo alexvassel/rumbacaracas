@@ -1817,3 +1817,33 @@ msgstr "Publica un Video"
 
 #~ msgid "Edit the tag"
 #~ msgstr "Editar la etiqueta"
+
+#: templates/facebook/events_list.html:62
+msgid "You have no events"
+msgstr "No tiene eventos"
+
+#: templates/facebook/photos_list.html:57
+msgid "You have no photos in album"
+msgstr "El álbum no tiene fotos"
+
+#: templates/facebook/albums_list.html:37
+msgid "You have no albums"
+msgstr "No tiene álbumes"
+
+msgid "Select all"
+msgstr "Seleccionar todos"
+
+msgid "Deselect all"
+msgstr "Deseleccionar todos"
+
+msgid "Albums"
+msgstr "Albumes"
+
+msgid "Your events has been added"
+msgstr "Sus eventos se ha añadido"
+
+msgid "Your photos has been added"
+msgstr "Tus fotos se ha añadido"
+
+msgid "Add Events"
+msgstr "Publica un eventos"
