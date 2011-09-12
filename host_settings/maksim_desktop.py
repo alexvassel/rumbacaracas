@@ -27,7 +27,7 @@ LOCALE_PATHS = (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'bogota', # Or path to database file if using sqlite3.
+        'NAME': 'caracas', # Or path to database file if using sqlite3.
         'USER': 'root', # Not used with sqlite3.
         'PASSWORD': 'cleopatra', # Not used with sqlite3.
         'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
@@ -35,7 +35,7 @@ DATABASES = {
     },
     'olddata': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'oldbogotadata', # Or path to database file if using sqlite3.
+        'NAME': 'oldcaracas', # Or path to database file if using sqlite3.
         'USER': 'root', # Not used with sqlite3.
         'PASSWORD': 'cleopatra', # Not used with sqlite3.
     }
