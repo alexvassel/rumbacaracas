@@ -1512,3 +1512,21 @@ msgstr ""
 #: templates/facebook/albums_list.html:37
 msgid "You have no albums"
 msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Deselect all"
+msgstr ""
+
+msgid "Albums"
+msgstr ""
+
+msgid "Your events has been added"
+msgstr ""
+
+msgid "Your photos has been added"
+msgstr ""
+
+msgid "Add Events"
+msgstr ""

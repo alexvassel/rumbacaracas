@@ -9,10 +9,10 @@
             {% csrf_token %}
             <div class="node-container box-shadows encap" style="width: 695px;">
                 <div class="title-wrap encap">
-                    <span class="flt-left"><h2 class="title">Eventos</h2></span>
+                    <span class="flt-left"><h2 class="title">{% trans "Events" %}</h2></span>
                     <span class="flt-right">
                         <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
-                            <li><a class="socializer-8 publish-event" href="#"><button type="submit" style="background-color: inherit; margin: 5px 0;"><span>Publica un evento</span></button></a></li>
+                            <li><a class="socializer-8 publish-event" href="#"><button type="submit" style="background-color: inherit; margin: 5px 0;"><span>{% trans "Add Events" %}</span></button></a></li>
                         </ul>
                     </span>
                 </div>
@@ -23,18 +23,24 @@
                         <ul class="teaser-options encap outnone fcml0 lcmr0">
                             <li>
                                 <a href="#" onclick="selectAll();" style="width: auto; display: inline;">
-                                Seleccionar todos
+                                {% trans "Select all" %}
                                 </a>
                             </li>
                             <li>
                                 <a href="#" onclick="deselectAll();" style="width: auto; display: inline;">
-                                    Deseleccionar todos
+                                {% trans "Deselect all" %}
                                 </a>
                             </li>
                         </ul>
                     </div>
 
                     <div id="outline-briefs" class="outline-briefs boxed-brief" style="padding-top: 0px;">
+                        {% if message != None %}
+                            <div class="flash_message" style="font-size: 16px">
+                                {% trans message %}
+                            </div>
+                        {% endif %}
+
                         <div id="outline-slides" class="outnone encap" style="position: relative; overflow-x: hidden; overflow-y: hidden;">
                             <div class="outline-slide" style="display: block;">
                             {% if events.data|length > 0 %}
@@ -42,7 +48,7 @@
                                 <dl class="encap" style="width: 640px;">
                                     <dt style="float: left; width: 140px;">
                                         <input type="checkbox" name="object_events" value="{{ event.id }}" style="float: left; vertical-align: middle;" />
-                                        <img src="{{ event.picture_url }}" alt="{{ event.name }}">
+                                        <img src="{{ event.picture_url }}" alt="{{ event.name }}" style="max-width: 100px;" />
                                     </dt>
                                     <dd style="float: left;">
                                         <h3>
@@ -72,7 +78,7 @@
                     <span class="flt-left"></span>
                     <span class="flt-right">
                         <ul class="socializer encap outnone fcml0 lcmr0">
-                            <li><a class="socializer-8 publish-event" href="#"><button type="submit" style="background-color: inherit; margin: 5px 0;"><span>Publica un evento</span></button></a></li>
+                            <li><a class="socializer-8 publish-event" href="#"><button type="submit" style="background-color: inherit; margin: 5px 0;"><span>{% trans "Add Events" %}</span></button></a></li>
                         </ul>
                     </span>
                 </div>
