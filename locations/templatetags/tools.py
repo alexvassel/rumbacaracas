@@ -52,7 +52,7 @@ def get_event_url_by_tab( value, arg):
 
 @register.filter
 def user_link( value):
-    if value is None:
+    if value is None or value == "":
         return ""
     try :
         facebook_user = FacebookProfile.objects.get( user = value )
