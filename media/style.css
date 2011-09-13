@@ -4038,3 +4038,7 @@ li.greating_pic {
   padding: 3px 5px !important
 }
 
+#main-contents p.redPBold {
+    color: #f06000;
+}
+

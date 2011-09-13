@@ -50,7 +50,7 @@
  *
  * http://docs.jquery.com/UI/Theming/API
  *
- * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Arial,sans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=0px&bgColorHeader=080808&bgTextureHeader=03_highlight_soft.png&bgImgOpacityHeader=15&borderColorHeader=000000&fcHeader=ffffff&iconColorHeader=cb2323&bgColorContent=6c6c6c&bgTextureContent=01_flat.png&bgImgOpacityContent=75&borderColorContent=000000&fcContent=ffffff&iconColorContent=cb2323&bgColorDefault=c8c6c6&bgTextureDefault=04_highlight_hard.png&bgImgOpacityDefault=100&borderColorDefault=d8dcdf&fcDefault=cb2323&iconColorDefault=cb2323&bgColorHover=d7d5d5&bgTextureHover=04_highlight_hard.png&bgImgOpacityHover=100&borderColorHover=cdd5da&fcHover=111111&iconColorHover=cb2323&bgColorActive=ffffff&bgTextureActive=01_flat.png&bgImgOpacityActive=65&borderColorActive=eeeeee&fcActive=cc0000&iconColorActive=cc0000&bgColorHighlight=fbf8ee&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=55&borderColorHighlight=fcd3a1&fcHighlight=444444&iconColorHighlight=004276&bgColorError=f3d8d8&bgTextureError=08_diagonals_thick.png&bgImgOpacityError=75&borderColorError=cc0000&fcError=2e2e2e&iconColorError=cc0000&bgColorOverlay=a6a6a6&bgTextureOverlay=09_dots_small.png&bgImgOpacityOverlay=65&opacityOverlay=40&bgColorShadow=333333&bgTextureShadow=01_flat.png&bgImgOpacityShadow=5&opacityShadow=20&thicknessShadow=1px&offsetTopShadow=1px&offsetLeftShadow=1px&cornerRadiusShadow=1px
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Arial,sans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=0px&bgColorHeader=080808&bgTextureHeader=03_highlight_soft.png&bgImgOpacityHeader=15&borderColorHeader=000000&fcHeader=ffffff&iconColorHeader=f06000&bgColorContent=6c6c6c&bgTextureContent=01_flat.png&bgImgOpacityContent=75&borderColorContent=000000&fcContent=ffffff&iconColorContent=f06000&bgColorDefault=c8c6c6&bgTextureDefault=04_highlight_hard.png&bgImgOpacityDefault=100&borderColorDefault=d8dcdf&fcDefault=f06000&iconColorDefault=f06000&bgColorHover=d7d5d5&bgTextureHover=04_highlight_hard.png&bgImgOpacityHover=100&borderColorHover=cdd5da&fcHover=111111&iconColorHover=f06000&bgColorActive=ffffff&bgTextureActive=01_flat.png&bgImgOpacityActive=65&borderColorActive=eeeeee&fcActive=cc0000&iconColorActive=cc0000&bgColorHighlight=fbf8ee&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=55&borderColorHighlight=fcd3a1&fcHighlight=444444&iconColorHighlight=004276&bgColorError=f3d8d8&bgTextureError=08_diagonals_thick.png&bgImgOpacityError=75&borderColorError=cc0000&fcError=2e2e2e&iconColorError=cc0000&bgColorOverlay=a6a6a6&bgTextureOverlay=09_dots_small.png&bgImgOpacityOverlay=65&opacityOverlay=40&bgColorShadow=333333&bgTextureShadow=01_flat.png&bgImgOpacityShadow=5&opacityShadow=20&thicknessShadow=1px&offsetTopShadow=1px&offsetLeftShadow=1px&cornerRadiusShadow=1px
  */
 
 
@@ -68,11 +68,11 @@
 ----------------------------------*/
 #datepicker .ui-state-default,
 #datepicker .ui-widget-content .ui-state-default,
-#datepicker .ui-widget-header .ui-state-default { border: 1px solid #d8dcdf; background: #c8c6c6 url(images/ui-bg_highlight-hard_100_c8c6c6_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #cb2323; }
+#datepicker .ui-widget-header .ui-state-default { border: 1px solid #d8dcdf; background: #c8c6c6 url(images/ui-bg_highlight-hard_100_c8c6c6_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #f06000; }
 
 #datepicker .ui-state-default a,
 #datepicker .ui-state-default a:link,
-#datepicker .ui-state-default a:visited { color: #cb2323; text-decoration: none; }
+#datepicker .ui-state-default a:visited { color: #f06000; text-decoration: none; }
 
 #datepicker .ui-state-hover,
 #datepicker .ui-widget-content .ui-state-hover,
@@ -86,7 +86,7 @@
 
 #datepicker .ui-state-active,
 #datepicker .ui-widget-content .ui-state-active,
-#datepicker .ui-widget-header .ui-state-active { border: 1px solid #eeeeee; background: #ffffff url(images/ui-bg_flat_65_ffffff_40x100.png) 50% 50% repeat-x; font-weight: bold; color: #cc0000; }
+#datepicker .ui-widget-header .ui-state-active { border: 1px solid #eeeeee; background: #ffffff url(images/ui-bg_flat_65_ffffff_40x100.png) 50% 50% repeat-x; font-weight: bold; color: #f56505; }
 
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #cc0000; text-decoration: none; }
 .ui-widget :active { outline: none; }
@@ -106,11 +106,11 @@
 ----------------------------------*/
 
 /* states and images */
-#datepicker .ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_cb2323_256x240.png); }
-#datepicker .ui-widget-content .ui-icon {background-image: url(images/ui-icons_cb2323_256x240.png); }
-#datepicker .ui-widget-header .ui-icon {background-image: url(images/ui-icons_cb2323_256x240.png); }
-#datepicker .ui-state-default .ui-icon { background-image: url(images/ui-icons_cb2323_256x240.png); }
-#datepicker .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_cb2323_256x240.png); }
+#datepicker .ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_f06000_256x240.png); }
+#datepicker .ui-widget-content .ui-icon {background-image: url(images/ui-icons_f06000_256x240.png); }
+#datepicker .ui-widget-header .ui-icon {background-image: url(images/ui-icons_f06000_256x240.png); }
+#datepicker .ui-state-default .ui-icon { background-image: url(images/ui-icons_f06000_256x240.png); }
+#datepicker .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_f06000_256x240.png); }
 #datepicker .ui-state-active .ui-icon {background-image: url(images/ui-icons_cc0000_256x240.png); }
 #datepicker .ui-state-highlight .ui-icon {background-image: url(images/ui-icons_004276_256x240.png); }
 #datepicker .ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(images/ui-icons_cc0000_256x240.png); }
