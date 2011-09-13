@@ -846,13 +846,13 @@ li.sobre1 a.fotosobre1:hover {
 	outline: none;
 }
 #col-left #front-slides #slides .slide-info h3{
-	color: #D71E26;
+	color: #f46100;
 	font-size: 17px;
 	margin: 0 0 5px;
 	text-transform: uppercase;
 }
 #col-left #front-slides #slides .slide-info h3 a{
-	color: #D71E26;
+	color: #f46100;
 	text-decoration: none;
 }
 #col-left #front-slides #slides .slide-info a:hover{
@@ -954,12 +954,12 @@ li.sobre1 a.fotosobre1:hover {
 	color: #FFFFFF;
 }
 #main-contents #col-left #latest-photos #latest-photos-content .photo-teasters .photo-teaser h3{
-	color: #611515;
+	color: #000;
 	font-size: 30px;
 	margin: 0 0 5px;
 }
 #main-contents #col-left #latest-photos #latest-photos-content .photo-teasters .photo-teaser h3 a{
-	color: #611515;
+	color: #000;
 }
 #main-contents #col-left #latest-photos #latest-photos-content .photo-teasters .photo-teaser p{
 	color: #FFFFFF;
