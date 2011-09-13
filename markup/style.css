@@ -181,7 +181,7 @@ input[type="button"], input[type="submit"], button{
 }
 #main-contents .col-left .node h1,#main-contents .col-left .node h2,#main-contents .col-left .node h3,#main-contents .col-left .node h4,
 #main-contents .col-left .node h5,#main-contents .col-left .node h6{
-  color: #C52121;
+  color: #F16000;
 }
 #main-contents .col-left .node h1{font-size: 26px; margin: 0 0 20px;}
 #main-contents .col-left .node h2{font-size: 24px; margin: 0 0 18px;}
@@ -1244,7 +1244,7 @@ a.carousel-next{
 }
 #main-contents #col-right .block-poll .box-border .choices .title{
   font-size: 12px;
-  color: #C52121;
+  color: #F16000;
   font-weight: bold;
   margin: 0 0 5px;
 }
@@ -1360,11 +1360,11 @@ a.carousel-next{
 }
 /* Block Calendar */
 #main-contents #col-right .widget-calendar h2{
-  color: #C52121;
+  color: #F16000;
 }
 #main-contents #col-right .widget-calendar .box-border{
-  background-color: #C52121;
-  border: 1px solid #C52121;
+  background-color: #F16000;
+  border: 1px solid #F16000;
 }
 .calendar-calendar tr.odd, UNUSED.calendar-calendar tr.even {
   background-color:#fff;
@@ -1436,7 +1436,7 @@ table .mini-day-on a {
   line-height:1px;
 }
 .calendar-calendar div.date-nav {
-  background-color: #C52121;
+  background-color: #F16000;
   color: #FFFFFF;
 }
 .calendar-calendar div.date-nav a,
@@ -1593,7 +1593,7 @@ a.ical-icon{
 #main-contents #col-right .more-articles ul li h3 a,
 #main-contents #col-right .more-articles ul li span.author-meta a,
 #main-contents #col-right .blog-widgets ul li span.commentor a{
-	color: #C52121 !important;
+	color: #F16000 !important;
 }
 #main-contents #col-right .blog-writers td{
 	vertical-align: top;
@@ -1619,7 +1619,7 @@ div.breadcrumb a:hover, div.breadcrumb a:active,
   text-decoration: underline;
 }
 div.breadcrumb a.active {
-  color: #C52121 !important;
+  color: #F16000 !important;
 }
 /* Nodes */
 #main-contents #col-left .node-container{
@@ -1785,7 +1785,7 @@ div.breadcrumb a.active {
 }
 #main-contents #col-left .node h2.title a,
 #main-contents #col-left .node h2.title{
-  color: #C52121;
+  color: #F16000;
   font-size: 20px;
 }
 #main-contents #col-left .node h2.title{
@@ -1933,7 +1933,7 @@ div.breadcrumb a.active {
   border: 1px solid #020202;
 }
 #main-contents #col-left .node .image-teaser-nav ul li.active img{
-  border: 1px solid #C52121;
+  border: 1px solid #F16000;
 }
 .brickred{
   color: #CB271B;
