@@ -116,7 +116,7 @@
   font-family  :  arial, verdana, sans-serif;
   font-weight  :  normal;
   font-size    :  19px;
-  color        :  #cd2222;
+  color        :  #f06000;
    
   line-height  :  32px;
   padding      :  0px;  
@@ -142,7 +142,7 @@
 
 #add-form h2.red
 {
-  color  :  #cd2222 !important;
+  color  :  #f06000 !important;
 }
 
 #add-form h3
@@ -174,7 +174,7 @@
 {
   font-family      :  arial, verdana, sans-serif;
   font-size        :  13px;
-  color            :  #cd2222;
+  color            :  #f06000;
    
   text-decoration  :  none;
 }
@@ -290,8 +290,8 @@ span.citytext {
   color        :  #ffffff;
   
   padding      :  7px;
-  background   :  #cd2222;
-  border       :  solid 1px #cd2222;
+  background   :  #f06000;
+  border       :  solid 1px #f06000;
   cursor       :  pointer;
   min-width    :  90px;
 }
@@ -302,7 +302,7 @@ span.citytext {
   font-family  :  arial, verdana, sans-serif;
   font-size    :  18px;
   font-weight  :  bold;
-  color        :  #cd2222;
+  color        :  #f06000;
 }
 
 #add-form .space
@@ -322,7 +322,7 @@ span.citytext {
 
 #add-form .photoThumb:hover
 {
-  background  :  #cd2222;
+  background  :  #f06000;
 }
 
 #add-form .photoThumb .pic {

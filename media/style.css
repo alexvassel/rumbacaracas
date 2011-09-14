@@ -846,13 +846,13 @@ li.sobre1 a.fotosobre1:hover {
 	outline: none;
 }
 #col-left #front-slides #slides .slide-info h3{
-	color: #D71E26;
+	color: #f46100;
 	font-size: 17px;
 	margin: 0 0 5px;
 	text-transform: uppercase;
 }
 #col-left #front-slides #slides .slide-info h3 a{
-	color: #D71E26;
+	color: #f46100;
 	text-decoration: none;
 }
 #col-left #front-slides #slides .slide-info a:hover{
@@ -954,12 +954,12 @@ li.sobre1 a.fotosobre1:hover {
 	color: #FFFFFF;
 }
 #main-contents #col-left #latest-photos #latest-photos-content .photo-teasters .photo-teaser h3{
-	color: #BA3800;
+	color: #000;
 	font-size: 30px;
 	margin: 0 0 5px;
 }
 #main-contents #col-left #latest-photos #latest-photos-content .photo-teasters .photo-teaser h3 a{
-	color: #BA3800;
+	color: #000;
 }
 #main-contents #col-left #latest-photos #latest-photos-content .photo-teasters .photo-teaser p{
 	color: #FFFFFF;
@@ -1382,7 +1382,7 @@ a.carousel-next{
 #main-contents #col-left .node-mini-right .box-generic .box-border p a,
 #main-contents #col-left .red-title a{
   font-weight: bold;
-  color: #C72522;
+  color: #F26100;
 }
 /* Block Tags */
 #main-contents #col-left .node-mini-right .tagadelic a{
@@ -1554,7 +1554,7 @@ a.carousel-next{
 #main-contents #col-right .ultimas-fotos p a,
 #main-contents #col-right .upcoming-events p a,
 #main-contents #col-right .tbfat .box-border a{
-  color: #C72522;
+  color: #F26100;
 }
 #main-contents #col-left .node-mini-right .box-generic .box-title h2,
 #main-contents #col-right .box-generic .box-title h2{
@@ -3760,7 +3760,7 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 /* Eventos duo (in locales details) */
 #main-contents #col-left .locales .events-duo h2{
   font-size: 22px;
-  color: #C72522;
+  color: #F26100;
   text-transform: uppercase;
   border-top: 8px solid #8A8A8A;
   border-bottom: 4px solid #8A8A8A;
@@ -3774,7 +3774,7 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
   font-size: 11px;
 }
 #main-contents #col-left .locales .events-duo ul li .proximos{
-	color:#C72522;
+	color:#F26100;
 }
 #main-contents #col-left .locales .events-duo ul li a{
   font-weight: bold;
@@ -4034,5 +4034,9 @@ li.greating {
 
 li.greating_pic {
   padding: 3px 5px !important
+}
+
+#main-contents p.redPBold {
+    color: #f06000;
 }
 
