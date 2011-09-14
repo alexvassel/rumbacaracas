@@ -134,8 +134,12 @@ def parse_location_type(token):
     return id_list
 
 def get_user_instance (user_id):
-    return User.objects.get(pk=user_id)
-
+    try :
+        result = User.objects.get(pk=user_id)
+        return result
+    except User.DoesNotExist:
+        return None
+    
 def get_user_instance_by_name (user_name):
     try :
         result = User.objects.get(username=user_name)
