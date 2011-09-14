@@ -29,6 +29,7 @@ def convert_status ( oldstatus ):
 
 
 def parse_city_area (value):
+    return 'Caracas', LocationArea.objects.get(pk=1)
 
     result = {
         u'': None,
@@ -194,8 +195,13 @@ def parse_event_weekday(token):
                 u'Sábados':5,
                 "Domingos":6,
             }[day]
-            real_day = WeekDay.objects.get(value=type_id)
-            id_list.append(real_day)
+            try:
+                real_day = WeekDay.objects.get(value=type_id)
+                id_list.append(real_day)
+            except Exception, e:
+                print type_id
+                print e
+
     return id_list
 
 
@@ -211,23 +217,15 @@ def parse_location ( input_value ):
 
 
 def parse_event_category ( input_value ):
-    result = {
-        "": None,
-        u'Adulto Contemporáneo': 1,
-        "Arte y Cultura": 4,
-        "Conciertos y Bandas":3,
-        u'Electrónica y DJs':2,
-        "En Ambiente": 7,
-        u'Eventos y Más': 1,
-        "Promociones": 6,
-        "Rumbas": 5,
-    }[input_value]
+
     #TODO check cevent category for empty
-    if result:
-        result = EventCategory.objects.get(pk=result)
+
+
+    if input_value:
+        input_value = EventCategory.objects.get(pk=input_value)
     else:
-        result = EventCategory.objects.get(pk=5)
-    return result
+        input_value = EventCategory.objects.get(pk=5)
+    return input_value
 
 def parse_event_time(hours):
     if hours:

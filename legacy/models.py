@@ -191,6 +191,12 @@ class Local(models.Model):
     class Meta:
         db_table = u'local'
 
+class EventosCategorias(models.Model):
+    id = models.IntegerField(primary_key=True)
+    nombre = models.CharField(max_length=750, blank=True)
+    class Meta:
+        db_table = u'eventos_categorias'
+
 class Eventos(models.Model):
     titulo = models.CharField(max_length=750)
     dia = models.CharField(max_length=6)
