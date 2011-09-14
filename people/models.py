@@ -10,7 +10,7 @@ PHOTO_CATEGORIES = (
     ( 'clubs', _( 'Clubs and Bars' ) ),
     ( 'launches', _( 'Launches and More' ) ),
     ( 'fashion', _( 'Fashion ' ) ),
-    ( 'outside', _( 'Outside Bogota' ) ),
+    ( 'outside', _( 'Outside caracas' ) ),
  )
 
 PEOPLE_STATUSES = ( 
