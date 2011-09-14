@@ -9,6 +9,7 @@ import yourphotos.models as YP
 import zinnia.models as Z
 import news.models as N
 import subscribe.models as S
+import yourvideos.models as YV
 
 import django.contrib.auth.models as DU
 
@@ -37,7 +38,7 @@ def import_users ():
     DU.User.objects.all().exclude(username="admin").delete()
     oldusers = L.Usuarios.objects.all()
 
-    for olduser in oldusers[0:20]:
+    for olduser in oldusers[0:30]:
         
         user = DU.User(
             id = hack_for_user_id(olduser.id),
@@ -85,7 +86,7 @@ def import_yourphotos ():
     oldphotos = L.Tusfotos.objects.all()
 
     wrong_ids = list()
-    for oldphoto in oldphotos:
+    for oldphoto in oldphotos[0:30]:
         photo = YP.Photo(
                       user = get_user_instance(hack_for_user_id(oldphoto.usuario)),
                       description = oldphoto.leyenda,
@@ -95,7 +96,7 @@ def import_yourphotos ():
 
 
         if oldphoto.archivo:
-            file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'comunidad/' + string.lower(oldphoto.user_name).replace(' ','') + '/fotos/' + oldphoto.archivo
+            file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'tusfotos/' + string.lower(oldphoto.user_name)[0:1] + '/' + string.lower(oldphoto.user_name).replace(' ','') + '/fotos/' + oldphoto.archivo
 
             if os.path.isfile(file_name):
                 fi_content = ContentFile( open( file_name, 'r' ).read() )
@@ -103,12 +104,32 @@ def import_yourphotos ():
                 photo.save()
             else:
                 print "wrong file for yourphotos!!!!!!!!!!\n"
+                print file_name
                 wrong_ids.append(str(oldphoto.id))
 
 
         
     if wrong_ids:
         print ",".join(wrong_ids)
+
+
+
+def import_yourvideos ():
+
+    YV.Video.objects.all().delete()
+    oldvideos = L.TusfotosVideos.objects.all()
+
+    for oldvideo in oldvideos[0:30]:
+        video = YV.Video(
+                      user = get_user_instance_by_name(oldvideo.nick),
+                      youtube_id = oldvideo.video,
+                      description = oldvideo.nombre,
+                      status = convert_status( oldvideo.status ),
+                      datetime_added = oldvideo.fecha,
+        )
+        video.save()
+
+
 
 
 def import_events ():
@@ -127,7 +148,7 @@ def import_events ():
 
     E.Event.objects.all().delete()
     oldevents = L.Eventos.objects.all()
-    for oldevent in oldevents[0:20]:
+    for oldevent in oldevents[0:30]:
         #oldevent = L.Eventos()
         if oldevent.titulo:
             if len(oldevent.email) > 75:
@@ -202,7 +223,7 @@ def import_blog_category (table):
 
     disconnect_zinnia_signals()
 
-    for oldarticle in oldarticles[0:20]:
+    for oldarticle in oldarticles[0:30]:
         #oldarticle = L.MusicNews()
         if oldarticle.titulo:
             title = oldarticle.titulo
@@ -273,7 +294,7 @@ def import_locations ():
     oldlocations = L.Local.objects.all()
     wrong_ids = list()
     
-    for oldlocation in oldlocations[0:20]:
+    for oldlocation in oldlocations[0:30]:
         #oldlocation = L.Local()1
 
         location = LS.Location(
@@ -371,7 +392,7 @@ def import_people ():
     #TODO Carefully import locations
     #TODO Import second date
 
-    for oldevent in oldevents[0:10]:
+    for oldevent in oldevents[0:15]:
         if oldevent.titulo:
             #oldevent = L.Fotos()
             event = P.PhotoEvent(
@@ -478,7 +499,7 @@ class Command( NoArgsCommand ):
 
 
         print "Importing legacy subscriptions"
-        #import_subscriptions()
+        import_subscriptions()
 
 
         print "Importing legacy people"
@@ -506,7 +527,10 @@ class Command( NoArgsCommand ):
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "Importing legacy your photos"
-        #import_yourphotos()
+        import_yourphotos()
+
+        print "Importing legacy your videos"
+        import_yourvideos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()
