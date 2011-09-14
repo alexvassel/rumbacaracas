@@ -8,7 +8,7 @@ TEMPLATE_DIRS = (
 
 OLDBOGOTA_PHOTO_PATH = '/home/maksim/Documents/Develop/oldbogota/processed'
 
-OLDDATABOGOTA_PHOTO_PATH = '/home/maksim/Documents/Develop/rumbabogota/olddata/'
+OLDDATABOGOTA_PHOTO_PATH = '/mnt/rumbacaracas/www/vhosts/rumbacaracas.com/httpdocs/'
 FAKE_IMPORT_IMAGE = '/home/maksim/test_images/tst_imgs/1.jpg'
 
 
