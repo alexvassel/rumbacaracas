@@ -245,8 +245,8 @@ def import_blog_category (table):
 
             
 
-            last_update = compile_date(oldarticle.du, oldarticle.mu, oldarticle.au)
-            creation_date = compile_date(oldarticle.da, oldarticle.ma, oldarticle.aa)
+            last_update = oldarticle.fetcha #compile_date(oldarticle.du, oldarticle.mu, oldarticle.au)
+            creation_date = oldarticle.fetcha #compile_date(oldarticle.da, oldarticle.ma, oldarticle.aa)
             start_publication = compile_date(oldarticle.dia, oldarticle.mes, oldarticle.ano)
 
             if last_update:
@@ -503,7 +503,7 @@ class Command( NoArgsCommand ):
 
 
         print "Importing legacy people"
-        import_people()
+        #import_people()
         #reimport_people_locations()
 
         print "Importing legacy locations"
