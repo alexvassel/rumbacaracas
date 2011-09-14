@@ -327,10 +327,6 @@ def add( request ):
             event = form.save( commit = False )
             event.slug = SlugifyUniquely( event.title, event.__class__)
 
-
-            #For one day events
-            if not event.to_date:
-                event.to_date = event.from_date
             #set moderation status
             event.status = 2
             event.add_user = request.user

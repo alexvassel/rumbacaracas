@@ -202,7 +202,7 @@
                 <ul>
                     {% for video in videos %}
                         <li>
-                            <a href="{{ video.get_absolute_url }}">{{video.description}} - <span>{{ video.user|user_link }}</span></a>
+                            <a href="{{ video.get_absolute_url }}">{{video.description|slice:":30"}}{% if video.description|length > 30 %}...{% endif %} - <span>{{ video.user|user_link }}</span></a>
                         </li>
                     {% endfor %}
                 </ul>
