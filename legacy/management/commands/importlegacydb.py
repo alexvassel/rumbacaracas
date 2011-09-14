@@ -37,7 +37,7 @@ def import_users ():
     DU.User.objects.all().exclude(username="admin").delete()
     oldusers = L.Usuarios.objects.all()
 
-    for olduser in oldusers:
+    for olduser in oldusers[0:20]:
         
         user = DU.User(
             id = hack_for_user_id(olduser.id),
@@ -112,9 +112,22 @@ def import_yourphotos ():
 
 
 def import_events ():
+
+    E.EventCategory.objects.all().delete()
+    oldeventscats = L.EventosCategorias.objects.all()
+
+    for oldeventcat in oldeventscats:
+        eventcat = E.EventCategory(
+            id = oldeventcat.id,
+            title = oldeventcat.nombre
+        )
+        eventcat.save()
+
+
+
     E.Event.objects.all().delete()
     oldevents = L.Eventos.objects.all()
-    for oldevent in oldevents[0:10]:
+    for oldevent in oldevents[0:20]:
         #oldevent = L.Eventos()
         if oldevent.titulo:
             if len(oldevent.email) > 75:
@@ -189,7 +202,7 @@ def import_blog_category (table):
 
     disconnect_zinnia_signals()
 
-    for oldarticle in oldarticles[0:10]:
+    for oldarticle in oldarticles[0:20]:
         #oldarticle = L.MusicNews()
         if oldarticle.titulo:
             title = oldarticle.titulo
@@ -230,10 +243,20 @@ def import_blog_category (table):
             if oldarticle.imagen2:
                 image_name = oldarticle.imagen2
 
+
+
+
+
+
             if image_name:
-                #bi_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
-                bi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'contenido/pics/' + image_name, 'r' ).read() )
-                article.image.save( image_name, bi_content, save = False )
+                file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'contenido/pics/' + image_name
+                if os.path.isfile(file_name):
+                    #bi_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
+                    bi_content = ContentFile( open( file_name, 'r' ).read() )
+                    article.image.save( image_name, bi_content, save = False )
+                else:
+                    print "Wrong file "
+                    print file_name
 
             #Import subtitle as part of content!!!!!!
             article.content = compile_news_content(oldarticle.contenido,oldarticle.subtitulo, additional_image)
@@ -250,7 +273,7 @@ def import_locations ():
     oldlocations = L.Local.objects.all()
     wrong_ids = list()
     
-    for oldlocation in oldlocations[0:10]:
+    for oldlocation in oldlocations[0:20]:
         #oldlocation = L.Local()1
 
         location = LS.Location(
@@ -348,7 +371,7 @@ def import_people ():
     #TODO Carefully import locations
     #TODO Import second date
 
-    for oldevent in oldevents[0:5]:
+    for oldevent in oldevents[0:10]:
         if oldevent.titulo:
             #oldevent = L.Fotos()
             event = P.PhotoEvent(
@@ -459,7 +482,7 @@ class Command( NoArgsCommand ):
 
 
         print "Importing legacy people"
-        import_people()
+        #import_people()
         #reimport_people_locations()
 
         print "Importing legacy locations"

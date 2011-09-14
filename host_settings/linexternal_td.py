@@ -19,7 +19,7 @@ LOCALE_PATHS = (
     '/srv/vhosts/rumbacaracas/locale',
  )
 
-OLDDATABOGOTA_PHOTO_PATH = '/mnt/maksim/Documents/Develop/rumbabogota/olddata/'
+OLDDATABOGOTA_PHOTO_PATH = '/mnt/caracas/'
 FAKE_IMPORT_IMAGE = '/mnt/maksim/test_images/tst_imgs/1.jpg'
 
 
