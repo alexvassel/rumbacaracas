@@ -9,6 +9,7 @@ import yourphotos.models as YP
 import zinnia.models as Z
 import news.models as N
 import subscribe.models as S
+import yourvideos.models as YV
 
 import django.contrib.auth.models as DU
 
@@ -38,7 +39,7 @@ def import_users ():
     oldusers = L.Usuarios.objects.all()
 
     for olduser in oldusers:
-
+        
         user = DU.User(
             id = hack_for_user_id(olduser.id),
             first_name = olduser.nombre[:30],
@@ -47,8 +48,13 @@ def import_users ():
             email = olduser.email
         )
         user.set_password(olduser.pais)
-        user.save()
-        user.groups.add(1)
+        try :
+            user.save()
+            user.groups.add(1)
+        except Exception, e:
+            print e
+        
+
 
 
 def import_subscriptions ():
@@ -80,7 +86,7 @@ def import_yourphotos ():
     oldphotos = L.Tusfotos.objects.all()
 
     wrong_ids = list()
-    for oldphoto in oldphotos:
+    for oldphoto in oldphotos[0:30]:
         photo = YP.Photo(
                       user = get_user_instance(hack_for_user_id(oldphoto.usuario)),
                       description = oldphoto.leyenda,
@@ -90,7 +96,7 @@ def import_yourphotos ():
 
 
         if oldphoto.archivo:
-            file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'comunidad/' + string.lower(oldphoto.user_name).replace(' ','') + '/fotos/' + oldphoto.archivo
+            file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'tusfotos/' + string.lower(oldphoto.user_name)[0:1] + '/' + string.lower(oldphoto.user_name).replace(' ','') + '/fotos/' + oldphoto.archivo
 
             if os.path.isfile(file_name):
                 fi_content = ContentFile( open( file_name, 'r' ).read() )
@@ -98,6 +104,7 @@ def import_yourphotos ():
                 photo.save()
             else:
                 print "wrong file for yourphotos!!!!!!!!!!\n"
+                print file_name
                 wrong_ids.append(str(oldphoto.id))
 
 
@@ -106,10 +113,42 @@ def import_yourphotos ():
         print ",".join(wrong_ids)
 
 
+
+def import_yourvideos ():
+
+    YV.Video.objects.all().delete()
+    oldvideos = L.TusfotosVideos.objects.all()
+
+    for oldvideo in oldvideos[0:30]:
+        video = YV.Video(
+                      user = get_user_instance_by_name(oldvideo.nick),
+                      youtube_id = oldvideo.video,
+                      description = oldvideo.nombre,
+                      status = convert_status( oldvideo.status ),
+                      datetime_added = oldvideo.fecha,
+        )
+        video.save()
+
+
+
+
 def import_events ():
+
+    E.EventCategory.objects.all().delete()
+    oldeventscats = L.EventosCategorias.objects.all()
+
+    for oldeventcat in oldeventscats:
+        eventcat = E.EventCategory(
+            id = oldeventcat.id,
+            title = oldeventcat.nombre
+        )
+        eventcat.save()
+
+
+
     E.Event.objects.all().delete()
     oldevents = L.Eventos.objects.all()
-    for oldevent in oldevents:
+    for oldevent in oldevents[0:30]:
         #oldevent = L.Eventos()
         if oldevent.titulo:
             if len(oldevent.email) > 75:
@@ -151,7 +190,7 @@ def import_events ():
 
 
             if oldevent.imagen:
-                file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'eventos/' + oldevent.imagen
+                file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'eventos/pics/' + oldevent.imagen
                 if os.path.isfile(file_name):
                     ei_content = ContentFile( open( file_name, 'r' ).read() )
                     event.image.save( oldevent.imagen, ei_content, save = False )
@@ -184,7 +223,7 @@ def import_blog_category (table):
 
     disconnect_zinnia_signals()
 
-    for oldarticle in oldarticles:
+    for oldarticle in oldarticles[0:30]:
         #oldarticle = L.MusicNews()
         if oldarticle.titulo:
             title = oldarticle.titulo
@@ -206,9 +245,12 @@ def import_blog_category (table):
 
             
 
-            last_update = compile_date(oldarticle.du, oldarticle.mu, oldarticle.au)
-            creation_date = compile_date(oldarticle.da, oldarticle.ma, oldarticle.aa)
+            last_update = oldarticle.fecha #compile_date(oldarticle.du, oldarticle.mu, oldarticle.au)
+            creation_date = oldarticle.fecha #compile_date(oldarticle.da, oldarticle.ma, oldarticle.aa)
             start_publication = compile_date(oldarticle.dia, oldarticle.mes, oldarticle.ano)
+
+            if not creation_date:
+                creation_date = start_publication
 
             if last_update:
                 article.last_update = last_update
@@ -225,10 +267,20 @@ def import_blog_category (table):
             if oldarticle.imagen2:
                 image_name = oldarticle.imagen2
 
+
+
+
+
+
             if image_name:
-                #bi_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
-                bi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'contenido/' + image_name, 'r' ).read() )
-                article.image.save( image_name, bi_content, save = False )
+                file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'contenido/pics/' + image_name
+                if os.path.isfile(file_name):
+                    #bi_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
+                    bi_content = ContentFile( open( file_name, 'r' ).read() )
+                    article.image.save( image_name, bi_content, save = False )
+                else:
+                    print "Wrong file "
+                    print file_name
 
             #Import subtitle as part of content!!!!!!
             article.content = compile_news_content(oldarticle.contenido,oldarticle.subtitulo, additional_image)
@@ -245,7 +297,7 @@ def import_locations ():
     oldlocations = L.Local.objects.all()
     wrong_ids = list()
     
-    for oldlocation in oldlocations:
+    for oldlocation in oldlocations[0:30]:
         #oldlocation = L.Local()1
 
         location = LS.Location(
@@ -297,7 +349,7 @@ def import_locations ():
         #li_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
 
         if oldlocation.imagen:
-            file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'locales/' + oldlocation.imagen
+            file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'locales/pics/' + oldlocation.imagen
             if os.path.isfile(file_name):
                 li_content = ContentFile( open( file_name, 'r' ).read() )
                 location.image_logo.save( oldlocation.imagen, li_content, save = False )
@@ -343,7 +395,7 @@ def import_people ():
     #TODO Carefully import locations
     #TODO Import second date
 
-    for oldevent in oldevents:
+    for oldevent in oldevents[0:15]:
         if oldevent.titulo:
             #oldevent = L.Fotos()
             event = P.PhotoEvent(
@@ -371,7 +423,7 @@ def import_people ():
 
             import os
 
-            main_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' +  oldevent.imagen_principal
+            main_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' +  oldevent.imagen_principal
             basename, extension = os.path.splitext(oldevent.imagen_principal)
             from PIL import Image
 
@@ -393,11 +445,11 @@ def import_people ():
             
             #Then import images
 
-            os.chdir( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio )
+            os.chdir( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio )
 
             images_list = list()
 
-            legends_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/resena.dat'
+            legends_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/resena.dat'
             if os.path.isfile(legends_file):
                 legends = open( legends_file, "r" ).readlines()
             else:
@@ -424,8 +476,8 @@ def import_people ():
             for photo in zip( ulegends, images_list, thumb_list ) :
                 p = P.Photo( description = photo[0][:256], event = event )
 
-                fi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' + photo[1], 'r' ).read() )
-                ft_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/' + oldevent.directorio + '/' + photo[2], 'r' ).read() )
+                fi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[1], 'r' ).read() )
+                ft_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[2], 'r' ).read() )
 
                 p.image.save( photo[1][-75:], fi_content, save = False )
                 p.thumb.save( photo[2][-75:], ft_content, save = False )
@@ -455,7 +507,7 @@ class Command( NoArgsCommand ):
 
         print "Importing legacy people"
         #import_people()
-        reimport_people_locations()
+        #reimport_people_locations()
 
         print "Importing legacy locations"
         #import_locations()
@@ -464,21 +516,24 @@ class Command( NoArgsCommand ):
         #import_events()
 
         print "Importing legacy rumba news"
-        #import_blog_category (L.RumbaNews)
+        import_blog_category (L.RumbaNews)
 
         print "Importing legacy music news"
-        #import_blog_category (L.MusicNews)
+        import_blog_category (L.MusicNews)
 
         print "Importing legacy interviews"
-        #import_blog_category (L.Entrevista)
+        import_blog_category (L.Entrevista)
 
         print "Importing legacy specials"
-        #import_blog_category (L.Especial)
+        import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "Importing legacy your photos"
         #import_yourphotos()
+
+        print "Importing legacy your videos"
+        #import_yourvideos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()

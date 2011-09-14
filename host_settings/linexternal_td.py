@@ -19,7 +19,7 @@ LOCALE_PATHS = (
     '/srv/vhosts/rumbacaracas/locale',
  )
 
-OLDDATABOGOTA_PHOTO_PATH = '/mnt/maksim/Documents/Develop/rumbabogota/olddata/'
+OLDDATABOGOTA_PHOTO_PATH = '/mnt/caracas/'
 FAKE_IMPORT_IMAGE = '/mnt/maksim/test_images/tst_imgs/1.jpg'
 
 
@@ -35,7 +35,7 @@ DATABASES = {
     },
     'olddata': {
             'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'oldbogotadata', # Or path to database file if using sqlite3.
+            'NAME': 'oldcaracas', # Or path to database file if using sqlite3.
             'USER': 'root', # Not used with sqlite3.
             'HOST': 'linexternal.td', # Set to empty string for localhost. Not used with sqlite3.
             'PASSWORD': 'cleopatra', # Not used with sqlite3.

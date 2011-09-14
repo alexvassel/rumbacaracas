@@ -32,24 +32,61 @@ def parse_city_area (value):
 
     result = {
         u'': None,
-        u'Bogota / 82 y Calle T': 1,
-        u'Bogota / 93 y Chico': 2,
-        u'Bogota / Centro': 3,
-        u'Bogota / Chapineros': 4,
-        u'Bogota / Fuera de la Ciudad': 5,
-        u'Bogota / Macarena': 6,
-        u'Bogota / Norte': 7,
-        u'Bogota / Occidente': 8,
-        u'Bogota / Usaquén': 9,
-        u'Bogota / Zona G y Quinta Camacho': 10,
-        u'Bogota / Tuesaquillo y La Soledad': 11,
-        u'Bogota / 72': 12
+
+        u"Caracas / Altamira": 1,
+        u"Caracas / Alto Prado": 3,
+        u"Caracas / Baruta": 3,
+        u"Caracas / Bellas Artes": 4,
+        u"Caracas / Bello Campo": 5,
+        u"Caracas / Campo Alegre": 6,
+        u"Caracas / Chacaito": 7,
+        u"Caracas / Chacao": 8,
+        u"Caracas / Chuao": 9,
+        u"Caracas / El Hatillo": 10,
+        u"Caracas / El Marques": 11,
+        u"Caracas / El Paraiso": 12,
+        u"Caracas / El Rosal": 13,
+        u"Caracas / La Boyera": 14,
+        u"Caracas / La Candelaria": 15,
+        u"Caracas / La Castellana": 16,
+        u"Caracas / La Floresta": 17,
+        u"Caracas / La Lagunita": 18,
+        u"Caracas / La Trinidad": 19,
+        u"Caracas / Las Mercedes": 20,
+        u"Caracas / Los Caobos": 21,
+        u"Caracas / Los Cedros": 22,
+        u"Caracas / Los Chaguaramos": 23,
+        u"Caracas / Los Cortijos": 24,
+        u"Caracas / Los Palos Grandes": 25,
+        u"Caracas / Los Ruices": 26,
+        u"Caracas / Macaracuay": 27,
+        u"Caracas / Parque Central": 28,
+        u"Caracas / Plaza Venezuela": 29,
+        u"Caracas / Prados del Este": 30,
+        u"Caracas / Sabana Grande": 31,
+        u"Caracas / San Roman": 32,
+        u"Caracas / Santa Fe": 33,
+        u"Caracas / Santa Monica": 34,
+        u"Caracas / Terrazas del Avila": 35,
+        u"Caracas / Zona Oeste": 36,
+        u"Litoral / Playa Grande": 37,
+        u"Litoral / Caraballeda": 38,
+        u"Gran Caracas / Guatire": 39,
+        u"Gran Caracas / San Antonio de los Altos": 40,
+        u"Gran Caracas / Guarenas": 41,
+
     }[unicode(value).strip()]
+
+    city = 'caracas'
+    if result in (37,38):
+        city = 'Litoral'
+    if result in (39,40, 41):
+        city = 'Gran Caracas'
 
     if result:
         result = LocationArea.objects.get(pk=result)
 
-    return 'Bogota', result,
+    return city, result,
 
 
 
@@ -72,6 +109,7 @@ def parse_people_category ( input_value ):
         "Fashion": 'fashion',
         "Lanzamiento": 'launches',
         "Rumbas": 'rumbas',
+        "Fuera de Caracas": 'outside'
     }[input_value]
 
     return result
@@ -96,7 +134,18 @@ def parse_location_type(token):
     return id_list
 
 def get_user_instance (user_id):
-    return User.objects.get(pk=user_id)
+    try :
+        result = User.objects.get(pk=user_id)
+        return result
+    except User.DoesNotExist:
+        return None
+    
+def get_user_instance_by_name (user_name):
+    try :
+        result = User.objects.get(username=user_name)
+        return result
+    except User.DoesNotExist:
+        return None
 
 
 def compile_news_content (content, subtitle, additional_image):
@@ -136,14 +185,12 @@ def parse_location_music ( input_value ):
         "Salsa Cabilla": 10,
         "Variada" : 12,
         u'Criolla Folklórica': None,
+        "Metal / Alternativo": 1,
     }[input_value]
     if result:
         result = LocationMusic.objects.get(pk=result)
 
     return result
-
-
-
 
 
 def parse_location_food(token):
@@ -173,7 +220,9 @@ def parse_location_food(token):
                 u'Japonés': 24,
                 u'Francés': 15,
                 u'Tex-Mex': '',
+                u'Hindú': 19,
             }[type]
+
             if type_id:
                 id_list.append(type_id)
     return id_list
@@ -211,23 +260,15 @@ def parse_location ( input_value ):
 
 
 def parse_event_category ( input_value ):
-    result = {
-        "": None,
-        u'Adulto Contemporáneo': 1,
-        "Arte y Cultura": 4,
-        "Conciertos y Bandas":3,
-        u'Electrónica y DJs':2,
-        "En Ambiente": 7,
-        u'Eventos y Más': 1,
-        "Promociones": 6,
-        "Rumbas": 5,
-    }[input_value]
+
     #TODO check cevent category for empty
-    if result:
-        result = EventCategory.objects.get(pk=result)
+
+
+    if input_value:
+        input_value = EventCategory.objects.get(pk=input_value)
     else:
-        result = EventCategory.objects.get(pk=5)
-    return result
+        input_value = EventCategory.objects.get(pk=5)
+    return input_value
 
 def parse_event_time(hours):
     if hours:
