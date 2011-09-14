@@ -245,8 +245,8 @@ def import_blog_category (table):
 
             
 
-            last_update = oldarticle.fetcha #compile_date(oldarticle.du, oldarticle.mu, oldarticle.au)
-            creation_date = oldarticle.fetcha #compile_date(oldarticle.da, oldarticle.ma, oldarticle.aa)
+            last_update = oldarticle.fecha #compile_date(oldarticle.du, oldarticle.mu, oldarticle.au)
+            creation_date = oldarticle.fecha #compile_date(oldarticle.da, oldarticle.ma, oldarticle.aa)
             start_publication = compile_date(oldarticle.dia, oldarticle.mes, oldarticle.ano)
 
             if last_update:
