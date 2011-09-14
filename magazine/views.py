@@ -1,8 +1,8 @@
 from decorators import render_to
 from preferences import preferences
 from django.utils.safestring import mark_safe
+from django.conf import settings
 import hashlib
-import settings
 import urllib
 
 # Find a JSON parser
