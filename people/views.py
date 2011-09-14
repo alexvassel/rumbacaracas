@@ -88,7 +88,7 @@ def details ( request, slug ):
     except ValueError:
         page = 1
 
-    photos = event.photo_set.all()
+    photos = event.photo_set.all().order_by('datetime_added', 'id')
     if photos:
         paginator = Paginator( photos, 12 )
         try:
