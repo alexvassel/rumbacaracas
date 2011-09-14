@@ -122,6 +122,9 @@ AUTH_PROFILE_MODULE = 'main.models.UserProfile'
 
 ZINNIA_ENTRY_BASE_MODEL = 'news.zinniaModels.MyEntry'
 
+ISSUU_API_KEY = "3g5tlt235dhwzwu9lf8yveetczya50u0"
+ISSUU_API_SECRET = "0unbbypa2ck7ls8yjstzelyyssax2026"
+
 
 OPENX_URL = 'http://ads.2rumba.com/www/api/v2/xmlrpc/'
 #OPENX_URL = 'http://ads.2rumba.com/www/delivery/axmlrpc.php'
@@ -188,7 +191,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'magazine',
     'subscribe',
-    'legacy',
+    #'legacy',
     #'photologue',
     #'tagging',
     # Uncomment the next line to enable admin documentation:
