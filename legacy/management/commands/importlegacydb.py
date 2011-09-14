@@ -249,6 +249,9 @@ def import_blog_category (table):
             creation_date = oldarticle.fecha #compile_date(oldarticle.da, oldarticle.ma, oldarticle.aa)
             start_publication = compile_date(oldarticle.dia, oldarticle.mes, oldarticle.ano)
 
+            if not creation_date:
+                creation_date = start_publication
+
             if last_update:
                 article.last_update = last_update
 
@@ -495,7 +498,7 @@ class Command( NoArgsCommand ):
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        import_users()
+        #import_users()
 
 
         print "Importing legacy subscriptions"
@@ -507,10 +510,10 @@ class Command( NoArgsCommand ):
         #reimport_people_locations()
 
         print "Importing legacy locations"
-        import_locations()
+        #import_locations()
 
         print "Importing legacy events"
-        import_events()
+        #import_events()
 
         print "Importing legacy rumba news"
         import_blog_category (L.RumbaNews)
@@ -527,10 +530,10 @@ class Command( NoArgsCommand ):
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "Importing legacy your photos"
-        import_yourphotos()
+        #import_yourphotos()
 
         print "Importing legacy your videos"
-        import_yourvideos()
+        #import_yourvideos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()
