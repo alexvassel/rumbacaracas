@@ -38,7 +38,7 @@ def import_users ():
     DU.User.objects.all().exclude(username="admin").delete()
     oldusers = L.Usuarios.objects.all()
 
-    for olduser in oldusers[0:30]:
+    for olduser in oldusers:
         
         user = DU.User(
             id = hack_for_user_id(olduser.id),
