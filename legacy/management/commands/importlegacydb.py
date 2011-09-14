@@ -474,7 +474,7 @@ class Command( NoArgsCommand ):
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        #import_users()
+        import_users()
 
 
         print "Importing legacy subscriptions"
@@ -482,7 +482,7 @@ class Command( NoArgsCommand ):
 
 
         print "Importing legacy people"
-        #import_people()
+        import_people()
         #reimport_people_locations()
 
         print "Importing legacy locations"
