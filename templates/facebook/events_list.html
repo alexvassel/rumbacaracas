@@ -1,0 +1,90 @@
+{% extends "facebook/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<div id="main-contents" class="main-contents encap" style="padding-top: 0px;">
+    <div id="col-left" class="col-left">
+        <form action="." method="post">
+            {% csrf_token %}
+            <div class="node-container box-shadows encap" style="width: 695px;">
+                <div class="title-wrap encap">
+                    <span class="flt-left"><h2 class="title">{% trans "Events" %}</h2></span>
+                    <span class="flt-right">
+                        <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+                            <li><a class="socializer-8 publish-event" href="#"><button type="submit" style="background-color: inherit; margin: 5px 0;"><span>{% trans "Add Events" %}</span></button></a></li>
+                        </ul>
+                    </span>
+                </div>
+
+                <div class="node encap">
+
+                    <div class="photos-share-options" style="border-top:none;margin-top: -20px; margin-bottom: 20px">
+                        <ul class="teaser-options encap outnone fcml0 lcmr0">
+                            <li>
+                                <a href="#" onclick="selectAll();" style="width: auto; display: inline;">
+                                {% trans "Select all" %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="deselectAll();" style="width: auto; display: inline;">
+                                {% trans "Deselect all" %}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="outline-briefs" class="outline-briefs boxed-brief" style="padding-top: 0px;">
+                        {% if message != None %}
+                            <div class="flash_message">
+                                {% trans message %}
+                            </div>
+                        {% endif %}
+
+                        <div id="outline-slides" class="outnone encap" style="position: relative; overflow-x: hidden; overflow-y: hidden;">
+                            <div class="outline-slide" style="display: block;">
+                            {% if events.data|length > 0 %}
+                                {% for event in events.data %}
+                                <dl class="encap" style="width: 640px;">
+                                    <dt style="float: left; width: 140px;">
+                                        <input type="checkbox" name="object_events" value="{{ event.id }}" style="float: left; vertical-align: middle;" />
+                                        <img src="{{ event.picture_url }}" alt="{{ event.name }}" style="max-width: 100px;" />
+                                    </dt>
+                                    <dd style="float: left;">
+                                        <h3>
+                                            {{ event.name }}
+                                        </h3>
+                                        <p class="published">
+                                            {{ event.start_time|date:"d-m-Y"|lower }} - {{ event.end_time|date:"d-m-Y"|lower }}
+                                        </p>
+                                        <p class="published">
+                                            {{ event.location }}
+                                        </p>
+                                        <p>
+                                            <span>{{ event.description }}</span>
+                                        </p>
+                                    </dd>
+                                </dl>
+                                {% endfor %}
+                            {% else %}
+                                <div style="font-size: 16px;">{% trans "You have no events" %}</div>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="title-wrap encap">
+                    <span class="flt-left"></span>
+                    <span class="flt-right">
+                        <ul class="socializer encap outnone fcml0 lcmr0">
+                            <li><a class="socializer-8 publish-event" href="#"><button type="submit" style="background-color: inherit; margin: 5px 0;"><span>{% trans "Add Events" %}</span></button></a></li>
+                        </ul>
+                    </span>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

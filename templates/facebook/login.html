@@ -1,0 +1,31 @@
+{% extends "facebook/base.html" %}
+{% load i18n %}
+{% load socialregistration_tags %}
+{% load facebook_tags %}
+{% load facebook %}
+
+{% block content %}
+<div id="main-contents" class="main-contents encap" style="padding-top: 0px;">
+    <div id="col-left" class="col-left">
+        <div class="node-container gente box-shadows encap">
+          <div class="title-wrap encap">
+            <span class="flt-left"><h2 class="title">{% trans "Login"%}</h2></span>
+            <span class="flt-right">
+              <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+              </ul>
+            </span>
+          </div><!--//.title-wrap-->
+          <div class="node gente bb-none encap">
+            <br />
+            <p>
+            {% if not request.user.is_authenticated %}
+                {% facebook_button %}
+            {% else %}
+                <script type="text/javascript"></script>
+            {% endif %}
+            </p>
+          </div><!--//.node-->
+        </div><!--//.node-container-->
+    </div>
+</div>
+{% endblock %}
