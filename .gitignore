@@ -13,5 +13,8 @@ media/uploads/gallery/*
 olddata
 media/zinnia
 media/grappelli
-.idea
-src
+.idea/
+src/
+out/
+pull_linexternal.sh
+rumbacaracas.iml
