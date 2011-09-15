@@ -426,7 +426,7 @@ msgid "Fashion "
 msgstr ""
 
 #: people/models.py:12
-msgid "Outside Bogota"
+msgid "Outside Caracas"
 msgstr ""
 
 #: people/models.py:17
@@ -592,7 +592,7 @@ msgid "Follow us on Twitter"
 msgstr ""
 
 #: templates/base.html:137
-msgid "Rumbabogota Home"
+msgid "Rumbacaracas Home"
 msgstr ""
 
 #: templates/base.html:141 templates/base.html.py:244
@@ -734,7 +734,7 @@ msgid "Last"
 msgstr ""
 
 #: templates/login.html:3
-msgid "Login| Rumbabogota"
+msgid "Login| Rumbacaracas"
 msgstr ""
 
 #: templates/login.html:10
@@ -749,7 +749,7 @@ msgstr ""
 
 #: templates/events/add.html:3 templates/events/calendar.html:3
 #: templates/events/details.html:3 templates/events/grouping.html:3
-msgid "Events | Rumbabogota"
+msgid "Events | Rumbacaracas"
 msgstr ""
 
 #: templates/events/add.html:21
@@ -775,7 +775,7 @@ msgid "Location is not listed"
 msgstr ""
 
 #: templates/events/add.html:132
-msgid "Bogota"
+msgid "Caracas"
 msgstr ""
 
 #: templates/events/add.html:135
@@ -882,7 +882,7 @@ msgid "Select a location"
 msgstr ""
 
 #: templates/events/events_base.html:3 templates/locations/index.html:5
-msgid "Locales | Rumbabogota"
+msgid "Locales | Rumbacaracas"
 msgstr ""
 
 #: templates/events/events_base.html:13
@@ -942,7 +942,7 @@ msgid "Go"
 msgstr ""
 
 #: templates/googlesearch/googlesearch_results.html:6
-msgid "Search | Rumbabogota"
+msgid "Search | Rumbacaracas"
 msgstr ""
 
 #: templates/googlesearch/googlesearch_results.html:17
@@ -955,7 +955,7 @@ msgid "Search"
 msgstr ""
 
 #: templates/locations/add.html:3 templates/locations/category.html:3
-msgid "Locations | Rumbabogota"
+msgid "Locations | Rumbacaracas"
 msgstr ""
 
 #: templates/locations/add.html:20 templates/yourphotos/add.html:20
@@ -1024,7 +1024,7 @@ msgid "By Rating"
 msgstr ""
 
 #: templates/magazine/magazine.html:3
-msgid "Magazine | Rumbabogota"
+msgid "Magazine | Rumbacaracas"
 msgstr ""
 
 #: templates/magazine/magazine.html:13 templates/static/aboutus.html:5
@@ -1055,7 +1055,7 @@ msgid "Read More"
 msgstr ""
 
 #: templates/main/index.html:3
-msgid "Rumbabogota"
+msgid "Rumbacaracas"
 msgstr ""
 
 #: templates/main/index.html:32
@@ -1093,7 +1093,7 @@ msgid "Tweet"
 msgstr ""
 
 #: templates/news/add.html:3
-msgid "News | Rumbabogota"
+msgid "News | Rumbacaracas"
 msgstr ""
 
 #: templates/news/add.html:29
@@ -1118,7 +1118,7 @@ msgstr ""
 
 #: templates/people/category.html:3 templates/people/details.html:3
 #: templates/people/index.html:3 templates/people/slider.html:3
-msgid "People | Rumbabogota"
+msgid "People | Rumbacaracas"
 msgstr ""
 
 #: templates/people/details.html:44
@@ -1163,7 +1163,7 @@ msgid "All photos"
 msgstr ""
 
 #: templates/socialregistration/facebook.html:3
-msgid "Login Error | Rumbabogota"
+msgid "Login Error | Rumbacaracas"
 msgstr ""
 
 #: templates/socialregistration/facebook.html:9
@@ -1175,7 +1175,7 @@ msgid "There is a error in facebook connect"
 msgstr ""
 
 #: templates/socialregistration/setup.html:3
-msgid "Signup | Rumbabogota"
+msgid "Signup | Rumbacaracas"
 msgstr ""
 
 #: templates/socialregistration/setup.html:13
@@ -1191,7 +1191,7 @@ msgid "Newsletter"
 msgstr ""
 
 #: templates/static/aboutus.html:3
-msgid "Rumbabogota About Us"
+msgid "Rumbacaracas About Us"
 msgstr ""
 
 #: templates/static/events.html:3
@@ -1227,7 +1227,7 @@ msgid "About Us Web"
 msgstr ""
 
 #: templates/subscribe/done.html:3
-msgid "Subscription| Rumbabogota"
+msgid "Subscription| Rumbacaracas"
 msgstr ""
 
 #: templates/subscribe/done.html:18
@@ -1235,7 +1235,7 @@ msgid "You succesfully subscribed to our weekly newsletter."
 msgstr ""
 
 #: templates/subscribe/subscribe.html:3
-msgid "Subscription | Rumbabogota"
+msgid "Subscription | Rumbacaracas"
 msgstr ""
 
 #: templates/subscribe/subscribe.html:25
@@ -1317,7 +1317,7 @@ msgstr ""
 
 #: templates/yourphotos/add.html:3 templates/yourphotos/details.html:3
 #: templates/yourphotos/index.html:3
-msgid "Your photos | Rumbabogota"
+msgid "Your photos | Rumbacaracas"
 msgstr ""
 
 #: templates/yourphotos/add.html:11 yourphotos/views.py:88
@@ -1369,7 +1369,7 @@ msgstr ""
 
 #: templates/yourvideos/add.html:3 templates/yourvideos/details.html:3
 #: templates/yourvideos/index.html:3
-msgid "Your videos | Rumbabogota"
+msgid "Your videos | Rumbacaracas"
 msgstr ""
 
 #: templates/yourvideos/add.html:12

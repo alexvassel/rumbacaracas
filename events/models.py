@@ -119,7 +119,7 @@ class Event( ImageModel, Sortable ):
     music = models.ForeignKey( LocationMusic , blank = True , null = True )
     area = models.ForeignKey( LocationArea , blank = True , null = True )
     place = models.CharField( _( 'Name of venue / place' ), max_length = 256, blank = True )
-    city = models.CharField( _( 'City' ), max_length = 256 , blank = True, default = 'Bogota' )
+    city = models.CharField( _( 'City' ), max_length = 256 , blank = True, default = 'Caracas' )
     phone = models.CharField( _( 'Info' ), max_length = 256 , blank = True )
     url = models.URLField( _( 'Url' ) , blank = True, verify_exists=False )
     email = models.EmailField( _( 'Email' ) , blank = True )
