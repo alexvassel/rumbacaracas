@@ -11,3 +11,7 @@ media/images/slider/*
 media/uploads/*
 media/uploads/gallery/*
 olddata
+.idea/
+out/
+pull_linexternal.sh
+rumbacaracas.iml
