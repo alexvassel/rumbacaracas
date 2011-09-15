@@ -6,7 +6,7 @@ TEMPLATE_DIRS = (
     '/www/rumba/rumbacaracas/templates',
  )
 
-OLDBOGOTA_PHOTO_PATH = '/home/maksim/Documents/Develop/oldbogota/processed'
+OLDBOGOTA_PHOTO_PATH = '/home/maksim/Documents/Develop/oldcaracas/processed'
 
 OLDDATABOGOTA_PHOTO_PATH = '/www/rumba/rumbacaracas/olddata/'
 FAKE_IMPORT_IMAGE = '/home/maksim/test_images/tst_imgs/1.jpg'
@@ -35,7 +35,7 @@ DATABASES = {
     },
     'olddata': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'oldbogotadata', # Or path to database file if using sqlite3.
+        'NAME': 'oldcaracasdata', # Or path to database file if using sqlite3.
         'USER': 'root', # Not used with sqlite3.
         'PASSWORD': 'cleopatra', # Not used with sqlite3.
     }

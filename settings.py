@@ -1,4 +1,4 @@
-# Django settings for rumbabogota project.
+# Django settings for rumbacaracas project.
 #from django.middleware.cache import FetchFromCacheMiddleware
 
 DEBUG = False
@@ -110,8 +110,8 @@ FACEBOOK_REQUEST_PERMISSIONS = 'email,user_birthday,user_photos,user_events'
 
 
 
-TWITTER_CONSUMER_KEY = 'zSTLzRjnKz2uQvSX5AgQ'
-TWITTER_CONSUMER_SECRET_KEY = 'nwE8Y5CNllSMocUDom1K3k4FyVml8l5FU2W1uH0o'
+TWITTER_CONSUMER_KEY = 'IYdcJdgtroX4yE7tuqUscA'
+TWITTER_CONSUMER_SECRET_KEY = 'nLD3noOIPwSZeyXZaUpwSVLIw9yZOKkAkNjpY85SqLw'
 TWITTER_REQUEST_TOKEN_URL = 'https://api.twitter.com/oauth/request_token'
 TWITTER_ACCESS_TOKEN_URL = 'https://api.twitter.com/oauth/access_token'
 TWITTER_AUTHORIZATION_URL = 'https://api.twitter.com/oauth/authorize'
@@ -149,7 +149,7 @@ INTERNAL_IPS = ( '127.0.0.1', )
 
 ROOT_URLCONF = 'urls'
 
-#FULL_BASE_URL = 'http://rumbabogota.com'
+#FULL_BASE_URL = 'http://rumbacaracas.com'
 
 
 TEMPLATE_CONTEXT_PROCESSORS = ( 
