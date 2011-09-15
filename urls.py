@@ -26,6 +26,7 @@ urlpatterns = patterns( '',
     
     ( r'^suscribete/', include( 'subscribe.urls' ) ),
 
+    url( r'^e-rumba/$', "erumba.views.index", name="e_rumba" ),
 
     url( r'^revista/$',  "magazine.views.index", name="magazine_main" ),
 
