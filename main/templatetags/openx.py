@@ -76,3 +76,11 @@ import random
 def banner_zone_iframe( zone_id, width=None, height=None ):
     rand = random.random()
     return dict( zone_id = zone_id, width = width, height=height,rand =rand  )
+
+
+@register.inclusion_tag( 'main/openx_email_banner.html' )
+def banner_zone_email( zone_id):
+    rand = random.random()
+    return dict( zone_id = zone_id, rand = rand  )
+
+
