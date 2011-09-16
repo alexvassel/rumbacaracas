@@ -1,0 +1,57 @@
+{% load openx %}
+{% load i18n %}
+{% for day, events in events_by_day %}
+
+  {% if forloop.counter0|divisibleby:"2" %}
+  <tr>
+    <td colspan="3">
+      <table cellpadding="0" cellspacing="0" border="0" align="center" width="100%" style="padding: 0 25px;">
+        <tr>
+  {% endif %}
+
+          <td width="48%" style="font-size: 11px; line-height: 18px; font-family: Arial; padding: 0 20px 0 0; vertical-align: top;">
+            <h4 style="font-size:18px !important;font-weight:normal !important;color:#000000 !important;text-decoration:none !important;padding: 0 0 10px !important;border-bottom: 1px solid #A3A3A3 !important;margin: 0 0 10px !important;text-transform: uppercase !important;">{{ day|date:"l" }} <span style="font-size: 12px">{{ day|date:"d.m.Y" }}</span></h4>
+            {% for event in events %}
+              {{ event.category.title }}<br />
+              <strong style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; color:#D22323;"><a style="color:#D22323;" href="http://rumbabogota.com{% url event_details event.slug %}">{{ event.title }}</a></strong> | {{ event.location.title }}<br />
+              <br />
+            {% endfor %}
+          </td>
+
+  {% if forloop.counter|divisibleby:"2" %}
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" height="20px"></td>
+  </tr>
+  <tr>
+    <td colspan="3" height="200px" style="border-top: 1px dotted #9F9F9F !important;border-bottom: 1px dotted #9F9F9F !important; padding: 20px 0;" align="center">
+      {% banner_zone_email 108 %}
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" height="20px"></td>
+  </tr>
+  {% endif %}
+{% endfor %}
+
+{% if not events_by_day|length|divisibleby:"2" %}
+    <td width="48%" style="font-size: 11px; line-height: 18px; font-family: Arial; padding: 0 20px 0 0; vertical-align: top;"></td>
+  </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" height="20px"></td>
+  </tr>
+  <tr>
+    <td colspan="3" height="200px" style="border-top: 1px dotted #9F9F9F !important;border-bottom: 1px dotted #9F9F9F !important; padding: 20px 0;" align="center">
+      {% banner_zone_email 108 %}
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" height="20px"></td>
+  </tr>
+{% endif %}

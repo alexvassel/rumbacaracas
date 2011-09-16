@@ -1,0 +1,12 @@
+{% for object in entries %}
+<tr>
+  <td width="25px"></td>
+  <td style="border-bottom: 1px dotted #9F9F9F !important; padding: 5px 0;font-size: 12px; line-height: 18px; font-family: Arial;"><strong style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#D22323;"><a style="color:#D22323;" href="http://rumbabogota.com{{ object.get_absolute_url }}">{{ object.title }}</a></strong><br />
+    {{ object.creation_date|date:"d.m.Y" }}<br />
+    {% for category in object.categories.all %}
+      <a href="http://rumbabogota.com{{ category.get_absolute_url }}" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; color:#000000 !important; text-decoration:underline !important;">{{ category.title }}</a>
+    {% endfor %}
+  </td>
+  <td width="25px"></td>
+</tr>
+{% endfor %}
