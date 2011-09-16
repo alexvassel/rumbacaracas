@@ -257,7 +257,7 @@ msgstr "Sitio o dirección y zona son requeridos"
 
 #: locations/admin.py:8
 msgid "Mark selected locations as published"
-msgstr "Seleccionar Sitios como publicados"
+msgstr "Seleccionar Locales como publicados"
 
 #: locations/models.py:8
 msgid "Type of Venue/Club"
@@ -277,7 +277,7 @@ msgstr "Tipo de Sitio"
 
 #: locations/models.py:15
 msgid "Location types"
-msgstr "Tipos de Sitios "
+msgstr "Tipos de Locales "
 
 #: locations/models.py:18
 #: locations/models.py:22
@@ -393,7 +393,7 @@ msgstr "Teléfonos"
 #: templates/base.html:213
 #: templates/events/details.html:66
 msgid "Location"
-msgstr "Sitios"
+msgstr "Locales"
 
 #: locations/models.py:117
 #: locations/views.py:56
@@ -409,7 +409,7 @@ msgstr "Sitios"
 #: templates/main/index.html.py:171
 #: templates/widgets/locations_block.html:6
 msgid "Locations"
-msgstr "Sitios"
+msgstr "Locales"
 
 #: locations/views.py:111
 #: templates/locations/index.html:271
@@ -1107,7 +1107,7 @@ msgstr "Seleccione un evento"
 #: templates/events/details.html:207
 #: templates/events/events_base.html:142
 msgid "List of Locations"
-msgstr "Listado de Sitios"
+msgstr "Listado de Locales"
 
 #: templates/events/details.html:214
 #: templates/events/events_base.html:145
@@ -1118,7 +1118,7 @@ msgstr "Seleccione un sitio"
 #: templates/events/events_base.html:3
 #: templates/locations/index.html:7
 msgid "Locales | Rumbacaracas"
-msgstr "Sitios | Rumbacaracas"
+msgstr "Locales | Rumbacaracas"
 
 #: templates/events/events_base.html:14
 msgid "Events For Today"
@@ -1186,7 +1186,7 @@ msgstr "Búsqueda"
 #: templates/locations/add.html:3
 #: templates/locations/category.html:3
 msgid "Locations | Rumbacaracas"
-msgstr "Sitios | Rumbacaracas"
+msgstr "Locales | Rumbacaracas"
 
 #: templates/locations/add.html:20
 #: templates/yourphotos/add.html:20
@@ -1245,15 +1245,15 @@ msgstr "Últimas Fotos"
 
 #: templates/locations/index.html:198
 msgid "Locations of the day"
-msgstr "Sitios destacados del día"
+msgstr "Locales destacados del día"
 
 #: templates/locations/index.html:228
 msgid "Find locations"
-msgstr "Buscar sitios"
+msgstr "Buscar locales"
 
 #: templates/locations/index.html:233
 msgid "List of all locations"
-msgstr "Listado de sitios"
+msgstr "Listado de locales"
 
 #: templates/magazine/magazine.html:3
 msgid "Magazine | Rumbacaracas"
@@ -1553,7 +1553,7 @@ msgstr "Enviado por"
 
 #: templates/widgets/locations.html:3
 msgid "More Locations"
-msgstr "Más Sitios"
+msgstr "Más Locales"
 
 #: templates/widgets/people.html:6
 msgid "More photos"
