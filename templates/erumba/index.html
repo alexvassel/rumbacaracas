@@ -112,88 +112,28 @@ h4{
               </tr>
               {% upcoming_events %}
               <tr>
-                <td colspan="3" height="20px"></td>
+                <td colspan="3" height="200px" style="border-top: 1px dotted #9F9F9F !important;border-bottom: 1px dotted #9F9F9F !important; padding: 20px 0;" align="center">
+                  {% banner_zone_email 109 %}
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" height="30px"></td>
               </tr>
             </table>
           </td>
 					<td width="20px">&nbsp;</td>
           <td width="300px" valign="top">
 						<table cellpadding="0" cellspacing="0" border="0" width="300px" align="center">
+              {% latests_photos %}
               <tr>
-                <td><h3 style="color:#898989 !important;font-size:22px !important;position:relative !important;text-transform:uppercase !important;top:6px !important;z-index:10 !important;margin:0;">{% trans "Latest Photos" %}</h3></td>
-              </tr>
-              <tr>
-                <td>
-                	<table cellpadding="0" cellspacing="0" border="0" align="center" bgcolor="#FFFFFF" style="border: 1px solid #A6A6A6; background:#FFFFFF; box-shadow: 2px 3px 3px #A6A8A8;-moz-box-shadow: 2px 3px 3px #A6A8A8;-webkit-box-shadow: 2px 3px 3px #A6A8A8;filter:progid:DXImageTransform.Microsoft.dropShadow(color=#A6A8A8, offX=2, offY=2, positive=true);">
-                    <tr>
-                      <td colspan="3" height="15px"></td>
-                    </tr>
-                    <tr>
-                      <td height="200px" width="250px" colspan="3" align="center" style="padding: 0 20px; text-align: center">
-                        {% banner_zone_email 110 %}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" height="15px"></td>
-                    </tr>
-                    {# todo: change it to block #}
-                    {% latests_photos %}
-                    <tr>
-                      <td colspan="3" height="15px"></td>
-                    </tr>
-                  </table></td>
-              </tr>
-              <tr>
-                <td height="35px"></td>
-              </tr>
-              <tr>
-                <td><h3 style="color:#898989 !important;font-size:22px !important;position:relative !important;text-transform:uppercase !important;top:6px !important;z-index:10 !important;margin:0;">{% trans "Latest News" %}</h3></td>
-              </tr>
-              <tr>
-                <td>
-                	<table cellpadding="0" cellspacing="0" border="0" align="center" bgcolor="#FFFFFF" style="border: 1px solid #A6A6A6; background:#FFFFFF; box-shadow: 2px 3px 3px #A6A8A8;-moz-box-shadow: 2px 3px 3px #A6A8A8;-webkit-box-shadow: 2px 3px 3px #A6A8A8;filter:progid:DXImageTransform.Microsoft.dropShadow(color=#A6A8A8, offX=2, offY=2, positive=true);">
-                    <tr>
-                      <td colspan="3" height="15px"></td>
-                    </tr>
-                    <tr>
-                      <td height="200px" colspan="3" align="center" style="padding: 0 20px; text-align: center">
-                        {% banner_zone_email 111 %}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" height="15px"></td>
-                    </tr>
-                    {% get_recent_entries 4 "erumba/tags/last_news.html" %}
-                  </table>
+                <td style="border: 1px solid #EBEDEC; background:#FFFFFF; box-shadow: 2px 3px 3px #A6A8A8;-moz-box-shadow: 2px 3px 3px #A6A8A8;-webkit-box-shadow: 2px 3px 3px #A6A8A8;filter:progid:DXImageTransform.Microsoft.dropShadow(color=#A6A8A8, offX=2, offY=2, positive=true);">
+                	{% banner_zone_email 110 %}
                 </td>
               </tr>
-              <tr>
-                <td height="35px"></td>
-              </tr>
-              <tr>
-                <td><h3 style="color:#898989 !important;font-size:22px !important;position:relative !important;text-transform:uppercase !important;top:6px !important;z-index:10 !important;margin:0;">{% trans "Your Photos" %}</h3> </td>
-              </tr>
-              <tr>
-                <td>
-                	<table cellpadding="0" cellspacing="0" border="0" align="center" bgcolor="#FFFFFF" style="border: 1px solid #A6A6A6; background:#FFFFFF; box-shadow: 2px 3px 3px #A6A8A8;-moz-box-shadow: 2px 3px 3px #A6A8A8;-webkit-box-shadow: 2px 3px 3px #A6A8A8;filter:progid:DXImageTransform.Microsoft.dropShadow(color=#A6A8A8, offX=2, offY=2, positive=true);">
-                    <tr>
-                      <td colspan="3" height="15px"></td>
-                    </tr>
-                    <tr>
-                      <td height="200px" width="250px" colspan="3" align="center" style="padding: 0 20px; text-align: center">
-                        {% banner_zone_email 112 %}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3" height="15px"></td>
-                    </tr>
-                    {% last_yourphotos 1 %}
-                    <tr>
-                      <td colspan="3" height="15px"></td>
-                    </tr>
-                  </table></td>
-              </tr>
-            </table></td>
+              {% get_recent_entries 4 "erumba/tags/last_news.html" %}
+              {% last_yourphotos 1 %}
+            </table>
+          </td>
         </tr>
         <tr>
           <td colspan="3" height="50px"></td>

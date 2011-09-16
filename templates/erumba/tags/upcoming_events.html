@@ -26,14 +26,16 @@
   <tr>
     <td colspan="3" height="20px"></td>
   </tr>
-  <tr>
-    <td colspan="3" height="200px" style="border-top: 1px dotted #9F9F9F !important;border-bottom: 1px dotted #9F9F9F !important; padding: 20px 0;" align="center">
-      {% banner_zone_email 108 %}
-    </td>
-  </tr>
-  <tr>
-    <td colspan="3" height="20px"></td>
-  </tr>
+    {% if forloop.counter == 2 %}
+    <tr>
+      <td colspan="3" height="200px" style="border-top: 1px dotted #9F9F9F !important;border-bottom: 1px dotted #9F9F9F !important; padding: 20px 0;" align="center">
+        {% banner_zone_email 108 %}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" height="20px"></td>
+    </tr>
+    {% endif %}
   {% endif %}
 {% endfor %}
 
@@ -46,6 +48,7 @@
   <tr>
     <td colspan="3" height="20px"></td>
   </tr>
+  {% if forloop.counter == 1 %}
   <tr>
     <td colspan="3" height="200px" style="border-top: 1px dotted #9F9F9F !important;border-bottom: 1px dotted #9F9F9F !important; padding: 20px 0;" align="center">
       {% banner_zone_email 108 %}
@@ -54,4 +57,5 @@
   <tr>
     <td colspan="3" height="20px"></td>
   </tr>
+  {% endif %}
 {% endif %}
