@@ -80,7 +80,7 @@ def import_subscriptions ():
 def import_yourphotos ():
 
     YP.Photo.objects.all().delete()
-    oldphotos = L.TusfotosFotos.objects.all().order_by('-fecha')
+    oldphotos = L.TusfotosFotos.objects.all()
 
     wrong_ids = list()
     for oldphoto in oldphotos[:500]:
@@ -103,6 +103,8 @@ def import_yourphotos ():
                 if os.path.isfile(file_name):
                     fi_content = ContentFile( open( file_name, 'r' ).read() )
                     photo.image.save( oldphoto.archivo[-75:], fi_content, save = False )
+                    photo.save()
+                    photo.datetime_added = oldphoto.fecha
                     photo.save()
                 else:
                     print "wrong file for yourphotos!!!!!!!!!!\n"
