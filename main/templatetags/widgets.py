@@ -85,10 +85,15 @@ def upcoming_events_list(count = 6 ):
     return dict(events = event_list)
 
 @register.inclusion_tag('widgets/upcoming_events_block.html')
-def upcoming_events_block(count = 4 ):
+def upcoming_events_block(count = 4):
     today = datetime.today()
+    dtstart = datetime( today.year, today.month, today.day )
+
+    zdat_day = datetime.today() + timedelta(6 - dtstart.weekday())
+    dtend = datetime( zdat_day.year, zdat_day.month, zdat_day.day )
+
     #TODO wrong check if upcoming
-    event_list = Event.objects.filter(status=1,to_date__gte = today)[:count]
+    event_list = Event.objects.filter(status=1,to_date__gte = dtstart,to_date__lte = dtend).order_by('to_date')[:count]
     return dict(events = event_list)
 
 

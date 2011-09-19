@@ -1155,9 +1155,11 @@ a.carousel-next{
   background: transparent url(images/sprites/sptires-videos-list.gif) no-repeat scroll left -54px;
   display: block;
   padding: 11px 15px 12px 30px;
-  min-height: 28px;
+  /*min-height: 28px;*/
+  height: 29px;
   color: #FFFFFF !important;
   font-weight: bold;
+  overflow: hidden;
 }
 #main-contents #col-left #front-videos div.videos-content .recent-video-list ul li span a{
   background: transparent;

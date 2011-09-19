@@ -11,3 +11,10 @@ media/images/slider/*
 media/uploads/*
 media/uploads/gallery/*
 olddata
+media/zinnia
+media/grappelli
+.idea/
+src/
+out/
+pull_linexternal.sh
+rumbacaracas.iml

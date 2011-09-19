@@ -157,7 +157,7 @@ class Event( ImageModel, Sortable ):
 
     def get_dates ( self ):
         if self.from_date == self.to_date:
-                str_repr = date( self.from_date,"d.m.Y" )
+            str_repr = date( self.from_date,"d.m.Y" )
         else:
             from_d = date( self.from_date, "d.m.Y" )
             to_d = date( self.to_date,"d.m.Y" )
@@ -176,4 +176,10 @@ class Event( ImageModel, Sortable ):
         verbose_name_plural = _( 'Events' )
 
     objects = OccurrenceManager()
+
+    def save(self, *args, **kwargs):
+        if not self.to_date:
+            self.to_date = self.from_date
+
+        super(Event, self).save(*args, **kwargs)
 

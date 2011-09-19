@@ -7,7 +7,6 @@ admin.autodiscover()
 urlpatterns = patterns( '',
     ( r'' , include( 'main.urls' ) ),
     ( r'^tinymce/', include( 'tinymce.urls' ) ),
-
     #Changes in setup proccess
     url(r'^social/setup', 'main.views.custom_social_setup', name='socialregistration_setup'),
     #/Changes in setup proccess

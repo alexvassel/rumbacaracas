@@ -1500,3 +1500,33 @@ msgstr ""
 #: yourvideos/views.py:59
 msgid "Add Video"
 msgstr ""
+
+#: templates/facebook/events_list.html:62
+msgid "You have no events"
+msgstr ""
+
+#: templates/facebook/photos_list.html:57
+msgid "You have no photos in album"
+msgstr ""
+
+#: templates/facebook/albums_list.html:37
+msgid "You have no albums"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Deselect all"
+msgstr ""
+
+msgid "Albums"
+msgstr ""
+
+msgid "Your events has been added"
+msgstr ""
+
+msgid "Your photos has been added"
+msgstr ""
+
+msgid "Add Events"
+msgstr ""

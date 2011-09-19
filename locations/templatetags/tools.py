@@ -30,7 +30,6 @@ def truncate( value, arg ):
         return value
 
 
-
 @register.filter
 def get_event_url_by_tab( value, arg):
     """
@@ -44,10 +43,6 @@ def get_event_url_by_tab( value, arg):
     if tab == 'calendar':
         tab = 'category'
     return reverse('event_by_'+ tab + '_' + period )
-
-
-
-
 
 
 @register.filter
@@ -72,6 +67,7 @@ def user_link( value ):
         #return mark_safe( '%s %s' % (value.first_name, value.last_name))
     else:
         return mark_safe( value.username )
+
 
 @register.filter
 def google_map_link( value):
