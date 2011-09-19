@@ -200,8 +200,8 @@ def parse_photo_category ( input_value ):
         '2': 'amigos',
         '4': 'humor',
         '3': 'rumbas',
-        '5': None,
-        "": None
+        '5': "",
+        "": ""
     }[input_value]
 
     return result
