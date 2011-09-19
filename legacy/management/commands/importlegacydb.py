@@ -60,15 +60,14 @@ def import_users ():
 def import_subscriptions ():
 
     S.User.objects.all().delete()
-    oldusers = L.EmailsRumbabogota.objects.all()
+    oldusers = L.Usuarios.objects.all()
 
-    for olduser in oldusers:
+    for olduser in oldusers[0:10]:
         user = S.User(
             first_name = olduser.nombre,
             last_name = olduser.apellido,
-            company = olduser.compania,
             sex = parse_old_sex (olduser.sexo),
-            birthday = olduser.cumpleanos,
+            #birthday = olduser.cumpleanos,
             country = olduser.pais,
             city = olduser.ciudad,
             email = olduser.email,
@@ -78,34 +77,38 @@ def import_subscriptions ():
 
 
 
-
-
 def import_yourphotos ():
 
     YP.Photo.objects.all().delete()
-    oldphotos = L.Tusfotos.objects.all()
+    oldphotos = L.TusfotosFotos.objects.all().order_by('-fecha')
 
     wrong_ids = list()
-    for oldphoto in oldphotos[0:30]:
-        photo = YP.Photo(
-                      user = get_user_instance(hack_for_user_id(oldphoto.usuario)),
-                      description = oldphoto.leyenda,
-                      status = convert_status( oldphoto.status ),
-                      datetime_added = compile_date( oldphoto.dia, oldphoto.mes, oldphoto.ano )
-                      )
+    for oldphoto in oldphotos[:500]:
+        user = get_user_instance_by_name(oldphoto.nick)
+        if user:
+            photo = YP.Photo(
+                          user = user,
+                          description = oldphoto.nombre,
+                          category = parse_photo_category(oldphoto.cat),
+                          status = convert_status( oldphoto.status ),
+                          datetime_added =oldphoto.fecha
+                          )
 
 
-        if oldphoto.archivo:
-            file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'tusfotos/' + string.lower(oldphoto.user_name)[0:1] + '/' + string.lower(oldphoto.user_name).replace(' ','') + '/fotos/' + oldphoto.archivo
+            if oldphoto.archivo:
+                #   "http://www.rumbacaracas.com/tusfotos/" . substr($foto_nick,0,1) . "/" . $foto_nick. "/" . $foto_id . "/" . hacer_link($foto_titulo,'') . "/" . $foto_archivo
 
-            if os.path.isfile(file_name):
-                fi_content = ContentFile( open( file_name, 'r' ).read() )
-                photo.image.save( oldphoto.archivo[-75:], fi_content, save = False )
-                photo.save()
-            else:
-                print "wrong file for yourphotos!!!!!!!!!!\n"
-                print file_name
-                wrong_ids.append(str(oldphoto.id))
+                file_name = settings.OLDDATABOGOTA_PHOTO_PATH + 'tusfotos/' + string.lower(oldphoto.nick)[0:1] + '/' + string.lower(oldphoto.nick) + '/' + str(oldphoto.id) + '/' + hacer_link(oldphoto.nombre) + '/' + oldphoto.archivo
+
+                if os.path.isfile(file_name):
+                    fi_content = ContentFile( open( file_name, 'r' ).read() )
+                    photo.image.save( oldphoto.archivo[-75:], fi_content, save = False )
+                    photo.save()
+                else:
+                    print "wrong file for yourphotos!!!!!!!!!!\n"
+                    print file_name
+                    wrong_ids.append(str(oldphoto.id))
+
 
 
         
@@ -505,6 +508,7 @@ class Command( NoArgsCommand ):
         #import_subscriptions()
 
 
+
         print "Importing legacy people"
         #import_people()
         #reimport_people_locations()
@@ -516,21 +520,21 @@ class Command( NoArgsCommand ):
         #import_events()
 
         print "Importing legacy rumba news"
-        import_blog_category (L.RumbaNews)
+        #import_blog_category (L.RumbaNews)
 
         print "Importing legacy music news"
-        import_blog_category (L.MusicNews)
+        #import_blog_category (L.MusicNews)
 
         print "Importing legacy interviews"
-        import_blog_category (L.Entrevista)
+        #import_blog_category (L.Entrevista)
 
         print "Importing legacy specials"
-        import_blog_category (L.Especial)
+        #import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "Importing legacy your photos"
-        #import_yourphotos()
+        import_yourphotos()
 
         print "Importing legacy your videos"
         #import_yourvideos()

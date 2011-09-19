@@ -26,6 +26,17 @@ class Tusfotos(models.Model):
     class Meta:
         db_table = u'tusfotos'
 
+class TusfotosFotos(models.Model):
+    nick = models.CharField(max_length=450, blank=True)
+    archivo = models.TextField(blank=True)
+    nombre = models.TextField(blank=True)
+    status = models.CharField(max_length=6)
+    cat = models.CharField(max_length=6)
+    id = models.IntegerField(primary_key=True)
+    fecha = models.DateTimeField(null=True, blank=True)
+    class Meta:
+        db_table = u'tusfotos_fotos'
+
 class TusfotosVideos(models.Model):
     nick = models.CharField(max_length=450, blank=True)
     video = models.TextField(blank=True)

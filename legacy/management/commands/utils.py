@@ -145,6 +145,7 @@ def get_user_instance_by_name (user_name):
         result = User.objects.get(username=user_name)
         return result
     except User.DoesNotExist:
+        print user_name
         return None
 
 
@@ -191,6 +192,21 @@ def parse_location_music ( input_value ):
         result = LocationMusic.objects.get(pk=result)
 
     return result
+
+
+def parse_photo_category ( input_value ):
+    result = {
+        '1': 'sexy',
+        '2': 'amigos',
+        '4': 'humor',
+        '3': 'rumbas',
+        '5': None,
+        "": None
+    }[input_value]
+
+    return result
+
+
 
 
 def parse_location_food(token):
@@ -279,10 +295,12 @@ def parse_event_time(hours):
 
 
 def parse_old_sex(sex):
-    if sex == 1:
+    if sex == "Masculino":
         return 'male'
-    else:
+    elif sex == "Femenino":
         return 'female'
+    else:
+        return None
 
 
 
@@ -299,3 +317,33 @@ def truncate( value, length ):
     else:
         return value
 
+
+
+
+def f4(seq):
+    # order preserving
+    noDupes = []
+    [noDupes.append(i) for i in seq if not noDupes.count(i)]
+    return noDupes
+
+
+def hacer_link(titulo) :
+
+    str = string.lower(string.strip(titulo))
+
+    str = re.sub(u"[áàâãª]", "a", str)
+    str = re.sub(u"[íìî]", "i", str)
+    str = re.sub(u"[éèê]", "e", str)
+    str = re.sub(u"[óòôõº]", "o", str)
+    str = re.sub(u"[úùû]", "u", str)
+    str = re.sub(u"[ç]", "c", str)
+    str = re.sub(u"[ñ]", "n", str)
+    str = re.sub(u"[^0-9^a-z-]", " ", str)
+
+    convertida = f4(str.split())
+    convertida = [word for word in convertida if len(word)>2]
+    convertida = convertida[:7]
+
+    str = "-".join(convertida)
+
+    return str
