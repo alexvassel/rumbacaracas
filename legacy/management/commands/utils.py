@@ -195,14 +195,17 @@ def parse_location_music ( input_value ):
 
 
 def parse_photo_category ( input_value ):
-    result = {
-        '1': 'sexy',
-        '2': 'amigos',
-        '4': 'humor',
-        '3': 'rumbas',
-        '5': "",
-        "": ""
-    }[input_value]
+
+    if input_value in (1,"1"):
+        result = 'sexy'
+    elif input_value in (2,"2"):
+        result = 'amigos'
+    elif input_value in (3,"3"):
+        result = 'rumbas'
+    elif input_value in (4,"4"):
+        result = 'humor'
+    else:
+        result = ''
 
     return result
 
