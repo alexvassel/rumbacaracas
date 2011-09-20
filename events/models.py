@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from imagekit.models import ImageModel
+from decorators import upload_to_dest
 from locations.models import Location, LocationArea, DressType, LocationMusic, WeekDay
 from datetime import datetime, timedelta
 import calendar
@@ -123,8 +124,8 @@ class Event( ImageModel, Sortable ):
     phone = models.CharField( _( 'Info' ), max_length = 256 , blank = True )
     url = models.URLField( _( 'Url' ) , blank = True, verify_exists=False )
     email = models.EmailField( _( 'Email' ) , blank = True )
-    image = models.ImageField( upload_to = 'images/events', blank = True )
-    slider_image = models.ImageField( _( 'Slider image 619x258' ), upload_to = 'images/slider' , blank = True )
+    image = models.ImageField( upload_to = upload_to_dest(format='uploads/events/%Y/%m/%d'), blank = True )
+    slider_image = models.ImageField( _( 'Slider image 619x258' ), upload_to = upload_to_dest(format='uploads/events/%Y/%m/%d'), blank = True )
     user = models.CharField( 'User', max_length = 256 , blank = True )
     description = models.TextField( _( 'Event Description' ), blank = True )
     add_user = models.ForeignKey( User , blank = True , null = True )
@@ -140,7 +141,7 @@ class Event( ImageModel, Sortable ):
     class IKOptions:
         # This inner class is where we define the ImageKit options for the model
         spec_module = 'locations.specs'
-        cache_dir = 'photos/'
+        cache_dir = 'image_cache/'
         image_field = 'image'
         save_count_as = 'num_views'
 

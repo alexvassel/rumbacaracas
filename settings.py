@@ -1,5 +1,8 @@
 # Django settings for rumbacaracas project.
 #from django.middleware.cache import FetchFromCacheMiddleware
+import os
+import datetime
+from django.utils.encoding import force_unicode, smart_str
 
 DEBUG = False
 TEMPLATE_DEBUG = False
@@ -121,6 +124,20 @@ SOCIALREGISTRATION_GENERATE_USERNAME = False
 AUTH_PROFILE_MODULE = 'main.models.UserProfile'
 
 ZINNIA_ENTRY_BASE_MODEL = 'news.zinniaModels.MyEntry'
+
+def upload_to(instance, filename):
+    import os
+    format='uploads/news/%Y/%m/%d'
+    date_field='creation_date'
+    if getattr(instance, date_field, None):
+        dt = getattr(instance, date_field)
+    else:
+        dt = datetime.datetime.now()
+    path = os.path.normpath(force_unicode(dt.strftime(smart_str(format))))
+    
+    return os.path.join(path, filename)
+
+ZINNIA_UPLOAD_TO = upload_to
 
 ISSUU_API_KEY = "3g5tlt235dhwzwu9lf8yveetczya50u0"
 ISSUU_API_SECRET = "0unbbypa2ck7ls8yjstzelyyssax2026"

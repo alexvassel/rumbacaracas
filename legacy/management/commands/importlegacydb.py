@@ -83,7 +83,7 @@ def import_yourphotos ():
     oldphotos = L.TusfotosFotos.objects.all()
 
     wrong_ids = list()
-    for oldphoto in oldphotos[:500]:
+    for oldphoto in oldphotos[0:10]:
         user = get_user_instance_by_name(oldphoto.nick)
         if user:
             photo = YP.Photo(
@@ -91,7 +91,7 @@ def import_yourphotos ():
                           description = oldphoto.nombre,
                           category = parse_photo_category(oldphoto.cat),
                           status = convert_status( oldphoto.status ),
-                          datetime_added =oldphoto.fecha
+                          datetime_added = oldphoto.fecha
                           )
 
 
@@ -124,14 +124,15 @@ def import_yourvideos ():
     YV.Video.objects.all().delete()
     oldvideos = L.TusfotosVideos.objects.all()
 
-    for oldvideo in oldvideos[0:30]:
+    for oldvideo in oldvideos[0:10]:
         video = YV.Video(
                       user = get_user_instance_by_name(oldvideo.nick),
                       youtube_id = oldvideo.video,
                       description = oldvideo.nombre,
-                      status = convert_status( oldvideo.status ),
-                      datetime_added = oldvideo.fecha,
+                      status = convert_status( oldvideo.status )
         )
+        video.save()
+        video.datetime_added = oldvideo.fecha
         video.save()
 
 
@@ -153,7 +154,7 @@ def import_events ():
 
     E.Event.objects.all().delete()
     oldevents = L.Eventos.objects.all()
-    for oldevent in oldevents[0:30]:
+    for oldevent in oldevents[0:10]:
         #oldevent = L.Eventos()
         if oldevent.titulo:
             if len(oldevent.email) > 75:
@@ -182,7 +183,7 @@ def import_events ():
                 user = oldevent.usuario,
                 description = oldevent.descripcion,
                 status = 1,
-                datetime_added = compile_date(oldevent.da, oldevent.ma, oldevent.aa),
+                datetime_added = compile_date(oldevent.da, oldevent.ma, oldevent.aa)
             )
             
             event.slug = SlugifyUniquely(oldevent.titulo[:50], event.__class__)
@@ -202,6 +203,8 @@ def import_events ():
                 else:
                     print "wrong file for event!!!!!!!!!!\n"
                     print oldevent.titulo + "\n"
+            event.save()
+            event.datetime_added = compile_date(oldevent.da, oldevent.ma, oldevent.aa)
             event.save()
 
             event.repeat.add(*parse_event_weekday(oldevent.dias))
@@ -228,7 +231,7 @@ def import_blog_category (table):
 
     disconnect_zinnia_signals()
 
-    for oldarticle in oldarticles[0:30]:
+    for oldarticle in oldarticles[0:10]:
         #oldarticle = L.MusicNews()
         if oldarticle.titulo:
             title = oldarticle.titulo
@@ -302,7 +305,7 @@ def import_locations ():
     oldlocations = L.Local.objects.all()
     wrong_ids = list()
     
-    for oldlocation in oldlocations[0:30]:
+    for oldlocation in oldlocations[0:10]:
         #oldlocation = L.Local()1
 
         location = LS.Location(
@@ -364,6 +367,10 @@ def import_locations ():
                 wrong_ids.append(str(oldlocation.id))
 
         location.save()
+        location_datetime_added = compile_date(oldlocation.da, oldlocation.ma, oldlocation.aa)
+        if location_datetime_added:
+            location.datetime_added = location_datetime_added
+        location.save()
 
         location.restaurant.add(*parse_location_food(oldlocation.restaurant))
         location.type.add(*parse_location_type(oldlocation.tipo))
@@ -400,7 +407,7 @@ def import_people ():
     #TODO Carefully import locations
     #TODO Import second date
 
-    for oldevent in oldevents[0:15]:
+    for oldevent in oldevents[15:20]:
         if oldevent.titulo:
             #oldevent = L.Fotos()
             event = P.PhotoEvent(
@@ -414,7 +421,7 @@ def import_people ():
                         author_email = oldevent.email,
                         city = oldevent.ciudad,
                         status = 1,
-                        datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa ),
+                        datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa )
                       )
 
             event.slug = SlugifyUniquely(oldevent.titulo[:50], event.__class__)
@@ -447,6 +454,10 @@ def import_people ():
                 event.image.save( oldevent.imagen_principal, ei_content, save = False )
 
             event.save()
+            eve_datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa )
+            if eve_datetime_added:
+                event.datetime_added = eve_datetime_added
+                event.save()
             
             #Then import images
 
@@ -479,7 +490,7 @@ def import_people ():
                 legends.append ( '' )
 
             for photo in zip( ulegends, images_list, thumb_list ) :
-                p = P.Photo( description = photo[0][:256], event = event )
+                p = P.Photo( description = photo[0][:256], event = event, datetime_added = event.datetime_added )
 
                 fi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[1], 'r' ).read() )
                 ft_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[2], 'r' ).read() )
@@ -487,6 +498,8 @@ def import_people ():
                 p.image.save( photo[1][-75:], fi_content, save = False )
                 p.thumb.save( photo[2][-75:], ft_content, save = False )
 
+                p.save()
+                p.datetime_added = event.datetime_added
                 p.save()
 
 
@@ -503,7 +516,7 @@ class Command( NoArgsCommand ):
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        #import_users()
+        import_users()
 
 
         print "Importing legacy subscriptions"
@@ -539,7 +552,7 @@ class Command( NoArgsCommand ):
         import_yourphotos()
 
         print "Importing legacy your videos"
-        #import_yourvideos()
+        import_yourvideos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()

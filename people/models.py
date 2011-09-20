@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from decorators import upload_to_dest
 from locations.models import Location
 from imagekit.models import ImageModel
 from django.core.urlresolvers import reverse
@@ -29,7 +30,7 @@ class PhotoEvent( ImageModel ):
     author = models.CharField( _( 'Photographer or reporter' ) , max_length = 256 , blank = True )
     author_email = models.CharField( _( 'Author Email' ) , max_length = 256 , blank = True )
     city = models.CharField( _( 'City' ), max_length = 256 , blank = True )
-    image = models.ImageField( upload_to = 'images/people', blank = True )
+    image = models.ImageField( upload_to = upload_to_dest(format='uploads/people/%Y/%m/%d'), blank = True )
     status = models.CharField( max_length = 10, choices = PEOPLE_STATUSES, default = 2 )
     datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
 
@@ -48,14 +49,14 @@ class PhotoEvent( ImageModel ):
 
     class IKOptions:
         spec_module = 'people.specs'
-        cache_dir = 'photos/'
+        cache_dir = 'image_cache/'
         image_field = 'image'
 
 class Photo( ImageModel ):
     description = models.CharField( _( 'Description' ), max_length = 256 )
     event = models.ForeignKey( PhotoEvent )
-    image = models.ImageField( upload_to = 'images/people' )
-    thumb = models.ImageField( upload_to = 'images/people' )
+    image = models.ImageField( upload_to = upload_to_dest(format='uploads/people/%Y/%m/%d') )
+    thumb = models.ImageField( upload_to = upload_to_dest(format='uploads/people/%Y/%m/%d') )
     datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
 
 
@@ -99,7 +100,7 @@ class Photo( ImageModel ):
 
     class IKOptions:
         spec_module = 'people.specs'
-        cache_dir = 'photos/'
+        cache_dir = 'image_cache/'
         image_field = 'image'
 
     def __unicode__( self ):

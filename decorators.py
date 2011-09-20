@@ -1,11 +1,15 @@
+from datetime import datetime
+from posixpath import normpath
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 
 from django.http import HttpResponse
 from django.utils import simplejson
 from django.core.mail import mail_admins
+from django.utils.encoding import force_unicode, smart_str
 from django.utils.translation import ugettext as _
 import sys
+import os
 
 
 
@@ -98,3 +102,17 @@ def cache(seconds = 900):
                 return result
         return x
     return doCache
+
+
+def upload_to_dest(format='uploads/common/%Y/%m/%d', date_field='datetime_added'):
+    def upload_to(instance, filename):
+        
+        if getattr(instance, date_field, None):
+            dt = getattr(instance, date_field)
+        else:
+            dt = datetime.now()
+        path = os.path.normpath(force_unicode(dt.strftime(smart_str(format))))
+
+        return os.path.join(path, filename)
+    
+    return upload_to
