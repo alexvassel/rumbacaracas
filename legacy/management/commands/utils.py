@@ -103,7 +103,7 @@ def not_empty_or_null( value ):
 
 def parse_people_category ( input_value ):
     result = {
-        "": None,
+        "": 'rumbas',
         "Discos y Bares": 'clubs',
         "Eventos y Conciertos": 'concerts',
         "Fashion": 'fashion',
