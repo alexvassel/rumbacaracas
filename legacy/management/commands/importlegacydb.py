@@ -83,7 +83,7 @@ def import_yourphotos ():
     oldphotos = L.TusfotosFotos.objects.all()
 
     wrong_ids = list()
-    for oldphoto in oldphotos[0:10]:
+    for oldphoto in oldphotos:
         user = get_user_instance_by_name(oldphoto.nick)
         if user:
             photo = YP.Photo(
@@ -124,7 +124,7 @@ def import_yourvideos ():
     YV.Video.objects.all().delete()
     oldvideos = L.TusfotosVideos.objects.all()
 
-    for oldvideo in oldvideos[0:10]:
+    for oldvideo in oldvideos:
         video = YV.Video(
                       user = get_user_instance_by_name(oldvideo.nick),
                       youtube_id = oldvideo.video,
@@ -154,7 +154,7 @@ def import_events ():
 
     E.Event.objects.all().delete()
     oldevents = L.Eventos.objects.all()
-    for oldevent in oldevents[0:10]:
+    for oldevent in oldevents[0:100]:
         #oldevent = L.Eventos()
         if oldevent.titulo:
             if len(oldevent.email) > 75:
@@ -231,7 +231,7 @@ def import_blog_category (table):
 
     disconnect_zinnia_signals()
 
-    for oldarticle in oldarticles[0:10]:
+    for oldarticle in oldarticles[0:50]:
         #oldarticle = L.MusicNews()
         if oldarticle.titulo:
             title = oldarticle.titulo
@@ -305,7 +305,7 @@ def import_locations ():
     oldlocations = L.Local.objects.all()
     wrong_ids = list()
     
-    for oldlocation in oldlocations[0:10]:
+    for oldlocation in oldlocations:
         #oldlocation = L.Local()1
 
         location = LS.Location(
@@ -407,7 +407,7 @@ def import_people ():
     #TODO Carefully import locations
     #TODO Import second date
 
-    for oldevent in oldevents[15:20]:
+    for oldevent in oldevents[0:100]:
         if oldevent.titulo:
             #oldevent = L.Fotos()
             event = P.PhotoEvent(
@@ -525,26 +525,26 @@ class Command( NoArgsCommand ):
 
 
         print "Importing legacy people"
-        #import_people()
+        import_people()
         #reimport_people_locations()
 
         print "Importing legacy locations"
-        #import_locations()
+        import_locations()
 
         print "Importing legacy events"
-        #import_events()
+        import_events()
 
         print "Importing legacy rumba news"
-        #import_blog_category (L.RumbaNews)
+        import_blog_category (L.RumbaNews)
 
         print "Importing legacy music news"
-        #import_blog_category (L.MusicNews)
+        import_blog_category (L.MusicNews)
 
         print "Importing legacy interviews"
-        #import_blog_category (L.Entrevista)
+        import_blog_category (L.Entrevista)
 
         print "Importing legacy specials"
-        #import_blog_category (L.Especial)
+        import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
