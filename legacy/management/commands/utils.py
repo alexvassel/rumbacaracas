@@ -145,7 +145,7 @@ def get_user_instance_by_name (user_name):
         result = User.objects.get(username=user_name)
         return result
     except User.DoesNotExist:
-        print user_name
+        print 'Ignored username - ' + user_name
         return None
 
 
@@ -329,7 +329,13 @@ def f4(seq):
     [noDupes.append(i) for i in seq if not noDupes.count(i)]
     return noDupes
 
+def is_int_as_str(istr):
+    try:
+        return str(int(istr)) == istr
+    except Exception, e:
+        return  False
 
+    
 def hacer_link(titulo) :
 
     str = string.lower(string.strip(titulo))
@@ -342,9 +348,12 @@ def hacer_link(titulo) :
     str = re.sub(u"[ç]", "c", str)
     str = re.sub(u"[ñ]", "n", str)
     str = re.sub(u"[^0-9^a-z-]", " ", str)
+    str = re.sub(u"[0-9]", " ", str)
 
     convertida = f4(str.split())
     convertida = [word for word in convertida if len(word)>2]
+    #convertida = [word for word in convertida if not is_int_as_str(word)]
+
     convertida = convertida[:7]
 
     str = "-".join(convertida)

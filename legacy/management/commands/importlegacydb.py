@@ -132,7 +132,9 @@ def import_yourvideos ():
                       status = convert_status( oldvideo.status )
         )
         video.save()
-        video.datetime_added = oldvideo.fecha
+        video_datetime_added = oldvideo.fecha
+        if video_datetime_added:
+            video.datetime_added = video_datetime_added
         video.save()
 
 
@@ -528,7 +530,7 @@ class Command( NoArgsCommand ):
 
 
         print "Importing legacy people"
-        import_people()
+        #import_people()
         #reimport_people_locations()
 
         print "Importing legacy locations"
