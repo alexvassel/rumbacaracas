@@ -32,7 +32,7 @@ LOCALE_PATHS = (
 
 
 
-OLDDATABOGOTA_PHOTO_PATH = '/mnt/rumbacaracas.com/var/www/vhosts/rumbabogota.com/httpdocs/'
+OLDDATABOGOTA_PHOTO_PATH = '/mnt/rumbacaracas.com/var/www/vhosts/rumbacaracas.com/httpdocs/'
 
 DATABASES = {
     'default': {
@@ -45,15 +45,15 @@ DATABASES = {
     },
     'olddata': {
             'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'bogotadb', # Or path to database file if using sqlite3.
-            'USER': 'rumbogodb', # Not used with sqlite3.
-            'HOST': 'rumbabogota.com', # Set to empty string for localhost. Not used with sqlite3.
-            'PASSWORD': 'mWazqXFUqjperr3', # Not used with sqlite3.
+            'NAME': 'rumbaccs', # Or path to database file if using sqlite3.
+            'USER': 'rumbaccs', # Not used with sqlite3.
+            'HOST': 'rumbacaracas.com', # Set to empty string for localhost. Not used with sqlite3.
+            'PASSWORD': 'dXqGg7XHA5Mfax4', # Not used with sqlite3.
         }
     }
 
 
-CACHES = {
+CACHES_OLD = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         'LOCATION': '127.0.0.1:11211',
