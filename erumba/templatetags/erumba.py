@@ -16,17 +16,24 @@ def last_yourphotos( number = 2 ):
 @register.inclusion_tag( 'erumba/tags/upcoming_events.html' )
 def upcoming_events(from_date = datetime.date.today(), to_date = datetime.date.today() + datetime.timedelta(6)):
 
-    event_list = list(Event.objects.all().filter(from_date__gte = from_date, from_date__lte = to_date))
-    sorted_events = sorted( event_list, key = lambda o: o.from_date, reverse=True)
+    from_date = datetime.datetime.combine(from_date, datetime.time())
+    to_date   = datetime.datetime.combine(to_date, datetime.time())
+
+    event_list = list(Event.objects.get_occuriences(start_date=from_date, end_date=to_date))
+    sorted_events = sorted( event_list, key = lambda o: o[1], reverse=True)
 
     def sortList( list ):
-        list.sort( key = lambda a: a.position, reverse = False )
+        list.sort( key = lambda a:a[0].position, reverse = False )
         return list
 
     by_day = list([
-       (dateutil.parser.parse(dom), sortList( list(items) )) for dom, items in itertools.groupby( sorted_events, lambda o: date(o.from_date, "d.m.Y") )
+       (dateutil.parser.parse(dom), sortList( list(items) )) for dom, items in itertools.groupby( sorted_events, lambda o: date(o[1], "d.m.Y") )
     ])
     by_day.reverse()
+
+    by_day = ([
+        (dom, list([item[0] for item in items])) for dom, items in by_day
+    ])
 
     return {
         'from_date': from_date,
