@@ -208,7 +208,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'magazine',
     'subscribe',
-    #'legacy',
+    'legacy',
     #'photologue',
     #'tagging',
     # Uncomment the next line to enable admin documentation:
