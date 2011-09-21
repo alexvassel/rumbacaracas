@@ -38,8 +38,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'bogota', # Or path to database file if using sqlite3.
-        'USER': 'root', # Not used with sqlite3.
-        'PASSWORD': 'bM_We1FA', # Not used with sqlite3.
+        'USER': 'bogota', # Not used with sqlite3.
+        'PASSWORD': '6qvz6ALr', # Not used with sqlite3.
         'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '', # Set to empty string for default. Not used with sqlite3.
     },
@@ -52,6 +52,7 @@ DATABASES = {
         }
     }
 
+KEY_PREFIX = 'bog'
 
 CACHES = {
     'default': {
