@@ -1,0 +1,38 @@
+{% load i18n %}
+{% if entries %}
+<tr>
+  <td><h3 style="color:#898989 !important;font-size:22px !important;position:relative !important;text-transform:uppercase !important;top:6px !important;z-index:10 !important;margin:0;">{% trans "Latest News" %}</h3></td>
+</tr>
+<tr>
+  <td>
+    <table cellpadding="0" cellspacing="0" border="0" align="center" bgcolor="#FFFFFF" style="border: 1px solid #A6A6A6; background:#FFFFFF; box-shadow: 2px 3px 3px #A6A8A8;-moz-box-shadow: 2px 3px 3px #A6A8A8;-webkit-box-shadow: 2px 3px 3px #A6A8A8;filter:progid:DXImageTransform.Microsoft.dropShadow(color=#A6A8A8, offX=2, offY=2, positive=true);">
+      <tr>
+        <td colspan="3" height="15px"></td>
+      </tr>
+      <tr>
+        <td height="200px" colspan="3" align="center" style="padding: 0 20px; text-align: center">
+          <img src="http://rumbabogota.com/{{ entries.0.image.url }}" alt="{{ entries.0.title }}" style="width: 250px;" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3" height="15px"></td>
+      </tr>
+      {% for object in entries %}
+      <tr>
+        <td width="25px"></td>
+        <td style="border-bottom: 1px dotted #9F9F9F !important; padding: 5px 0;font-size: 12px; line-height: 18px; font-family: Arial;"><strong style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#D22323;"><a style="color:#D22323;" href="http://rumbabogota.com{{ object.get_absolute_url }}">{{ object.title }}</a></strong><br />
+          {{ object.creation_date|date:"d.m.Y" }}<br />
+          {% for category in object.categories.all %}
+            <a href="http://rumbabogota.com{{ category.get_absolute_url }}" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; color:#000000 !important; text-decoration:underline !important;">{{ category.title }}</a>
+          {% endfor %}
+        </td>
+        <td width="25px"></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </td>
+</tr>
+<tr>
+  <td height="35px"></td>
+</tr>
+{% endif %}
