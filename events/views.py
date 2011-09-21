@@ -17,6 +17,7 @@ from django.forms import forms
 from main.modelFields import SlugifyUniquely
 from django.utils.dates import MONTHS as months
 from django.core.urlresolvers import reverse
+from django.forms import DateField as dtf
 
 #TODO remove backported version
 try:
@@ -261,6 +262,8 @@ def add( request ):
     request.breadcrumbs( _( 'Add event' ) , request.path_info )
 
     class EventForm( ModelForm ):
+        from_date = dtf(input_formats=['%d/%m/%Y',])
+        to_date = dtf(input_formats=['%d/%m/%Y',], required = False)
         class Meta:
             model = Event
 
