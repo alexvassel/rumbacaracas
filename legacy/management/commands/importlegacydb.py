@@ -554,10 +554,10 @@ class Command( NoArgsCommand ):
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "Importing legacy your photos"
-        import_yourphotos()
+        #import_yourphotos()
 
         print "Importing legacy your videos"
-        import_yourvideos()
+        #import_yourvideos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()
