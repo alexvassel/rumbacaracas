@@ -124,8 +124,8 @@ def import_yourphotos ():
                     photo.datetime_added = oldphoto.fecha
                     photo.save()
                 else:
-                    print "wrong file for yourphotos!!!!!!!!!!\n"
-                    print file_name
+                    #print "wrong file for yourphotos!!!!!!!!!!\n"
+                    #print file_name
                     wrong_ids.append(str(oldphoto.id))
 
 
@@ -269,7 +269,7 @@ def import_blog_category (table):
     wrong_ids = list()
 
     prog = ProgressBar(0, len(oldarticles), mode='fixed')
-    for oldarticle in oldarticles[0:50]:
+    for oldarticle in oldarticles:
 
         prog.increment_amount()
         print prog, '\r',
@@ -588,28 +588,27 @@ class Command( NoArgsCommand ):
         #import_subscriptions()
 
 
-
         print "\nImporting legacy people"
-        #import_people()
+        import_people()
         #reimport_people_locations()
 
         print "\nImporting legacy locations"
-        #import_locations()
+        import_locations()
 
         print "\nImporting legacy events"
-        #import_events()
+        import_events()
 
         print "\nImporting legacy rumba news"
-        #import_blog_category (L.RumbaNews)
+        import_blog_category (L.RumbaNews)
 
         print "\nImporting legacy music news"
-        #import_blog_category (L.MusicNews)
+        import_blog_category (L.MusicNews)
 
         print "\nImporting legacy interviews"
-        #import_blog_category (L.Entrevista)
+        import_blog_category (L.Entrevista)
 
         print "\nImporting legacy specials"
-        #import_blog_category (L.Especial)
+        import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
@@ -617,7 +616,7 @@ class Command( NoArgsCommand ):
         import_yourphotos()
 
         print "\nImporting legacy your videos"
-        #import_yourvideos()
+        import_yourvideos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()
