@@ -6,6 +6,7 @@ media/images/events/*
 media/images/people/*
 media/images/locations/*
 media/images/yourphotos/*
+media/images/*
 media/blog/uploads/*
 media/images/slider/*
 media/uploads/*
@@ -15,3 +16,4 @@ media/zinnia
 media/grappelli
 .idea
 src
+pull_linexternal.sh
