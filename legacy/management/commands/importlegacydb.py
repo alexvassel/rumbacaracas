@@ -365,7 +365,7 @@ def import_locations ():
                 location.image_logo.save( oldlocation.imagen, li_content, save = False )
             else:
                 print "wrong file for location!!!!!!!!!!\n"
-                print oldlocation.nombre + "\n"
+                print file_name + "\n"
                 wrong_ids.append(str(oldlocation.id))
 
         location.save()
