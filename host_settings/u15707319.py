@@ -9,24 +9,24 @@ LANGUAGE_CODE = 'es'
 
 
 TEMPLATE_DIRS = (
-    '/web/apps/rumbabogota/templates',
+    '/web/apps/rumbacaracas/templates',
  )
 
 FIXTURE_DIRS = (
-   '/web/apps/rumbabogota/locations/fixtures/',
+   '/web/apps/rumbacaracas/locations/fixtures/',
  )
 
 
 OLDBOGOTA_PHOTO_PATH = '/web/apps/oldbogota/processed'
 
-FULL_BASE_URL = 'http://rumbabogota.com'
+FULL_BASE_URL = 'http://rumbacaracas.com'
 
-MEDIA_ROOT = '/web/apps/rumbabogota/media'
+MEDIA_ROOT = '/web/apps/rumbacaracas/media'
 
-STATIC_DOC_ROOT = '/web/apps/rumbabogota/media'
+STATIC_DOC_ROOT = '/web/apps/rumbacaracas/media'
 
 LOCALE_PATHS = (
-    '/web/apps/rumbabogota/locale',
+    '/web/apps/rumbacaracas/locale',
  )
 
 
@@ -59,5 +59,12 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
 
 KEY_PREFIX = 'car'
