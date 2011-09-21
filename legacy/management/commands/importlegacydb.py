@@ -24,7 +24,7 @@ from main.modelFields import SlugifyUniquely
 
 import os, glob, string, re, sys
 from utils import *
-
+from progress import ProgressBar
 
 
 def hack_for_user_id(id):
@@ -38,8 +38,14 @@ def import_users ():
     DU.User.objects.all().exclude(username="admin").delete()
     oldusers = L.Usuarios.objects.all()
 
+    prog = ProgressBar(0, len(oldusers), mode='fixed')
+    e_list = list()
+
     for olduser in oldusers:
-        
+        prog.increment_amount()
+        print prog, '\r',
+        sys.stdout.flush()
+
         user = DU.User(
             id = hack_for_user_id(olduser.id),
             first_name = olduser.nombre[:30],
@@ -52,8 +58,10 @@ def import_users ():
             user.save()
             user.groups.add(1)
         except Exception, e:
-            print e
-        
+            e_list.append(e)
+            pass#print e
+
+    print e_list
 
 
 
@@ -83,7 +91,16 @@ def import_yourphotos ():
     oldphotos = L.TusfotosFotos.objects.all()
 
     wrong_ids = list()
+
+    prog = ProgressBar(0, len(oldphotos), mode='fixed')
+
     for oldphoto in oldphotos:
+
+        prog.increment_amount()
+        print prog, '\r',
+        sys.stdout.flush()
+
+
         user = get_user_instance_by_name(oldphoto.nick)
         if user:
             photo = YP.Photo(
@@ -124,7 +141,14 @@ def import_yourvideos ():
     YV.Video.objects.all().delete()
     oldvideos = L.TusfotosVideos.objects.all()
 
+    prog = ProgressBar(0, len(oldvideos), mode='fixed')
+
     for oldvideo in oldvideos:
+
+        prog.increment_amount()
+        print prog, '\r',
+        sys.stdout.flush()
+
         video = YV.Video(
                       user = get_user_instance_by_name(oldvideo.nick),
                       youtube_id = oldvideo.video,
@@ -155,8 +179,17 @@ def import_events ():
 
 
     E.Event.objects.all().delete()
+
     oldevents = L.Eventos.objects.all()
-    for oldevent in oldevents[0:100]:
+
+    prog = ProgressBar(0, len(oldevents), mode='fixed')
+
+    for oldevent in oldevents:
+
+        prog.increment_amount()
+        print prog, '\r',
+        sys.stdout.flush()
+
         #oldevent = L.Eventos()
         if oldevent.titulo:
             if len(oldevent.email) > 75:
@@ -233,7 +266,16 @@ def import_blog_category (table):
 
     disconnect_zinnia_signals()
 
+    wrong_ids = list()
+
+    prog = ProgressBar(0, len(oldarticles), mode='fixed')
     for oldarticle in oldarticles[0:50]:
+
+        prog.increment_amount()
+        print prog, '\r',
+        sys.stdout.flush()
+
+
         #oldarticle = L.MusicNews()
         if oldarticle.titulo:
             title = oldarticle.titulo
@@ -289,8 +331,9 @@ def import_blog_category (table):
                     bi_content = ContentFile( open( file_name, 'r' ).read() )
                     article.image.save( image_name, bi_content, save = False )
                 else:
-                    print "Wrong file "
-                    print file_name
+                    #print "Wrong file "
+                    #print file_name
+                    wrong_ids.append(oldarticle.id)
 
             #Import subtitle as part of content!!!!!!
             article.content = compile_news_content(oldarticle.contenido,oldarticle.subtitulo, additional_image)
@@ -299,6 +342,8 @@ def import_blog_category (table):
             #TODO carefully import sites
             article.sites.add(1)
 
+            print wrong_ids
+
 
 def import_locations ():
 
@@ -306,8 +351,15 @@ def import_locations ():
 
     oldlocations = L.Local.objects.all()
     wrong_ids = list()
-    
+
+    prog = ProgressBar(0, len(oldlocations), mode='fixed')
+
     for oldlocation in oldlocations:
+
+        prog.increment_amount()
+        print prog, '\r',
+        sys.stdout.flush()
+
         #oldlocation = L.Local()1
 
         location = LS.Location(
@@ -364,8 +416,8 @@ def import_locations ():
                 li_content = ContentFile( open( file_name, 'r' ).read() )
                 location.image_logo.save( oldlocation.imagen, li_content, save = False )
             else:
-                print "wrong file for location!!!!!!!!!!\n"
-                print file_name + "\n"
+                #print "wrong file for location!!!!!!!!!!\n"
+                #print file_name + "\n"
                 wrong_ids.append(str(oldlocation.id))
 
         location.save()
@@ -409,7 +461,13 @@ def import_people ():
     #TODO Carefully import locations
     #TODO Import second date
 
-    for oldevent in oldevents[0:100]:
+    prog = ProgressBar(0, len(oldevents), mode='fixed')
+
+    for oldevent in oldevents:
+        prog.increment_amount()
+        print prog, '\r',
+        sys.stdout.flush()
+        
         if oldevent.titulo:
             #oldevent = L.Fotos()
 
@@ -517,46 +575,48 @@ class Command( NoArgsCommand ):
         Read data from legacy db to new db.
         """
         print datetime.now()
+
+
         print "\n"
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        #import_users()
+        import_users()
 
 
-        print "Importing legacy subscriptions"
+        #print "Importing legacy subscriptions"
         #import_subscriptions()
 
 
 
-        print "Importing legacy people"
+        print "\nImporting legacy people"
         #import_people()
         #reimport_people_locations()
 
-        print "Importing legacy locations"
-        import_locations()
+        print "\nImporting legacy locations"
+        #import_locations()
 
-        print "Importing legacy events"
-        import_events()
+        print "\nImporting legacy events"
+        #import_events()
 
-        print "Importing legacy rumba news"
-        import_blog_category (L.RumbaNews)
+        print "\nImporting legacy rumba news"
+        #import_blog_category (L.RumbaNews)
 
-        print "Importing legacy music news"
-        import_blog_category (L.MusicNews)
+        print "\nImporting legacy music news"
+        #import_blog_category (L.MusicNews)
 
-        print "Importing legacy interviews"
-        import_blog_category (L.Entrevista)
+        print "\nImporting legacy interviews"
+        #import_blog_category (L.Entrevista)
 
-        print "Importing legacy specials"
-        import_blog_category (L.Especial)
+        print "\nImporting legacy specials"
+        #import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
-        print "Importing legacy your photos"
-        #import_yourphotos()
+        print "\nImporting legacy your photos"
+        import_yourphotos()
 
-        print "Importing legacy your videos"
+        print "\nImporting legacy your videos"
         #import_yourvideos()
 
         print "------------------------------------------------- \nDone."
