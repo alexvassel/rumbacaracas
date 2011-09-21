@@ -24,6 +24,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout as auth_logout
 
+from socialregistration.views import setup
+from django.views.decorators.csrf import csrf_protect
+from django.template.defaultfilters import slugify
+from main.forms import UserForm
+
 import dateutil.parser
 
 # Find a JSON parser
@@ -133,6 +138,22 @@ def _get_facebook_app(request):
         return graph, user, sys_user
 
     return None, None, None
+
+@csrf_protect
+def custom_social_setup( request, template="socialregistration/setup.html" ):
+    func_return = _init_facebook_app(request)
+    if(func_return != False):
+        return func_return
+
+    initial = dict()
+    try:
+        graph, initial, sys_user = _get_facebook_app(request)
+        if request.facebook.uid is not None:
+            if "username" not in initial:
+                initial['username'] = slugify(initial['name'])
+    except :
+        pass
+    return setup(request, initial=initial,form_class=UserForm,template=template)
 
 @csrf_exempt
 @render_to( 'facebook/events_list.html' )
