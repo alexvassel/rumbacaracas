@@ -209,6 +209,7 @@ INSTALLED_APPS = (
     'magazine',
     'subscribe',
     'legacy',
+    'erumba'
     #'photologue',
     #'tagging',
     # Uncomment the next line to enable admin documentation:
