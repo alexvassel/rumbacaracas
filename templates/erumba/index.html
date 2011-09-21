@@ -110,7 +110,7 @@ h4{
               <tr>
                 <td colspan="3" align="left" style="padding: 0 22px 0 25px"><h2 style="font-family:Arial, Helvetica, sans-serif !important;font-size:20px !important;font-weight:bold !important;color:#D22323 !important;border-bottom:1px dotted #9F9F9F !important;padding:0 0 10px !important;">{% trans "Upcoming Events" %}</h2></td>
               </tr>
-              {% upcoming_events %}
+              {% upcoming_events from_date to_date %}
               <tr>
                 <td colspan="3" height="200px" style="border-top: 1px dotted #9F9F9F !important;border-bottom: 1px dotted #9F9F9F !important; padding: 20px 0;" align="center">
                   {% banner_zone_email 109 %}
