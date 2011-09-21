@@ -492,6 +492,8 @@ def import_people ():
             people_date = compile_date( oldevent.dia, oldevent.mes, oldevent.ano )
             if people_date:
                 event.date = people_date
+            elif eve_datetime_added:
+                event.date = eve_datetime_added
 
             #TODO Investigate where main image is
             #ei_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
@@ -581,7 +583,7 @@ class Command( NoArgsCommand ):
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        import_users()
+        #import_users()
 
 
         #print "Importing legacy subscriptions"
