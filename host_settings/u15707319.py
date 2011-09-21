@@ -17,7 +17,7 @@ FIXTURE_DIRS = (
  )
 
 
-OLDBOGOTA_PHOTO_PATH = '/web/apps/oldbogota/processed'
+OLDCARACAS_PHOTO_PATH = '/web/apps/oldcaracas/processed'
 
 FULL_BASE_URL = 'http://rumbacaracas.com'
 
