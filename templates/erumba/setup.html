@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title>E-Rumba</title>
+        <link href="/media/css/forms.css" rel="stylesheet" type="text/css" media="screen, projection" />
+        <link href="/media/style.css" rel="stylesheet" type="text/css" media="screen, projection" />
+        <link href="/media/css/addforms.css" rel="stylesheet" type="text/css" media="screen, projection" />
+        <script type="text/javascript" src="/media/js/jquery-1.5.1.min.js"></script>
+        <script type="text/javascript">
+            function getFrameSource() {
+              $.post('/e-rumba/', {
+                start_date: $('#from_date').val(),
+                to_date:    $('#to_date').val()
+              }, function(data) {
+                $('#source').val(data.trim());
+              });
+            }
+
+            $(document).ajaxSend(function(event, xhr, settings) {
+              function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                  var cookies = document.cookie.split(';');
+                  for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                    }
+                  }
+                }
+                return cookieValue;
+              }
+              function sameOrigin(url) {
+                // url could be relative or scheme relative or absolute
+                var host = document.location.host; // host + port
+                var protocol = document.location.protocol;
+                var sr_origin = '//' + host;
+                var origin = protocol + sr_origin;
+                // Allow absolute or scheme relative URLs to same origin
+                return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+                  (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+                  // or any other URL that isn't scheme relative or absolute i.e relative.
+                  !(/^(\/\/|http:|https:).*/.test(url));
+              }
+              function safeMethod(method) {
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+              }
+
+              if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
+                xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+              }
+          });
+
+            $(document).ready(function() {
+              getFrameSource();
+            });
+        </script>
+        <style type="text/css">
+          h2 {
+            font-size: 24px;
+            text-transform: uppercase;
+            color: #D22323;
+            position: relative;
+          }
+        </style>
+    </head>
+    <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" bgcolor='#FFFFFF' style="padding: 20px;">
+      <div style="clear: both; overflow: hidden;">
+        <div id="add-form" style="float: left; width: 20%;">
+          <form action="/e-rumba/" method="post" target="erumba" id="addform" style="text-align: left;">
+            <table>
+              {% csrf_token %}
+              <tr>
+                <td><label for="from_date">From date:</label></td>
+                <td>
+                  <span class="textbox">
+                    <input type="text" id="from_date" name="from_date" value="{{from_date|date:'d.m.Y'}}" style="width: 100px;" />
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="to_date">To date:</label></td>
+                <td>
+                  <span class="textbox">
+                    <input type="text" id="to_date" name="to_date" value="{{to_date|date:'d.m.Y'}}" style="width: 100px;" />
+                  </span>
+                </td>
+              <tr>
+              <tr>
+                <td colspan="2"><input type="submit" name="submit" onclick="getFrameSource();" class="button" value="Submit" /></td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        <textarea name="source" id="source" style="width: 78%; height: 100px; float: right;"></textarea>
+      </div>
+
+      <h2>Preview</h2>
+      <iframe name="erumba" id="erumba" src="/e-rumba/" width="100%" height="600px" style="border: 2px solid #ccc;"></iframe>
+    </body>
+</html>
