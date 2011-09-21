@@ -410,6 +410,9 @@ def import_people ():
     for oldevent in oldevents[0:100]:
         if oldevent.titulo:
             #oldevent = L.Fotos()
+
+            eve_datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa ) or oldevent.fecha
+
             event = P.PhotoEvent(
                         title = oldevent.titulo,
                         #slug = slugify( oldevent.titulo )[:50],
@@ -421,7 +424,7 @@ def import_people ():
                         author_email = oldevent.email,
                         city = oldevent.ciudad,
                         status = 1,
-                        datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa )
+                        datetime_added = eve_datetime_added
                       )
 
             event.slug = SlugifyUniquely(oldevent.titulo[:50], event.__class__)
@@ -454,11 +457,11 @@ def import_people ():
                 event.image.save( oldevent.imagen_principal, ei_content, save = False )
 
             event.save()
-            eve_datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa )
+
             if eve_datetime_added:
                 event.datetime_added = eve_datetime_added
                 event.save()
-            
+
             #Then import images
 
             os.chdir( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio )
@@ -516,7 +519,7 @@ class Command( NoArgsCommand ):
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        import_users()
+        #import_users()
 
 
         print "Importing legacy subscriptions"
