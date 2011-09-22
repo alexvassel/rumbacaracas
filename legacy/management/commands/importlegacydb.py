@@ -467,6 +467,7 @@ def import_people ():
     #TODO Import second date
 
     prog = ProgressBar(0, len(oldevents), mode='fixed')
+    wrong_locations = list()
 
     for oldevent in oldevents[1000:1100]:
 
@@ -483,7 +484,7 @@ def import_people ():
 
                 old_location = not_empty_or_null( oldevent.lugar )
                 if oldevent.lugar and not old_location:
-                    print oldevent.lugar
+                    wrong_locations.append(oldevent.lugar)
 
                 event = P.PhotoEvent(
                             title = oldevent.titulo,
@@ -582,6 +583,8 @@ def import_people ():
             print "\n"
             print e
             print "\n"
+
+    print wrong_locations
 
 
 
