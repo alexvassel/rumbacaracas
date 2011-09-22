@@ -509,7 +509,7 @@ def import_people ():
 
                 #MEDIA_ROOT
                 if extension == '.gif':
-                    new_dir = settings.MEDIA_ROOT + '/people_fotos/' + oldevent.directorio + ''
+                    new_dir = settings.MEDIA_ROOT + '/image_cache/people_fotos_convert/' + oldevent.directorio + ''
                     new_file =  new_dir +  basename + '.jpg'
                     if not os.path.isdir(new_dir):
                         os.makedirs(new_dir)
