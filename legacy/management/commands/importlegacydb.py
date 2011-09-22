@@ -128,9 +128,6 @@ def import_yourphotos ():
                     #print file_name
                     wrong_ids.append(str(oldphoto.id))
 
-
-
-        
     if wrong_ids:
         print ",".join(wrong_ids)
 
@@ -346,7 +343,7 @@ def import_blog_category (table):
             #TODO carefully import sites
             article.sites.add(1)
 
-            print wrong_ids
+    print wrong_ids
 
 
 def import_locations ():
@@ -603,33 +600,33 @@ class Command( NoArgsCommand ):
 
         print "\nImporting legacy people"
         #import_people()
-        #reimport_people_locations()
+        reimport_people_locations()
 
         print "\nImporting legacy locations"
         #import_locations()
 
         print "\nImporting legacy events"
-        import_events()
+        #import_events()
 
         print "\nImporting legacy rumba news"
-        import_blog_category (L.RumbaNews)
+        #import_blog_category (L.RumbaNews)
 
         print "\nImporting legacy music news"
-        import_blog_category (L.MusicNews)
+        #import_blog_category (L.MusicNews)
 
         print "\nImporting legacy interviews"
-        import_blog_category (L.Entrevista)
+        #import_blog_category (L.Entrevista)
 
         print "\nImporting legacy specials"
-        import_blog_category (L.Especial)
+        #import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "\nImporting legacy your photos"
-        import_yourphotos()
+        #import_yourphotos()
 
         print "\nImporting legacy your videos"
-        import_yourvideos()
+        #import_yourvideos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()
