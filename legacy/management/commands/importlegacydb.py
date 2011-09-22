@@ -436,7 +436,7 @@ def import_locations ():
 
 def reimport_people_locations ():
     oldevents = L.Fotos.objects.all()
-    for oldevent in oldevents[:100]:
+    for oldevent in oldevents:
         try :
             event = P.PhotoEvent.objects.get(
                 title = oldevent.titulo,
