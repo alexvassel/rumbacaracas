@@ -464,108 +464,115 @@ def import_people ():
     prog = ProgressBar(0, len(oldevents), mode='fixed')
 
     for oldevent in oldevents:
-        prog.increment_amount()
-        print prog, '\r',
-        sys.stdout.flush()
-        
-        if oldevent.titulo:
-            #oldevent = L.Fotos()
 
-            eve_datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa ) or oldevent.fecha
+        try:
 
-            event = P.PhotoEvent(
-                        title = oldevent.titulo,
-                        #slug = slugify( oldevent.titulo )[:50],
+            prog.increment_amount()
+            print prog, '\r',
+            sys.stdout.flush()
 
-                        category = parse_people_category( oldevent.categoria ),
-                        article = oldevent.resena,
-                        location = not_empty_or_null( oldevent.lugar ),
-                        author = oldevent.reportero,
-                        author_email = oldevent.email,
-                        city = oldevent.ciudad,
-                        status = 1,
-                        datetime_added = eve_datetime_added
-                      )
+            if oldevent.titulo:
+                #oldevent = L.Fotos()
 
-            event.slug = SlugifyUniquely(oldevent.titulo[:50], event.__class__)
+                eve_datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa ) or oldevent.fecha
 
-            people_date = compile_date( oldevent.dia, oldevent.mes, oldevent.ano )
-            if people_date:
-                event.date = people_date
-            elif eve_datetime_added:
-                event.date = eve_datetime_added
+                event = P.PhotoEvent(
+                            title = oldevent.titulo,
+                            #slug = slugify( oldevent.titulo )[:50],
 
-            #TODO Investigate where main image is
-            #ei_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
+                            category = parse_people_category( oldevent.categoria ),
+                            article = oldevent.resena,
+                            location = not_empty_or_null( oldevent.lugar ),
+                            author = oldevent.reportero,
+                            author_email = oldevent.email,
+                            city = oldevent.ciudad,
+                            status = 1,
+                            datetime_added = eve_datetime_added
+                          )
 
-            import os
+                event.slug = SlugifyUniquely(oldevent.titulo[:50], event.__class__)
 
-            main_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' +  oldevent.imagen_principal
-            basename, extension = os.path.splitext(oldevent.imagen_principal)
-            from PIL import Image
+                people_date = compile_date( oldevent.dia, oldevent.mes, oldevent.ano )
+                if people_date:
+                    event.date = people_date
+                elif eve_datetime_added:
+                    event.date = eve_datetime_added
 
-            #MEDIA_ROOT
-            if extension == '.gif':
-                new_dir = settings.MEDIA_ROOT + '/people_fotos/' + oldevent.directorio + ''
-                new_file =  new_dir +  basename + '.jpg'
-                if not os.path.isdir(new_dir):
-                    os.makedirs(new_dir)
-                Image.open(main_file).convert('RGB').save(new_file)
-                main_file = new_file
-                oldevent.imagen_principal = basename + '.jpg'
+                #TODO Investigate where main image is
+                #ei_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
 
-            if os.path.isfile(main_file):
-                ei_content = ContentFile( open( main_file, 'r' ).read() )
-                event.image.save( oldevent.imagen_principal, ei_content, save = False )
+                import os
 
-            event.save()
+                main_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' +  oldevent.imagen_principal
+                basename, extension = os.path.splitext(oldevent.imagen_principal)
+                from PIL import Image
 
-            if eve_datetime_added:
-                event.datetime_added = eve_datetime_added
+                #MEDIA_ROOT
+                if extension == '.gif':
+                    new_dir = settings.MEDIA_ROOT + '/people_fotos/' + oldevent.directorio + ''
+                    new_file =  new_dir +  basename + '.jpg'
+                    if not os.path.isdir(new_dir):
+                        os.makedirs(new_dir)
+                    Image.open(main_file).convert('RGB').save(new_file)
+                    main_file = new_file
+                    oldevent.imagen_principal = basename + '.jpg'
+
+                if os.path.isfile(main_file):
+                    ei_content = ContentFile( open( main_file, 'r' ).read() )
+                    event.image.save( oldevent.imagen_principal, ei_content, save = False )
+
                 event.save()
 
-            #Then import images
+                if eve_datetime_added:
+                    event.datetime_added = eve_datetime_added
+                    event.save()
 
-            os.chdir( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio )
+                #Then import images
 
-            images_list = list()
+                os.chdir( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio )
 
-            legends_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/resena.dat'
-            if os.path.isfile(legends_file):
-                legends = open( legends_file, "r" ).readlines()
-            else:
-                legends = list()
+                images_list = list()
 
-            fileencoding = "iso-8859-1"
+                legends_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/resena.dat'
+                if os.path.isfile(legends_file):
+                    legends = open( legends_file, "r" ).readlines()
+                else:
+                    legends = list()
 
-            ulegends = list()
-            for legend in legends:
-                ulegends.append(legend.decode(fileencoding))
+                fileencoding = "iso-8859-1"
+
+                ulegends = list()
+                for legend in legends:
+                    ulegends.append(legend.decode(fileencoding))
 
 
-            def byNumbers( str ):
-                g = re.search( r'_(\d+)\.jpg', str )
-                return int( g.group( 1 ) )
+                def byNumbers( str ):
+                    g = re.search( r'_(\d+)\.jpg', str )
+                    return int( g.group( 1 ) )
 
-            thumb_list = sorted( glob.glob( '*_peq_*.jpg' ) , key = byNumbers )
+                thumb_list = sorted( glob.glob( '*_peq_*.jpg' ) , key = byNumbers )
 
-            for thumb in thumb_list:
-                image_file = string.replace( thumb, '_peq_', '_big_' )
-                images_list.append( image_file )
-                legends.append ( '' )
+                for thumb in thumb_list:
+                    image_file = string.replace( thumb, '_peq_', '_big_' )
+                    images_list.append( image_file )
+                    legends.append ( '' )
 
-            for photo in zip( ulegends, images_list, thumb_list ) :
-                p = P.Photo( description = photo[0][:256], event = event, datetime_added = event.datetime_added )
+                for photo in zip( ulegends, images_list, thumb_list ) :
+                    p = P.Photo( description = photo[0][:256], event = event, datetime_added = event.datetime_added )
 
-                fi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[1], 'r' ).read() )
-                ft_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[2], 'r' ).read() )
+                    fi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[1], 'r' ).read() )
+                    ft_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[2], 'r' ).read() )
 
-                p.image.save( photo[1][-75:], fi_content, save = False )
-                p.thumb.save( photo[2][-75:], ft_content, save = False )
+                    p.image.save( photo[1][-75:], fi_content, save = False )
+                    p.thumb.save( photo[2][-75:], ft_content, save = False )
 
-                p.save()
-                p.datetime_added = event.datetime_added
-                p.save()
+                    p.save()
+                    p.datetime_added = event.datetime_added
+                    p.save()
+        except Exception, e:
+            print "\n"
+            print e
+            print "\n"
 
 
 
