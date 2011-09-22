@@ -468,7 +468,7 @@ def import_people ():
 
     prog = ProgressBar(0, len(oldevents), mode='fixed')
 
-    for oldevent in oldevents:
+    for oldevent in oldevents[1000:1100]:
 
         try:
 
@@ -481,13 +481,17 @@ def import_people ():
 
                 eve_datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa ) or oldevent.fecha
 
+                old_location = not_empty_or_null( oldevent.lugar )
+                if oldevent.lugar and not old_location:
+                    print oldevent.lugar
+
                 event = P.PhotoEvent(
                             title = oldevent.titulo,
                             #slug = slugify( oldevent.titulo )[:50],
 
                             category = parse_people_category( oldevent.categoria ),
                             article = oldevent.resena,
-                            location = not_empty_or_null( oldevent.lugar ),
+                            location = old_location,
                             author = oldevent.reportero,
                             author_email = oldevent.email,
                             city = oldevent.ciudad,
@@ -605,14 +609,14 @@ class Command( NoArgsCommand ):
 
 
         print "\nImporting legacy locations"
-        #import_locations()
+        import_locations()
 
         print "\nImporting legacy events"
         #import_events()
 
         print "\nImporting legacy people"
-        #import_people()
-        reimport_people_locations()
+        import_people()
+        #reimport_people_locations()
 
         print "\nImporting legacy rumba news"
         #import_blog_category (L.RumbaNews)
