@@ -439,6 +439,7 @@ def reimport_people_locations ():
     for oldevent in oldevents[:100]:
         try :
             event = P.PhotoEvent.objects.get(
+                title = oldevent.titulo,
                 category = parse_people_category( oldevent.categoria ),
                 author = oldevent.reportero,
                 author_email = oldevent.email,
