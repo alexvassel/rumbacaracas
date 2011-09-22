@@ -442,15 +442,19 @@ def reimport_people_locations ():
                 event = P.PhotoEvent.objects.get(article=oldevent.resena)
                 event.location = not_empty_or_null( oldevent.lugar )
                 event.save()
-            except P.PhotoEvent.DoesNotExist, P.PhotoEvent.MultipleObjectsReturned:
+            except P.PhotoEvent.DoesNotExist:
                 print oldevent.titulo
+            except Exception, e:
+                print e
         else:
             try :
                 event = P.PhotoEvent.objects.get(title=oldevent.titulo)
                 event.location = not_empty_or_null( oldevent.lugar )
                 event.save()
-            except P.PhotoEvent.DoesNotExist, P.PhotoEvent.MultipleObjectsReturned:
+            except P.PhotoEvent.DoesNotExist:
                 print oldevent.titulo
+            except Exception, e:
+                print e
 
         
 def import_people ():
