@@ -239,7 +239,11 @@ def import_events ():
                     print "wrong file for event!!!!!!!!!!\n"
                     print oldevent.titulo + "\n"
             event.save()
-            event.datetime_added = compile_date(oldevent.da, oldevent.ma, oldevent.aa)
+
+            event_datetime_added = compile_date(oldevent.da, oldevent.ma, oldevent.aa)
+            if event_datetime_added:
+                event.datetime_added = event_datetime_added
+
             event.save()
 
             event.repeat.add(*parse_event_weekday(oldevent.dias))
@@ -598,11 +602,11 @@ class Command( NoArgsCommand ):
 
 
         print "\nImporting legacy people"
-        import_people()
+        #import_people()
         #reimport_people_locations()
 
         print "\nImporting legacy locations"
-        import_locations()
+        #import_locations()
 
         print "\nImporting legacy events"
         import_events()
