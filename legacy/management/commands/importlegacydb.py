@@ -466,11 +466,11 @@ def import_people ():
     #TODO Carefully import locations
     #TODO Import second date
 
-    prog = ProgressBar(0, len(oldevents[0:200]), mode='fixed')
+    prog = ProgressBar(0, len(oldevents[0:500]), mode='fixed')
     wrong_locations = list()
     all_locations = list()
 
-    for oldevent in oldevents[0:200]:
+    for oldevent in oldevents[0:500]:
 
         try:
 
@@ -600,8 +600,8 @@ def import_people ():
             print e
             print "\n"
 
-    print wrong_locations
-    print all_locations
+    #print wrong_locations
+    #print all_locations
 
 
 
