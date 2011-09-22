@@ -1847,3 +1847,16 @@ msgstr "Tus fotos se ha añadido"
 
 msgid "Add Events"
 msgstr "Publica un eventos"
+
+
+msgid "Public Events or Photos on Rumbabogota.com"
+msgstr "Publica Eventos y Fotos en Rumbabogotá.com"
+
+msgid "Select the events or photos you want to send"
+msgstr "Selecciona los eventos o fotos que deseas enviar."
+
+msgid "Click 'Publish'"
+msgstr "Haz click en 'PUBLICAR'"
+
+msgid "Success! Soon receive the info and will be published soon in the page"
+msgstr "Listo! en breve recibiremos la info ya pronto saldrá publicada en la página"

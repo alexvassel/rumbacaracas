@@ -1530,3 +1530,15 @@ msgstr ""
 
 msgid "Add Events"
 msgstr ""
+
+msgid "Public Events or Photos on Rumbabogota.com"
+msgstr ""
+
+msgid "Select the events or photos you want to send"
+msgstr ""
+
+msgid "Click 'Publish'"
+msgstr ""
+
+msgid "Success! Soon receive the info and will be published soon in the page"
+msgstr ""
