@@ -615,7 +615,7 @@ class Command( NoArgsCommand ):
 
 
         print "\nImporting legacy locations"
-        import_locations()
+        #import_locations()
 
         print "\nImporting legacy events"
         #import_events()
