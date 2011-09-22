@@ -447,12 +447,12 @@ def reimport_people_locations ():
                 date = compile_date( oldevent.dia, oldevent.mes, oldevent.ano )
             )
             print "Found"
+            print not_empty_or_null( oldevent.lugar )
+            print oldevent.lugar
             event.location = not_empty_or_null( oldevent.lugar )
             event.save()
         except P.PhotoEvent.DoesNotExist:
-            print "-----"
             print oldevent.titulo
-            print "-----"
         except Exception, e:
             print e
 
