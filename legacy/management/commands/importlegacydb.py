@@ -444,9 +444,9 @@ def reimport_people_locations ():
                 author = oldevent.reportero,
                 author_email = oldevent.email,
                 city = oldevent.ciudad,
-                date = compile_date( oldevent.dia, oldevent.mes, oldevent.ano ),
-                datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa ) or oldevent.fecha
+                date = compile_date( oldevent.dia, oldevent.mes, oldevent.ano )
             )
+            print "Found"
             event.location = not_empty_or_null( oldevent.lugar )
             event.save()
         except P.PhotoEvent.DoesNotExist:
