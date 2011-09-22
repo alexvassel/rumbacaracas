@@ -436,23 +436,31 @@ def import_locations ():
 
 def reimport_people_locations ():
     oldevents = L.Fotos.objects.all()
-    for oldevent in oldevents:
+    for oldevent in oldevents[:10]:
         if oldevent.resena:
+            print 1
             try :
                 event = P.PhotoEvent.objects.get(article=oldevent.resena)
                 event.location = not_empty_or_null( oldevent.lugar )
                 event.save()
             except P.PhotoEvent.DoesNotExist:
+                print "-----"
+                print oldevent.resena
+                print "-----"
                 print oldevent.titulo
+                print "-----"
             except Exception, e:
                 print e
         else:
+            print 2
             try :
                 event = P.PhotoEvent.objects.get(title=oldevent.titulo)
                 event.location = not_empty_or_null( oldevent.lugar )
                 event.save()
             except P.PhotoEvent.DoesNotExist:
+                print "-----"
                 print oldevent.titulo
+                print "-----"
             except Exception, e:
                 print e
 
@@ -602,15 +610,17 @@ class Command( NoArgsCommand ):
         #import_subscriptions()
 
 
-        print "\nImporting legacy people"
-        #import_people()
-        reimport_people_locations()
+
 
         print "\nImporting legacy locations"
         #import_locations()
 
         print "\nImporting legacy events"
         #import_events()
+
+        print "\nImporting legacy people"
+        #import_people()
+        reimport_people_locations()
 
         print "\nImporting legacy rumba news"
         #import_blog_category (L.RumbaNews)
