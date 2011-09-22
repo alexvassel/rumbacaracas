@@ -26,7 +26,7 @@ def SlugifyUniquely(value, model, slugfield="slug", maxlength=50):
     potential = base = slugify(value)
     while True:
         if suffix:
-            calculated_max_length = maxlength - 1 - len(suffix)
+            calculated_max_length = maxlength - 1 - len(str(suffix))
             potential = "-".join([base[:calculated_max_length], str(suffix)])
         if not model.objects.filter(**{slugfield: potential}).count():
             return potential
