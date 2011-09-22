@@ -14,7 +14,6 @@ media/uploads/gallery/*
 olddata
 media/zinnia
 media/grappelli
-.idea/
 src/
 out/
 pull_linexternal.sh
