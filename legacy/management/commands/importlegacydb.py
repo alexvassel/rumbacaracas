@@ -437,32 +437,21 @@ def import_locations ():
 def reimport_people_locations ():
     oldevents = L.Fotos.objects.all()
     for oldevent in oldevents[:100]:
-        if oldevent.resena:
-            print 1
-            try :
-                event = P.PhotoEvent.objects.get(article=oldevent.resena)
-                event.location = not_empty_or_null( oldevent.lugar )
-                event.save()
-            except P.PhotoEvent.DoesNotExist:
-                print "-----"
-                print oldevent.resena
-                print "-----"
-                print oldevent.titulo
-                print "-----"
-            except Exception, e:
-                print e
-        else:
-            print 2
-            try :
-                event = P.PhotoEvent.objects.get(title=oldevent.titulo)
-                event.location = not_empty_or_null( oldevent.lugar )
-                event.save()
-            except P.PhotoEvent.DoesNotExist:
-                print "-----"
-                print oldevent.titulo
-                print "-----"
-            except Exception, e:
-                print e
+        try :
+            event = P.PhotoEvent.objects.get(
+                category = parse_people_category( oldevent.categoria ),
+                author = oldevent.reportero,
+                author_email = oldevent.email,
+                city = oldevent.ciudad,
+            )
+            event.location = not_empty_or_null( oldevent.lugar )
+            event.save()
+        except P.PhotoEvent.DoesNotExist:
+            print "-----"
+            print oldevent.titulo
+            print "-----"
+        except Exception, e:
+            print e
 
         
 def import_people ():
