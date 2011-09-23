@@ -1310,7 +1310,7 @@ msgstr "Leer Más"
 
 #: templates/main/index.html:3
 msgid "Rumbacaracas"
-msgstr "Rumbabogotá.com"
+msgstr "Rumbacaracas.com"
 
 #: templates/main/index.html:44
 msgid "LATEST PHOTOS"
@@ -1488,7 +1488,7 @@ msgstr "Síguenos en <br /><span class='fp18'>Twitter</ span>"
 
 #: templates/static/term_of_use.html:3
 msgid "Rumbacaracas Terms of Use"
-msgstr "Rumbabogotá Términos de Uso"
+msgstr "Rumbacaracas Términos de Uso"
 
 #: templates/static/web.html:3
 msgid "About Us Web"
