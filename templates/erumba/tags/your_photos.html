@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load tools %}
 
 {% if photos %}
 <tr>
@@ -12,7 +13,7 @@
       </tr>
       <tr>
         <td height="200px" width="250px" colspan="3" align="center" style="padding: 0 20px; text-align: center">
-          <img src="http://rumbabogota.com/{{ photos.0.newsthumb.url }}" alt="{{ photos.0.description }}" style="width: 250px;" />
+          <img src="{% value_from_settings "FULL_BASE_URL" %}{{ photos.0.newsthumb.url }}" alt="{{ photos.0.description }}" style="width: 250px;" />
         </td>
       </tr>
       <tr>
@@ -22,9 +23,9 @@
       {% for photo in photos %}
       <tr>
         <td width="25px"></td>
-        <td style="font-size: 11px; line-height: 18px; font-family: Arial;"><a href="http://rumbabogota.com{{ photo.get_absolute_url }}" style="font-family:Arial, Helvetica, sans-serif; font-weight:bold; color:#000000 !important;">{{ photo.description }}</a><br />
+        <td style="font-size: 11px; line-height: 18px; font-family: Arial;"><a href="{% value_from_settings "FULL_BASE_URL" %}{{ photo.get_absolute_url }}" style="font-family:Arial, Helvetica, sans-serif; font-weight:bold; color:#000000 !important;">{{ photo.description }}</a><br />
           Por <a href="javascript: void(0);" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:normal; color:#D22323; text-decoration:none;">{{ photo.user.username }}</a><br />
-          <a href="http://rumbabogota.com{% url yourphoto_main %}" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; color:#4A4A4A !important; text-decoration:underline;">Ver todos las fotos &raquo;</a> </td>
+          <a href="{% value_from_settings "FULL_BASE_URL" %}{% url yourphoto_main %}" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; color:#4A4A4A !important; text-decoration:underline;">Ver todos las fotos &raquo;</a> </td>
         <td width="25px"></td>
       </tr>
       {% endfor %}
