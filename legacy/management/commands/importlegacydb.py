@@ -619,7 +619,7 @@ class Command( NoArgsCommand ):
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        import_users()
+        #import_users()
 
 
         #print "Importing legacy subscriptions"
