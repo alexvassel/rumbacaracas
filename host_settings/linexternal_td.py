@@ -55,3 +55,9 @@ TWITTER_CONSUMER_SECRET_KEY = 'nLD3noOIPwSZeyXZaUpwSVLIw9yZOKkAkNjpY85SqLw'
 
 ISSUU_API_KEY = "3g5tlt235dhwzwu9lf8yveetczya50u0"
 ISSUU_API_SECRET = "0unbbypa2ck7ls8yjstzelyyssax2026"
+
+# Amazon S3 configs
+DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
+AWS_ACCESS_KEY_ID = 'AKIAJAVN6BXUTZ3VMAVA'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'rumba_test'

@@ -61,3 +61,10 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
     'django.template.loaders.eggs.Loader',
  )
+
+
+# Amazon S3 configs
+DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
+AWS_ACCESS_KEY_ID = 'AKIAJAVN6BXUTZ3VMAVA'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'rumba_test'
