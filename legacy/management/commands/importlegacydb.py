@@ -88,13 +88,13 @@ def import_subscriptions ():
 def import_yourphotos ():
 
     YP.Photo.objects.all().delete()
-    oldphotos = L.TusfotosFotos.objects.all()
+    oldphotos = L.TusfotosFotos.objects.all().order_by('-fecha')
 
     wrong_ids = list()
 
-    prog = ProgressBar(0, len(oldphotos), mode='fixed')
+    prog = ProgressBar(0, len(oldphotos[0:50]), mode='fixed')
 
-    for oldphoto in oldphotos:
+    for oldphoto in oldphotos[0:50]:
 
         prog.increment_amount()
         print prog, '\r',
@@ -466,11 +466,11 @@ def import_people ():
     #TODO Carefully import locations
     #TODO Import second date
 
-    prog = ProgressBar(0, len(oldevents[0:500]), mode='fixed')
+    prog = ProgressBar(0, len(oldevents[0:50]), mode='fixed')
     wrong_locations = list()
     all_locations = list()
 
-    for oldevent in oldevents[0:5]:
+    for oldevent in oldevents[0:50]:
 
         try:
 
@@ -629,10 +629,10 @@ class Command( NoArgsCommand ):
 
 
         print "\nImporting legacy locations"
-        import_locations()
+        #import_locations()
 
         print "\nImporting legacy events"
-        import_events()
+        #import_events()
 
         print "\nImporting legacy people"
         import_people()
@@ -642,13 +642,13 @@ class Command( NoArgsCommand ):
         import_blog_category (L.RumbaNews)
 
         print "\nImporting legacy music news"
-        import_blog_category (L.MusicNews)
+        #import_blog_category (L.MusicNews)
 
         print "\nImporting legacy interviews"
-        import_blog_category (L.Entrevista)
+        #import_blog_category (L.Entrevista)
 
         print "\nImporting legacy specials"
-        import_blog_category (L.Especial)
+        #import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
