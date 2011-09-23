@@ -18,3 +18,5 @@ src/
 out/
 pull_linexternal.sh
 rumbacaracas.iml
+.idea/
+.settings
