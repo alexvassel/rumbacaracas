@@ -1,5 +1,7 @@
 {% load openx %}
 {% load i18n %}
+{% load tools %}
+
 {% for day, events in events_by_day %}
 
   {% if forloop.counter0|divisibleby:"2" %}
@@ -13,7 +15,7 @@
             <h4 style="font-size:18px !important;font-weight:normal !important;color:#000000 !important;text-decoration:none !important;padding: 0 0 10px !important;border-bottom: 1px solid #A3A3A3 !important;margin: 0 0 10px !important;text-transform: uppercase !important;">{{ day|date:"l" }} <span style="font-size: 12px">{{ day|date:"d.m.Y" }}</span></h4>
             {% for event in events %}
               {{ event.category.title }}<br />
-              <strong style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; color:#D22323;"><a style="color:#D22323;" href="http://rumbabogota.com{% url event_details event.slug %}">{{ event.title }}</a></strong> | {{ event.location.title }}<br />
+              <strong style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; color:#D22323;"><a style="color:#D22323;" href="{% value_from_settings "FULL_BASE_URL" %}{% url event_details event.slug %}">{{ event.title }}</a></strong> | {{ event.location.title }}<br />
               <br />
             {% endfor %}
           </td>
