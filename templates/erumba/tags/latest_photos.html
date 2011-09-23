@@ -23,7 +23,7 @@
         {% for photo in photos %}
         <tr>
           <td width="25px"></td>
-          <td style="border-bottom: 1px dotted #9F9F9F !important; padding: 5px 0;font-size: 12px; line-height: 18px; font-family: Arial;"><a href="javascript:void(0)" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#D22323; text-decoration:none;">{{ photo.description }}</a><br />
+          <td style="border-bottom: 1px dotted #9F9F9F !important; padding: 5px 0;font-size: 12px; line-height: 18px; font-family: Arial;"><a href="{% value_from_settings "FULL_BASE_URL" %}{{ photo.get_absolute_url }}" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#D22323; text-decoration:none;">{{ photo.description }}</a><br />
             {{ photo.datetime_added|date:"d.m.Y" }} | {{ photo.category }} </td>
           <td width="25px"></td>
         </tr>
