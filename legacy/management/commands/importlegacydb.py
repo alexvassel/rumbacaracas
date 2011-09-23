@@ -128,9 +128,6 @@ def import_yourphotos ():
                     #print file_name
                     wrong_ids.append(str(oldphoto.id))
 
-
-
-        
     if wrong_ids:
         print ",".join(wrong_ids)
 
@@ -239,7 +236,11 @@ def import_events ():
                     print "wrong file for event!!!!!!!!!!\n"
                     print oldevent.titulo + "\n"
             event.save()
-            event.datetime_added = compile_date(oldevent.da, oldevent.ma, oldevent.aa)
+
+            event_datetime_added = compile_date(oldevent.da, oldevent.ma, oldevent.aa)
+            if event_datetime_added:
+                event.datetime_added = event_datetime_added
+
             event.save()
 
             event.repeat.add(*parse_event_weekday(oldevent.dias))
@@ -342,7 +343,7 @@ def import_blog_category (table):
             #TODO carefully import sites
             article.sites.add(1)
 
-            print wrong_ids
+    print wrong_ids
 
 
 def import_locations ():
@@ -436,136 +437,171 @@ def import_locations ():
 def reimport_people_locations ():
     oldevents = L.Fotos.objects.all()
     for oldevent in oldevents:
-        if oldevent.resena:
-            try :
-                event = P.PhotoEvent.objects.get(article=oldevent.resena)
-                event.location = not_empty_or_null( oldevent.lugar )
-                event.save()
-            except P.PhotoEvent.DoesNotExist:
-                print oldevent.titulo
-        else:
-            try :
-                event = P.PhotoEvent.objects.get(title=oldevent.titulo)
-                event.location = not_empty_or_null( oldevent.lugar )
-                event.save()
-            except P.PhotoEvent.DoesNotExist:
-                print oldevent.titulo
+        try :
+            event = P.PhotoEvent.objects.get(
+                title = oldevent.titulo,
+                category = parse_people_category( oldevent.categoria ),
+                author = oldevent.reportero,
+                author_email = oldevent.email,
+                city = oldevent.ciudad,
+                date = compile_date( oldevent.dia, oldevent.mes, oldevent.ano )
+            )
+            print "Found"
+            print not_empty_or_null( oldevent.lugar )
+            print oldevent.lugar
+            event.location = not_empty_or_null( oldevent.lugar )
+            event.save()
+        except P.PhotoEvent.DoesNotExist:
+            print oldevent.titulo
+        except Exception, e:
+            print e
 
         
 def import_people ():
 
     P.PhotoEvent.objects.all().delete()
 
-    oldevents = L.Fotos.objects.all()
+    oldevents = L.Fotos.objects.all().order_by('-fecha')
 
     #TODO Carefully import locations
     #TODO Import second date
 
-    prog = ProgressBar(0, len(oldevents), mode='fixed')
+    prog = ProgressBar(0, len(oldevents[0:500]), mode='fixed')
+    wrong_locations = list()
+    all_locations = list()
 
-    for oldevent in oldevents:
-        prog.increment_amount()
-        print prog, '\r',
-        sys.stdout.flush()
-        
-        if oldevent.titulo:
-            #oldevent = L.Fotos()
+    for oldevent in oldevents[0:500]:
 
-            eve_datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa ) or oldevent.fecha
+        try:
 
-            event = P.PhotoEvent(
-                        title = oldevent.titulo,
-                        #slug = slugify( oldevent.titulo )[:50],
+            prog.increment_amount()
+            print prog, '\r',
+            sys.stdout.flush()
 
-                        category = parse_people_category( oldevent.categoria ),
-                        article = oldevent.resena,
-                        location = not_empty_or_null( oldevent.lugar ),
-                        author = oldevent.reportero,
-                        author_email = oldevent.email,
-                        city = oldevent.ciudad,
-                        status = 1,
-                        datetime_added = eve_datetime_added
-                      )
+            if oldevent.titulo:
+                #oldevent = L.Fotos()
 
-            event.slug = SlugifyUniquely(oldevent.titulo[:50], event.__class__)
+                eve_datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa ) or oldevent.fecha
 
-            people_date = compile_date( oldevent.dia, oldevent.mes, oldevent.ano )
-            if people_date:
-                event.date = people_date
-            elif eve_datetime_added:
-                event.date = eve_datetime_added
+                old_location = not_empty_or_null( oldevent.lugar )
+                
+                if oldevent.lugar:
+                    try:
+                        all_locations.append(int(oldevent.lugar))
+                    except Exception, e:
+                        all_locations.append(oldevent.lugar)
 
-            #TODO Investigate where main image is
-            #ei_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
 
-            import os
+                if oldevent.lugar and not old_location:
+                    try:
+                        wrong_locations.append(int(oldevent.lugar))
+                    except Exception, e:
+                        wrong_locations.append(oldevent.lugar)
 
-            main_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' +  oldevent.imagen_principal
-            basename, extension = os.path.splitext(oldevent.imagen_principal)
-            from PIL import Image
 
-            #MEDIA_ROOT
-            if extension == '.gif':
-                new_dir = settings.MEDIA_ROOT + '/people_fotos/' + oldevent.directorio + ''
-                new_file =  new_dir +  basename + '.jpg'
-                if not os.path.isdir(new_dir):
-                    os.makedirs(new_dir)
-                Image.open(main_file).convert('RGB').save(new_file)
-                main_file = new_file
-                oldevent.imagen_principal = basename + '.jpg'
 
-            if os.path.isfile(main_file):
-                ei_content = ContentFile( open( main_file, 'r' ).read() )
-                event.image.save( oldevent.imagen_principal, ei_content, save = False )
 
-            event.save()
 
-            if eve_datetime_added:
-                event.datetime_added = eve_datetime_added
+                event = P.PhotoEvent(
+                            title = oldevent.titulo,
+                            #slug = slugify( oldevent.titulo )[:50],
+
+                            category = parse_people_category( oldevent.categoria ),
+                            article = oldevent.resena,
+                            location = old_location,
+                            author = oldevent.reportero,
+                            author_email = oldevent.email,
+                            city = oldevent.ciudad,
+                            status = 1,
+                            datetime_added = eve_datetime_added
+                          )
+
+                event.slug = SlugifyUniquely(oldevent.titulo[:50], event.__class__)
+
+                people_date = compile_date( oldevent.dia, oldevent.mes, oldevent.ano )
+                if people_date:
+                    event.date = people_date
+                elif eve_datetime_added:
+                    event.date = eve_datetime_added
+
+                #TODO Investigate where main image is
+                #ei_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
+
+                import os
+
+                main_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' +  oldevent.imagen_principal
+                basename, extension = os.path.splitext(oldevent.imagen_principal)
+                from PIL import Image
+
+                #MEDIA_ROOT
+                if extension == '.gif':
+                    new_dir = settings.MEDIA_ROOT + '/image_cache/people_fotos_convert/' + oldevent.directorio + ''
+                    new_file =  new_dir +  basename + '.jpg'
+                    if not os.path.isdir(new_dir):
+                        os.makedirs(new_dir)
+                    Image.open(main_file).convert('RGB').save(new_file)
+                    main_file = new_file
+                    oldevent.imagen_principal = basename + '.jpg'
+
+                if os.path.isfile(main_file):
+                    ei_content = ContentFile( open( main_file, 'r' ).read() )
+                    event.image.save( oldevent.imagen_principal, ei_content, save = False )
+
                 event.save()
 
-            #Then import images
+                if eve_datetime_added:
+                    event.datetime_added = eve_datetime_added
+                    event.save()
 
-            os.chdir( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio )
+                #Then import images
 
-            images_list = list()
+                os.chdir( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio )
 
-            legends_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/resena.dat'
-            if os.path.isfile(legends_file):
-                legends = open( legends_file, "r" ).readlines()
-            else:
-                legends = list()
+                images_list = list()
 
-            fileencoding = "iso-8859-1"
+                legends_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/resena.dat'
+                if os.path.isfile(legends_file):
+                    legends = open( legends_file, "r" ).readlines()
+                else:
+                    legends = list()
 
-            ulegends = list()
-            for legend in legends:
-                ulegends.append(legend.decode(fileencoding))
+                fileencoding = "iso-8859-1"
+
+                ulegends = list()
+                for legend in legends:
+                    ulegends.append(legend.decode(fileencoding))
 
 
-            def byNumbers( str ):
-                g = re.search( r'_(\d+)\.jpg', str )
-                return int( g.group( 1 ) )
+                def byNumbers( str ):
+                    g = re.search( r'_(\d+)\.jpg', str )
+                    return int( g.group( 1 ) )
 
-            thumb_list = sorted( glob.glob( '*_peq_*.jpg' ) , key = byNumbers )
+                thumb_list = sorted( glob.glob( '*_peq_*.jpg' ) , key = byNumbers )
 
-            for thumb in thumb_list:
-                image_file = string.replace( thumb, '_peq_', '_big_' )
-                images_list.append( image_file )
-                legends.append ( '' )
+                for thumb in thumb_list:
+                    image_file = string.replace( thumb, '_peq_', '_big_' )
+                    images_list.append( image_file )
+                    legends.append ( '' )
 
-            for photo in zip( ulegends, images_list, thumb_list ) :
-                p = P.Photo( description = photo[0][:256], event = event, datetime_added = event.datetime_added )
+                for photo in zip( ulegends, images_list, thumb_list ) :
+                    p = P.Photo( description = photo[0][:256], event = event, datetime_added = event.datetime_added )
 
-                fi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[1], 'r' ).read() )
-                ft_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[2], 'r' ).read() )
+                    fi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[1], 'r' ).read() )
+                    ft_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[2], 'r' ).read() )
 
-                p.image.save( photo[1][-75:], fi_content, save = False )
-                p.thumb.save( photo[2][-75:], ft_content, save = False )
+                    p.image.save( photo[1][-75:], fi_content, save = False )
+                    p.thumb.save( photo[2][-75:], ft_content, save = False )
 
-                p.save()
-                p.datetime_added = event.datetime_added
-                p.save()
+                    p.save()
+                    p.datetime_added = event.datetime_added
+                    p.save()
+        except Exception, e:
+            print "\n"
+            print e
+            print "\n"
+
+    #print wrong_locations
+    #print all_locations
 
 
 
@@ -590,35 +626,37 @@ class Command( NoArgsCommand ):
         #import_subscriptions()
 
 
+
+
+        print "\nImporting legacy locations"
+        #import_locations()
+
+        print "\nImporting legacy events"
+        #import_events()
+
         print "\nImporting legacy people"
         import_people()
         #reimport_people_locations()
 
-        print "\nImporting legacy locations"
-        import_locations()
-
-        print "\nImporting legacy events"
-        import_events()
-
         print "\nImporting legacy rumba news"
-        import_blog_category (L.RumbaNews)
+        #import_blog_category (L.RumbaNews)
 
         print "\nImporting legacy music news"
-        import_blog_category (L.MusicNews)
+        #import_blog_category (L.MusicNews)
 
         print "\nImporting legacy interviews"
-        import_blog_category (L.Entrevista)
+        #import_blog_category (L.Entrevista)
 
         print "\nImporting legacy specials"
-        import_blog_category (L.Especial)
+        #import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "\nImporting legacy your photos"
-        import_yourphotos()
+        #import_yourphotos()
 
         print "\nImporting legacy your videos"
-        import_yourvideos()
+        #import_yourvideos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()

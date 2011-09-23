@@ -261,6 +261,7 @@ def parse_event_weekday(token):
                 "Viernes":4,
                 u'Sábados':5,
                 "Domingos":6,
+                "Domingo":6,
             }[day]
             real_day = WeekDay.objects.get(value=type_id)
             id_list.append(real_day)
