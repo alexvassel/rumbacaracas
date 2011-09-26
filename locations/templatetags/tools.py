@@ -25,7 +25,8 @@ def truncate( value, arg ):
         value = str( value )
     if ( len( strip_tags(value) ) > length ):
         from django.utils.safestring import mark_safe
-        return mark_safe( '<span title="' + strip_tags(value) + '">' + strip_tags(value)[:length] + "..." + '</span>' )
+        from django.utils.html import escape
+        return mark_safe( '<span title="' + escape(strip_tags(value))[:200] + '">' + strip_tags(value)[:length] + "..." + '</span>' )
     else:
         return value
 
