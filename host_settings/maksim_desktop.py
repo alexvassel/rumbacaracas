@@ -49,6 +49,10 @@ DEBUG=True
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    },
+    'storage': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'caracas'
     }
 }
 
@@ -90,7 +94,8 @@ AWS_HEADERS = [
 from cuddlybuddly.storage.s3 import CallingFormat
 AWS_CALLING_FORMAT = CallingFormat.PATH
 
-CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.FileSystemCache'
-CUDDLYBUDDLY_STORAGE_S3_FILE_CACHE_DIR  = '/home/maksim/Documents/Develop/rumbabogota/media/s3cache'
+CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.DjangoCache'
+CUDDLYBUDDLY_STORAGE_S3_CACHE_BACKEND = 'storage'
+CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
 
 MEDIA_URL = 'https://s3.amazonaws.com/rumba_test/'

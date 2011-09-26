@@ -1,65 +1,41 @@
-import os
 from django.conf import settings
-from django.core.exceptions import ImproperlyConfigured
 from django.utils.encoding import smart_str
 from django.utils.hashcompat import md5_constructor
 
 from cuddlybuddly.storage.s3.cache import Cache
-from django.core.cache import cache
+from django.core.cache import get_cache
 
-CACHE_TIMEOUT = 30
-
-#cache.set('my_key', 'hello, world!', 30)
-#cache.get('my_key')
-#ache.get('my_key', 'has expired')
-#cache.add('add_key', 'New value')
-#cache.delete('a')
-
-
-class FileSystemCache(Cache):
-    def __init__(self, cache_dir=None):
-        if cache_dir is None:
-            cache_dir = getattr(settings, 'CUDDLYBUDDLY_STORAGE_S3_FILE_CACHE_DIR', None)
-            if cache_dir is None:
-                raise ImproperlyConfigured(
-                    '%s requires CUDDLYBUDDLY_STORAGE_S3_FILE_CACHE_DIR to be set to a directory.' % type(self)
-                )
-        self.cache_dir = cache_dir
-
-    def _path(self, name):
-        return os.path.join(self.cache_dir, md5_constructor(smart_str(name)).hexdigest())
+class DjangoCache(Cache):
+    def __init__(self):
+        #Use CUDDLYBUDDLY_STORAGE_S3_CACHE_BACKEND backend otherwise use default
+        cache_backend = getattr(settings, 'CUDDLYBUDDLY_STORAGE_S3_CACHE_BACKEND', 'default')
+        #Use CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT timeout otherwise use backend value
+        self.cache_timeout = getattr(settings, 'CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT', None)
+        self.cache = get_cache(cache_backend)
+        
+    def _key(self, name):
+        return md5_constructor(smart_str(name)).hexdigest()
 
     def exists(self, name):
-        if self.modified_time(name):
+        file_dict = self.cache.get(self._key(name))
+        if file_dict:
             return True
         return None
 
     def size(self, name):
-        try:
-            file = open(self._path(name))
-            size = int(file.readlines()[1])
-            file.close()
-        except:
-            size = None
-        return size
+        file_dict = self.cache.get(self._key(name))
+        if file_dict:
+            return file_dict['size']
+        return None
 
     def modified_time(self, name):
-        try:
-            file = open(self._path(name))
-            mtime = float(file.readlines()[2])
-            file.close()
-        except:
-            mtime = None
-        return mtime
+        file_dict = self.cache.get(self._key(name))
+        if file_dict:
+            return file_dict['mtime']
+        return None
 
     def save(self, name, size, mtime):
-        if not os.path.exists(self.cache_dir):
-            os.makedirs(self.cache_dir)
-        file = open(self._path(name), 'w')
-        file.write(smart_str(name)+'\n'+str(size)+'\n'+str(mtime))
-        file.close()
+        self.cache.add(self._key(name), dict(name=name, size=size, mtime=mtime), timeout = self.cache_timeout)
 
     def remove(self, name):
-        name = self._path(name)
-        if os.path.exists(name):
-            os.remove(name)
+        self.cache.delete(self._key(name))
