@@ -201,7 +201,7 @@ def parse_photo_category ( input_value ):
     elif input_value in (2,"2"):
         result = 'amigos'
     elif input_value in (3,"3"):
-        result = 'rumbas'
+        result = 'sexy'
     elif input_value in (4,"4"):
         result = 'humor'
     else:
