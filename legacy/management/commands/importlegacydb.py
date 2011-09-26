@@ -629,7 +629,7 @@ class Command( NoArgsCommand ):
 
 
         print "\nImporting legacy locations"
-        #import_locations()
+        import_locations()
 
         print "\nImporting legacy events"
         #import_events()
@@ -639,7 +639,7 @@ class Command( NoArgsCommand ):
         #reimport_people_locations()
 
         print "\nImporting legacy rumba news"
-        import_blog_category (L.RumbaNews)
+        #import_blog_category (L.RumbaNews)
 
         print "\nImporting legacy music news"
         #import_blog_category (L.MusicNews)
@@ -656,7 +656,7 @@ class Command( NoArgsCommand ):
         import_yourphotos()
 
         print "\nImporting legacy your videos"
-        import_yourvideos()
+        #import_yourvideos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()
