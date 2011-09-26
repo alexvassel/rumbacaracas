@@ -99,7 +99,7 @@ def google_map_link( value):
     else:
         return ""
 
-    query.append("Colombia")
+    query.append("Venezuela")
 
     return 'http://map.google.es/maps?q=%s' % (urlencode(" ".join(query)))
 
