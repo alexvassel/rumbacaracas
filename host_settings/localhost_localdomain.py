@@ -46,6 +46,11 @@ DEBUG=True
 
 CACHES = {
     'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+        'KEY_PREFIX': 'rumbacar',
+    },
+    'dummy': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     }
 }
@@ -61,3 +66,35 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
     'django.template.loaders.eggs.Loader',
  )
+
+
+# Amazon S3 configs
+DEFAULT_FILE_STORAGE = 'cuddlybuddly.storage.s3.S3Storage'
+AWS_ACCESS_KEY_ID = 'AKIAJAVN6BXUTZ3VMAVA'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'rumba_test'
+
+from django.utils.http import  http_date
+from time import time
+
+AWS_HEADERS = [
+    ('^private/', {
+        'x-amz-acl': 'private',
+        'Expires': 'Thu, 15 Apr 2000 20:00:00 GMT',
+        'Cache-Control': 'private, max-age=0'
+    }),
+    ('.*', {
+        'x-amz-acl': 'public-read',
+        'Expires': http_date(time() + 31556926),
+        'Cache-Control': 'public, max-age=31556926'
+    })
+]
+
+from cuddlybuddly.storage.s3 import CallingFormat
+AWS_CALLING_FORMAT = CallingFormat.PATH
+
+CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.DjangoCache'
+CUDDLYBUDDLY_STORAGE_S3_CACHE_BACKEND = 'default'
+CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
+
+MEDIA_URL = 'https://s3.amazonaws.com/rumba_test/'

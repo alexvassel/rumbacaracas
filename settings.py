@@ -212,6 +212,7 @@ INSTALLED_APPS = (
     'erumba',
     'storages',
     'cuddlybuddly.storage.s3',
+    'compressor',
     #'photologue',
     #'tagging',
     # Uncomment the next line to enable admin documentation:
