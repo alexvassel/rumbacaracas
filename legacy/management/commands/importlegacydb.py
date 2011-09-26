@@ -633,9 +633,11 @@ class Command( NoArgsCommand ):
         print "\nImporting legacy events"
         #import_events()
 
+        pstart =  datetime.now()
         print "\nImporting legacy people"
         #import_people()
         #reimport_people_locations()
+        pend =  datetime.now()
 
         print "\nImporting legacy rumba news"
         import_blog_category (L.RumbaNews)

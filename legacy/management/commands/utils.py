@@ -149,7 +149,7 @@ def get_user_instance_by_name (user_name):
         return None
 
 
-def compile_news_content (content, subtitle, additional_image, youtube_url = None):
+def compile_news_content (content, subtitle, additional_image, youtube_url):
 
     if subtitle:
         content +=  '<p><strong>%s</strong></p>' % (subtitle,)
@@ -220,7 +220,7 @@ import re
 
 @stringfilter
 def youtube(url):
-    regex = re.compile(r"^(http://)?(www\.)?(youtube\.com/watch\?v=)?(?P<id>[A-Za-z0-9\-=_]{11})")
+    regex = re.compile(r"^[^v]+v=(?P<id>.{11}).*")
     match = regex.match(url)
     if not match: return ""
     video_id = match.group('id')
