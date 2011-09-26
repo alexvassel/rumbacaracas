@@ -92,5 +92,5 @@ CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.DjangoCache'
 CUDDLYBUDDLY_STORAGE_S3_CACHE_BACKEND = 'storage'
 CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
 
-MEDIA_URL = 'https://s3.amazonaws.com/rumba_test/'
+MEDIA_URL = 'https://s3.amazonaws.com/rumbacaracas.com/'
 
