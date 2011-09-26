@@ -1,4 +1,6 @@
-FIXTURE_DIRS = ( 
+
+
+FIXTURE_DIRS = (
    '/home/maksim/Documents/Develop/rumbabogota/locations/fixtures/',
  )
 
@@ -64,7 +66,31 @@ TEMPLATE_LOADERS = (
 
 
 # Amazon S3 configs
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'cuddlybuddly.storage.s3.S3Storage'
 AWS_ACCESS_KEY_ID = 'AKIAJAVN6BXUTZ3VMAVA'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'rumba_test'
+
+from django.utils.http import  http_date
+from time import time
+
+AWS_HEADERS = [
+    ('^private/', {
+        'x-amz-acl': 'private',
+        'Expires': 'Thu, 15 Apr 2000 20:00:00 GMT',
+        'Cache-Control': 'private, max-age=0'
+    }),
+    ('.*', {
+        'x-amz-acl': 'public-read',
+        'Expires': http_date(time() + 31556926),
+        'Cache-Control': 'public, max-age=31556926'
+    })
+]
+
+from cuddlybuddly.storage.s3 import CallingFormat
+AWS_CALLING_FORMAT = CallingFormat.PATH
+
+CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.FileSystemCache'
+CUDDLYBUDDLY_STORAGE_S3_FILE_CACHE_DIR  = '/home/maksim/Documents/Develop/rumbabogota/media/s3cache'
+
+MEDIA_URL = 'https://s3.amazonaws.com/rumba_test/'
