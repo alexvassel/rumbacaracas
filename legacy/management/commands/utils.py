@@ -149,13 +149,17 @@ def get_user_instance_by_name (user_name):
         return None
 
 
-def compile_news_content (content, subtitle, additional_image):
+def compile_news_content (content, subtitle, additional_image, youtube_url = None):
 
     if subtitle:
         content +=  '<p><strong>%s</strong></p>' % (subtitle,)
 
     if additional_image:
         content +=  '<p><img src="%s" /></p>' % (additional_image.image.url,)
+
+    if youtube_url:
+        tmp_content =  youtube(youtube_url)
+        content = tmp_content + content
 
     return content
 
@@ -210,6 +214,24 @@ def parse_photo_category ( input_value ):
     return result
 
 
+
+from django.template.defaultfilters import stringfilter
+import re
+
+@stringfilter
+def youtube(url):
+    regex = re.compile(r"^(http://)?(www\.)?(youtube\.com/watch\?v=)?(?P<id>[A-Za-z0-9\-=_]{11})")
+    match = regex.match(url)
+    if not match: return ""
+    video_id = match.group('id')
+    return """
+    <object width="425" height="344">
+    <param name="movie" value="http://www.youtube.com/watch/v/%s"></param>
+    <param name="allowFullScreen" value="true"></param>
+    <embed src="http://www.youtube.com/watch/v/%s" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed>
+    </object>
+    <br />
+    """ % (video_id, video_id)
 
 
 def parse_location_food(token):

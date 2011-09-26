@@ -261,7 +261,7 @@ def disconnect_zinnia_signals():
 
 def import_blog_category (table):
 
-    oldarticles = table.objects.all()
+    oldarticles = table.objects.all().order_by('-fecha')
 
     Z.Entry.objects.filter(categories=detect_news_category(table)).delete()
 
@@ -270,7 +270,7 @@ def import_blog_category (table):
     wrong_ids = list()
 
     prog = ProgressBar(0, len(oldarticles), mode='fixed')
-    for oldarticle in oldarticles:
+    for oldarticle in oldarticles[:50]:
 
         prog.increment_amount()
         print prog, '\r',
@@ -320,9 +320,8 @@ def import_blog_category (table):
             if oldarticle.imagen2:
                 image_name = oldarticle.imagen2
 
-
-
-
+            if oldarticle.imagen3:
+                image_name = oldarticle.imagen3
 
 
             if image_name:
@@ -337,7 +336,7 @@ def import_blog_category (table):
                     wrong_ids.append(oldarticle.id)
 
             #Import subtitle as part of content!!!!!!
-            article.content = compile_news_content(oldarticle.contenido,oldarticle.subtitulo, additional_image)
+            article.content = compile_news_content(oldarticle.contenido,oldarticle.subtitulo, additional_image, oldarticle.youtube)
             article.save()
             article.categories.add(detect_news_category(table))
             #TODO carefully import sites
@@ -470,7 +469,7 @@ def import_people ():
     wrong_locations = list()
     all_locations = list()
 
-    for oldevent in oldevents[0:50]:
+    for oldevent in oldevents[0:10]:
 
         try:
 
@@ -629,31 +628,31 @@ class Command( NoArgsCommand ):
 
 
         print "\nImporting legacy locations"
-        import_locations()
+        #import_locations()
 
         print "\nImporting legacy events"
         #import_events()
 
         print "\nImporting legacy people"
-        import_people()
+        #import_people()
         #reimport_people_locations()
 
         print "\nImporting legacy rumba news"
-        #import_blog_category (L.RumbaNews)
+        import_blog_category (L.RumbaNews)
 
         print "\nImporting legacy music news"
-        #import_blog_category (L.MusicNews)
+        import_blog_category (L.MusicNews)
 
         print "\nImporting legacy interviews"
-        #import_blog_category (L.Entrevista)
+        import_blog_category (L.Entrevista)
 
         print "\nImporting legacy specials"
-        #import_blog_category (L.Especial)
+        import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "\nImporting legacy your photos"
-        import_yourphotos()
+        #import_yourphotos()
 
         print "\nImporting legacy your videos"
         #import_yourvideos()
