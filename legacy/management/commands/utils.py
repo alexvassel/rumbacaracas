@@ -158,8 +158,7 @@ def compile_news_content (content, subtitle, additional_image, youtube_url):
         content +=  '<p><img src="%s" /></p>' % (additional_image.image.url,)
 
     if youtube_url:
-        tmp_content =  youtube(youtube_url)
-        content = tmp_content + content
+        content += youtube(youtube_url)
 
     return content
 
@@ -225,12 +224,12 @@ def youtube(url):
     if not match: return ""
     video_id = match.group('id')
     return """
-    <object width="425" height="344">
-    <param name="movie" value="http://www.youtube.com/watch/v/%s"></param>
-    <param name="allowFullScreen" value="true"></param>
-    <embed src="http://www.youtube.com/watch/v/%s" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed>
-    </object>
     <br />
+    <object width="425" height="344">
+    <param name="movie" value="http://www.youtube.com/v/%s"></param>
+    <param name="allowFullScreen" value="true"></param>
+    <embed src="http://www.youtube.com/v/%s" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed>
+    </object>
     """ % (video_id, video_id)
 
 

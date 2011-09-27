@@ -92,9 +92,9 @@ def import_yourphotos ():
 
     wrong_ids = list()
 
-    prog = ProgressBar(0, len(oldphotos[0:50]), mode='fixed')
+    prog = ProgressBar(0, len(oldphotos[0:100]), mode='fixed')
 
-    for oldphoto in oldphotos[0:50]:
+    for oldphoto in oldphotos[0:100]:
 
         prog.increment_amount()
         print prog, '\r',
@@ -270,7 +270,7 @@ def import_blog_category (table):
     wrong_ids = list()
 
     prog = ProgressBar(0, len(oldarticles), mode='fixed')
-    for oldarticle in oldarticles[:50]:
+    for oldarticle in oldarticles:
 
         prog.increment_amount()
         print prog, '\r',
@@ -469,7 +469,7 @@ def import_people ():
     wrong_locations = list()
     all_locations = list()
 
-    for oldevent in oldevents[0:10]:
+    for oldevent in oldevents[0:50]:
 
         try:
 
@@ -612,30 +612,27 @@ class Command( NoArgsCommand ):
         Read data from legacy db to new db.
         """
         print datetime.now()
+        allstart = datetime.now()
 
 
         print "\n"
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        #import_users()
-
+        import_users()
 
         #print "Importing legacy subscriptions"
         #import_subscriptions()
 
-
-
-
         print "\nImporting legacy locations"
-        #import_locations()
+        import_locations()
 
         print "\nImporting legacy events"
-        #import_events()
+        import_events()
 
         pstart =  datetime.now()
         print "\nImporting legacy people"
-        #import_people()
+        import_people()
         #reimport_people_locations()
         pend =  datetime.now()
 
@@ -654,11 +651,22 @@ class Command( NoArgsCommand ):
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "\nImporting legacy your photos"
-        #import_yourphotos()
+        tstart =  datetime.now()
+        import_yourphotos()
+        tend =  datetime.now()
 
         print "\nImporting legacy your videos"
-        #import_yourvideos()
+        import_yourvideos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()
         print "\n"
+
+        allend = datetime.now()
+
+        print "Peoples for 50: ",pstart,pend
+        print "\n"
+        print "Tus fotos for 100: ", tstart, tend
+        print "\n"
+        print "All time: ",allstart,allend
+
