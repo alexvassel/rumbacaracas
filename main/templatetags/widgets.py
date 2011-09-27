@@ -133,7 +133,7 @@ def get_last_day_of_month(year, month):
 
 
 @register.inclusion_tag('widgets/calendar.html')
-def month_cal(year=None, month=None):
+def month_cal_dyn(year=None, month=None):
 
     today = datetime.today()
 
@@ -188,3 +188,7 @@ def month_cal(year=None, month=None):
 
     return {'calendar': month_cal, 'headers': week_headers, 'first_day_of_month': first_day_of_month }
 
+
+@register.inclusion_tag('widgets/calendar.html')
+def month_cal(year=None, month=None):
+    return dict()
