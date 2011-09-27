@@ -109,6 +109,8 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
+
+APPLICATION_ROOT = '/web/apps/rumbacaracas/'
 COMPRESS_ROOT        = "/web/apps/rumbacaracas/static/"
 STATIC_ROOT          = COMPRESS_ROOT
 COMPRESS_URL         = "http://s3.amazonaws.com/rumbacaracas.com/static/"
