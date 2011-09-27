@@ -9,7 +9,7 @@ class CustomCssAbsoluteFilter(CssAbsoluteFilter):
 
     def input(self, filename=None, basename=None, **kwargs):
         if filename is not None:
-            filename = os.path.normcase(os.path.abspath(filename))
+            filename = os.path.normcase(os.path.abspath(os.path.join(settings.APPLICATION_ROOT, filename)))
         if (not (filename and filename.startswith(self.root)) and
                 not self.find(basename)):
             return self.content
