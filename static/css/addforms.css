@@ -1,0 +1,347 @@
+.formset {
+	padding: 20px 0 20px;
+	border-bottom: 1px dotted #9F9F9F;
+}
+.formelement_wrap {
+	padding: 5px 0 0
+}
+.formelement_wrap ul{
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.label_wrap {
+	width: 160px;
+	float: left;
+	margin: 0 0 0 20px;
+	line-height: 28px;
+	color: #666666;
+	font-size: 14px;
+}
+.label_wrap label{
+	color: #666666;
+	font-size: 14px;
+}
+.formelement input{
+	width: 393px;
+	margin-left: 2px;
+}
+.formelement {
+	display: block;
+	float: right;
+	width: 400px;
+	margin-right: 20px
+}
+.formbtns {
+	padding: 30px 0 30px;
+	text-align: center;
+}
+.addphotohdr {
+	padding-left: 35px;
+	background: transparent url("/media/images/sprites/sprites_social_1.gif") no-repeat scroll 0 -427px;	
+}
+
+
+
+.addvideohdr {
+	padding-left: 35px;
+	background: transparent url("/media/images/icons/video.jpg") no-repeat scroll 0 3px;	
+}
+
+.addeventhdr {
+	padding-left: 35px;
+	background: transparent url("/media/images/icons/event.jpg") no-repeat scroll 0 3px;	
+}
+.addlocationhdr {
+	padding-left: 35px;
+	background: transparent url("/media/images/icons/food.jpg") no-repeat scroll 0 3px;
+}
+
+.addnewshdr {
+	padding-left: 35px;
+	background: transparent url("/media/images/icons/news.jpg") no-repeat scroll 0 3px;
+}
+
+.addbloghdr {
+	padding-left: 35px;
+	background: transparent url("/media/images/icons/article.jpg") no-repeat scroll 0 3px;
+}
+
+
+
+
+
+.errorlist {
+	color: #666666;
+}
+
+
+#add-form .phone input {
+	width: 70% !important;
+}
+
+#add-form .calendar {
+	display: block;
+}
+
+#add-form .calendar input {
+    width: 84% !important;
+}
+
+#add-form .calendar img {
+    cursor: pointer;
+    float: right;
+}
+
+#add-form table
+{
+  border-collapse  :  collapse;
+  border-spacing   :  0;
+  table-layout     :  fixed;  
+
+  font-family      :  arial, verdana, sans-serif;
+  font-size        :  13px;
+  color            :  #666666;
+}
+
+#add-form td,#add-form  div
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-size    :  13px;
+  color        :  #666666;
+  padding: 7px !important;
+}
+
+#add-form h1
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-weight  :  normal;
+  font-size    :  19px;
+  color        :  #f06000;
+   
+  line-height  :  32px;
+  padding      :  0px;  
+  margin       :  0px;
+}
+
+#add-form h1 img
+{
+  float         :  left;
+  margin-right  :  10px;
+}
+
+#add-form h2
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-weight  :  bold;
+  font-size    :  17px !important;
+  color        :  #666666 !important;
+  
+  padding      :  0px;
+  margin       :  0px 0px 8px 0px !important;
+}
+
+#add-form h2.red
+{
+  color  :  #f06000 !important;
+}
+
+#add-form h3
+{
+  font-family  :  Calibri, arial, verdana, sans-serif;
+  font-weight  :  bold;
+  font-size    :  15px;
+  color        :  #666666;
+  
+  padding      :  5px 0px 5px 8px;
+  margin       :  0px 0px 8px 0px;
+  background   :  #f3f3f3;
+  border-left  :  solid 5px #cccccc;
+}
+
+#add-form h4
+{
+  font-family    :  arial, verdana, sans-serif;
+  font-weight    :  bold;
+  font-size      :  12px;
+  color          :  #444444;
+  
+  padding        :  0px 0px 2px 0px;
+  margin         :  0px 0px 5px 0px;
+  border-bottom  :  solid 1px #666666;
+}
+
+#add-form a
+{
+  font-family      :  arial, verdana, sans-serif;
+  font-size        :  13px;
+  color            :  #f06000;
+   
+  text-decoration  :  none;
+}
+  
+#add-form a:hover
+{
+  font-family      :  arial, verdana, sans-serif;
+  font-size        :  13px;
+  color            :  #333333;
+   
+  text-decoration  :  underline;
+}
+
+
+#add-form hr
+{
+  border-top     :  dotted 1px #888888;
+  border-left    :  solid 1px #ffffff;
+  border-right   :  solid 1px #ffffff;
+  border-bottom  :  dotted 1px #ffffff;
+  padding        :  0px;
+  margin         :  15px 0px 15px 0px;
+  font-size      :  1px;
+}
+
+
+#add-form .br5
+{
+  clear        :  both;
+  padding      :  0px;
+  margin       :  0px;
+  font-size    :  1px;
+  height       :  5px;
+  line-height  :  5px;
+  overflow     :  hidden;
+}
+
+#add-form .br10
+{
+  clear        :  both;
+  padding      :  0px !important;
+  margin       :  0px;
+  font-size    :  1px;
+  height       :  10px;
+  line-height  :  10px;
+  overflow     :  hidden;
+}
+
+
+#add-form form
+{
+  margin  :  0px;  
+}
+
+#add-form label
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-size    :  16px;
+  color        :  #666666;
+}
+
+span.citytext {
+    font-family  :  arial, verdana, sans-serif;
+    font-size    :  16px;
+    color        :  #666666;
+}
+
+
+#add-form input.textbox, #add-form select, #add-form textarea, #add-form .textbox input
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-size    :  16px;
+  color        :  #666666;
+  
+  padding      :  5px;
+  background   :  #f5f5f5;
+  border       :  solid 1px #cccccc;
+  width        :  97%;
+}
+
+#add-form select option {
+	font-size    :  16px;
+	font-family  :  arial, verdana, sans-serif;
+}
+#add-form select
+{
+  width  :  auto;
+  max-width: 324px;
+}
+
+#add-form textarea
+{
+  min-height  :  50px;
+}
+
+#add-form input.file, #add-form .file input
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-size    :  16px;
+  color        :  #666666;
+  
+  padding      :  5px;
+  background   :  #f5f5f5;
+  border       :  solid 1px #cccccc;
+  width        :  100%;
+}
+
+#add-form input.button
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-size    :  17px;
+  font-weight  :  normal;
+  color        :  #ffffff;
+  
+  padding      :  7px;
+  background   :  #f06000;
+  border       :  solid 1px #f06000;
+  cursor       :  pointer;
+  min-width    :  90px;
+}
+
+
+#add-form .mandatory
+{
+  font-family  :  arial, verdana, sans-serif;
+  font-size    :  18px;
+  font-weight  :  bold;
+  color        :  #f06000;
+}
+
+#add-form .space
+{
+  padding-left  :  10px;
+}
+
+
+#add-form .photoThumb
+{
+  background  :  #000000;
+  position    :  relative;
+  width       :  109px;
+  height      :  109px;
+  padding: 0 !important;
+}
+
+#add-form .photoThumb:hover
+{
+  background  :  #f06000;
+}
+
+#add-form .photoThumb .pic {
+    padding: 0 !important;
+}
+#add-form .photoThumb .pic img
+{
+  margin  :  1px;
+  width   :  107px;
+  height  :  107px;  
+}
+
+#add-form .photoThumb .close
+{
+  position  :  absolute;
+  right     :  0px;
+  top       :  0px;
+  width     :  15px;
+  height    :  15px;  
+  cursor    :  pointer;
+  padding: 0 !important;
+}
