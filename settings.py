@@ -54,7 +54,9 @@ MEDIA_URL = '/media/'
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 #ADMIN_MEDIA_PREFIX = '/admin-media/'
-ADMIN_MEDIA_PREFIX = MEDIA_URL + "grappelli/"
+#ADMIN_MEDIA_PREFIX = MEDIA_URL + "grappelli/"
+
+ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'xk(sgv%96^$2)1h_c#^vx0svfqufou8)-8#^2n6nn590sw(a)3'
