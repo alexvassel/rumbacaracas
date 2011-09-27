@@ -1,5 +1,6 @@
 {% extends "static/static_base.html" %}
 {% load i18n %}
+{% load tools %}
 {% block title %}{% trans "About Us Partners" %}{% endblock %}
 {% block breadcrumbs %}
     <a href="/">{% trans "Home" %}</a>
@@ -26,7 +27,7 @@
                                 <div class="wrapper encap nbpad">
                                     <div class="encap mb10">
                                         <a href="http://freakycolectivo.blogspot.com" target="_blank" class="redBold">Freaky Friday</a><br />
-                                        <div class="alianzas-thumb"><a href="http://freakycolectivo.blogspot.com/" target="_blank"><img src="{{ STATIC_URL }}images/alianzas/freaky-friday.jpg" alt="Rumba" /></a></div>
+                                        <div class="alianzas-thumb"><a href="http://freakycolectivo.blogspot.com/" target="_blank"><img src="{% value_from_settings "STATIC_URL" %}images/alianzas/freaky-friday.jpg" alt="Rumba" /></a></div>
                                         <p>Es un   colectivo que reúne artistas visuales y dj´s  con el propósito de generar   espacios para interacción de experiencias sonoras y visuales con el público,   además de crear un circuito de fiestas mensuales, en donde se explora lo último   en música urbana, sobre todo, sonidos afros, como: cumbia, hip hop, dance hall,   reggae, crunk, tropical bass, dub, mash up, entre otros. </p>
                                         <p><a href="http://freakycolectivo.blogspot.com/" target="_blank"><span lang="EN-US" xml:lang="EN-US">http://freakycolectivo.blogspot.com/</span></a><span lang="EN-US" xml:lang="EN-US"></span></p>
                                         <p><span lang="EN-US" xml:lang="EN-US"> </span></p>
@@ -37,7 +38,7 @@
                                 <div class="wrapper encap nbpad">
                                     <div class="encap mb10">
                                         <a href="http://loop-live.com/" class="redBold" target="_blank">Loop - Live</a><br />
-                                        <div class="alianzas-thumb"><a href="http://loop-live.com/" target="_blank"><img src="{{ STATIC_URL }}images/alianzas/loop-live.jpg" alt="Rumba" /></a></div>
+                                        <div class="alianzas-thumb"><a href="http://loop-live.com/" target="_blank"><img src="{% value_from_settings "STATIC_URL" %}images/alianzas/loop-live.jpg" alt="Rumba" /></a></div>
                                         <p><strong><span lang="EN-US" xml:lang="EN-US">Loop – Live</span></strong></p>
                                         <p>Es   una empresa proveedora de servicios relacionados con el sector musical y la   activación de marca. Sus clientes son compañías medianas y grandes de la   industrias del entretenimiento, los deportes, las artes y la   tecnología.<br />
                                             LOOP-LIVE, maximiza sus recursos tecnológicos y   conocimiento en la industria musical y del entretenimiento para proporcionar   eficiencia creciente y una ventaja competitiva.</p>

@@ -356,11 +356,11 @@
 			}
         })
         $('.locales-image-teaser a.image').lightBox({
-			imageLoading: '{{ STATIC_URL }}images/lightbox-ico-loading.gif',
-			imageBtnClose: '{{ STATIC_URL }}images/lightbox-btn-close.gif',
-			imageBtnPrev: '{{ STATIC_URL }}images/lightbox-btn-prev.gif',
-			imageBtnNext: '{{ STATIC_URL }}images/lightbox-btn-next.gif',
-			imageBlank: '{{ STATIC_URL }}images/lightbox-blank.gif'
+			imageLoading: '{% value_from_settings "STATIC_URL" %}images/lightbox-ico-loading.gif',
+			imageBtnClose: '{% value_from_settings "STATIC_URL" %}images/lightbox-btn-close.gif',
+			imageBtnPrev: '{% value_from_settings "STATIC_URL" %}images/lightbox-btn-prev.gif',
+			imageBtnNext: '{% value_from_settings "STATIC_URL" %}images/lightbox-btn-next.gif',
+			imageBlank: '{% value_from_settings "STATIC_URL" %}images/lightbox-blank.gif'
 		}); 
 	})
 	

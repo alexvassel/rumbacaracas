@@ -1,5 +1,6 @@
 {% extends "static/static_base.html" %}
 {% load i18n %}
+{% load tools %}
 {% block title %}{% trans "About Us Notebook" %}{% endblock %}
 {% block breadcrumbs %}
     <a href="/">{% trans "Home" %}</a>
@@ -223,7 +224,7 @@
     </div>
 
     <br />
-    <div><a href="#"><img src="{{ STATIC_URL }}images/nosotros/cuaderno.jpg" alt="Rumba" /></a></div>
+    <div><a href="#"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/cuaderno.jpg" alt="Rumba" /></a></div>
     <br />
     <b>* Tamaños listados sin sangrado. Los artes de los avisos deben tener un mínimo de 3 mm. de sangrado.</b><br />
     <br />
@@ -240,9 +241,9 @@
 
         <h3 class="red">Los Cuadernos</h3>
 
-        <div><a href="#"><img src="{{ STATIC_URL }}images/nosotros/cuaderno-1.jpg" alt="Rumba" /></a></div>
+        <div><a href="#"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/cuaderno-1.jpg" alt="Rumba" /></a></div>
         <br />
-        <div><a href="#"><img src="{{ STATIC_URL }}images/nosotros/cuaderno-2.jpg" alt="Rumba" /></a></div>
+        <div><a href="#"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/cuaderno-2.jpg" alt="Rumba" /></a></div>
         <br />
         <a hrefmailto:ventas@rumbacaracas.com" class="read-more-red">Ver más Cuadernos</a><br />
         <br />

@@ -1,4 +1,6 @@
 {% load i18n %}
+{% load tools %}
+
 <div class="box-title">
      <h2  style="top: 5px">{% trans "Events for the month" %}</h2>
 </div>
@@ -8,7 +10,7 @@
     <div class="feed-icon">
         <div style="text-align: left;">
             <a title="ical" class="ical-icon" href="{% url event_calendar %}">
-                <img title="{% trans "Expand CALENDAR" %}" alt="{% trans "Expand CALENDAR" %}" src="{{ STATIC_URL }}images/sprites/browse-calendar.gif">
+                <img title="{% trans "Expand CALENDAR" %}" alt="{% trans "Expand CALENDAR" %}" src="{% value_from_settings "STATIC_URL" %}images/sprites/browse-calendar.gif">
                 {% trans "Expand CALENDAR" %}
             </a></div>
     </div>

@@ -9,11 +9,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Rumbacaracas.com</title>
     <link rel="shortcut icon" href="/favicon.ico">
-    <link href="{{ STATIC_URL }}css/base.css" rel="stylesheet" type="text/css" media="screen, projection">
-    <link href="{{ STATIC_URL }}style.css" rel="stylesheet" type="text/css" media="screen, projection">
-    <link href="{{ STATIC_URL }}css/addforms.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <link href="{% value_from_settings "STATIC_URL" %}css/base.css" rel="stylesheet" type="text/css" media="screen, projection">
+    <link href="{% value_from_settings "STATIC_URL" %}style.css" rel="stylesheet" type="text/css" media="screen, projection">
+    <link href="{% value_from_settings "STATIC_URL" %}css/addforms.css" rel="stylesheet" type="text/css" media="screen, projection" />
 
-    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript" src="{% value_from_settings "STATIC_URL" %}js/jquery-1.5.1.min.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function() {
@@ -48,7 +48,7 @@
         }
 
         input.btnfacebook {
-            background: url({{ STATIC_URL }}images/facebook.png) no-repeat scroll;
+            background: url({% value_from_settings "STATIC_URL" %}images/facebook.png) no-repeat scroll;
             width: 126px;
             margin-top: 8px;
             margin-right: 5px;
@@ -58,7 +58,7 @@
         #main-contents #col-left .node-container .title-wrap ul li a.publish-event
         {
             width: 210px !important;
-            background: url("{{ STATIC_URL }}images/icons/event.jpg") no-repeat scroll 215px 3px transparent;
+            background: url("{% value_from_settings "STATIC_URL" %}images/icons/event.jpg") no-repeat scroll 215px 3px transparent;
         }
 
         .flash_message
@@ -112,7 +112,7 @@
         <div id="header-tertiary" class="header-tertiary encap">
             <div class="rumba-logo outnone c25l">
                 <h1>
-                    <a href="/" title="Rumbacaracas Inicio"><img src="{{ STATIC_URL }}images/rb_logo.png" alt="Rumbacaracas.com"></a>
+                    <a href="/" title="Rumbacaracas Inicio"><img src="{% value_from_settings "STATIC_URL" %}images/rb_logo.png" alt="Rumbacaracas.com"></a>
                     <span>El sitio de todas las rumbas</span>
                 </h1>
             </div>

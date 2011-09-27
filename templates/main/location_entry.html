@@ -7,7 +7,7 @@
             {% if object.image_logo %}
                 <img src="{{ object.blogthumb.url }}" alt="{{ object.title }}" />
             {% else %}
-                <img src="{{ STATIC_URL }}s.gif" alt="{{ object.title }}" width=228 height=168/>
+                <img src="{% value_from_settings "STATIC_URL" %}s.gif" alt="{{ object.title }}" width=228 height=168/>
             {% endif %}
         </a></dt>
     <dd class="c60r">

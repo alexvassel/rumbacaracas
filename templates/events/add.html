@@ -10,7 +10,7 @@
 
     <span class="flt-left"><h2 class="title addeventhdr">{% trans "Add Event"%}</h2></span>
     <span class="flt-right">
-	  <img src="{{ STATIC_URL }}images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
+	  <img src="{% value_from_settings "STATIC_URL" %}images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
       <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
       </ul>
     </span>
@@ -186,7 +186,7 @@
         //Changed format
 		$(".calendar input").datepicker({ 
 			showOn          : "button",
-			buttonImage     : "{{ STATIC_URL }}images/icons/calendar.jpg",
+			buttonImage     : "{% value_from_settings "STATIC_URL" %}images/icons/calendar.jpg",
 			buttonImageOnly : true,
 			dateFormat      : "dd/mm/yy"
 		});
