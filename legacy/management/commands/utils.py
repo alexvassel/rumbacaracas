@@ -77,7 +77,7 @@ def parse_city_area (value):
 
     }[unicode(value).strip()]
 
-    city = 'caracas'
+    city = 'Caracas'
     if result in (37,38):
         city = 'Litoral'
     if result in (39,40, 41):

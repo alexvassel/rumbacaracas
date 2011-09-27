@@ -43,28 +43,25 @@ DEBUG=True
 #LANGUAGE_CODE = 'es'
 
 CACHES = {
-    'dummy': {
+    'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         'LOCATION': '127.0.0.1:11211',
         'KEY_PREFIX': 'rumbacar',
     },
-    'default': {
+    'dummy': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     }
 }
 
-
 FACEBOOK_APP_ID = '148108908569986'
 FACEBOOK_API_KEY = FACEBOOK_APP_ID #'15d12186d338568b8b5634e27aafb7cd'
 FACEBOOK_SECRET_KEY = '56fa7f47fe58a05ba2659f812c11f7d4'
-
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
     'django.template.loaders.eggs.Loader',
  )
-
 
 # Amazon S3 configs
 DEFAULT_FILE_STORAGE = 'cuddlybuddly.storage.s3.S3Storage'
@@ -92,7 +89,7 @@ from cuddlybuddly.storage.s3 import CallingFormat
 AWS_CALLING_FORMAT = CallingFormat.PATH
 
 CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.DjangoCache'
-CUDDLYBUDDLY_STORAGE_S3_CACHE_BACKEND = 'storage'
+CUDDLYBUDDLY_STORAGE_S3_CACHE_BACKEND = 'default'
 CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
 
 MEDIA_URL = 'http://s3.amazonaws.com/rumba_test/'
@@ -109,7 +106,6 @@ STATIC_ROOT          = COMPRESS_ROOT
 COMPRESS_URL         = "http://s3.amazonaws.com/rumba_test/static/"
 STATIC_URL           = COMPRESS_URL
 STATICFILES_STORAGE  = DEFAULT_FILE_STORAGE
-COMPRESS_AUTO        = False
 COMPRESS_OUTPUT_DIR  = 'CACHE'
 
 COMPRESS_YUI_BINARY  = 'java -jar /www/rumba/rumbacaracas/yuicompressor-2.4.6.jar'
