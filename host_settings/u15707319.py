@@ -74,7 +74,7 @@ AWS_STORAGE_BUCKET_NAME = 'rumbacaracas.com'
 from django.utils.http import  http_date
 from time import time
 
-1AWS_HEADERS = [
+_AWS_HEADERS = [
     ('^private/', {
         'x-amz-acl': 'private',
         'Expires': 'Thu, 15 Apr 2000 20:00:00 GMT',
@@ -88,10 +88,10 @@ from time import time
 ]
 
 from cuddlybuddly.storage.s3 import CallingFormat
-1AWS_CALLING_FORMAT = CallingFormat.PATH
+_AWS_CALLING_FORMAT = CallingFormat.PATH
 
-1CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.DjangoCache'
-1CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
+_CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.DjangoCache'
+_CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
 
-1MEDIA_URL = 'https://s3.amazonaws.com/rumbacaracas.com/'
+_MEDIA_URL = 'https://s3.amazonaws.com/rumbacaracas.com/'
 
