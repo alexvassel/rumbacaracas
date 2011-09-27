@@ -478,7 +478,7 @@ def multi_peoples():
             #TODO Carefully import locations
             #TODO Import second date
 
-            prog = ProgressBar(0, len(oldevents[0:50]), mode='fixed')
+            prog = ProgressBar(0, len(oldevents[0:100]), mode='fixed')
             wrong_locations = list()
             all_locations = list()
 
@@ -623,7 +623,7 @@ def multi_peoples():
                 t.start()
 
             #populate queue with data
-            for oldevent in oldevents[0:50]:
+            for oldevent in oldevents[0:100]:
                 queue.put( oldevent )
         except Exception:
             traceback.print_exc()
