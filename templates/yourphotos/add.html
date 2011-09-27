@@ -10,7 +10,7 @@
 
     <span class="flt-left"><h2 class="title addphotohdr">{% trans "Add Photos"%}</h2></span>
     <span class="flt-right">
-	  <img src="/media/images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
+	  <img src="{{ MEDIA_URL }}images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
       <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
       </ul>
     </span>
@@ -81,7 +81,7 @@
 		      <td width="123">
 		        <div class="photoThumb">
 		          <div class="pic"><img src="{{newphoto.thumbnail.url}}" width="107" height="107" alt="{{newphoto.description}}" title="{{newphoto.description}}" /></div>
-		          <div class="close"><a class="delete-photo" href="{% url yourphoto_delete newphoto.id%}"><img src="/media/images/close.jpg" width="15" height="15" alt="{% trans "Delete"%}" title="{% trans "Delete"%}" /></a></div>
+		          <div class="close"><a class="delete-photo" href="{% url yourphoto_delete newphoto.id%}"><img src="{{ MEDIA_URL }}images/close.jpg" width="15" height="15" alt="{% trans "Delete"%}" title="{% trans "Delete"%}" /></a></div>
 		        </div>
 		      </td>
 				{% if not forloop.last%}

@@ -176,7 +176,7 @@
                       	<div {% if active_tab == "music" %}style="display: block"{% endif %} class="pointer-tip"></div>
                       </li>
                       <li{% if active_tab == "calendar" %} class="active"{% endif %}>
-                      	<a href="{% url event_calendar %}#eventos-anclaje"><img class="search-calendar" alt="{% trans "Calendar"%}" src="/media/images/blank.gif" />{% trans "Calendar"%}</a>
+                      	<a href="{% url event_calendar %}#eventos-anclaje"><img class="search-calendar" alt="{% trans "Calendar"%}" src="{{ MEDIA_URL }}images/blank.gif" />{% trans "Calendar"%}</a>
                       	<div {% if active_tab == "calendar" %}style="display: block"{% endif %} class="pointer-tip"></div>
                       </li>
                     </ul>

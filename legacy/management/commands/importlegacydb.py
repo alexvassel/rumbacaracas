@@ -455,6 +455,184 @@ def reimport_people_locations ():
         except Exception, e:
             print e
 
+
+
+CRAWL_THREADS = 3
+
+def multi_peoples():
+    import time
+    import Queue
+    import threading
+    import traceback
+
+    try:
+        import fcntl, sys, os, stat
+
+        try:
+
+
+            P.PhotoEvent.objects.all().delete()
+
+            oldevents = L.Fotos.objects.all().order_by('-fecha')
+
+            #TODO Carefully import locations
+            #TODO Import second date
+
+            prog = ProgressBar(0, len(oldevents[0:50]), mode='fixed')
+            wrong_locations = list()
+            all_locations = list()
+
+            class ThreadProcessPage( threading.Thread ):
+                """Threaded Url Parse"""
+                def __init__( self, queue ):
+                    threading.Thread.__init__( self )
+                    self.queue = queue
+
+                def run( self ):
+                    while True:
+                        oldevent = self.queue.get()
+                        try:
+                            prog.increment_amount()
+                            print prog, '\r',
+                            sys.stdout.flush()
+
+                            if oldevent.titulo:
+                                #oldevent = L.Fotos()
+
+                                eve_datetime_added = compile_date( oldevent.da, oldevent.ma, oldevent.aa ) or oldevent.fecha
+
+                                old_location = not_empty_or_null( oldevent.lugar )
+
+                                if oldevent.lugar:
+                                    try:
+                                        all_locations.append(int(oldevent.lugar))
+                                    except Exception, e:
+                                        all_locations.append(oldevent.lugar)
+
+
+                                if oldevent.lugar and not old_location:
+                                    try:
+                                        wrong_locations.append(int(oldevent.lugar))
+                                    except Exception, e:
+                                        wrong_locations.append(oldevent.lugar)
+
+                                event = P.PhotoEvent(
+                                            title = oldevent.titulo,
+                                            #slug = slugify( oldevent.titulo )[:50],
+
+                                            category = parse_people_category( oldevent.categoria ),
+                                            article = oldevent.resena,
+                                            location = old_location,
+                                            author = oldevent.reportero,
+                                            author_email = oldevent.email,
+                                            city = oldevent.ciudad,
+                                            status = 1,
+                                            datetime_added = eve_datetime_added
+                                          )
+
+                                event.slug = SlugifyUniquely(oldevent.titulo[:50], event.__class__)
+
+                                people_date = compile_date( oldevent.dia, oldevent.mes, oldevent.ano )
+                                if people_date:
+                                    event.date = people_date
+                                elif eve_datetime_added:
+                                    event.date = eve_datetime_added
+
+                                #TODO Investigate where main image is
+                                #ei_content = ContentFile( open( settings.FAKE_IMPORT_IMAGE, 'r' ).read() )
+
+                                import os
+
+                                main_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' +  oldevent.imagen_principal
+                                basename, extension = os.path.splitext(oldevent.imagen_principal)
+                                from PIL import Image
+
+                                #MEDIA_ROOT
+                                if extension == '.gif':
+                                    new_dir = settings.MEDIA_ROOT + '/image_cache/people_fotos_convert/' + oldevent.directorio + ''
+                                    new_file =  new_dir +  basename + '.jpg'
+                                    if not os.path.isdir(new_dir):
+                                        os.makedirs(new_dir)
+                                    Image.open(main_file).convert('RGB').save(new_file)
+                                    main_file = new_file
+                                    oldevent.imagen_principal = basename + '.jpg'
+
+                                if os.path.isfile(main_file):
+                                    ei_content = ContentFile( open( main_file, 'r' ).read() )
+                                    event.image.save( oldevent.imagen_principal, ei_content, save = False )
+
+                                event.save()
+
+                                if eve_datetime_added:
+                                    event.datetime_added = eve_datetime_added
+                                    event.save()
+
+                                #Then import images
+
+                                os.chdir( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio )
+
+                                images_list = list()
+
+                                legends_file = settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/resena.dat'
+                                if os.path.isfile(legends_file):
+                                    legends = open( legends_file, "r" ).readlines()
+                                else:
+                                    legends = list()
+
+                                fileencoding = "iso-8859-1"
+
+                                ulegends = list()
+                                for legend in legends:
+                                    ulegends.append(legend.decode(fileencoding))
+
+
+                                def byNumbers( str ):
+                                    g = re.search( r'_(\d+)\.jpg', str )
+                                    return int( g.group( 1 ) )
+
+                                thumb_list = sorted( glob.glob( '*_peq_*.jpg' ) , key = byNumbers )
+
+                                for thumb in thumb_list:
+                                    image_file = string.replace( thumb, '_peq_', '_big_' )
+                                    images_list.append( image_file )
+                                    legends.append ( '' )
+
+                                for photo in zip( ulegends, images_list, thumb_list ) :
+                                    p = P.Photo( description = photo[0][:256], event = event, datetime_added = event.datetime_added )
+
+                                    fi_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[1], 'r' ).read() )
+                                    ft_content = ContentFile( open( settings.OLDDATABOGOTA_PHOTO_PATH + 'fotos/pics/' + oldevent.directorio + '/' + photo[2], 'r' ).read() )
+
+                                    p.image.save( photo[1][-75:], fi_content, save = False )
+                                    p.thumb.save( photo[2][-75:], ft_content, save = False )
+
+                                    p.save()
+                                    p.datetime_added = event.datetime_added
+                                    p.save()
+
+                        except:
+                            traceback.print_exc()
+                        self.queue.task_done()
+
+            queue = Queue.Queue()
+            threadLock = threading.Lock()
+            #spawn a pool of threads, and pass them queue instance
+            for i in range( CRAWL_THREADS ):
+                t = ThreadProcessPage( queue )
+                t.setDaemon( True )
+                t.start()
+
+            #populate queue with data
+            for oldevent in oldevents[0:10]:
+                queue.put( oldevent )
+        except Exception:
+            traceback.print_exc()
+        #wait on the queue until everything has been processed
+        queue.join()
+        #prevent bug when not all threads was killed
+    except Exception:
+        traceback.print_exc()
+    time.sleep( 1 )
         
 def import_people ():
 
@@ -632,7 +810,8 @@ class Command( NoArgsCommand ):
 
         pstart =  datetime.now()
         print "\nImporting legacy people"
-        import_people()
+        #import_people()
+        multi_peoples()
         #reimport_people_locations()
         pend =  datetime.now()
 

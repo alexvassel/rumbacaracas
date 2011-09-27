@@ -6,7 +6,7 @@
 {% load openx %}
 {% load socialregistration_tags %}
 {% block colleft %}
-<link type="text/css" rel="stylesheet" href="/media/css/jquery-ui.css" />
+<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/jquery-ui.css" />
     <div class="node-container gente box-shadows encap">
   <div class="title-wrap encap">
     <span class="flt-left">
@@ -15,7 +15,7 @@
         </h2>
 	</span>
     <span class="flt-right">
-	  <img src="/media/images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
+	  <img src="{{ MEDIA_URL }}images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
       <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
       </ul>
     </span>
@@ -88,7 +88,7 @@
 		});
         $(".calendar input").datepicker({
 			showOn          : "button",
-			buttonImage     : "/media/images/icons/calendar.jpg",
+			buttonImage     : "{{ MEDIA_URL }}images/icons/calendar.jpg",
 			buttonImageOnly : true,
 			dateFormat      : "dd/mm/yy"
 		});

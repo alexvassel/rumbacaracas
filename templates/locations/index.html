@@ -329,7 +329,7 @@
 					header: 'a.accordion-title',
 			      	fillSpace: false,
 			      	navigation: true,
-			      	autoheight: true,
+			      	autoheight: true
 			    });
 			    jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion').accordion(
 			    	"activate", {{ active_group }}
@@ -356,11 +356,11 @@
 			}
         })
         $('.locales-image-teaser a.image').lightBox({
-			imageLoading: '/media/images/lightbox-ico-loading.gif',
-			imageBtnClose: '/media/images/lightbox-btn-close.gif',
-			imageBtnPrev: '/media/images/lightbox-btn-prev.gif',
-			imageBtnNext: '/media/images/lightbox-btn-next.gif',
-			imageBlank: '/media/images/lightbox-blank.gif'
+			imageLoading: '{{ MEDIA_URL }}images/lightbox-ico-loading.gif',
+			imageBtnClose: '{{ MEDIA_URL }}images/lightbox-btn-close.gif',
+			imageBtnPrev: '{{ MEDIA_URL }}images/lightbox-btn-prev.gif',
+			imageBtnNext: '{{ MEDIA_URL }}images/lightbox-btn-next.gif',
+			imageBlank: '{{ MEDIA_URL }}images/lightbox-blank.gif'
 		}); 
 	})
 	

@@ -99,3 +99,27 @@ CUDDLYBUDDLY_STORAGE_S3_CACHE_BACKEND = 'storage'
 CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
 
 MEDIA_URL = 'https://s3.amazonaws.com/rumba_test/'
+
+# Config compressor
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_ROOT        = "/home/maksim/Documents/Develop/rumbabogota/static/"
+STATIC_ROOT          = COMPRESS_ROOT
+COMPRESS_URL         = "http://s3.amazonaws.com/rumba_test/static/"
+STATIC_URL           = COMPRESS_URL
+STATICFILES_STORAGE  = DEFAULT_FILE_STORAGE
+COMPRESS_OUTPUT_DIR  = 'CACHE'
+
+COMPRESS_YUI_BINARY  = 'java -jar /home/maksim/Documents/Develop/rumbabogota/yuicompressor-2.4.6.jar'
+COMPRESS_CSS_FILTERS = ['main.compressor.filters.css_default.CustomCssAbsoluteFilter', 'compressor.filters.yui.YUICSSFilter']
+COMPRESS_JS_FILTERS  = ['compressor.filters.yui.YUIJSFilter']
+COMPRESS_STORAGE     = 'main.cuddlybuddly.storage.s3.storage.CustomS3Storage'
+
+COMPRESS_CSS_COMPRESSOR = 'main.compressor.css.CustomCssCompressor'
+COMPRESS_JS_COMPRESSOR = 'main.compressor.js.CustomJsCompressor'
+
+

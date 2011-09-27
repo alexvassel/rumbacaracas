@@ -174,6 +174,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
+    'django.core.context_processors.static',
     "django.contrib.messages.context_processors.messages",
     'django.core.context_processors.request',
     'zinnia.context_processors.version', # Optional
@@ -191,6 +192,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.sites',
+    'django.contrib.staticfiles',
     'tinymce',
     'socialregistration',
     'events',
@@ -213,6 +215,7 @@ INSTALLED_APPS = (
     'erumba',
     'storages',
     'cuddlybuddly.storage.s3',
+    'compressor',
     #'photologue',
     #'tagging',
     # Uncomment the next line to enable admin documentation:
