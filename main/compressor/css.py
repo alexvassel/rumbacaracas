@@ -36,3 +36,6 @@ class CustomCssCompressor(CssCompressor):
     def cachekey(self):
         return get_hexdigest(''.join(
             [self.content] + self.mtimes).encode(self.charset), 12)
+
+    def output(self, *args, **kwargs):
+        return super(CustomCssCompressor, self).output(*args, **kwargs)
