@@ -619,16 +619,16 @@ class Command( NoArgsCommand ):
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        import_users()
+        #import_users()
 
         #print "Importing legacy subscriptions"
         #import_subscriptions()
 
         print "\nImporting legacy locations"
-        import_locations()
+        #import_locations()
 
         print "\nImporting legacy events"
-        import_events()
+        #import_events()
 
         pstart =  datetime.now()
         print "\nImporting legacy people"
@@ -637,26 +637,26 @@ class Command( NoArgsCommand ):
         pend =  datetime.now()
 
         print "\nImporting legacy rumba news"
-        import_blog_category (L.RumbaNews)
+#        import_blog_category (L.RumbaNews)
 
         print "\nImporting legacy music news"
-        import_blog_category (L.MusicNews)
+        #import_blog_category (L.MusicNews)
 
         print "\nImporting legacy interviews"
-        import_blog_category (L.Entrevista)
+        #import_blog_category (L.Entrevista)
 
         print "\nImporting legacy specials"
-        import_blog_category (L.Especial)
+        #import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "\nImporting legacy your photos"
         tstart =  datetime.now()
-        import_yourphotos()
+        #import_yourphotos()
         tend =  datetime.now()
 
         print "\nImporting legacy your videos"
-        import_yourvideos()
+        #import_yourvideos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()
