@@ -457,7 +457,7 @@ def reimport_people_locations ():
 
 
 
-CRAWL_THREADS = 3
+CRAWL_THREADS = 5
 
 def multi_peoples():
     import time
