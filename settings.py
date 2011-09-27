@@ -86,7 +86,7 @@ MIDDLEWARE_CLASSES = (
     'breadcrumbs.middleware.BreadcrumbsMiddleware',
     #'debug_toolbar.middleware.DebugToolbarMiddleware',
     'socialregistration.middleware.FacebookMiddleware',
-    'profiler_middleware.ProfileMiddleware',
+    #'profiler_middleware.ProfileMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
  )
 
