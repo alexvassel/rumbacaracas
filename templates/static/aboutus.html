@@ -1,5 +1,6 @@
 {% extends "static/static_base.html" %}
 {% load i18n %}
+{% load tools %}
 {% block title %}{% trans "Rumbacaracas About Us" %}{% endblock %}
 {% block breadcrumbs %}
     <a href="/">{% trans "Home" %}</a>
@@ -36,7 +37,7 @@
                                 <div class="wrapper encap">
                                     <div class="encap mb10">
                                         <div class="rumba-icons c35l">
-                                            <a href="http://rumbacaracas.com"><img src="{{ STATIC_URL }}images/obsolete/Nosotros_03.jpg" alt="Rumba" /></a>                          </div><!--//.rumba-icons-->
+                                            <a href="http://rumbacaracas.com"><img src="{% value_from_settings "STATIC_URL" %}images/obsolete/Nosotros_03.jpg" alt="Rumba" /></a>                          </div><!--//.rumba-icons-->
                                         <div class="rumba-desc c65r">
                                             <p>Desde principios de 2009, comenzamos a posicionarnos como el medio pionero y líder del entretenimiento de los jóvenes de Caracas.</p>
                                         </div><!--//.rumba-desc-->
@@ -55,7 +56,7 @@
                                 <div class="wrapper encap">
                                     <div class="encap mb10">
                                         <div class="rumba-icons c35l">
-                                            <a href="http://www.rumbacaracas.com" target="_blank"><img src="{{ STATIC_URL }}images/obsolete/Nosotros_06.jpg" alt="Rumba" /></a>                          </div><!--//.rumba-icons-->
+                                            <a href="http://www.rumbacaracas.com" target="_blank"><img src="{% value_from_settings "STATIC_URL" %}images/obsolete/Nosotros_06.jpg" alt="Rumba" /></a>                          </div><!--//.rumba-icons-->
                                         <div class="rumba-desc c65r">
                                             <p>Desde finales de 1999, posicionado como el medio pionero y líder del entretenimiento de los jóvenes de Caracas.</p>
                                         </div><!--//.rumba-desc-->
@@ -72,7 +73,7 @@
                                 <div class="wrapper encap">
                                     <div class="encap mb10">
                                         <div class="rumba-icons c35l">
-                                            <a href="http://www.rumbavenezuela.com" target="_blank"><img src="{{ STATIC_URL }}images/obsolete/Nosotros_09.jpg" alt="Rumba" /></a>                          </div><!--//.rumba-icons-->
+                                            <a href="http://www.rumbavenezuela.com" target="_blank"><img src="{% value_from_settings "STATIC_URL" %}images/obsolete/Nosotros_09.jpg" alt="Rumba" /></a>                          </div><!--//.rumba-icons-->
                                         <div class="rumba-desc c65r">
                                             <p>Desde el 2005, posicionado como el medio pionero y líder del entretenimiento de los jóvenes de Venezuela.</p>
                                         </div><!--//.rumba-desc-->
@@ -88,7 +89,7 @@
                                 <div class="wrapper encap">
                                     <div class="encap mb10">
                                         <div class="rumba-icons c35l">
-                                            <a href="http://www.rumbamiami.com" target="_blank"><img src="{{ STATIC_URL }}images/obsolete/Nosotros_11.jpg" alt="Rumba" /></a>                          </div><!--//.rumba-icons-->
+                                            <a href="http://www.rumbamiami.com" target="_blank"><img src="{% value_from_settings "STATIC_URL" %}images/obsolete/Nosotros_11.jpg" alt="Rumba" /></a>                          </div><!--//.rumba-icons-->
                                         <div class="rumba-desc c65r">
                                             <p>Desde finales de 2003,   medio web y productora de eventos posicionado en el mercado latino del Sur de la Florida  </p>
                                         </div><!--//.rumba-desc-->

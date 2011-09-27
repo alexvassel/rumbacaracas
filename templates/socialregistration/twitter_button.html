@@ -1,9 +1,10 @@
 {% load twitter_tags socialregistration_tags %}
 {% load i18n %}
+{% load tools %}
 <form class="connect-button" name="login" method="post" action="{% url twitter_redirect %}">
 {% social_csrf_token %}
 {% if next %}
     <input type="hidden" name="next" value="{{ next }}" />
 {% endif %}
-<input type="image" class="btntwitter" src="{{ STATIC_URL }}images/s.gif" onclick="this.form.submit();" />
+<input type="image" class="btntwitter" src="{% value_from_settings "STATIC_URL" %}images/s.gif" onclick="this.form.submit();" />
 </form>

@@ -50,7 +50,7 @@ h4{
 	text-transform: uppercase !important;
 }
 </style>
-<table width="100%" cellpadding="0" cellspacing="0" background="{{ STATIC_URL }}images/bg_body.gif" style="padding: 25px 0 0 0;">
+<table width="100%" cellpadding="0" cellspacing="0" background="{% value_from_settings "STATIC_URL" %}images/bg_body.gif" style="padding: 25px 0 0 0;">
   <tr>
     <td>
       <table width="890px" align="center" cellpadding="0" cellspacing="0">
@@ -61,23 +61,23 @@ h4{
                     <tr>
                         {# Logo #}
                         <td width="270" rowspan="4">
-                          <img src="{{ STATIC_URL }}images/rb_logo.png" alt="newsletter logo" width="225px" height="119px" hspace="0" vspace="0" border="0" align="middle" style="display:block; margin-top: 30px;" />
+                          <img src="{% value_from_settings "STATIC_URL" %}images/rb_logo.png" alt="newsletter logo" width="225px" height="119px" hspace="0" vspace="0" border="0" align="middle" style="display:block; margin-top: 30px;" />
                         </td>
                     </tr>
                     <tr>
                         <td align="left" width="350" height="50px" style="font-size:48px; margin-top:20px;"> E-rumba&nbsp;<strong style="font-weight:bold; color:#F06000; font-size:12px;">Del {{ from_date|date:"d M" }} al {{ to_date|date:"d M" }}</strong> </td>
                         <td align="left" width="150" height="50px">&nbsp;</td>
-                        <td align="right" width="250" height="50px"><img src="{{ STATIC_URL }}images/abrir.jpg" alt="newsletter logo" width="199px" height="29px" hspace="0" vspace="0" border="0" align="middle" style="display:block; margin-top: 50px;" /></td>
+                        <td align="right" width="250" height="50px"><img src="{% value_from_settings "STATIC_URL" %}images/abrir.jpg" alt="newsletter logo" width="199px" height="29px" hspace="0" vspace="0" border="0" align="middle" style="display:block; margin-top: 50px;" /></td>
                     </tr>
                     <tr>
-                        <td colspan="3" height="30px"><img src="{{ STATIC_URL }}images/fade_bar.gif" alt="newsletter logo" height="6px" hspace="0" vspace="0" border="0" align="middle" style="display:block;" /> </td>
+                        <td colspan="3" height="30px"><img src="{% value_from_settings "STATIC_URL" %}images/fade_bar.gif" alt="newsletter logo" height="6px" hspace="0" vspace="0" border="0" align="middle" style="display:block;" /> </td>
                     </tr>
                     <tr>
                         <td colspan="3" height="25px">
                             <table align="center" cellpadding="0" cellspacing="0" border="0">
                                 <tr>
                                     <td width="300px" style="color:#3B5998; font-size:11px;" height="25px"  align="right" ><strong>rumbacaracas</strong> on Facebook </td>
-                                    <td width="100px" align="right"><img src="{{ STATIC_URL }}images/me.jpg" alt="newsletter logo" width="78px" height="23px" hspace="0" vspace="0" border="0" style="display:block;" /> </td>
+                                    <td width="100px" align="right"><img src="{% value_from_settings "STATIC_URL" %}images/me.jpg" alt="newsletter logo" width="78px" height="23px" hspace="0" vspace="0" border="0" style="display:block;" /> </td>
                                 </tr>
                             </table>
                         </td>

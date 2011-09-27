@@ -1,4 +1,5 @@
 {% load socialregistration_tags %}
+{% load tools %}
 {% comment %}
 <fb:login-button autologoutlink="true" perms="email,user_birthday,status_update,publish_stream"></fb:login-button>
 {% endcomment %}
@@ -8,5 +9,5 @@
 {% if next %}
     <input type="hidden" name="next" value="{{ next }}" />
 {% endif %}
-<input type="image" class="btnfacebook" onclick="facebookConnect(this.form);return false;" src="{{ STATIC_URL }}images/s.gif" />
+<input type="image" class="btnfacebook" onclick="facebookConnect(this.form);return false;" src="{% value_from_settings "STATIC_URL" %}images/s.gif" />
 </form>

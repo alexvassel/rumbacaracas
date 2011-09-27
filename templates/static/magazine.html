@@ -1,5 +1,6 @@
 {% extends "static/static_base.html" %}
 {% load i18n %}
+{% load tools %}
 {% block title %}{% trans "About Us Magazine" %}{% endblock %}
 {% block breadcrumbs %}
     <a href="/">{% trans "Home" %}</a>
@@ -214,7 +215,7 @@
     </div>
 
     <br />
-    <div><img src="{{ STATIC_URL }}images/nosotros/cuaderno.jpg" alt="Rumba" /></div>
+    <div><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/cuaderno.jpg" alt="Rumba" /></div>
     <br />
     <b>* Tamaños listados sin sangrado. Los artes de los avisos deben tener un mínimo de 3 mm. de sangrado.</b><br />
     <br />
@@ -230,22 +231,22 @@
 
         <h3 class="red">Los Cuadernos</h3>
 
-        <div><a href="{% url magazine_main %}"><img src="{{ STATIC_URL }}images/nosotros/cuaderno-1.jpg" alt="Rumba" /></a></div>
+        <div><a href="{% url magazine_main %}"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/cuaderno-1.jpg" alt="Rumba" /></a></div>
         <br />
-        <div><a href="{% url magazine_main %}"><img src="{{ STATIC_URL }}images/nosotros/cuaderno-2.jpg" alt="Rumba" /></a></div>
+        <div><a href="{% url magazine_main %}"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/cuaderno-2.jpg" alt="Rumba" /></a></div>
         <p><br />
             <a href="{% url magazine_main %}" class="read-more-red">Ver más Cuadernos</a><br />
         </p>
         <p>&nbsp;</p>
         <h3 class="red">Las Revistas</h3>
         <div>
-            <div><a href="{% url magazine_main %}"><img src="{{ STATIC_URL }}images/nosotros/impresa-1.jpg" alt="Rumba" /></a></div>
+            <div><a href="{% url magazine_main %}"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/impresa-1.jpg" alt="Rumba" /></a></div>
             <br />
-            <div><a href="{% url magazine_main %}"><img src="{{ STATIC_URL }}images/nosotros/impresa-2.jpg" alt="Rumba" /></a></div>
+            <div><a href="{% url magazine_main %}"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/impresa-2.jpg" alt="Rumba" /></a></div>
             <br />
-            <div><a href="{% url magazine_main %}"><img src="{{ STATIC_URL }}images/nosotros/impresa-3.jpg" alt="Rumba" /></a></div>
+            <div><a href="{% url magazine_main %}"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/impresa-3.jpg" alt="Rumba" /></a></div>
             <br />
-            <div><a href="{% url magazine_main %}"><img src="{{ STATIC_URL }}images/nosotros/impresa-4.jpg" alt="Rumba" /></a></div>
+            <div><a href="{% url magazine_main %}"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/impresa-4.jpg" alt="Rumba" /></a></div>
             <a href="{% url magazine_main %}" class="read-more-red">Ver más Revistas</a><br />
         </div>
         <p><br />

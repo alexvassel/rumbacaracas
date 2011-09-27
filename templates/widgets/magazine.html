@@ -1,7 +1,9 @@
 {% load i18n %}
+{% load tools %}
+
 <div id="print-guide" class="print-guide outnone">
   <div class="box-title"><h2>{% trans "Magazine" %}</h2></div>
   <div class="box-border box-contents box-shadows decou">
-  <a href="#"><img src="{{ STATIC_URL }}images/nosotros/cuaderno-1.jpg" width="145" height="149" class="quimby_search_image"></a></div>
+  <a href="#"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/cuaderno-1.jpg" width="145" height="149" class="quimby_search_image"></a></div>
   <!--//.box-contents-->
 </div>
