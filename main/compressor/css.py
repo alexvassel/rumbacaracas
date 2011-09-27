@@ -31,3 +31,8 @@ class CustomCssCompressor(CssCompressor):
         return [str(get_mtime(os.path.abspath(os.path.join(settings.APPLICATION_ROOT, value))))
                 for kind, value, basename, elem in self.split_contents()
                 if kind == SOURCE_FILE]
+
+    @cached_property
+    def cachekey(self):
+        return get_hexdigest(''.join(
+            [self.content] + self.mtimes).encode(self.charset), 12)
