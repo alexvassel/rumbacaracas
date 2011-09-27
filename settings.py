@@ -195,7 +195,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    'tinymce',
+    #'tinymce',
     'socialregistration',
     'events',
     'locations',
