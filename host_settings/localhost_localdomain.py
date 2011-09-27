@@ -45,12 +45,12 @@ DEBUG=True
 #LANGUAGE_CODE = 'es'
 
 CACHES = {
-    'default': {
+    'dummy': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         'LOCATION': '127.0.0.1:11211',
         'KEY_PREFIX': 'rumbacar',
     },
-    'dummy': {
+    'default': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     }
 }
@@ -103,6 +103,7 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
+COMPRESS_ENABLED     = False
 COMPRESS_ROOT        = "/www/rumba/rumbacaracas/static/"
 STATIC_ROOT          = COMPRESS_ROOT
 COMPRESS_URL         = "http://s3.amazonaws.com/rumba_test/static/"
