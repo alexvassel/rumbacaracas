@@ -124,3 +124,4 @@ COMPRESS_JS_FILTERS  = ['compressor.filters.yui.YUIJSFilter']
 COMPRESS_STORAGE     = 'main.cuddlybuddly.storage.s3.storage.CustomS3Storage'
 
 
+ADMIN_MEDIA_PREFIX = MEDIA_URL + "grappelli/"
