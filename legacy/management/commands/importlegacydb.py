@@ -623,7 +623,7 @@ def multi_peoples():
                 t.start()
 
             #populate queue with data
-            for oldevent in oldevents[0:10]:
+            for oldevent in oldevents[0:50]:
                 queue.put( oldevent )
         except Exception:
             traceback.print_exc()
