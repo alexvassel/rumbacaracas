@@ -100,7 +100,7 @@ AWS_CALLING_FORMAT = CallingFormat.PATH
 CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.DjangoCache'
 CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
 
-MEDIA_URL = 'https://s3.amazonaws.com/rumbacaracas.com/'
+MEDIA_URL = 'http://s3.amazonaws.com/rumbacaracas.com/'
 
 # Config compressor
 STATICFILES_FINDERS = (
