@@ -79,6 +79,7 @@ AWS_HEADERS = {
     'Expires': http_date(time() + 31556926),
     'Cache-Control': 'public, max-age=31556926'
 }
+AWS_S3_SECURE_URLS = False
 
 _AWS_HEADERS = [
     ('^private/', {
