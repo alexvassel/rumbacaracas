@@ -240,7 +240,7 @@
   <li><a href="{% url event_by_location %}#eventos-anclaje">{% trans "By Location" %}</a><div class="pointer-tip"></div></li>
   <li><a href="{% url event_by_area %}#eventos-anclaje">{% trans "By Area" %}</a><div class="pointer-tip"></div></li>
   <li><a href="{% url event_by_music %}#eventos-anclaje">{% trans "By Music" %}</a><div class="pointer-tip"></div></li>
-  <li><a href="{% url event_calendar %}#eventos-anclaje"><img class="search-calendar" alt="{% trans "Calendar"%}" src="/media/images/blank.gif" />{% trans "Calendar"%}</a><div class="pointer-tip"></div></li>
+  <li><a href="{% url event_calendar %}#eventos-anclaje"><img class="search-calendar" alt="{% trans "Calendar"%}" src="{{ MEDIA_URL }}images/blank.gif" />{% trans "Calendar"%}</a><div class="pointer-tip"></div></li>
 </ul>
   </div><!--//.outline-navigation-->
 </div><!--//#outline-briefs-->
@@ -276,11 +276,11 @@
 	    });
 
 		$('.event-image-teaser a.image').lightBox({
-			imageLoading: '/media/images/lightbox-ico-loading.gif',
-			imageBtnClose: '/media/images/lightbox-btn-close.gif',
-			imageBtnPrev: '/media/images/lightbox-btn-prev.gif',
-			imageBtnNext: '/media/images/lightbox-btn-next.gif',
-			imageBlank: '/media/images/lightbox-blank.gif'
+			imageLoading: '{{ MEDIA_URL }}images/lightbox-ico-loading.gif',
+			imageBtnClose: '{{ MEDIA_URL }}images/lightbox-btn-close.gif',
+			imageBtnPrev: '{{ MEDIA_URL }}images/lightbox-btn-prev.gif',
+			imageBtnNext: '{{ MEDIA_URL }}images/lightbox-btn-next.gif',
+			imageBlank: '{{ MEDIA_URL }}images/lightbox-blank.gif'
 		}); 
 	})
 </script>

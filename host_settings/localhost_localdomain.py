@@ -16,13 +16,11 @@ FULL_BASE_URL = 'http://localhost:8000/'
 
 MEDIA_ROOT = '/www/rumba/rumbacaracas/media'
 
-STATIC_DOC_ROOT = '/www/rumba/rumbacaracas/media'
+STATIC_DOC_ROOT = '/www/rumba/rumbacaracas/static/'
 
 LOCALE_PATHS = ( 
     '/www/rumba/rumbacaracas/locale/',
  )
-
-
 
 DATABASES = {
     'default': {
@@ -45,12 +43,12 @@ DEBUG=True
 #LANGUAGE_CODE = 'es'
 
 CACHES = {
-    'default': {
+    'dummy': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         'LOCATION': '127.0.0.1:11211',
         'KEY_PREFIX': 'rumbacar',
     },
-    'dummy': {
+    'default': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     }
 }
@@ -94,7 +92,27 @@ from cuddlybuddly.storage.s3 import CallingFormat
 AWS_CALLING_FORMAT = CallingFormat.PATH
 
 CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.DjangoCache'
-CUDDLYBUDDLY_STORAGE_S3_CACHE_BACKEND = 'default'
+CUDDLYBUDDLY_STORAGE_S3_CACHE_BACKEND = 'storage'
 CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
 
-MEDIA_URL = 'https://s3.amazonaws.com/rumba_test/'
+MEDIA_URL = 'http://s3.amazonaws.com/rumba_test/'
+
+# Config compressor
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_ROOT        = "/www/rumba/rumbacaracas/static/"
+STATIC_ROOT          = COMPRESS_ROOT
+COMPRESS_URL         = "http://s3.amazonaws.com/rumba_test/static/"
+STATIC_URL           = COMPRESS_URL
+STATICFILES_STORAGE  = DEFAULT_FILE_STORAGE
+COMPRESS_AUTO        = False
+COMPRESS_OUTPUT_DIR  = 'CACHE'
+
+COMPRESS_YUI_BINARY  = 'java -jar /www/rumba/rumbacaracas/yuicompressor-2.4.6.jar'
+COMPRESS_CSS_FILTERS = ['main.compressor.filters.css_default.CustomCssAbsoluteFilter', 'compressor.filters.yui.YUICSSFilter']
+COMPRESS_JS_FILTERS  = ['compressor.filters.yui.YUIJSFilter']
+COMPRESS_STORAGE     = 'main.cuddlybuddly.storage.s3.storage.CustomS3Storage'

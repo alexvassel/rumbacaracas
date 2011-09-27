@@ -46,6 +46,12 @@ LANGUAGE_CODE = 'es'
 
 DEBUG = True
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
 FACEBOOK_APP_ID = '134081330023149'
 FACEBOOK_API_KEY = FACEBOOK_APP_ID #'15d12186d338568b8b5634e27aafb7cd'
 FACEBOOK_SECRET_KEY = 'dca4424ae0cec25a25f4f6bb7818483a'
@@ -57,7 +63,52 @@ ISSUU_API_KEY = "3g5tlt235dhwzwu9lf8yveetczya50u0"
 ISSUU_API_SECRET = "0unbbypa2ck7ls8yjstzelyyssax2026"
 
 # Amazon S3 configs
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'cuddlybuddly.storage.s3.S3Storage'
 AWS_ACCESS_KEY_ID = 'AKIAJAVN6BXUTZ3VMAVA'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'rumba_test'
+
+from django.utils.http import  http_date
+from time import time
+
+AWS_HEADERS = [
+    ('^private/', {
+        'x-amz-acl': 'private',
+        'Expires': 'Thu, 15 Apr 2000 20:00:00 GMT',
+        'Cache-Control': 'private, max-age=0'
+    }),
+    ('.*', {
+        'x-amz-acl': 'public-read',
+        'Expires': http_date(time() + 31556926),
+        'Cache-Control': 'public, max-age=31556926'
+    })
+]
+
+from cuddlybuddly.storage.s3 import CallingFormat
+AWS_CALLING_FORMAT = CallingFormat.PATH
+
+CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.DjangoCache'
+CUDDLYBUDDLY_STORAGE_S3_CACHE_BACKEND = 'default'
+CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
+
+MEDIA_URL = 'http://s3.amazonaws.com/rumba_test/'
+
+# Config compressor
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_ROOT        = "/srv/vhosts/rumbacaracas/static/"
+STATIC_ROOT          = COMPRESS_ROOT
+COMPRESS_URL         = "http://s3.amazonaws.com/rumba_test/static/"
+STATIC_URL           = COMPRESS_URL
+STATICFILES_STORAGE  = DEFAULT_FILE_STORAGE
+COMPRESS_AUTO        = False
+COMPRESS_OUTPUT_DIR  = 'CACHE'
+
+COMPRESS_YUI_BINARY  = 'java -jar /srv/vhosts/rumbacaracas/yuicompressor-2.4.6.jar'
+COMPRESS_CSS_FILTERS = ['main.compressor.filters.css_default.CustomCssAbsoluteFilter', 'compressor.filters.yui.YUICSSFilter']
+COMPRESS_JS_FILTERS  = ['compressor.filters.yui.YUIJSFilter']
+COMPRESS_STORAGE     = 'main.cuddlybuddly.storage.s3.storage.CustomS3Storage'
