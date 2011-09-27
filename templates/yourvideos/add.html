@@ -11,7 +11,7 @@
 
     <span class="flt-left"><h2 class="title addvideohdr">{% trans "Add Videos"%}</h2></span>
     <span class="flt-right">
-	  <img src="{{ MEDIA_URL }}images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
+	  <img src="{{ STATIC_URL }}images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
       <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
       </ul>
     </span>
@@ -84,7 +84,7 @@
 		          <div class="pic">
 					<img width="107" height="107"  src="{{newvideo.youtube_id|youtube_img_from_id}}" alt="{{newvideo.description}}" title="{{newvideo.description}}" />
 				 </div>
-		          <div class="close"><a class="delete-photo" href="{% url video_delete newvideo.id%}"><img src="{{ MEDIA_URL }}images/close.jpg" width="15" height="15" alt="{% trans "Delete"%}" title="{% trans "Delete"%}" /></a></div>
+		          <div class="close"><a class="delete-photo" href="{% url video_delete newvideo.id%}"><img src="{{ STATIC_URL }}images/close.jpg" width="15" height="15" alt="{% trans "Delete"%}" title="{% trans "Delete"%}" /></a></div>
 		        </div>
 		      </td>
 				{% if not forloop.last%}
