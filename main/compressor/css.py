@@ -2,6 +2,9 @@ import os, codecs
 from django.conf import settings
 from compressor.css import CssCompressor
 from compressor.exceptions import UncompressableFileError
+from compressor.cache import get_hexdigest, get_mtime
+from compressor.utils.decorators import cached_property, memoize
+from compressor.base import SOURCE_FILE, SOURCE_HUNK
 
 class CustomCssCompressor(CssCompressor):
 
@@ -22,3 +25,9 @@ class CustomCssCompressor(CssCompressor):
                                               "processing '%s' with "
                                               "charset %s: %s" %
                                               (filename, charset, e))
+
+    @cached_property
+    def mtimes(self):
+        return [str(get_mtime(os.path.abspath(os.path.join(settings.APPLICATION_ROOT, value))))
+                for kind, value, basename, elem in self.split_contents()
+                if kind == SOURCE_FILE]
