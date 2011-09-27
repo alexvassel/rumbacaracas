@@ -11,6 +11,8 @@ OLDBOGOTA_PHOTO_PATH = '/srv/vhosts/oldbogota/processed'
 
 FULL_BASE_URL = 'http://213.33.244.154:89'
 
+APPLICATION_ROOT = '/srv/vhosts/rumbacaracas/'
+
 MEDIA_ROOT = '/srv/vhosts/rumbacaracas/media/'
 
 STATIC_DOC_ROOT = '/srv/vhosts/rumbacaracas/media/'
@@ -115,3 +117,6 @@ COMPRESS_YUI_BINARY  = 'java -jar /srv/vhosts/rumbacaracas/yuicompressor-2.4.6.j
 COMPRESS_CSS_FILTERS = ['main.compressor.filters.css_default.CustomCssAbsoluteFilter', 'compressor.filters.yui.YUICSSFilter']
 COMPRESS_JS_FILTERS  = ['compressor.filters.yui.YUIJSFilter']
 COMPRESS_STORAGE     = 'main.cuddlybuddly.storage.s3.storage.CustomS3Storage'
+
+COMPRESS_CSS_COMPRESSOR = 'main.compressor.css.CustomCssCompressor'
+COMPRESS_JS_COMPRESSOR  = 'main.compressor.js.CustomJsCompressor'

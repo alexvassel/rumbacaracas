@@ -14,6 +14,8 @@ FAKE_IMPORT_IMAGE = '/home/maksim/test_images/tst_imgs/1.jpg'
 
 FULL_BASE_URL = 'http://localhost:8000/'
 
+APPLICATION_ROOT = '/www/rumba/rumbacaracas/'
+
 MEDIA_ROOT = '/www/rumba/rumbacaracas/media'
 
 STATIC_DOC_ROOT = '/www/rumba/rumbacaracas/static/'
@@ -112,3 +114,6 @@ COMPRESS_YUI_BINARY  = 'java -jar /www/rumba/rumbacaracas/yuicompressor-2.4.6.ja
 COMPRESS_CSS_FILTERS = ['main.compressor.filters.css_default.CustomCssAbsoluteFilter', 'compressor.filters.yui.YUICSSFilter']
 COMPRESS_JS_FILTERS  = ['compressor.filters.yui.YUIJSFilter']
 COMPRESS_STORAGE     = 'main.cuddlybuddly.storage.s3.storage.CustomS3Storage'
+
+COMPRESS_CSS_COMPRESSOR = 'main.compressor.css.CustomCssCompressor'
+COMPRESS_JS_COMPRESSOR = 'main.compressor.js.CustomJsCompressor'
