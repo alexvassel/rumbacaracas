@@ -469,7 +469,7 @@ def import_people ():
     wrong_locations = list()
     all_locations = list()
 
-    for oldevent in oldevents[0:5]:
+    for oldevent in oldevents[0:50]:
 
         try:
 
