@@ -176,7 +176,7 @@ def import_finish ( request, event_id, folder ):
 
     queue.join()
 
-    shutil.rmtree( settings.OLDCARACAS_PHOTO_PATH + '/' + folder )
+    #shutil.rmtree( settings.OLDCARACAS_PHOTO_PATH + '/' + folder )
 
     return HttpResponseRedirect( '/admin/people/photoevent/%s' % ( event.id ) )
 
