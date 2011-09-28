@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from socialregistration.models import FacebookProfile
 from django.core.urlresolvers import reverse
 from decorators import upload_to_dest
+from main.modelFields import ImageRestrictedFileField
 
 class LocationType( models.Model ):
     title = models.CharField( _( 'Type of Venue/Club' ), max_length = 256 )
@@ -82,7 +83,7 @@ class Location( ImageModel ):
     days_of_operation = models.ManyToManyField( WeekDay , blank = True )
     area = models.ForeignKey( LocationArea , blank = True , null = True )
     music = models.ForeignKey( LocationMusic , blank = True , null = True )
-    image_logo = models.ImageField( _( 'Image logo' ), upload_to = upload_to_dest(format='uploads/locations/%Y/%m/%d') , blank = True )
+    image_logo = ImageRestrictedFileField( _( 'Image logo' ), upload_to = upload_to_dest(format='uploads/locations/%Y/%m/%d') , blank = True )
     description = models.TextField( _( 'Description' ) , blank = True )
     owner = models.CharField( _( 'Owner or manager' ), max_length = 256 , blank = True )
     contact_type = models.CharField( _( 'Contact Form' ), max_length = 256 , blank = True )

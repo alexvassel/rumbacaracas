@@ -4,11 +4,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from zinnia.models import Entry
 from zinnia.settings import UPLOAD_TO
+from main.modelFields import ImageRestrictedFileField
 
 class EntryImage( models.Model ):
     """Image Model"""
     entry = models.ForeignKey( Entry, verbose_name = _( 'entry' ) )
-    image = models.ImageField( _( 'Additional image' ), upload_to = UPLOAD_TO )
+    image = ImageRestrictedFileField( _( 'Additional image' ), upload_to = UPLOAD_TO )
     def __unicode__( self ):
         return self.image.url
 

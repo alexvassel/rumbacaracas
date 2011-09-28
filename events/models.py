@@ -12,6 +12,7 @@ from django.template.defaultfilters import date
 from sortable.models import Sortable
 #https://github.com/ff0000/django-sortablereadme
 from django.core.urlresolvers import reverse
+from main.modelFields import ImageRestrictedFileField
 
 EVENT_STATUSES = ( 
     ( '1', _( 'Published' ) ),
@@ -124,8 +125,8 @@ class Event( ImageModel, Sortable ):
     phone = models.CharField( _( 'Info' ), max_length = 256 , blank = True )
     url = models.URLField( _( 'Url' ) , blank = True, verify_exists=False )
     email = models.EmailField( _( 'Email' ) , blank = True )
-    image = models.ImageField( upload_to = upload_to_dest(format='uploads/events/%Y/%m/%d'), blank = True )
-    slider_image = models.ImageField( _( 'Slider image 619x258' ), upload_to = upload_to_dest(format='uploads/events/%Y/%m/%d'), blank = True )
+    image = ImageRestrictedFileField( upload_to = upload_to_dest(format='uploads/events/%Y/%m/%d'), blank = True )
+    slider_image = ImageRestrictedFileField( _( 'Slider image 619x258' ), upload_to = upload_to_dest(format='uploads/events/%Y/%m/%d'), blank = True )
     user = models.CharField( 'User', max_length = 256 , blank = True )
     description = models.TextField( _( 'Event Description' ), blank = True )
     add_user = models.ForeignKey( User , blank = True , null = True )
