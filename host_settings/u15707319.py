@@ -69,7 +69,7 @@ DEFAULT_FILE_STORAGE = 'cuddlybuddly.storage.s3.S3Storage'
 
 AWS_ACCESS_KEY_ID = 'AKIAJAVN6BXUTZ3VMAVA'
 AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'cdn1.rumbacr.com'
+AWS_STORAGE_BUCKET_NAME = 'rumbacaracas.com'
 
 from django.utils.http import  http_date
 from time import time
