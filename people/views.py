@@ -2,6 +2,7 @@ from decorators import render_to
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.conf import settings
+from django.core.files.storage import default_storage
 import os, glob, string, re
 import shutil
 
@@ -102,7 +103,7 @@ def details ( request, slug ):
 def make_main ( request, event_id, photo_id ):
     event = get_object_or_404( PhotoEvent, pk = event_id )
     photo = get_object_or_404( Photo, pk = photo_id )
-    ft_content = ContentFile( open( photo.image.path, 'r' ).read() )
+    ft_content = ContentFile( photo.image.file.read() )
     event.image.save( photo.image.name, ft_content, save = True )
 
     return HttpResponseRedirect( '/admin/people/photoevent/%s' % ( event.id ) )

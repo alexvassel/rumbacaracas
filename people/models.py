@@ -77,7 +77,7 @@ class Photo( ImageModel ):
 
     def make_main_tag( self ):
         if self.id:
-            return u'<a href="%s">%s</a>' % ( reverse('make_main',  self.event.id, self.id), _( 'Make Main' ) )
+            return u'<a href="%s">%s</a>' % ( reverse('people_make_main', None,  (self.event.id, self.id) ), _( 'Make Main' ) )
         else:
             return ""
 
