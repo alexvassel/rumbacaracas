@@ -227,7 +227,7 @@ INSTALLED_APPS = (
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 IMAGE_CONTENT_TYPES = ['image/gif','image/jpeg','image/pjpeg','image/png','image/tiff','image/bmp' ]
-IMAGE_MAX_UPLOAD_SIZE = "5242880"
+IMAGE_MAX_UPLOAD_SIZE = 5242880
 
 
 GRAPPELLI_ADMIN_TITLE = "RUMBACARACAS"

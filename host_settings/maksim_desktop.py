@@ -16,9 +16,14 @@ FAKE_IMPORT_IMAGE = '/home/maksim/test_images/tst_imgs/1.jpg'
 
 FULL_BASE_URL = 'http://localhost.td'
 
-MEDIA_ROOT = '/home/maksim/Documents/Develop/rumbabogota/media'
 
+APPLICATION_ROOT = '/home/maksim/Documents/Develop/rumbabogota/'
+MEDIA_ROOT = '/home/maksim/Documents/Develop/rumbabogota/media'
 STATIC_DOC_ROOT = '/home/maksim/Documents/Develop/rumbabogota/media'
+
+
+
+
 
 LOCALE_PATHS = ( 
     '/home/maksim/Documents/Develop/rumbabogota/locale/',
@@ -69,7 +74,6 @@ TEMPLATE_LOADERS = (
  )
 
 
-# Amazon S3 configs
 DEFAULT_FILE_STORAGE = 'cuddlybuddly.storage.s3.S3Storage'
 AWS_ACCESS_KEY_ID = 'AKIAJAVN6BXUTZ3VMAVA'
 AWS_SECRET_ACCESS_KEY = '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'
@@ -98,7 +102,7 @@ CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.DjangoCache'
 CUDDLYBUDDLY_STORAGE_S3_CACHE_BACKEND = 'storage'
 CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
 
-MEDIA_URL = 'https://s3.amazonaws.com/rumba_test/'
+MEDIA_URL = 'http://s3.amazonaws.com/rumba_test/'
 
 # Config compressor
 STATICFILES_FINDERS = (
@@ -114,12 +118,10 @@ STATIC_URL           = COMPRESS_URL
 STATICFILES_STORAGE  = DEFAULT_FILE_STORAGE
 COMPRESS_OUTPUT_DIR  = 'CACHE'
 
-COMPRESS_YUI_BINARY  = 'java -jar /home/maksim/Documents/Develop/rumbabogota/yuicompressor-2.4.6.jar'
+COMPRESS_YUI_BINARY  = 'java -jar /srv/vhosts/rumbacaracas/yuicompressor-2.4.6.jar'
 COMPRESS_CSS_FILTERS = ['main.compressor.filters.css_default.CustomCssAbsoluteFilter', 'compressor.filters.yui.YUICSSFilter']
 COMPRESS_JS_FILTERS  = ['compressor.filters.yui.YUIJSFilter']
 COMPRESS_STORAGE     = 'main.cuddlybuddly.storage.s3.storage.CustomS3Storage'
 
 COMPRESS_CSS_COMPRESSOR = 'main.compressor.css.CustomCssCompressor'
-COMPRESS_JS_COMPRESSOR = 'main.compressor.js.CustomJsCompressor'
-
-
+COMPRESS_JS_COMPRESSOR  = 'main.compressor.js.CustomJsCompressor'
