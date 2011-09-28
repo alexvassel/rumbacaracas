@@ -2984,7 +2984,7 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
   line-height: 30px !important;
   width: 110px !important;
 	text-align: right;
-  background: url("/media/images/icons/event.jpg") no-repeat scroll 115px 3px transparent;
+  background: url("images/icons/event.jpg") no-repeat scroll 115px 3px transparent;
 }
 #main-contents #col-left .eventos-para-hoy .event-meta{
   font-size: 12px;

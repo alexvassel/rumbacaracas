@@ -37,33 +37,33 @@
 }
 .addphotohdr {
 	padding-left: 35px;
-	background: transparent url("/media/images/sprites/sprites_social_1.gif") no-repeat scroll 0 -427px;	
+	background: transparent url("../images/sprites/sprites_social_1.gif") no-repeat scroll 0 -427px;	
 }
 
 
 
 .addvideohdr {
 	padding-left: 35px;
-	background: transparent url("/media/images/icons/video.jpg") no-repeat scroll 0 3px;	
+	background: transparent url("../images/icons/video.jpg") no-repeat scroll 0 3px;	
 }
 
 .addeventhdr {
 	padding-left: 35px;
-	background: transparent url("/media/images/icons/event.jpg") no-repeat scroll 0 3px;	
+	background: transparent url("../images/icons/event.jpg") no-repeat scroll 0 3px;	
 }
 .addlocationhdr {
 	padding-left: 35px;
-	background: transparent url("/media/images/icons/food.jpg") no-repeat scroll 0 3px;
+	background: transparent url("../images/icons/food.jpg") no-repeat scroll 0 3px;
 }
 
 .addnewshdr {
 	padding-left: 35px;
-	background: transparent url("/media/images/icons/news.jpg") no-repeat scroll 0 3px;
+	background: transparent url("../images/icons/news.jpg") no-repeat scroll 0 3px;
 }
 
 .addbloghdr {
 	padding-left: 35px;
-	background: transparent url("/media/images/icons/article.jpg") no-repeat scroll 0 3px;
+	background: transparent url("../images/icons/article.jpg") no-repeat scroll 0 3px;
 }
 
 
