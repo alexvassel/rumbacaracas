@@ -84,8 +84,8 @@ class ImageRestrictedFileField(ContentTypeRestrictedFileField):
         * max_upload_size - 5MB - 5242880
     """
     def __init__(self, *args, **kwargs):
-        self.content_types = kwargs.pop("content_types", settings.IMAGE_CONTENT_TYPES)
-        self.max_upload_size = kwargs.pop("max_upload_size", settings.IMAGE_MAX_UPLOAD_SIZE)
+        kwargs["content_types"] = settings.IMAGE_CONTENT_TYPES
+        kwargs["max_upload_size"] = settings.IMAGE_MAX_UPLOAD_SIZE
         
         super(ImageRestrictedFileField, self).__init__(*args, **kwargs)
 
