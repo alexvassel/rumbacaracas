@@ -64,8 +64,8 @@ CACHES = {
 }
 
 # Amazon S3 configs
-_DEFAULT_FILE_STORAGE = 'cuddlybuddly.storage.s3.S3Storage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'cuddlybuddly.storage.s3.S3Storage'
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 AWS_ACCESS_KEY_ID = 'AKIAJAVN6BXUTZ3VMAVA'
 AWS_SECRET_ACCESS_KEY = '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'
@@ -74,14 +74,14 @@ AWS_STORAGE_BUCKET_NAME = 'rumbacaracas.com'
 from django.utils.http import  http_date
 from time import time
 
-AWS_HEADERS = {
+_AWS_HEADERS = {
     'x-amz-acl': 'public-read',
     'Expires': http_date(time() + 31556926),
     'Cache-Control': 'public, max-age=31556926'
 }
-AWS_S3_SECURE_URLS = False
+_AWS_S3_SECURE_URLS = False
 
-_AWS_HEADERS = [
+AWS_HEADERS = [
     ('^private/', {
         'x-amz-acl': 'private',
         'Expires': 'Thu, 15 Apr 2000 20:00:00 GMT',
@@ -95,7 +95,7 @@ _AWS_HEADERS = [
 ]
 
 from cuddlybuddly.storage.s3 import CallingFormat
-_AWS_CALLING_FORMAT = CallingFormat.PATH
+AWS_CALLING_FORMAT = CallingFormat.PATH
 
 CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.DjangoCache'
 CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
