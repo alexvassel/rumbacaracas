@@ -68,6 +68,7 @@ urlpatterns = patterns( '',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     ( r'^admin/', include( 'preferences.urls' ) ),
+    (r'^tinymce/', include('tinymce.urls')),
     ( r'^grappelli/', include( 'grappelli.urls' ) ),
     # Uncomment the next line to enable the admin:
     ( r'^admin/', include( admin.site.urls ) ),
