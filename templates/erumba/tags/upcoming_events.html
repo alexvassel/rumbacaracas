@@ -16,7 +16,7 @@
             {% for event in events %}
               {% if forloop.counter0 < 10 %}
                 {{ event.category.title }}<br />
-                <strong style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; color:#D22323;"><a style="color:#D22323;" href="{% value_from_settings "FULL_BASE_URL" %}{% url event_details event.slug %}">{{ event.title }}</a></strong> | {{ event.location.title }}<br />
+                <strong style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; color:#F06000;"><a style="color:#F06000;" href="{% value_from_settings "FULL_BASE_URL" %}{% url event_details event.slug %}">{{ event.title }}</a></strong> | {{ event.location.title }}<br />
                 <br />
               {% endif %}
             {% endfor %}
