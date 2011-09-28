@@ -5,6 +5,7 @@ from imagekit.models import ImageModel
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from decorators import upload_to_dest
+from main.modelFields import ImageRestrictedFileField
 
 PHOTO_STATUSES = ( 
     ( '1', _( 'Published' ) ),
@@ -23,7 +24,7 @@ class Photo( ImageModel ):
     user = models.ForeignKey( User )
     description = models.CharField( _( 'Description' ), max_length = 256 )
     category = models.CharField( 'Category', max_length = 10, choices = PHOTO_CATEGORIES, blank = True )
-    image = models.ImageField( upload_to = upload_to_dest(format='uploads/yourphotos/%Y/%m/%d') )
+    image = ImageRestrictedFileField( upload_to = upload_to_dest(format='uploads/yourphotos/%Y/%m/%d') )
     status = models.CharField( max_length = 10, choices = PHOTO_STATUSES, default = 2 )
     datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
     def thumb( self ):

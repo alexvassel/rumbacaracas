@@ -4,6 +4,7 @@ from decorators import upload_to_dest
 from locations.models import Location
 from imagekit.models import ImageModel
 from django.core.urlresolvers import reverse
+from main.modelFields import ImageRestrictedFileField
 
 PHOTO_CATEGORIES = ( 
     ( 'rumbas', _( 'Rumbas' ) ),
@@ -30,7 +31,7 @@ class PhotoEvent( ImageModel ):
     author = models.CharField( _( 'Photographer or reporter' ) , max_length = 256 , blank = True )
     author_email = models.CharField( _( 'Author Email' ) , max_length = 256 , blank = True )
     city = models.CharField( _( 'City' ), max_length = 256 , blank = True )
-    image = models.ImageField( upload_to = upload_to_dest(format='uploads/people/%Y/%m/%d'), blank = True )
+    image = ImageRestrictedFileField( upload_to = upload_to_dest(format='uploads/people/%Y/%m/%d'), blank = True )
     status = models.CharField( max_length = 10, choices = PEOPLE_STATUSES, default = 2 )
     datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
 
@@ -55,8 +56,8 @@ class PhotoEvent( ImageModel ):
 class Photo( ImageModel ):
     description = models.CharField( _( 'Description' ), max_length = 256 )
     event = models.ForeignKey( PhotoEvent )
-    image = models.ImageField( upload_to = upload_to_dest(format='uploads/people/%Y/%m/%d') )
-    thumb = models.ImageField( upload_to = upload_to_dest(format='uploads/people/%Y/%m/%d') )
+    image = ImageRestrictedFileField( upload_to = upload_to_dest(format='uploads/people/%Y/%m/%d') )
+    thumb = ImageRestrictedFileField( upload_to = upload_to_dest(format='uploads/people/%Y/%m/%d') )
     datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
 
 

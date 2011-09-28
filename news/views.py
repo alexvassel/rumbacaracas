@@ -19,6 +19,12 @@ from django.forms.models import inlineformset_factory
 from main.modelFields import SlugifyUniquely
 from django.core.urlresolvers import reverse
 
+#Add to a form containing a FileField and change the field names accordingly.
+from django.template.defaultfilters import filesizeformat
+from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
+
+
 
 @login_required( login_url = '/login/' )
 @render_to( 'news/add.html' )
@@ -39,6 +45,16 @@ def add( request, type ):
 
 
     class EntryForm( ModelForm ):
+        def clean_content(self):
+            content = self.cleaned_data['image']
+            content_type = content.content_type
+            if content_type in settings.IMAGE_CONTENT_TYPES:
+                if content._size > settings.IMAGE_MAX_UPLOAD_SIZE:
+                    raise forms.ValidationError(_('Please keep filesize under %s. Current filesize %s') % (filesizeformat(settings.IMAGE_MAX_UPLOAD_SIZE), filesizeformat(content._size)))
+            else:
+                raise forms.ValidationError(_('File type is not supported'))
+            return content
+
         class Meta:
             model = Entry
             fields = ( 
