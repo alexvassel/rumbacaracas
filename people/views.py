@@ -138,18 +138,43 @@ def import_finish ( request, event_id, folder ):
         image_file = string.replace( thumb, '-s.jpg', '.jpg' )
         images_list.append( image_file )
 
+
+    import Queue
+    import threading
+    class ThreadProcessPage( threading.Thread ):
+        """Threaded photo copy"""
+        def __init__( self, queue ):
+            threading.Thread.__init__( self )
+            self.queue = queue
+
+        def run( self ):
+            while True:
+                photo = self.queue.get()
+                try:
+                    udescription = unicode(photo[0], "latin-1")
+                    p = Photo( description = udescription, event = event )
+                    fi_content = ContentFile( open( settings.OLDCARACAS_PHOTO_PATH + '/' + folder + '/' + photo[1], 'r' ).read() )
+                    ft_content = ContentFile( open( settings.OLDCARACAS_PHOTO_PATH + '/' + folder + '/' + photo[2], 'r' ).read() )
+                    p.image.save( photo[1], fi_content, save = False )
+                    p.thumb.save( photo[2], ft_content, save = False )
+                    p.save()
+
+                except:
+                    pass
+                self.queue.task_done()
+
+    queue = Queue.Queue()
+    threadLock = threading.Lock()
+    #spawn a pool of threads, and pass them queue instance
+    for i in range( 5 ):
+        t = ThreadProcessPage( queue )
+        t.setDaemon( True )
+        t.start()
+
     for photo in zip( legends, images_list, thumb_list ) :
-        udescription = unicode(photo[0], "latin-1")
+        queue.put( photo )
 
-        p = Photo( description = udescription, event = event )
-
-        fi_content = ContentFile( open( settings.OLDCARACAS_PHOTO_PATH + '/' + folder + '/' + photo[1], 'r' ).read() )
-        ft_content = ContentFile( open( settings.OLDCARACAS_PHOTO_PATH + '/' + folder + '/' + photo[2], 'r' ).read() )
-
-        p.image.save( photo[1], fi_content, save = False )
-        p.thumb.save( photo[2], ft_content, save = False )
-
-        p.save()
+    queue.join()
 
     shutil.rmtree( settings.OLDCARACAS_PHOTO_PATH + '/' + folder )
 
