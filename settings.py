@@ -230,6 +230,8 @@ IMAGE_CONTENT_TYPES = ['image/gif','image/jpeg','image/pjpeg','image/png','image
 IMAGE_MAX_UPLOAD_SIZE = "5242880"
 
 
+GRAPPELLI_ADMIN_TITLE = "RUMBACARACAS"
+
 DATABASE_ROUTERS = ['db_router.MyAppRouter']
 
 try:
