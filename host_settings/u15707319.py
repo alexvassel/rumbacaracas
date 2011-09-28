@@ -69,7 +69,7 @@ DEFAULT_FILE_STORAGE = 'cuddlybuddly.storage.s3.S3Storage'
 
 AWS_ACCESS_KEY_ID = 'AKIAJAVN6BXUTZ3VMAVA'
 AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'cdn1.rumbacr.com'
+AWS_STORAGE_BUCKET_NAME = 'rumbacaracas.com'
 
 from django.utils.http import  http_date
 from time import time
@@ -95,12 +95,12 @@ AWS_HEADERS = [
 ]
 
 from cuddlybuddly.storage.s3 import CallingFormat
-AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+AWS_CALLING_FORMAT = CallingFormat.PATH
 
 CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.DjangoCache'
 CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
 
-MEDIA_URL = 'http://cdn1.rumbacr.com/'
+MEDIA_URL = 'http://s3.amazonaws.com/rumbacaracas.com/'
 
 # Config compressor
 STATICFILES_FINDERS = (
@@ -113,7 +113,7 @@ STATICFILES_FINDERS = (
 APPLICATION_ROOT = '/web/apps/rumbacaracas/'
 COMPRESS_ROOT        = "/web/apps/rumbacaracas/static/"
 STATIC_ROOT          = COMPRESS_ROOT
-COMPRESS_URL         = "http://cdn1.rumbacr.com/static/"
+COMPRESS_URL         = "http://s3.amazonaws.com/rumbacaracas.com/static/"
 STATIC_URL           = COMPRESS_URL
 STATICFILES_STORAGE  = DEFAULT_FILE_STORAGE
 COMPRESS_OUTPUT_DIR  = 'CACHE'
