@@ -54,7 +54,8 @@ MEDIA_URL = '/media/'
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 #ADMIN_MEDIA_PREFIX = '/admin-media/'
-ADMIN_MEDIA_PREFIX = MEDIA_URL + "grappelli/"
+#ADMIN_MEDIA_PREFIX = MEDIA_URL + "grappelli/"
+ADMIN_MEDIA_PREFIX = MEDIA_URL + "admin/"
 
 
 
@@ -185,7 +186,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
  )
 
 
-INSTALLED_APPS = ( 
+INSTALLED_APPS = (
+    'grappelli.dashboard',
     'grappelli',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -240,3 +242,5 @@ try:
     exec "from host_settings.%s import *" % hostname
 except ImportError, e:
     raise e
+
+GRAPPELLI_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
