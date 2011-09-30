@@ -13,7 +13,7 @@ urlpatterns = patterns( '',
 
     url(r'^social/', include('socialregistration.urls')),
     ( r'^login/$', 'django.views.generic.simple.direct_to_template', {'template': 'login.html'} ),
-    ( r'^locales/', include( 'locations.urls' ) ),
+    ( r'^locale/', include( 'locations.urls' ) ),
     ( r'^eventos/', include( 'events.urls' ) ),
     ( r'^gente/', include( 'people.urls' ) ),
     ( r'^tus-fotos/', include( 'yourphotos.urls' ) ),
@@ -72,6 +72,7 @@ urlpatterns = patterns( '',
     ( r'^grappelli/', include( 'grappelli.urls' ) ),
     # Uncomment the next line to enable the admin:
     ( r'^admin/', include( admin.site.urls ) ),
+    url(r'^admin_tools/', include('admin_tools.urls')),
     #( r'^photologue/', include( 'photologue.urls' ) ),
  )
 
