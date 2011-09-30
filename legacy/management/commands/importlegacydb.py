@@ -88,13 +88,13 @@ def import_subscriptions ():
 def import_yourphotos ():
 
     YP.Photo.objects.all().delete()
-    oldphotos = L.TusfotosFotos.objects.all().order_by('-fecha')
+    oldphotos = L.TusfotosFotos.objects.all().order_by('fecha')
 
     wrong_ids = list()
 
-    prog = ProgressBar(0, len(oldphotos[0:100]), mode='fixed')
+    prog = ProgressBar(0, len(oldphotos[0:1000]), mode='fixed')
 
-    for oldphoto in oldphotos[0:100]:
+    for oldphoto in oldphotos[0:1000]:
 
         prog.increment_amount()
         print prog, '\r',
@@ -811,7 +811,7 @@ class Command( NoArgsCommand ):
         pstart =  datetime.now()
         print "\nImporting legacy people"
         #import_people()
-        multi_peoples()
+        #multi_peoples()
         #reimport_people_locations()
         pend =  datetime.now()
 
@@ -831,7 +831,7 @@ class Command( NoArgsCommand ):
 
         print "\nImporting legacy your photos"
         tstart =  datetime.now()
-        #import_yourphotos()
+        import_yourphotos()
         tend =  datetime.now()
 
         print "\nImporting legacy your videos"

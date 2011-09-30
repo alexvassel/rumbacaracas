@@ -50,7 +50,7 @@ def add( request, type ):
             content_type = content.content_type
             if content_type in settings.IMAGE_CONTENT_TYPES:
                 if content._size > settings.IMAGE_MAX_UPLOAD_SIZE:
-                    raise forms.ValidationError(_('Please keep filesize under %s. Current filesize %s') % (filesizeformat(settings.IMAGE_MAX_UPLOAD_SIZE), filesizeformat(content._size)))
+                    raise forms.ValidationError(_('Please keep filesize under %(maxsize)s. Current filesize %(current)s') % dict(maxsize=filesizeformat(settings.IMAGE_MAX_UPLOAD_SIZE), current=filesizeformat(content._size)))
             else:
                 raise forms.ValidationError(_('File type is not supported'))
             return content
