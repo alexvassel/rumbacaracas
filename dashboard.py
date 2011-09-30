@@ -26,12 +26,12 @@ class CustomIndexDashboard(Dashboard):
             column=1,
             children = (
                 {
-                    'title':_('Old E-Rumba'),
+                    'title':_('Legacy E-Rumba System'),
                     'url': 'http://erumba.rumbacr.com',
                     'external': True,
                 },
                 {
-                    'title':_('New E-Rumba'),
+                    'title':_('E-Rumba Generation Tool'),
                     'url': '/e-rumba/setup/',
                     'external': True,
                 },
@@ -59,7 +59,7 @@ class CustomIndexDashboard(Dashboard):
         # append an app list module for "Administration"
         self.children.append(modules.ModelList(
             _('ModelList: Administration'),
-            column=2,
+            column=1,
             collapsible=False,
             models=('django.contrib.*',),
         ))
