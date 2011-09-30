@@ -1348,7 +1348,7 @@ msgstr "Restaurante"
 
 #: templates/locations/index.html:171
 msgid "Events for Location"
-msgstr "Eventos en el Sitio"
+msgstr "Eventos en el Local"
 
 #: templates/locations/index.html:212
 msgid "Locations of the day"
