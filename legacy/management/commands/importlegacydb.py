@@ -217,11 +217,14 @@ def import_events ():
                 status = 1,
                 datetime_added = compile_date(oldevent.da, oldevent.ma, oldevent.aa)
             )
-            
+
             event.slug = SlugifyUniquely(oldevent.titulo[:50], event.__class__)
 
             if oldevent.url:
-                event.url = 'http://' + oldevent.url
+                if oldevent.url.startswith('http://') or oldevent.url.startswith('https://'):
+                    event.url = oldevent.url,
+                else:
+                    event.url = 'http://' + oldevent.url
 
             #TODO Investigate where main image is
 
@@ -806,7 +809,7 @@ class Command( NoArgsCommand ):
         #import_locations()
 
         print "\nImporting legacy events"
-        #import_events()
+        import_events()
 
         pstart =  datetime.now()
         print "\nImporting legacy people"
@@ -831,7 +834,7 @@ class Command( NoArgsCommand ):
 
         print "\nImporting legacy your photos"
         tstart =  datetime.now()
-        import_yourphotos()
+        #import_yourphotos()
         tend =  datetime.now()
 
         print "\nImporting legacy your videos"
