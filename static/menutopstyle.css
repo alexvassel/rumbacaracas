@@ -13,7 +13,7 @@ padding: 0;
 border: 0 none;
 }
 body{
-	background: transparent url(images/bg_body.gif) repeat scroll center top;
+	background: transparent url(images/bg_body.jpg) repeat scroll center top;
 	font: 100% Arial, Helvetica, sans-serif;
 	text-align: center;
 }
@@ -510,7 +510,7 @@ li.sobre1 a.fotosobre1:hover {
 #main-contents #col-left #outline-briefs #outline-slides .outline-slide a.read-more,
 #main-contents #col-left .node ul.teaser-options li a.read-more,
 #main-contents #col-left a.read-more-red, #main-contents #col-right a.read-more-red{
-	background: #BC1D1D url(images/btn_red.gif) repeat-x scroll center top;
+	background: #F06001 url(images/btn_red.gif) repeat-x scroll center top;
 	border: 1px solid #801A1A;
 	font-size: 13px;
 	text-transform: uppercase;
@@ -523,7 +523,7 @@ li.sobre1 a.fotosobre1:hover {
 #main-contents #col-left #outline-briefs #outline-slides .outline-slide a.read-more:hover,
 #main-contents #col-left .node ul.teaser-options li a.read-more:hover,
 #main-contents #col-left a.read-more-red:hover, #main-contents #col-right a.read-more-red:hover{
-	background: #BC1D1D url(images/btn_red_hover.jpg) repeat-x scroll center top;
+	background: #F06001 url(images/btn_red_hover.jpg) repeat-x scroll center top;
 }
 #header-secondary {
 	padding-top: 15px;
@@ -564,7 +564,7 @@ li.sobre1 a.fotosobre1:hover {
 }
 #header-tertiary #top-menus-wrapper .top-menu-secondary li a:hover,
 #header-tertiary #top-menus-wrapper .top-menu-secondary li a:active{
-	color: #BC1D1D;
+	color: #F06001;
 }
 #header-tertiary .rumba-logo h1 span {
 	color: #707070;
@@ -2381,7 +2381,7 @@ body.section-blog #main-contents #col-left .item-list{
 }
 body.section-blog #main-contents #col-left .item-list ul li.pager-current,
 body.section-videos #main-contents #col-left .item-list ul li.pager-current{
-	background: url("images/btn_red.gif") repeat-x scroll center top #BC1D1D;
+	background: url("images/btn_red.gif") repeat-x scroll center top #F06001;
 }
 /* Blog Archives Block */
 #main-contents #col-right .blog-archives li a.active {
