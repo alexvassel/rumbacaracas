@@ -28,7 +28,7 @@ def truncate( value, arg ):
         from django.utils.html import escape
         return mark_safe( '<span title="' + escape(strip_tags(value))[:200] + '">' + strip_tags(value)[:length] + "..." + '</span>' )
     else:
-        return value
+        return strip_tags(value)
 
 
 @register.filter
