@@ -253,7 +253,7 @@ $(document).ready(function(){
 
 	$("ul.top-menu-secondary li.medios").mouseover(function( )
 	{
-		$(this).find("a").eq(0).css("color", "#BC1D1D");
+		$(this).find("a").eq(0).css("color", "#F06001");
 	});
 	
 	$("ul.top-menu-secondary li.medios").mouseout(function( )
@@ -263,7 +263,7 @@ $(document).ready(function(){
 
 	$("ul.top-menu-secondary li.medios ul").mouseover(function( )
 	{
-		$(this).parent( ).find("a").eq(0).css("color", "#BC1D1D");
+		$(this).parent( ).find("a").eq(0).css("color", "#F06001");
 	});
 	
 	$("ul.top-menu-secondary li.medios ul").mouseout(function( )
