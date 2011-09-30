@@ -115,10 +115,8 @@ FACEBOOK_API_KEY = FACEBOOK_APP_ID #'15d12186d338568b8b5634e27aafb7cd'
 FACEBOOK_SECRET_KEY = '4266850c560e8f9266b07eb9d4e4137f'
 FACEBOOK_REQUEST_PERMISSIONS = 'email,user_birthday,user_photos,user_events'
 
-
-
-TWITTER_CONSUMER_KEY = 'IYdcJdgtroX4yE7tuqUscA'
-TWITTER_CONSUMER_SECRET_KEY = 'nLD3noOIPwSZeyXZaUpwSVLIw9yZOKkAkNjpY85SqLw'
+TWITTER_CONSUMER_KEY = 'svjutKvqaOMez1A0gDjIA'
+TWITTER_CONSUMER_SECRET_KEY = 'Sl4j1uUQFO84OgZclnSt2RyKFaSJgmkOEYCcShSSKs'
 TWITTER_REQUEST_TOKEN_URL = 'https://api.twitter.com/oauth/request_token'
 TWITTER_ACCESS_TOKEN_URL = 'https://api.twitter.com/oauth/access_token'
 TWITTER_AUTHORIZATION_URL = 'https://api.twitter.com/oauth/authorize'
