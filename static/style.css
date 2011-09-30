@@ -2978,14 +2978,22 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 #main-contents #col-left .eventos-para-hoy .title-wrap {
   margin: 0 0 5px 0;
 }
-#main-contents #col-left .node-container .title-wrap ul li a.publish-event{
+#main-contents #col-left .node-container .title-wrap ul li a.publish-event {
   color: #898989 !important;
   padding: 0 35px 0 0 !important;
   line-height: 30px !important;
   width: 110px !important;
-	text-align: right;
+  text-align: right;
   background: url("images/icons/event.jpg") no-repeat scroll 115px 3px transparent;
 }
+
+#main-contents #col-left .node-container .title-wrap ul li a.publish-photo {
+  padding: 0 0 0 35px;
+  line-height: 30px;
+  width: auto;
+  background-position-x: 0px;
+}
+
 #main-contents #col-left .eventos-para-hoy .event-meta{
   font-size: 12px;
   line-height: 16px;
