@@ -42,8 +42,7 @@ def _process( request, group_lambda, period , year = False, month = False, day =
 
     events = Event.objects.get_occuriences( start_date = from_date, end_date = to_date )
 
-    if not sort_category:
-        sort_category = group_lambda
+
         
     tmp_events = list()
     tmp_dates = dict()
@@ -67,13 +66,14 @@ def _process( request, group_lambda, period , year = False, month = False, day =
 
         if ( pk not in tmp_closest_dates ):
             tmp_closest_dates[pk] = min( dts )
-
+    
     def sortList( list ):
         list.sort( key = lambda a:a.position, reverse = False )
         return list
 
-    sorted_events = sorted( tmp_events , key = sort_category )
-
+    sorted_events = sorted( tmp_events , key = group_lambda )
+    sorted_events = sorted( sorted_events , key = sort_category )
+        
     by_group = OrderedDict( [
         ( group, sortList( list( items ) ) ) for group, items in itertools.groupby( sorted_events, group_lambda )
     ] )
