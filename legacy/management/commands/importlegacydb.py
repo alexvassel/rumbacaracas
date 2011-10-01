@@ -305,7 +305,14 @@ def import_blog_category (table):
             creation_date = oldarticle.fecha #compile_date(oldarticle.da, oldarticle.ma, oldarticle.aa)
             start_publication = compile_date(oldarticle.dia, oldarticle.mes, oldarticle.ano)
 
-            if not creation_date:
+            oldolddate = compile_date(oldarticle.da, oldarticle.ma, oldarticle.aa)
+
+            if oldolddate and (oldarticle.fecha == '0000-00-00' or not oldarticle.fecha):
+                last_update = oldolddate
+                creation_date = oldolddate
+
+
+            if not creation_date and start_publication:
                 creation_date = start_publication
 
             if last_update:
