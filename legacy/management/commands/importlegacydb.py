@@ -92,9 +92,9 @@ def import_yourphotos ():
 
     wrong_ids = list()
 
-    prog = ProgressBar(0, len(oldphotos[0:1000]), mode='fixed')
+    prog = ProgressBar(0, len(oldphotos), mode='fixed')
 
-    for oldphoto in oldphotos[0:1000]:
+    for oldphoto in oldphotos:
 
         prog.increment_amount()
         print prog, '\r',
@@ -476,12 +476,12 @@ def multi_peoples():
 
             P.PhotoEvent.objects.all().delete()
 
-            oldevents = L.Fotos.objects.all().order_by('-fecha')
+            oldevents = L.Fotos.objects.all().order_by('fecha')
 
             #TODO Carefully import locations
             #TODO Import second date
 
-            prog = ProgressBar(0, len(oldevents[0:100]), mode='fixed')
+            prog = ProgressBar(0, len(oldevents), mode='fixed')
             wrong_locations = list()
             all_locations = list()
 
@@ -626,7 +626,7 @@ def multi_peoples():
                 t.start()
 
             #populate queue with data
-            for oldevent in oldevents[0:100]:
+            for oldevent in oldevents:
                 queue.put( oldevent )
         except Exception:
             traceback.print_exc()
@@ -800,13 +800,13 @@ class Command( NoArgsCommand ):
         print "Importing legacy data \n-----------------------------------------------"
 
         print "Importing legacy users"
-        #import_users()
+        import_users()
 
         #print "Importing legacy subscriptions"
         #import_subscriptions()
 
         print "\nImporting legacy locations"
-        #import_locations()
+        import_locations()
 
         print "\nImporting legacy events"
         import_events()
@@ -819,26 +819,26 @@ class Command( NoArgsCommand ):
         pend =  datetime.now()
 
         print "\nImporting legacy rumba news"
-#        import_blog_category (L.RumbaNews)
+        import_blog_category (L.RumbaNews)
 
         print "\nImporting legacy music news"
-        #import_blog_category (L.MusicNews)
+        import_blog_category (L.MusicNews)
 
         print "\nImporting legacy interviews"
-        #import_blog_category (L.Entrevista)
+        import_blog_category (L.Entrevista)
 
         print "\nImporting legacy specials"
-        #import_blog_category (L.Especial)
+        import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "\nImporting legacy your photos"
         tstart =  datetime.now()
-        #import_yourphotos()
+        import_yourphotos()
         tend =  datetime.now()
 
         print "\nImporting legacy your videos"
-        #import_yourvideos()
+        import_yourvideos()
 
         print "------------------------------------------------- \nDone."
         print datetime.now()
@@ -846,9 +846,9 @@ class Command( NoArgsCommand ):
 
         allend = datetime.now()
 
-        print "Peoples for 50: ",pstart,pend
-        print "\n"
-        print "Tus fotos for 100: ", tstart, tend
+        #print "Peoples for 50: ",pstart,pend
+        #print "\n"
+        print "Tus fotos for all: ", tstart, tend
         print "\n"
         print "All time: ",allstart,allend
 
