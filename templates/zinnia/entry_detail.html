@@ -14,7 +14,7 @@
 {% if object %}
     {% block fbmeta %}
         <meta property="og:title" content="{{ object.title }}"/>
-        <meta property="og:image" content="{% value_from_settings "FULL_BASE_URL" %}{{ object.thumbnail.url }}"/>
+        <meta property="og:image" content="{{ object.thumbnail.url }}"/>
         <meta property="og:url" content="{% value_from_settings "FULL_BASE_URL" %}{{ object.get_absolute_url }}"/>
         <meta property="og:type" content="article" />
     {% endblock %}
