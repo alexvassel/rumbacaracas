@@ -100,7 +100,7 @@ AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
 CUDDLYBUDDLY_STORAGE_S3_CACHE = 'storage_cache.DjangoCache'
 CUDDLYBUDDLY_STORAGE_S3_CACHE_TIMEOUT = 31556926
 
-MEDIA_URL = 'http://s3.amazonaws.com/media.rumbacaracas.com/'
+MEDIA_URL = 'http://media.rumbacaracas.com/'
 
 # Config compressor
 STATICFILES_FINDERS = (
@@ -113,7 +113,7 @@ STATICFILES_FINDERS = (
 APPLICATION_ROOT = '/web/apps/rumbacaracas/'
 COMPRESS_ROOT        = "/web/apps/rumbacaracas/static/"
 STATIC_ROOT          = COMPRESS_ROOT
-COMPRESS_URL         = "http://s3.amazonaws.com/media.rumbacaracas.com/static/"
+COMPRESS_URL         = "http://media.rumbacaracas.com/static/"
 STATIC_URL           = COMPRESS_URL
 STATICFILES_STORAGE  = DEFAULT_FILE_STORAGE
 COMPRESS_OUTPUT_DIR  = 'CACHE'
