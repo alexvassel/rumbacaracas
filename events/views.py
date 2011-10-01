@@ -72,7 +72,8 @@ def _process( request, group_lambda, period , year = False, month = False, day =
         return list
 
     sorted_events = sorted( tmp_events , key = group_lambda )
-    sorted_events = sorted( sorted_events , key = sort_category )
+    if sort_category:
+        sorted_events = sorted( sorted_events , key = sort_category )
         
     by_group = OrderedDict( [
         ( group, sortList( list( items ) ) ) for group, items in itertools.groupby( sorted_events, group_lambda )
