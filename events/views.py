@@ -214,7 +214,7 @@ def category( request , period = 'day', date_parameter = 0 , year = False, month
 def area( request , period = 'day' , year = False, month = False, day = False, fake_tomorrow = False ):
     request.breadcrumbs( _( 'Events' ) , reverse('event_main') )
     request.breadcrumbs( _( 'By Area' ) , request.path_info )
-    dict = _process( request, lambda o: o.location.area.title if o.area else None, period , year, month, day )
+    dict = _process( request, lambda o: o.location.area.title if o.location.area else None, period , year, month, day )
     dict['active_tab'] = 'area'
     if fake_tomorrow:
         dict['period'] = 'tomorrow'
