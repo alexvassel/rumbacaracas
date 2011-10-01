@@ -16,7 +16,7 @@ class EventAdmin( SortableAdmin ):
     list_display = SortableAdmin.list_display + ( 'title', 'view', 'category', 'get_dates', 'status', 'show_in_events_slider', 'show_in_main_slider', )
     list_editable = SortableAdmin.list_editable + ( 'status', 'show_in_events_slider', 'show_in_main_slider', )
     list_display_links = ( 'title', )
-    list_filter = ( 'status', 'show_in_events_slider', 'show_in_main_slider', 'from_date', 'to_date' )
+    list_filter = ( 'status', 'show_in_events_slider', 'show_in_main_slider', 'from_date', 'to_date', 'category' )
     date_hierarchy = 'from_date'
     ordering = ('-from_date',)
     actions = [make_published]
