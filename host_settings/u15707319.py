@@ -29,7 +29,7 @@ LOCALE_PATHS = (
     '/web/apps/rumbacaracas/locale',
  )
 
-
+TINYMCE_SPELLCHECKER = True
 
 
 OLDDATABOGOTA_PHOTO_PATH = '/mnt/rumbacaracas.com/var/www/vhosts/rumbacaracas.com/httpdocs/'
