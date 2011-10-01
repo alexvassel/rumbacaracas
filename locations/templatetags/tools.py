@@ -102,7 +102,7 @@ def google_map_link( value):
 
     query.append("Venezuela")
 
-    return 'http://map.google.es/maps?q=%s' % (urlencode(" ".join(query)))
+    return 'http://map.google.com/maps?hl=es-419&q=%s' % (urlencode(" ".join(query)))
 
 
 @register.inclusion_tag( 'main/location_menu.html' )
