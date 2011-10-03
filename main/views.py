@@ -74,7 +74,7 @@ def index( request ):
     locations = Location.objects.filter( status = 1 ).order_by( '?' )[:4]
 
 
-    art_culture_qs = Event.objects.filter(category=4)
+    art_culture_qs = Event.objects.filter(category=7)
     art_culture_raw = Event.objects.get_occuriences( start_date = current_date, end_date = current_date , qs = art_culture_qs )
 
     art_culture = sortEventList( [event for event, date in art_culture_raw] )[:4]
