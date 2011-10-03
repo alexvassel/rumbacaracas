@@ -64,7 +64,7 @@ class Photo( ImageModel ):
     @models.permalink
     def get_absolute_url( self ):
         """Return entry's URL"""
-        return ( 'people_slider', (), {
+        return ( 'people_slider', (), { 'slug' : self.event.slug,
             'photo_id': self.id} )
 
     def thumb_tag( self ):

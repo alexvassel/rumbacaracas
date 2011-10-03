@@ -57,7 +57,7 @@ def category ( request, group ):
 
 
 @render_to( 'people/slider.html' )
-def slider( request , photo_id ):
+def slider( request, slug, photo_id ):
     photo = get_object_or_404( Photo, pk = photo_id )
     if request.is_ajax():
         return render_to_response( 'people/slider_node.html', {'photo': photo} )
