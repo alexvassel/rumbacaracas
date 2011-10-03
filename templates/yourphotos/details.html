@@ -10,12 +10,11 @@
 {% if photo %}
     {% block fbmeta %}
         <meta property="og:title" content="{{ photo.description }}"/>
-        <meta property="og:image" content="{% value_from_settings "FULL_BASE_URL" %}{{ photo.thumbnail.url }}"/>
+        <meta property="og:image" content="{{ photo.thumbnail.url }}"/>
         <meta property="og:url" content="{% value_from_settings "FULL_BASE_URL" %}{{ photo.get_absolute_url }}"/>
         <meta property="og:type" content="article" />
     {% endblock %}
 {% endif %}
-
 
 {% block colleft %}
 

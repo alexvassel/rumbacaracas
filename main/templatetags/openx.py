@@ -74,8 +74,15 @@ import random
 #Simplest iframe integration
 @register.inclusion_tag( 'main/openx_banner.html' )
 def banner_zone_iframe( zone_id, width=None, height=None ):
-    rand = random.random()
+    rand = round(100000 * random.random(), 5)
     return dict( zone_id = zone_id, width = width, height=height,rand =rand  )
+
+
+@register.inclusion_tag( 'main/openx_float_banner.html' )
+def banner_zone_float( zone_id, width=None, height=None ):
+    rand = round(100000 * random.random(), 5)
+    return dict( zone_id = zone_id, width = width, height=height,rand =rand  )
+
 
 
 @register.inclusion_tag( 'main/openx_email_banner.html' )

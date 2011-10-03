@@ -92,9 +92,9 @@ def import_yourphotos ():
 
     wrong_ids = list()
 
-    prog = ProgressBar(0, len(oldphotos[0:1000]), mode='fixed')
+    prog = ProgressBar(0, len(oldphotos), mode='fixed')
 
-    for oldphoto in oldphotos[0:1000]:
+    for oldphoto in oldphotos:
 
         prog.increment_amount()
         print prog, '\r',
@@ -305,7 +305,14 @@ def import_blog_category (table):
             creation_date = oldarticle.fecha #compile_date(oldarticle.da, oldarticle.ma, oldarticle.aa)
             start_publication = compile_date(oldarticle.dia, oldarticle.mes, oldarticle.ano)
 
-            if not creation_date:
+            oldolddate = compile_date(oldarticle.da, oldarticle.ma, oldarticle.aa)
+
+            if oldolddate and (oldarticle.fecha == '0000-00-00' or not oldarticle.fecha):
+                last_update = oldolddate
+                creation_date = oldolddate
+
+
+            if not creation_date and start_publication:
                 creation_date = start_publication
 
             if last_update:
@@ -476,12 +483,12 @@ def multi_peoples():
 
             P.PhotoEvent.objects.all().delete()
 
-            oldevents = L.Fotos.objects.all().order_by('-fecha')
+            oldevents = L.Fotos.objects.all().order_by('fecha')
 
             #TODO Carefully import locations
             #TODO Import second date
 
-            prog = ProgressBar(0, len(oldevents[0:100]), mode='fixed')
+            prog = ProgressBar(0, len(oldevents), mode='fixed')
             wrong_locations = list()
             all_locations = list()
 
@@ -626,7 +633,7 @@ def multi_peoples():
                 t.start()
 
             #populate queue with data
-            for oldevent in oldevents[0:100]:
+            for oldevent in oldevents:
                 queue.put( oldevent )
         except Exception:
             traceback.print_exc()
@@ -809,7 +816,7 @@ class Command( NoArgsCommand ):
         #import_locations()
 
         print "\nImporting legacy events"
-        import_events()
+        #import_events()
 
         pstart =  datetime.now()
         print "\nImporting legacy people"
@@ -819,23 +826,23 @@ class Command( NoArgsCommand ):
         pend =  datetime.now()
 
         print "\nImporting legacy rumba news"
-#        import_blog_category (L.RumbaNews)
+        import_blog_category (L.RumbaNews)
 
         print "\nImporting legacy music news"
-        #import_blog_category (L.MusicNews)
+        import_blog_category (L.MusicNews)
 
         print "\nImporting legacy interviews"
-        #import_blog_category (L.Entrevista)
+        import_blog_category (L.Entrevista)
 
         print "\nImporting legacy specials"
-        #import_blog_category (L.Especial)
+        import_blog_category (L.Especial)
 
         #Z.Entry.objects.filter(categories=5).delete()
 
         print "\nImporting legacy your photos"
-        tstart =  datetime.now()
+        #tstart =  datetime.now()
         #import_yourphotos()
-        tend =  datetime.now()
+        #tend =  datetime.now()
 
         print "\nImporting legacy your videos"
         #import_yourvideos()
@@ -848,7 +855,7 @@ class Command( NoArgsCommand ):
 
         print "Peoples for 50: ",pstart,pend
         print "\n"
-        print "Tus fotos for 100: ", tstart, tend
-        print "\n"
+        #print "Tus fotos for all: ", tstart, tend
+        #print "\n"
         print "All time: ",allstart,allend
 

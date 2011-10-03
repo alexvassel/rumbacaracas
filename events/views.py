@@ -42,8 +42,7 @@ def _process( request, group_lambda, period , year = False, month = False, day =
 
     events = Event.objects.get_occuriences( start_date = from_date, end_date = to_date )
 
-    if not sort_category:
-        sort_category = group_lambda
+
         
     tmp_events = list()
     tmp_dates = dict()
@@ -67,13 +66,15 @@ def _process( request, group_lambda, period , year = False, month = False, day =
 
         if ( pk not in tmp_closest_dates ):
             tmp_closest_dates[pk] = min( dts )
-
+    
     def sortList( list ):
         list.sort( key = lambda a:a.position, reverse = False )
         return list
 
-    sorted_events = sorted( tmp_events , key = sort_category )
-
+    sorted_events = sorted( tmp_events , key = group_lambda )
+    if sort_category:
+        sorted_events = sorted( sorted_events , key = sort_category )
+        
     by_group = OrderedDict( [
         ( group, sortList( list( items ) ) ) for group, items in itertools.groupby( sorted_events, group_lambda )
     ] )
@@ -213,7 +214,7 @@ def category( request , period = 'day', date_parameter = 0 , year = False, month
 def area( request , period = 'day' , year = False, month = False, day = False, fake_tomorrow = False ):
     request.breadcrumbs( _( 'Events' ) , reverse('event_main') )
     request.breadcrumbs( _( 'By Area' ) , request.path_info )
-    dict = _process( request, lambda o: o.area.title if o.area else None, period , year, month, day )
+    dict = _process( request, lambda o: o.location.area.title if (o.location and o.location.area) else None, period , year, month, day )
     dict['active_tab'] = 'area'
     if fake_tomorrow:
         dict['period'] = 'tomorrow'

@@ -27,7 +27,7 @@ class CustomIndexDashboard(Dashboard):
             children = (
                 {
                     'title':_('Legacy E-Rumba System'),
-                    'url': 'http://erumba.rumbacr.com',
+                    'url': 'http://erumba.rumbacaracas.com',
                     'external': True,
                 },
                 {
@@ -37,12 +37,12 @@ class CustomIndexDashboard(Dashboard):
                 },
                 {
                     'title':_('Legacy People Upload'),
-                    'url': 'http://old.rumbacr.com/ftp/',
+                    'url': 'http://old.rumbacaracas.com/ftp/',
                     'external': True,
                 },
                 {
                     'title':_('Legacy People Cropper'),
-                    'url': 'http://old.rumbacr.com/cropear/',
+                    'url': 'http://old.rumbacaracas.com/cropear/',
                     'external': True,
                 },
             )
@@ -60,7 +60,7 @@ class CustomIndexDashboard(Dashboard):
         self.children.append(modules.ModelList(
             _('ModelList: Administration'),
             column=1,
-            collapsible=False,
+            collapsible=True,
             models=('django.contrib.*',),
         ))
         

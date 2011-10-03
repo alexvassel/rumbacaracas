@@ -12,7 +12,7 @@
 {% if event %}
     {% block fbmeta %}
         <meta property="og:title" content="{{ event.title }}"/>
-        <meta property="og:image" content="{% value_from_settings "FULL_BASE_URL" %}{{ event.thumbnail.url }}"/>
+        <meta property="og:image" content="{{ event.thumbnail.url }}"/>
         <meta property="og:url" content="{% value_from_settings "FULL_BASE_URL" %}{{ event.get_absolute_url }}"/>
         <meta property="og:type" content="article" />
     {% endblock %}
