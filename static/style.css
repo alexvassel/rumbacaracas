@@ -2037,13 +2037,13 @@ div.breadcrumb a.active {
   text-align: left;
   width: auto !important;
 }
-#main-contents #col-left .node-container .title-wrap ul li a.upload-photo{
-	background-position: left -427px;
-	padding: 0 0 0 35px !important;
-  color: #898989 !important;
-  line-height: 30px !important;
-  width: auto !important;
-	text-align: left;
+#main-contents #col-left .node-container .title-wrap ul li a.upload-photo {
+	background-position: 115px -427px;
+	padding: 0 35px 0 0px !important;
+    color: #898989 !important;
+    line-height: 30px !important;
+    width: 110px;
+	text-align: right;
 }
 #main-contents #col-left .node{
   font-size: 12px;
