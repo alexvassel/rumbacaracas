@@ -41,9 +41,8 @@ def _process( request, group_lambda, period , year = False, month = False, day =
     from_date, to_date, repr, prev_date, next_date = _process_period( period, year, month, day )
 
     events = Event.objects.get_occuriences( start_date = from_date, end_date = to_date )
+    upcoming_events = Event.objects.get_occuriences( start_date = datetime.today(), end_date = datetime.today() + timedelta(365), repeat_count = 1)
 
-
-        
     tmp_events = list()
     tmp_dates = dict()
     tmp_closest_dates = dict()
@@ -85,18 +84,20 @@ def _process( request, group_lambda, period , year = False, month = False, day =
     slider_events = Event.objects.filter( status = 1 , show_in_events_slider = True ).filter( to_date__gte = datetime.today() ).order_by( 'from_date' )[:5]
 
     all_locations = Location.objects.all().filter( status = 1 ).order_by( 'title' )
-    all_events = Event.objects.all().filter( status = 1 ).order_by( 'title' )
+    #all_events = Event.objects.all().filter( status = 1 ).order_by( 'title' )
 
     #Seems like wrong
     year = from_date.year
     month = from_date.month
     day = from_date.day
 
+    upcoming_events = sorted( upcoming_events, key = lambda o: o[1], reverse=False)
+
     if period != "month":
         filter_date = '/' + str( year ) + '/' + str( month ) + '/' + str( day )
     else:
         filter_date = '/' + str( year ) + '/' + str( month )
-    return {'filter_date': filter_date, 'all_locations': all_locations, 'all_events': all_events, 'groups': by_group, 'slider_events': slider_events, 'years': years, 'months': months, 'repr': repr, 'year': year, 'month': month, 'period': period, 'prev_date': prev_date, 'next_date': next_date, 'closest_dates': tmp_closest_dates}
+    return {'filter_date': filter_date, 'all_locations': all_locations, 'all_events': upcoming_events, 'groups': by_group, 'slider_events': slider_events, 'years': years, 'months': months, 'repr': repr, 'year': year, 'month': month, 'period': period, 'prev_date': prev_date, 'next_date': next_date, 'closest_dates': tmp_closest_dates}
 
 
 @render_to( 'events/calendar.html' )
