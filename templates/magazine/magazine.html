@@ -54,7 +54,7 @@
             {% trans "Previous Editions" %}
             <select name="album_name" id="albums_list_options" style="position: relative; top: -3px; left: 20px;">
             {% for album in albums %}
-                <option value="{{ album.folder.folderId }}">{{ album.folder.name }}</option>
+                <option value="{{ album.folder.folderId }}"{% if default_album.folder.folderId == album.folder.folderId %} selected="selected"{% endif %}>{{ album.folder.name }}</option>
             {% endfor %}
             </select>
         </h2>
@@ -70,7 +70,7 @@
         </script>
 
         <div id="bibliotecaguia">
-            <iframe src="http://static.issuu.com/widgets/shelf/index.html?folderId={{ albums.0.folder.folderId }}&amp;theme=theme3&amp;rows=1&amp;thumbSize=medium&amp;roundedCorners=false&amp;showTitle=true&amp;showAuthor=false&amp;shadow=true&amp;effect3d=true" width="100%" height="185" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+            <iframe src="http://static.issuu.com/widgets/shelf/index.html?folderId={{ default_album.folder.folderId }}&amp;theme=theme3&amp;rows=1&amp;thumbSize=medium&amp;roundedCorners=false&amp;showTitle=true&amp;showAuthor=false&amp;shadow=true&amp;effect3d=true" width="100%" height="185" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
         </div><!--termina biblioteca -->
 
 
@@ -83,7 +83,7 @@
             {% trans "Notebook" %}
             <select name="notebook_name" id="notebooks_list_options" style="position: relative; top: -3px; left: 20px;">
             {% for notebook in notebooks %}
-                <option value="{{ notebook.folder.folderId }}">{{ notebook.folder.name }}</option>
+                <option value="{{ notebook.folder.folderId }}"{% if default_notebook.folder.folderId == notebook.folder.folderId %} selected="selected"{% endif %}>{{ notebook.folder.name }}</option>
             {% endfor %}
             </select>
         </h2>
@@ -99,7 +99,7 @@
         </script>
 
         <div id="cuadernos">
-            <iframe src="http://static.issuu.com/widgets/shelf/index.html?folderId={{ notebooks.0.folder.folderId }}&amp;theme=theme3&amp;rows=2&amp;thumbSize=medium&amp;roundedCorners=false&amp;showTitle=true&amp;showAuthor=false&amp;shadow=true&amp;effect3d=true" width="100%" height="370" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+            <iframe src="http://static.issuu.com/widgets/shelf/index.html?folderId={{ default_notebook.folder.folderId }}&amp;theme=theme3&amp;rows=2&amp;thumbSize=medium&amp;roundedCorners=false&amp;showTitle=true&amp;showAuthor=false&amp;shadow=true&amp;effect3d=true" width="100%" height="370" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
         </div><!--termina cuaderno -->
 
     </div><!--//.recent-guides-->

@@ -205,8 +205,8 @@
     <select name="events-list" id="events-list" style="width: 300px;">
     {% cache 60 events_select %}
 		<option value="">{% trans "Select a event"%}</option>
-    	{% for event in all_events %}
-      		<option value="{{event.slug}}">{{event.title}}</option>
+    	{% for event, dt in all_events %}
+      		<option value="{{event.slug}}">{{ dt|date:"d.m.Y" }} :: {{event.title}}</option>
   		{% endfor %}
     {% endcache %}
     </select>

@@ -34,7 +34,7 @@ class EventCategory( Sortable ):
 class OccurrenceManager( models.Manager ):
     use_for_related_fields = True
 
-    def get_occuriences( self, start_date = None, end_date = None, qs = None ):
+    def get_occuriences( self, start_date = None, end_date = None, qs = None, repeat_count = None ):
 
         results = list()
 
@@ -70,7 +70,7 @@ class OccurrenceManager( models.Manager ):
                 #fill all week days
                 results.extend( [
                      ( event, tdt.date() )
-                     for tdt in rrule.rrule( rrule.DAILY, dtstart = rrule_start, until = rrule_end, byweekday = [int( day.value ) for day in week_days] )
+                     for tdt in rrule.rrule( rrule.DAILY, dtstart = rrule_start, until = rrule_end, count = repeat_count, byweekday = [int( day.value ) for day in week_days] )
                  ] )
             else:
                 #fill all days
