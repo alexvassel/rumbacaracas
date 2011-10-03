@@ -1,4 +1,4 @@
-<div id='overflow_{{ rand }}' class="overflow_banner">
+<div id='overflow_{{ rand|floatformat:"0" }}' class="overflow_banner">
 
 
 <!--/* OpenX Javascript Tag v2.8.7 */-->
@@ -21,9 +21,9 @@
 
 <script type='text/javascript'><!--//<![CDATA[
 function close_sat () {
-    //document.getElementById("overflow__{{ rand }}").style.display="none";
-    //document.getElementById("overflow__{{ rand }}").style.visibility="hidden";
-    $("#overflow__{{ rand }}").remove();
+    //document.getElementById("overflow__{{ rand|floatformat:"0" }}").style.display="none";
+    //document.getElementById("overflow__{{ rand|floatformat:"0" }}").style.visibility="hidden";
+    $("#overflow_{{ rand|floatformat:"0" }}").remove();
 }
 //]]>--></script>
 
