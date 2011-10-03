@@ -74,9 +74,9 @@ def index( request ):
     folders_list = _get_issuu_folders_list()
     albums    = filter(lambda a: a['folder']['itemCount'] > 0 and "notebook" not in a['folder']['name'], folders_list)
     notebooks = filter(lambda a: a['folder']['itemCount'] > 0 and "notebook"     in a['folder']['name'], folders_list)
+
     last_magazine_anotate = preferences.LastMagazinePreferences.anotation
-    #last_magazine_anotate = _get_issuu_last_document()
+    last_magazine_issuu_code = preferences.LastMagazinePreferences.issuu_code
 
-    return {'last_magazine_anotate': mark_safe(last_magazine_anotate), 'albums': albums, 'notebooks': notebooks}
-
+    return {'last_magazine_anotate': mark_safe(last_magazine_anotate), 'albums': albums, 'notebooks': notebooks, 'last_magazine_issuu_code' : last_magazine_issuu_code}
 
