@@ -784,6 +784,8 @@ li.sobre1 a.fotosobre1:hover {
 #main-contents #col-left {
 	width: 640px;
 	float: left;
+    position: relative;
+    z-index: 5;
 }
 #main-contents #col-right {
 	width: 300px;
@@ -4050,3 +4052,13 @@ li.greating_pic {
     color: #f06000;
 }
 
+.overflow_banner{
+    position: relative;
+    left:20px;
+    top: 15px;
+    position: absolute;
+    text-align: left;
+    visibility: visible;
+    width: 800px;
+    z-index: 1000;
+}
