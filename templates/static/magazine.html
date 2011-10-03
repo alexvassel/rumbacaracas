@@ -240,13 +240,17 @@
         <p>&nbsp;</p>
         <h3 class="red">Las Revistas</h3>
         <div>
-            <div><a href="{% url magazine_main %}"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/impresa-1.jpg" alt="Rumba" /></a></div>
-            <br />
-            <div><a href="{% url magazine_main %}"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/impresa-2.jpg" alt="Rumba" /></a></div>
+            <div style="overflow: hidden; clear: both;">
+                <a href="{% url magazine_main %}" style="float:left;"><img style="width: 92px;" src="{% value_from_settings "STATIC_URL" %}images/nosotros/impresa-2.jpg" alt="Rumba" /></a>
+                <a href="{% url magazine_main %}" style="float:left; margin-left: 5px;"><img style="width: 92px;" src="{% value_from_settings "STATIC_URL" %}images/nosotros/impresa-1.jpg" alt="Rumba" /></a>
+            </div>
             <br />
             <div><a href="{% url magazine_main %}"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/impresa-3.jpg" alt="Rumba" /></a></div>
             <br />
-            <div><a href="{% url magazine_main %}"><img src="{% value_from_settings "STATIC_URL" %}images/nosotros/impresa-4.jpg" alt="Rumba" /></a></div>
+            <div>
+                <a href="{% url magazine_main %}" style="float:left;"><img style="width: 92px;" src="{% value_from_settings "STATIC_URL" %}images/nosotros/impresa-4.jpg" alt="Rumba" /></a>
+                <a href="{% url magazine_main %}" style="float:left; margin-left: 5px;"><img style="width: 92px;" src="{% value_from_settings "STATIC_URL" %}images/nosotros/impresa-5.jpg" alt="Rumba" /></a>
+            </div>
             <a href="{% url magazine_main %}" class="read-more-red">Ver más Revistas</a><br />
         </div>
         <p><br />
