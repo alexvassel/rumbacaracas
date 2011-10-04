@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.conf import settings
 
 
-handler404 = 'main.page_not_found'
+handler404 = 'main.views.page_not_found'
 admin.autodiscover()
 
 urlpatterns = patterns( '',
