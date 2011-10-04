@@ -129,3 +129,6 @@ COMPRESS_STORAGE     = 'main.cuddlybuddly.storage.s3.storage.CustomS3Storage'
 ADMIN_MEDIA_PREFIX = MEDIA_URL + "grappelli/"
 
 ZINNIA_MEDIA_URL = '/media/zinnia/'
+
+COMPRESS_CSS_COMPRESSOR = 'main.compressor.css.CustomCssCompressor'
+COMPRESS_JS_COMPRESSOR = 'main.compressor.js.CustomJsCompressor'
