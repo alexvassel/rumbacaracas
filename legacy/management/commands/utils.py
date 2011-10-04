@@ -166,7 +166,7 @@ def compile_news_content (content, subtitle, additional_image, youtube_url):
 def detect_news_category (table):
     category = 5 #blog
     if table is L.Dj:
-        category = 6 #interviews
+        category = 4 #interviews
     if table is L.Entrevista:
         category = 4 #interviews
     if table is L.Especial:

@@ -266,7 +266,7 @@ def import_blog_category (table):
 
     oldarticles = table.objects.all().order_by('-fecha')
 
-    Z.Entry.objects.filter(categories=detect_news_category(table)).delete()
+    #Z.Entry.objects.filter(categories=detect_news_category(table)).delete()
 
     disconnect_zinnia_signals()
 
