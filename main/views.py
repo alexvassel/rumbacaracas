@@ -90,6 +90,8 @@ def index( request ):
 
 from django.views.decorators.csrf import requires_csrf_token
 from django.http import HttpResponseNotFound
+from django.template import Context, RequestContext, loader
+
 @requires_csrf_token
 def page_not_found(request, template_name='404.html'):
 
