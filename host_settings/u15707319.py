@@ -2,7 +2,7 @@
 DEBUG = False
 TEMPLATE_DEBUG = False
 
-
+SERVER_EMAIL = 'noreply@rumbacr.com'
 ADMINS = (('nagaev maksim','nagaev.maksim@gmail.com',),)
 #INTERNAL_IPS = ( '127.0.0.1', '213.33.244.154',)
 

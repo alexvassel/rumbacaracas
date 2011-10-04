@@ -88,3 +88,16 @@ def index( request ):
             'slides': [( blog, 'blog', ) for blog in blog_slides] + [( event, 'event', ) for event in events_slides] }
 
 
+from django.views.decorators.csrf import requires_csrf_token
+
+@requires_csrf_token
+def page_not_found(request, template_name='404.html'):
+
+    if not request.META.has_key('HTTP_REFERER'):
+        return http.HttpResponseNotFound()
+
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+
+    return http.HttpResponseNotFound(t.render(RequestContext(request, {'request_path': request.path})))
+
+
