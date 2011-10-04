@@ -89,15 +89,15 @@ def index( request ):
 
 
 from django.views.decorators.csrf import requires_csrf_token
-
+from django.http import HttpResponseNotFound
 @requires_csrf_token
 def page_not_found(request, template_name='404.html'):
 
     if not request.META.has_key('HTTP_REFERER'):
-        return http.HttpResponseNotFound()
+        return HttpResponseNotFound()
 
     t = loader.get_template(template_name) # You need to create a 404.html template.
 
-    return http.HttpResponseNotFound(t.render(RequestContext(request, {'request_path': request.path})))
+    return HttpResponseNotFound(t.render(RequestContext(request, {'request_path': request.path})))
 
 
