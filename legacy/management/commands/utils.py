@@ -18,7 +18,10 @@ def compile_date ( day, month, year ,dt = False):
         try:
             date = datetime( int(year), int(month), int(day) )
         except ValueError:
-            date = datetime( int(year), int(month), int(day)-1 )
+            try:
+                date = datetime( int(year), int(month), int(day)-1 )
+            except ValueError:
+                date = datetime( int(year), int(month), 0 )
     else:
         date = None
 
