@@ -96,7 +96,7 @@ from django.template import Context, RequestContext, loader
 def page_not_found(request, template_name='404.html'):
 
     if not request.META.has_key('HTTP_REFERER'):
-        return HttpResponseNotFound()
+        return HttpResponseNotFound(_('Page not found'))
 
     t = loader.get_template(template_name) # You need to create a 404.html template.
 
