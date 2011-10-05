@@ -56,7 +56,7 @@ class PhotoEvent( ImageModel ):
 class Photo( ImageModel ):
     description = models.CharField( _( 'Description' ), max_length = 256 )
     event = models.ForeignKey( PhotoEvent )
-    image = ImageRestrictedFileField( upload_to = upload_to_dest(format='uploads/people/%Y/%m/%d') )
+    image = ImageRestrictedFileField( upload_to = upload_to_dest(format='uploads/people/%Y/%m/%d'), max_length = 110 )
     thumb = ImageRestrictedFileField( upload_to = upload_to_dest(format='uploads/people/%Y/%m/%d') )
     datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
 
