@@ -359,3 +359,32 @@ class Especial(models.Model):
     usuario = models.TextField(blank=True)
     class Meta:
         db_table = u'especial'
+
+
+class Dj(models.Model):
+    dia = models.CharField(max_length=6)
+    mes = models.CharField(max_length=6)
+    ano = models.CharField(max_length=12)
+    titulo = models.CharField(max_length=750)
+    subtitulo = models.CharField(max_length=750)
+    imagen1 = models.CharField(max_length=750)
+    imagen2 = models.CharField(max_length=750)
+    titcon = models.CharField(max_length=750)
+    contenido = models.TextField()
+    info = models.CharField(max_length=750)
+    da = models.IntegerField()
+    ma = models.IntegerField()
+    aa = models.IntegerField()
+    du = models.IntegerField()
+    mu = models.IntegerField()
+    au = models.IntegerField()
+    int = models.IntegerField()
+    id = models.BigIntegerField(primary_key=True, db_column='ID') # Field name made lowercase.
+    fecha = models.DateField(null=True, blank=True)
+    tags = models.TextField(blank=True)
+    plantilla = models.CharField(max_length=60, blank=True)
+    imagen3 = models.CharField(max_length=750, blank=True)
+    youtube = models.TextField(blank=True)
+    usuario = models.TextField(blank=True)
+    class Meta:
+        db_table = u'dj'

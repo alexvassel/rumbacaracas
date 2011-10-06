@@ -18,7 +18,10 @@ def compile_date ( day, month, year ,dt = False):
         try:
             date = datetime( int(year), int(month), int(day) )
         except ValueError:
-            date = datetime( int(year), int(month), int(day)-1 )
+            try:
+                date = datetime( int(year), int(month), int(day)-1 )
+            except ValueError:
+                date = None
     else:
         date = None
 
@@ -165,6 +168,8 @@ def compile_news_content (content, subtitle, additional_image, youtube_url):
 
 def detect_news_category (table):
     category = 5 #blog
+    if table is L.Dj:
+        category = 4 #interviews
     if table is L.Entrevista:
         category = 4 #interviews
     if table is L.Especial:

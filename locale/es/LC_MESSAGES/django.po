@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-30 06:24-0500\n"
-"PO-Revision-Date: 2011-09-30 15:28+0300\n"
+"POT-Creation-Date: 2011-10-04 11:52-0500\n"
+"PO-Revision-Date: 2011-10-04 20:53+0300\n"
 "Last-Translator: Nagaev Maksim <nagaev.maksim@gmail.com>\n"
 "Language-Team: td <td>\n"
 "Language: \n"
@@ -16,6 +16,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Spanish\n"
+
+#: dashboard.py:29
+msgid "Legacy E-Rumba System"
+msgstr ""
+
+#: dashboard.py:34
+msgid "E-Rumba Generation Tool"
+msgstr ""
+
+#: dashboard.py:39
+msgid "Legacy People Upload"
+msgstr ""
+
+#: dashboard.py:44
+msgid "Legacy People Cropper"
+msgstr ""
+
+#: dashboard.py:53
+#, fuzzy
+msgid "AppList: Applications"
+msgstr "Listado de Locales"
+
+#: dashboard.py:61
+msgid "ModelList: Administration"
+msgstr ""
+
+#: dashboard.py:69
+msgid "Recent Actions"
+msgstr ""
 
 #: decorators.py:69
 msgid "Internal error"
@@ -171,17 +200,17 @@ msgid "Event"
 msgstr "Evento"
 
 #: events/models.py:178
-#: events/views.py:109
-#: events/views.py:203
-#: events/views.py:214
-#: events/views.py:225
-#: events/views.py:236
-#: events/views.py:247
-#: events/views.py:261
-#: templates/base.html:197
-#: templates/base.html.py:205
-#: templates/base.html:275
-#: templates/base.html.py:312
+#: events/views.py:111
+#: events/views.py:205
+#: events/views.py:216
+#: events/views.py:227
+#: events/views.py:238
+#: events/views.py:249
+#: events/views.py:263
+#: templates/base.html:199
+#: templates/base.html.py:207
+#: templates/base.html:280
+#: templates/base.html.py:317
 #: templates/events/calendar.html:48
 #: templates/events/details.html:26
 #: templates/facebook/albums_list.html:10
@@ -195,13 +224,13 @@ msgstr "Evento"
 msgid "Events"
 msgstr "Eventos"
 
-#: events/views.py:110
+#: events/views.py:112
 #: templates/events/details.html:243
 #: templates/events/events_base.html:179
 msgid "Calendar"
 msgstr "Calendario"
 
-#: events/views.py:204
+#: events/views.py:206
 #: locations/views.py:58
 #: people/views.py:20
 #: templates/events/details.html:239
@@ -210,7 +239,7 @@ msgstr "Calendario"
 msgid "By Category"
 msgstr "Por Categoría"
 
-#: events/views.py:215
+#: events/views.py:217
 #: locations/views.py:95
 #: templates/events/details.html:241
 #: templates/events/events_base.html:171
@@ -218,13 +247,13 @@ msgstr "Por Categoría"
 msgid "By Area"
 msgstr "Por Zona"
 
-#: events/views.py:226
+#: events/views.py:228
 #: templates/events/details.html:240
 #: templates/events/events_base.html:167
 msgid "By Location"
 msgstr "Por Local"
 
-#: events/views.py:237
+#: events/views.py:239
 #: locations/views.py:104
 #: templates/events/details.html:242
 #: templates/events/events_base.html:175
@@ -232,7 +261,7 @@ msgstr "Por Local"
 msgid "By Music"
 msgstr "Por Música"
 
-#: events/views.py:262
+#: events/views.py:264
 #: templates/events/details.html:29
 #: templates/events/events_base.html:21
 #: templates/people/category.html:15
@@ -242,9 +271,9 @@ msgstr "Por Música"
 msgid "Add event"
 msgstr "Publica un evento"
 
-#: events/views.py:296
-#: events/views.py:302
-#: events/views.py:308
+#: events/views.py:298
+#: events/views.py:304
+#: events/views.py:310
 #: locations/views.py:179
 #: locations/views.py:186
 #: locations/views.py:192
@@ -255,7 +284,7 @@ msgstr "Publica un evento"
 msgid "This field is required"
 msgstr "Este campo es obligatorio"
 
-#: events/views.py:322
+#: events/views.py:324
 msgid "Location or Address and Area are required"
 msgstr "Sitio o dirección y zona son requeridos"
 
@@ -398,7 +427,7 @@ msgid "Telephones"
 msgstr "Teléfonos"
 
 #: locations/models.py:121
-#: templates/base.html:215
+#: templates/base.html:217
 #: templates/events/details.html:77
 msgid "Location"
 msgstr "Locales"
@@ -411,7 +440,7 @@ msgstr "Locales"
 #: locations/views.py:111
 #: locations/views.py:129
 #: locations/views.py:144
-#: templates/base.html:284
+#: templates/base.html:289
 #: templates/locations/index.html:41
 #: templates/main/index.html:134
 #: templates/main/index.html.py:171
@@ -425,7 +454,7 @@ msgid "By Type of Food"
 msgstr "Por tipo de Comida"
 
 #: locations/views.py:145
-#: templates/base.html:134
+#: templates/base.html:136
 #: templates/locations/add.html:11
 #: templates/locations/index.html:44
 msgid "Add Location"
@@ -439,9 +468,13 @@ msgstr "Tipo de música es requerido"
 msgid "Type of restaurant can't be empty for restaurant"
 msgstr "Tipo de restaurante no puede estar vacío para la categoría Restaurante"
 
-#: magazine/models.py:8
+#: magazine/models.py:9
 msgid "Last Magazine Anotation"
 msgstr "Anotación Última Revista "
+
+#: magazine/models.py:10
+msgid "ISSUU Code"
+msgstr ""
 
 #: main/forms.py:8
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
@@ -466,8 +499,14 @@ msgstr "Por favor, mantenga tamaño del archivo en  %(maxsize)s. %(current)s act
 msgid "File type is not supported"
 msgstr "Tipo de archivo no es compatible"
 
+#: main/views.py:99
+#: templates/404.html:4
+#: templates/404.html.py:13
+msgid "Page not found"
+msgstr "Página no encontrada"
+
 #: news/admin.py:11
-#: templates/base.html:288
+#: templates/base.html:293
 msgid "Content"
 msgstr "Contenido"
 
@@ -509,15 +548,15 @@ msgid "News and Events"
 msgstr "Noticias y Eventos"
 
 #: news/views.py:32
-#: templates/base.html:226
-#: templates/base.html.py:297
+#: templates/base.html:228
+#: templates/base.html.py:302
 #: templates/main/index.html:133
 #: templates/zinnia/base.html:15
 msgid "News"
 msgstr "Noticias"
 
 #: news/views.py:35
-#: templates/base.html:136
+#: templates/base.html:138
 #: templates/news/add.html:13
 #: templates/zinnia/base.html:21
 #: templates/zinnia/base.html.py:27
@@ -525,7 +564,7 @@ msgid "Add Article"
 msgstr "Publica un Artículo"
 
 #: news/views.py:37
-#: templates/base.html:133
+#: templates/base.html:135
 #: templates/news/add.html:17
 #: templates/zinnia/base.html:31
 msgid "Add News"
@@ -696,11 +735,6 @@ msgstr "Registro"
 msgid "This email is already in use."
 msgstr "Este correo electrónico ya está en uso."
 
-#: templates/404.html:4
-#: templates/404.html.py:13
-msgid "Page not found"
-msgstr "Página no encontrada"
-
 #: templates/404.html:21
 msgid "Sorry, but the requested page could not be found."
 msgstr "Disculpe, la página solicitada no se puede encontrar"
@@ -714,19 +748,19 @@ msgstr "Error del servidor"
 msgid "Sorry, but the requested page could not be executed."
 msgstr "Disculpe, la página solicitada no puede ser cargada"
 
-#: templates/base.html:99
+#: templates/base.html:101
 msgid "Hello"
 msgstr "Hola"
 
-#: templates/base.html:113
+#: templates/base.html:115
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: templates/base.html:118
+#: templates/base.html:120
 msgid "or"
 msgstr "o"
 
-#: templates/base.html:129
+#: templates/base.html:131
 #: templates/facebook/events_list.html:15
 #: templates/facebook/events_list.html:81
 #: templates/facebook/photos_list.html:15
@@ -734,41 +768,41 @@ msgstr "o"
 msgid "Public"
 msgstr "Publicar"
 
-#: templates/base.html:131
+#: templates/base.html:133
 #: templates/events/add.html:11
 msgid "Add Event"
 msgstr "Publica un Evento"
 
-#: templates/base.html:132
+#: templates/base.html:134
 msgid "Upload Your Photo"
 msgstr "Sube tu Foto"
 
-#: templates/base.html:135
+#: templates/base.html:137
 msgid "Upload Video"
 msgstr "Sube tu Video"
 
-#: templates/base.html:148
+#: templates/base.html:150
 msgid "subscription"
 msgstr "suscríbete"
 
-#: templates/base.html:150
+#: templates/base.html:152
 msgid "Follow:"
 msgstr "Síguenos:"
 
-#: templates/base.html:154
+#: templates/base.html:156
 msgid "Follow us on Facebook"
 msgstr "Síguenos en Facebook"
 
-#: templates/base.html:155
+#: templates/base.html:157
 msgid "Follow us on Twitter"
 msgstr "Síguenos en Twitter"
 
-#: templates/base.html:185
+#: templates/base.html:187
 msgid "Rumbacaracas Home"
 msgstr "Rumbacaracas Inicio"
 
-#: templates/base.html:189
-#: templates/base.html.py:292
+#: templates/base.html:191
+#: templates/base.html.py:297
 #: templates/main/index.html:182
 #: templates/yourvideos/details.html:25
 #: templates/yourvideos/index.html:19
@@ -776,20 +810,20 @@ msgstr "Rumbacaracas Inicio"
 msgid "Videos"
 msgstr "Videos"
 
-#: templates/base.html:190
-#: templates/base.html.py:293
+#: templates/base.html:192
+#: templates/base.html.py:298
 #: templates/main/index.html:135
 #: templates/main/index.html.py:176
 msgid "Blog"
 msgstr "Blog"
 
-#: templates/base.html:192
-#: templates/base.html.py:307
+#: templates/base.html:194
+#: templates/base.html.py:312
 msgid "Media"
 msgstr "Medios"
 
-#: templates/base.html:194
-#: templates/base.html.py:309
+#: templates/base.html:196
+#: templates/base.html.py:314
 #: templates/events/details.html:127
 #: templates/locations/index.html:89
 #: templates/static/about_menu.html:9
@@ -798,53 +832,53 @@ msgstr "Medios"
 msgid "Web"
 msgstr "Web"
 
-#: templates/base.html:195
-#: templates/base.html.py:310
+#: templates/base.html:197
+#: templates/base.html.py:315
 #: templates/static/about_menu.html:10
 #: templates/static/aboutus.html:48
 #: templates/static/newsletter.html:10
 msgid "Newsletter"
 msgstr "Boletín Electrónico"
 
-#: templates/base.html:196
-#: templates/base.html.py:311
+#: templates/base.html:198
+#: templates/base.html.py:316
 #: templates/static/about_menu.html:11
 #: templates/static/aboutus.html:49
 msgid "Printed Editions"
 msgstr "Ediciones Impresas"
 
-#: templates/base.html:200
-#: templates/base.html.py:316
+#: templates/base.html:202
+#: templates/base.html.py:321
 #: templates/static/about_menu.html:5
 #: templates/static/aboutus.html:8
 #: templates/static/aboutus.html.py:14
 msgid "About Us"
 msgstr "Nosotros"
 
-#: templates/base.html:207
-#: templates/base.html.py:277
+#: templates/base.html:209
+#: templates/base.html.py:282
 #: templates/events/events_base.html:68
 msgid "For Today"
 msgstr "Para Hoy"
 
-#: templates/base.html:208
-#: templates/base.html.py:278
+#: templates/base.html:210
+#: templates/base.html.py:283
 #: templates/events/events_base.html:73
 msgid "For Tomorrow"
 msgstr "Para Mañana"
 
-#: templates/base.html:209
-#: templates/base.html.py:279
+#: templates/base.html:211
+#: templates/base.html.py:284
 #: templates/events/events_base.html:78
 msgid "For a Week"
 msgstr "Para Esta Semana"
 
-#: templates/base.html:210
-#: templates/base.html.py:280
+#: templates/base.html:212
+#: templates/base.html.py:285
 msgid "For a Month"
 msgstr "Para Esta Mes"
 
-#: templates/base.html:219
+#: templates/base.html:221
 #: templates/facebook/albums_list.html:10
 #: templates/facebook/base.html:132
 #: templates/facebook/events_list.html:12
@@ -852,55 +886,62 @@ msgstr "Para Esta Mes"
 msgid "Fotos"
 msgstr "Fotos"
 
-#: templates/base.html:221
+#: templates/base.html:223
 msgid "People & Events"
 msgstr "Gente y Eventos"
 
-#: templates/base.html:222
-#: templates/base.html.py:291
+#: templates/base.html:224
+#: templates/base.html.py:296
 #: templates/widgets/yourphotos.html:5
 msgid "Your photos"
 msgstr "Tus Fotos"
 
-#: templates/base.html:228
-#: templates/base.html.py:299
+#: templates/base.html:230
+#: templates/base.html.py:304
 #: templates/main/index.html:172
 msgid "Rumba News"
 msgstr "Rumba News"
 
-#: templates/base.html:229
-#: templates/base.html.py:300
+#: templates/base.html:231
+#: templates/base.html.py:305
 #: templates/main/index.html:173
 msgid "Music News"
 msgstr "Music News"
 
-#: templates/base.html:230
-#: templates/base.html.py:301
+#: templates/base.html:232
+#, fuzzy
+msgid "Sexy News"
+msgstr "Sólo Noticias"
+
+#: templates/base.html:233
+#: templates/base.html.py:306
 #: templates/main/index.html:174
 msgid "Actual"
 msgstr "Actualidad"
 
-#: templates/base.html:231
-#: templates/base.html.py:302
-#: templates/main/index.html:175
-msgid "Interviews"
-msgstr "Entrevistas"
+#: templates/base.html:234
+msgid "Bands, Authors and Djs"
+msgstr "Bandas, Artistas y Djs"
 
-#: templates/base.html:232
-#: templates/base.html.py:303
-msgid "DJ Mix"
-msgstr "DJ Mix"
-
-#: templates/base.html:290
+#: templates/base.html:295
 #: templates/people/index.html:13
 msgid "Photos"
 msgstr "Fotos"
 
-#: templates/base.html:318
+#: templates/base.html:307
+#: templates/main/index.html:175
+msgid "Interviews"
+msgstr "Entrevistas"
+
+#: templates/base.html:308
+msgid "DJ Mix"
+msgstr "DJ Mix"
+
+#: templates/base.html:323
 msgid "About us page"
 msgstr "Sobre Nosotros"
 
-#: templates/base.html:319
+#: templates/base.html:324
 #: templates/static/about_menu.html:7
 #: templates/static/events.html:8
 #: templates/static/events.html.py:25
@@ -914,21 +955,21 @@ msgstr "Sobre Nosotros"
 msgid "Products"
 msgstr "Productos"
 
-#: templates/base.html:320
+#: templates/base.html:325
 #: templates/static/about_menu.html:15
 #: templates/static/partners.html:8
 #: templates/static/partners.html.py:15
 msgid "Partners"
 msgstr "Alianzas"
 
-#: templates/base.html:321
+#: templates/base.html:326
 #: templates/static/about_menu.html:16
 #: templates/static/contacts.html:7
 #: templates/static/contacts.html.py:15
 msgid "Contacts"
 msgstr "Contactos"
 
-#: templates/base.html:336
+#: templates/base.html:341
 #: templates/facebook/base.html:145
 #: templates/static/term_of_use.html:7
 msgid "Terms of Use"
@@ -974,6 +1015,21 @@ msgstr "Entrar"
 msgid "You should be logged in to perform this operation. Click \"Connect with Facebook\" or \"Connect with twitter\" to log in."
 msgstr "Debe estar logeado para realizar esta operación. Haga clic en \"Conéctate con Facebook\" o \"Conéctate con Twitter\" para entrar"
 
+#: templates/admin/base.html:92
+#: templates/magazine/magazine.html:13
+#: templates/static/aboutus.html:6
+#: templates/static/contacts.html:5
+#: templates/static/events.html:6
+#: templates/static/magazine.html:6
+#: templates/static/newsletter.html:6
+#: templates/static/notebook.html:6
+#: templates/static/partners.html:6
+#: templates/static/term_of_use.html:5
+#: templates/static/web.html:5
+#: templates/zinnia/tags/breadcrumbs.html:2
+msgid "Home"
+msgstr "Inicio"
+
 #: templates/erumba/index.html:112
 #: templates/widgets/upcoming_events_list.html:5
 msgid "Upcoming Events"
@@ -994,7 +1050,7 @@ msgstr "Últimas Fotos"
 
 #: templates/erumba/tags/your_photos.html:6
 #: templates/main/index.html:48
-#: templates/yourphotos/details.html:25
+#: templates/yourphotos/details.html:26
 #: templates/yourphotos/index.html:29
 #: yourphotos/models.py:74
 #: yourphotos/views.py:21
@@ -1366,20 +1422,6 @@ msgstr "Listado de locales"
 msgid "Magazine | Rumbacaracas"
 msgstr "Revista | Rumbacaracas"
 
-#: templates/magazine/magazine.html:13
-#: templates/static/aboutus.html:6
-#: templates/static/contacts.html:5
-#: templates/static/events.html:6
-#: templates/static/magazine.html:6
-#: templates/static/newsletter.html:6
-#: templates/static/notebook.html:6
-#: templates/static/partners.html:6
-#: templates/static/term_of_use.html:5
-#: templates/static/web.html:5
-#: templates/zinnia/tags/breadcrumbs.html:2
-msgid "Home"
-msgstr "Inicio"
-
 #: templates/magazine/magazine.html:15
 #: templates/magazine/magazine.html:21
 #: templates/static/magazine.html:10
@@ -1388,15 +1430,14 @@ msgid "Magazine"
 msgstr "Revista"
 
 #: templates/magazine/magazine.html:30
-#: templates/magazine/magazine.html:50
 msgid "Last Edition"
 msgstr "Última Edición"
 
-#: templates/magazine/magazine.html:75
+#: templates/magazine/magazine.html:54
 msgid "Previous Editions"
 msgstr "Ediciones Anteriores"
 
-#: templates/magazine/magazine.html:104
+#: templates/magazine/magazine.html:83
 #: templates/static/notebook.html:10
 msgid "Notebook"
 msgstr "Cuaderno"
@@ -1695,13 +1736,14 @@ msgstr "Fotos enviadas:"
 msgid "Delete"
 msgstr "Eliminar"
 
-#: templates/yourphotos/details.html:28
-msgid "Add Photo"
-msgstr "Publica tus Fotos"
-
+#: templates/yourphotos/details.html:29
 #: templates/yourphotos/index.html:32
 msgid "Upload a Photo"
 msgstr "Publica una Foto"
+
+#: templates/yourphotos/details.html:29
+msgid "Add Photo"
+msgstr "Publica tus Fotos"
 
 #: templates/yourphotos/index.html:83
 #: yourphotos/models.py:16

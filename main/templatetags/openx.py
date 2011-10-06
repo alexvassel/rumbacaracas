@@ -83,6 +83,10 @@ def banner_zone_float( zone_id, width=None, height=None ):
     rand = round(100000 * random.random(), 5)
     return dict( zone_id = zone_id, width = width, height=height,rand =rand  )
 
+@register.inclusion_tag( 'main/openx_overflow_banner.html' )
+def banner_zone_overflow( zone_id, width=None, height=None ):
+    rand = round(100000 * random.random(), 5)
+    return dict( zone_id = zone_id, width = width, height=height,rand =rand  )
 
 
 @register.inclusion_tag( 'main/openx_email_banner.html' )

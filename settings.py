@@ -204,7 +204,7 @@ INSTALLED_APPS = (
     'main',
     'sortable',
     'tagging',
-    #'mptt',
+    'mptt',
     'zinnia',
     'news',
     'preferences',

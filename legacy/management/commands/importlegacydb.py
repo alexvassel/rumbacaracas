@@ -266,7 +266,7 @@ def import_blog_category (table):
 
     oldarticles = table.objects.all().order_by('-fecha')
 
-    Z.Entry.objects.filter(categories=detect_news_category(table)).delete()
+    #Z.Entry.objects.filter(categories=detect_news_category(table)).delete()
 
     disconnect_zinnia_signals()
 
@@ -826,16 +826,19 @@ class Command( NoArgsCommand ):
         pend =  datetime.now()
 
         print "\nImporting legacy rumba news"
-        import_blog_category (L.RumbaNews)
+        #import_blog_category (L.RumbaNews)
 
         print "\nImporting legacy music news"
-        import_blog_category (L.MusicNews)
+        #import_blog_category (L.MusicNews)
 
         print "\nImporting legacy interviews"
-        import_blog_category (L.Entrevista)
+        #import_blog_category (L.Entrevista)
 
         print "\nImporting legacy specials"
-        import_blog_category (L.Especial)
+        #import_blog_category (L.Especial)
+
+        print "\nImporting legacy dj"
+        import_blog_category (L.Dj)
 
         #Z.Entry.objects.filter(categories=5).delete()
 

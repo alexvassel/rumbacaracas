@@ -39,10 +39,14 @@ def _get_issuu_folders_list():
     args['signature'] = signature
 
     request_url = "http://api.issuu.com/1_0?" + urllib.urlencode(args)
-    file = urllib.urlopen(request_url)
-    response = _parse_json(file.read())
-
-    return response['rsp']['_content']['result']['_content']
+    try:
+        file = urllib.urlopen(request_url)
+        response = _parse_json(file.read())
+        rlist = response['rsp']['_content']['result']['_content']
+    except :
+        rlist = list()
+        
+    return rlist
 
 
 def _get_issuu_last_document():

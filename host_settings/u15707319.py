@@ -2,6 +2,8 @@
 DEBUG = False
 TEMPLATE_DEBUG = False
 
+SERVER_EMAIL = 'noreply@rumbacr.com'
+ADMINS = (('nagaev maksim','nagaev.maksim@gmail.com',),)
 #INTERNAL_IPS = ( '127.0.0.1', '213.33.244.154',)
 
 LANGUAGE_CODE = 'es'
@@ -47,7 +49,7 @@ DATABASES = {
             'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
             'NAME': 'rumbaccs', # Or path to database file if using sqlite3.
             'USER': 'rumbaccs', # Not used with sqlite3.
-            'HOST': 'rumbacaracas.com', # Set to empty string for localhost. Not used with sqlite3.
+            'HOST': 'ads.2rumba.com', # Set to empty string for localhost. Not used with sqlite3.
             'PASSWORD': 'dXqGg7XHA5Mfax4', # Not used with sqlite3.
         }
     }
@@ -127,3 +129,6 @@ COMPRESS_STORAGE     = 'main.cuddlybuddly.storage.s3.storage.CustomS3Storage'
 ADMIN_MEDIA_PREFIX = MEDIA_URL + "grappelli/"
 
 ZINNIA_MEDIA_URL = '/media/zinnia/'
+
+COMPRESS_CSS_COMPRESSOR = 'main.compressor.css.CustomCssCompressor'
+COMPRESS_JS_COMPRESSOR = 'main.compressor.js.CustomJsCompressor'

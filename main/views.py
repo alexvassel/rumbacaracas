@@ -22,6 +22,8 @@ from socialregistration.views import setup
 from django.views.decorators.csrf import csrf_protect
 from django.template.defaultfilters import slugify
 from main.forms import UserForm
+from socialregistration.models import TwitterProfile
+from django.conf import settings
 
 @csrf_protect
 def custom_social_setup( request, template="socialregistration/setup.html" ):
@@ -31,6 +33,13 @@ def custom_social_setup( request, template="socialregistration/setup.html" ):
             initial=request.facebook.graph.get_object('me')
             if "username" not in initial:
                 initial['username'] = slugify(initial['name'])
+        if request.user is not None:
+            import tweepy
+            auth = tweepy.OAuthHandler(settings.TWITTER_CONSUMER_KEY, settings.TWITTER_CONSUMER_SECRET_KEY)
+            api = tweepy.API(auth)
+            twitter_user = TwitterProfile.objects.get( user = request.user )
+            twitter_data = api.get_user(user_id=twitter_user.twitter_id)
+            initial['username'] = twitter_data.screen_name
     except :
         pass
     return setup(request, initial=initial,form_class=UserForm,template=template)
@@ -86,5 +95,20 @@ def index( request ):
     return {'people': people, 'news': news,'blog': blog,'locations': locations, 'art_culture': art_culture,
             'videos':videos, 'photos': photos,
             'slides': [( blog, 'blog', ) for blog in blog_slides] + [( event, 'event', ) for event in events_slides] }
+
+
+from django.views.decorators.csrf import requires_csrf_token
+from django.http import HttpResponseNotFound
+from django.template import Context, RequestContext, loader
+
+@requires_csrf_token
+def page_not_found(request, template_name='404.html'):
+
+    if not request.META.has_key('HTTP_REFERER'):
+        return HttpResponseNotFound(_('Page not found'))
+
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+
+    return HttpResponseNotFound(t.render(RequestContext(request, {'request_path': request.path})))
 
 

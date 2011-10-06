@@ -52,8 +52,8 @@ def category ( request, group ):
             events_page = paginator.page( page )
         except ( EmptyPage, InvalidPage ):
             events_page = paginator.page( paginator.num_pages )
-
-    return {'group_name': group_name, 'current_page': events_page, 'current_paginator': paginator }
+        return {'group_name': group_name, 'current_page': events_page, 'current_paginator': paginator }
+    return {'group_name': group_name}
 
 
 @render_to( 'people/slider.html' )
@@ -97,7 +97,8 @@ def details ( request, slug ):
         except ( EmptyPage, InvalidPage ):
             photos_page = paginator.page( paginator.num_pages )
 
-    return {'event': event, 'current_page': photos_page, 'current_paginator': paginator }
+        return {'event': event, 'current_page': photos_page, 'current_paginator': paginator }
+    return {'event': event}
 
 @login_required
 def make_main ( request, event_id, photo_id ):
