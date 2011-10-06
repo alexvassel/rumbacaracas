@@ -233,6 +233,8 @@ GRAPPELLI_ADMIN_TITLE = "RUMBACARACAS"
 
 DATABASE_ROUTERS = ['db_router.MyAppRouter']
 
+PIL_IMAGEFILE_MAXBLOCK = 1024 * 2 ** 10
+
 try:
     import socket
     hostname = socket.gethostname().replace( '.', '_' ).replace( '-', '_' )

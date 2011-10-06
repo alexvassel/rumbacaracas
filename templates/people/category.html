@@ -27,14 +27,19 @@
                         {% endif %}
                         <li>
 	                      <div class="photo-thumbnail">
-							<a href="{%url people_details slug=event.slug%}"><img alt="{{event.title}}" src="{{event.smallthumb.url}}"></a>
+                            <a href="{%url people_details slug=event.slug%}">
+                                {% if event.image %}
+                                    <img alt="{{event.title}}" src="{{event.smallthumb.url}}">
+                                {% else %}
+                                    <img alt="{{event.title}}" src="{% value_from_settings "STATIC_URL" %}images/s.gif" style="width: 135px; height: 135px;">
+                                {% endif %}
+                            </a>
 						  </div> 
 	                      <div class="photo-details decou"> 
 	                        <h6><a href="{%url people_details slug=event.slug%}">{{event.title}}</a></h6> 
 	                        <span class="author-meta">{{event.city}} {{event.date|date:"d.m.y"}}</span> 
 	                      </div><!--//.photo-details--> 
 	                    </li>
-
                      {% endfor %}
 					</ul><!--//.photo-archives-list--> 
 			</div><!--//.encap--> 
