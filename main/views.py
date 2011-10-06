@@ -22,6 +22,8 @@ from socialregistration.views import setup
 from django.views.decorators.csrf import csrf_protect
 from django.template.defaultfilters import slugify
 from main.forms import UserForm
+from socialregistration.models import TwitterProfile
+from django.conf import settings
 
 @csrf_protect
 def custom_social_setup( request, template="socialregistration/setup.html" ):
@@ -31,6 +33,13 @@ def custom_social_setup( request, template="socialregistration/setup.html" ):
             initial=request.facebook.graph.get_object('me')
             if "username" not in initial:
                 initial['username'] = slugify(initial['name'])
+        if request.user is not None:
+            import tweepy
+            auth = tweepy.OAuthHandler(settings.TWITTER_CONSUMER_KEY, settings.TWITTER_CONSUMER_SECRET_KEY)
+            api = tweepy.API(auth)
+            twitter_user = TwitterProfile.objects.get( user = request.user )
+            twitter_data = api.get_user(user_id=twitter_user.twitter_id)
+            initial['username'] = twitter_data.screen_name
     except :
         pass
     return setup(request, initial=initial,form_class=UserForm,template=template)
