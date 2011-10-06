@@ -52,8 +52,8 @@ def category ( request, group ):
             events_page = paginator.page( page )
         except ( EmptyPage, InvalidPage ):
             events_page = paginator.page( paginator.num_pages )
-
-    return {'group_name': group_name, 'current_page': events_page, 'current_paginator': paginator }
+        return {'group_name': group_name, 'current_page': events_page, 'current_paginator': paginator }
+    return {'group_name': group_name}
 
 
 @render_to( 'people/slider.html' )
