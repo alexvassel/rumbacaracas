@@ -91,23 +91,7 @@
 
           <ul class="top-menu-social">
 		{% if request.user.is_authenticated %}
-            {% if request.facebook and  request.facebook.uid%}
-                <li class="greating_pic">
-                    <fb:profile-pic uid="{{ request.facebook.uid }}" facebook-logo="true" linked="false" size="square" width="40" height="40"></fb:profile-pic>
-                </li>
-            {% endif %}
-		    <li class="opcion0 greating">
-                {% trans "Hello" %}<br />
-                {% if request.facebook and  request.facebook.uid%}
-                    <fb:name uid="{{ request.facebook.uid }}" linked="false" useyou="false"></fb:name>
-                {% else %}
-                    {% if request.user.first_name and  request.user.last_name%}
-                        {{ request.user.first_name }} {{ request.user.last_name}}
-                    {% else %}
-                        {{ request.user.username }}
-                    {% endif %}
-                {% endif %}
-            </li>
+            {% main_greating  request.user%}
             <li class="sepL force-right">&nbsp;</li>
             <li class="opcion0 force-right">
                 <a href="{% url social_logout %}" class="logout" onclick="javascript:FB.logout(function(response){ document.location = '{% url social_logout %}' })">

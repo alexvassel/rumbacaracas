@@ -1,0 +1,27 @@
+{%load i18n %}
+{% if facebook_user%}
+    <li class="greating_pic">
+        <fb:profile-pic uid="{{ facebook_user.uid }}" facebook-logo="true" linked="false" size="square" width="40" height="40"></fb:profile-pic>
+    </li>
+{% endif %}
+{% if twitter_user and twitter_data%}
+    <li class="greating_pic">
+        <img width="40" height="40" src="{{ twitter_data.profile_image_url }}"/>
+    </li>
+{% endif %}
+<li class="opcion0 greating">
+    {% trans "Hello" %}<br />
+    {% if facebook_user%}
+        <fb:name uid="{{ facebook_user.uid }}" linked="false" useyou="false"></fb:name>
+    {% else %}
+        {% if twitter_user and twitter_data%}
+            <span>{{ twitter_data.screen_name }}</span>
+        {% else %}
+            {% if user.first_name and  user.last_name%}
+                {{ user.first_name }} {{ user.last_name}}
+            {% else %}
+                {{ user.username }}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+</li>

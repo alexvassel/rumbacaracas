@@ -14,7 +14,7 @@ from django.core.urlresolvers import reverse
 def truncate( value, arg ):
     """
     Truncates a string after a given number of chars
-    return abbr with title  
+    return abbr with title
     Argument: Number of chars to truncate after
     """
     try:
@@ -46,6 +46,37 @@ def get_event_url_by_tab( value, arg):
     return reverse('event_by_'+ tab + '_' + period )
 
 
+
+@register.inclusion_tag( 'main/main_greating.html' )
+def main_greating( user):
+    if user is None or user == "":
+        return ""
+
+    try :
+        facebook_user = FacebookProfile.objects.get( user = user )
+    except FacebookProfile.DoesNotExist:
+        facebook_user = None
+
+    try :
+        twitter_user = TwitterProfile.objects.get( user = user )
+    except TwitterProfile.DoesNotExist:
+        twitter_user = None
+
+    if twitter_user is not None:
+        try:
+            import tweepy
+            auth = tweepy.OAuthHandler(settings.TWITTER_CONSUMER_KEY, settings.TWITTER_CONSUMER_SECRET_KEY)
+            api = tweepy.API(auth)
+            twitter_data = api.get_user(user_id=twitter_user.twitter_id)
+        except Exception, e :
+            twitter_data = None
+    else:
+        twitter_data = None
+
+    return dict( twitter_user = twitter_user,twitter_data=twitter_data, facebook_user = facebook_user,user = user )
+
+
+
 @register.filter
 def user_link( value ):
     if value is None or value == "":
@@ -63,7 +94,15 @@ def user_link( value ):
     if facebook_user is not None:
         return mark_safe( u'<fb:name uid="%s"  target="_blank" />' % ( facebook_user.uid ) )
     elif twitter_user is not None:
-        return mark_safe( value.username )
+        try:
+            import tweepy
+            auth = tweepy.OAuthHandler(settings.TWITTER_CONSUMER_KEY, settings.TWITTER_CONSUMER_SECRET_KEY)
+            api = tweepy.API(auth)
+            user = api.get_user(user_id=twitter_user.twitter_id)
+            return mark_safe( u'<a target="_blank" href="http://twitter.com/%s">%s</s>' % ( user.screen_name,  user.screen_name ) )
+        except :
+            return mark_safe( value.username )
+
     #elif value.first_name or value.last_name:
         #return mark_safe( '%s %s' % (value.first_name, value.last_name))
     else:
