@@ -75,7 +75,7 @@ class OccurrenceManager( models.Manager ):
             else:
                 #fill all days
                 results.extend( [
-                     ( event, tdt.date() ) for tdt in rrule.rrule( rrule.DAILY, dtstart = rrule_start, until = rrule_end )]
+                     ( event, tdt.date() ) for tdt in rrule.rrule( rrule.DAILY, dtstart = rrule_start, until = rrule_end, count = repeat_count )]
                 )
         return results
 
