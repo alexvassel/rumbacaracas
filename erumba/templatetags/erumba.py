@@ -3,6 +3,7 @@ register = template.Library()
 
 from yourphotos.models import Photo
 from events.models import Event
+from people.models import PhotoEvent
 import itertools
 import datetime
 import dateutil.parser
@@ -43,5 +44,5 @@ def upcoming_events(from_date = datetime.date.today(), to_date = datetime.date.t
 
 @register.inclusion_tag( 'erumba/tags/latest_photos.html' )
 def latests_photos():
-    photos = Photo.objects.filter( status = 1 ).order_by( '-datetime_added', '-id' )[:3]
+    photos = PhotoEvent.objects.filter( status = 1 ).order_by( '-datetime_added', '-id' )[:3]
     return {'photos': photos}
