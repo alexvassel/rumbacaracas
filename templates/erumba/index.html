@@ -65,7 +65,7 @@ h4{
                         </td>
                     </tr>
                     <tr>
-                        <td align="left" width="350" height="50px" style="font-size:48px; margin-top:20px;"> E-rumba&nbsp;<strong style="font-weight:bold; color:#F06000; font-size:12px;">Del {{ from_date|date:"d M" }} al {{ to_date|date:"d M" }}</strong> </td>
+                        <td align="left" width="350" height="50px" style="font-size:48px; margin-top:20px;"> E-rumba&nbsp;<strong style="font-weight:bold; color:#F06000; font-size:12px;">Del {{ from_date|date:"d" }} de {{ from_date|date:"F" }} al {{ to_date|date:"d" }} de {{ to_date|date:"F" }}</strong> </td>
                         <td align="left" width="150" height="50px">&nbsp;</td>
                         <td align="right" width="250" height="50px"><img src="{% value_from_settings "STATIC_URL" %}images/abrir.jpg" alt="newsletter logo" width="199px" height="29px" hspace="0" vspace="0" border="0" align="middle" style="display:block; margin-top: 50px;" /></td>
                     </tr>
