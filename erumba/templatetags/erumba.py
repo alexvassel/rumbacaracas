@@ -2,6 +2,7 @@ from django import template
 register = template.Library()
 
 from yourphotos.models import Photo
+from yourvideos.models import Video
 from events.models import Event
 from people.models import PhotoEvent
 import itertools
@@ -13,6 +14,11 @@ from django.template.defaultfilters import date
 def last_yourphotos( number = 2 ):
     photos = Photo.objects.filter(status=1).order_by('-datetime_added')[:number]
     return dict(photos=photos)
+
+@register.inclusion_tag( 'erumba/tags/your_videos.html' )
+def last_yourvideos( number = 2 ):
+    videos = Video.objects.filter(status=1).order_by('-datetime_added')[:number]
+    return dict(videos=videos)
 
 @register.inclusion_tag( 'erumba/tags/upcoming_events.html' )
 def upcoming_events(from_date = datetime.date.today(), to_date = datetime.date.today() + datetime.timedelta(6)):
@@ -28,7 +34,7 @@ def upcoming_events(from_date = datetime.date.today(), to_date = datetime.date.t
         return list
 
     by_day = list([
-       (dateutil.parser.parse(dom), sortList( list(items) )) for dom, items in itertools.groupby( sorted_events, lambda o: date(o[1], "d.m.Y") )
+       (dom, sortList( list(items) )) for dom, items in itertools.groupby( sorted_events, lambda o: o[1] )
     ])
     by_day.reverse()
 
