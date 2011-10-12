@@ -212,7 +212,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'magazine',
     'subscribe',
-    'legacy',
+    #'legacy',
     'erumba',
     'storages',
     'cuddlybuddly.storage.s3',

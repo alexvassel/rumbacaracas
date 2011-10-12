@@ -15,7 +15,7 @@ urlpatterns = patterns( '',
 
     url(r'^social/', include('socialregistration.urls')),
     ( r'^login/$', 'django.views.generic.simple.direct_to_template', {'template': 'login.html'} ),
-    ( r'^locale/', include( 'locations.urls' ) ),
+    ( r'^locales/', include( 'locations.urls' ) ),
     ( r'^eventos/', include( 'events.urls' ) ),
     ( r'^gente/', include( 'people.urls' ) ),
     ( r'^tus-fotos/', include( 'yourphotos.urls' ) ),
