@@ -31,7 +31,7 @@ def index ( request ):
 @render_to( 'people/category.html' )
 def category ( request, group ):
 
-    events = PhotoEvent.objects.filter( status = 1 ).filter( category = group ).order_by( 'date' )
+    events = PhotoEvent.objects.filter( status = 1 ).filter( category = group ).order_by( '-date' )
 
     if events:
         group_name = events[0].get_category_display()

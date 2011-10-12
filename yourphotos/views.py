@@ -36,7 +36,7 @@ def photos( request, category ):
             category = 'sexy'
             request.breadcrumbs( _( 'Sexy' ) , request.path_info )
 
-        photos = Photo.objects.filter( status = 1 ).filter( category = category )
+        photos = Photo.objects.filter( status = 1 ).order_by( '-datetime_added', '-id' ).filter( category = category )
 
     paginator = Paginator( photos, 12 )
     try:
