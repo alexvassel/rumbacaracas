@@ -23,6 +23,9 @@ class Video( models.Model ):
     thumb.allow_tags = True
     thumb.short_description = _( 'Preview' )
 
+    def get_thumb_src(self):
+        return youtube_img_from_id( self.youtube_id )
+
     def video( self ):
         return  youtube_video_from_id( self.youtube_id )
     video.allow_tags = True

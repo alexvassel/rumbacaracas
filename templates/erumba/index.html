@@ -60,24 +60,24 @@ h4{
                 <table width="890px" align="center" cellpadding="0" cellspacing="0" border="0">
                     <tr>
                         {# Logo #}
-                        <td width="270" rowspan="4">
-                          <img src="{% value_from_settings "STATIC_URL" %}images/rb_logo.png" alt="newsletter logo" width="225px" height="119px" hspace="0" vspace="0" border="0" align="middle" style="display:block; margin-top: 30px;" />
+                        <td width="225px" rowspan="4">
+                          <a href="{% value_from_settings "FULL_BASE_URL" %}/"><img src="{% value_from_settings "STATIC_URL" %}images/rb_logo.png" alt="newsletter logo" width="225px" height="119px" hspace="0" vspace="0" border="0" align="middle" style="display:block; margin-top: 30px;" /></a>
                         </td>
                     </tr>
-                    <tr>
-                        <td align="left" width="350" height="50px" style="font-size:48px; margin-top:20px;"> E-rumba&nbsp;<strong style="font-weight:bold; color:#F06000; font-size:12px;">Del {{ from_date|date:"d M" }} al {{ to_date|date:"d M" }}</strong> </td>
-                        <td align="left" width="150" height="50px">&nbsp;</td>
-                        <td align="right" width="250" height="50px"><img src="{% value_from_settings "STATIC_URL" %}images/abrir.jpg" alt="newsletter logo" width="199px" height="29px" hspace="0" vspace="0" border="0" align="middle" style="display:block; margin-top: 50px;" /></td>
+                    <tr style="height: 72px;">
+                        <td align="left" width="35" height="50px">&nbsp;</td>
+                        <td align="left" width="400" height="50px" style="font-size:48px; margin-top:20px; vertical-align: bottom;"> E-rumba&nbsp;<strong style="font-weight:bold; color:#F06000; font-size:12px;">Del {{ from_date|date:"d" }} de {{ from_date|date:"F" }} al {{ to_date|date:"d" }} de {{ to_date|date:"F" }}</strong> </td>
+                        <td align="right" width="230" height="50px"><a href="{% value_from_settings "FULL_BASE_URL" %}{% url event_calendar %}"><img src="{% value_from_settings "STATIC_URL" %}images/abrir.jpg" alt="newsletter logo" width="199px" height="29px" hspace="0" vspace="0" border="0" align="middle" style="display:block; margin-top: 22px;" /></a></td>
                     </tr>
                     <tr>
-                        <td colspan="3" height="30px"><img src="{% value_from_settings "STATIC_URL" %}images/fade_bar.gif" alt="newsletter logo" height="6px" hspace="0" vspace="0" border="0" align="middle" style="display:block;" /> </td>
+                        <td colspan="3" height="30px" style='background: url({% value_from_settings "STATIC_URL" %}images/fade_bar.gif) no-repeat 0 50%;'></td>
                     </tr>
                     <tr>
                         <td colspan="3" height="25px">
-                            <table align="center" cellpadding="0" cellspacing="0" border="0">
+                            <table align="right" cellpadding="0" cellspacing="0" border="0">
                                 <tr>
-                                    <td width="300px" style="color:#3B5998; font-size:11px;" height="25px"  align="right" ><strong>rumbacaracas</strong> on Facebook </td>
-                                    <td width="100px" align="right"><a href="http://www.facebook.com/rumbacaracas" target="_blank"><img src="{% value_from_settings "STATIC_URL" %}images/me.jpg" alt="newsletter logo" width="78px" height="23px" hspace="0" vspace="0" border="0" style="display:block;" /></a></td>
+                                    <td width="300px" style="color:#3B5998; font-size:11px;" height="25px"  align="right" ><strong>Síguenos</strong> en Facebook </td>
+                                    <td width="100px" align="right"><a href="http://www.facebook.com/rumbacaracas/"><img src="{% value_from_settings "STATIC_URL" %}images/me.jpg" alt="newsletter logo" width="78px" height="23px" hspace="0" vspace="0" border="0" style="display:block;" /></a> </td>
                                 </tr>
                             </table>
                         </td>
@@ -95,7 +95,7 @@ h4{
           <td width="570px" style="vertical-align: top;">
           	<table cellpadding="0" cellspacing="0" border="0" width="570px" style="border: 1px solid #EBEDEC; background:#FFFFFF; box-shadow: 2px 3px 3px #A6A8A8;-moz-box-shadow: 2px 3px 3px #A6A8A8;-webkit-box-shadow: 2px 3px 3px #A6A8A8;filter:progid:DXImageTransform.Microsoft.dropShadow(color=#A6A8A8, offX=2, offY=2, positive=true);">
               <tr>
-                <td colspan="3" style="background-color:#CD2222;" height="05px"></td>
+                <td colspan="3" style="background-color:#F06000;" height="05px"></td>
               </tr>
               <tr>
                 <td colspan="3" height="20px"></td>
@@ -109,7 +109,7 @@ h4{
                 <td colspan="3" height="20px"></td>
               </tr>
               <tr>
-                <td colspan="3" align="left" style="padding: 0 22px 0 25px"><h2 style="font-family:Arial, Helvetica, sans-serif !important;font-size:20px !important;font-weight:bold !important;color:#F06000 !important;border-bottom:1px dotted #9F9F9F !important;padding:0 0 10px !important;">{% trans "Upcoming Events" %}</h2></td>
+                <td colspan="3" align="left" style="padding: 0 35px 0 35px"><h2 style="font-family:Arial, Helvetica, sans-serif !important;font-size:20px !important;font-weight:bold !important;color:#F06000 !important;border-bottom:1px dotted #9F9F9F !important;padding:0 0 10px !important;">{% trans "Upcoming Events" %}</h2></td>
               </tr>
               {% upcoming_events from_date to_date %}
               <tr>
@@ -133,6 +133,7 @@ h4{
               </tr>
               {% get_recent_entries 4 "erumba/tags/last_news.html" %}
               {% last_yourphotos 1 %}
+              {% last_yourvideos 1 %}
             </table>
           </td>
         </tr>
