@@ -88,6 +88,7 @@
 <body class=" {% block advbodycls %}{% endblock %}">
 	{% facebook_js_tag %}
 	{% twitter_js_tag %}
+  <div class="main-wrapper" style='background:url("/media/images/background8.png") no-repeat scroll 50% 185px transparent;'>
   <div id="header-primary" class="header-primary no-deco outnone">
 
     <div class="container">
@@ -330,7 +331,7 @@
       </span>
     </div><!--//.footer-tertiary-->
   </div><!--//.container-->
-  
+</div>
 <script>
 	$(document).ready(function () {
 		jQuery("#footer-tertiary .txt-left img").mouseover(function( )
@@ -342,6 +343,13 @@
 		{
 			$(this).attr("src", $(this).attr("src").replace("_on.png", ".png"));
 		});
+        jQuery('.main-wrapper').click(function(event){
+            
+            if (typeof event.target != 'undefined' && $(event.target).hasClass('main-wrapper')){
+            location.href = '/eventos/12-aniversario-de-rumbacaracascom/';
+            }
+        })
+
 	})
 </script>
 
