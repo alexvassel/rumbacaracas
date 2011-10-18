@@ -1,0 +1,39 @@
+.pautefacil{			
+			float:left;//Esta linea es la que hace que se vean los anuncios horizontales
+			padding:0;list-style:none;overflow:hidden;display:block;}
+.pautefacilLogo{
+			padding:0;list-style:none;overflow:hidden;background-color:#eee}
+			
+/* Desde Aqu� es el est�lo de los anuncios de texto */
+			
+.pautefacilBox{
+			/*float:left;//Esta linea es la que hace que se vean los anuncios horizontales*/
+            padding:0;list-style:none;overflow:hidden;display:block;
+			width: 242px;
+			height:70px;}
+.pautefacilTitle{
+			font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#900;}
+.pautefacilDescrip{
+			font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#999;}
+.pautefacilUrlv{
+			font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#BA2025;}
+			
+/* Desde Aqu� es el est�lo para los anuncios mixtos -imagen y texto- */
+			
+.pautefacilBox1{
+			float:left;//Esta linea es la que hace que se vean los anuncios horizontales
+            padding:0px;list-style:none;overflow:hidden;display:block;
+			width: 200px;
+			height:180px;}
+.gif { 
+	float:left;width:70px;height:50px;}
+
+.gif img {width: 70px; height:50px;}
+
+
+.pautefacilTitle1{
+			font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#090;}
+.pautefacilDescrip1{
+			font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#000;}
+.pautefacilUrlv1{
+			font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#009;}
