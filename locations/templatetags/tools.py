@@ -8,7 +8,8 @@ from locations.models import LocationType, Location
 from events.models import Event
 from django.utils.html import strip_tags
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, get_resolver, NoReverseMatch
+from preferences import preferences
 
 @register.filter
 def truncate( value, arg ):
@@ -266,3 +267,23 @@ def show_event_group( events, period, closest_dates ):
     else:
         events_thums = events
     return dict( events_list = events_list,events_thums = events_thums, period = period, closest_dates = closest_dates  )
+
+from resolve_name import resolve_to_name
+@register.inclusion_tag( 'main/background.html', takes_context = True)
+def main_background(context):
+    request = context['request']
+    show = False
+    background_preference = preferences.MainBackgroundPreferences
+    selected = background_preference.places.all()
+    if selected:
+        url_name = resolve_to_name(request.path_info)
+
+        for groups_raw in selected:
+            groups = str(groups_raw.value).split(';')
+            for group in groups:
+                if url_name.startswith( group ):
+                    show = True
+                    break
+
+    return dict( show=show, image= background_preference.background_image.url, url=background_preference.url)
+

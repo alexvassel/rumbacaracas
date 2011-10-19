@@ -83,12 +83,12 @@
     <script type="text/javascript" src=" http://us.img.e-planning.net/layers/epl-41.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}pautefacil/pautefacilAdsHome.js"></script>
     <!-- Fin Custom Ad Show + Tag V4 Contextual - e-planning for Pautefacil -->
-
+    {% main_background %}
 </head>
 <body class=" {% block advbodycls %}{% endblock %}">
 	{% facebook_js_tag %}
 	{% twitter_js_tag %}
-  <div class="main-wrapper" style='background:url("{{ STATIC_URL }}images/background.png") no-repeat scroll 50% top transparent;'>
+
   <div id="header-primary" class="header-primary no-deco outnone">
 
     <div class="container">
@@ -157,7 +157,8 @@
       </div><!--//.rows-->
     </div><!--//.container-->
   </div><!--//.header-primary-->
-  <div class="container encap">
+<div class="main-wrapper">
+  <div class="container encap" style="cursor: default">
     <div id="header-secondary" class="header-secondary encap">
       <div class="date c14l txt-right mr10">
         <h2>
@@ -343,13 +344,6 @@
 		{
 			$(this).attr("src", $(this).attr("src").replace("_on.png", ".png"));
 		});
-        jQuery('.main-wrapper').click(function(event){
-            
-            if (typeof event.target != 'undefined' && $(event.target).hasClass('main-wrapper')){
-            location.href = '/eventos/12-aniversario-de-rumbacaracascom/';
-            }
-        })
-
 	})
 </script>
 

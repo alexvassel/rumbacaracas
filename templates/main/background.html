@@ -1,0 +1,23 @@
+{% if show %}
+    <style type="text/css">
+    .main-wrapper{
+        {% if url %}
+            cursor: pointer;
+        {% endif %}
+        {% if image %}
+            background:url("{{ image }}") no-repeat scroll 50% top transparent;
+        {% endif %}
+    }
+    </style>
+    {% if url %}
+        <script type="text/javascript">
+            $(document).ready(function () {
+                jQuery('.main-wrapper').click(function(event){
+                    if (typeof event.target != 'undefined' && $(event.target).hasClass('main-wrapper')){
+                        location.href = '{{ url }}';
+                    }
+                })
+            })
+        </script>
+    {% endif %}
+{% endif %}
