@@ -106,7 +106,7 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-COMPRESS_ROOT        = "/srv/vhosts/rumbacaracas/static/"
+COMPRESS_ROOT        = "/home/maksim/Documents/Develop/rumbabogota/static/"
 STATIC_ROOT          = COMPRESS_ROOT
 COMPRESS_URL         = "http://s3.amazonaws.com/rumba_test/static/"
 STATIC_URL           = COMPRESS_URL
@@ -117,6 +117,10 @@ COMPRESS_YUI_BINARY  = 'java -jar /srv/vhosts/rumbacaracas/yuicompressor-2.4.6.j
 COMPRESS_CSS_FILTERS = ['main.compressor.filters.css_default.CustomCssAbsoluteFilter', 'compressor.filters.yui.YUICSSFilter']
 COMPRESS_JS_FILTERS  = ['compressor.filters.yui.YUIJSFilter']
 COMPRESS_STORAGE     = 'main.cuddlybuddly.storage.s3.storage.CustomS3Storage'
+
+ADMIN_MEDIA_PREFIX = MEDIA_URL + "grappelli/"
+
+ZINNIA_MEDIA_URL = '/media/zinnia/'
 
 COMPRESS_CSS_COMPRESSOR = 'main.compressor.css.CustomCssCompressor'
 COMPRESS_JS_COMPRESSOR  = 'main.compressor.js.CustomJsCompressor'
