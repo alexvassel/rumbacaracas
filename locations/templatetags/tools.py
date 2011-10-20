@@ -276,7 +276,10 @@ def main_background(context):
     background_preference = preferences.MainBackgroundPreferences
     selected = background_preference.places.all()
     if selected:
-        url_name = resolve_to_name(request.path_info)
+        try:
+            url_name = resolve_to_name(request.path_info)
+        except :
+            url_name = 'main.views.index'
 
         for groups_raw in selected:
             groups = str(groups_raw.value).split(';')
