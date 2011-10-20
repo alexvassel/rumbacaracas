@@ -46,8 +46,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'es'
 
-DEBUG = True
-COMPRESSOR_ENABLED = True
+#DEBUG = True
 
 CACHES = {
     'default': {
