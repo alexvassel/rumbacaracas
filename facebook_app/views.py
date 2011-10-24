@@ -1,9 +1,4 @@
-import base64
-from datetime import time
-import hashlib
-import hmac
-import json
-import urllib
+import base64, hashlib, hmac, json, urllib, time
 from socialregistration.models import FacebookProfile
 from socialregistration.views import _get_next
 import facebook
@@ -44,6 +39,11 @@ except ImportError:
         from django.utils import simplejson
         _parse_json = lambda s: simplejson.loads(s)
 
+def _base64_url_decode(data):
+    data = data.encode(u'ascii')
+    data += '=' * (4 - (len(data) % 4))
+    return base64.urlsafe_b64decode(data)
+
 def _add_flash_message(request, message):
     request.session['_flash_message'] = message
 
@@ -72,7 +72,11 @@ def _get_next(request):
 
 def _init_facebook_app(request):
 
+    # Old method to init app
     if "fb_sig" in request.POST:
+        if "access_token" in request.session:
+            return False
+
         fbsig = {}
         for param in request.POST:
             if param.startswith("fb_sig_"):
@@ -87,10 +91,31 @@ def _init_facebook_app(request):
         m = md5.new()
         m.update(secret_string)
 
+        if m.hexdigest() == request.POST["fb_sig"]:
+            args = {}
+            args["display"] = "page"
+            args["client_id"] = settings.FACEBOOK_APP_ID
+            args["redirect_uri"] = "http://" + request.META["HTTP_HOST"] + "/facebook/"
+            args["scope"] = settings.FACEBOOK_REQUEST_PERMISSIONS
+            redirect_url = "<script type='text/javascript'>top.location.href='https://www.facebook.com/dialog/oauth?" + urllib.urlencode(args) + "'</script>"
+            return HttpResponse(redirect_url)
+
+        return False
+    # New method to init app
+    elif "signed_request" in request.POST:
+
         if "access_token" in request.session:
             return False
 
-        if m.hexdigest() == request.POST["fb_sig"]:
+        sig, payload = request.POST["signed_request"].split(u'.', 1)
+        sig = _base64_url_decode(sig)
+        data = json.loads(_base64_url_decode(payload))
+
+        expected_sig = hmac.new(
+            settings.FACEBOOK_SECRET_KEY, msg=payload, digestmod=hashlib.sha256).digest()
+
+        # allow the signed_request to function for upto 1 day
+        if sig == expected_sig and data[u'issued_at'] > (time.time() - 86400):
             args = {}
             args["display"] = "page"
             args["client_id"] = settings.FACEBOOK_APP_ID
