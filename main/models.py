@@ -6,7 +6,7 @@ from sortable.models import Sortable
 class MainBackgroundImage( Model ):
     title = CharField( _( 'Background image title' ), max_length = 256 )
     image = ImageField ( _( 'Background image' ), upload_to = 'images/main_background')
-    url = CharField(_( 'Background click url' ), max_length=256)
+    url = CharField(_( 'Background click url' ), max_length=256, blank=True)
 
     def __unicode__( self ):
         return self.title
