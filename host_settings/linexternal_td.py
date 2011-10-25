@@ -15,7 +15,7 @@ APPLICATION_ROOT = '/srv/vhosts/rumbacaracas/'
 
 MEDIA_ROOT = '/srv/vhosts/rumbacaracas/media/'
 
-STATIC_DOC_ROOT = '/srv/vhosts/rumbacaracas/media/'
+STATIC_DOC_ROOT = '/srv/vhosts/rumbacaracas/static/'
 
 LOCALE_PATHS = ( 
     '/srv/vhosts/rumbacaracas/locale',
