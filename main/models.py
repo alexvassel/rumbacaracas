@@ -25,5 +25,6 @@ class Place( Sortable ):
         return self.title
 
     class Meta( Sortable.Meta ):
+        ordering = ('-position',)
         verbose_name = _( 'Site place for background' )
         verbose_name_plural = _( 'Site places for background' )
