@@ -46,7 +46,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'es'
 
-#DEBUG = True
+DEBUG = True
 
 CACHES = {
     'default': {
@@ -106,7 +106,7 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-COMPRESS_ROOT        = "/home/maksim/Documents/Develop/rumbabogota/static/"
+COMPRESS_ROOT        = "'/srv/vhosts/rumbacaracas/static/"
 STATIC_ROOT          = COMPRESS_ROOT
 COMPRESS_URL         = "http://s3.amazonaws.com/rumba_test/static/"
 STATIC_URL           = COMPRESS_URL
