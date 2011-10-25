@@ -278,7 +278,7 @@ def main_background(context):
     show = False
     background_image = False
     background_url = False
-    places = Place.objects.filter(background_image__isnull=False)
+    places = Place.objects.filter(background_image__isnull=False).order_by('-position')
     if places:
         try:
             url_name = resolve_to_name(request.path_info)
