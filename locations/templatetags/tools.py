@@ -290,7 +290,7 @@ def main_background(context):
             for group in groups:
                 if url_name.startswith( group ):
                     show = True
-                    background_image = places.background_image.background_image
+                    background_image = places.background_image.image
                     background_url = places.background_image.url
                     break
 
