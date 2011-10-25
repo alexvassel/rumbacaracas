@@ -15,7 +15,7 @@ APPLICATION_ROOT = '/srv/vhosts/rumbacaracas/'
 
 MEDIA_ROOT = '/srv/vhosts/rumbacaracas/media/'
 
-STATIC_DOC_ROOT = '/srv/vhosts/rumbacaracas/static/'
+STATIC_DOC_ROOT = '/srv/vhosts/rumbacaracas/media'
 
 LOCALE_PATHS = ( 
     '/srv/vhosts/rumbacaracas/locale',
@@ -67,6 +67,12 @@ TWITTER_CONSUMER_SECRET_KEY = 'nLD3noOIPwSZeyXZaUpwSVLIw9yZOKkAkNjpY85SqLw'
 
 ISSUU_API_KEY = "3g5tlt235dhwzwu9lf8yveetczya50u0"
 ISSUU_API_SECRET = "0unbbypa2ck7ls8yjstzelyyssax2026"
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.eggs.Loader',
+ )
 
 # Amazon S3 configs
 DEFAULT_FILE_STORAGE = 'cuddlybuddly.storage.s3.S3Storage'
