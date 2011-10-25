@@ -2,6 +2,8 @@ from django import template
 from django.template import TemplateSyntaxError
 from django.template.defaultfilters import urlencode
 from socialregistration.models import FacebookProfile, TwitterProfile
+from main.models import Place
+
 register = template.Library()
 from django.utils.safestring import mark_safe
 from locations.models import LocationType, Location
@@ -268,25 +270,29 @@ def show_event_group( events, period, closest_dates ):
         events_thums = events
     return dict( events_list = events_list,events_thums = events_thums, period = period, closest_dates = closest_dates  )
 
+
 from resolve_name import resolve_to_name
 @register.inclusion_tag( 'main/background.html', takes_context = True)
 def main_background(context):
     request = context['request']
     show = False
-    background_preference = preferences.MainBackgroundPreferences
-    selected = background_preference.places.all()
-    if selected:
+    background_image = False
+    background_url = False
+    places = Place.objects.all(background_image__isnull=False)
+    if places:
         try:
             url_name = resolve_to_name(request.path_info)
         except :
             url_name = 'main.views.index'
 
-        for groups_raw in selected:
+        for groups_raw in places:
             groups = str(groups_raw.value).split(';')
             for group in groups:
                 if url_name.startswith( group ):
                     show = True
+                    background_image = places.background_image.background_image
+                    background_url = places.background_image.url
                     break
 
-    return dict( show=show, image= background_preference.background_image.url, url=background_preference.url)
+    return dict( show=show, image= background_image, url=background_url)
 
