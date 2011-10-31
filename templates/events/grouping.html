@@ -22,12 +22,24 @@
 		</div><!--//.events-accordion-->
             <script type="text/javascript" charset="utf-8">
                 jQuery(document).ready(function(){
-                    jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion').accordion({
-                        header: 'a.accordion-title',
-                        fillSpace: false,
-                        navigation: true,
-                        autoHeight: false
-                    });
+                    {% if period == "day" or period == "tomorrow" %}
+                        jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion')
+                            .addClass("ui-accordion ui-widget ui-helper-reset")
+                            .find('a.accordion-title')
+                            .click(function(){return false})
+                            .addClass("current ui-accordion-header ui-helper-reset ui-state-active ui-corner-top")
+                            .prepend('<span class="ui-icon ui-icon-triangle-1-s"/>')
+                            .next().addClass("ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active");
+                        //status
+                        jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion .status').hide();
+                    {% else  %}
+                        jQuery('#main-contents .tab-containers .events-category-wrapper ul.event-tab-contents .events-accordion').accordion({
+                            header: 'a.accordion-title',
+                            fillSpace: false,
+                            navigation: true,
+                            autoHeight: false
+                        });
+                    {% endif %}
                 });
             </script>
 		</li> 
