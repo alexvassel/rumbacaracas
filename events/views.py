@@ -18,6 +18,7 @@ from main.modelFields import SlugifyUniquely
 from django.utils.dates import MONTHS as months
 from django.core.urlresolvers import reverse
 from django.forms import DateField as dtf
+import random
 
 #TODO remove backported version
 try:
@@ -74,9 +75,18 @@ def _process( request, group_lambda, period , year = False, month = False, day =
     if sort_category:
         sorted_events = sorted( sorted_events , key = sort_category )
         
-    by_group = OrderedDict( [
+    by_group = list( [
         ( group, sortList( list( items ) ) ) for group, items in itertools.groupby( sorted_events, group_lambda )
     ] )
+
+    #Add special group for top events
+    special_group = list()
+    for group in by_group:
+        group_top_item = group[1][0]
+        special_group.append(group_top_item)
+    random.shuffle(special_group)
+    
+    by_group = list([(_("Recommended Events"), special_group[:4])]) + by_group
 
     current_year = datetime.today().year
     years = range( current_year - 3, current_year + 3 )
