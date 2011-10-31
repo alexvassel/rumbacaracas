@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-04 11:52-0500\n"
-"PO-Revision-Date: 2011-10-04 20:53+0300\n"
-"Last-Translator: Nagaev Maksim <nagaev.maksim@gmail.com>\n"
+"POT-Creation-Date: 2011-10-31 10:34-0500\n"
+"PO-Revision-Date: 2011-10-31 19:39+0300\n"
+"Last-Translator: Maksim <nagaev.maksim@gmail.com>\n"
 "Language-Team: td <td>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,32 +19,31 @@ msgstr ""
 
 #: dashboard.py:29
 msgid "Legacy E-Rumba System"
-msgstr ""
+msgstr "Legado E-Rumba sistema"
 
 #: dashboard.py:34
 msgid "E-Rumba Generation Tool"
-msgstr ""
+msgstr "E-Rumba Herramienta de generación de"
 
 #: dashboard.py:39
 msgid "Legacy People Upload"
-msgstr ""
+msgstr "La gente legado Subir"
 
 #: dashboard.py:44
 msgid "Legacy People Cropper"
-msgstr ""
+msgstr "La gente legado Cropper"
 
 #: dashboard.py:53
-#, fuzzy
 msgid "AppList: Applications"
-msgstr "Listado de Locales"
+msgstr "Applist: Aplicaciones"
 
 #: dashboard.py:61
 msgid "ModelList: Administration"
-msgstr ""
+msgstr "ModelList: Administración"
 
 #: dashboard.py:69
 msgid "Recent Actions"
-msgstr ""
+msgstr "Acciones recientes"
 
 #: decorators.py:69
 msgid "Internal error"
@@ -200,17 +199,17 @@ msgid "Event"
 msgstr "Evento"
 
 #: events/models.py:178
-#: events/views.py:111
-#: events/views.py:205
-#: events/views.py:216
-#: events/views.py:227
-#: events/views.py:238
-#: events/views.py:249
-#: events/views.py:263
-#: templates/base.html:199
-#: templates/base.html.py:207
-#: templates/base.html:280
-#: templates/base.html.py:317
+#: events/views.py:121
+#: events/views.py:215
+#: events/views.py:226
+#: events/views.py:237
+#: events/views.py:248
+#: events/views.py:259
+#: events/views.py:273
+#: templates/base.html:187
+#: templates/base.html.py:195
+#: templates/base.html:267
+#: templates/base.html.py:304
 #: templates/events/calendar.html:48
 #: templates/events/details.html:26
 #: templates/facebook/albums_list.html:10
@@ -224,13 +223,17 @@ msgstr "Evento"
 msgid "Events"
 msgstr "Eventos"
 
-#: events/views.py:112
+#: events/views.py:89
+msgid "Recommended Events"
+msgstr "Eventos Destacados"
+
+#: events/views.py:122
 #: templates/events/details.html:243
 #: templates/events/events_base.html:179
 msgid "Calendar"
 msgstr "Calendario"
 
-#: events/views.py:206
+#: events/views.py:216
 #: locations/views.py:58
 #: people/views.py:20
 #: templates/events/details.html:239
@@ -239,29 +242,29 @@ msgstr "Calendario"
 msgid "By Category"
 msgstr "Por Categoría"
 
-#: events/views.py:217
-#: locations/views.py:95
+#: events/views.py:227
+#: locations/views.py:94
 #: templates/events/details.html:241
 #: templates/events/events_base.html:171
 #: templates/locations/index.html:283
 msgid "By Area"
 msgstr "Por Zona"
 
-#: events/views.py:228
+#: events/views.py:238
 #: templates/events/details.html:240
 #: templates/events/events_base.html:167
 msgid "By Location"
 msgstr "Por Local"
 
-#: events/views.py:239
-#: locations/views.py:104
+#: events/views.py:249
+#: locations/views.py:103
 #: templates/events/details.html:242
 #: templates/events/events_base.html:175
 #: templates/locations/index.html:284
 msgid "By Music"
 msgstr "Por Música"
 
-#: events/views.py:264
+#: events/views.py:274
 #: templates/events/details.html:29
 #: templates/events/events_base.html:21
 #: templates/people/category.html:15
@@ -271,20 +274,20 @@ msgstr "Por Música"
 msgid "Add event"
 msgstr "Publica un evento"
 
-#: events/views.py:298
-#: events/views.py:304
-#: events/views.py:310
-#: locations/views.py:179
-#: locations/views.py:186
-#: locations/views.py:192
-#: locations/views.py:198
-#: locations/views.py:204
-#: locations/views.py:216
-#: locations/views.py:222
+#: events/views.py:308
+#: events/views.py:314
+#: events/views.py:320
+#: locations/views.py:178
+#: locations/views.py:185
+#: locations/views.py:191
+#: locations/views.py:197
+#: locations/views.py:203
+#: locations/views.py:215
+#: locations/views.py:221
 msgid "This field is required"
 msgstr "Este campo es obligatorio"
 
-#: events/views.py:324
+#: events/views.py:334
 msgid "Location or Address and Area are required"
 msgstr "Sitio o dirección y zona son requeridos"
 
@@ -427,20 +430,20 @@ msgid "Telephones"
 msgstr "Teléfonos"
 
 #: locations/models.py:121
-#: templates/base.html:217
+#: templates/base.html:205
 #: templates/events/details.html:77
 msgid "Location"
 msgstr "Locales"
 
 #: locations/models.py:122
 #: locations/views.py:57
-#: locations/views.py:71
-#: locations/views.py:94
-#: locations/views.py:103
-#: locations/views.py:111
-#: locations/views.py:129
-#: locations/views.py:144
-#: templates/base.html:289
+#: locations/views.py:70
+#: locations/views.py:93
+#: locations/views.py:102
+#: locations/views.py:110
+#: locations/views.py:128
+#: locations/views.py:143
+#: templates/base.html:276
 #: templates/locations/index.html:41
 #: templates/main/index.html:134
 #: templates/main/index.html.py:171
@@ -448,33 +451,33 @@ msgstr "Locales"
 msgid "Locations"
 msgstr "Locales"
 
-#: locations/views.py:112
+#: locations/views.py:111
 #: templates/locations/index.html:285
 msgid "By Type of Food"
 msgstr "Por tipo de Comida"
 
-#: locations/views.py:145
-#: templates/base.html:136
+#: locations/views.py:144
+#: templates/base.html:123
 #: templates/locations/add.html:11
 #: templates/locations/index.html:44
 msgid "Add Location"
 msgstr "Publica un Sitio"
 
-#: locations/views.py:210
+#: locations/views.py:209
 msgid "This music is required"
 msgstr "Tipo de música es requerido"
 
-#: locations/views.py:237
+#: locations/views.py:236
 msgid "Type of restaurant can't be empty for restaurant"
 msgstr "Tipo de restaurante no puede estar vacío para la categoría Restaurante"
 
-#: magazine/models.py:9
+#: magazine/models.py:10
 msgid "Last Magazine Anotation"
 msgstr "Anotación Última Revista "
 
-#: magazine/models.py:10
+#: magazine/models.py:11
 msgid "ISSUU Code"
-msgstr ""
+msgstr "ISSUU Código"
 
 #: main/forms.py:8
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
@@ -499,14 +502,42 @@ msgstr "Por favor, mantenga tamaño del archivo en  %(maxsize)s. %(current)s act
 msgid "File type is not supported"
 msgstr "Tipo de archivo no es compatible"
 
-#: main/views.py:99
+#: main/models.py:7
+msgid "Background image title"
+msgstr "Título de la imagen de fondo"
+
+#: main/models.py:8
+msgid "Background image"
+msgstr "Imagen de fondo"
+
+#: main/models.py:9
+msgid "Background click url"
+msgstr "Url de fondo, haga clic"
+
+#: main/models.py:20
+msgid "Place title"
+msgstr "Coloque el título"
+
+#: main/models.py:21
+msgid "Place url_name"
+msgstr "lugar url_name"
+
+#: main/models.py:28
+msgid "Site place for background"
+msgstr "Sitio lugar para el fondo"
+
+#: main/models.py:29
+msgid "Site places for background"
+msgstr "Lugares del sitio para el fondo"
+
+#: main/views.py:108
 #: templates/404.html:4
 #: templates/404.html.py:13
 msgid "Page not found"
 msgstr "Página no encontrada"
 
 #: news/admin.py:11
-#: templates/base.html:293
+#: templates/base.html:280
 msgid "Content"
 msgstr "Contenido"
 
@@ -548,15 +579,15 @@ msgid "News and Events"
 msgstr "Noticias y Eventos"
 
 #: news/views.py:32
-#: templates/base.html:228
-#: templates/base.html.py:302
+#: templates/base.html:216
+#: templates/base.html.py:289
 #: templates/main/index.html:133
 #: templates/zinnia/base.html:15
 msgid "News"
 msgstr "Noticias"
 
 #: news/views.py:35
-#: templates/base.html:138
+#: templates/base.html:125
 #: templates/news/add.html:13
 #: templates/zinnia/base.html:21
 #: templates/zinnia/base.html.py:27
@@ -564,7 +595,7 @@ msgid "Add Article"
 msgstr "Publica un Artículo"
 
 #: news/views.py:37
-#: templates/base.html:135
+#: templates/base.html:122
 #: templates/news/add.html:17
 #: templates/zinnia/base.html:31
 msgid "Add News"
@@ -748,19 +779,15 @@ msgstr "Error del servidor"
 msgid "Sorry, but the requested page could not be executed."
 msgstr "Disculpe, la página solicitada no puede ser cargada"
 
-#: templates/base.html:101
-msgid "Hello"
-msgstr "Hola"
-
-#: templates/base.html:115
+#: templates/base.html:102
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: templates/base.html:120
+#: templates/base.html:107
 msgid "or"
 msgstr "o"
 
-#: templates/base.html:131
+#: templates/base.html:118
 #: templates/facebook/events_list.html:15
 #: templates/facebook/events_list.html:81
 #: templates/facebook/photos_list.html:15
@@ -768,62 +795,62 @@ msgstr "o"
 msgid "Public"
 msgstr "Publicar"
 
-#: templates/base.html:133
+#: templates/base.html:120
 #: templates/events/add.html:11
 msgid "Add Event"
 msgstr "Publica un Evento"
 
-#: templates/base.html:134
+#: templates/base.html:121
 msgid "Upload Your Photo"
 msgstr "Sube tu Foto"
 
-#: templates/base.html:137
+#: templates/base.html:124
 msgid "Upload Video"
 msgstr "Sube tu Video"
 
-#: templates/base.html:150
+#: templates/base.html:137
 msgid "subscription"
 msgstr "suscríbete"
 
-#: templates/base.html:152
+#: templates/base.html:139
 msgid "Follow:"
 msgstr "Síguenos:"
 
-#: templates/base.html:156
+#: templates/base.html:143
 msgid "Follow us on Facebook"
 msgstr "Síguenos en Facebook"
 
-#: templates/base.html:157
+#: templates/base.html:144
 msgid "Follow us on Twitter"
 msgstr "Síguenos en Twitter"
 
-#: templates/base.html:187
+#: templates/base.html:175
 msgid "Rumbacaracas Home"
 msgstr "Rumbacaracas Inicio"
 
-#: templates/base.html:191
-#: templates/base.html.py:297
+#: templates/base.html:179
+#: templates/base.html.py:284
 #: templates/main/index.html:182
 #: templates/yourvideos/details.html:25
 #: templates/yourvideos/index.html:19
-#: yourvideos/models.py:51
+#: yourvideos/models.py:54
 msgid "Videos"
 msgstr "Videos"
 
-#: templates/base.html:192
-#: templates/base.html.py:298
+#: templates/base.html:180
+#: templates/base.html.py:285
 #: templates/main/index.html:135
 #: templates/main/index.html.py:176
 msgid "Blog"
 msgstr "Blog"
 
-#: templates/base.html:194
-#: templates/base.html.py:312
+#: templates/base.html:182
+#: templates/base.html.py:299
 msgid "Media"
 msgstr "Medios"
 
-#: templates/base.html:196
-#: templates/base.html.py:314
+#: templates/base.html:184
+#: templates/base.html.py:301
 #: templates/events/details.html:127
 #: templates/locations/index.html:89
 #: templates/static/about_menu.html:9
@@ -832,53 +859,53 @@ msgstr "Medios"
 msgid "Web"
 msgstr "Web"
 
-#: templates/base.html:197
-#: templates/base.html.py:315
+#: templates/base.html:185
+#: templates/base.html.py:302
 #: templates/static/about_menu.html:10
 #: templates/static/aboutus.html:48
 #: templates/static/newsletter.html:10
 msgid "Newsletter"
 msgstr "Boletín Electrónico"
 
-#: templates/base.html:198
-#: templates/base.html.py:316
+#: templates/base.html:186
+#: templates/base.html.py:303
 #: templates/static/about_menu.html:11
 #: templates/static/aboutus.html:49
 msgid "Printed Editions"
 msgstr "Ediciones Impresas"
 
-#: templates/base.html:202
-#: templates/base.html.py:321
+#: templates/base.html:190
+#: templates/base.html.py:308
 #: templates/static/about_menu.html:5
 #: templates/static/aboutus.html:8
 #: templates/static/aboutus.html.py:14
 msgid "About Us"
 msgstr "Nosotros"
 
-#: templates/base.html:209
-#: templates/base.html.py:282
+#: templates/base.html:197
+#: templates/base.html.py:269
 #: templates/events/events_base.html:68
 msgid "For Today"
 msgstr "Para Hoy"
 
-#: templates/base.html:210
-#: templates/base.html.py:283
+#: templates/base.html:198
+#: templates/base.html.py:270
 #: templates/events/events_base.html:73
 msgid "For Tomorrow"
 msgstr "Para Mañana"
 
-#: templates/base.html:211
-#: templates/base.html.py:284
+#: templates/base.html:199
+#: templates/base.html.py:271
 #: templates/events/events_base.html:78
 msgid "For a Week"
 msgstr "Para Esta Semana"
 
-#: templates/base.html:212
-#: templates/base.html.py:285
+#: templates/base.html:200
+#: templates/base.html.py:272
 msgid "For a Month"
 msgstr "Para Esta Mes"
 
-#: templates/base.html:221
+#: templates/base.html:209
 #: templates/facebook/albums_list.html:10
 #: templates/facebook/base.html:132
 #: templates/facebook/events_list.html:12
@@ -886,62 +913,61 @@ msgstr "Para Esta Mes"
 msgid "Fotos"
 msgstr "Fotos"
 
-#: templates/base.html:223
+#: templates/base.html:211
 msgid "People & Events"
 msgstr "Gente y Eventos"
 
-#: templates/base.html:224
-#: templates/base.html.py:296
+#: templates/base.html:212
+#: templates/base.html.py:283
 #: templates/widgets/yourphotos.html:5
 msgid "Your photos"
 msgstr "Tus Fotos"
 
-#: templates/base.html:230
-#: templates/base.html.py:304
+#: templates/base.html:218
+#: templates/base.html.py:291
 #: templates/main/index.html:172
 msgid "Rumba News"
 msgstr "Rumba News"
 
-#: templates/base.html:231
-#: templates/base.html.py:305
+#: templates/base.html:219
+#: templates/base.html.py:292
 #: templates/main/index.html:173
 msgid "Music News"
 msgstr "Music News"
 
-#: templates/base.html:232
-#, fuzzy
+#: templates/base.html:220
 msgid "Sexy News"
-msgstr "Sólo Noticias"
+msgstr "Noticias sexy"
 
-#: templates/base.html:233
-#: templates/base.html.py:306
+#: templates/base.html:221
+#: templates/base.html.py:293
 #: templates/main/index.html:174
 msgid "Actual"
 msgstr "Actualidad"
 
-#: templates/base.html:234
+#: templates/base.html:222
 msgid "Bands, Authors and Djs"
 msgstr "Bandas, Artistas y Djs"
 
-#: templates/base.html:295
+#: templates/base.html:282
 #: templates/people/index.html:13
 msgid "Photos"
 msgstr "Fotos"
 
-#: templates/base.html:307
+#: templates/base.html:294
 #: templates/main/index.html:175
 msgid "Interviews"
 msgstr "Entrevistas"
 
-#: templates/base.html:308
+#: templates/base.html:295
 msgid "DJ Mix"
 msgstr "DJ Mix"
 
-#: templates/base.html:323
+#: templates/base.html:310
 msgid "About us page"
 msgstr "Sobre Nosotros"
 
-#: templates/base.html:324
+#: templates/base.html:311
 #: templates/static/about_menu.html:7
 #: templates/static/events.html:8
 #: templates/static/events.html.py:25
@@ -955,21 +981,21 @@ msgstr "Sobre Nosotros"
 msgid "Products"
 msgstr "Productos"
 
-#: templates/base.html:325
+#: templates/base.html:312
 #: templates/static/about_menu.html:15
 #: templates/static/partners.html:8
 #: templates/static/partners.html.py:15
 msgid "Partners"
 msgstr "Alianzas"
 
-#: templates/base.html:326
+#: templates/base.html:313
 #: templates/static/about_menu.html:16
 #: templates/static/contacts.html:7
 #: templates/static/contacts.html.py:15
 msgid "Contacts"
 msgstr "Contactos"
 
-#: templates/base.html:341
+#: templates/base.html:328
 #: templates/facebook/base.html:145
 #: templates/static/term_of_use.html:7
 msgid "Terms of Use"
@@ -1058,6 +1084,13 @@ msgstr "Últimas Fotos"
 #: yourphotos/views.py:88
 msgid "Your Photos"
 msgstr "Tus Fotos"
+
+#: templates/erumba/tags/your_videos.html:6
+#: yourvideos/views.py:21
+#: yourvideos/views.py:40
+#: yourvideos/views.py:59
+msgid "Your Videos"
+msgstr "Tus Videos"
 
 #: templates/events/add.html:3
 #: templates/events/calendar.html:3
@@ -1479,6 +1512,10 @@ msgstr "Ver + Videos"
 msgid "Upload a Video"
 msgstr "Publica un Vídeo"
 
+#: templates/main/main_greating.html:13
+msgid "Hello"
+msgstr "Hola"
+
 #: templates/main/twitter_share.html:2
 msgid "Tweet"
 msgstr "Tweet"
@@ -1882,19 +1919,13 @@ msgstr "Seleccione los videos como publicados"
 msgid "Youtube link or Youtube Id"
 msgstr "Enlace de Youtube o ID de Youtube"
 
-#: yourvideos/models.py:29
+#: yourvideos/models.py:32
 msgid "Video Preview"
 msgstr "Vista previa del video"
 
-#: yourvideos/models.py:50
+#: yourvideos/models.py:53
 msgid "Video"
 msgstr "Video"
-
-#: yourvideos/views.py:21
-#: yourvideos/views.py:40
-#: yourvideos/views.py:59
-msgid "Your Videos"
-msgstr "Tus Videos"
 
 #: yourvideos/views.py:60
 msgid "Add Video"
