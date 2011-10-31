@@ -85,8 +85,9 @@ def _process( request, group_lambda, period , year = False, month = False, day =
         group_top_item = group[1][0]
         special_group.append(group_top_item)
     random.shuffle(special_group)
-    
-    by_group = list([(_("Recommended Events"), special_group[:4])]) + by_group
+
+    if special_group:
+        by_group = list([(_("Recommended Events"), special_group[:4])]) + by_group
 
     current_year = datetime.today().year
     years = range( current_year - 3, current_year + 3 )
