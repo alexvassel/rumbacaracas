@@ -63,7 +63,7 @@
 		{% if object.source%}
 		<p> 
 			<strong>
-				{% trans "+ info: " %}{{object.source|urlize }}
+				{% trans "+ info: " %}{{object.source|urlize_target_blank }}
 			</strong>
         </p>
         {% endif %}                    

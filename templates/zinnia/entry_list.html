@@ -55,6 +55,13 @@
                 <div class="mnh">
                     <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h3>
                     <span class="submitted">
+                        {%  if not category %}
+                            {% for cat in object.categories.all%}
+                              <a class="force-red" href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+                              {% if not forloop.last %}, {% endif %}
+                            {% endfor %} /
+                        {% endif %}
+                    
                         {% if object.author %}
                             {% trans "Written by" %} <span class="vcard author">{{ object.author }}</span>
                         {% else %}

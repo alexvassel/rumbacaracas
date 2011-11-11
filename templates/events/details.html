@@ -125,7 +125,7 @@
 	{% if event.url%}
       <tr>
         <td><strong>{% trans "Web"%}:</strong></td>
-        <td><a href="{{event.url}}">{{event.url}}</a></td>
+        <td><a href="{{event.url}}" target="_blank">{{event.url}}</a></td>
       </tr>
 	{%endif%}
 	{% if event.location.phone_1 or event.location.phone_2 or event.phone%}

@@ -296,3 +296,9 @@ def main_background(context):
 
     return dict( show=show, image= background_image, url=background_url)
 
+
+from django.utils.html import urlize
+
+@register.filter
+def urlize_target_blank(value, limit=None):
+    return mark_safe(urlize(value, trim_url_limit=limit).replace('<a', '<a target="_blank"'))

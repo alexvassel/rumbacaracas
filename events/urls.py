@@ -43,8 +43,8 @@ urlpatterns = patterns( 'events.views',
     url( r'^por-sitios/mes$', 'location' , {'period': 'month'}, name="event_by_location_month" ),
     url( r'^por-sitios/mes/(?P<year>\d{4})/(?P<month>0?[1-9]|1[012])$', 'location', {'period': 'month'} ),
 
-    url( r'^calendario', 'calendar_view' , {'period': 'month'}, name = "event_calendar" ),
-    url( r'^calendario/(?P<year>\d{4})/(?P<month>0?[1-9]|1[012])/$', 'calendar_view', {'period': 'month'}, name = "event_calendar_full" ),
+    url( r'^calendario$', 'calendar_view' , {'period': 'month'}, name = "event_calendar" ),
+    url( r'^calendario/(?P<year>\d{4})/(?P<month>0?[1-9]|1[012])$', 'calendar_view', {'period': 'month'}, name = "event_calendar_full" ),
     url( r'^(?P<slug>[-\w]+)/$', "detail", {'period': 'month'} , name = "event_details" ),
     url( r'^(?P<slug>[-\w]+)/por-tipo$', 'detail' , {'period': 'month'} ),
  )

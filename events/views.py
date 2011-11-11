@@ -118,6 +118,8 @@ def calendar_view(
  ):
     #year, month = int( year ), int( month )
 
+    print year , month , period
+    
     all_events = Event.objects.all().filter( status = 1 ).order_by( 'title' )
     request.breadcrumbs( _( 'Events' ) , reverse('event_main') )
     request.breadcrumbs( _( 'Calendar' ) , request.path_info )
