@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-31 10:34-0500\n"
-"PO-Revision-Date: 2011-10-31 19:39+0300\n"
+"PO-Revision-Date: 2011-11-11 17:13+0300\n"
 "Last-Translator: Maksim <nagaev.maksim@gmail.com>\n"
 "Language-Team: td <td>\n"
 "Language: \n"
@@ -903,7 +903,7 @@ msgstr "Para Esta Semana"
 #: templates/base.html:200
 #: templates/base.html.py:272
 msgid "For a Month"
-msgstr "Para Esta Mes"
+msgstr "Para Este Mes"
 
 #: templates/base.html:209
 #: templates/facebook/albums_list.html:10
