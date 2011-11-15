@@ -93,10 +93,13 @@ def index( request ):
     people = PhotoEvent.objects.filter( status = 1 ).order_by( '-date' )[:40]
 
     photos = Photo.objects.filter( status = 1 ).order_by( '-datetime_added' )[:40]
+
+    final_slides = [( blog_tmp, 'blog', ) for blog_tmp in blog_slides] + [( event_tmp, 'event', ) for event_tmp in events_slides]
+    random.shuffle(final_slides)
     
     return {'people': people, 'news': news,'blog': blog,'locations': locations, 'art_culture': art_culture,
             'videos':videos, 'photos': photos,
-            'slides': random.shuffle([( blog, 'blog', ) for blog in blog_slides] + [( event, 'event', ) for event in events_slides]) }
+            'slides': final_slides}
 
 
 from django.views.decorators.csrf import requires_csrf_token
