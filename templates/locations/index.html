@@ -167,6 +167,18 @@
 </div><!--//.node-->
 <div class="events-duo encap">
     <div class="latest-events c48l">
+        {% if location_photos %}
+            <div class="box-title"><h2>{% trans "Latest Photos" %}</h2></div>
+            <div class="box-contents decou">
+                <ul>
+                    {% for photoevent in location_photos %}
+                        <li>{{photoevent.date|date:"d.m.Y"}} | <a href="{{ photoevent.get_absolute_url}}">{{ photoevent.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div><!--//.box-contents-->
+        {% endif %}
+    </div><!--//.c45l-->
+    <div class="latest-fotos c48r">
         {% if location_events %}
             <div class="box-title"><h2>{% trans "Events for Location" %}</h2></div>
             <div class="box-contents decou">
@@ -175,18 +187,6 @@
                         <li>
                             {{ event.get_dates }} | <a href="{{ event.get_absolute_url}}">{{ event.title }}</a>
                         </li>
-                    {% endfor %}
-                </ul>
-            </div><!--//.box-contents-->
-        {% endif %}
-    </div><!--//.c45l-->
-    <div class="latest-fotos c48r">
-        {% if location_photos %}
-            <div class="box-title"><h2>{% trans "Latest Photos" %}</h2></div>
-            <div class="box-contents decou">
-                <ul>
-                    {% for photoevent in location_photos %}
-                        <li>{{photoevent.date|date:"d.m.Y"}} | <a href="{{ photoevent.get_absolute_url}}">{{ photoevent.title }}</a></li>
                     {% endfor %}
                 </ul>
             </div><!--//.box-contents-->
