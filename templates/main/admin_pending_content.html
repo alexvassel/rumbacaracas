@@ -1,0 +1,21 @@
+{% extends "grappelli/dashboard/module.html" %}
+
+{% load i18n %}
+{% block module_content %}
+    <div class="module">
+        {% if module.children %}
+            <ul>
+                {% for entry in module.children %}
+                    <div class="row">
+                        <a href="{{ entry.url }}" > {{ entry.title }} </a>
+                        <ul class="actions">
+                            <li class="change-link"><a href="{{ entry.url }}">{{ entry.count }}</a></li>
+                        </ul>
+                    </div>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>{% trans 'None Available' %}</p>
+        {% endif %}
+    </div>
+{% endblock %}
