@@ -16,6 +16,8 @@ from dateutil.relativedelta import *
 
 from preferences import preferences
 
+import random
+
 
 
 from socialregistration.views import setup
@@ -94,7 +96,7 @@ def index( request ):
     
     return {'people': people, 'news': news,'blog': blog,'locations': locations, 'art_culture': art_culture,
             'videos':videos, 'photos': photos,
-            'slides': [( blog, 'blog', ) for blog in blog_slides] + [( event, 'event', ) for event in events_slides] }
+            'slides': random.shuffle([( blog, 'blog', ) for blog in blog_slides] + [( event, 'event', ) for event in events_slides]) }
 
 
 from django.views.decorators.csrf import requires_csrf_token
