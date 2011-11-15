@@ -66,12 +66,8 @@
 	background: transparent url("../images/icons/article.jpg") no-repeat scroll 0 3px;
 }
 
-
-
-
-
 .errorlist {
-	color: #666666;
+	color: #F06000 !important;
 }
 
 
@@ -134,7 +130,7 @@
   font-family  :  arial, verdana, sans-serif;
   font-weight  :  bold;
   font-size    :  17px !important;
-  color        :  #666666 !important;
+  color: #F06000 !important;
   
   padding      :  0px;
   margin       :  0px 0px 8px 0px !important;
