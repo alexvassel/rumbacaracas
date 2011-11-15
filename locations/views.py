@@ -70,6 +70,8 @@ def category_details ( request, group ):
     request.breadcrumbs( _( 'Locations' ) , reverse('location_main') )
     request.breadcrumbs( group_name , request.path_info )
 
+    all_locations = Location.objects.all().filter( status = 1 ).order_by( 'title' )
+
     try:
         page = int( request.GET.get( 'page', '1' ) )
     except ValueError:
@@ -84,7 +86,7 @@ def category_details ( request, group ):
     else:
         locations_page = None
         paginator = None
-    return {'group_name': group_name, 'current_page': locations_page, 'current_paginator': paginator }
+    return {'group_name': group_name, 'current_page': locations_page, 'current_paginator': paginator, 'all_locations': all_locations }
 
 
 
