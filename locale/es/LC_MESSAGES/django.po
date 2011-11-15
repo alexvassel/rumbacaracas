@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-31 10:34-0500\n"
-"PO-Revision-Date: 2011-11-11 17:13+0300\n"
+"PO-Revision-Date: 2011-11-15 20:39+0300\n"
 "Last-Translator: Maksim <nagaev.maksim@gmail.com>\n"
 "Language-Team: td <td>\n"
 "Language: \n"
@@ -461,7 +461,7 @@ msgstr "Por tipo de Comida"
 #: templates/locations/add.html:11
 #: templates/locations/index.html:44
 msgid "Add Location"
-msgstr "Publica un Sitio"
+msgstr "Publica un Local"
 
 #: locations/views.py:209
 msgid "This music is required"
