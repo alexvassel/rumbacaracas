@@ -128,6 +128,10 @@
 		{% common_paginator%}
 	{% endif%}
   </div><!--//.recent-events-list-->
+    <div class="banner-container box-border box-contents outnone widget">
+      {% banner_zone_iframe 127 600 60%}
+    </div><!--//.banner-container-->
+
   <div class="encap" id="disqus_thread">
   	{%facebook_comments event.get_absolute_url%}
   </div>

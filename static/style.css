@@ -2749,7 +2749,7 @@ body.section-videos #main-contents #col-left .item-list ul li.pager-current{
 }
 /* Blog comments (DISQUS) */
 #main-contents #col-left #disqus_thread{
-	margin: 50px 0 0 0;
+	margin: 20px 0 0 0;
 }
 /* Videos Details */
 #main-contents #col-left .node span.submitted span.author-meta a,
