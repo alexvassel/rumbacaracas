@@ -63,7 +63,7 @@
                         {% endif %}
                     
                         {% if object.author %}
-                            {% trans "Written by" %} <span class="vcard author">{{ object.author }}</span>
+                            {% trans "Written by" %} <span class="vcard author">{{ object|urlize_author_source }}</span>
                         {% else %}
                             {% trans "Written" %}
                         {% endif %}

@@ -11,6 +11,7 @@ from events.models import Event
 from django.utils.html import strip_tags
 from django.conf import settings
 from django.core.urlresolvers import reverse, get_resolver, NoReverseMatch
+import re
 from preferences import preferences
 
 @register.filter
@@ -302,3 +303,18 @@ from django.utils.html import urlize
 @register.filter
 def urlize_target_blank(value, limit=None):
     return mark_safe(urlize(value, trim_url_limit=limit).replace('<a', '<a target="_blank"'))
+
+
+urlstr = re.compile(r'<a href="([^"]*)">([^<]*)</a>')
+
+@register.filter
+def urlize_author_source(value):
+    '''
+    Get link from link_text and append text from text or simply text
+    '''
+    link_value = value.author
+    proccesed_value = urlize(value.source)
+    if (urlstr.match(proccesed_value) is not None):
+        return mark_safe(urlstr.sub(r'<a href="\1" target="_blank">'+link_value+'</a>', proccesed_value))
+    else:
+        return link_value

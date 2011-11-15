@@ -2083,6 +2083,12 @@ div.breadcrumb a.active {
   display: block;
   padding: 0 0 5px;
 }
+
+#main-contents #col-left .node span.submitted span.author,
+#main-contents #col-left .node span.submitted span.author a{
+    color: #F06000 !important
+}
+
 /* Gente page */
 #main-contents #col-left .gente .title-wrap, #main-contents #col-left .videos .title-wrap{
   margin: 0 0 5px;
