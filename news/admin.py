@@ -7,7 +7,7 @@ from zinnia.admin import EntryAdmin
 from news.models import EntryImage
 from django.utils.translation import ugettext_lazy as _
 
-#
+#MONKEY PATCHING OF ZINNIA ADMIN
 EntryAdmin.fieldsets = ( ( _( 'Content' ), {'fields': ( 'title', 'short' , 'content', 'author', 'source',
                                             'image','slider_image', 'status' )} ),
                  ( _( 'Options' ), {'fields': ( 'show_in_main_slider',
@@ -24,6 +24,10 @@ EntryAdmin.list_display = ( 'get_title', 'get_categories',
                 'get_is_actual', 'get_is_visible', 'get_link', 'status', 'show_in_main_slider',
                 'creation_date' )
 EntryAdmin.list_editable = ( 'status', 'show_in_main_slider' )
+
+
+EntryAdmin.actions = [ 'make_published', 'make_hidden','make_tweet', 'put_on_top']
+
 
 # Custom Methods
 
