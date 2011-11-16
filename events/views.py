@@ -82,8 +82,8 @@ def _process( request, group_lambda, period , year = False, month = False, day =
     #Add special group for top events
     special_group = list()
     for group in by_group:
-        group_top_item = group[1][0]
-        special_group.append(group_top_item)
+        group_top_items = group[1][0:4]
+        special_group.extend(group_top_items)
     random.shuffle(special_group)
 
     if special_group:
