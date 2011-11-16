@@ -33,15 +33,19 @@
         		<a href="{% url event_details slide.slug %}"><img  width="595" height="244" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.bigimg.url}}{% endif %}" alt="{{slide.title}}" /></a>
         		<div class="slide-teasers">
                     <h3><a href="{% url event_details slide.slug %}">{{slide.title}}</a></h3>
-                    <p>{{slide.description|truncate:90}}<br />
-                    	{% if slide.from_date == slide.to_date %}
-			        		{{slide.from_date}}
-			    		{% else %}
-			    			{{slide.from_date}} - {{slide.to_date}}
-			    		{% endif %}
-			    		{% if slide.time%}
-			    		, {{slide.time}}
-			    		{% endif %}
+                    <p>{{slide.description|truncate:85}}<br />
+                        {% if closest_dates|hash:slide.pk %}
+                            {{ closest_dates|hash:slide.pk  }}
+                        {%  else %}
+                            {% if slide.from_date == slide.to_date %}
+                                {{slide.from_date}}
+                            {% else %}
+                                {{slide.from_date}} - {{slide.to_date}}
+                            {% endif %}
+                            {% if slide.time%}
+                            , {{slide.time}}
+                            {% endif %}
+                        {% endif %}
         			</p>
                 </div>
     		</li>

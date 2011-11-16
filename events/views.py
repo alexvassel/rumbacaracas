@@ -92,7 +92,14 @@ def _process( request, group_lambda, period , year = False, month = False, day =
     current_year = datetime.today().year
     years = range( current_year - 3, current_year + 3 )
 
-    slider_events = Event.objects.filter( status = 1 , show_in_events_slider = True ).filter( to_date__gte = datetime.today() ).order_by( 'from_date' )[:5]
+
+    #Get slider
+    sliders_qs = Event.objects.filter( status = 1 , show_in_events_slider = True )
+    slider_events = [event for event, dt in Event.objects.get_occuriences(qs=sliders_qs, start_date = from_date, end_date = to_date )]
+    random.shuffle(slider_events)
+    
+    if not slider_events:
+        slider_events = Event.objects.filter( status = 1 , show_in_events_slider = True ).filter( to_date__gte = datetime.today() ).order_by( 'from_date' )
 
     all_locations = Location.objects.all().filter( status = 1 ).order_by( 'title' )
     #all_events = Event.objects.all().filter( status = 1 ).order_by( 'title' )
@@ -108,7 +115,7 @@ def _process( request, group_lambda, period , year = False, month = False, day =
         filter_date = '/' + str( year ) + '/' + str( month ) + '/' + str( day )
     else:
         filter_date = '/' + str( year ) + '/' + str( month )
-    return {'filter_date': filter_date, 'all_locations': all_locations, 'all_events': upcoming_events, 'groups': by_group, 'slider_events': slider_events, 'years': years, 'months': months, 'repr': repr, 'year': year, 'month': month, 'period': period, 'prev_date': prev_date, 'next_date': next_date, 'closest_dates': tmp_closest_dates}
+    return {'filter_date': filter_date, 'all_locations': all_locations, 'all_events': upcoming_events, 'groups': by_group, 'slider_events': slider_events[:5], 'years': years, 'months': months, 'repr': repr, 'year': year, 'month': month, 'period': period, 'prev_date': prev_date, 'next_date': next_date, 'closest_dates': tmp_closest_dates}
 
 
 @render_to( 'events/calendar.html' )
