@@ -41,8 +41,8 @@
         </div><!--//.parts-wrapper-->
         <div class="whats-today-taxonomy encap">
             <ul class="taxonomies fcpl0 lcpr0">
-                {% for day_name,day in days %}
-                    <li><a href="#">{{ day_name }}</a></li>
+                {% for day_name,day, url in days %}
+                    <li><a href="{{ url }}">{{ day_name }}</a></li>
                 {% endfor %}
 
             </ul>
@@ -88,6 +88,14 @@
     };
 
     $(document).ready(function () {
+
+        var updateActivePagerLink = function(pager, currSlide, clsName) {
+            $.fn.cycle.updateActivePagerLink(pager, currSlide, clsName);
+            var el = $('li a', pager).eq(currSlide);
+            $('.whats-today-taxonomy .all-events a').attr('href', el.attr('href'));
+       };
+
+
         jQuery('#main-contents #col-right #whats-today .box-contents .parts-wrapper').cycle({
             fx: 'scrollHorz',
             speed: 1000,
@@ -103,8 +111,12 @@
                 //-- return selector string for existing anchor
                 return '#main-contents #col-right #whats-today .box-contents .whats-today-taxonomy ul li:eq(' + idx + ') a';
             },
-            delay: -2000
+            delay: -2000,
+            updateActivePagerLink: updateActivePagerLink
         });
+
+
+
 
         $('#main-contents #col-right #whats-today .box-contents .parts-wrapper ul.inner-cycle').each(function(){
             var day_el = $(this);

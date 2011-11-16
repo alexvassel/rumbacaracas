@@ -1,4 +1,6 @@
 from django import template
+from django.core.urlresolvers import reverse
+
 register = template.Library()
 
 from events.models import Event,EVENT_ART_CULTURE_CATEGORY
@@ -109,17 +111,22 @@ def events_today_block( ):
     dtend = datetime( zdat_day.year, zdat_day.month, zdat_day.day )
 
     event_list = Event.objects.get_occuriences(start_date=dtstart, end_date=dtend)
+
+    #Sorted by date
     sorted_events = sorted( event_list, key = lambda o: o[1], reverse=True)
 
-    def sortList( list ):
+    def sortListByPriority( list ):
         list.sort( key = lambda a:a[0].position, reverse = False )
         return list
 
-    by_day = list([
-        ( dom, sortList( list( items ) ) ) for dom, items in itertools.groupby( sorted_events, lambda o: date(o[1], "D") )
-    ])
-    by_day.reverse()
+    by_day = []
+    for weekname, items in itertools.groupby( sorted_events, lambda o: date(o[1], "D") ):
+        sorted_items = sortListByPriority( list( items ) )
+        week_url = reverse('event_by_category_day_full', kwargs={'year': sorted_items[0][1].year, 'month' : sorted_items[0][1].month,'day': sorted_items[0][1].day})
+        by_day.append((weekname,sorted_items,week_url,))
 
+    by_day.reverse()
+    
     return dict(days = by_day)
 
 
