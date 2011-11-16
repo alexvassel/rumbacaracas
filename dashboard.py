@@ -56,7 +56,7 @@ class NewContent(DashboardModule):
         for model in tracked:
             app_label = model._meta.app_label
             not_published = '2'
-            if app_label == 'zinnia':
+            if model is Entry:
                 not_published = '0'
 
             self.children.append(

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-31 10:34-0500\n"
-"PO-Revision-Date: 2011-11-15 20:39+0300\n"
+"POT-Creation-Date: 2011-11-16 05:40-0600\n"
+"PO-Revision-Date: 2011-11-16 15:41+0300\n"
 "Last-Translator: Maksim <nagaev.maksim@gmail.com>\n"
 "Language-Team: td <td>\n"
 "Language: \n"
@@ -17,33 +17,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Spanish\n"
 
-#: dashboard.py:29
+#: dashboard.py:27
+msgid "Pending content"
+msgstr "Contenido pendiente"
+
+#: dashboard.py:71
+msgid "No pending content."
+msgstr "No espera de contenido."
+
+#: dashboard.py:88
 msgid "Legacy E-Rumba System"
 msgstr "Legado E-Rumba sistema"
 
-#: dashboard.py:34
+#: dashboard.py:93
 msgid "E-Rumba Generation Tool"
 msgstr "E-Rumba Herramienta de generación de"
 
-#: dashboard.py:39
+#: dashboard.py:98
 msgid "Legacy People Upload"
 msgstr "La gente legado Subir"
 
-#: dashboard.py:44
+#: dashboard.py:103
 msgid "Legacy People Cropper"
 msgstr "La gente legado Cropper"
 
-#: dashboard.py:53
+#: dashboard.py:112
 msgid "AppList: Applications"
 msgstr "Applist: Aplicaciones"
 
-#: dashboard.py:61
+#: dashboard.py:120
 msgid "ModelList: Administration"
 msgstr "ModelList: Administración"
 
-#: dashboard.py:69
+#: dashboard.py:128
 msgid "Recent Actions"
 msgstr "Acciones recientes"
+
+#: dashboard.py:135
+msgid "User pending content"
+msgstr "El usuario espera de contenido"
 
 #: decorators.py:69
 msgid "Internal error"
@@ -199,13 +211,13 @@ msgid "Event"
 msgstr "Evento"
 
 #: events/models.py:178
-#: events/views.py:121
-#: events/views.py:215
-#: events/views.py:226
-#: events/views.py:237
-#: events/views.py:248
-#: events/views.py:259
-#: events/views.py:273
+#: events/views.py:124
+#: events/views.py:218
+#: events/views.py:229
+#: events/views.py:240
+#: events/views.py:251
+#: events/views.py:262
+#: events/views.py:276
 #: templates/base.html:187
 #: templates/base.html.py:195
 #: templates/base.html:267
@@ -223,48 +235,48 @@ msgstr "Evento"
 msgid "Events"
 msgstr "Eventos"
 
-#: events/views.py:89
+#: events/views.py:90
 msgid "Recommended Events"
 msgstr "Eventos Destacados"
 
-#: events/views.py:122
-#: templates/events/details.html:243
+#: events/views.py:125
+#: templates/events/details.html:246
 #: templates/events/events_base.html:179
 msgid "Calendar"
 msgstr "Calendario"
 
-#: events/views.py:216
+#: events/views.py:219
 #: locations/views.py:58
 #: people/views.py:20
-#: templates/events/details.html:239
+#: templates/events/details.html:242
 #: templates/events/events_base.html:163
-#: templates/locations/index.html:282
+#: templates/locations/index.html:284
 msgid "By Category"
 msgstr "Por Categoría"
 
-#: events/views.py:227
-#: locations/views.py:94
-#: templates/events/details.html:241
+#: events/views.py:230
+#: locations/views.py:96
+#: templates/events/details.html:244
 #: templates/events/events_base.html:171
-#: templates/locations/index.html:283
+#: templates/locations/index.html:285
 msgid "By Area"
 msgstr "Por Zona"
 
-#: events/views.py:238
-#: templates/events/details.html:240
+#: events/views.py:241
+#: templates/events/details.html:243
 #: templates/events/events_base.html:167
 msgid "By Location"
 msgstr "Por Local"
 
-#: events/views.py:249
-#: locations/views.py:103
-#: templates/events/details.html:242
+#: events/views.py:252
+#: locations/views.py:105
+#: templates/events/details.html:245
 #: templates/events/events_base.html:175
-#: templates/locations/index.html:284
+#: templates/locations/index.html:286
 msgid "By Music"
 msgstr "Por Música"
 
-#: events/views.py:274
+#: events/views.py:277
 #: templates/events/details.html:29
 #: templates/events/events_base.html:21
 #: templates/people/category.html:15
@@ -274,20 +286,20 @@ msgstr "Por Música"
 msgid "Add event"
 msgstr "Publica un evento"
 
-#: events/views.py:308
-#: events/views.py:314
-#: events/views.py:320
-#: locations/views.py:178
-#: locations/views.py:185
-#: locations/views.py:191
-#: locations/views.py:197
-#: locations/views.py:203
-#: locations/views.py:215
-#: locations/views.py:221
+#: events/views.py:311
+#: events/views.py:317
+#: events/views.py:323
+#: locations/views.py:180
+#: locations/views.py:187
+#: locations/views.py:193
+#: locations/views.py:199
+#: locations/views.py:205
+#: locations/views.py:217
+#: locations/views.py:223
 msgid "This field is required"
 msgstr "Este campo es obligatorio"
 
-#: events/views.py:334
+#: events/views.py:337
 msgid "Location or Address and Area are required"
 msgstr "Sitio o dirección y zona son requeridos"
 
@@ -438,11 +450,11 @@ msgstr "Locales"
 #: locations/models.py:122
 #: locations/views.py:57
 #: locations/views.py:70
-#: locations/views.py:93
-#: locations/views.py:102
-#: locations/views.py:110
-#: locations/views.py:128
-#: locations/views.py:143
+#: locations/views.py:95
+#: locations/views.py:104
+#: locations/views.py:112
+#: locations/views.py:130
+#: locations/views.py:145
 #: templates/base.html:276
 #: templates/locations/index.html:41
 #: templates/main/index.html:134
@@ -451,23 +463,23 @@ msgstr "Locales"
 msgid "Locations"
 msgstr "Locales"
 
-#: locations/views.py:111
-#: templates/locations/index.html:285
+#: locations/views.py:113
+#: templates/locations/index.html:287
 msgid "By Type of Food"
 msgstr "Por tipo de Comida"
 
-#: locations/views.py:144
+#: locations/views.py:146
 #: templates/base.html:123
 #: templates/locations/add.html:11
 #: templates/locations/index.html:44
 msgid "Add Location"
 msgstr "Publica un Local"
 
-#: locations/views.py:209
+#: locations/views.py:211
 msgid "This music is required"
 msgstr "Tipo de música es requerido"
 
-#: locations/views.py:236
+#: locations/views.py:238
 msgid "Type of restaurant can't be empty for restaurant"
 msgstr "Tipo de restaurante no puede estar vacío para la categoría Restaurante"
 
@@ -530,7 +542,7 @@ msgstr "Sitio lugar para el fondo"
 msgid "Site places for background"
 msgstr "Lugares del sitio para el fondo"
 
-#: main/views.py:108
+#: main/views.py:113
 #: templates/404.html:4
 #: templates/404.html.py:13
 msgid "Page not found"
@@ -830,7 +842,7 @@ msgstr "Rumbacaracas Inicio"
 
 #: templates/base.html:179
 #: templates/base.html.py:284
-#: templates/main/index.html:182
+#: templates/main/index.html:184
 #: templates/yourvideos/details.html:25
 #: templates/yourvideos/index.html:19
 #: yourvideos/models.py:54
@@ -840,7 +852,7 @@ msgstr "Videos"
 #: templates/base.html:180
 #: templates/base.html.py:285
 #: templates/main/index.html:135
-#: templates/main/index.html.py:176
+#: templates/main/index.html.py:178
 msgid "Blog"
 msgstr "Blog"
 
@@ -925,27 +937,29 @@ msgstr "Tus Fotos"
 
 #: templates/base.html:218
 #: templates/base.html.py:291
-#: templates/main/index.html:172
+#: templates/main/index.html:173
 msgid "Rumba News"
 msgstr "Rumba News"
 
 #: templates/base.html:219
 #: templates/base.html.py:292
-#: templates/main/index.html:173
+#: templates/main/index.html:174
 msgid "Music News"
 msgstr "Music News"
 
 #: templates/base.html:220
+#: templates/main/index.html:176
 msgid "Sexy News"
 msgstr "Noticias sexy"
 
 #: templates/base.html:221
 #: templates/base.html.py:293
-#: templates/main/index.html:174
+#: templates/main/index.html:175
 msgid "Actual"
 msgstr "Actualidad"
 
 #: templates/base.html:222
+#: templates/main/index.html:177
 msgid "Bands, Authors and Djs"
 msgstr "Bandas, Artistas y Djs"
 
@@ -955,7 +969,6 @@ msgid "Photos"
 msgstr "Fotos"
 
 #: templates/base.html:294
-#: templates/main/index.html:175
 msgid "Interviews"
 msgstr "Entrevistas"
 
@@ -1067,7 +1080,7 @@ msgid "Latest News"
 msgstr "Últimas Noticias"
 
 #: templates/erumba/tags/latest_photos.html:6
-#: templates/locations/index.html:185
+#: templates/locations/index.html:171
 #: templates/widgets/people_list.html:5
 #: templates/yourphotos/index.html:78
 #: yourphotos/views.py:24
@@ -1236,30 +1249,31 @@ msgstr "Ampliar"
 msgid "comments"
 msgstr "comentarios"
 
-#: templates/events/details.html:196
+#: templates/events/details.html:199
 msgid "Find Events"
 msgstr "Buscar eventos"
 
-#: templates/events/details.html:201
+#: templates/events/details.html:204
 #: templates/events/events_base.html:126
-#: templates/locations/index.html:262
+#: templates/locations/index.html:264
 msgid "List of Events"
 msgstr "Listado de Eventos"
 
-#: templates/events/details.html:207
+#: templates/events/details.html:210
 #: templates/events/events_base.html:129
-#: templates/locations/index.html:267
+#: templates/locations/index.html:269
 msgid "Select a event"
 msgstr "Seleccione un evento"
 
-#: templates/events/details.html:218
+#: templates/events/details.html:221
 #: templates/events/events_base.html:142
 msgid "List of Locations"
 msgstr "Listado de Locales"
 
-#: templates/events/details.html:225
+#: templates/events/details.html:228
 #: templates/events/events_base.html:145
-#: templates/locations/index.html:252
+#: templates/locations/category.html:30
+#: templates/locations/index.html:254
 msgid "Select a location"
 msgstr "Seleccione un sitio"
 
@@ -1422,6 +1436,11 @@ msgstr "Información de Contacto"
 msgid "Add other"
 msgstr "Añadir otros"
 
+#: templates/locations/category.html:25
+#: templates/locations/index.html:249
+msgid "List of all locations"
+msgstr "Listado de locales"
+
 #: templates/locations/index.html:67
 msgid "Area, City"
 msgstr "Zona, Ciudad"
@@ -1435,21 +1454,17 @@ msgstr "Teléfono"
 msgid "Restaurant"
 msgstr "Restaurante"
 
-#: templates/locations/index.html:171
+#: templates/locations/index.html:183
 msgid "Events for Location"
 msgstr "Eventos en el Local"
 
-#: templates/locations/index.html:212
+#: templates/locations/index.html:214
 msgid "Locations of the day"
 msgstr "Locales destacados del día"
 
-#: templates/locations/index.html:242
+#: templates/locations/index.html:244
 msgid "Find locations"
 msgstr "Buscar locales"
-
-#: templates/locations/index.html:247
-msgid "List of all locations"
-msgstr "Listado de locales"
 
 #: templates/magazine/magazine.html:3
 msgid "Magazine | Rumbacaracas"
@@ -1475,6 +1490,10 @@ msgstr "Ediciones Anteriores"
 msgid "Notebook"
 msgstr "Cuaderno"
 
+#: templates/main/admin_pending_content.html:18
+msgid "None Available"
+msgstr "No hay ninguno disponible"
+
 #: templates/main/blog_entry.html:22
 msgid "Comments"
 msgstr "Comentarios"
@@ -1484,7 +1503,7 @@ msgstr "Comentarios"
 #: templates/main/location_entry.html:22
 #: templates/people/index.html:68
 #: templates/people/main_ajax_slide.html:9
-#: templates/zinnia/entry_list.html:66
+#: templates/zinnia/entry_list.html:73
 msgid "Read More"
 msgstr "Leer Más"
 
@@ -1504,11 +1523,11 @@ msgstr "Gente y Eventos"
 msgid "Art and Culture"
 msgstr "Arte y Cultura"
 
-#: templates/main/index.html:185
+#: templates/main/index.html:187
 msgid "See + Videos"
 msgstr "Ver + Videos"
 
-#: templates/main/index.html:186
+#: templates/main/index.html:188
 msgid "Upload a Video"
 msgstr "Publica un Vídeo"
 
@@ -1842,13 +1861,13 @@ msgstr "Disculpe, no hay videos"
 
 #: templates/zinnia/_entry_detail.html:20
 #: templates/zinnia/entry_detail.html:31
-#: templates/zinnia/entry_list.html:59
+#: templates/zinnia/entry_list.html:66
 msgid "Written by"
 msgstr "Escrito por"
 
 #: templates/zinnia/_entry_detail.html:26
 #: templates/zinnia/entry_detail.html:35
-#: templates/zinnia/entry_list.html:63
+#: templates/zinnia/entry_list.html:70
 msgid "on"
 msgstr "en"
 
@@ -1867,7 +1886,7 @@ msgid "%(entry_count)s entries"
 msgstr "%(entry_count)s entrada"
 
 #: templates/zinnia/entry_detail.html:33
-#: templates/zinnia/entry_list.html:61
+#: templates/zinnia/entry_list.html:68
 msgid "Written"
 msgstr "Por:"
 
@@ -1875,8 +1894,8 @@ msgstr "Por:"
 msgid "+ info: "
 msgstr "+ Info:"
 
-#: templates/zinnia/entry_detail.html:83
-#: templates/zinnia/entry_detail.html:84
+#: templates/zinnia/entry_detail.html:87
+#: templates/zinnia/entry_detail.html:88
 msgid "Edit the entry"
 msgstr "Edite la entrada"
 
@@ -1893,17 +1912,17 @@ msgstr "Autor"
 msgid "Page"
 msgstr "Página"
 
-#: templates/zinnia/entry_list.html:92
+#: templates/zinnia/entry_list.html:99
 msgid "No entries yet."
 msgstr "No hay entradas."
 
-#: templates/zinnia/entry_list.html:108
-#: templates/zinnia/entry_list.html:109
+#: templates/zinnia/entry_list.html:115
+#: templates/zinnia/entry_list.html:116
 msgid "Edit the category"
 msgstr "Editar la categoría"
 
-#: templates/zinnia/entry_list.html:115
-#: templates/zinnia/entry_list.html:116
+#: templates/zinnia/entry_list.html:122
+#: templates/zinnia/entry_list.html:123
 msgid "Edit the author"
 msgstr "Editar el autor"
 
