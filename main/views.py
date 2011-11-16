@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from zinnia.models import Entry
-from events.models import Event
+from events.models import Event, EVENT_ART_CULTURE_CATEGORY
 from yourvideos.models import Video
 from locations.models import Location
 from people.models import PhotoEvent
@@ -85,7 +85,7 @@ def index( request ):
     locations = Location.objects.filter( status = 1 ).order_by( '?' )[:4]
 
 
-    art_culture_qs = Event.objects.filter(category=7)
+    art_culture_qs = Event.objects.filter(category=EVENT_ART_CULTURE_CATEGORY)
     art_culture_raw = Event.objects.get_occuriences( start_date = current_date, end_date = current_date , qs = art_culture_qs )
 
     art_culture = sortEventList( [event for event, date in art_culture_raw] )[:4]

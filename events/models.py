@@ -19,7 +19,7 @@ EVENT_STATUSES = (
     ( '2', _( 'Blocked/ Not Published' ) ),
  )
 
-
+EVENT_ART_CULTURE_CATEGORY = 7
 
 class EventCategory( Sortable ):
     title = models.CharField( _( 'Event Category Title' ), max_length = 256 )
@@ -104,7 +104,6 @@ class OccurrenceManager( models.Manager ):
         calendars = [[( d, by_day.get( d, [] ) ) for d in row] for row in cal]
 
         return calendars
-
 
 
 class Event( ImageModel, Sortable ):

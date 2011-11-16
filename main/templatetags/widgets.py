@@ -1,7 +1,8 @@
 from django import template
 register = template.Library()
 
-from events.models import Event 
+from events.models import Event,EVENT_ART_CULTURE_CATEGORY
+
 from yourphotos.models import Photo
 from yourvideos.models import Video
 from locations.models import Location
@@ -59,7 +60,7 @@ def location_block( ):
 def art_culture_block( ):
     today = datetime.today()
     #TODO wrong check if upcoming
-    events = Event.objects.filter(status=1, category=4, to_date__gte = today)[:2]
+    events = Event.objects.filter(status=1, category=EVENT_ART_CULTURE_CATEGORY, to_date__gte = today)[:2]
     return dict(events=events)
 
 @register.inclusion_tag('widgets/today_events_list.html')
