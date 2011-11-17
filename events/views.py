@@ -96,6 +96,7 @@ def _process( request, group_lambda, period , year = False, month = False, day =
     #Get slider
     sliders_qs = Event.objects.filter( status = 1 , show_in_events_slider = True )
     slider_events = [event for event, dt in Event.objects.get_occuriences(qs=sliders_qs, start_date = from_date, end_date = to_date )]
+    slider_events = f7(slider_events)
     random.shuffle(slider_events)
     
     if not slider_events:
