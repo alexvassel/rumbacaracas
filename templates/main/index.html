@@ -59,7 +59,7 @@
               <div class="more-photos encap">
                 <a id="carousel-prev" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
                 <a id="carousel-next" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
-                <ul class="carousel-images peoples ie-encap" style="width: 562px;height: 130px;">
+                <ul class="carousel-images peoples ie-encap" style="width: 562px;height: 145px;">
                     {% cache 60 main_people %}
                     {% for row in people|main_slider_split:4 %}
                         {% if row %}
@@ -72,7 +72,7 @@
                                         <li>
                                     {% endif %}
                                     <h6>
-                                        <a href="{% url people_main_slide event.id %}"><img src="{{ event.mainminithumb.url }}" alt="{{event.title}}" />{{event.title|truncate:15}}<br />{{event.date|date:"d.m.y"}}</a>
+                                        <a href="{% url people_main_slide event.id %}"><img src="{{ event.mainminithumb.url }}" alt="{{event.title}}" />{{event.title|truncate:45}}<br />{{event.date|date:"d.m.y"}}</a>
                                     </h6>
                                 </li>
                             {% endfor %}
@@ -95,7 +95,7 @@
               <div class="more-photos encap">
                 <a id="carousel-prev2" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
                 <a id="carousel-next2" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
-                <ul class="carousel-images fotos ie-encap" style="width: 562px;height: 130px;">
+                <ul class="carousel-images fotos ie-encap" style="width: 562px;height: 145px;">
                     {% cache 60 main_yourphoto %}
                 	{% for row in photos|main_slider_split:4 %}
                         {% if row %}
@@ -108,7 +108,7 @@
                                         <li>
                                     {% endif %}
                                     <h6>
-                                        <a href="{% url yourphoto_main_slide photo.id %}"><img src="{{ photo.mainminithumb.url }}" alt="{{photo.description}}" />{{photo.description|truncate:15}}<br />{{photo.datetime_added|date:"d.m.y"}}</a>
+                                        <a href="{% url yourphoto_main_slide photo.id %}"><img src="{{ photo.mainminithumb.url }}" alt="{{photo.description}}" />{{photo.description|truncate:45}}<br />{{photo.datetime_added|date:"d.m.y"}}</a>
                                     </h6>
                                 </li>
                             {% endfor %}
