@@ -72,7 +72,7 @@
                                         <li>
                                     {% endif %}
                                     <h6>
-                                        <a href="{% url people_main_slide event.id %}"><img src="{{ event.mainminithumb.url }}" alt="{{event.title}}" />{{event.title|truncate:40}}<br />{{event.date|date:"d.m.y"}}</a>
+                                        <a href="{% url people_main_slide event.id %}"><img src="{{ event.mainminithumb.url }}" alt="{{event.title}}" />{{event.title|truncate:38}}<br />{{event.date|date:"d.m.y"}}</a>
                                     </h6>
                                 </li>
                             {% endfor %}
@@ -108,7 +108,7 @@
                                         <li>
                                     {% endif %}
                                     <h6>
-                                        <a href="{% url yourphoto_main_slide photo.id %}"><img src="{{ photo.mainminithumb.url }}" alt="{{photo.description}}" />{{photo.description|truncate:40}}<br />{{photo.datetime_added|date:"d.m.y"}}</a>
+                                        <a href="{% url yourphoto_main_slide photo.id %}"><img src="{{ photo.mainminithumb.url }}" alt="{{photo.description}}" />{{photo.description|truncate:38}}<br />{{photo.datetime_added|date:"d.m.y"}}</a>
                                     </h6>
                                 </li>
                             {% endfor %}
