@@ -225,6 +225,9 @@ def hash( h, key ):
         return h[key]
     except KeyError: # invalid literal for int()
         return '' # Fail silently.
+    except TypeError: # invalid input value
+        return '' # Fail silently.
+
 
 
 
