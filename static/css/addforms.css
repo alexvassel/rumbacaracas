@@ -69,7 +69,9 @@
 .errorlist {
 	color: #F06000 !important;
 }
-
+#form-error{
+	color: #F06000 !important;
+}
 
 #add-form .phone input {
 	width: 70% !important;
