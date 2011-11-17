@@ -70,7 +70,7 @@ def category_details ( request, group ):
     request.breadcrumbs( _( 'Locations' ) , reverse('location_main') )
     request.breadcrumbs( group_name , request.path_info )
 
-    all_locations = Location.objects.all().filter( status = 1 ).filter( type__slug = group ).order_by( 'title' )
+    all_locations = Location.objects.all().filter( status = 1 ).filter( type = group_name ).order_by( 'title' )
 
     try:
         page = int( request.GET.get( 'page', '1' ) )

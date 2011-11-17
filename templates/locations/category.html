@@ -26,7 +26,7 @@
               </td>
               <td valign="middle" align="left" style="width: 300px;" colspan="2">
                 <select name="locations-list" id="locations-list" style="width: 300px;">
-                    {% cache 60 location_select %}
+                    {% cache 60 location_select_category group_name%}
                         <option value="">{% trans "Select a location"%}</option>
                         {% for location in all_locations %}
                             <option value="{{location.slug}}">{{location.title}}</option>
