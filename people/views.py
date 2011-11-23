@@ -116,7 +116,20 @@ def import_select ( request, event_id ):
     event = get_object_or_404( PhotoEvent, pk = event_id )
 
     dir_list = os.listdir( settings.OLDCARACAS_PHOTO_PATH )
-    return {'dirs': dir_list, 'event': event}
+
+    import unicodedata
+    def safe_unicode(name):
+        try:
+            if not isinstance(input, unicode):
+                name = unicode(name, "latin-1")
+        except ValueError:
+            pass
+        except TypeError:
+            pass
+        name = unicodedata.normalize('NFKD', name).encode('ascii', 'ignore')
+        return name
+
+    return {'dirs': [safe_unicode(dir) for dir in dir_list], 'event': event}
 
 @login_required
 def import_finish ( request, event_id, folder ):
