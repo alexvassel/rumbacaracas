@@ -237,10 +237,11 @@
 		{% endfor %}
 	{% endblock %}
     </div>
+    {% block sattelite %}{% banner_zone_overflow 126 %}{% endblock %}
     <div id="main-contents" class="main-contents encap">
 
     	<div id="col-left" class="col-left">
-            {% block sattelite %}{% banner_zone_overflow 120 %}{% endblock %}
+            {% comment %}{% block sattelite %}{% banner_zone_overflow 120 %}{% endblock %}{% endcomment %}
 			{% block colleft %}{% endblock %}
       	</div><!--//.col-left-->
 	  <div id="col-right" class="col-right">
