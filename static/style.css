@@ -4068,3 +4068,13 @@ li.greating_pic {
     width: 800px;
     z-index: 1000;
 }
+
+.corner_banner{
+    position: absolute;
+    right:0px;
+    top: 45px;
+    border: 0;
+    text-align: right;
+    visibility: visible;
+    z-index: 1000;
+}

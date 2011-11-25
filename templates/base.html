@@ -153,6 +153,7 @@
       </div><!--//.rows-->
     </div><!--//.container-->
   </div><!--//.header-primary-->
+{% block corner %}{% banner_zone_corner 126 %}{% endblock %}
 <div class="main-wrapper">
   <div class="container encap" style="cursor: default">
     <div id="header-secondary" class="header-secondary encap">
@@ -237,11 +238,11 @@
 		{% endfor %}
 	{% endblock %}
     </div>
-    {% block sattelite %}{% banner_zone_overflow 126 %}{% endblock %}
+
     <div id="main-contents" class="main-contents encap">
 
     	<div id="col-left" class="col-left">
-            {% comment %}{% block sattelite %}{% banner_zone_overflow 120 %}{% endblock %}{% endcomment %}
+            {% block sattelite %}{% banner_zone_overflow 120 %}{% endblock %}
 			{% block colleft %}{% endblock %}
       	</div><!--//.col-left-->
 	  <div id="col-right" class="col-right">
