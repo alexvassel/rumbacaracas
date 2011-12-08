@@ -117,3 +117,10 @@ def page_not_found(request, template_name='404.html'):
     return HttpResponseNotFound(t.render(RequestContext(request, {'request_path': request.path})))
 
 
+
+@render_to( 'main/openx_banner.html' )
+def get_banner( request , zone_id ):
+    #if not request.is_ajax():
+     #   return HttpResponseRedirect( '/' )
+    rand = int(100000 * random.random())
+    return dict( zone_id = zone_id, rand =rand  )

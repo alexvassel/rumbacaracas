@@ -8,6 +8,7 @@ admin.autodiscover()
 
 urlpatterns = patterns( '',
     ( r'' , include( 'main.urls' ) ),
+    ( r'^get_banner/(?P<zone_id>.*)$' ,  'main.views.get_banner'  ),
     ( r'^tinymce/', include( 'tinymce.urls' ) ),
     #Changes in setup proccess
     url(r'^social/setup', 'main.views.custom_social_setup', name='socialregistration_setup'),

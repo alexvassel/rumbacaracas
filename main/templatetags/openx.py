@@ -74,7 +74,7 @@ import random
 #Simplest iframe integration
 @register.inclusion_tag( 'main/openx_banner.html' )
 def banner_zone_iframe( zone_id, width=None, height=None ):
-    rand = round(100000 * random.random(), 5)
+    rand = int(100000 * random.random())
     return dict( zone_id = zone_id, width = width, height=height,rand =rand  )
 
 
@@ -99,5 +99,4 @@ def banner_zone_corner( zone_id, width=None, height=None ):
 def banner_zone_email( zone_id):
     rand = random.random()
     return dict( zone_id = zone_id, rand = rand  )
-
 
