@@ -52,6 +52,7 @@
                     })
 			 	});	
 		 	});
+		 	window.setTimeout(function() {reloadBanners();}, 1000);
 		 	return false;
 		 });
         $('.gente-next').live('click', function() {
@@ -68,7 +69,7 @@
                     })
                 });
             });
-
+			window.setTimeout(function() {reloadBanners();}, 1000);
             return false;
         });
 		$('.image-teaser-slides img').live('mouseover',
