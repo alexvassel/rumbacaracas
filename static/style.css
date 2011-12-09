@@ -677,7 +677,7 @@ li.sobre1 a.fotosobre1:hover {
 	display: block;
 	padding: 10px 15px 10px 10px;
 	position: relative;
-	z-index: 99999;
+	z-index: 1;
 }
 #header-tertiary #top-menus-wrapper .top-menu-tertiary li a.active,
 #header-tertiary #top-menus-wrapper .top-menu-tertiary li a:hover,
