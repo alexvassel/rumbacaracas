@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-16 05:40-0600\n"
-"PO-Revision-Date: 2011-11-21 17:27+0300\n"
-"Last-Translator: Maksim <nagaev.maksim@gmail.com>\n"
+"PO-Revision-Date: 2011-12-13 08:28-0430\n"
+"Last-Translator: rufi guerrero <rufi@web.com.ve>\n"
 "Language-Team: td <td>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -651,7 +651,7 @@ msgstr "Lanzamientos y Más"
 
 #: people/models.py:14
 msgid "Fashion "
-msgstr "Moda"
+msgstr "Moda y Cultura"
 
 #: people/models.py:15
 msgid "Outside caracas"
