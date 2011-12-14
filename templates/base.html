@@ -54,6 +54,9 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/uniform/jquery.uniform.js"></script>
     {% endcompress %}
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.lightbox-0.5.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.writeCapture.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/writeCapture.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ba-dotimeout.min.js"></script>
     
 	<!--[if lte IE 6]><link href="{{ STATIC_URL }}css/ie6fix.css" rel="stylesheet" type="text/css" /><![endif]-->
 	<!--[if IE 7]><link href="{{ STATIC_URL }}css/ie7fix.css" rel="stylesheet" type="text/css" /><![endif]-->
@@ -79,7 +82,39 @@
 
     </script>
 
-    
+
+	<!-- RELOAD BANNERS -->
+	<script>
+	
+	function reloadBanners() {
+		var banners = $('.jsbanner');
+		for(i = 0; i < banners.length; i++) {
+			var self = $(banners[i]);
+		    var rel = self.attr('rel');
+		    var update = self.attr('value');
+		    if(update != 1)
+		    	$.writeCapture.load(self.parent(),'/get_banner/' + rel);
+		}
+		return false;
+	}
+	
+	
+	$(document).ready(function () {
+		$.writeCapture.autoAsync();
+		$.doTimeout('checkB', 4000, function() {
+			var banner = $('.jsbanner');
+			if($('div', $(banner[0])).html() == "") {
+				if(typeof(window.gourl != "undefined"))
+				window.gourl = window.gourl.replace(/?resetCache/, '');
+					window.location = window.gourl;
+			}
+			return true;
+		});
+	});
+	
+	
+	</script>
+
     {% main_background %}
 </head>
 <body class=" {% block advbodycls %}{% endblock %}">

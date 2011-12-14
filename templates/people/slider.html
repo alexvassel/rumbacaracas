@@ -40,6 +40,7 @@
 	$(document).ready(function () {
 		 $('.gente-prev').live('click', function(){
 		 	var addr = $(this).attr('href');
+		 	window.gourl = addr;
 		 	$('.images-preview ul').hide('slide', {direction: 'right'}, 500, function(){
 			 	$('#details-node').load(addr,function(){
 			 		$('.images-preview ul').show('slide', {direction: 'left'}, 500);
@@ -55,6 +56,7 @@
 		 });
         $('.gente-next').live('click', function() {
             var addr = $(this).attr('href');
+            window.gourl = addr;
             $('.images-preview ul').hide('slide', {direction: 'left'}, 500, function() {
                 $('#details-node').load(addr, function() {
                     $('.images-preview ul').show('slide', {direction: 'right'}, 500);
