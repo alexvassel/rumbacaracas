@@ -54,10 +54,11 @@
                      gapi.plusone.go(document.getElementById('details-node'));
                      $('.opnx_banner').each(function(idx, el){
                         $(el).attr("src", $(el).attr("src"));
-                    })
+                    });
+                    $.doTimeout( 'loop', 500, function(){reloadBanners();});
 			 	});	
 		 	});
-		 	window.setTimeout(function() {reloadBanners();}, 1000);
+		 	
 		 	return false;
 		 });
 		 $('.gente-next').live('click', function(){
@@ -71,10 +72,11 @@
                      gapi.plusone.go(document.getElementById('details-node'));
                     $('.opnx_banner').each(function(idx, el){
                         $(el).attr("src", $(el).attr("src"));
-                    })
+                    });
+                    $.doTimeout( 'loop', 500, function(){reloadBanners();});
 			 	});	
 		 	});
-		 	window.setTimeout(function() {reloadBanners();}, 1000);
+		 	
 		 	return false;
 		 });
 		$('.image-teaser-slides img').live('mouseover',
@@ -86,7 +88,7 @@
 			function() {
 				$(this).css("border-color","#898989");
 			}	
-		)
+	)
 	})
 </script>
 {% endblock %}
