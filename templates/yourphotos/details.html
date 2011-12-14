@@ -44,6 +44,7 @@
 		});
 */
 		 $('.gente-prev').live('click', function(){
+		 	$.doTimeout( 'loop', false );
 		 	var addr = $(this).attr('href');
 		 	window.gourl = addr;
 		 	$('.images-preview ul').hide('slide', {direction: 'right'}, 500, function(){
@@ -55,13 +56,14 @@
                      $('.opnx_banner').each(function(idx, el){
                         $(el).attr("src", $(el).attr("src"));
                     });
-                    $.doTimeout( 'loop', 500, function(){reloadBanners();});
+                    $.doTimeout( 'loop', 2000, function(){reloadBanners();});
 			 	});	
 		 	});
 		 	
 		 	return false;
 		 });
 		 $('.gente-next').live('click', function(){
+		 	$.doTimeout( 'loop', false );
 		 	var addr = $(this).attr('href');
 		 	window.gourl = addr;
 		 	$('.images-preview ul').hide('slide', {direction: 'left'}, 500, function(){

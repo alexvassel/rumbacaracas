@@ -39,6 +39,7 @@
 <script>
 	$(document).ready(function () {
 		 $('.gente-prev').live('click', function(){
+		 	$.doTimeout( 'loop', false );
 		 	var addr = $(this).attr('href');
 		 	window.gourl = addr;
 		 	$('.images-preview ul').hide('slide', {direction: 'right'}, 500, function(){
@@ -57,6 +58,7 @@
 		 	return false;
 		 });
         $('.gente-next').live('click', function() {
+        	$.doTimeout( 'loop', false );
             var addr = $(this).attr('href');
             window.gourl = addr;
             $('.images-preview ul').hide('slide', {direction: 'left'}, 500, function() {

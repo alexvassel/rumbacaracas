@@ -106,9 +106,13 @@
 		$.doTimeout('checkB', 4000, function() {
 			var banner = $('.jsbanner');
 			if($('div', $(banner[0])).html() == "") {
+<<<<<<< HEAD
 				if(typeof(window.gourl != "undefined"))
 				window.gourl = window.gourl.replace(/?resetCache/, '');
 					window.location = window.gourl;
+=======
+				reloadBanners();
+>>>>>>> 627eef9... final fixes for elastic banners
 			}
 			return true;
 		});
