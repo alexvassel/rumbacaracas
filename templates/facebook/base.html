@@ -104,7 +104,7 @@
           function handleResponse(response){
               form.submit();
           }
-          FB.login(handleResponse,{perms: "{% value_from_settings "FACEBOOK_REQUEST_PERMISSIONS" %}"});
+          FB.login(handleResponse,{scope: "{% value_from_settings "FACEBOOK_REQUEST_PERMISSIONS" %}"});
       }
     </script>
 
