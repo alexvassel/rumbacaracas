@@ -106,9 +106,10 @@
 		$.doTimeout('checkB', 4000, function() {
 			var banner = $('.jsbanner');
 			if($('div', $(banner[0])).html() == "") {
-				if(typeof(window.gourl != "undefined"))
-				window.gourl = window.gourl.replace(/?resetCache/, '');
+				if(typeof(window.gourl != "undefined")) {
+					window.gourl = window.gourl.replace(/\?resetCache/, '');
 					window.location = window.gourl;
+				}
 			}
 			return true;
 		});
