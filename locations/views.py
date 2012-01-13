@@ -240,6 +240,7 @@ def add( request ):
             return cleaned_data
 
 #LocationForm.visible_fields
+#hey
             #django.forms.fields.CharField
     if request.method == 'POST': # If the form has been submitted...
         form = LocationForm( request.POST, request.FILES ) # A form bound to the POST data
@@ -251,7 +252,11 @@ def add( request ):
             location.add_user = request.user
             location.save()
             form.save_m2m()
-            return HttpResponseRedirect( reverse('location_main') ) # Redirect after POST
+            return {
+                "completed": True,
+                "form": form,
+                "errors": True
+        }#HttpResponseRedirect( reverse('location_main') ) # Redirect after POST
         return {
                 "form": form,
                 "errors": True

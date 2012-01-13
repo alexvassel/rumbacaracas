@@ -355,7 +355,11 @@ def add( request ):
             event.add_user = request.user
             event.save()
             form.save_m2m()
-            return HttpResponseRedirect( reverse('event_main') ) # Redirect after POST
+            return {
+                    "completed": True,
+                "form": form,
+                "errors": True
+        }#HttpResponseRedirect( reverse('event_main') ) # Redirect after POST
         return {
                 "form": form,
                 "errors": True

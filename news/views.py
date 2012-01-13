@@ -82,7 +82,13 @@ def add( request, type ):
             article.authors.add( request.user )
             form.save_m2m()
 
-            return HttpResponseRedirect( reverse('zinnia_entry_archive_index') ) # Redirect after POST
+            return {
+                    "completed": True,
+                "form": form,
+                "type": type,
+                'imagesForm': images_formset,
+                "errors": True
+        }#HttpResponseRedirect( reverse('zinnia_entry_archive_index') ) # Redirect after POST
         else :
             images_formset = EntryImageFormSet( instance = Entry() )
 
