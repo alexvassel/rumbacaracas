@@ -1,8 +1,5 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.models import User
-from decorators import upload_to_dest
-from main.modelFields import ImageRestrictedFileField
 
 # Create your models here.
 class City( models.Model ):
