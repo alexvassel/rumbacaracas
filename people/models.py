@@ -5,6 +5,15 @@ from locations.models import Location
 from imagekit.models import ImageModel
 from django.core.urlresolvers import reverse
 from main.modelFields import ImageRestrictedFileField
+from cities.models import City
+
+EVENT_CITIES = []
+cities = City.objects.all()
+for c in cities:
+    value = str(c.name)
+    new_tuple = (value, _(value))
+    EVENT_CITIES.append(new_tuple)
+EVENT_CITIES = tuple(EVENT_CITIES)
 
 PHOTO_CATEGORIES = ( 
     ( 'rumbas', _( 'Rumbas' ) ),
@@ -30,7 +39,7 @@ class PhotoEvent( ImageModel ):
     location = models.ForeignKey( Location , blank = True , null = True )
     author = models.CharField( _( 'Photographer or reporter' ) , max_length = 256 , blank = True )
     author_email = models.CharField( _( 'Author Email' ) , max_length = 256 , blank = True )
-    city = models.CharField( _( 'City' ), max_length = 256 , blank = True )
+    city = models.CharField( max_length = 20, choices = EVENT_CITIES, default = 1 )
     image = ImageRestrictedFileField( upload_to = upload_to_dest(format='uploads/people/%Y/%m/%d'), blank = True )
     status = models.CharField( max_length = 10, choices = PEOPLE_STATUSES, default = 2 )
     datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )

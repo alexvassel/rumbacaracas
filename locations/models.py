@@ -6,6 +6,15 @@ from socialregistration.models import FacebookProfile
 from django.core.urlresolvers import reverse
 from decorators import upload_to_dest
 from main.modelFields import ImageRestrictedFileField
+from cities.models import City
+
+EVENT_CITIES = []
+cities = City.objects.all()
+for c in cities:
+    value = str(c.name)
+    new_tuple = (value, _(value))
+    EVENT_CITIES.append(new_tuple)
+EVENT_CITIES = tuple(EVENT_CITIES)
 
 class LocationType( models.Model ):
     title = models.CharField( _( 'Type of Venue/Club' ), max_length = 256 )
@@ -73,7 +82,7 @@ class Location( ImageModel ):
     type = models.ManyToManyField( LocationType )
     restaurant = models.ManyToManyField( RestaurantType, blank = True , null = True )
     address = models.CharField( _( 'Address' ), max_length = 256 , blank = True )
-    city = models.CharField( _( 'City' ), max_length = 256 , blank = True, default = 'Caracas' )
+    city = models.CharField( max_length = 10, choices = EVENT_CITIES, default = 1 )
     phone_1 = models.CharField( _( 'Telephone 1' ), max_length = 256 , blank = True )
     phone_2 = models.CharField( _( 'Telephone 2' ), max_length = 256 , blank = True )
     fax = models.CharField( _( 'Fax' ), max_length = 256 , blank = True )

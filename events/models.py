@@ -13,6 +13,15 @@ from sortable.models import Sortable
 #https://github.com/ff0000/django-sortablereadme
 from django.core.urlresolvers import reverse
 from main.modelFields import ImageRestrictedFileField
+from cities.models import City
+
+EVENT_CITIES = []
+cities = City.objects.all()
+for c in cities:
+    value = str(c.name)
+    new_tuple = (value, _(value))
+    EVENT_CITIES.append(new_tuple)
+EVENT_CITIES = tuple(EVENT_CITIES)
 
 EVENT_STATUSES = ( 
     ( '1', _( 'Published' ) ),
@@ -120,7 +129,7 @@ class Event( ImageModel, Sortable ):
     music = models.ForeignKey( LocationMusic , blank = True , null = True )
     area = models.ForeignKey( LocationArea , blank = True , null = True )
     place = models.CharField( _( 'Name of venue / place' ), max_length = 256, blank = True )
-    city = models.CharField( _( 'City' ), max_length = 256 , blank = True, default = 'Caracas' )
+    city = models.CharField( max_length = 10, choices = EVENT_CITIES, default = 1 )
     phone = models.CharField( _( 'Info' ), max_length = 256 , blank = True )
     url = models.URLField( _( 'Url' ) , blank = True, verify_exists=False )
     email = models.EmailField( _( 'Email' ) , blank = True )
