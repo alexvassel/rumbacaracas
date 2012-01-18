@@ -190,6 +190,8 @@ class Event( ImageModel, Sortable ):
     def save(self, *args, **kwargs):
         if not self.to_date:
             self.to_date = self.from_date
-
+        
         super(Event, self).save(*args, **kwargs)
+        if str(self.city) == 'Caracas':
+            super(Event, self).save(using = 'venezuela', *args, **kwargs)
 
