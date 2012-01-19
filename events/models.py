@@ -198,11 +198,4 @@ class Event( ImageModel, Sortable ):
         if str(self.city) == 'Caracas':
             super(Event, self).save(using = 'venezuela', *args, **kwargs)
 
-    #from events.models import Event
-#    def delete(self, *args, **kwargs):
-#        print '>>>> HERE IT GOES!!'
-#        super(Event, self).delete(*args, **kwargs)
-#        super(Event, self).delete(using = 'venezuela', *args, **kwargs)
-#        print '>>>> FINISHED..'
-
     

@@ -44,14 +44,6 @@ class EventAdmin( SortableAdmin ):
         # The user has already confirmed the deletion.
         # Do the deletion and return a None to display the change list view again.
         n = queryset.count()
-        print '1'
-
-        try:
-            context
-        except NameError:
-            context = None
-        
-        print str(context)
 
         if not context is None:
             print '>> IF'
