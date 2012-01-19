@@ -14,6 +14,8 @@ from sortable.models import Sortable
 from django.core.urlresolvers import reverse
 from main.modelFields import ImageRestrictedFileField
 from cities.models import City
+from django.db.models.signals import pre_delete
+
 
 EVENT_CITIES = []
 cities = City.objects.all()
@@ -185,13 +187,22 @@ class Event( ImageModel, Sortable ):
         verbose_name = _( 'Event' )
         verbose_name_plural = _( 'Events' )
 
-    objects = OccurrenceManager()
-
+    objects = OccurrenceManager()       
+        
+        
     def save(self, *args, **kwargs):
         if not self.to_date:
             self.to_date = self.from_date
-        
+            
         super(Event, self).save(*args, **kwargs)
         if str(self.city) == 'Caracas':
             super(Event, self).save(using = 'venezuela', *args, **kwargs)
 
+    #from events.models import Event
+#    def delete(self, *args, **kwargs):
+#        print '>>>> HERE IT GOES!!'
+#        super(Event, self).delete(*args, **kwargs)
+#        super(Event, self).delete(using = 'venezuela', *args, **kwargs)
+#        print '>>>> FINISHED..'
+
+    

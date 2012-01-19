@@ -129,3 +129,17 @@ class Location( ImageModel ):
         ordering = ['title']
         verbose_name = _( 'Location' )
         verbose_name_plural = _( 'Locations' )
+        
+    def save(self, *args, **kwargs):
+        super(Location, self).save(*args, **kwargs)
+        if str(self.city) == 'Caracas':
+            super(Location, self).save(using = 'venezuela', *args, **kwargs)
+    
+    def delete(self, *args, **kwargs):
+        super(Location, self).delete(*args, **kwargs)
+        if str(self.city) == 'Caracas':
+            super(Location, self).delete(using = 'venezuela', *args, **kwargs)
+            
+    def delete_model(self, request, obj):
+        print 'DELETE!'
+        obj.delete()
