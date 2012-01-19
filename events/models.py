@@ -198,4 +198,23 @@ class Event( ImageModel, Sortable ):
         if str(self.city) == 'Caracas':
             super(Event, self).save(using = 'venezuela', *args, **kwargs)
 
-    
+# in models.py
+from django.db.models.signals import pre_delete
+from events.models import Event
+
+def do_something(sender, **kwargs):
+    # the object which is saved can be accessed via kwargs 'instance' key.
+    obj = kwargs['instance']
+    print 'the object is now saved.'
+    # ...do something else...
+    query = "DELETE FROM events_event WHERE slug='"+str(obj.slug)+"'"
+    print query
+    from django.db import connections, transaction
+    cursor = connections['venezuela'].cursor()
+    cursor.execute(query)
+    transaction.commit_unless_managed(using='venezuela')
+
+# here we connect a post_save signal for MyModel
+# in other terms whenever an instance of MyModel is saved
+# the 'do_something' function will be called.
+pre_delete.connect(do_something, sender=Event)
