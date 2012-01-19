@@ -3,6 +3,11 @@ from django.contrib import admin
 from sortable.admin import SortableAdmin
 from django.utils.translation import ugettext_lazy as _
 from django.template.response import TemplateResponse
+from django.core.exceptions import PermissionDenied
+from django.contrib.admin import helpers
+from django.contrib.admin.util import get_deleted_objects, model_ngettext
+from django.db import router
+from django.utils.encoding import force_unicode
 
 
 def make_published( modeladmin, request, queryset ):
@@ -10,44 +15,92 @@ def make_published( modeladmin, request, queryset ):
 make_published.short_description = _( "Mark selected events as published" )
 
 class EventAdmin( SortableAdmin ):
-    actions=[]
+    actions=['really_delete_selected']
+
     def get_actions(self, request):
         actions = super(EventAdmin, self).get_actions(request)
         del actions['delete_selected']
         return actions
-
     
-    
-    def really_delete_selected(self, request, queryset):
-        for obj in queryset:
-            print str(obj.slug)
-            from django.db import connections, transaction
-            cursor = connections['venezuela'].cursor()
-            query = "DELETE FROM events_event WHERE slug='"+str(obj.slug)+"'"
-            cursor.execute(query)
-            transaction.commit_unless_managed(using='venezuela')
-            
-            print query
-            obj.delete()
+    def really_delete_selected(modeladmin, request, queryset):
+        post = ''
+        """
+        Default action which deletes the selected objects.
+        This action first displays a confirmation page whichs shows all the
+        deleteable objects, or, if the user has no permission one of the related
+        childs (foreignkeys), a "permission denied" message.
+        Next, it delets all selected objects and redirects back to the change list.
+        """
+        opts = modeladmin.model._meta
+        app_label = opts.app_label
+        # Check that the user has delete permission for the actual model
+        if not modeladmin.has_delete_permission(request):
+            raise PermissionDenied
+        using = router.db_for_write(modeladmin.model)
+        # Populate deletable_objects, a data structure of all related objects that
+        # will also be deleted.
+        deletable_objects, perms_needed, protected = get_deleted_objects(
+            queryset, opts, request.user, modeladmin.admin_site, using)
+        # The user has already confirmed the deletion.
+        # Do the deletion and return a None to display the change list view again.
+        n = queryset.count()
+        print '1'
 
-        if queryset.count() == 1:
-            message_bit = "1 photoblog entry was"
+        try:
+            context
+        except NameError:
+            context = None
+        
+        print str(context)
+
+        if not context is None:
+            print '>> IF'
+            for obj in queryset:
+                print '4'
+                obj_display = force_unicode(obj)
+                modeladmin.log_deletion(request, obj, obj_display)
+                query = "DELETE FROM events_event WHERE slug='"+str(obj.slug)+"'"
+                print query
+                from django.db import connections, transaction
+                cursor = connections['venezuela'].cursor()
+                cursor.execute(query)
+                transaction.commit_unless_managed(using='venezuela')
+                obj.delete()
+    
+            modeladmin.message_user(request, _("Successfully deleted %(count)d %(items)s.") % {
+                "count": n, "items": model_ngettext(modeladmin.opts, n)
+            })
+            # Return None to display the change list page again.
+            print '2'
+            return None
+        if len(queryset) == 1:
+            objects_name = force_unicode(opts.verbose_name)
         else:
-            message_bit = "%s photoblog entries were" % queryset.count()
-        self.message_user(request, "%s successfully deleted." % message_bit)
-        
-        
+            objects_name = force_unicode(opts.verbose_name_plural)
+        if perms_needed or protected:
+            title = _("Cannot delete %(name)s") % {"name": objects_name}
+        else:
+            title = _("Are you sure?")
+        print '7'
         context = {
-            "title": "Events",
-            'queryset': queryset
+            "title": title,
+            "objects_name": objects_name,
+            "deletable_objects": [deletable_objects],
+            'queryset': queryset,
+            "perms_lacking": perms_needed,
+            "protected": protected,
+            "opts": opts,
+            "app_label": app_label,
+            'action_checkbox_name': helpers.ACTION_CHECKBOX_NAME,
+            'post': 'post',
         }
-        return TemplateResponse(request, EventAdmin.delete_selected_confirmation_template or [
-            "admin/%s/%s/delete_selected_confirmation.html" % ('Events', 'wWwWw'),
-            "admin/%s/delete_selected_confirmation.html" % 'Events',
+        # Display the confirmation page
+        return TemplateResponse(request, modeladmin.delete_selected_confirmation_template or [
+            "admin/%s/%s/delete_selected_confirmation.html" % (app_label, opts.object_name.lower()),
+            "admin/%s/delete_selected_confirmation.html" % app_label,
             "admin/delete_selected_confirmation.html"
-            ], context, current_app='Events')
-        
-    really_delete_selected.short_description = "Delete selected entries"
+        ],  context, status='404', current_app=modeladmin.admin_site.name)
+    really_delete_selected.short_description = _("Delete selected %(verbose_name_plural)s")
     
     prepopulated_fields = {"slug": ( "title", )}
     search_fields = ['title']
