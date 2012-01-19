@@ -99,7 +99,7 @@ class EventAdmin( SortableAdmin ):
             "admin/%s/%s/delete_selected_confirmation.html" % (app_label, opts.object_name.lower()),
             "admin/%s/delete_selected_confirmation.html" % app_label,
             "admin/delete_selected_confirmation.html"
-        ],  context, status='404', current_app=modeladmin.admin_site.name)
+        ],  context, current_app=modeladmin.admin_site.name)
     really_delete_selected.short_description = _("Delete selected %(verbose_name_plural)s")
     
     prepopulated_fields = {"slug": ( "title", )}
