@@ -10,7 +10,7 @@ from cities.models import City
 EVENT_CITIES = []
 cities = City.objects.all()
 for c in cities:
-    value = str(c.name)
+    value = unicode(c.name)
     new_tuple = (value, _(value))
     EVENT_CITIES.append(new_tuple)
 EVENT_CITIES = tuple(EVENT_CITIES)
