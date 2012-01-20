@@ -13,7 +13,7 @@ from django.db import connections, transaction
 EVENT_CITIES = []
 cities = City.objects.all()
 for c in cities:
-    value = str(c.name)
+    value = str(__unicode__(c.name))
     new_tuple = (value, _(value))
     EVENT_CITIES.append(new_tuple)
 EVENT_CITIES = tuple(EVENT_CITIES)
