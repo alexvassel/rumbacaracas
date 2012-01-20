@@ -14,8 +14,8 @@ from sortable.models import Sortable
 from django.core.urlresolvers import reverse
 from main.modelFields import ImageRestrictedFileField
 from cities.models import City
-from django.db.models.signals import pre_delete
-
+from django.db.models.signals import pre_delete, pre_save
+from django.db import connections, transaction
 
 EVENT_CITIES = []
 cities = City.objects.all()
@@ -36,7 +36,10 @@ class EventCategory( Sortable ):
     title = models.CharField( _( 'Event Category Title' ), max_length = 256 )
     def __unicode__( self ):
         return self.title
-    
+    def save(self, *args, **kwargs):
+        super(EventCategory, self).save(*args, **kwargs)
+        super(EventCategory, self).save(using = 'venezuela', *args, **kwargs)
+            
     class Meta( Sortable.Meta ):
         verbose_name = _( 'Event type' )
         verbose_name_plural = _( 'Event types' )
@@ -193,28 +196,32 @@ class Event( ImageModel, Sortable ):
     def save(self, *args, **kwargs):
         if not self.to_date:
             self.to_date = self.from_date
-            
+        
         super(Event, self).save(*args, **kwargs)
         if str(self.city) == 'Caracas':
             super(Event, self).save(using = 'venezuela', *args, **kwargs)
-
-# in models.py
-from django.db.models.signals import pre_delete
-from events.models import Event
-
-def do_something(sender, **kwargs):
-    # the object which is saved can be accessed via kwargs 'instance' key.
+            
+# ASSIGN A PRE_SAVE SIGNAL
+def unique_slug(sender, **kwargs):
     obj = kwargs['instance']
-    print 'the object is now saved.'
-    # ...do something else...
+    
+    result = ''
+    query = "SELECT * FROM events_event WHERE slug='"+str(obj.slug)+"'"
+    cursor = connections['venezuela'].cursor()
+    cursor.execute(query)
+    result = str(cursor.fetchone())
+    transaction.commit_unless_managed(using='venezuela')
+    if result != 'None':
+        import random
+        obj.slug = obj.slug+'-'+str(random.randrange(1000, 9999))
+pre_save.connect(unique_slug, sender=Event)
+
+# ASSIGN A PRE_DELETE SIGNAL
+def delete_both(sender, **kwargs):
+    obj = kwargs['instance']
     query = "DELETE FROM events_event WHERE slug='"+str(obj.slug)+"'"
-    print query
-    from django.db import connections, transaction
     cursor = connections['venezuela'].cursor()
     cursor.execute(query)
     transaction.commit_unless_managed(using='venezuela')
 
-# here we connect a post_save signal for MyModel
-# in other terms whenever an instance of MyModel is saved
-# the 'do_something' function will be called.
-pre_delete.connect(do_something, sender=Event)
+pre_delete.connect(delete_both, sender=Event)

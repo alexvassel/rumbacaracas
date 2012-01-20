@@ -7,6 +7,8 @@ from django.core.urlresolvers import reverse
 from decorators import upload_to_dest
 from main.modelFields import ImageRestrictedFileField
 from cities.models import City
+from django.db.models.signals import pre_delete, pre_save
+from django.db import connections, transaction
 
 EVENT_CITIES = []
 cities = City.objects.all()
@@ -26,6 +28,9 @@ class LocationType( models.Model ):
     class Meta:
         verbose_name = _( 'Location type' )
         verbose_name_plural = _( 'Location types' )
+    def save(self, *args, **kwargs):
+        super(LocationType, self).save(*args, **kwargs)
+        super(LocationType, self).save(using = 'venezuela', *args, **kwargs)
 
 class RestaurantType ( models.Model ):
     title = models.CharField( _( 'Type of Restaurant' ), max_length = 256 )
@@ -34,6 +39,9 @@ class RestaurantType ( models.Model ):
     class Meta:
         verbose_name = _( 'Type of Restaurant' )
         verbose_name_plural = _( 'Types of Restaurant' )
+    def save(self, *args, **kwargs):
+        super(RestaurantType, self).save(*args, **kwargs)
+        super(RestaurantType, self).save(using = 'venezuela', *args, **kwargs)
 
 class LocationArea ( models.Model ):
     title = models.CharField( _( 'Area' ), max_length = 256 )
@@ -42,6 +50,9 @@ class LocationArea ( models.Model ):
     class Meta:
         verbose_name = _( 'Location area' )
         verbose_name_plural = _( 'Location areas' )
+    def save(self, *args, **kwargs):
+        super(LocationArea, self).save(*args, **kwargs)
+        super(LocationArea, self).save(using = 'venezuela', *args, **kwargs)
 
 class LocationMusic ( models.Model ):
     title = models.CharField( _( 'Music' ), max_length = 256 )
@@ -50,6 +61,9 @@ class LocationMusic ( models.Model ):
     class Meta:
         verbose_name = _( 'Location music' )
         verbose_name_plural = _( 'Location musics' )
+    def save(self, *args, **kwargs):
+        super(LocationMusic, self).save(*args, **kwargs)
+        super(LocationMusic, self).save(using = 'venezuela', *args, **kwargs)
 
 
 class DressType( models.Model ):
@@ -59,6 +73,9 @@ class DressType( models.Model ):
     class Meta:
         verbose_name = _( 'Dress type' )
         verbose_name_plural = _( 'Dress types' )
+    def save(self, *args, **kwargs):
+        super(DressType, self).save(*args, **kwargs)
+        super(DressType, self).save(using = 'venezuela', *args, **kwargs)
 
 
 class WeekDay( models.Model ):
@@ -129,17 +146,25 @@ class Location( ImageModel ):
         ordering = ['title']
         verbose_name = _( 'Location' )
         verbose_name_plural = _( 'Locations' )
-        
+    
     def save(self, *args, **kwargs):
         super(Location, self).save(*args, **kwargs)
         if str(self.city) == 'Caracas':
             super(Location, self).save(using = 'venezuela', *args, **kwargs)
-    
-    def delete(self, *args, **kwargs):
-        super(Location, self).delete(*args, **kwargs)
-        if str(self.city) == 'Caracas':
-            super(Location, self).delete(using = 'venezuela', *args, **kwargs)
             
-    def delete_model(self, request, obj):
-        print 'DELETE!'
-        obj.delete()
+# ASSIGN A PRE_SAVE SIGNAL
+def save_location_info(sender, **kwargs):
+    obj = kwargs['instance']
+    
+    result = ''
+    query = "SELECT * FROM locations_location WHERE slug='"+str(obj.slug)+"'"
+    cursor = connections['venezuela'].cursor()
+    cursor.execute(query)
+    result = str(cursor.fetchone())
+    transaction.commit_unless_managed(using='venezuela')
+    if result != 'None':
+        import random
+        obj.slug = obj.slug+'-'+str(random.randrange(1000, 9999))
+    
+    
+pre_save.connect(save_location_info, sender=Location)

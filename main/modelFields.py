@@ -89,3 +89,6 @@ class ImageRestrictedFileField(ContentTypeRestrictedFileField):
         
         super(ImageRestrictedFileField, self).__init__(*args, **kwargs)
 
+
+# CHECK IF THE SLUG IS UNIQUE
+
