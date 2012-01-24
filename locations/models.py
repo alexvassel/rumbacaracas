@@ -165,6 +165,15 @@ def save_location_info(sender, **kwargs):
     if result != 'None':
         import random
         obj.slug = obj.slug+'-'+str(random.randrange(1000, 9999))
-    
-    
+
+# ASSIGN A PRE_DELETE SIGNAL
+def delete_both(sender, **kwargs):
+    obj = kwargs['instance']
+    query = "DELETE FROM locations_location WHERE slug='"+str(obj.slug)+"'"
+    cursor = connections['venezuela'].cursor()
+    cursor.execute(query)
+    transaction.commit_unless_managed(using='venezuela')
+
+# CONNECT THE SIGNALS
+pre_delete.connect(delete_both, sender=Location)
 pre_save.connect(save_location_info, sender=Location)
