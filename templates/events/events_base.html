@@ -34,6 +34,7 @@
         		<div class="slide-teasers">
                     <h3><a href="{% url event_details slide.slug %}">{{slide.title}}</a></h3>
                     <p>{{slide.description|truncate:85}}<br />
+                    {% if closest_dates %}
                         {% if closest_dates|hash:slide.pk %}
                             {{ closest_dates|hash:slide.pk  }}
                         {%  else %}
@@ -46,6 +47,7 @@
                             , {{slide.time}}
                             {% endif %}
                         {% endif %}
+                    {% endif %}
         			</p>
                 </div>
     		</li>
