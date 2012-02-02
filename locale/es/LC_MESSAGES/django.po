@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-16 05:40-0600\n"
-"PO-Revision-Date: 2011-12-13 08:28-0430\n"
+"PO-Revision-Date: 2012-02-02 11:19-0430\n"
 "Last-Translator: rufi guerrero <rufi@web.com.ve>\n"
 "Language-Team: td <td>\n"
 "Language: \n"
@@ -1475,7 +1475,7 @@ msgstr "Revista | Rumbacaracas"
 #: templates/static/magazine.html:10
 #: templates/widgets/magazine.html:5
 msgid "Magazine"
-msgstr "Revista"
+msgstr "Revistas y Cuadernos"
 
 #: templates/magazine/magazine.html:30
 msgid "Last Edition"
@@ -1483,12 +1483,12 @@ msgstr "Última Edición"
 
 #: templates/magazine/magazine.html:54
 msgid "Previous Editions"
-msgstr "Ediciones Anteriores"
+msgstr "Revistas"
 
 #: templates/magazine/magazine.html:83
 #: templates/static/notebook.html:10
 msgid "Notebook"
-msgstr "Cuaderno"
+msgstr "Cuadernos"
 
 #: templates/main/admin_pending_content.html:18
 msgid "None Available"
@@ -1509,7 +1509,7 @@ msgstr "Leer Más"
 
 #: templates/main/index.html:3
 msgid "Rumbacaracas"
-msgstr "Rumbacaracas.com"
+msgstr "Rumbacaracas.com l El Sitio de Todas las Rumbas"
 
 #: templates/main/index.html:44
 msgid "LATEST PHOTOS"
