@@ -84,28 +84,46 @@
     <div class="recent-guides encap outnone edition" style="border-top: 1px dotted black;padding: 15px 0;">
         <h2 class="title">
             {% trans "Notebook" %}
-            <select name="notebook_name" id="notebooks_list_options" style="position: relative; top: -3px; left: 20px;">
-            {% for notebook in notebooks %}
-                <option value="{{ notebook.folder.folderId }}"{% if default_notebook.folder.folderId == notebook.folder.folderId %} selected="selected"{% endif %}>{{ notebook.folder.name }}</option>
-            {% endfor %}
-            </select>
         </h2>
 
-        <script type="text/javascript">
-            $("#notebooks_list_options").change(function(event, element)
-            {
-                var albumId = $(this).val();
-                var albumUrl = "http://static.issuu.com/widgets/shelf/index.html?folderId=0b91c9e3-df82-4fc3-b0f2-ce9d3e2095e30b91c9e3-df82-4fc3-b0f2-ce9d3e2095e3&theme=theme3&rows=2&amp;thumbSize=medium&roundedCorners=false&showTitle=true&showAuthor=false&shadow=true&effect3d=true";
-                albumUrl = albumUrl.replace('{album_id}', albumId);
-                $('#cuadernos > iframe')[0].src = albumUrl;
-            });
-        </script>
-
         <div id="cuadernos">
-           <iframe src="http://static.issuu.com/widgets/shelf/index.html?folderId=0b91c9e3-df82-4fc3-b0f2-ce9d3e2095e3&amp;theme=theme3&amp;rows=2&amp;thumbSize=medium&amp;roundedCorners=false&amp;showTitle=true&amp;showAuthor=false&amp;shadow=true&amp;effect3d=true" width="100%" height="370" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+			<iframe src="http://static.issuu.com/widgets/shelf/index.html?folderId=0b91c9e3-df82-4fc3-b0f2-ce9d3e2095e3&amp;theme=theme3&amp;rows=1&amp;thumbSize=medium&amp;roundedCorners=false&amp;showTitle=true&amp;showAuthor=false&amp;shadow=true&amp;effect3d=true" width="100%" height="185" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
         </div><!--termina cuaderno -->
 
     </div><!--//.recent-guides-->
+	
+    <div class="recent-guides encap outnone edition" style="border-top: 1px dotted black;padding: 15px 0;">
+        <h2 class="title">
+            {% trans "Notebook" %} 2010
+        </h2>
+
+        <div id="cuadernos">
+			<iframe src="http://static.issuu.com/widgets/shelf/index.html?folderId=8baff769-005b-4601-bd52-fd965a3eb727&amp;theme=theme3&amp;rows=1&amp;thumbSize=medium&amp;roundedCorners=false&amp;showTitle=true&amp;showAuthor=false&amp;shadow=true&amp;effect3d=true" width="100%" height="185" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+        </div><!--termina cuaderno -->
+
+    </div><!--//.recent-guides-->	
+	
+    <div class="recent-guides encap outnone edition" style="border-top: 1px dotted black;padding: 15px 0;">
+        <h2 class="title">
+            {% trans "Notebook" %} 2009
+        </h2>
+
+        <div id="cuadernos">
+			<iframe src="http://static.issuu.com/widgets/shelf/index.html?folderId=6a8c5e11-6584-48c4-b602-8ccf20d65626&amp;theme=theme3&amp;rows=1&amp;thumbSize=medium&amp;roundedCorners=false&amp;showTitle=true&amp;showAuthor=false&amp;shadow=true&amp;effect3d=true" width="100%" height="185" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+        </div><!--termina cuaderno -->
+
+    </div><!--//.recent-guides-->	
+
+    <div class="recent-guides encap outnone edition" style="border-top: 1px dotted black;padding: 15px 0;">
+        <h2 class="title">
+            {% trans "Notebook" %} 2008
+        </h2>
+
+        <div id="cuadernos">
+			<iframe src="http://static.issuu.com/widgets/shelf/index.html?folderId=f2d96909-bccd-45ca-9f6d-ba2021de69f8&amp;theme=theme3&amp;rows=1&amp;thumbSize=medium&amp;roundedCorners=false&amp;showTitle=true&amp;showAuthor=false&amp;shadow=true&amp;effect3d=true" width="100%" height="185" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+        </div><!--termina cuaderno -->
+
+    </div><!--//.recent-guides-->			
 
     </div><!--//.printed-guide-->
     </div><!--//.node-->
