@@ -65,6 +65,7 @@ class ContentTypeRestrictedFileField(FileField):
         data = super(ContentTypeRestrictedFileField, self).clean(*args, **kwargs)
 
         file = data.file
+        file.storage = RUMBACR_STORAGE
         try:
             content_type = file.content_type
             if content_type in self.content_types:
@@ -90,5 +91,7 @@ class ImageRestrictedFileField(ContentTypeRestrictedFileField):
         super(ImageRestrictedFileField, self).__init__(*args, **kwargs)
 
 
-# CHECK IF THE SLUG IS UNIQUE
-
+from cuddlybuddly.storage.s3.storage import S3Storage
+#TODO FIX ON PRODUCTION
+RUMBACR_STORAGE = S3Storage(bucket='rumba_test', base_url='http://s3.amazonaws.com/rumba_test/')
+#RUMBACR_STORAGE = S3Storage(bucket='rumba_test', base_url='http://s3.amazonaws.com/rumba_test/')

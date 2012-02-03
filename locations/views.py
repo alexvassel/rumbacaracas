@@ -64,7 +64,7 @@ def category( request ):
 @render_to( 'locations/category.html' )
 def category_details ( request, group ):
     locations = Location.objects.filter( status = 1 ).filter( type__slug = group ).order_by( 'title' )
-
+    
     group_name = get_object_or_404( LocationType, slug = group )
     
     request.breadcrumbs( _( 'Locations' ) , reverse('location_main') )

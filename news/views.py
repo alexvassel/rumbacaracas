@@ -59,7 +59,7 @@ def add( request, type ):
             model = Entry
             fields = ( 
                 'title',
-                'source',
+                'source', 
                 'author',
                 'image',
                 'content',
@@ -80,13 +80,15 @@ def add( request, type ):
                 images_formset.save()
 
             article.authors.add( request.user )
-            form.save_m2m()
+            form.save()
+            for field in form:
+                print 'Field: '
+                print field
 
             return {
                     "completed": True,
                 "form": form,
                 "type": type,
-                'imagesForm': images_formset,
                 "errors": True
         }#HttpResponseRedirect( reverse('zinnia_entry_archive_index') ) # Redirect after POST
         else :
