@@ -89,6 +89,10 @@
         </h2>
 
         <script type="text/javascript">
+        $(document).ready(function() {
+                $("#albums_list_options").change();
+            });
+            
             $("#notebooks_list_options").change(function(event, element)
             {
                 var albumId = $(this).val();
