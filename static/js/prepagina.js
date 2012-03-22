@@ -8,5 +8,5 @@
 	if(leerCookie('prepagina')!="si") {
 		document.cookie="prepagina = si"
 		document.cookie="direccion = "+location.href
-		window.location = "http://www.rumbacaracas.com/templates/pre.html"
+		window.location = "http://media.rumbacaracas.com/static/pre.html"
 	}
