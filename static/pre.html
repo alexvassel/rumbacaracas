@@ -13,6 +13,10 @@
 	   return a; 
 	}
 	
+	var realreferrer = readCookie("realreferrer");
+	if (realreferrer) {
+	 _gaq.push(['_setReferrerOverride', realreferrer ]);
+	}	
 
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-801353-1']);

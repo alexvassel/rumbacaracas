@@ -6,6 +6,7 @@
 	}
 
 	if(leerCookie('prepagina')!="si") {
+		document.cookie = "realreferrer="+encodeURIComponent(document.referrer)+"; path=/";		
 		document.cookie="prepagina = si"
 		document.cookie="direccion = "+location.href
 		window.location = "http://media.rumbacaracas.com/static/preve.html"
