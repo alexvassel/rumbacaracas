@@ -79,11 +79,6 @@
       _gaq.push(['_setDomainName', '.rumbacaracas.com']);
       _gaq.push(['_trackPageview']);
 
-		var realreferrer = readCookie("realreferrer");
-		if (realreferrer) {
-		 _gaq.push(['_setReferrerOverride', realreferrer ]);
-		}	
-	
       (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
