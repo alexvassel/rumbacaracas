@@ -48,6 +48,7 @@ urlpatterns = patterns( '',
 
     #extra_context
 
+    url( r'^splash$', 'django.views.generic.simple.direct_to_template', {'template': 'splash.html'} , name="splash_page"),
 
 
     url( r'^noticias/publica', "news.views.add", {'type': 'news'}, name='news_add' ),
