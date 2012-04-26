@@ -12,13 +12,14 @@
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-801353-1']);
     _gaq.push(['_setDomainName', '.rumbacaracas.com']);
-    _gaq.push(['_trackPageview']);
+
 
     var realreferrer = 1//$.cookie("realreferrer");
     if (realreferrer) {
         //$.cookie('realreferrer', null);
         _gaq.push(['_setReferrerOverride',"http://facebook.com" ]);
     }
+    _gaq.push(['_trackPageview']);
 
     (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
