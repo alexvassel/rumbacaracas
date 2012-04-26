@@ -16,6 +16,7 @@
 
     var realreferrer = $.cookie("realreferrer");
     if (realreferrer) {
+        console.log(realreferrer);
         $.cookie('realreferrer', null);
         _gaq.push(['_setReferrerOverride', realreferrer ]);
     }
