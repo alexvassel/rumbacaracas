@@ -13,11 +13,10 @@
     _gaq.push(['_setAccount', 'UA-801353-1']);
     _gaq.push(['_setDomainName', '.rumbacaracas.com']);
 
-
-    var realreferrer = 1//$.cookie("realreferrer");
+    var realreferrer = $.cookie("realreferrer");
     if (realreferrer) {
-        //$.cookie('realreferrer', null);
         _gaq.push(['_setReferrerOverride',"http://facebook.com" ]);
+        $.cookie('realreferrer', null);
     }
     _gaq.push(['_trackPageview']);
 
