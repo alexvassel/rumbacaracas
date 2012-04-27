@@ -15,7 +15,7 @@
 
     var realreferrer = $.cookie("realreferrer");
     if (realreferrer) {
-        _gaq.push(['_setReferrerOverride',"http://facebook.com" ]);
+        _gaq.push(['_setReferrerOverride',realreferrer ]);
         $.cookie('realreferrer', null);
     }
     _gaq.push(['_trackPageview']);
