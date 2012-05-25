@@ -97,6 +97,12 @@
 	<!-- RELOAD BANNERS -->
 	<script>
 
+        //Function to support resixe openx banner container
+            function animateContainerHeight(to, speed, cntID){
+                var banner = $("#"+cntID).parent();
+                banner.animate({ height: to }, speed);
+            }
+
 	function reloadBanners() {
 		var banners = $('.jsbanner');
 		for(i = 0; i < banners.length; i++) {
