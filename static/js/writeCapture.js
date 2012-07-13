@@ -48,6 +48,7 @@
 				var el = jQuery(selector)[0];
                 if(typeof el == "undefined"){
                     console.log("unexpected error", selector, content);
+                    return;
                 }
 				
 				var next = el.nextSibling, parent = el.parentNode;
