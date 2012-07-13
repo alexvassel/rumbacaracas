@@ -118,7 +118,7 @@
 	
 	$(document).ready(function () {
 		$.writeCapture.autoAsync();
-		$.doTimeout('checkB', 4000, function() {
+		$.doTimeout('checkB', 10000, function() {
 			var banner = $('.jsbanner');
 			if($('div', $(banner[0])).html() == "") {
 				if(typeof window.gourl != "undefined") {
