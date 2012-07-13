@@ -283,7 +283,9 @@
       <br class="cflt" />
     </div><!--//.header-tertiary-->
     {{br}}
-    {% block pushdown %}{% banner_zone_iframe 162 960 300%}{% endblock %}
+      <div class="banner-container outnone">
+          {% block pushdown %}{% banner_zone_iframe 162 960 300%}{% endblock %}
+      </div>
     <div class="breadcrumb">
 	{% block breadcrumbs %}
     	{% for breadcrumb in request.breadcrumbs %}
