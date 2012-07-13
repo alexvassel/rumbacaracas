@@ -46,6 +46,9 @@
 			replaceWith: function(selector,content) {
 				// jQuery 1.4? has a bug in replaceWith so we can't use it directly
 				var el = jQuery(selector)[0];
+                if(typeof el == "undefined"){
+                    console.log("unexpected error", selector, content);
+                }
 				
 				var next = el.nextSibling, parent = el.parentNode;
 
