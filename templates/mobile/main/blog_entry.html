@@ -1,0 +1,27 @@
+{% load i18n %}
+{% load facebook %}
+{% load tools %}
+<dl class="encap">
+    <dt class="c40l">
+        <a href="{{ object.get_absolute_url }}">
+            {% if object.image %}
+                <img src="{{ object.blogthumb.url }}" alt="{{ object.title }}" />
+            {% else %}
+                <img src="{% value_from_settings "STATIC_URL" %}s.gif" alt="{{ object.title }}" width=228 height=168/>
+            {% endif %}
+        </a></dt>
+    <dd class="c60r">
+      <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h3>
+
+      <p class="published">
+          {{ object.creation_date|date:"d.m.Y" }} /
+          {% for cat in object.categories.all%}
+              <a class="force-red" href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+              {% if not forloop.last %}, {% endif %}
+          {% endfor %} /
+          <a href="{{ object.get_absolute_url }}#disqus_thread" class="force-red">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
+      </p>
+      <p>{{ object.short|truncate:150 }}</p>
+      <a class="read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
+    </dd>
+</dl>

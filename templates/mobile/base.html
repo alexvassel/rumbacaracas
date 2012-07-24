@@ -300,20 +300,10 @@
 
     <div id="main-contents" class="main-contents encap">
 
-    	<div id="col-left" class="col-left">
+    	<div id="col-left" class="col-left" style="width:100% !important;">
             {% block sattelite %}{% banner_zone_overflow 120 %}{% endblock %}
 			{% block colleft %}{% endblock %}
       	</div><!--//.col-left-->
-	  <div id="col-right" class="col-right">
-        {% block colright %}
-            <div class="banner-container box-shadows outnone widget">
-                {% banner_zone_iframe 114 300 250%}
-            </div><!--//.banner-container-->
-            <div class="clear-block block block-views widget widget-calendar">
-                {% month_cal%}
-            </div>
-        {% endblock %}
-      </div><!--//.col-left-->
     	<br class="cflt" />
     </div><!--//.main-contents-->
     <div id="footer-primary" class="footer-primary box-shadows">

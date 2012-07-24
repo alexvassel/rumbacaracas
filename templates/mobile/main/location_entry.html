@@ -1,0 +1,24 @@
+{% load i18n %}
+{% load tools %}
+{% load facebook %}
+<dl class="encap"">
+    <dt class="c40l">
+        <a href="{{ object.get_absolute_url }}">
+            {% if object.image_logo %}
+                <img src="{{ object.blogthumb.url }}" alt="{{ object.title }}" />
+            {% else %}
+                <img src="{% value_from_settings "STATIC_URL" %}s.gif" alt="{{ object.title }}" width=228 height=168/>
+            {% endif %}
+        </a></dt>
+    <dd class="c60r">
+      <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h3>
+      <p class="published">
+          {% for cat in object.type.all%}
+              <a class="force-red" href="{% url location_category group=cat.slug %}">{{cat.title}}</a>
+              {% if not forloop.last %}, {% endif %}
+          {% endfor %}
+      </p>
+      <p>{{ object.description|truncate:150 }}</p>
+      <a class="read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
+    </dd>
+</dl>
