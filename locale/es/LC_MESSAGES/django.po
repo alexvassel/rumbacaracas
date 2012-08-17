@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-16 05:40-0600\n"
-"PO-Revision-Date: 2012-08-17 08:04-0430\n"
+"PO-Revision-Date: 2012-08-17 08:44-0430\n"
 "Last-Translator: rufi guerrero <rufi@web.com.ve>\n"
 "Language-Team: td <td>\n"
 "Language: es\n"
@@ -827,7 +827,7 @@ msgstr "Music News"
 
 #: templates/base.html:220 templates/main/index.html:176
 msgid "Sexy News"
-msgstr "Sexy news"
+msgstr "Sexy News"
 
 #: templates/base.html:221 templates/base.html.py:293
 #: templates/main/index.html:175
