@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Model
 from django.utils.translation import ugettext_lazy as _
 from decorators import upload_to_dest
 from locations.models import Location
@@ -23,6 +24,7 @@ PHOTO_CATEGORIES = (
     ( 'fashion', _( 'Fashion ' ) ),
     ( 'outside', _( 'Outside caracas' ) ),
  )
+
 
 PEOPLE_STATUSES = ( 
     ( '1', _( 'Published' ) ),
@@ -119,3 +121,37 @@ class Photo( ImageModel ):
     class Meta:
         verbose_name = _( 'Event Photo' )
         verbose_name_plural = _( 'Event Photos' )
+
+
+
+REQUEST_CATEGORIES = (
+    ( 'corporate', _( 'Corporate' ) ),
+    ( 'birthday', _( 'Birthday' ) ),
+    ( 'Wedding', _( 'Wedding (civil/ecclesiastical)' ) ),
+    ( 'graduation', _( 'Graduation' ) ),
+    ( 'others', _( 'Others' ) ),
+)
+
+
+class EventRequest( Model ):
+    name = models.CharField( _( 'Your name' ) , max_length = 256 )
+    email = models.EmailField( _( 'Your Email' ) , max_length = 256)
+    phone = models.CharField( _( 'Telephone' ), max_length = 256 , blank = True )
+    fax = models.CharField( _( 'Fax' ), max_length = 256 , blank = True )
+
+    category = models.CharField( _('Type of event'), max_length = 50, choices = REQUEST_CATEGORIES )
+    date = models.DateField( _( 'Event date' ) )
+    time = models.TimeField( _( 'Event time' ), max_length = 64)
+
+    address = models.TextField( _( 'Event location' ))
+    city = models.CharField( _( 'City' ), max_length = 256)
+    information = models.TextField( _( 'Additional information' ) , blank = True )
+    datetime_added = models.DateTimeField( 'Creation Date', auto_now_add = True )
+
+
+    def __unicode__( self ):
+        return self.name
+
+    class Meta:
+        verbose_name = _( 'Hiring request' )
+        verbose_name_plural = _( 'Hiring requests' )

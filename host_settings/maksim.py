@@ -48,7 +48,7 @@ DATABASES = {
 }
 
 DEBUG=True
-#LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'es'
 
 CACHES = {
     'default': {

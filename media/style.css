@@ -543,7 +543,7 @@ li.sobre1 a.fotosobre1:hover {
 
 #main-contents #col-left #googleSearch input.form-text
 {
-	width: 520px;
+	width: 490px;
 }
 
 
@@ -4036,6 +4036,53 @@ li.greating {
 
 li.greating_pic {
   padding: 3px 5px !important
+}
+
+
+/*TOP BAR fixes*/
+
+#edit-search-block-form-1 {
+    margin-top: -3px;
+    margin-right: -3px;
+}
+.search-btn {
+    display: inline-block;
+    border:1px solid #000000;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: #5b5b5b; /* Old browsers */
+    background: -moz-linear-gradient(top,  #5b5b5b 0%, #000201 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5b5b5b), color-stop(100%,#000201)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #5b5b5b 0%,#000201 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #5b5b5b 0%,#000201 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #5b5b5b 0%,#000201 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #5b5b5b 0%,#000201 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5b5b5b', endColorstr='#000201',GradientType=0 ); /* IE6-9 */
+}
+.search-btn .icon-search{
+    background: url("images/sprites/sprites_teaser_options.png") no-repeat scroll left -290px transparent;
+    display: inline-block;
+    text-align: center;
+    height: 16px;
+    padding: 0 0 0 20px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+#header-primary .sec-right .photo-request a {
+    display: block;
+    padding: -5px 0 0 20px;
+    color: #FFFFFF;
+    width: 90px;
+}
+
+li.sobre1 a.fotorequest {
+    background: url(images/sprites/publica_fotos_white.png) no-repeat scroll; width:37px; height:30px; float:left;
+}
+li.sobre1 a.fotorequest:hover {
+    background: url(images/sprites/publica_fotos_hov_white.png) no-repeat scroll; width:37px; height:30px;  float:left;
 }
 
 #main-contents p.redPBold {
