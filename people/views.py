@@ -5,9 +5,8 @@ from django.conf import settings
 from django.core.files.storage import default_storage
 import os, glob, string, re
 import shutil
-from django.forms import ModelForm, forms, TimeField
-from main.SelectTimeWidget import SelectTimeWidget
-from people.models import PhotoEvent, Photo, PHOTO_CATEGORIES, EventRequest
+
+from people.models import PhotoEvent, Photo, PHOTO_CATEGORIES
 from django.core.files.base import ContentFile
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext as _
@@ -109,50 +108,6 @@ def make_main ( request, event_id, photo_id ):
     event.image.save( photo.image.name, ft_content, save = True )
 
     return HttpResponseRedirect( '/admin/people/photoevent/%s' % ( event.id ) )
-
-
-
-@render_to( 'people/request.html' )
-def request( request ):
-    request.breadcrumbs( _( 'People' ) , reverse('people_request') )
-    request.breadcrumbs( _( 'Hiring photographers' ) , request.path_info )
-
-    class RequestForm( ModelForm ):
-        #type = ModelMultipleChoiceField( queryset = LocationType.objects.all() )
-
-        class Meta:
-            model = EventRequest
-            fields = (
-                'name',
-                'email',
-                'phone',
-                'fax',
-                'category',
-                'date',
-                'time',
-                'address',
-                'city',
-                'information',
-            )
-        time = TimeField(widget=SelectTimeWidget(twelve_hr=True, use_seconds=False, minute_step=10), label=_('Time'))
-
-    if request.method == 'POST': # If the form has been submitted...
-        form = RequestForm( request.POST, request.FILES ) # A form bound to the POST data
-        if form.is_valid(): # All validation rules pass
-            request = form.save( commit = False )
-            request.save()
-            return HttpResponseRedirect( reverse('people_request') + "?completed=1" ) # Redirect after POST
-        return {
-            "form": form,
-            "errors": True
-        }
-    else:
-        form = RequestForm()
-    return {
-        'form': form,
-        }
-
-
 
 
 @login_required

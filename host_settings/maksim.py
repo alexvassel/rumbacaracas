@@ -1,5 +1,3 @@
-
-
 FIXTURE_DIRS = (
    '/home/maksim/Documents/Develop/rumbabogota/locations/fixtures/',
  )
@@ -50,7 +48,7 @@ DATABASES = {
 }
 
 DEBUG=True
-LANGUAGE_CODE = 'es'
+#LANGUAGE_CODE = 'es'
 
 CACHES = {
     'default': {

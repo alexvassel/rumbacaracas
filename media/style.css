@@ -543,7 +543,7 @@ li.sobre1 a.fotosobre1:hover {
 
 #main-contents #col-left #googleSearch input.form-text
 {
-	width: 490px;
+	width: 520px;
 }
 
 
@@ -4038,3 +4038,6 @@ li.greating_pic {
   padding: 3px 5px !important
 }
 
+#main-contents p.redPBold {
+    color: #f06000;
+}

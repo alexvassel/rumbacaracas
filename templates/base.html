@@ -183,24 +183,26 @@
          </div><!--//.flt-left-->
 
         <div class="sec-right flt-right">
-            <ul class="encap flt-right fcml0 lcmr0">
+        	<ul class="encap flt-right fcml0 lcmr0">
 
-                <li class="sepRpar">&nbsp;</li>
-                <li class="sobre1"><a href="{% url subscribe_main %}" class="fotosobre1"></a></li>
-                <li class="newsletter-subscribe"><a href="{% url subscribe_main %}">E-RUMBA<br /><span>{% trans "subscription" %}</span></a></li>
-                <li class="sepB">&nbsp;</li>
+            <li class="sepRpar">&nbsp;</li>
+             <li class="sobre1"><a href="{% url subscribe_main %}" class="fotosobre1"></a></li>
+          	<li class="newsletter-subscribe"><a href="{% url subscribe_main %}">E-RUMBA<br /><span>{% trans "subscription" %}</span></a></li>
+           	<li class="sepB">&nbsp;</li>
+            <li class="siguenosft">{%trans "Follow:"%}</li>
+            
+			<!-- http://twitter.com/about/resources/followbutton -->
+            
+          	<li class="social-freak"><a class="facebook-fanpage" href="http://www.facebook.com/rumbacaracas" target="_blank"><span class="hidden">{% trans "Follow us on Facebook"%}</span></a></li>
+            <li class="social-freak"><a class="twitter-page" href="http://twitter.com/#!/rumbacaracas" target="_blank"><span class="hidden">{% trans "Follow us on Twitter"%}</span></a></li>
+            
 
-                <li class="sobre1"><a href="{% url people_request %}" class="fotorequest"></a></li>
-                <li class="photo-request"><a href="{% url people_request %}">{% trans "Hire a photographer" %}</a></li>
-                <li class="sepB">&nbsp;</li>
+            <li class="sepBL">&nbsp;</li>
+            <li class="top-search-form">
+            	{% googlesearch_input %}
+			</li>
 
-                <li class="social-freak"><a class="facebook-fanpage" href="http://www.facebook.com/rumbabogotacom" target="_blank"><span class="hidden">{% trans "Follow us on Facebook"%}</span></a></li>
-                <li class="social-freak"><a class="twitter-page" href="http://twitter.com/#!/rumbabogota" target="_blank"><span class="hidden">{% trans "Follow us on Twitter"%}</span></a></li>
-                <li class="top-search-form">
-                    {% googlesearch_input %}
-                </li>
-
-            </ul>
+          </ul>
         </div><!--//.flt-right-->
       </div><!--//.rows-->
     </div><!--//.container-->

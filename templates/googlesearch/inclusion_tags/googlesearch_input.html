@@ -1,5 +1,4 @@
 {% load i18n %}
-
 <form id="googleSearch" action="{% url googlesearch_results %}" id="cref_iframe" class="search">
 <div>	
         <input name="cx" value="partner-pub-9132090067286104:34azxg-cmp0" type="hidden">
@@ -7,10 +6,8 @@
         <input name="ie" value="ISO-8859-1" type="hidden">
         <div id="edit-search-block-form-1-wrapper" class="form-item">
 			<input type="text" class="form-text" name="q" size="8" maxlength="128" id="edit-search-block-form-1" value="{% if request.GET.q %}{{ request.GET.q }}{% else %}{% trans "Search"%}{% endif %}" class="search_txt" onfocus="if (this.value == '{% trans "Search"%}') {this.value = '';}" onblur="if (this.value == '') {this.value = '{% trans "Search"%}';}" />
-            <label for="edit-submit-1" class="search-btn" title="{%trans "Search"%}"><i class="icon-search"></i></label>
 		</div>
-        <input class="hidden" type="submit" name="submit" value="{%trans "Search"%}" class="form-submit" id="edit-submit-1"/>
-
+        <input type="submit" name="submit" value="{%trans "Search"%}" class="form-submit" id="edit-submit-1"/>
 </div>
 </form><!--/search-->
 <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cref_iframe"></script>

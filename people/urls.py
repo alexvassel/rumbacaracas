@@ -2,7 +2,6 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns( 'people.views',
     url( r'^$', 'index', name='people_main' ),
-    url( r'^request', 'request', name='people_request' ),
     url( r'^tipo/(?P<group>\w+)$', "category" , name = "people_category" ),
     url( r'^make_main/(?P<event_id>\d+)/(?P<photo_id>\d+)$', "make_main", name="people_make_main" ),
     url( r'^import_select/(?P<event_id>\d+)$', 'import_select', name='people_admin_select' ),

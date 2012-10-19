@@ -1,4 +1,4 @@
-from people.models import PhotoEvent, Photo, EventRequest
+from people.models import PhotoEvent, Photo
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
@@ -27,5 +27,4 @@ class EventAdmin( admin.ModelAdmin ):
         js = ("/media/js/people_admin_hacks.js",)
 
 admin.site.register( PhotoEvent, EventAdmin )
-admin.site.register( EventRequest)
 
