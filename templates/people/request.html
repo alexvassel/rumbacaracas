@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "People | Rumbabogota" %}{% endblock %}
+{% load tools %}
+{% load listtools %}
+{% load openx %}
+{% block colleft %}
+<div class="node-container gente box-shadows encap">
+  <div class="title-wrap encap">
+
+    <span class="flt-left"><h2 class="title addlocationhdr">{% trans "Hiring photographers"%}</h2></span>
+    <span class="flt-right">
+	  <img src="/media/images/logo.png" width="76" height="40" vspace="6" alt="" title="" />
+      <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+      </ul>
+    </span>
+  </div><!--//.title-wrap-->
+  <div class="node gente bb-none encap" id="add-form">
+	<br />
+  	{% if request.GET.completed %}
+          <h2>{% trans "Thanks for your interest in hiring our photography services. <br /> We will contact you shortly!"%}</h2>
+    {% else %}
+    <h2>{% trans "Fill the following form to hire a photo service for a public or private event:"%}</h2>
+    {% if form.non_field_errors %}
+        <div id="form-error">
+            {% trans "The operation could not be performed because one or more error(s) occurred.<br />Please resubmit the form after review the following errors:" %}
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+  	<form enctype="multipart/form-data" method="post" action="" id="addform">
+    	{% csrf_token %}
+		<div>
+	      <table border="0" cellpadding="7" cellspacing="0" width="100%">
+	        {% for field in form %}
+
+				{% if field.name == 'information' %}
+				  	<tr>
+				    	<td colspan="2">
+                            <span class="space"></span>
+							{{ field.label_tag }}
+							{% if field.errors %}	
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+			      	</tr>
+				  	<tr>
+				        <td colspan="2">{{ field }}</td>
+			      	</tr>
+				{% else %}
+					<tr>
+						<td width="250">
+                            {% if field.field.required %}
+                                <span class="mandatory">*</span>
+                            {% else %}
+                                <span class="space"></span>
+                            {% endif %}
+							{{ field.label_tag }}
+							{% if field.errors %}
+					        		<br/>{{ field.errors }}
+				        	{% endif%}
+						</td>
+						<td class="textbox">
+                            {% if field.name == 'date' %}
+                                <span class="calendar">
+								{{ field }}
+							</span>
+                            {% else %}
+								{{ field }}
+                            {% endif%}
+                        </td>
+		        	</tr>
+				{% endif %}
+			{% endfor %}
+			<tr>
+		        <td colspan="2"><small><span class="space"> </span>{% trans "The fields marked with"%} <span class="mandatory">*</span> {% trans "are required"%}</small></td>
+		    </tr>
+			<tr>
+				<td colspan="2" align="center">
+				  <br />
+		          <input type="reset" id="BtnClear" value="{% trans "Reset"%}" class="button" />
+		          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		          <input type="submit" id="BtnSubmit" value="{% trans "Submit"%}" class="button" />
+				</td>
+			</tr>
+
+
+	      </table>
+		  <hr />
+		</div>
+	</form>
+    {% endif %}
+	<br />
+	<br />
+	{% include "main/banner_103.html" %}
+  </div><!--//.node-->
+</div><!--//.node-container-->
+
+<script>
+    Array.prototype.hasObject = (
+      !Array.indexOf ? function (o)
+      {
+        var l = this.length + 1;
+        while (l -= 1)
+        {
+            if (this[l - 1] === o)
+            {
+                return true;
+            }
+        }
+        return false;
+      } : function (o)
+      {
+        return (this.indexOf(o) !== -1);
+      }
+    );
+	$(document).ready(function () {
+		$('#addform input[type=reset]').click(function(){
+			$(':input','#addform')
+			 .not(':button, :submit, :reset, :hidden')
+			 .val('')
+			 .removeAttr('checked')
+			 .removeAttr('selected');
+			 return false;	
+		});
+
+        //Changed format
+        $(".calendar input").datepicker({
+            showOn          : "button",
+            buttonImage     : "/media/images/icons/calendar.jpg",
+            buttonImageOnly : true,
+            dateFormat      : "dd/mm/yy"
+        });
+
+
+    })
+</script>
+
+{% endblock %}

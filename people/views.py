@@ -5,8 +5,8 @@ from django.conf import settings
 from django.core.files.storage import default_storage
 import os, glob, string, re
 import shutil
-
-from people.models import PhotoEvent, Photo, PHOTO_CATEGORIES
+from django.forms import ModelForm, forms
+from people.models import PhotoEvent, Photo, PHOTO_CATEGORIES, EventRequest
 from django.core.files.base import ContentFile
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext as _
@@ -108,6 +108,48 @@ def make_main ( request, event_id, photo_id ):
     event.image.save( photo.image.name, ft_content, save = True )
 
     return HttpResponseRedirect( '/admin/people/photoevent/%s' % ( event.id ) )
+
+
+
+@login_required( login_url = '/login/' )
+@render_to( 'people/request.html' )
+def request( request ):
+    request.breadcrumbs( _( 'People' ) , reverse('people_request') )
+    request.breadcrumbs( _( 'Hiring photographers' ) , request.path_info )
+
+    class RequestForm( ModelForm ):
+        #type = ModelMultipleChoiceField( queryset = LocationType.objects.all() )
+
+        class Meta:
+            model = EventRequest
+            fields = (
+                'name',
+                'category',
+                'date',
+                'time_from',
+                'time_to',
+                'address',
+                'city',
+                'information',
+            )
+
+    if request.method == 'POST': # If the form has been submitted...
+        form = RequestForm( request.POST, request.FILES ) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            request = form.save( commit = False )
+            request.save()
+            return HttpResponseRedirect( reverse('people_request') + "?completed=1" ) # Redirect after POST
+        return {
+            "form": form,
+            "errors": True
+        }
+    else:
+        form = RequestForm()
+    return {
+        'form': form,
+        }
+
+
 
 
 @login_required
