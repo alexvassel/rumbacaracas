@@ -139,7 +139,7 @@ class EventRequest( Model ):
     phone = models.CharField( _( 'Telephone' ), max_length = 256 , blank = True )
     fax = models.CharField( _( 'Fax' ), max_length = 256 , blank = True )
 
-    category = models.CharField( 'Type of event', max_length = 50, choices = REQUEST_CATEGORIES )
+    category = models.CharField( _('Type of event'), max_length = 50, choices = REQUEST_CATEGORIES )
     date = models.DateField( _( 'Event date' ) )
     time = models.TimeField( _( 'Event time' ), max_length = 64)
 
