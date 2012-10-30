@@ -135,10 +135,13 @@ REQUEST_CATEGORIES = (
 
 class EventRequest( Model ):
     name = models.CharField( _( 'Your name' ) , max_length = 256 )
+    email = models.EmailField( _( 'Your Email' ) , max_length = 256)
+    phone = models.CharField( _( 'Telephone' ), max_length = 256 , blank = True )
+    fax = models.CharField( _( 'Fax' ), max_length = 256 , blank = True )
+
     category = models.CharField( 'Type of event', max_length = 50, choices = REQUEST_CATEGORIES )
     date = models.DateField( _( 'Event date' ) )
-    time_from = models.CharField( _( 'Event time from' ), max_length = 64)
-    time_to = models.CharField( _( 'Event time to' ), max_length = 64   , blank = True , null = True )
+    time = models.TimeField( _( 'Event time' ), max_length = 64)
 
     address = models.TextField( _( 'Event location' ))
     city = models.CharField( _( 'City' ), max_length = 256)

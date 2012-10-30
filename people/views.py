@@ -5,7 +5,8 @@ from django.conf import settings
 from django.core.files.storage import default_storage
 import os, glob, string, re
 import shutil
-from django.forms import ModelForm, forms
+from django.forms import ModelForm, forms, TimeField
+from main.SelectTimeWidget import SelectTimeWidget
 from people.models import PhotoEvent, Photo, PHOTO_CATEGORIES, EventRequest
 from django.core.files.base import ContentFile
 from django.contrib.auth.decorators import login_required
@@ -111,7 +112,6 @@ def make_main ( request, event_id, photo_id ):
 
 
 
-@login_required( login_url = '/login/' )
 @render_to( 'people/request.html' )
 def request( request ):
     request.breadcrumbs( _( 'People' ) , reverse('people_request') )
@@ -124,14 +124,17 @@ def request( request ):
             model = EventRequest
             fields = (
                 'name',
+                'email',
+                'phone',
+                'fax',
                 'category',
                 'date',
-                'time_from',
-                'time_to',
+                'time',
                 'address',
                 'city',
                 'information',
             )
+        time = TimeField(widget=SelectTimeWidget(twelve_hr=True, use_seconds=False, minute_step=10), label=_('Time'))
 
     if request.method == 'POST': # If the form has been submitted...
         form = RequestForm( request.POST, request.FILES ) # A form bound to the POST data
