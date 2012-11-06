@@ -26,6 +26,10 @@ class EventAdmin( admin.ModelAdmin ):
     class Media:
         js = ("/media/js/people_admin_hacks.js",)
 
+class ReuestAdmin( admin.ModelAdmin ):
+    list_display = ( 'name', 'category', 'date', 'time' , 'city', 'address', 'datetime_added', )
+    list_display_links = ( 'name', )
+
 admin.site.register( PhotoEvent, EventAdmin )
-admin.site.register( EventRequest)
+admin.site.register( EventRequest, ReuestAdmin)
 
