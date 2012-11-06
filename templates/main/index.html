@@ -41,6 +41,43 @@
           </div><!--//.slides-->
         </div><!--//.front-slides-->
     {%  endif %}
+	
+        <div id="front-videos" class="front-videos encap tabs boxed-brief">
+        	<div class="wrapper encap">
+				<div class="title flt-left"><h2>{% trans "Videos" %}</h2></div>
+				<div class="tab-titles flt-right fcml0 lcmr0">
+				  <ul id="tab-videos-outline" class="outnone tab-navigation">
+					<li><a class="active" href="{% url video_main %}">{%  trans "See + Videos"%}</a></li>
+					<li><a class="decou sube-un-video" href="{% url video_add %}">{%  trans "Upload a Video"%}</a></li>
+				  </ul>
+				</div><!--//.tab-titles-->
+          </div><!--//.wrapper-->
+          <div id="videos-content" class="videos-content tab-container box-shadows outnone">
+          	<div id="tab-all-videos" class="outnone tab-parts encap">
+              <div class="video-slides c58l">
+                <ul>
+                    {% for video in videos %}
+                        <li {% if not forloop.first %}style="display:none"{% endif %}>
+                            {%youtube_video video.youtube_id 350 288%}
+                        </li>
+                    {% endfor %}
+                </ul>
+              </div><!--//.video-slides-->
+              <div class="recent-video-list c42r">
+                <ul>
+                    {% for video in videos %}
+                        <li>
+                            <a href="{{ video.get_absolute_url }}">{{video.description|slice:":30"}}{% if video.description|length > 30 %}...{% endif %} - <span>{{ video.user|user_link }}</span></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+              </div><!--//.recent-video-list-->
+            </div><!--//.tab-parts-->
+          	<div id="tab-upload-video" class="tab-parts encap">
+            </div><!--//.tab-parts-->
+          </div><!--//.latest-photos-content-->
+        </div>	
+	
         <div id="latest-photos" class="latest-photos encap tabs boxed-brief">
         	<div class="wrapper encap">
             <div class="title flt-left"><h2>{% trans "LATEST PHOTOS" %}</h2></div>
@@ -181,41 +218,7 @@
           	</ul>
           </div><!--//.outlines-list-->
         </div><!--//.outline-briefs-->
-        <div id="front-videos" class="front-videos encap tabs boxed-brief">
-        	<div class="wrapper encap">
-            <div class="title flt-left"><h2>{% trans "Videos" %}</h2></div>
-            <div class="tab-titles flt-right fcml0 lcmr0">
-              <ul id="tab-videos-outline" class="outnone tab-navigation">
-                <li><a class="active" href="{% url video_main %}">{%  trans "See + Videos"%}</a></li>
-                <li><a class="decou sube-un-video" href="{% url video_add %}">{%  trans "Upload a Video"%}</a></li>
-              </ul>
-            </div><!--//.tab-titles-->
-          </div><!--//.wrapper-->
-          <div id="videos-content" class="videos-content tab-container box-shadows outnone">
-          	<div id="tab-all-videos" class="outnone tab-parts encap">
-              <div class="video-slides c58l">
-                <ul>
-                    {% for video in videos %}
-                        <li {% if not forloop.first %}style="display:none"{% endif %}>
-                            {%youtube_video video.youtube_id 350 288%}
-                        </li>
-                    {% endfor %}
-                </ul>
-              </div><!--//.video-slides-->
-              <div class="recent-video-list c42r">
-                <ul>
-                    {% for video in videos %}
-                        <li>
-                            <a href="{{ video.get_absolute_url }}">{{video.description|slice:":30"}}{% if video.description|length > 30 %}...{% endif %} - <span>{{ video.user|user_link }}</span></a>
-                        </li>
-                    {% endfor %}
-                </ul>
-              </div><!--//.recent-video-list-->
-            </div><!--//.tab-parts-->
-          	<div id="tab-upload-video" class="tab-parts encap">
-            </div><!--//.tab-parts-->
-          </div><!--//.latest-photos-content-->
-        </div><!--//.latest-photos-->
+<!--//.latest-photos-->
 
 
 

@@ -219,7 +219,7 @@
       </div><!--//.date-->
       <div class="banner-container txt-right outnone" align="right">
 
-          {% banner_zone_iframe 113 800 100 %}
+  {% block bannermain %}        {% banner_zone_iframe 113 800 100 %} {% endblock %}
 
 	</div><!--//.banner-container-->
       <br class="cflt" />
@@ -296,10 +296,11 @@
 	{% endblock %}
     </div>
 
+	{% block sattelite %}{% banner_zone_overflow 120 %}{% endblock %}
+
     <div id="main-contents" class="main-contents encap">
 
     	<div id="col-left" class="col-left">
-            {% block sattelite %}{% banner_zone_overflow 120 %}{% endblock %}
 			{% block colleft %}{% endblock %}
       	</div><!--//.col-left-->
 	  <div id="col-right" class="col-right">

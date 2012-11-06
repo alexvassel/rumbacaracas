@@ -4060,9 +4060,9 @@ li.greating_pic {
 
 .overflow_banner{
     position: relative;
-    left:20px;
-    top: 15px;
-    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    position: fixed;
     text-align: left;
     visibility: visible;
     width: 800px;
