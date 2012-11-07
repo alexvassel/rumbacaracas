@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-06 06:40-0600\n"
-"PO-Revision-Date: 2012-11-06 16:41+0300\n"
+"PO-Revision-Date: 2012-11-07 21:46+0300\n"
 "Last-Translator: Maksim <nagaev.maksim@gmail.com>\n"
 "Language-Team: td <td>\n"
 "Language: es\n"
@@ -936,7 +936,7 @@ msgstr "suscríbete"
 
 #: templates/base.html:195
 msgid "Hire a photographer"
-msgstr "Contratación Fotagráfica"
+msgstr "Servicios de Fotografía"
 
 #: templates/base.html:198
 #: templates/mobile/base.html:197
