@@ -18,194 +18,157 @@
 {% block colleft %}
     {% if slides %}
         <div id="front-slides" class="front-slides box-shadows encap">
-        	<div class="nav-wrapper">
-	        	<div id="nav" class="encap outnone">&nbsp;</div>
-          </div><!--//.nav-wrapper-->
+            <div class="nav-wrapper">
+                <div id="nav" class="encap outnone">&nbsp;</div>
+            </div><!--//.nav-wrapper-->
 
-        	<div id="slides" class="slides">
-            {% for slide, type in slides%}
-	            <div class="slide" {% if not forloop.first %}style="display:none;width: 619px;height: 338px; overflow: hidden"{% else %}style="height: 338px;"{% endif %}>
-	            	<img  width="619" height="258" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.slide.url}}{% endif %}" alt="{{slide.title}}" />
-	              <div class="slide-info-wrapper">
-	                <div class="slide-info">
-	                  <h3><a href="{{slide.get_absolute_url}}">{{slide.title|truncate:55}}</a></h3>
-	                  {%if type == 'event'%}
-	                  	<p>{{slide.description|truncate:200}}</p>
-	                  {% else %}
-	                  	<p>{{slide.short|truncate:200}}</p>
-	                  {% endif %}
-	                </div><!--//.slide-info-->
-	              </div><!--//.slide-info-wrapper-->
-	            </div><!--//.slide-->
-            {%endfor%}
-          </div><!--//.slides-->
+            <div id="slides" class="slides">
+                {% for slide, type in slides%}
+                    <div class="slide" {% if not forloop.first %}style="display:none;width: 619px;height: 338px; overflow: hidden"{% else %}style="height: 338px;"{% endif %}>
+                        <img  width="619" height="258" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.slide.url}}{% endif %}" alt="{{slide.title}}" />
+                        <div class="slide-info-wrapper">
+                            <div class="slide-info">
+                                <h3><a href="{{slide.get_absolute_url}}">{{slide.title|truncate:55}}</a></h3>
+                                {%if type == 'event'%}
+                                    <p>{{slide.description|truncate:200}}</p>
+                                {% else %}
+                                    <p>{{slide.short|truncate:200}}</p>
+                                {% endif %}
+                            </div><!--//.slide-info-->
+                        </div><!--//.slide-info-wrapper-->
+                    </div><!--//.slide-->
+                {%endfor%}
+            </div><!--//.slides-->
         </div><!--//.front-slides-->
     {%  endif %}
-	
-        <div id="front-videos" class="front-videos encap tabs boxed-brief">
-        	<div class="wrapper encap">
-				<div class="title flt-left"><h2>{% trans "Videos" %}</h2></div>
-				<div class="tab-titles flt-right fcml0 lcmr0">
-				  <ul id="tab-videos-outline" class="outnone tab-navigation">
-					<li><a class="active" href="{% url video_main %}">{%  trans "See + Videos"%}</a></li>
-					<li><a class="decou sube-un-video" href="{% url video_add %}">{%  trans "Upload a Video"%}</a></li>
-				  </ul>
-				</div><!--//.tab-titles-->
-          </div><!--//.wrapper-->
-          <div id="videos-content" class="videos-content tab-container box-shadows outnone">
-          	<div id="tab-all-videos" class="outnone tab-parts encap">
-              <div class="video-slides c58l">
-                <ul>
-                    {% for video in videos %}
-                        <li {% if not forloop.first %}style="display:none"{% endif %}>
-                            {%youtube_video video.youtube_id 350 288%}
-                        </li>
-                    {% endfor %}
-                </ul>
-              </div><!--//.video-slides-->
-              <div class="recent-video-list c42r">
-                <ul>
-                    {% for video in videos %}
-                        <li>
-                            <a href="{{ video.get_absolute_url }}">{{video.description|slice:":30"}}{% if video.description|length > 30 %}...{% endif %} - <span>{{ video.user|user_link }}</span></a>
-                        </li>
-                    {% endfor %}
-                </ul>
-              </div><!--//.recent-video-list-->
-            </div><!--//.tab-parts-->
-          	<div id="tab-upload-video" class="tab-parts encap">
-            </div><!--//.tab-parts-->
-          </div><!--//.latest-photos-content-->
-        </div>	
-	
-        <div id="latest-photos" class="latest-photos encap tabs boxed-brief">
-        	<div class="wrapper encap">
+    <div id="latest-photos" class="latest-photos encap tabs boxed-brief">
+        <div class="wrapper encap">
             <div class="title flt-left"><h2>{% trans "LATEST PHOTOS" %}</h2></div>
             <div class="tab-titles flt-right fcml0 lcmr0">
-              <ul id="tab-photo-outline" class="outnone tab-navigation">
-                <li class="box-shadows"><a class="active" href="#tab-events">{% trans "People and Events" %}</a></li>
-                <li class="box-shadows"><a href="#tab-your-photos">{% trans "Your Photos" %}</a></li>
-              </ul>
+                <ul id="tab-photo-outline" class="outnone tab-navigation">
+                    <li class="box-shadows"><a class="active" href="#tab-events">{% trans "People and Events" %}</a></li>
+                    <li class="box-shadows"><a href="#tab-your-photos">{% trans "Your Photos" %}</a></li>
+                </ul>
             </div><!--//.tab-titles-->
-          </div><!--//.wrapper-->
+        </div><!--//.wrapper-->
 
-          <div id="latest-photos-content" class="latest-photos-content tab-container box-shadows outnone">
-          	<div id="tab-events" class="tab-parts encap">
+        <div id="latest-photos-content" class="latest-photos-content tab-container box-shadows outnone">
+            <div id="tab-events" class="tab-parts encap">
                 <div class="photo-teasters" style="height: 195px;">
                     {% include "people/main_ajax_slide.html" with event=people|first%}
                 </div><!--//.photo-teasers-->
                 <div class="cflt"></div>
-              <div class="more-photos encap">
-                <a id="carousel-prev" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
-                <a id="carousel-next" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
-                <ul class="carousel-images peoples ie-encap" style="width: 562px;height: 145px;">
-                    {% cache 60 main_people %}
-                    {% for row in people|main_slider_split:4 %}
-                        {% if row %}
-                        <li style="{% if not forloop.first %};display:none{% endif %}">
-                            <ul class="carousel-slide fcml0 lcmr0">
-                            {% for event in row %}
-                                    {% if forloop.parentloop.first and  forloop.first%}
-                                        <li class="active">
-                                    {% else %}
-                                        <li>
-                                    {% endif %}
-                                    <h6>
-                                        <a href="{% url people_main_slide event.id %}"><img src="{{ event.mainminithumb.url }}" alt="{{event.title}}" />{{event.title|truncate:35}}<br />{{event.date|date:"d.m.y"}}</a>
-                                    </h6>
-                                </li>
+                <div class="more-photos encap">
+                    <a id="carousel-prev" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
+                    <a id="carousel-next" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
+                    <ul class="carousel-images peoples ie-encap" style="width: 562px;height: 145px;">
+                        {% cache 60 main_people %}
+                            {% for row in people|main_slider_split:4 %}
+                                {% if row %}
+                                    <li style="{% if not forloop.first %};display:none{% endif %}">
+                                        <ul class="carousel-slide fcml0 lcmr0">
+                                            {% for event in row %}
+                                                {% if forloop.parentloop.first and  forloop.first%}
+                                                    <li class="active">
+                                                        {% else %}
+                                                    <li>
+                                                {% endif %}
+                                            <h6>
+                                                <a href="{% url people_main_slide event.id %}"><img src="{{ event.mainminithumb.url }}" alt="{{event.title}}" />{{event.title|truncate:35}}<br />{{event.date|date:"d.m.y"}}</a>
+                                            </h6>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
                             {% endfor %}
-                            </ul>
-                        </li>
-                        {% endif %}
-                    {% endfor %}
-                    {% endcache %}
-                </ul><!--//.carousel-images-->
+                        {% endcache %}
+                    </ul><!--//.carousel-images-->
+                    <div class="cflt"></div>
+                </div><!--//.more-photos-->
                 <div class="cflt"></div>
-              </div><!--//.more-photos-->
-              <div class="cflt"></div>
             </div><!--//.tab-parts-->
 
-          	<div id="tab-your-photos" class="tab-parts encap">
-            	<div class="photo-teasters" style="height: 195px;">
+            <div id="tab-your-photos" class="tab-parts encap">
+                <div class="photo-teasters" style="height: 195px;">
                     {% include "yourphotos/main_ajax_slide.html" with photo=photos|first%}
                 </div><!--//.photo-teasers-->
                 <div class="cflt"></div>
-              <div class="more-photos encap">
-                <a id="carousel-prev2" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
-                <a id="carousel-next2" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
-                <ul class="carousel-images fotos ie-encap" style="width: 562px;height: 145px;">
-                    {% cache 60 main_yourphoto %}
-                	{% for row in photos|main_slider_split:4 %}
-                        {% if row %}
-                        <li style="{% if not forloop.first %};display:none{% endif %}">
-                            <ul class="carousel-slide fcml0 lcmr0">
-                            {% for photo in row %}
-                                    {% if forloop.parentloop.first and  forloop.first%}
-                                        <li class="active">
-                                    {% else %}
-                                        <li>
-                                    {% endif %}
-                                    <h6>
-                                        <a href="{% url yourphoto_main_slide photo.id %}"><img src="{{ photo.mainminithumb.url }}" alt="{{photo.description}}" />{{photo.description|truncate:35}}<br />{{photo.datetime_added|date:"d.m.y"}}</a>
-                                    </h6>
-                                </li>
+                <div class="more-photos encap">
+                    <a id="carousel-prev2" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
+                    <a id="carousel-next2" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
+                    <ul class="carousel-images fotos ie-encap" style="width: 562px;height: 145px;">
+                        {% cache 60 main_yourphoto %}
+                            {% for row in photos|main_slider_split:4 %}
+                                {% if row %}
+                                    <li style="{% if not forloop.first %};display:none{% endif %}">
+                                        <ul class="carousel-slide fcml0 lcmr0">
+                                            {% for photo in row %}
+                                                {% if forloop.parentloop.first and  forloop.first%}
+                                                    <li class="active">
+                                                        {% else %}
+                                                    <li>
+                                                {% endif %}
+                                            <h6>
+                                                <a href="{% url yourphoto_main_slide photo.id %}"><img src="{{ photo.mainminithumb.url }}" alt="{{photo.description}}" />{{photo.description|truncate:35}}<br />{{photo.datetime_added|date:"d.m.y"}}</a>
+                                            </h6>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
                             {% endfor %}
-                            </ul>
-                        </li>
-                        {% endif %}
-                    {% endfor %}
-                {% endcache %}
-                </ul><!--//.carousel-images-->
+                        {% endcache %}
+                    </ul><!--//.carousel-images-->
+                    <div class="cflt"></div>
+                </div><!--//.more-photos-->
                 <div class="cflt"></div>
-              </div><!--//.more-photos-->
-              <div class="cflt"></div>
 
             </div><!--//.tab-parts-->
 
-          </div><!--//.latest-photos-content-->
-        </div><!--//.latest-photos-->
-        {% include "main/banner_103.html" %}
-        <div id="outline-briefs" class="outline-briefs boxed-brief">
-        	<div class="outline-navigation">
+        </div><!--//.latest-photos-content-->
+    </div><!--//.latest-photos-->
+    {% include "main/banner_103.html" %}
+    <div id="outline-briefs" class="outline-briefs boxed-brief">
+        <div class="outline-navigation">
             <ul id="outline-titles" class="encap outnone box-shadows equal-width">
-              <li><a href="#">{% trans "News" %}</a><div class="pointer-tip"></div></li>
-              <li><a href="{% url location_main %}">{% trans "Locations" %}</a><div class="pointer-tip"></div></li>
-              <li><a href="{% url zinnia_category_detail "blog" %}">{% trans "Blog"%}</a><div class="pointer-tip"></div></li>
-              <li><a href="#">{% trans "Art and Culture" %}</a><div class="pointer-tip"></div></li>
+                <li><a href="#">{% trans "News" %}</a><div class="pointer-tip"></div></li>
+                <li><a href="{% url location_main %}">{% trans "Locations" %}</a><div class="pointer-tip"></div></li>
+                <li><a href="{% url zinnia_category_detail "blog" %}">{% trans "Blog"%}</a><div class="pointer-tip"></div></li>
+                <li><a href="#">{% trans "Art and Culture" %}</a><div class="pointer-tip"></div></li>
             </ul>
-          </div>
-            <div id="outline-slides" class="outnone encap">
-                {% cache 60 main_content %}
-                    <div class="outline-slide" style="min-height: 880px">
-                        {% for object in news %}
-                            {% include "main/blog_entry.html"%}
-                        {% endfor %}
-                        <p>&nbsp;</p>
-                    </div><!--//.outline-slide-->
-                    <div class="outline-slide" style="min-height: 880px">
-                        {% for object in locations %}
-                            {% include "main/location_entry.html"%}
-                        {% endfor %}
-                        <p>&nbsp;</p>
-                    </div><!--//.outline-slide-->
-                    <div class="outline-slide" style="min-height: 880px">
-                        {% for object in blog %}
-                            {% include "main/blog_entry.html"%}
-                        {% endfor %}
-                        <p>&nbsp;</p>
-                    </div><!--//.outline-slide-->
+        </div>
+        <div id="outline-slides" class="outnone encap">
+            {% cache 60 main_content %}
+                <div class="outline-slide" style="min-height: 880px">
+                    {% for object in news %}
+                        {% include "main/blog_entry.html"%}
+                    {% endfor %}
+                    <p>&nbsp;</p>
+                </div><!--//.outline-slide-->
+                <div class="outline-slide" style="min-height: 880px">
+                    {% for object in locations %}
+                        {% include "main/location_entry.html"%}
+                    {% endfor %}
+                    <p>&nbsp;</p>
+                </div><!--//.outline-slide-->
+                <div class="outline-slide" style="min-height: 880px">
+                    {% for object in blog %}
+                        {% include "main/blog_entry.html"%}
+                    {% endfor %}
+                    <p>&nbsp;</p>
+                </div><!--//.outline-slide-->
 
-                    <div class="outline-slide" style="min-height: 880px">
-                        {% for object in art_culture %}
-                            {% include "main/event_entry.html"%}
-                        {% endfor %}
-                        <p>&nbsp;</p>
-                    </div><!--//.outline-slide-->
-                {% endcache %}
-            </div><!--//.outline-slides-->
-          <div id="outlines-list" class="outlines-list outnone box-shadows">
-          	<ul class="encap">
+                <div class="outline-slide" style="min-height: 880px">
+                    {% for object in art_culture %}
+                        {% include "main/event_entry.html"%}
+                    {% endfor %}
+                    <p>&nbsp;</p>
+                </div><!--//.outline-slide-->
+            {% endcache %}
+        </div><!--//.outline-slides-->
+        <div id="outlines-list" class="outlines-list outnone box-shadows">
+            <ul class="encap">
                 <li><a href="{% url event_main %}">{% trans "Events" %}</a></li>
                 <li><a href="{% url location_main %}">{% trans "Locations"%}</a></li>
 
@@ -214,200 +177,234 @@
                 <li><a href="{% url zinnia_category_detail "news" %}">{% trans "Actual" %}</a></li>
                 <li><a href="{% url zinnia_category_detail "sexy-news" %}">{% trans "Sexy News" %}</a></li>
                 <li><a href="{% url zinnia_category_detail "bandas" %}">{% trans "Bands, Authors and Djs" %}</a></li>
-           	    <li><a href="{% url zinnia_category_detail "blog" %}">{% trans "Blog" %}</a></li>
-          	</ul>
-          </div><!--//.outlines-list-->
-        </div><!--//.outline-briefs-->
-<!--//.latest-photos-->
+                <li><a href="{% url zinnia_category_detail "blog" %}">{% trans "Blog" %}</a></li>
+            </ul>
+        </div><!--//.outlines-list-->
+    </div><!--//.outline-briefs-->
+    <div id="front-videos" class="front-videos encap tabs boxed-brief">
+        <div class="wrapper encap">
+            <div class="title flt-left"><h2>{% trans "Videos" %}</h2></div>
+            <div class="tab-titles flt-right fcml0 lcmr0">
+                <ul id="tab-videos-outline" class="outnone tab-navigation">
+                    <li><a class="active" href="{% url video_main %}">{%  trans "See + Videos"%}</a></li>
+                    <li><a class="decou sube-un-video" href="{% url video_add %}">{%  trans "Upload a Video"%}</a></li>
+                </ul>
+            </div><!--//.tab-titles-->
+        </div><!--//.wrapper-->
+        <div id="videos-content" class="videos-content tab-container box-shadows outnone">
+            <div id="tab-all-videos" class="outnone tab-parts encap">
+                <div class="video-slides c58l">
+                    <ul>
+                        {% for video in videos %}
+                            <li {% if not forloop.first %}style="display:none"{% endif %}>
+                                {%youtube_video video.youtube_id 350 288%}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div><!--//.video-slides-->
+                <div class="recent-video-list c42r">
+                    <ul>
+                        {% for video in videos %}
+                            <li>
+                                <a href="{{ video.get_absolute_url }}">{{video.description|slice:":30"}}{% if video.description|length > 30 %}...{% endif %} - <span>{{ video.user|user_link }}</span></a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div><!--//.recent-video-list-->
+            </div><!--//.tab-parts-->
+            <div id="tab-upload-video" class="tab-parts encap">
+            </div><!--//.tab-parts-->
+        </div><!--//.latest-photos-content-->
+    </div><!--//.latest-photos-->
 
 
 
-<script>
-	$(document).ready(function () {
+    <script>
+        $(document).ready(function () {
 
-        jQuery('div#front-slides div#slides').cycle({
-			fx: 'scrollHorz',
-			speed: 1500,
-			timeout: 0,
-			sync: 1,
-			containerResize: 1,
-			pager: '#nav',
-			easing: 'easeOutQuint',
-			delay: -2000
-	    });
+            jQuery('div#front-slides div#slides').cycle({
+                fx: 'scrollHorz',
+                speed: 1500,
+                timeout: 0,
+                sync: 1,
+                containerResize: 1,
+                pager: '#nav',
+                easing: 'easeOutQuint',
+                delay: -2000
+            });
 
-        jQuery('#main-contents #col-left #outline-briefs #outline-slides').cycle({
-            fx: 'scrollHorz',
-            speed: 1000,
-            timeout: 0,
-            sync: 1,
-            activePagerClass: 'active', //-- class name used for the active pager link
-            easing: 'easeOutExpo',
-            pager: '#main-contents #col-left #outline-briefs ul#outline-titles',
-            cleartypeNoBg: true,
-            containerResize: 1,
-            fit: 1,
-            height: 'auto',
-            pagerAnchorBuilder: function(idx, slide) {
-                //-- return selector string for existing anchor
-                return '#main-contents #col-left #outline-briefs ul#outline-titles li:eq(' + idx + ') a';
-            },
-            updateActivePagerLink: function(pager, currSlideIndex) {
-                $(pager).find('li').removeClass('active')
-                        .filter('li:eq('+currSlideIndex+')').addClass('active');
-                $(pager).find('li').find('div.pointer-tip').hide();
-                $(pager).find('li:eq('+currSlideIndex+')').find('div.pointer-tip').show();
-            },
-            delay: -2000
-        });
+            jQuery('#main-contents #col-left #outline-briefs #outline-slides').cycle({
+                fx: 'scrollHorz',
+                speed: 1000,
+                timeout: 0,
+                sync: 1,
+                activePagerClass: 'active', //-- class name used for the active pager link
+                easing: 'easeOutExpo',
+                pager: '#main-contents #col-left #outline-briefs ul#outline-titles',
+                cleartypeNoBg: true,
+                containerResize: 1,
+                fit: 1,
+                height: 'auto',
+                pagerAnchorBuilder: function(idx, slide) {
+                    //-- return selector string for existing anchor
+                    return '#main-contents #col-left #outline-briefs ul#outline-titles li:eq(' + idx + ') a';
+                },
+                updateActivePagerLink: function(pager, currSlideIndex) {
+                    $(pager).find('li').removeClass('active')
+                            .filter('li:eq('+currSlideIndex+')').addClass('active');
+                    $(pager).find('li').find('div.pointer-tip').hide();
+                    $(pager).find('li:eq('+currSlideIndex+')').find('div.pointer-tip').show();
+                },
+                delay: -2000
+            });
 
 
-        jQuery('#main-contents #col-left #front-videos #videos-content div.video-slides ul').cycle({
-            fx: 'scrollVert',
-            speed: 1000,
-            timeout: 0,
-            sync: 1,
-            activePagerClass: 'active', //-- class name used for the active pager link
-            easing: 'easeInOutBack',
-            containerResize: 1,
-            pager:  '#main-contents #col-left #front-videos #videos-content div.recent-video-list ul',
-            pagerAnchorBuilder: function(idx, slide) {
-                //-- return selector string for existing anchor
-                return '#main-contents #col-left #front-videos #videos-content div.recent-video-list ul li:eq(' + idx + ') a';
-            },
-            delay: -2000
-        });
-        jQuery('#tab-events ul.carousel-images').cycle({
-            fx: 'scrollHorz',
-            activePagerClass: 'active', //-- class name used for the active pager link
-            speed: 1000,
-            timeout: 0,
-            sync: 1,
-            //containerResize: 1,
-            easing: 'easeOutExpo',
-            next: '#carousel-next',
-            prev: '#carousel-prev',
-            delay: -2000
-        });
-        jQuery('#tab-your-photos ul.carousel-images').cycle({
-            fx: 'scrollHorz',
-            activePagerClass: 'active', //-- class name used for the active pager link
-            speed: 1000,
-            timeout: 0,
-            sync: 1,
-            //containerResize: 1,
-            easing: 'easeOutExpo',
-            next: '#carousel-next2',
-            prev: '#carousel-prev2',
-            delay: -2000
-        });
+            jQuery('#main-contents #col-left #front-videos #videos-content div.video-slides ul').cycle({
+                fx: 'scrollVert',
+                speed: 1000,
+                timeout: 0,
+                sync: 1,
+                activePagerClass: 'active', //-- class name used for the active pager link
+                easing: 'easeInOutBack',
+                containerResize: 1,
+                pager:  '#main-contents #col-left #front-videos #videos-content div.recent-video-list ul',
+                pagerAnchorBuilder: function(idx, slide) {
+                    //-- return selector string for existing anchor
+                    return '#main-contents #col-left #front-videos #videos-content div.recent-video-list ul li:eq(' + idx + ') a';
+                },
+                delay: -2000
+            });
+            jQuery('#tab-events ul.carousel-images').cycle({
+                fx: 'scrollHorz',
+                activePagerClass: 'active', //-- class name used for the active pager link
+                speed: 1000,
+                timeout: 0,
+                sync: 1,
+                //containerResize: 1,
+                easing: 'easeOutExpo',
+                next: '#carousel-next',
+                prev: '#carousel-prev',
+                delay: -2000
+            });
+            jQuery('#tab-your-photos ul.carousel-images').cycle({
+                fx: 'scrollHorz',
+                activePagerClass: 'active', //-- class name used for the active pager link
+                speed: 1000,
+                timeout: 0,
+                sync: 1,
+                //containerResize: 1,
+                easing: 'easeOutExpo',
+                next: '#carousel-next2',
+                prev: '#carousel-prev2',
+                delay: -2000
+            });
 
-        /*
-        jQuery('#latest-photos-content ul.peoples').cycle({
-            fx: 'scrollHorz',
-            activePagerClass: 'active', //-- class name used for the active pager link
-            speed: 1000,
-            timeout: 0,
-            sync: 1,
-            containerResize: 1,
-            easing: 'easeOutExpo',
-            next: '#carousel-next',
-            prev: '#carousel-prev',
-            delay: -2000
-	    });
-        */
-        /*
-        jQuery('#latest-photos-content ul.fotos1').cycle({
-            fx: 'scrollHorz',
-            activePagerClass: 'active', //-- class name used for the active pager link
-            speed: 1000,
-            timeout: 0,
-            sync: 1,
-            containerResize: 1,
-            easing: 'easeOutExpo',
-            next: '#carousel-next2',
-            prev: '#carousel-prev2',
-            delay: -2000
-	    });
-        */
+            /*
+             jQuery('#latest-photos-content ul.peoples').cycle({
+             fx: 'scrollHorz',
+             activePagerClass: 'active', //-- class name used for the active pager link
+             speed: 1000,
+             timeout: 0,
+             sync: 1,
+             containerResize: 1,
+             easing: 'easeOutExpo',
+             next: '#carousel-next',
+             prev: '#carousel-prev',
+             delay: -2000
+             });
+             */
+            /*
+             jQuery('#latest-photos-content ul.fotos1').cycle({
+             fx: 'scrollHorz',
+             activePagerClass: 'active', //-- class name used for the active pager link
+             speed: 1000,
+             timeout: 0,
+             sync: 1,
+             containerResize: 1,
+             easing: 'easeOutExpo',
+             next: '#carousel-next2',
+             prev: '#carousel-prev2',
+             delay: -2000
+             });
+             */
 
-        jQuery('.latest-photos div.tab-parts').each(function (idx, el){
-            var tab = $(el);
-            jQuery('ul.carousel-images ul.carousel-slide li', tab).click( function() {
-                var element = $(this);
-                if (! element.hasClass('active')){
-                    $('ul.carousel-images ul.carousel-slide li.active').removeClass('active');
-                    element.addClass('active')
-                    var addr = $('a', element).attr('href');
-                    $('.photo-node', tab).hide('slide', {direction: 'left'}, 500, function(){
-                        $('.photo-teasters', tab).load(addr,function(){
-                            $('.photo-node', tab).show('slide', {direction: 'right'}, 500);
-                            FB.XFBML.parse( $('.photo-teasters', tab).get(0) );
+            jQuery('.latest-photos div.tab-parts').each(function (idx, el){
+                var tab = $(el);
+                jQuery('ul.carousel-images ul.carousel-slide li', tab).click( function() {
+                    var element = $(this);
+                    if (! element.hasClass('active')){
+                        $('ul.carousel-images ul.carousel-slide li.active').removeClass('active');
+                        element.addClass('active')
+                        var addr = $('a', element).attr('href');
+                        $('.photo-node', tab).hide('slide', {direction: 'left'}, 500, function(){
+                            $('.photo-teasters', tab).load(addr,function(){
+                                $('.photo-node', tab).show('slide', {direction: 'right'}, 500);
+                                FB.XFBML.parse( $('.photo-teasters', tab).get(0) );
+                            });
                         });
-                    });
-                }
-                return false;
+                    }
+                    return false;
+                })
             })
+
+
+            /*
+             jQuery('#main-contents #col-right #whats-today .box-contents ul.recent li a, #main-contents #col-right .more-news ol li a,#main-contents #col-left .node-mini-right .other-news li a, #main-contents #col-left h5.red-title a, #main-contents #col-left .locales .events-duo ul li a').poshytip({
+             content: '<img width="80" height="70" alt="imgs_6" src="images/content/imgs_9.jpg"> And the day came when the risk<br />to remain tight in a bud became<br />more painful than the risk<br />it took to blossom.',
+             showTimeout: 10,
+             fade: false,
+             slide: false,
+             className: 'tip-darkgray',
+             bgImageFrameSize: 11,
+             offsetX: -5,
+             offsetY: 10
+             });
+             */
+
+
+
         })
-
-        
-/*
-        jQuery('#main-contents #col-right #whats-today .box-contents ul.recent li a, #main-contents #col-right .more-news ol li a,#main-contents #col-left .node-mini-right .other-news li a, #main-contents #col-left h5.red-title a, #main-contents #col-left .locales .events-duo ul li a').poshytip({
-            content: '<img width="80" height="70" alt="imgs_6" src="images/content/imgs_9.jpg"> And the day came when the risk<br />to remain tight in a bud became<br />more painful than the risk<br />it took to blossom.',
-            showTimeout: 10,
-            fade: false,
-            slide: false,
-            className: 'tip-darkgray',
-            bgImageFrameSize: 11,
-            offsetX: -5,
-            offsetY: 10
-        });
-*/
-
-
-
-	})
-</script>
+    </script>
 {% endblock %}
 
 {% block colright %}
-{% events_today_block %}
-<div class="banner-container box-shadows outnone widget">
-    {% banner_zone_iframe 114 300 250%}
-</div><!--//.banner-container-->
-<div class="clear-block block block-views widget widget-calendar">
-    {% month_cal%}
-</div>
-
-<div class="split-sidebars encap">
-  <div class="c57l left">
-    {% upcoming_events_block %}
-  </div><!--//.left-->
-  <div class="c40r right">
-    <div class="placeholders">
-      <div class="box-border box-contents box-shadows">
-        {% banner_zone_iframe 118 120 60 %}
-      </div><!--//.box-contents-->
-    </div><!--//.placeholder-->
-    <div class="placeholders mt10">
-      <div class="box-border box-contents box-shadows">
-        {% banner_zone_iframe 119 120 240 %}
-      </div>
-      <!--//.box-contents-->
-    </div><!--//.placeholder-->
+    {% events_today_block %}
     <div class="banner-container box-shadows outnone widget">
-        {% banner_zone_iframe 115 120 600 %}
+        {% banner_zone_iframe 114 300 250%}
     </div><!--//.banner-container-->
-  </div><!--//.right-->
-</div><!--//.split-sidebars-->
+    <div class="clear-block block block-views widget widget-calendar">
+        {% month_cal%}
+    </div>
 
-<div class="banner-container box-shadows outnone" style="width: 300px;">
-    {% if 0.5|randomv%}
-        {% facebook_group %}
-    {% else %}
-        {% include "main/twitter_list.html" %}
-    {% endif %}
-</div>
+    <div class="split-sidebars encap">
+        <div class="c57l left">
+            {% upcoming_events_block %}
+        </div><!--//.left-->
+        <div class="c40r right">
+            <div class="placeholders">
+                <div class="box-border box-contents box-shadows">
+                    {% banner_zone_iframe 118 120 60 %}
+                </div><!--//.box-contents-->
+            </div><!--//.placeholder-->
+            <div class="placeholders mt10">
+                <div class="box-border box-contents box-shadows">
+                    {% banner_zone_iframe 119 120 240 %}
+                </div>
+                <!--//.box-contents-->
+            </div><!--//.placeholder-->
+            <div class="banner-container box-shadows outnone widget">
+                {% banner_zone_iframe 115 120 600 %}
+            </div><!--//.banner-container-->
+        </div><!--//.right-->
+    </div><!--//.split-sidebars-->
+
+    <div class="banner-container box-shadows outnone" style="width: 300px;">
+        {% if 0.5|randomv%}
+            {% facebook_group %}
+        {% else %}
+            {% include "main/twitter_list.html" %}
+        {% endif %}
+    </div>
 
 {% endblock %}
 
