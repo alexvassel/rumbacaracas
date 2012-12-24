@@ -1,3 +1,5 @@
+INTERNAL_IPS = ( '127.0.0.1', '213.33.244.154',)
+
 FIXTURE_DIRS = (
    '/home/maksim/Documents/Develop/rumbabogota/locations/fixtures/',
  )

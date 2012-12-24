@@ -11,7 +11,8 @@ class MyEntry( EntryAbstractClass ):
     author = models.CharField( _( 'author' ), blank = True, max_length = 255 )
     slider_image = ImageRestrictedFileField( _( 'Slider image 619x258' ), upload_to = UPLOAD_TO , blank = True )
     show_in_main_slider = models.BooleanField( _( 'Show in Main Slider' ), default = False )
-
+    preview_as_image = models.BooleanField( _( 'Show image as preview' ), default = False )
+    preview_image = ImageRestrictedFileField( _( 'Preview image 600px width' ), upload_to = UPLOAD_TO , blank = True )
     class IKOptions:
         # This inner class is where we define the ImageKit options for the model
         spec_module = 'yourphotos.specs'

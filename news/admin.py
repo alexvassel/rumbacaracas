@@ -8,15 +8,16 @@ from news.models import EntryImage
 from django.utils.translation import ugettext_lazy as _
 
 #MONKEY PATCHING OF ZINNIA ADMIN
-EntryAdmin.fieldsets = ( ( _( 'Content' ), {'fields': ( 'title', 'short' , 'content', 'author', 'source',
-                                            'image','slider_image', 'status' )} ),
-                 ( _( 'Options' ), {'fields': ( 'show_in_main_slider',
-                                            'authors',
-                                            'creation_date', 'start_publication',
-                                            'end_publication' ),
-                                 'classes': ( 'collapse', 'collapse-closed' )} ),
-                 ( _( 'Publication' ), {'fields': ( 'categories',
-                                                'sites', 'slug' )} ) )
+EntryAdmin.fieldsets = ( ( _('Content'), {'fields': ( 'title', 'short', 'content', 'author', 'source',
+                                                      'image', 'slider_image', 'status' )} ),
+                         ( _('Image preview'), {'fields': ('preview_as_image', 'preview_image' )} ),
+                         ( _('Options'), {'fields': ( 'show_in_main_slider',
+                                                      'authors',
+                                                      'creation_date', 'start_publication',
+                                                      'end_publication' ),
+                                          'classes': ( 'collapse', 'collapse-closed' )} ),
+                         ( _('Publication'), {'fields': ( 'categories',
+                                                          'sites', 'slug' )} ) )
 EntryAdmin.list_filter = ( 'categories', 'status','show_in_main_slider',
                'creation_date', 'start_publication',
                'end_publication' )
