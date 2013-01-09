@@ -54,7 +54,7 @@
 	</div>
     
 	<div class="content encap">
-		{% if object.image %}
+		{% if object.image and not object.preview_as_image%}
 			<img class="main-image2" src="{{ object.newsthumb.url }}" alt="{{ object.title }}" />
 		{% endif %}
         {% autoescape off%}
