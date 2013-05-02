@@ -1,6 +1,6 @@
 from django.contrib import admin
 from sortable.admin import SortableAdmin
-from main.models import Place, MainBackgroundImage
+from main.models import Place, MainBackgroundImage, CursorImage
 
 
 class PlaceAdmin( SortableAdmin ):
@@ -11,5 +11,6 @@ class PlaceAdmin( SortableAdmin ):
 
 admin.site.register( Place, PlaceAdmin )
 admin.site.register( MainBackgroundImage )
+admin.site.register( CursorImage )
 
 
