@@ -12,8 +12,8 @@ class MainBackgroundImage( Model ):
         return self.title
 
     class Meta():
-        verbose_name = "Main background image"
-        verbose_name_plural = "Main background images"
+        verbose_name = _("Main background image")
+        verbose_name_plural = _("Main background images")
 
 
 class CursorImage( Model ):
@@ -24,8 +24,8 @@ class CursorImage( Model ):
         return self.title
 
     class Meta():
-        verbose_name = "Cursor image"
-        verbose_name_plural = "Cursor images"
+        verbose_name = _("Cursor image")
+        verbose_name_plural = _("Cursor images")
 
 class Place( Sortable ):
     title = CharField( _( 'Place title' ), max_length = 256 )

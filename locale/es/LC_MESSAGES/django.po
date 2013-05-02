@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 05:45-0500\n"
-"PO-Revision-Date: 2013-05-02 14:47+0400\n"
+"POT-Creation-Date: 2013-05-02 05:50-0500\n"
+"PO-Revision-Date: 2013-05-02 14:51+0400\n"
 "Last-Translator: Maksim <nagaev.maksim@gmail.com>\n"
 "Language-Team: td <td>\n"
 "Language: es\n"
@@ -473,12 +473,24 @@ msgstr "Imagen de fondo"
 msgid "Background click url"
 msgstr "Url de fondo, haga clic"
 
+#: main/models.py:15
+msgid "Main background image"
+msgstr "Imagen de fondo"
+
+#: main/models.py:16
+msgid "Main background images"
+msgstr "Imagen de fondo"
+
 #: main/models.py:20
 msgid "Cursor image title"
 msgstr "Título de la imagen Cursor"
 
-#: main/models.py:21
+#: main/models.py:21 main/models.py:27
 msgid "Cursor image"
+msgstr "Imagen cursor"
+
+#: main/models.py:28
+msgid "Cursor images"
 msgstr "Imagen cursor"
 
 #: main/models.py:31
