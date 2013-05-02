@@ -11,6 +11,7 @@ from events.models import Event
 from django.utils.html import strip_tags
 from django.conf import settings
 from django.core.urlresolvers import reverse, get_resolver, NoReverseMatch
+from django.db.models import Q
 import re
 from preferences import preferences
 
@@ -283,7 +284,7 @@ def main_background(context):
     background_image = False
     background_url = False
     background_cursor = False
-    places = Place.objects.filter(background_image__isnull=False).order_by('-position')
+    places = Place.objects.filter(Q(background_image__isnull=False) | Q(cursor_image__isnull=False)).order_by('-position')
     if places:
         try:
             url_name = resolve_to_name(request.path_info)
@@ -295,9 +296,13 @@ def main_background(context):
             for group in groups:
                 if url_name.startswith( group ):
                     show = True
-                    background_image = groups_raw.background_image.image
-                    background_url = groups_raw.background_image.url
-                    background_cursor = groups_raw.cursor_image.image
+                    if background_image :
+                        background_image = groups_raw.background_image.image
+                        background_url = groups_raw.background_image.url
+
+                    if background_cursor :
+                        background_cursor = groups_raw.cursor_image.image
+
                     break
 
     return dict( show=show, image= background_image, url=background_url, cursor=background_cursor)
