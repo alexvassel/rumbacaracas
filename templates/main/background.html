@@ -12,6 +12,7 @@
         #image_cursor{
             position: absolute;
             z-index: 999999999;
+            display: none;
         }
     {% endif %}
     </style>
@@ -30,7 +31,7 @@
     {% if cursor %}
         <script type="text/javascript">
             $(document).mousemove(function(e){
-                jQuery("#image_cursor").css({left:e.pageX+5, top:e.pageY+5});
+                jQuery("#image_cursor").show().css({left:e.pageX+5, top:e.pageY+5});
                 return true;
             });
         </script>
