@@ -30,7 +30,7 @@
     {% if cursor %}
         <script type="text/javascript">
             $(document).mousemove(function(e){
-                jQuery("#image_cursor").css({left:e.pageX, top:e.pageY});
+                jQuery("#image_cursor").css({left:e.pageX+5, top:e.pageY+5});
                 return true;
             });
         </script>
