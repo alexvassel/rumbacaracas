@@ -282,6 +282,7 @@ def main_background(context):
     show = False
     background_image = False
     background_url = False
+    background_cursor = False
     places = Place.objects.filter(background_image__isnull=False).order_by('-position')
     if places:
         try:
@@ -296,9 +297,10 @@ def main_background(context):
                     show = True
                     background_image = groups_raw.background_image.image
                     background_url = groups_raw.background_image.url
+                    background_cursor = groups_raw.cursor_image.image
                     break
 
-    return dict( show=show, image= background_image, url=background_url)
+    return dict( show=show, image= background_image, url=background_url, cursor=background_cursor)
 
 
 from django.utils.html import urlize

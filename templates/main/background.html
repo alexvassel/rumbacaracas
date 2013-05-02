@@ -8,6 +8,11 @@
             background:url("{{ image.url }}") no-repeat scroll 50% top transparent;
         {% endif %}
     }
+    {% if cursor %}
+        #image_cursor{
+            position: absolute;
+        }
+    {% endif %}
     </style>
     {% if url %}
         <script type="text/javascript">
@@ -19,6 +24,13 @@
                     }
                 })
             })
+        </script>
+    {% endif %}
+    {% if cursor %}
+        <script type="text/javascript">
+            $(document).mousemove(function(e){
+                jQuery("#image_cursor").css({left:e.pageX, top:e.pageY});
+            });
         </script>
     {% endif %}
 {% endif %}

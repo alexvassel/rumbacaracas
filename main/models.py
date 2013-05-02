@@ -16,14 +16,26 @@ class MainBackgroundImage( Model ):
         verbose_name_plural = "Main background images"
 
 
+class CursorImage( Model ):
+    title = CharField( _( 'Cursor image title' ), max_length = 256 )
+    image = ImageField ( _( 'Cursor image' ), upload_to = 'images/cursors')
+
+    def __unicode__( self ):
+        return self.title
+
+    class Meta():
+        verbose_name = "Cursor image"
+        verbose_name_plural = "Cursor images"
+
 class Place( Sortable ):
     title = CharField( _( 'Place title' ), max_length = 256 )
     value = CharField( _( 'Place url_name' ), max_length = 256 , blank=True)
     background_image = ForeignKey(MainBackgroundImage, blank=True, null=True)
+    cursor_image = ForeignKey(CursorImage, blank=True, null=True)
 
     def __unicode__( self ):
         return self.title
 
     class Meta( Sortable.Meta ):
-        verbose_name = _( 'Site place for background' )
-        verbose_name_plural = _( 'Site places for background' )
+        verbose_name = _( 'Site place for background, cursor' )
+        verbose_name_plural = _( 'Site places for background, cursor' )
