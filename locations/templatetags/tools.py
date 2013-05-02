@@ -296,11 +296,11 @@ def main_background(context):
             for group in groups:
                 if url_name.startswith( group ):
                     show = True
-                    if background_image :
+                    if groups_raw.background_image :
                         background_image = groups_raw.background_image.image
                         background_url = groups_raw.background_image.url
 
-                    if background_cursor :
+                    if groups_raw.cursor_image :
                         background_cursor = groups_raw.cursor_image.image
 
                     break
