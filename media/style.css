@@ -4071,6 +4071,25 @@ li.greating_pic {
 
 }
 
+
+
+.gente .image-teaser-slides img{
+    border: none !important;
+}
+.gente .images-preview{
+    width: 640px;
+    margin-left: -20px;
+}
+
+.eventos .eventos-left {
+     margin-left: -20px;
+     width: 640px;
+ }
+.fotos .fotos-left {
+    width: 640px;
+    margin-left: -20px;
+}
+
 #header-primary .sec-right .photo-request a {
     display: block;
     padding: -5px 0 0 20px;
