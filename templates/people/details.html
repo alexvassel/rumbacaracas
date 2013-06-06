@@ -50,10 +50,7 @@
 		</ul><!--//.teaser-options-->
 	</div>
 
-    <div class="eventos-left c60l outnone">
-      <span class="teaser-image"><img src="{{event.widethumb.url}}" alt="{{event.title}}"/></span>
-      
-    </div>
+ 
     <div class="content eventos">
       <h2 class="title">{{event.title}}</h2>
       <span class="submitted">{% if event.city%}{{event.city}} {%endif%}{{event.date|date:"d.m.y"}}
@@ -68,6 +65,10 @@
             {% endif %}
         {% endif %}
       </span>
+	         <div class="eventos-left outnone">
+            <span class="teaser-image"><img src="{{event.fullwidth.url}}" alt="{{event.title}}"/></span>
+        </div>
+		
       {% autoescape off%}
           {% if event.article%}
             {{event.article|linebreaks}}
