@@ -7,6 +7,12 @@ class BigImage( processors.Resize ):
     upscale = False
     crop = False
 
+class FullWidthImage( processors.Resize ):
+    width = 640
+    height = 2000
+    upscale = False
+    crop = False
+
 class ResizeThumb( processors.Resize ):
     width = 316
     height = 196
@@ -52,6 +58,11 @@ class WideThumbnail( ImageSpec ):
     access_as = 'widethumb'
     pre_cache = False
     processors = [ResizeThumb, EnchanceThumb]
+
+class FullWidth( ImageSpec ):
+    access_as = 'fullwidth'
+    pre_cache = False
+    processors = [FullWidthImage]
 
 class SmallThumbnail( ImageSpec ):
     access_as = 'smallthumb'
