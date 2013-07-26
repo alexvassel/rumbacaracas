@@ -243,18 +243,21 @@
       <div id="top-menus-wrapper" class="top-menus-wrapper outnone c75r">
       	<ul id="top-menu-secondary" class="top-menu-secondary flt-right encap fcpl0 lcpr0">
 		<li><a href="{% url magazine_main %}">{% trans "Printed Editions" %}</a></li>
-        
+      	<li><a href="{% url video_main %}">{% trans "Videos" %}</a></li>   
           <li><a href="{% url zinnia_category_detail "blog" %}">{% trans "Blog"%}</a></li>
-        	<li class="medios">
+        	<li>
                 <a href="#">{% trans "Media" %}</a>
-                <ul>
+  
+       	  </li>
+      	  <li class="medios"> <a href="{% url about_main %}">{% trans "About Us" %}</a></li>
+		  
+		                <ul>
                   <li><a href="{% url about_products_web %}">{% trans "Web" %}</a></li>
                   <li><a href="{% url about_products_news %}">{% trans "Newsletter" %}</a></li>
                   	<li><a href="{% url video_main %}">{% trans "Videos" %}</a></li>
                   <li><a href="{% url about_products_events %}">{% trans "Events" %}</a></li>
                 </ul>
-       	  </li>
-      	  <li><a href="{% url about_main %}">{% trans "About Us" %}</a></li>
+				
       	</ul>
         <div class="cflt"></div>
       	<ul id="top-menu-tertiary" class="top-menu-tertiary flt-right encap">
