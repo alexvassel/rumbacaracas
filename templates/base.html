@@ -245,19 +245,16 @@
 		<li><a href="{% url magazine_main %}">{% trans "Printed Editions" %}</a></li>
       	<li><a href="{% url video_main %}">{% trans "Videos" %}</a></li>   
           <li><a href="{% url zinnia_category_detail "blog" %}">{% trans "Blog"%}</a></li>
-        	<li>
+        	<li class="medios">
                 <a href="#">{% trans "Media" %}</a>
-  
-       	  </li>
-      	  <li class="medios"> <a href="{% url about_main %}">{% trans "About Us" %}</a></li>
-		  
-		                <ul>
+                <ul>
                   <li><a href="{% url about_products_web %}">{% trans "Web" %}</a></li>
                   <li><a href="{% url about_products_news %}">{% trans "Newsletter" %}</a></li>
                   	<li><a href="{% url video_main %}">{% trans "Videos" %}</a></li>
                   <li><a href="{% url about_products_events %}">{% trans "Events" %}</a></li>
                 </ul>
-				
+       	  </li>
+      	  <li><a href="{% url about_main %}">{% trans "About Us" %}</a></li>
       	</ul>
         <div class="cflt"></div>
       	<ul id="top-menu-tertiary" class="top-menu-tertiary flt-right encap">
