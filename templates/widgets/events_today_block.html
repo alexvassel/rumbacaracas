@@ -2,39 +2,68 @@
 {% load listtools %}
 {% load tools %}
 <div id="whats-today" class="whats-today widget outnone">
-    <div class="box-title"><h2>{% trans "What's today"%}</h2></div><!--//.box-title-->
+    <div class="box-title"><h2 style="font-size: 29px;">{% trans "What's today"%}</h2></div><!--//.box-title-->
     <div class="box-border box-contents box-shadows">
         <div class="parts-wrapper">
             {% for day_name,day, dlength in days %}
-                <ul class="recent zebra-ul inner-cycle" style="height: 322px;overflow: hidden;{% if not forloop.first %}display:none;{% endif %}">
-                    {% for row in day|main_slider_split:8 %}
-                        <ul>
+                <ul class="recent zebra-ul inner-cycle" style="height: 430px;overflow: hidden;{% if not forloop.first %}display:none;{% endif %}">
+                    {% for row in day|main_slider_split:6 %}
+                        <!-- <ul> -->
+                        <div class="country-event-main">
+            				<div class="country-event-center">
                             {% for event, dt in row%}
-                                <li>
+                                <!-- <li> -->
+                            	<div class="country-event-box">
                                     <a href="{{ event.get_absolute_url }}">
-                                        {{ event.title }} -
+                                    	<img src="{{ event.thumbnail.url }}">
+                                    	<div class="country-evnent-box-text-wrap">
+					                        <div class="text-on-img">
+					                            {{ event.title|slice:":30" }}
+					                        </div>
+					                        <div class="text-below-image">
+					                            {% if event.location %}
+	                                                {{ event.location.title|slice:":30" }}
+	                                            {% else %}
+	                                                {% if event.place %}
+	                                                    {{event.place|slice:":30"}}
+	                                                {% else %}
+	                                                    {% trans "Other"%}
+	                                                {% endif %}
+	                                            {% endif %}
+					                        </div>
+					                        <div class="time-div">
+					                            <div class="time-text">
+					                                {{event.time}}
+					                            </div>
+					                        </div>
+					                    </div>
+                                         <!-- 
+                                        -
                                         <span>
-                                            {% if event.location %}
-                                                {{ event.location.title }}
-                                            {% else %}
-                                                {% if event.place %}
-                                                    {{event.place}}
-                                                {% else %}
-                                                    {% trans "Other"%}
-                                                {% endif %}
-                                            {% endif %}
-                                        </span>
+                                            
+                                        </span> -->
                                     </a>
-                                </li>
+                                <!-- </li> -->
+                                </div>
                             {% endfor %}
-
-                        </ul>
+							</div>
+						</div>
+                        <!-- </ul> -->
                     {% endfor %}
-                    {% if day|length > 8 %}
-                        <div class="navigation flt-right pt5">
+                    {% if day|length > 6 %}
+                    	<div class="navigation-box">
+		                    <a class="left-nav-arrows" href="#">
+		                    </a>
+		                    <div class="navigation-box-center-text">
+		                        {% trans "More Events Today" %}
+		                    </div>
+		                    <a class="right-nav-arrows" href="#">
+		                    </a>
+		                </div>
+                        <!-- <div class="navigation flt-right pt5">
                             <a href="#" class="navi-prev"><span class="hidden">{%  trans "Previous"%}</span></a>
                             <a href="#" class="navi-next"><span class="hidden">{% trans "Next"%}</span></a>
-                        </div>
+                        </div> -->
                     {% endif %}
                 </ul>
             {% endfor %}
@@ -121,7 +150,7 @@
         $('#main-contents #col-right #whats-today .box-contents .parts-wrapper ul.inner-cycle').each(function(){
             var day_el = $(this);
             day_el.cycle({
-                fx: 'scrollBothWays',
+                fx: 'scrollHorz',
                 speed: 1000,
                 timeout: 0,
                 sync: 1,
@@ -129,9 +158,9 @@
                 easing: 'easeOutQuint',
                 //continuous: true,
                 containerResize: 1,
-                slideExpr: 'ul',
-                next: $('a.navi-next',day_el),
-                prev: $('a.navi-prev',day_el),
+                slideExpr: 'div.country-event-main',
+                next: $('a.right-nav-arrows',day_el),
+                prev: $('a.left-nav-arrows',day_el),
                 delay: -2000
             });
         })

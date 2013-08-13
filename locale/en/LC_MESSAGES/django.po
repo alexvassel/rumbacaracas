@@ -1566,6 +1566,10 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
+#: templates/widgets/events_today_block.html:58
+msgid "More Events Today"
+msgstr ""
+
 #: templates/people/slider_node.html:32
 msgid "Next image"
 msgstr ""

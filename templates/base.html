@@ -33,7 +33,7 @@
 	<link rel="shortcut icon" href="/favicon.ico" />
 
 
-    {% compress css %}
+    {% comment %}{% compress css %}{% endcomment %}
 	<link href="{{ STATIC_URL }}css/base.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
 	<link href="{{ STATIC_URL }}css/typo.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
 	<link href="{{ STATIC_URL }}css/forms.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
@@ -43,9 +43,10 @@
 	<link href="{{ STATIC_URL }}js/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
 	<link href="{{ STATIC_URL }}css/addforms.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
     <link href="{{ STATIC_URL }}css/custom-ui-theme/jquery-ui-1.8.14.custom.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
-    {% endcompress %}
+    <link href="{{ STATIC_URL }}css/new-theme.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+    {% comment %}{% endcompress %}{% endcomment %}
 
-    {% compress js %}
+    {% comment %}{% compress js %}{% endcomment %}
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.5.1.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.cookie.js"></script>
 
@@ -63,7 +64,7 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.12.custom.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ui.datepicker-es.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/uniform/jquery.uniform.js"></script>
-    {% endcompress %}
+    {% comment %}{% endcompress %}{% endcomment %}
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.lightbox-0.5.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/writeCapture.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.writeCapture.js"></script>

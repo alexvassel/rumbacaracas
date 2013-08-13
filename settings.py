@@ -4,8 +4,8 @@ import os
 import datetime
 from django.utils.encoding import force_unicode, smart_str
 
-DEBUG = False
-TEMPLATE_DEBUG = False
+DEBUG = True
+TEMPLATE_DEBUG = True
 
 ADMINS = ( 
     # ('Your Name', 'your_email@domain.com'),
@@ -95,6 +95,7 @@ MIDDLEWARE_CLASSES = (
     #'profiler_middleware.ProfileMiddleware',
     'django_mobile.cache.middleware.CacheFlavourMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
+    'main.middleware.MostViewedMiddleware',
  )
 
 CACHE_MIDDLEWARE_SECONDS = 300

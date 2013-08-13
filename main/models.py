@@ -2,6 +2,8 @@ from django.db.models import ImageField, BooleanField, TextField, CharField, Man
 from preferences.models import Preferences
 from django.utils.translation import ugettext_lazy as _
 from sortable.models import Sortable
+from django.contrib.contenttypes.models import ContentType
+from django.db.models.fields import IntegerField
 
 class MainBackgroundImage( Model ):
     title = CharField( _( 'Background image title' ), max_length = 256 )
@@ -39,3 +41,13 @@ class Place( Sortable ):
     class Meta( Sortable.Meta ):
         verbose_name = _( 'Site place for background, cursor' )
         verbose_name_plural = _( 'Site places for background, cursor' )
+
+class MostViewed( Model ):
+    content_type = ForeignKey(ContentType, blank=False, null=False)
+    content_type_object_id = IntegerField(null=False, blank=False)
+    no_of_views = IntegerField(null=False, blank=False)
+    
+    class Meta():
+        verbose_name = _("Most Viewed")
+        verbose_name_plural = _("Most Viewed")
+    

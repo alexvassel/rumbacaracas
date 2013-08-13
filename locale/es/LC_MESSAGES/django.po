@@ -1596,6 +1596,74 @@ msgstr "Imagen anterior"
 msgid "Previous"
 msgstr "Anterior"
 
+#: templates/widgets/events_today_block.html:58
+msgid "More Events Today"
+msgstr "Más Eventos Hoy"
+
+#: templates/widgets/events_today_block.html:87
+msgid "See more photos"
+msgstr "Ver más fotos"
+
+#: templates/main/index.html:210
+msgid "See more news"
+msgstr "Ver más noticias"
+
+#: templates/main/index.html:220
+msgid "THE MOST SEEN"
+msgstr "LO MÁS VISTO"
+
+#: templates/main/index.html:229
+msgid "See more events"
+msgstr "Ver más eventos"
+
+#: templates/main/index.html:229
+msgid "See more videos"
+msgstr "Ver más videos"
+
+#: templates/main/index.html:281
+msgid "ON THE BLOG"
+msgstr "EN EL BLOG"
+
+#: templates/main/index.html:324
+msgid "See more blog"
+msgstr "Ver más blog"
+
+#: templates/main/index.html:334
+msgid "EVENTS AND NEWS"
+msgstr "EVENTOS Y NOTICIAS"
+
+#: templates/main/index.html:696
+msgid "LOCALES"
+msgstr "LOCALES"
+
+#: templates/main/index.html:334
+msgid "see more locales"
+msgstr "ver más locales"
+
+#: templates/main/index.html:334
+msgid "see more art and culture"
+msgstr "ver más arte y cultura"
+
+#: templates/main/index.html:334
+msgid "ART AND CULTURA"
+msgstr "ARTE Y CULTURA"
+
+#: templates/main/index.html:334
+msgid "see more fotos"
+msgstr "ver más fotos"
+
+#: templates/main/index.html:334
+msgid "YOUR PHOTOS"
+msgstr "TUS FOTOS"
+
+#: templates/main/index.html:828
+msgid "LATEST TWEETS"
+msgstr "ULTIMOS TWEETS"
+
+#: templates/main/index.html:289
+msgid "Days"
+msgstr "Días"
+
 #: templates/people/slider_node.html:32
 msgid "Next image"
 msgstr "Siguiente imagen"
@@ -1685,6 +1753,10 @@ msgstr "Arte y cultura"
 #: templates/widgets/calendar.html:5
 msgid "Events for the month"
 msgstr "Eventos para el mes"
+
+#: templates/widgets/calendar.html:5
+msgid "EVENTS OF THE MONTH"
+msgstr "EVENTOS DEL MES"
 
 #: templates/widgets/calendar.html:13 templates/widgets/calendar.html.py:14
 msgid "Expand CALENDAR"
