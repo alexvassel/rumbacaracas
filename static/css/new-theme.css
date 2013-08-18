@@ -589,3 +589,104 @@
 .art-culture-main-box .art-culture-info-box .date-info {
   font-size: 13px;
 }
+
+/*************************************************************************************/
+#col-left #front-slides{
+	background: inherit;
+	padding: inherit;
+	margin: 0 0 10px;
+}
+.webkit #col-left #front-slides{
+	width: 625px;
+	height: 427px;
+}
+.webkit #col-left #front-slides .slides{
+	width: 625px;
+	height: 425px;
+}
+.webkit #col-left #front-slides .slides img{
+	border: 5px solid white;
+}
+#col-left #front-slides .nav-wrapper{
+	position: absolute;
+	width: 625px;
+	top: 5px;
+	z-index: 100;
+}
+#col-left #front-slides #slides .slide-info {
+	width: 625px;
+	background-color: inherit;
+	padding: 10px 0 0 0;
+	margin: 0px 0 0 0px;
+	filter:alpha(opacity=85);
+	-moz-opacity:0.85;
+	-khtml-opacity: 0.85;
+	opacity: 0.85;
+}
+#col-left #front-slides #slides .slide-info h3{
+	color: #f46100;
+	font-size: 23px;
+	margin: 0 0 12px;
+	text-transform: uppercase;
+}
+#col-left #front-slides #slides .slide-info h3 a{
+	color: #f46100;
+	text-decoration: none;
+	font-family: "Helvetica Neue", Helvetica,Arial, sans-serif;
+}
+#col-left #front-slides #slides .slide-info p{
+	color: #252525;
+	padding: 0 0 5px;
+	font-size: 14px;
+}
+#col-left #front-slides #slides .slide-info a.slider-read-more{
+	color: #F06000;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+#col-left #front-slides #slides .slide-info a.slider-read-more:hover{
+	text-decoration: underline;
+}
+#main-contents #col-right .widget {
+	margin: 25px 0 30px;
+}
+#main-contents #col-right .box-title h2{
+  color: #f46100;
+  font-size: 22px;
+  text-align: center;
+  position: relative;
+  top: 0px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+#main-contents #col-right #whats-today{
+  margin: 0 !important;
+    position: relative;
+    top: 0px;
+  height: 490px;
+}
+#main-contents #col-right #whats-today .box-border .whats-today-taxonomy{
+  background: #FFFFFF;
+  padding: 8px 15px 5px;
+}
+#main-contents #col-right #whats-today .box-border .whats-today-taxonomy li a{
+  color: #89898C;
+  font-size: 12px;
+}
+#main-contents #col-right #whats-today .box-border .whats-today-taxonomy li{
+  display: inline;
+  padding: 0 5px 0 6px;
+  border-right: 2px solid #F06000;
+}
+#main-contents #col-right #whats-today .box-border .whats-today-taxonomy li.last-child,
+#main-contents #col-right #whats-today .box-border .whats-today-taxonomy li.all-events{
+    border-left: 2px solid #F06000;
+    margin-left: 8px;
+    padding-left: 8px !important;
+}
+
+
+
+
+

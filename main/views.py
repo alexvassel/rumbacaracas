@@ -124,7 +124,7 @@ def index( request ):
     most_viewed_news = MostViewed.objects.filter(content_type=ct_news).order_by('-no_of_views').values_list('content_type_object_id', flat=True)
     most_viewed_events = MostViewed.objects.filter(content_type=ct_event).order_by('-no_of_views').values_list('content_type_object_id', flat=True)
     
-    m_v_n = Entry.objects.filter(id__in=most_viewed_news)[:6:1]
+    m_v_n = list(Entry.objects.filter(id__in=most_viewed_news)[:6:1])
     m_v_n.sort( key = lambda a:a.creation_date, reverse = True )
     m_v_e = most_viewed_events_list(most_viewed_events, 2)
     

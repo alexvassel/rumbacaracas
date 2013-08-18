@@ -792,25 +792,21 @@ li.sobre1 a.fotosobre1:hover {
 	float: right;
 }
 #col-left #front-slides{
-	/*background: #010100;
-	padding: 11px;*/
+	background: #010100;
+	padding: 11px;
 	margin: 0 0 10px;
 }
 .webkit #col-left #front-slides{
-	width: 625px;
-	height: 427px;
+	width: 618px;
+	height: 342px;
 }
 .webkit #col-left #front-slides .slides{
-	width: 625px;
-	height: 425px;
-}
-.webkit #col-left #front-slides .slides img{
-	border: 5px solid white;
+	width: 619px;
+	height: 342px;
 }
 #col-left #front-slides .nav-wrapper{
 	position: absolute;
 	width: 625px;
-	top: 5px;
 	z-index: 100;
 }
 #col-left #front-slides #nav{
@@ -838,9 +834,9 @@ li.sobre1 a.fotosobre1:hover {
 	
 }
 #col-left #front-slides #slides .slide-info {
-	width: 625px;
-	/*background-color: #000000;*/
-	padding: 10px 0 0 0;
+	width: 598px;
+	background-color: #000000;
+	padding: 13px 15px 0 13px;
 	margin: 0px 0 0 0px;
 	filter:alpha(opacity=85);
 	-moz-opacity:0.85;
@@ -853,37 +849,26 @@ li.sobre1 a.fotosobre1:hover {
 }
 #col-left #front-slides #slides .slide-info h3{
 	color: #f46100;
-	font-size: 23px;
-	margin: 0 0 12px;
+	font-size: 17px;
+	margin: 0 0 5px;
 	text-transform: uppercase;
 }
 #col-left #front-slides #slides .slide-info h3 a{
 	color: #f46100;
 	text-decoration: none;
-	font-family: "Helvetica Neue", Helvetica,Arial, sans-serif;
 }
 #col-left #front-slides #slides .slide-info a:hover{
 	text-decoration: underline;
 }
 #col-left #front-slides #slides .slide-info p{
-	color: #252525;
+	color: #FFFFFF;
 	padding: 0 0 5px;
-	font-size: 14px;
 }
 #col-left #front-slides #slides .slide-info a.read-more{
 	color: #FFFFFF;
 	font-size: 14px;
 	text-transform: uppercase;
 	font-weight: bold;
-}
-#col-left #front-slides #slides .slide-info a.slider-read-more{
-	color: #F06000;
-	font-size: 12px;
-	text-transform: uppercase;
-	font-weight: bold;
-}
-#col-left #front-slides #slides .slide-info a.slider-read-more:hover{
-	text-decoration: underline;
 }
 #main-contents #col-left .boxed-brief {
 	margin: 0px 0 20px;
@@ -1200,25 +1185,24 @@ a.carousel-next{
   color: #6B0C0B !important;
 }
 #main-contents #col-right .widget {
-	margin: 25px 0 30px;
+	margin: 20px 0 30px;
 }
 #main-contents #col-right div.widget:first-of-type {
 	margin: 0px 0 30px;
 }
 #main-contents #col-right .box-title h2{
-  color: #f46100;
+  color: #898989;
   font-size: 22px;
-  text-align: center;
   position: relative;
-  top: 0px;
+  top: 6px;
   text-transform: uppercase;
   z-index: 10;
 }
 #main-contents #col-right #whats-today{
   margin: 0 !important;
     position: relative;
-    top: 0px;
-  height: 490px;
+    top: -27px;
+  height: 415px;
 }
 .ie #main-contents #col-right #whats-today{
   margin: 0 0 55px 0;
@@ -1269,16 +1253,16 @@ a.carousel-next{
 
 
 #main-contents #col-right #whats-today .box-border .whats-today-taxonomy{
-  background: #FFFFFF;
-  padding: 8px 15px 5px;
+  background: #898989;
+  padding: 8px 15px 12px;
 }
 #main-contents #col-right #whats-today .box-border .whats-today-taxonomy ul{
   vertical-align: middle;
   float: left;
 }
 #main-contents #col-right #whats-today .box-border .whats-today-taxonomy li a{
-  color: #89898C;
-  font-size: 12px;
+  color: #FFFFFF;
+  font-size: 11px;
 }
 #main-contents #col-right #whats-today .box-border .whats-today-taxonomy li.active a,
 #main-contents #col-right #whats-today .box-border .whats-today-taxonomy li a:hover{
@@ -1287,7 +1271,7 @@ a.carousel-next{
 #main-contents #col-right #whats-today .box-border .whats-today-taxonomy li{
   display: inline;
   padding: 0 5px 0 6px;
-  border-right: 2px solid #F06000;
+  border-right: 1px solid #A8A8A8;
 }
 #main-contents #col-right #whats-today .box-border .whats-today-taxonomy li.last-child,
 #main-contents #col-right #whats-today .box-border .whats-today-taxonomy li:last-child{
@@ -1296,7 +1280,7 @@ a.carousel-next{
 
 #main-contents #col-right #whats-today .box-border .whats-today-taxonomy li.last-child,
 #main-contents #col-right #whats-today .box-border .whats-today-taxonomy li.all-events{
-    border-left: 2px solid #F06000;
+    border-left: 1px solid #A8A8A8;
     margin-left: 8px;
     padding-left: 8px !important;
 }
