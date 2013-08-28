@@ -163,7 +163,7 @@
             {% main_greating  request.user%}
             <li class="sepL force-right">&nbsp;</li>
             <li class="opcion0 force-right">
-                <a href="{% url social_logout %}" class="logout" onclick="javascript:FB.logout(function(response){ document.location = '{% url social_logout %}' })">
+                <a href="{% url social_logout %}"  class="logout" onclick="javascript:FB.logout(function(response){ document.location = '{% url social_logout %}' })">
 					{% trans "Logout" %}
 				</a>
 			</li>
