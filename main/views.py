@@ -100,7 +100,7 @@ def index( request ):
     videos = Video.objects.filter( status = 1 ).order_by( '-datetime_added' )[:5]
 
     blog = Entry.published.filter(categories__slug = "blog").order_by( '-creation_date' )[:4]
-    news = Entry.published.exclude(categories__slug = "blog").order_by( '-creation_date' )[:4]
+    news = Entry.published.exclude(categories__slug = "blog").order_by( '-creation_date' )[:8]
 
     locations = Location.objects.filter( status = 1 ).order_by( '?' )[:4]
 

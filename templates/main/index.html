@@ -28,7 +28,7 @@
                         <img  width="615" height="258" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.slide.url}}{% endif %}" alt="{{slide.title}}" />
                         <div class="slide-info-wrapper">
                             <div class="slide-info">
-                                <h3><a href="{{slide.get_absolute_url}}">{{slide.title|truncate:55}}</a></h3>
+                                <h3><a href="{{slide.get_absolute_url}}">{{slide.title|truncate:80}}</a></h3>
                                 {%if type == 'event'%}
                                     <p>{{slide.description|truncate:425}}</p>
                                     <a class="slider-read-more" href="{{slide.get_absolute_url}}">{% trans "Read More" %}</a>
@@ -67,14 +67,14 @@
 					<a href="{{ row.get_absolute_url }}"><img src="{{ row.mainthumb.url }}" alt="{{ row.title }}" /></a>
 					<div class="grey-text-bar-on-img-container">
 						<div class="grey-text-bar-on-img">
-							<div style="float: left">
+							<div style="float: right">
 								{{row.date|date:"d.m.y"}}
 							</div>
 							<div style="clear: both;"></div>
 						</div>
 					</div>
 					<div class="latest-photo-desc">
-						{{ row.title }}
+						<a href="{{ row.get_absolute_url }}">{{ row.title }}</a>
 					</div>
 				</div>
             {% endif %}
@@ -170,7 +170,7 @@
     {% include "main/banner_103.html" %}
     <div class="news-main-box">
     	<div class="general-bar grey-bar">
-			{% trans "News" %}
+			{% trans "NEWS" %}
 		</div>
 		{% for object in news|slice:":4" %}
 			{% if forloop.counter|divisibleby:"2" %}
@@ -184,7 +184,7 @@
 				<div class="news-photos-info-box">
 					<a href="{{ object.get_absolute_url }}">
 						<h3 class="news-photo-desc">
-							{{ object.title|truncate:58 }}
+							{{ object.title|truncate:53 }}
 						</h3>
 					</a>
 					<div class="news-photo-date-info">
@@ -196,7 +196,7 @@
 						<a href="{{ object.get_absolute_url }}#disqus_thread">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
 					</div>
 					<div class="news-photos-details">
-						{{ object.short|truncate:165 }}
+						{{ object.short|truncate:162 }}
 					</div>
 					<a class="new-theme-read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
 				</div>
@@ -232,7 +232,7 @@
 				{% endif %}
 					<a href="{{ news.get_absolute_url }}">
 						<h3 class="orange-color">
-							{{ news.title|truncate:58 }}
+							{{ news.title|truncate:53 }}
 						</h3>
 					</a>
 					
@@ -254,6 +254,8 @@
 						<a href="{{ event.get_absolute_url }}" style="display: block;">
 							<img class="event-img" src="{{ event.widgetethumb.url }}" alt="{{ event.title }}">
 						</a>
+					</div>
+					<div style="position: absolute;width: 0px; height: 0px;">
 						<div class="event-desc">
 							<div>
 								<a href="{{ event.get_absolute_url }}" class="event-heading">
@@ -262,8 +264,8 @@
 							</div>
 							<div>
 								{% if event.location %}
-								<a href="{{ event.location.get_absolute_url }}" class="event-heading" style="color: #F06000;font-style: italic;">
-									<h3 style="color: #F06000;">{{ event.location.title }}</h3>
+								<a href="{{ event.location.get_absolute_url }}" class="event-heading" style="color: #F06000;">
+									<h3 style="color: #F06000;">{{ event.location.title|truncate:42 }}</h3>
 								</a>
 								{% else %}
 									{% if event.place %}
@@ -333,7 +335,7 @@
 				<div class="video-info-box">
 					<a href="{{ video.get_absolute_url }}" style="color:#f06000;">
 						<h3 class="video-desc">
-							{{video.description|slice:":27"}}{% if video.description|length > 27 %}...{% endif %} - {{ video.user|user_link }}
+							{{video.description|truncate:55}}{% if video.description|length > 27 %}{% endif %} - {{ video.user|user_link }}
 						</h3>
 					</a>
 					<div class="video-date-info">
@@ -376,7 +378,7 @@
 				<div class="blog-photos-info-box">
 					<a href="{{ object.get_absolute_url }}">
 						<h3 class="blog-photo-desc">
-							{{ object.title|truncate:58 }}
+							{{ object.title|truncate:53 }}
 						</h3>
 					</a>
 					<div class="blog-photo-date-info">
@@ -413,7 +415,7 @@
 		<div class="general-bar black-bar">
 			{% trans "EVENTS AND NEWS" %}
 		</div>
-		{% for object in news|slice:":4" %}
+		{% for object in news|slice:"4:8" %}
 			{% if forloop.counter == 2 or forloop.counter == 4 %}
 				{% for event in upcomming_events %}
 					{% if forloop.parentloop.counter == 2  and forloop.first or forloop.parentloop.counter == 4 and forloop.counter == 2%}
@@ -424,10 +426,10 @@
 								</a>
 							</div>
 							<div class="column2">
-								<div style="min-height: 57px;">
+								<div style="min-height: 73px;">
 									<a href="{{ event.get_absolute_url }}" class="news-event-title-hyperlink">
 										<h3 class="news-event-title">
-											{{ event.title|truncate:58 }}
+											{{ event.title|truncate:53 }}
 										</h3>
 									</a>
 									<div class="news-event-location">
@@ -469,10 +471,10 @@
 					</a>
 				</div>
 				<div class="column2">
-					<div style="min-height: 57px;">
+					<div style="min-height: 73px;">
 						<a href="{{ object.get_absolute_url }}" class="news-event-title-hyperlink">
 							<h3 class="news-event-title">
-								{{ object.title|truncate:58 }}
+								{{ object.title|truncate:53 }}
 							</h3>
 						</a>
 					</div>
@@ -606,12 +608,12 @@
             jQuery('div#front-slides div#slides').cycle({
                 fx: 'scrollHorz',
                 speed: 1500,
-                timeout: 0,
+                //timeout: 0,
                 sync: 1,
                 containerResize: 1,
                 pager: '#nav',
                 easing: 'easeOutQuint',
-                delay: -2000
+                delay: 3000
             });
 
             jQuery('#main-contents #col-left #outline-briefs #outline-slides').cycle({
@@ -764,13 +766,14 @@
     		</h2>
     	</div>
     	<div class="new-theme-rumba-image">
-			<img src="{% value_from_settings "STATIC_URL" %}images/new-theme/rumbaCracas.png">
+    		{% banner_zone_iframe 171 300 600%}
+			<!--<img src="{% value_from_settings "STATIC_URL" %}images/new-theme/rumbaCracas.png">-->
 		</div>
 		<div class="banner-container box-shadows outnone widget">
 	        {% banner_zone_iframe 167 300 250%}
 	    </div><!--//.banner-container-->
 	    
-	    <div class="locales-main-box">
+	    <div id="new-theme-locales-box" class="locales-main-box">
 	    	<div class="box-title" style="text-align: center;">
 	    		<h2>
 	    			{% trans "LOCALES" %}
@@ -917,7 +920,10 @@
 			</div>
 		</a>
 	</div>
-		
+	
+	<div class="banner-container box-shadows outnone widget">
+        {% banner_zone_iframe 172 300 500 %}
+    </div><!--//.banner-container-->
 
 {% endblock %}
 

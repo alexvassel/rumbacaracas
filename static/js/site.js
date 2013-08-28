@@ -271,7 +271,6 @@ jQuery(document).ready(function(){
 	});
 	*/
 	
-	
 });
 
 (function ($) {
@@ -287,36 +286,51 @@ $.fn.vAlign = function() {
 })(jQuery);
 
 jQuery(window).load(function(){
+	var margin = 0;
+	var start_banner = parseInt(jQuery('#new-theme-long-banner').offset().top);
+	var end_banner = parseInt(jQuery('#new-theme-long-banner').offset().top) + parseInt(jQuery('#new-theme-long-banner').css('height'));
 	if(jQuery('#facebook-like-box').children().children('span').css('width') == '0px'){
 		jQuery('#facebook-like-box').hide();
 		
-		var margin = 0;
-		var height_banner = parseInt(jQuery('#new-theme-long-banner').offset().top) + parseInt(jQuery('#new-theme-long-banner').css('height'));
-		var height_your_photos = parseInt(jQuery('.your-photos-main-box').offset().top) + parseInt(jQuery('.your-photos-main-box').css('height'));
-		margin = height_banner - parseInt(jQuery('.your-photos-main-box').offset().top) + 75;
-		if((height_banner - height_your_photos) >= 5)
+		margin = 0;
+		var start_your_photos = parseInt(jQuery('.your-photos-main-box').offset().top);
+		var end_your_photos = parseInt(jQuery('.your-photos-main-box').offset().top) + parseInt(jQuery('.your-photos-main-box').css('height'));
+		margin = end_banner - start_your_photos + 75;
+		if((start_banner - start_your_photos) >= 0 && margin > 0)
 			jQuery('.your-photos-main-box').css('margin-top',margin);
 		
 		margin = 0;
 		margin = jQuery('.new-theme-videos-box').offset().top - jQuery('#add-below-yourphotos-box').offset().top;
-		margin = margin + 25;
-		if(margin > 0)
+		if(margin > 0){
+			margin = margin + 25;
 			jQuery('#add-below-yourphotos-box').css('margin-top',margin);
+		}
 	}
 	else{
-		var margin = 0;
+		margin = 0;
+		var start_locale_box = parseInt(jQuery('#new-theme-locales-box').offset().top);
+		var end_locale_box = parseInt(jQuery('#new-theme-locales-box').offset().top) + parseInt(jQuery('#new-theme-locales-box').css('height'));
+		if(end_locale_box > start_banner) {
+			margin = end_banner - start_locale_box;
+			if(margin > 0){
+				jQuery('#new-theme-locales-box').css('margin-top', margin + 25);
+			}
+		}
+		margin = 0;
 		var facebook_likebox_height = parseInt(jQuery('#facebook-like-box').offset().top) + parseInt(jQuery('#facebook-like-box').css('height'));
-		var banner_start = parseInt(jQuery('#new-theme-long-banner').offset().top);
-		if(facebook_likebox_height > banner_start) {
-			margin = banner_start - parseInt(jQuery('#facebook-like-box').offset().top);
-			jQuery('#facebook-like-box').css('margin-top', margin + 25);
+		if(facebook_likebox_height > start_banner) {
+			margin = end_banner - parseInt(jQuery('#facebook-like-box').offset().top);
+			if(margin > 0){
+				jQuery('#facebook-like-box').css('margin-top', margin + 25);
+			}
 		}
 		
 		margin = 0;
 		margin = jQuery('.new-theme-videos-box').offset().top - jQuery('.your-photos-main-box').offset().top;
-		margin = margin + 55;
-		if(margin > 0)
+		if(margin > 0){
+			margin = margin + 55;
 			jQuery('.your-photos-main-box').css('margin-top',margin);
+		}
 		
 //		margin = 0;facebook-like-box
 //		var height_banner = parseInt(jQuery('#new-theme-long-banner').offset().top) + parseInt(jQuery('#new-theme-long-banner').css('height'));

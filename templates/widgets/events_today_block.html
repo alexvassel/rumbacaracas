@@ -17,10 +17,14 @@
                                     <a href="{{ event.get_absolute_url }}">
                                     	<img src="{{ event.thumbnail.url }}">
                                     	<div class="country-evnent-box-text-wrap">
+                                    		{% comment %}
 					                        <div class="text-on-img">
 					                            {{ event.title|slice:":30" }}
 					                        </div>
+					                        {% endcomment %}
 					                        <div class="text-below-image">
+					                        	{{ event.title|slice:":30" }}
+					                        	{% comment %}
 					                            {% if event.location %}
 	                                                {{ event.location.title|slice:":30" }}
 	                                            {% else %}
@@ -30,10 +34,26 @@
 	                                                    {% trans "Other"%}
 	                                                {% endif %}
 	                                            {% endif %}
+	                                            {% endcomment %}
 					                        </div>
 					                        <div class="time-div">
+					                        	<div style="float: left" class="time-text">
+					                        		{% if event.location %}
+		                                                {{ event.location.title|slice:":20" }}
+		                                            {% else %}
+		                                                {% if event.place %}
+		                                                    {{event.place|slice:":20"}}
+		                                                {% else %}
+		                                                    {% trans "Other"%}
+		                                                {% endif %}
+		                                            {% endif %}
+					                        	</div>
 					                            <div class="time-text">
-					                                {{event.time}}
+					                            	{% if event.time|length == 3 %}
+					                                	{{event.time|slice:":0"}}{{event.time|slice:"3:"}}
+					                                {% else %}
+					                                	{{event.time|slice:":1"}}{{event.time|slice:"4:"}}
+					                                {% endif %}
 					                            </div>
 					                        </div>
 					                    </div>
@@ -55,7 +75,7 @@
 		                    <a class="left-nav-arrows" href="#">
 		                    </a>
 		                    <div class="navigation-box-center-text">
-		                        {% trans "More Events Today" %}
+		                        <a href="{% url event_by_category_day %}">{% trans "More Events Today" %}</a>
 		                    </div>
 		                    <a class="right-nav-arrows" href="#">
 		                    </a>

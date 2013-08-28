@@ -565,6 +565,10 @@ msgstr "Noticias y Eventos"
 msgid "News"
 msgstr "Noticias"
 
+#: templates/main/index.html:173
+msgid "NEWS"
+msgstr "NOTICIAS"
+
 #: news/views.py:35 templates/base.html:191 templates/mobile/base.html:179
 #: templates/news/add.html:13 templates/zinnia/base.html:21
 #: templates/zinnia/base.html.py:27
