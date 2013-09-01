@@ -665,6 +665,7 @@
 	font-size: 23px;
 	margin: 0 0 12px;
 	text-transform: uppercase;
+	min-height: 56px;
 }
 #col-left #front-slides #slides .slide-info h3 a{
 	color: #f46100;

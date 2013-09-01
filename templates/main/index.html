@@ -30,10 +30,10 @@
                             <div class="slide-info">
                                 <h3><a href="{{slide.get_absolute_url}}">{{slide.title|truncate:80}}</a></h3>
                                 {%if type == 'event'%}
-                                    <p>{{slide.description|truncate:380}}</p>
+                                    <p>{{slide.description|truncate:280}}</p>
                                     <a class="slider-read-more" href="{{slide.get_absolute_url}}">{% trans "Read More" %}</a>
                                 {% else %}
-                                    <p>{{slide.short|truncate:380}}</p>
+                                    <p>{{slide.short|truncate:280}}</p>
                                     <a class="slider-read-more" href="{{slide.get_absolute_url}}">{% trans "Read More" %}</a>
                                 {% endif %}
                             </div><!--//.slide-info-->
@@ -912,7 +912,15 @@
 						{{ object.title|truncate:60 }}
 					</a>
 					<div class="art-culture-location">
-						<a href="{{ object.place.get_absolute_url }}">{{ object.place|truncate:60 }}</a>
+						{% if object.location %}
+						<a href="{{ object.location.get_absolute_url }}">{{ object.location.title|truncate:60 }}</a>
+	                	{% else %}
+                        	{% if object.place %}
+                            	{{object.place|truncate:60}}
+	                        {% else %}
+	                            {% trans "Other"%}
+	                        {% endif %}
+		                {% endif %}
 					</div>
 				</div>
 				<div class="date-info">
