@@ -30,10 +30,10 @@
                             <div class="slide-info">
                                 <h3><a href="{{slide.get_absolute_url}}">{{slide.title|truncate:80}}</a></h3>
                                 {%if type == 'event'%}
-                                    <p>{{slide.description|truncate:425}}</p>
+                                    <p>{{slide.description|truncate:380}}</p>
                                     <a class="slider-read-more" href="{{slide.get_absolute_url}}">{% trans "Read More" %}</a>
                                 {% else %}
-                                    <p>{{slide.short|truncate:425}}</p>
+                                    <p>{{slide.short|truncate:380}}</p>
                                     <a class="slider-read-more" href="{{slide.get_absolute_url}}">{% trans "Read More" %}</a>
                                 {% endif %}
                             </div><!--//.slide-info-->
@@ -83,7 +83,7 @@
 		<a href="{% url people_main %}" class="more-photos-link">
 			<div class="gradient-bar">
 				<span>
-					{% trans "See more photos" %}
+					{% trans "SEE MORE PHOTOS" %}
 				</span>
 			</div>
 		</a>
@@ -188,7 +188,7 @@
 						</h3>
 					</a>
 					<div class="news-photo-date-info">
-						{{ object.creation_date|date:"d.m.Y" }} /
+						{{ object.creation_date|date:"d.m.y" }} /
 						{% for cat in object.categories.all %}
 							<a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
 							{% if not forloop.last %}, {% endif %}
@@ -206,7 +206,7 @@
 		<a href="{% url zinnia_entry_archive_index %}" class="new-theme-gradient-bar-hyperlink">
 			<div class="general-bar new-theme-gradient-bar">
 				<span>
-					{% trans "See more news" %}
+					{% trans "SEE MORE NEWS" %}
 				</span>
 			</div>
 		</a>
@@ -237,7 +237,7 @@
 					</a>
 					
 					<div class="news-event-date-info">
-						{{ news.creation_date|date:"d.m.Y" }} / 
+						{{ news.creation_date|date:"d.m.y" }} / 
 						{% for cat in news.categories.all %}
 						<a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
 							{% if not forloop.last %}, {% endif %}
@@ -254,9 +254,9 @@
 						<a href="{{ event.get_absolute_url }}" style="display: block;">
 							<img class="event-img" src="{{ event.widgetethumb.url }}" alt="{{ event.title }}">
 						</a>
-					</div>
-					<div style="position: absolute;width: 0px; height: 0px;">
-						<div class="event-desc">
+					<!--</div>
+					<div style="position: absolute;width: 0px; height: 0px;"> -->
+						<div class="event-desc"> 
 							<div>
 								<a href="{{ event.get_absolute_url }}" class="event-heading">
 									<h3>{{ event.title|truncate:58 }}</h3>
@@ -265,7 +265,7 @@
 							<div>
 								{% if event.location %}
 								<a href="{{ event.location.get_absolute_url }}" class="event-heading" style="color: #F06000;">
-									<h3 style="color: #F06000;">{{ event.location.title|truncate:42 }}</h3>
+									<h3 style="color: #F06000;font-size: 13px;">{{ event.location.title|truncate:42 }}</h3>
 								</a>
 								{% else %}
 									{% if event.place %}
@@ -307,17 +307,17 @@
 		<div class="new-theme-gradient-bar-hyperlink">
 			<div class="general-bar new-theme-gradient-bar">
 				<a href="{% url zinnia_entry_archive_index %}" style="float:left;">
-					{% trans "See more news" %}
+					{% trans "SEE MORE NEWS" %}
 				</a>
 				<a href="{% url event_main %}">
-					{% trans "See more events" %}
+					{% trans "SEE MORE EVENTS" %}
 				</a>
 			</div>
 		</div>
 	</div>
 	<div style="clear: both;"></div>
 	<div id="new-theme-long-banner" class="banner-container outnone" style="margin: 0 auto; text-align: center; box-shadow: none;">
-		{% banner_zone_iframe 161 960 300%}
+		{% banner_zone_iframe 175 960 300%}
 	</div>
 	<div class="new-theme-videos-box">
 		<div class="general-bar orange-bar">
@@ -339,8 +339,8 @@
 						</h3>
 					</a>
 					<div class="video-date-info">
-						{{ video.datetime_added|date:"d.m.Y" }} /
-						<a href="{% url video_main %}" title="videos">videos</a> /
+						{{ video.datetime_added|date:"d.m.y" }} /
+						<a href="{% url video_main %}" title="videos">Videos</a> /
 						<a href="{{ video.get_absolute_url }}#disqus_thread">{%facebook_comments_count video.get_absolute_url%} {% trans "Comments" %}</a>
 						<!--29.06.2013 / <a href="#">Actualidad</a> / <a href="#">0 Comentarios</a>-->
 					</div>
@@ -351,7 +351,7 @@
 		<a href="{% url video_main %}" class="new-theme-gradient-bar-hyperlink">
 			<div class="general-bar new-theme-gradient-bar">
 				<span>
-					{% trans "See more videos" %}
+					{% trans "SEE MORE VIDEOS" %}
 				</span>
 			</div>
 		</a>
@@ -382,7 +382,7 @@
 						</h3>
 					</a>
 					<div class="blog-photo-date-info">
-						{{ object.creation_date|date:"d.m.Y" }} /
+						{{ object.creation_date|date:"d.m.y" }} /
 						{% for cat in object.categories.all %}
 							<a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
 							{% if not forloop.last %}, {% endif %}
@@ -400,7 +400,7 @@
 		<a href="{% url zinnia_category_detail "blog" %}" class="new-theme-gradient-bar-hyperlink">
 			<div class="general-bar new-theme-gradient-bar">
 				<span>
-					{% trans "See more blog" %}
+					{% trans "SEE MORE BLOG" %}
 				</span>
 			</div>
 		</a>
@@ -447,7 +447,7 @@
 									</div>
 								</div>
 								<div class="news-event-date-info">
-									{{ event.to_date|date:"d.m.Y" }} / 
+									{{ event.to_date|date:"d.m.y" }} / 
 									{% for cat in event.categories.all %}
 										<a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
 										{% if not forloop.last %}, {% endif %}
@@ -479,7 +479,7 @@
 						</a>
 					</div>
 					<div class="news-event-date-info">
-						{{ object.creation_date|date:"d.m.Y" }} / 
+						{{ object.creation_date|date:"d.m.y" }} / 
 						{% for cat in object.categories.all %}
 							<a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
 							{% if not forloop.last %}, {% endif %}
@@ -497,10 +497,10 @@
 		<div class="new-theme-gradient-bar-hyperlink">
 			<div class="general-bar new-theme-gradient-bar">
 				<a href="{% url event_main %}" style="float:left;">
-					{% trans "See more events" %}
+					{% trans "SEE MORE EVENTS" %}
 				</a>
 				<a href="{% url zinnia_entry_archive_index %}">
-					{% trans "See more news" %}
+					{% trans "SEE MORE NEWS" %}
 				</a>
 			</div>
 		</div>
@@ -770,7 +770,7 @@
 			<!--<img src="{% value_from_settings "STATIC_URL" %}images/new-theme/rumbaCracas.png">-->
 		</div>
 		<div class="banner-container box-shadows outnone widget">
-	        {% banner_zone_iframe 167 300 250%}
+	        {% banner_zone_iframe 176 300 250%}
 	    </div><!--//.banner-container-->
 	    
 	    <div id="new-theme-locales-box" class="locales-main-box">
@@ -793,10 +793,19 @@
 			            {% endif %}
 			        </a>
 				</div>
+				<div style="position: absolute; width:0px; height: 0px;">
+					{% if forloop.first %}
+					<div class="slide-on-image">
+					{% else %}
+					<div class="slide-on-image" style="top: -25px;">
+					{% endif %}
+						<div class="locale-center-text" style="position: absolute; left: 0px;">{{ locale.title }}</div>
+					</div>
+				</div>
 			{% endfor %}
 			<a href= "{% url location_main %}" class="hyper-link-more-locales">
 				<div class="local-grey-bar">
-					<div class="locale-next-nav">{% trans "see more locales" %}</div>
+					<div class="locale-next-nav">{% trans "SEE MORE LOCALES" %}</div>
 					<div class="img-span">
 						<img src="{% value_from_settings "STATIC_URL" %}images/new-theme/right-nav-arrow.png">
 					</div>
@@ -807,6 +816,10 @@
 		<div id="facebook-like-box" class="banner-container box-shadows outnone" style="width: 290px; border: solid 5px white; margin-top: 30px;">
             {% facebook_group %}
        </div>
+       
+       <div id="add-above-yourphotos-box" class="banner-container box-shadows outnone widget">
+	        {% banner_zone_iframe 177 300 250%}
+	   </div><!--//.banner-container-->
 		
 		<div class="your-photos-main-box">
 			<div class="box-title" style="text-align: center;">
@@ -827,14 +840,14 @@
 		{% endfor %}
 			<a href="{% url yourphoto_main %}" class="hyper-link-more">
 				<div class="more-grey-bar">
-					<div class="more-next-nav">{% trans "see more fotos" %}</div>
+					<div class="more-next-nav">{% trans "SEE MORE PHOTOS" %}</div>
 					<div class="img-span"><img src="{% value_from_settings "STATIC_URL" %}images/new-theme/right-nav-arrow.png"></div>
 				</div>
 			</a>
 		</div>
 		
 		<div id="add-below-yourphotos-box" class="banner-container box-shadows outnone widget">
-	        {% banner_zone_iframe 167 300 250%}
+	        {% banner_zone_iframe 178 300 250%}
 	    </div><!--//.banner-container-->
 		
 			
@@ -899,7 +912,7 @@
 						{{ object.title|truncate:60 }}
 					</a>
 					<div class="art-culture-location">
-						{{ object.place|truncate:60 }}
+						<a href="{{ object.place.get_absolute_url }}">{{ object.place|truncate:60 }}</a>
 					</div>
 				</div>
 				<div class="date-info">
@@ -915,7 +928,7 @@
 		{% endfor %}
 		<a href="#" class="hyper-link-more">
 			<div class="more-grey-bar">
-				<div class="more-next-nav">{% trans "see more art and culture" %}</div>
+				<div class="more-next-nav">{% trans "SEE MORE ART AND CULTURE" %}</div>
 				<div class="img-span"><img src="{% value_from_settings "STATIC_URL" %}images/new-theme/right-nav-arrow.png"></div>
 			</div>
 		</a>

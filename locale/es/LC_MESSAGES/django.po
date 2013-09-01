@@ -1608,9 +1608,17 @@ msgstr "Más Eventos Hoy"
 msgid "See more photos"
 msgstr "Ver más fotos"
 
+#: templates/widgets/events_today_block.html:87
+msgid "SEE MORE PHOTOS"
+msgstr "VER MÁS FOTOS"
+
 #: templates/main/index.html:210
 msgid "See more news"
 msgstr "Ver más noticias"
+
+#: templates/main/index.html:210
+msgid "SEE MORE NEWS"
+msgstr "VER MÁS NOTICIAS"
 
 #: templates/main/index.html:220
 msgid "THE MOST SEEN"
@@ -1621,12 +1629,24 @@ msgid "See more events"
 msgstr "Ver más eventos"
 
 #: templates/main/index.html:229
+msgid "SEE MORE EVENTS"
+msgstr "VER MÁS EVENTOS"
+
+#: templates/main/index.html:229
 msgid "See more videos"
 msgstr "Ver más videos"
+
+#: templates/main/index.html:229
+msgid "SEE MORE VIDEOS"
+msgstr "VER MÁS VIDEOS"
 
 #: templates/main/index.html:281
 msgid "ON THE BLOG"
 msgstr "EN EL BLOG"
+
+#: templates/main/index.html:324
+msgid "SEE MORE BLOG"
+msgstr "VER MÁS BLOG"
 
 #: templates/main/index.html:324
 msgid "See more blog"
@@ -1645,8 +1665,16 @@ msgid "see more locales"
 msgstr "ver más locales"
 
 #: templates/main/index.html:334
+msgid "SEE MORE LOCALES"
+msgstr "VER MÁS LOCALES"
+
+#: templates/main/index.html:334
 msgid "see more art and culture"
 msgstr "ver más arte y cultura"
+
+#: templates/main/index.html:334
+msgid "SEE MORE ART AND CULTURE"
+msgstr "VER MÁS ARTE Y CULTURA"
 
 #: templates/main/index.html:334
 msgid "ART AND CULTURA"
@@ -1662,7 +1690,7 @@ msgstr "TUS FOTOS"
 
 #: templates/main/index.html:828
 msgid "LATEST TWEETS"
-msgstr "ULTIMOS TWEETS"
+msgstr "ÚLTIMOS TWEETS"
 
 #: templates/main/index.html:289
 msgid "Days"

@@ -135,7 +135,7 @@
   font-weight: bold;
   margin-top: 8px;
   min-height: 50px;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 }
 .news-main-box .news-photos-box .news-photos-info-box .news-photo-date-info {
   /*font-style: italic;*/
@@ -252,6 +252,7 @@
   font-weight: bold;
   margin: 0;
   min-height: 50px;
+  margin-bottom: 10px;
 }
 .new-theme-most-viewed-box .most-viewed-container .column1 .news-box-trans a:hover {
   text-decoration: underline;
@@ -275,34 +276,34 @@
 }
 .new-theme-most-viewed-box .most-viewed-container .column2 .event-box .event-img-bg {
   background-color: #000000;
-  height: 187px;
+  height: 250px;
 }
 .new-theme-most-viewed-box .most-viewed-container .column2 .event-box .event-img-bg .event-img {
   width: 300px;
   height: 180px;
   margin: 5px 5px 0 5px;
 }
-.new-theme-most-viewed-box .most-viewed-container .column2 .event-box /*.event-img-bg */.event-desc {
-  /*margin: 7px 0 0 10px;*/
-	position: relative;
+.new-theme-most-viewed-box .most-viewed-container .column2 .event-box .event-img-bg .event-desc {
+  margin: 3px 0 0 10px;
+	/*position: relative;
 	top: -48px;
 	width: 300px;
 	min-height: 48px;
 	padding-left: 10px;
 	background-color: grey;
-	opacity: 0.7;
+	opacity: 0.7;*/
   /*top: -10px*/
 }
-.new-theme-most-viewed-box .most-viewed-container .column2 .event-box /*.event-img-bg */.event-desc .event-heading {
+.new-theme-most-viewed-box .most-viewed-container .column2 .event-box .event-img-bg .event-desc .event-heading {
   color: #5F5553;
   text-decoration: none;
 }
-.new-theme-most-viewed-box .most-viewed-container .column2 .event-box /*.event-img-bg */.event-desc .event-heading h3 {
+.new-theme-most-viewed-box .most-viewed-container .column2 .event-box .event-img-bg .event-desc .event-heading h3 {
   margin: 0px;
-  font-size: 13px;
+  font-size: 15px;
   color: #FFFFFF;
 }
-.new-theme-most-viewed-box .most-viewed-container .column2 .event-box /*.event-img-bg */.event-desc .event-heading:hover {
+.new-theme-most-viewed-box .most-viewed-container .column2 .event-box .event-img-bg .event-desc .event-heading:hover {
   text-decoration: underline;
 }
 .new-theme-most-viewed-box .most-viewed-container .column2 .event-box .event-date-box {
@@ -310,7 +311,7 @@
   margin-top: 7px;
   padding-left: 10px;
   color: #F06000;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 18px;
 }
 .new-theme-most-viewed-box .most-viewed-container .column2 .event-box .event-place-time-box {
@@ -318,7 +319,7 @@
   margin-top: 5px;
   padding-left: 10px;
   color: #FFFFFF;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 18px;
 }
 /******************************End RecentNews Box***************/
@@ -337,6 +338,7 @@
 }
 .new-theme-videos-box .video-box .video-info-box {
   margin-left: 10px;
+  margin-bottom: 15px;
 }
 .new-theme-videos-box .video-box .video-info-box a {
   text-decoration: none;
@@ -350,8 +352,8 @@
   font-size: 20px;
   font-weight: bold;
   margin-top: 8px;
-  min-height: 75px;
-  margin-bottom: 18px;
+  /*min-height: 75px;*/
+  margin-bottom: 10px;
 }
 .new-theme-videos-box .video-box .video-info-box .video-date-info {
   font-style: normal;
@@ -385,6 +387,8 @@
 .blog-main-box .blog-photos-box .blog-photos-info-box a {
   text-decoration: none;
   color: #F06000;
+  font-size: 14px;
+  font-weight: bold;
 }
 .blog-main-box .blog-photos-box .blog-photos-info-box a:hover {
   text-decoration: underline;
@@ -395,7 +399,7 @@
   font-weight: bold;
   margin-top: 8px;
   min-height: 50px;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 }
 .blog-main-box .blog-photos-box .blog-photos-info-box .blog-photo-date-info {
   font-style: normal;
@@ -494,6 +498,20 @@
 }
 .locales-main-box .locale-img img {
   width: 300px;
+}
+.locales-main-box .slide-on-image{
+	position: relative;
+	top: -35px;
+	width: 290px;
+	background-color: white;
+	opacity: 0.5;
+	z-index: 5;
+	color: black;
+	padding: 0 5px;
+	font-size: 17px;
+	font-weight: bold;
+	height: 25px;
+	line-height: 25px;
 }
 .locales-main-box .hyper-link-more-locales {
   text-decoration: none;
@@ -602,7 +620,7 @@
 .art-culture-main-box .art-culture-info-box .art-culture-location {
   color: #f06000;
   font-size: 12px;
-  font-style: italic;
+  /*font-style: italic;*/
   font-weight: bold;
 }
 .art-culture-main-box .art-culture-info-box .date-info {
@@ -662,7 +680,7 @@
 }
 #col-left #front-slides #slides .slide-info a.slider-read-more{
 	color: #F06000;
-	font-size: 12px;
+	font-size: 14px;
 	text-transform: uppercase;
 	font-weight: bold;
 }
