@@ -109,7 +109,7 @@
         }
 
         function animateContainerSize(toHeight, toWidth, speed, cntID){
-            var banner = $("#"+cntID).parent();
+            var banner = $("#"+cntID.id).parent();
             banner.animate({ width: toWidth, height: toHeight }, speed);
         }
 
