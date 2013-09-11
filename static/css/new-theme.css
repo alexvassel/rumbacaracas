@@ -730,8 +730,11 @@
 }
 #footer-primary{
   padding: 0px;
-  width: none;
+  width: 100%;
 }
 
-
+#main-contents #col-right .box-border, #footer-primary, #main-contents #col-left .box-border{
+  background-color: inherit;
+  border: none;
+}
 
