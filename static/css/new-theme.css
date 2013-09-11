@@ -251,7 +251,7 @@
   font-size: 20px;
   font-weight: bold;
   margin: 0;
-  min-height: 50px;
+  /*min-height: 50px;*/
   margin-bottom: 2px;
 }
 .new-theme-most-viewed-box .most-viewed-container .column1 .news-box-trans a:hover {
