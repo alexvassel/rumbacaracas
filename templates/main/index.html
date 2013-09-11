@@ -426,7 +426,7 @@
 								</a>
 							</div>
 							<div class="column2">
-								<div style="min-height: 73px;">
+								<div>
 									<a href="{{ event.get_absolute_url }}" class="news-event-title-hyperlink">
 										<h3 class="news-event-title">
 											{{ event.title|truncate:53 }}
@@ -812,11 +812,11 @@
 				</div>
 			</a>
 		</div>
-		
+		{% comment %}
 		<div id="facebook-like-box" class="banner-container box-shadows outnone" style="width: 290px; border: solid 5px white; margin-top: 30px;">
             {% facebook_group %}
        </div>
-       
+       {% endcomment %}
        <div id="add-above-yourphotos-box" class="banner-container box-shadows outnone widget">
 	        {% banner_zone_iframe 177 300 250%}
 	   </div><!--//.banner-container-->

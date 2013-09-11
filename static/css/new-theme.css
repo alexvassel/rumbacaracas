@@ -145,7 +145,7 @@
 }
 .news-main-box .news-photos-box .news-photos-info-box .news-photos-details {
   color: #363535;
-  margin: 7px 0 18px 0;
+  margin: 7px 0 10px 0;
   font-size: 13px;
   min-height: 64px;
 }
@@ -252,7 +252,7 @@
   font-weight: bold;
   margin: 0;
   min-height: 50px;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 }
 .new-theme-most-viewed-box .most-viewed-container .column1 .news-box-trans a:hover {
   text-decoration: underline;
@@ -276,7 +276,7 @@
 }
 .new-theme-most-viewed-box .most-viewed-container .column2 .event-box .event-img-bg {
   background-color: #000000;
-  height: 250px;
+  min-height: 230px;
 }
 .new-theme-most-viewed-box .most-viewed-container .column2 .event-box .event-img-bg .event-img {
   width: 300px;
@@ -308,7 +308,7 @@
 }
 .new-theme-most-viewed-box .most-viewed-container .column2 .event-box .event-date-box {
   background-color: #000000;
-  margin-top: 7px;
+  /*margin-top: 7px;*/
   padding-left: 10px;
   color: #F06000;
   font-size: 13px;
@@ -316,7 +316,7 @@
 }
 .new-theme-most-viewed-box .most-viewed-container .column2 .event-box .event-place-time-box {
   background-color: #000000;
-  margin-top: 5px;
+  /*margin-top: 5px;*/
   padding-left: 10px;
   color: #FFFFFF;
   font-size: 13px;
@@ -409,7 +409,7 @@
 }
 .blog-main-box .blog-photos-box .blog-photos-info-box .blog-photos-details {
   color: #363535;
-  margin: 7px 0 18px 0;
+  margin: 7px 0 10px 0;
   font-size: 13px;
   min-height: 64px;
 }
@@ -438,6 +438,7 @@
   width: 301px;
   float: left;
   border-bottom: solid 1px;
+  min-height: 190px;
   padding-left: 5px;
 }
 .events-news-main-box .events-news-box .column2 a.news-event-title-hyperlink {
@@ -482,7 +483,7 @@
 	text-decoration: underline;
 }
 .events-news-main-box .events-news-box .column2 .news-event-description {
-  font-size: 15px;
+  font-size: 13px;
   height: 70px;
   min-height: 70px;
   overflow: hidden;
@@ -665,7 +666,6 @@
 	font-size: 23px;
 	margin: 0 0 12px;
 	text-transform: uppercase;
-	min-height: 56px;
 }
 #col-left #front-slides #slides .slide-info h3 a{
 	color: #f46100;
@@ -728,7 +728,9 @@
 #col-left #front-slides #slides .slide-info a:hover{
 	text-decoration: none;
 }
-
+#footer-primary{
+  padding: 0px;
+}
 
 
 
