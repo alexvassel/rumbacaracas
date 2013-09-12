@@ -387,7 +387,7 @@
 .blog-main-box .blog-photos-box .blog-photos-info-box a {
   text-decoration: none;
   color: #F06000;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: bold;
 }
 .blog-main-box .blog-photos-box .blog-photos-info-box a:hover {
@@ -438,7 +438,7 @@
   width: 301px;
   float: left;
   border-bottom: solid 1px;
-  min-height: 190px;
+  min-height: 185px;
   padding-left: 5px;
 }
 .events-news-main-box .events-news-box .column2 a.news-event-title-hyperlink {
@@ -623,6 +623,13 @@
   font-size: 12px;
   /*font-style: italic;*/
   font-weight: bold;
+}
+.art-culture-main-box .art-culture-info-box .art-culture-location a{
+	color: #f06000;
+	text-decoration: none;
+}
+.art-culture-main-box .art-culture-info-box .art-culture-location a:hover{
+	text-decoration: underline;
 }
 .art-culture-main-box .art-culture-info-box .date-info {
   font-size: 13px;
