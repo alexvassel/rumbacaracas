@@ -899,13 +899,13 @@ msgstr "Web"
 #: templates/static/about_menu.html:10 templates/static/aboutus.html:48
 #: templates/static/newsletter.html:10
 msgid "Newsletter"
-msgstr "Boletín Electrónico"
+msgstr "Revistas y Cuadernos"
 
 #: templates/base.html:253 templates/base.html.py:375
 #: templates/mobile/base.html:243 templates/mobile/base.html.py:354
 #: templates/static/about_menu.html:11 templates/static/aboutus.html:49
 msgid "Printed Editions"
-msgstr "Ediciones Impresas"
+msgstr "REVISTA DIGITAL"
 
 #: templates/base.html:257 templates/base.html.py:380
 #: templates/mobile/base.html:247 templates/mobile/base.html.py:359
