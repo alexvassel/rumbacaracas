@@ -745,3 +745,7 @@
   border: none;
 }
 
+.facebook-facepile{height: 530px;}
+.facebook-facepile .jsbanner{height: 530px;}
+.facebook-facepile iframe{height: 530px !important;}
+
