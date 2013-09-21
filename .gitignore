@@ -1,6 +1,7 @@
 *.class
 *.pyc
 *.pyo
+*.orig
 media/photos/*
 media/images/events/*
 media/images/people/*

@@ -13,7 +13,8 @@ from django.forms.models import modelformset_factory
 from django.http import HttpResponseRedirect
 from datetime import *;
 from dateutil.relativedelta import *
-
+from main.models import MostViewed
+from django.contrib.contenttypes.models import ContentType
 from preferences import preferences
 
 import random
@@ -45,6 +46,25 @@ def custom_social_setup( request, template="socialregistration/setup.html" ):
     except :
         pass
     return setup(request, initial=initial,form_class=UserForm,template=template)
+
+
+def upcoming_events_list(count = 2):
+    today = datetime.today()
+    dtstart = datetime( today.year, today.month, today.day )
+
+    zdat_day = datetime.today() + timedelta(6 - dtstart.weekday())
+    dtend = datetime( zdat_day.year, zdat_day.month, zdat_day.day )
+
+    #TODO wrong check if upcoming
+    event_list = Event.objects.filter(status=1,to_date__gte = dtstart,to_date__lte = dtend).order_by('to_date')[:count]
+    return event_list
+
+def most_viewed_events_list(most_viewed_event_ids, count=2):
+    today = datetime.today()
+    dtstart = datetime( today.year, today.month, today.day )
+    
+    event_list = Event.objects.filter(id__in=most_viewed_event_ids, to_date__gte = dtstart).order_by('to_date')[:count]
+    return event_list
 
 
 @render_to( 'main/index.html' )
@@ -80,7 +100,7 @@ def index( request ):
     videos = Video.objects.filter( status = 1 ).order_by( '-datetime_added' )[:5]
 
     blog = Entry.published.filter(categories__slug = "blog").order_by( '-creation_date' )[:4]
-    news = Entry.published.exclude(categories__slug = "blog").order_by( '-creation_date' )[:4]
+    news = Entry.published.exclude(categories__slug = "blog").order_by( '-creation_date' )[:8]
 
     locations = Location.objects.filter( status = 1 ).order_by( '?' )[:4]
 
@@ -97,9 +117,21 @@ def index( request ):
     final_slides = [( blog_tmp, 'blog', ) for blog_tmp in blog_slides] + [( event_tmp, 'event', ) for event_tmp in events_slides]
     random.shuffle(final_slides)
     
+    events = upcoming_events_list(2)
+    
+    ct_news = ContentType.objects.get(app_label='zinnia', model='entry')
+    ct_event = ContentType.objects.get(app_label='events', model='event')
+    most_viewed_news = MostViewed.objects.filter(content_type=ct_news).order_by('-no_of_views').values_list('content_type_object_id', flat=True)
+    most_viewed_events = MostViewed.objects.filter(content_type=ct_event).order_by('-no_of_views').values_list('content_type_object_id', flat=True)
+    
+    m_v_n = list(Entry.objects.filter(id__in=most_viewed_news)[:6:1])
+    m_v_n.sort( key = lambda a:a.creation_date, reverse = True )
+    m_v_e = most_viewed_events_list(most_viewed_events, 2)
+    
     return {'people': people, 'news': news,'blog': blog,'locations': locations, 'art_culture': art_culture,
             'videos':videos, 'photos': photos,
-            'slides': final_slides}
+            'slides': final_slides, 'upcomming_events':events, 'most_viewed_news':m_v_n,
+            'most_viewed_events':m_v_e}
 
 
 from django.views.decorators.csrf import requires_csrf_token

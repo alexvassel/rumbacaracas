@@ -565,6 +565,10 @@ msgstr "Noticias y Eventos"
 msgid "News"
 msgstr "Noticias"
 
+#: templates/main/index.html:173
+msgid "NEWS"
+msgstr "NOTICIAS"
+
 #: news/views.py:35 templates/base.html:191 templates/mobile/base.html:179
 #: templates/news/add.html:13 templates/zinnia/base.html:21
 #: templates/zinnia/base.html.py:27
@@ -895,13 +899,13 @@ msgstr "Web"
 #: templates/static/about_menu.html:10 templates/static/aboutus.html:48
 #: templates/static/newsletter.html:10
 msgid "Newsletter"
-msgstr "Boletín Electrónico"
+msgstr "Revistas y Cuadernos"
 
 #: templates/base.html:253 templates/base.html.py:375
 #: templates/mobile/base.html:243 templates/mobile/base.html.py:354
 #: templates/static/about_menu.html:11 templates/static/aboutus.html:49
 msgid "Printed Editions"
-msgstr "Revista Digital"
+msgstr "REVISTA DIGITAL"
 
 #: templates/base.html:257 templates/base.html.py:380
 #: templates/mobile/base.html:247 templates/mobile/base.html.py:359
@@ -1596,6 +1600,102 @@ msgstr "Imagen anterior"
 msgid "Previous"
 msgstr "Anterior"
 
+#: templates/widgets/events_today_block.html:58
+msgid "More Events Today"
+msgstr "Más Eventos Hoy"
+
+#: templates/widgets/events_today_block.html:87
+msgid "See more photos"
+msgstr "Ver más fotos"
+
+#: templates/widgets/events_today_block.html:87
+msgid "SEE MORE PHOTOS"
+msgstr "VER MÁS FOTOS"
+
+#: templates/main/index.html:210
+msgid "See more news"
+msgstr "Ver más noticias"
+
+#: templates/main/index.html:210
+msgid "SEE MORE NEWS"
+msgstr "VER MÁS NOTICIAS"
+
+#: templates/main/index.html:220
+msgid "THE MOST SEEN"
+msgstr "LO MÁS VISTO"
+
+#: templates/main/index.html:229
+msgid "See more events"
+msgstr "Ver más eventos"
+
+#: templates/main/index.html:229
+msgid "SEE MORE EVENTS"
+msgstr "VER MÁS EVENTOS"
+
+#: templates/main/index.html:229
+msgid "See more videos"
+msgstr "Ver más videos"
+
+#: templates/main/index.html:229
+msgid "SEE MORE VIDEOS"
+msgstr "VER MÁS VIDEOS"
+
+#: templates/main/index.html:281
+msgid "ON THE BLOG"
+msgstr "EN EL BLOG"
+
+#: templates/main/index.html:324
+msgid "SEE MORE BLOG"
+msgstr "VER MÁS BLOG"
+
+#: templates/main/index.html:324
+msgid "See more blog"
+msgstr "Ver más blog"
+
+#: templates/main/index.html:334
+msgid "EVENTS AND NEWS"
+msgstr "EVENTOS Y NOTICIAS"
+
+#: templates/main/index.html:696
+msgid "LOCALES"
+msgstr "LOCALES"
+
+#: templates/main/index.html:334
+msgid "see more locales"
+msgstr "ver más locales"
+
+#: templates/main/index.html:334
+msgid "SEE MORE LOCALES"
+msgstr "VER MÁS LOCALES"
+
+#: templates/main/index.html:334
+msgid "see more art and culture"
+msgstr "ver más arte y cultura"
+
+#: templates/main/index.html:334
+msgid "SEE MORE ART AND CULTURE"
+msgstr "VER MÁS ARTE Y CULTURA"
+
+#: templates/main/index.html:334
+msgid "ART AND CULTURA"
+msgstr "ARTE Y CULTURA"
+
+#: templates/main/index.html:334
+msgid "see more fotos"
+msgstr "ver más fotos"
+
+#: templates/main/index.html:334
+msgid "YOUR PHOTOS"
+msgstr "TUS FOTOS"
+
+#: templates/main/index.html:828
+msgid "LATEST TWEETS"
+msgstr "ÚLTIMOS TWEETS"
+
+#: templates/main/index.html:289
+msgid "Days"
+msgstr "Días"
+
 #: templates/people/slider_node.html:32
 msgid "Next image"
 msgstr "Siguiente imagen"
@@ -1685,6 +1785,10 @@ msgstr "Arte y cultura"
 #: templates/widgets/calendar.html:5
 msgid "Events for the month"
 msgstr "Eventos para el mes"
+
+#: templates/widgets/calendar.html:5
+msgid "EVENTS OF THE MONTH"
+msgstr "EVENTOS DEL MES"
 
 #: templates/widgets/calendar.html:13 templates/widgets/calendar.html.py:14
 msgid "Expand CALENDAR"

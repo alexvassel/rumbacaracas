@@ -43,6 +43,7 @@
 	<link href="{{ STATIC_URL }}js/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
 	<link href="{{ STATIC_URL }}css/addforms.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
     <link href="{{ STATIC_URL }}css/custom-ui-theme/jquery-ui-1.8.14.custom.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+    <link href="{{ STATIC_URL }}css/new-theme.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
     {% endcompress %}
 
     {% compress js %}
@@ -108,7 +109,7 @@
         }
 
         function animateContainerSize(toHeight, toWidth, speed, cntID){
-            var banner = $("#"+cntID).parent();
+            var banner = $("#"+cntID.id).parent();
             banner.animate({ width: toWidth, height: toHeight }, speed);
         }
 
@@ -245,16 +246,15 @@
 		<li><a href="{% url magazine_main %}">{% trans "Printed Editions" %}</a></li>
       	<li><a href="{% url video_main %}">{% trans "Videos" %}</a></li>   
           <li><a href="{% url zinnia_category_detail "blog" %}">{% trans "Blog"%}</a></li>
-        	<li class="medios">
-                <a href="#">{% trans "Media" %}</a>
+      	  <li>
+      	  	<a href="{% url about_main %}">{% trans "About Us" %}</a>
                 <ul>
                   <li><a href="{% url about_products_web %}">{% trans "Web" %}</a></li>
                   <li><a href="{% url about_products_news %}">{% trans "Newsletter" %}</a></li>
-                  	<li><a href="{% url video_main %}">{% trans "Videos" %}</a></li>
+              <li><a href="{% url magazine_main %}">E-rumba</a></li>
                   <li><a href="{% url about_products_events %}">{% trans "Events" %}</a></li>
                 </ul>
        	  </li>
-      	  <li><a href="{% url about_main %}">{% trans "About Us" %}</a></li>
       	</ul>
         <div class="cflt"></div>
       	<ul id="top-menu-tertiary" class="top-menu-tertiary flt-right encap">
@@ -328,9 +328,9 @@
       </div><!--//.col-left-->
     	<br class="cflt" />
     </div><!--//.main-contents-->
-    <div id="footer-primary" class="footer-primary box-shadows">
+    <div id="footer-primary" class="footer-primary">
       <div class="banner-container outnone">
-       {% block bannerfooter %} {% banner_zone_iframe 113 800 100 %}{% endblock %}
+        {% banner_zone_iframe 174 800 100 %}
       </div><!--//.banner-container-->
     </div><!--//.footer-primary-->
     <div id="footer-secondary" class="footer-secondary">

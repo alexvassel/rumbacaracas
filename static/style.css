@@ -1196,7 +1196,7 @@ a.carousel-next{
   position: relative;
   top: 6px;
   text-transform: uppercase;
-	z-index: 10;
+  z-index: 10;
 }
 #main-contents #col-right #whats-today{
   margin: 0 !important;
