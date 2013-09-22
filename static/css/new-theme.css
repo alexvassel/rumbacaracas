@@ -7,7 +7,7 @@
 .country-event-main .country-event-center .country-event-box .country-evnent-box-text-wrap .text-below-image{background-color:lightgray;width:137px;position:relative;top:-4px;height:20px;line-height:20px;font-size:12px;font-weight:bold}
 .country-event-main .country-event-center .country-event-box .country-evnent-box-text-wrap .time-div{background-color:#252525;position:relative;top:-4px;color:white;height:14px}
 .country-event-main .country-event-center .country-event-box .country-evnent-box-text-wrap .time-div .time-text{font-size:10px;float:right;margin-right:3px}
-.box-border .parts-wrapper .navigation-box{width:282px;background-color:#f06000;margin:0 7px;height:35px;line-height:35px;color:white;font-weight:bold;font-size:20px;text-align:center;position: absolute;top: 395px;right: 0px;z-index: 10;}
+.box-border .parts-wrapper .navigation-box{width:282px;background-color:#f06000;margin:0 7px;height:35px;line-height:35px;color:white;font-weight:bold;font-size:20px;text-align:center;position: absolute;top: 395px;right: 0px;z-index: 11;}
 .box-border .parts-wrapper .navigation-box .left-nav-arrows{float:left;width:30px;height:35px;background-image:url("../images/new-theme/left-nav-arrow.png")}
 .box-border .parts-wrapper .navigation-box .right-nav-arrows{float:left;width:30px;height:35px;background-image:url("../images/new-theme/right-nav-arrow.png")}
 .box-border .parts-wrapper .navigation-box .navigation-box-center-text{float:left;width:222px;}
