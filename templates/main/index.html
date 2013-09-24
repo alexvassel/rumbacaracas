@@ -247,60 +247,7 @@
 				</div>
 				{% endfor %}
 			</div>
-			<div class="column2">
-				{% for event in most_viewed_events %}
-				<div class="event-box" style="margin-bottom: 25px;">
-					<div class="event-img-bg">
-						<a href="{{ event.get_absolute_url }}" style="display: block;">
-							<img class="event-img" src="{{ event.widgetethumb.url }}" alt="{{ event.title }}">
-						</a>
-					<!--</div>
-					<div style="position: absolute;width: 0px; height: 0px;"> -->
-						<div class="event-desc"> 
-							<div>
-								<a href="{{ event.get_absolute_url }}" class="event-heading">
-									<h3>{{ event.title|truncate:58 }}</h3>
-								</a>
-							</div>
-							<div>
-								{% if event.location %}
-								<a href="{{ event.location.get_absolute_url }}" class="event-heading" style="color: #F06000;">
-									<h3 style="color: #F06000;font-size: 13px;">{{ event.location.title|truncate:42 }}</h3>
-								</a>
-								{% else %}
-									{% if event.place %}
-			                            {{event.place}}
-			                        {% else %}
-			                            {% trans "Other"%}
-			                        {% endif %}
-			                    {% endif %}
-							</div>
-						</div>
-					</div>
-					
-					<div class="event-date-box">
-						{% if event.from_date%}
-							<strong>{%trans "Date"%}: </strong>
-							{% if event.from_date == event.to_date %}
-				        		{{event.from_date}}
-				    		{% else %}
-				    			{{event.from_date}} a {{event.to_date}}
-				    		{% endif %}
-						{%endif%}
-					</div>
-					
-					<div class="event-place-time-box">
-						{% if event.repeat.all %}
-						<strong>{%trans "Days"%}: </strong>
-						{{ event.repeat.all|join:", "}}
-						{% endif %}
-						{% if event.time%}
-						<strong> {% trans "Time"%}: </strong>{{event.time}}
-						{%endif%}
-					</div>
-				</div>
-				{% endfor %}
-			</div>
+	
 		</div>
 		<div style="clear: both;"></div>
 		
