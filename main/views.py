@@ -62,8 +62,11 @@ def upcoming_events_list(count = 2):
 def most_viewed_events_list(most_viewed_event_ids, count=2):
     today = datetime.today()
     dtstart = datetime( today.year, today.month, today.day )
-    
-    event_list = Event.objects.filter(id__in=most_viewed_event_ids, to_date__gte = dtstart).order_by('to_date')[:count]
+    try:
+        event_list = list(Event.objects.filter(id__in=most_viewed_event_ids, to_date__gte = dtstart)[:count])
+        event_list.sort( key = lambda a:a.to_date, reverse = True )
+    except IndexError:
+        pass
     return event_list
 
 
@@ -121,8 +124,8 @@ def index( request ):
     
     ct_news = ContentType.objects.get(app_label='zinnia', model='entry')
     ct_event = ContentType.objects.get(app_label='events', model='event')
-    most_viewed_news = MostViewed.objects.filter(content_type=ct_news).order_by('-no_of_views').values_list('content_type_object_id', flat=True)
-    most_viewed_events = MostViewed.objects.filter(content_type=ct_event).order_by('-no_of_views').values_list('content_type_object_id', flat=True)
+    most_viewed_news = list(MostViewed.objects.filter(content_type=ct_news).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:6])
+    most_viewed_events = list(MostViewed.objects.filter(content_type=ct_event).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:4])
     
     m_v_n = list(Entry.objects.filter(id__in=most_viewed_news)[:6:1])
     m_v_n.sort( key = lambda a:a.creation_date, reverse = True )
