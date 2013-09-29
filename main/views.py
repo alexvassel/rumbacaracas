@@ -125,7 +125,7 @@ def index( request ):
     ct_news = ContentType.objects.get(app_label='zinnia', model='entry')
     ct_event = ContentType.objects.get(app_label='events', model='event')
     most_viewed_news = list(MostViewed.objects.filter(content_type=ct_news).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:6])
-    most_viewed_events = list(MostViewed.objects.filter(content_type=ct_event).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:4])
+    most_viewed_events = list(MostViewed.objects.filter(content_type=ct_event).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:10])
     
     m_v_n = list(Entry.objects.filter(id__in=most_viewed_news)[:6:1])
     m_v_n.sort( key = lambda a:a.creation_date, reverse = True )
