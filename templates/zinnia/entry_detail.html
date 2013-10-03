@@ -20,12 +20,13 @@
     {% endblock %}
 {% endif %}
 
+{% block pushdown %}{% banner_zone_iframe 181 960 300%}{% endblock %}
 
 {% block content %}
 {% with object.html_content|safe as object_content %}
 
 <div id="entry-{{ object.pk }}" class="node music-news encap {% if object.featured %} featured{% endif %}">
-    <h2 class="title">{{object.title }}</h2>zxxx
+    <h2 class="title">{{object.title }}</h2>
     <span class="submitted">
         {% if object.author %}
             {% trans "Written by" %} <span class="vcard author">{{ object|urlize_author_source }}</span>
