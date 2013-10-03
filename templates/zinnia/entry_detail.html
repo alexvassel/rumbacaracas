@@ -25,7 +25,7 @@
 {% with object.html_content|safe as object_content %}
 
 <div id="entry-{{ object.pk }}" class="node music-news encap {% if object.featured %} featured{% endif %}">
-    <h2 class="title">{{object.title }}</h2>
+    <h2 class="title">{{object.title }}</h2>zxxx
     <span class="submitted">
         {% if object.author %}
             {% trans "Written by" %} <span class="vcard author">{{ object|urlize_author_source }}</span>
