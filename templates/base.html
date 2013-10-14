@@ -17,6 +17,18 @@
     xmlns:og="http://opengraphprotocol.org/schema/"
     xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
+
+
+	<script type="text/javascript">
+		var mobile_domain ="m.rumbacaracas.com";
+		// Set to false to not redirect on iPad.
+		var ipad = true;
+		// Set to false to not redirect on other tablets (Android , BlackBerry, WebOS tablets).
+		var other_tablets = true;
+		document.write(unescape("%3Cscript src='"+location.protocol+"//s3.amazonaws.com/me.static/js/me.redirect.min.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+
+	
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>{% block title %}{% endblock %}{% if flavour == "mobile" %}({% trans "mobile version" %}){% endif %}</title>
     {% block seometa %}
@@ -79,15 +91,6 @@
 		<noscript><link rel="stylesheet" href="{{ STATIC_URL }}css/ie-fallback.css" /></noscript>
 	<![endif]-->
 	
-	<script type="text/javascript">
-		var mobile_domain ="m.rumbacaracas.com";
-		// Set to false to not redirect on iPad.
-		var ipad = true;
-		// Set to false to not redirect on other tablets (Android , BlackBerry, WebOS tablets).
-		var other_tablets = true;
-		document.write(unescape("%3Cscript src='"+location.protocol+"//s3.amazonaws.com/me.static/js/me.redirect.min.js' type='text/javascript'%3E%3C/script%3E"));
-	</script>
-
     <script type="text/javascript">	
 
       var _gaq = _gaq || [];
