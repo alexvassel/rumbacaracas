@@ -30,7 +30,7 @@
 
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>{% block title %}{% endblock %}{% if flavour == "mobile" %}({% trans "mobile version" %}){% endif %}</title>
+	<title>{% block title %}{% endblock %}{%comment%}{% if flavour == "mobile" %}({% trans "mobile version" %}){% endif %}{%endcomment%}</title>
     {% block seometa %}
 	    <meta name="keywords" content="Rumbas, rumba en caracas, redes sociales, web, fotos, entretenimiento, locales, conciertos, djs, eventos, videos, fiestas, música, cultura, facebook, twitter, youtube, google" />
 	    <meta name="description" content="Guía online de entretenimiento que informa y cubre las rumbas, eventos, rumberos, noticias, fotos, locales, conciertos y redes sociales en la ciudad de Caracas, Venezuela" />

@@ -65,7 +65,7 @@ SECRET_KEY = 'xk(sgv%96^$2)1h_c#^vx0svfqufou8)-8#^2n6nn590sw(a)3'
 # List of callables that know how to import templates from various sources.
 
 TEMPLATE_LOADERS = (
-    'django_mobile.loader.Loader',
+#    'django_mobile.loader.Loader',
     ('django.template.loaders.cached.Loader',(
         'django.template.loaders.filesystem.Loader',
         'django.template.loaders.app_directories.Loader',
@@ -81,8 +81,8 @@ BREADCRUMBS_AUTO_HOME = True
 MIDDLEWARE_CLASSES = (
 
     'django.middleware.cache.UpdateCacheMiddleware',
-    'django_mobile.middleware.MobileDetectionMiddleware',
-    'django_mobile.middleware.SetFlavourMiddleware',
+#    'django_mobile.middleware.MobileDetectionMiddleware',
+#    'django_mobile.middleware.SetFlavourMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -93,7 +93,7 @@ MIDDLEWARE_CLASSES = (
     #'debug_toolbar.middleware.DebugToolbarMiddleware',
     'socialregistration.middleware.FacebookMiddleware',
     #'profiler_middleware.ProfileMiddleware',
-    'django_mobile.cache.middleware.CacheFlavourMiddleware',
+#    'django_mobile.cache.middleware.CacheFlavourMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'main.middleware.MostViewedMiddleware',
  )
@@ -176,7 +176,7 @@ ROOT_URLCONF = 'urls'
 
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    "django_mobile.context_processors.flavour",
+#    "django_mobile.context_processors.flavour",
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
@@ -223,7 +223,7 @@ INSTALLED_APPS = (
     'storages',
     'cuddlybuddly.storage.s3',
     'compressor',
-    'django_mobile',
+#    'django_mobile',
     #'photologue',
     #'tagging',
     # Uncomment the next line to enable admin documentation:

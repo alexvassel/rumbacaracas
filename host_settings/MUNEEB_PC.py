@@ -69,7 +69,7 @@ FACEBOOK_SECRET_KEY = '68e652ad4024ba1c2a563e7ff833f856'
 
 
 TEMPLATE_LOADERS = (
-    'django_mobile.loader.Loader',
+#    'django_mobile.loader.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
  )
