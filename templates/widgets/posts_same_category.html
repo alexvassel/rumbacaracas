@@ -1,0 +1,49 @@
+{% if same_category_posts %}
+	{% load i18n %}
+	{% load tools %}
+	{% load facebook %}
+	<div class="news-main-box">
+		<div class="general-bar grey-bar">
+			{% trans "Similar News" %}
+		</div>
+		{% for object in same_category_posts %}
+			{% if forloop.counter|divisibleby:"2" %}
+				<div class="news-photos-box">
+			{% else %}
+				<div class="news-photos-box" style="margin-right: 30px;">
+			{% endif %}
+				<a href="{{ object.get_absolute_url }}">
+					<img src="{{ object.blogthumb.url }}" alt="{{ object.title }}">
+				</a>
+				<div class="news-photos-info-box">
+					<a href="{{ object.get_absolute_url }}">
+						<h3 class="news-photo-desc">
+							{{ object.title|truncate:53 }}
+						</h3>
+					</a>
+					<div class="news-photo-date-info">
+						{{ object.creation_date|date:"d.m.y" }} /
+						{% for cat in object.categories.all %}
+							<a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+							{% if not forloop.last %}, {% endif %}
+	      				{% endfor %} /
+						<a href="{{ object.get_absolute_url }}#disqus_thread">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
+					</div>
+					<div class="news-photos-details">
+						{{ object.short|truncate:162 }}
+					</div>
+					<a class="new-theme-read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
+				</div>
+			</div>
+		{% endfor %}
+		<div style="clear: both;"></div>
+		<a href="{% url zinnia_entry_archive_index %}" class="new-theme-gradient-bar-hyperlink">
+			<div class="general-bar new-theme-gradient-bar">
+				<span>
+					{% trans "SEE MORE NEWS" %}
+				</span>
+			</div>
+		</a>
+	</div>
+	<div style="clear: both;"></div>
+{% endif %}

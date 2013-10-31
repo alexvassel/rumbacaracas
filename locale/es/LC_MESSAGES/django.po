@@ -569,6 +569,10 @@ msgstr "Noticias"
 msgid "NEWS"
 msgstr "NOTICIAS"
 
+#: templates/widgets/posts_same_category.html:7
+msgid "Similar News"
+msgstr "Noticias Similares"
+
 #: news/views.py:35 templates/base.html:191 templates/mobile/base.html:179
 #: templates/news/add.html:13 templates/zinnia/base.html:21
 #: templates/zinnia/base.html.py:27
@@ -1566,6 +1570,75 @@ msgstr "Ver más"
 #: templates/people/request.html:3
 msgid "People | Rumbabogota"
 msgstr "Gente | Rumbabogota"
+
+#: templates/people/request.html:24
+msgid "GRAPHIC SPECIALIST REGISTRATION EVENT."
+msgstr "LOS ESPECIALÍSTAS EN REGISTRO GRÁFICO DE EVENTOS."
+
+#: templates/people/request.html:25
+msgid "The largest staff of professional photographers for photographic and video record of the event:"
+msgstr "El mayor staff de fotógrafos profesionales para el registro fotográfico y de video de sus  eventos:"
+
+#: templates/people/request.html:26
+msgid "Product launches, sales conventions, press conferences, weddings, birthdays, graduations etc. proposed."
+msgstr "Lanzamiento de productos, convenciones de ventas, ruedas de prensa, bodas, cumpleaños, pro-graduaciones etc."
+
+#: templates/people/request.html:27
+msgid "Includes:"
+msgstr "Incluye:"
+
+#: templates/people/request.html:28
+msgid "RECORD PHOTO:"
+msgstr "REGISTRO FOTOGRÁFICO:"
+
+#: templates/people/request.html:29
+msgid "Event Review"
+msgstr "Reseña del evento"
+
+#: templates/people/request.html:30
+msgid "Delivery of all the photos. Minimum 60 photos"
+msgstr "Entrega de todas las fotos. Mínimo 60 fotos"
+
+#: templates/people/request.html:31
+msgid "Time photographer at the event 3 hours"
+msgstr "Tiempo del fotógrafo en el evento 3 horas"
+
+#: templates/people/request.html:32
+msgid "Optional www.rumbacaracas.com Publishing."
+msgstr "Publicación en www.rumbacaracas.com Opcional."
+
+#: templates/people/request.html:33
+msgid "Price: Bs 3000"
+msgstr "Precio: Bs. 3.000"
+
+#: templates/people/request.html:34
+msgid "Does not include lighting equipment."
+msgstr "No incluye equipos de iluminación."
+
+#: templates/people/request.html:35
+msgid "For weddings and events that warrant lighting conditions will be agreed with the client."
+msgstr "Para bodas y eventos que ameriten iluminación se acordarán condiciones con el cliente."
+
+#: templates/people/request.html:36
+msgid "Design and print photo album. Optional. Price negotiable"
+msgstr "Diseño e impresión de álbum de fotos. Opcional. Precio a convenir"
+
+#: templates/people/request.html:37
+msgid "RECORD VIDEO"
+msgstr "REGISTRO VIDEO"
+
+#: templates/people/request.html:38
+msgid "Video of 3 min, full HD"
+msgstr "Video de 3 min, full HD"
+
+#: templates/people/request.html:39
+msgid "Insertion VIMEO, Youtube and rumbacaracas.com."
+msgstr "Inserción en VIMEO,Youtube y rumbacaracas.com."
+
+#: templates/people/request.html:40
+msgid "Price: Bs 20,000"
+msgstr "Precio: Bs. 20.000"
+
 
 #: templates/people/request.html:22
 msgid ""

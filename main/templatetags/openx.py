@@ -81,6 +81,16 @@ def banner_zone_iframe( zone_id, width=None, height=None, noupdate=None ):
         noupdate = 0
     return dict( zone_id = zone_id, width = width, height=height,rand =rand, noupdate = noupdate  )
 
+#Simplest iframe integration
+@register.inclusion_tag( 'main/openx_banner_updated.html' )
+def banner_zone_iframe_updated( zone_id, width=None, height=None, noupdate=None ):
+    rand = int(100000 * random.random())
+    if noupdate != None:
+        noupdate = 1
+    else:
+        noupdate = 0
+    return dict( zone_id = zone_id, width = width, height=height,rand =rand, noupdate = noupdate  )
+
 
 @register.inclusion_tag( 'main/openx_float_banner.html' )
 def banner_zone_float( zone_id, width=None, height=None ):

@@ -200,3 +200,14 @@ def month_cal_dyn(year=None, month=None):
 @register.inclusion_tag('widgets/calendar.html')
 def month_cal(year=None, month=None):
     return dict()
+
+@register.inclusion_tag('widgets/posts_same_category.html')
+def posts_same_category(zinnia_entry=None):
+    if zinnia_entry:
+        categories = list(zinnia_entry.categories.all())
+        cateogory = categories.pop()#only considering the last category.
+        same_category_posts = Entry.published.filter(categories__slug = cateogory.slug).exclude(id = zinnia_entry.id).order_by( '-creation_date' )[:4]
+        return {'same_category_posts': same_category_posts}
+    return dict()
+
+

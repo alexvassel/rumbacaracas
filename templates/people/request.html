@@ -21,6 +21,27 @@
   	{% if request.GET.completed %}
           <h2>{% trans "Thanks for your interest in hiring our photography services. <br /> We will contact you shortly!"%}</h2>
     {% else %}
+    <div style="text-align: left;">
+	    <div><h2>{% trans "GRAPHIC SPECIALIST REGISTRATION EVENT."%}</h2></div>
+	    <div>{% trans "The largest staff of professional photographers for photographic and video record of the event:" %}</div>
+	    <div>{% trans "Product launches, sales conventions, press conferences, weddings, birthdays, graduations etc. proposed." %}</div>
+	    <div>{% trans "Includes:" %}</div>
+	    <div><b>{% trans "RECORD PHOTO:" %}</b></div>
+	    <div>{% trans "Event Review" %}</div>
+	    <div>{% trans "Delivery of all the photos. Minimum 60 photos" %}</div>
+	    <div>{% trans "Time photographer at the event 3 hours" %}</div>
+	    <div>{% trans "Optional www.rumbacaracas.com Publishing." %}</div>
+	    <div>{% trans "Price: Bs 3000" %}</div>
+	    <div>{% trans "Does not include lighting equipment." %}</div>
+	    <div>{% trans "For weddings and events that warrant lighting conditions will be agreed with the client." %}</div>
+	    <div>{% trans "Design and print photo album. Optional. Price negotiable" %}</div>
+	    <div>{% trans "RECORD VIDEO" %}</div>
+	    <div>{% trans "Video of 3 min, full HD" %}</div>
+	    <div>{% trans "Insertion VIMEO, Youtube and rumbacaracas.com." %}</div>
+	    <div>{% trans "Price: Bs 20,000" %}</div>
+    </div>
+    
+    
     <h2>{% trans "Fill the following form to hire a photo service for a public or private event:"%}</h2>
     {% if form.non_field_errors %}
         <div id="form-error">

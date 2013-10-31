@@ -1,7 +1,7 @@
 {% extends "zinnia/base.html" %}
 {% load i18n zinnia_tags %}
 {% load gplus tools openx%}
-{% load facebook twitter%}
+{% load facebook twitter widgets %}
 {% block title %}{{ object.title }}{% endblock %}
 
 
@@ -56,7 +56,7 @@
     
 	<div class="content encap">
 		{% if object.image and not object.preview_as_image%}
-			<img class="main-image2" src="{{ object.newsthumb.url }}" alt="{{ object.title }}" />
+			<img class="main-image2" src="{{ object.image.url }}" alt="{{ object.title }}" />
 		{% endif %}
         {% autoescape off%}
 		    {{object_content}}
@@ -67,7 +67,7 @@
 				{% trans "+ info: " %}{{object.source|urlize_target_blank }}
 			</strong>
         </p>
-        {% endif %}                    
+        {% endif %}
 	</div><!--//.content-->
 </div><!--//.node-->
     <div class="banner-container box-contents outnone widget">
@@ -78,6 +78,7 @@
 	{%facebook_comments object.get_absolute_url%}
 </div>
 {% endwith %}
+{%posts_same_category object%}
 {% endblock %}
 
 
