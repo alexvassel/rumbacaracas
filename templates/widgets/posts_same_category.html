@@ -2,18 +2,18 @@
 	{% load i18n %}
 	{% load tools %}
 	{% load facebook %}
-	<div class="news-main-box">
-		<div class="general-bar grey-bar">
+	<div class="news-main-box" style="width: 600px;">
+		<div class="general-bar grey-bar" style="width: 595px;">
 			{% trans "Similar News" %}
 		</div>
 		{% for object in same_category_posts %}
 			{% if forloop.counter|divisibleby:"2" %}
-				<div class="news-photos-box">
+				<div class="news-photos-box" style="width:281px;">
 			{% else %}
-				<div class="news-photos-box" style="margin-right: 30px;">
+				<div class="news-photos-box" style="margin-right:30px; width:281px;">
 			{% endif %}
 				<a href="{{ object.get_absolute_url }}">
-					<img src="{{ object.blogthumb.url }}" alt="{{ object.title }}">
+					<img style="width: 271px;" src="{{ object.blogthumb.url }}" alt="{{ object.title }}">
 				</a>
 				<div class="news-photos-info-box">
 					<a href="{{ object.get_absolute_url }}">
@@ -38,7 +38,7 @@
 		{% endfor %}
 		<div style="clear: both;"></div>
 		<a href="{% url zinnia_entry_archive_index %}" class="new-theme-gradient-bar-hyperlink">
-			<div class="general-bar new-theme-gradient-bar">
+			<div class="general-bar new-theme-gradient-bar" style="width: 595px;">
 				<span>
 					{% trans "SEE MORE NEWS" %}
 				</span>
