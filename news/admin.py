@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 #MONKEY PATCHING OF ZINNIA ADMIN
 EntryAdmin.fieldsets = ( ( _('Content'), {'fields': ( 'title', 'short', 'content', 'author', 'source',
                                                       'image', 'slider_image', 'status' )} ),
-                         ( _('Image preview'), {'fields': ('preview_as_image', 'preview_image' )} ),
+#                         ( _('Image preview'), {'fields': ('preview_as_image', 'preview_image' )} ),
                          ( _('Options'), {'fields': ( 'show_in_main_slider',
                                                       'authors',
                                                       'creation_date', 'start_publication',
