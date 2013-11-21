@@ -2193,7 +2193,7 @@ padding-top:2px;
 #main-contents #col-left .node-container .node div.content img.main-image2{ /* updated by saqib - news-details */
   display: block;
   /*float: right;*/
-  margin: 15px auto 20px 20px;
+  margin: 15px auto 20px 0px;
   border: 2px solid #898989;
   /*width:250px; height:200px;*/
  max-width: 620px;
