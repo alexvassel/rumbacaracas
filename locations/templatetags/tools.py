@@ -292,9 +292,9 @@ def main_background(context):
             url_name = 'main.views.index'
 
         for groups_raw in places:
-            groups = str(groups_raw.value).split(';')
+            groups = unicode(groups_raw.value).split(';')
             for group in groups:
-                if url_name.startswith( group ):
+                if url_name.startswith( group ) or request.path_info == group:
                     show = True
                     if groups_raw.background_image :
                         background_image = groups_raw.background_image.image
