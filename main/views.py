@@ -18,7 +18,7 @@ from django.contrib.contenttypes.models import ContentType
 from preferences import preferences
 
 import random
-
+import calendar
 
 
 from socialregistration.views import setup
@@ -62,13 +62,19 @@ def upcoming_events_list(count = 2):
 def most_viewed_events_list(count=2):
     today = datetime.today()
     dtstart = datetime( today.year, today.month, today.day )
+    range_month = calendar.monthrange(today.year, today.month)[1]
+    dtend = datetime( today.year, today.month, range_month )
+    
     try:
         ct_event = ContentType.objects.get(app_label='events', model='event')
-        event_list = list(Event.objects.filter(to_date__gte = dtstart).values_list('id', flat=True))
-        most_viewed_events = list(MostViewed.objects.filter(content_type=ct_event, content_type_object_id__in=event_list).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:count])
-        
-        events = list(Event.objects.filter(id__in = most_viewed_events))
-        events.sort( key = lambda a:a.to_date, reverse = True )
+        event_list = list(Event.objects.filter(to_date__gte = dtstart, to_date__lte = dtend).values_list('id', flat=True))
+        if event_list:
+            most_viewed_events = list(MostViewed.objects.filter(content_type=ct_event, content_type_object_id__in=event_list).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:count])
+            
+            events = list(Event.objects.filter(id__in = most_viewed_events))
+            events.sort( key = lambda a:a.to_date, reverse = True )
+        else:
+            return []
     except IndexError:
         pass
     return events
