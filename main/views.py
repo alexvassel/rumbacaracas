@@ -14,6 +14,7 @@ from django.http import HttpResponseRedirect
 from datetime import *;
 from dateutil.relativedelta import *
 from main.models import MostViewed
+from events.models import EventCategory
 from django.contrib.contenttypes.models import ContentType
 from preferences import preferences
 
@@ -67,7 +68,9 @@ def most_viewed_events_list(count=2):
     
     try:
         ct_event = ContentType.objects.get(app_label='events', model='event')
-        event_list = list(Event.objects.filter(to_date__gte = dtstart, to_date__lte = dtend).values_list('id', flat=True))
+        long_events_catogry_id=EventCategory.objects.filter(title='Promociones').values_list('id', flat=True)
+        event_list = list(Event.objects.filter(to_date__gte = dtstart, to_date__lte = dtend,).exclude(category=long_events_catogry_id[0]).values_list('id', flat=True))
+        event_list=event_list
         if event_list:
             most_viewed_events = list(MostViewed.objects.filter(content_type=ct_event, content_type_object_id__in=event_list).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:count])
             
