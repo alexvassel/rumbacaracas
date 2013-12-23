@@ -74,7 +74,7 @@ class ProfileAdmin( admin.ModelAdmin ):
         return super(ProfileAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
     def view_profile(self, obj):
         usernames=User.objects.filter(id=obj.user_id)
-        return u'<a href="%s" target="_blank">%s</a>' % ( reverse('ath_profile', None,  {'profile_id':usernames[0].username} ), _( 'View Profile' ) )
+        return u'<a href="%s" target="_blank">%s</a>' % ( reverse('ath_profile', None, kwargs={'profile_id':usernames[0].username} ), _( 'View Profile' ) )
 #        return u"<a href='%s%s' target='_blank'>view profile</a>" %("/locales/profile/",usernames[0].username)
     view_profile.allow_html = True
     view_profile.allow_tags = True  
