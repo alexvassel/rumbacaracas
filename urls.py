@@ -77,6 +77,8 @@ urlpatterns = patterns( '',
     # Uncomment the next line to enable the admin:
     ( r'^admin/', include( admin.site.urls ) ),
     #( r'^photologue/', include( 'photologue.urls' ) ),
+    
+    url( r'^profile/(?P<profile_id>\w+)/$', 'news.views.ath_profile', name = "ath_profile" ),#added for authors profile view
  )
 
 

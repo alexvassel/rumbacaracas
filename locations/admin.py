@@ -1,4 +1,6 @@
 from locations.models import LocationType, RestaurantType, LocationMusic, Location, DressType, LocationArea
+from news.zinniaModels import AuthorProfile
+from django.contrib.auth.models import User
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
@@ -44,3 +46,17 @@ admin.site.register( LocationArea )
 admin.site.register( DressType )
 admin.site.register( RestaurantType )
 admin.site.register( LocationMusic )
+#new model register for author
+class ProfileAdmin( admin.ModelAdmin ):
+    list_display = ( 'user', 'profile_photo','about_author','view_profile' )
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "user":
+            kwargs["queryset"] = User.objects.filter(is_staff=True)
+        return super(ProfileAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+    def view_profile(self, obj):
+        usernames=User.objects.filter(id=obj.user_id)
+        return u"<a href='%s%s' target='_blank'>view profile</a>" %("/locales/profile/",usernames[0].username)
+    view_profile.allow_html = True
+    view_profile.allow_tags = True  
+    view_profile.short_description = 'Action'
+admin.site.register( AuthorProfile, ProfileAdmin )

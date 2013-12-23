@@ -23,8 +23,9 @@ from django.core.urlresolvers import reverse
 from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
-
-
+from zinniaModels import AuthorProfile
+from django.contrib.auth.models import User
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
 @login_required( login_url = '/login/' )
 @render_to( 'news/add.html' )
@@ -108,3 +109,33 @@ def add( request, type ):
         "type": type,
         'imagesForm': images_formset,
     }
+
+
+@render_to( 'news/profile_detail.html' )
+def ath_profile ( request,profile_id):
+    dict = {}
+    profileid = User.objects.filter(username=profile_id)
+    profile = AuthorProfile.objects.select_related('user').filter(user=profileid[0].id)
+    entries = Entry.objects.filter(authors=profileid[0].id)
+    try:
+        page = int( request.GET.get( 'page', '1' ) )
+    except ValueError:
+        page = 1
+ 
+    if entries:
+        paginator = Paginator( entries, 12 )
+        try:
+            locations_page = paginator.page( page )
+        except ( EmptyPage, InvalidPage ):
+            locations_page = paginator.page( paginator.num_pages )
+    else:
+            locations_page = None
+            paginator = None
+    entries = Entry.published.filter(authors=profileid[0].id)[1:6]
+    dict['profile']=profile
+    dict['entry']=locations_page
+    dict['current_page']=locations_page
+    dict['current_paginator']=paginator
+    return dict
+
+

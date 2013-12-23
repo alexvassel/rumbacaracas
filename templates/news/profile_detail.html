@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load cache %}
+{% block title %}{% trans "Locales | Rumbacaracas" %}{% if location %} | {{ location.title }}{% endif %}{% endblock %}
+{% load tools %}
+{% load openx %}
+{% load gplus %}
+{% load widgets %}
+{% load paging %}
+
+{% load facebook twitter%}
+
+{% block colleft %}
+<style>
+
+table tr.odd{
+text-align:left;
+background:none repeat scroll 0 0 #F8F8F8;
+
+}
+.locales-desc table tr.even {
+
+text-align:left;
+   
+    
+    color: #000000;
+    padding: 9px;
+    vertical-align: top;
+    width:500px;
+}
+
+a.read-more-red {
+    display: inline-block;
+    margin: 5px 0 0;
+    padding: 3px 15px;
+    text-transform: none;
+}
+.photos-share-options {
+   
+}
+.photos-share-options ul li{
+	border-bottom:none;
+    font-size: 12px;
+    list-style: square inside none;
+    display: block;
+    float: left;
+}
+.item-list ul li {
+    background: url("images/pager_normal.gif") repeat-x scroll left top #D6D6D6;
+    border: 1px solid #818181;
+    display: inline-block;
+    font-size: 11px;
+    margin: 0 -3px;
+    padding:5px;
+   
+}
+.item-list ul li.pager-current {
+    background: url("images/btn_red.gif") repeat-x scroll center top #F06001;
+}
+
+</style>
+<div class="node-container eventos box-shadows encap">
+<div class="encap">
+<span class="flt-left"><h2 class="title">{% trans "Profiles"%}</h2></span>
+</div><!--//.title-wrap-->
+
+<div class="node evento-details encap">
+<div class="node-mini-left c65l">
+<div class="contents">
+{% for data in profile %}
+<h2>{{data.user.username}}</h2>
+<div class="social-share mb10">
+</div><!--//.social-share-->
+<div class="event-image-teaser">
+	<a class="image">
+	
+    
+  		<img src="{{data.newsthumb.url}}" width="180px;"/>
+  	
+  	</a>
+	{%endfor%}
+  	
+ <div class="node-mini-right c32r">
+  <div class="event-info outnone">
+<div class="event-image-teaser">
+<div class="locales-desc">
+  <table cellpadding="0" cellspacing="0" border="0" width="310px">
+    <tbody>
+    {% for data in profile %}
+    
+    <tr class="even">
+    <td><strong>{% trans "Name"%}:</strong></td>
+    <td><strong>
+    {{data.user.first_name}}&nbsp;&nbsp;&nbsp;{{data.user.last_name}}</strong>
+    </td>
+    </tr>
+   
+    <tr class="odd">
+    <td><strong>{% trans "Email"%}:</strong></td>
+    <td><strong>
+    {{data.user.email}}</strong>
+    
+    </td>
+    </tr>
+    <tr class="even">
+    <td><strong>{% trans "About me"%}:</strong></td>
+    <td><strong>
+    {{data.about_author}}
+    </strong>
+    </td>
+    </tr>
+   {%endfor%}
+    </tbody>
+    </table>
+    </div>
+	
+	  
+</div><!--//.event-image-teaser-->
+  </div><!--//.event-info-->
+</div>
+  	
+</div><!--//.event-image-teaser-->
+
+<h1>{% trans "Other Articles"%}</h1>  	
+
+</div>
+</div>
+</div>
+
+
+
+{%for entries in entry.object_list %} 	
+<div class="node evento-details encap">
+<div class="node-mini-left c65l">
+
+<div class="contents">
+<div class="social-share mb10">
+</div><!--//.social-share-->
+<div class="event-image-teaser">
+	<a class="image">
+  		<img src="{{entries.blogthumb.url}}" width="230px" height ="250px" />
+	  	
+  	</a>
+
+ 
+ <div class="node-mini-right c32r">
+  <div class="event-info outnone" style="width:300px;">
+<div class="locales-desc">
+<h1>{{entries.title}}</h1>	  
+</div><!--//.event-image-teaser-->
+<span class="submitted">
+{{entries.creation_date}}
+</span>
+<p>{{entries.content|safe|striptags|slice:"200"}}</p>
+
+<a class="read-more-red" href="">Leer Más</a>
+
+  </div><!--//.event-info-->
+
+
+</div>
+  	
+</div><!--//.event-image-teaser-->
+
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+<div class="photos-share-options">
+    <ul class="teaser-options encap outnone fcml0 lcmr0">
+      		<li class="pl0">
+					<a class="socializer-1 with-comment-count" href="{{entries.get_absolute_url}}#disqus_thread">
+      		({%facebook_comments_count entries.get_absolute_url%})
+      	</a>
+  		</li>
+  		<li>
+  			{% facebook_like entries.get_absolute_url%}
+		</li>
+  		<li>
+  			{% twitter_share entries.get_absolute_url entries.title%}
+		</li>
+        <li>
+            {% gplus entries.get_absolute_url%}
+        </li>
+    </ul>
+  </div>
+
+{%endfor%}
+  	<center>
+{% if current_page.object_list%}
+		{% common_paginator%}
+	{% endif%}
+	</center>
+<div class="encap" id="disqus_thread">
+  	{%facebook_comments request.build_absolute_uri %}
+  </div>
+  
+</div>
+
+    {% endblock %}
+{% block colright %}
+    <div class="banner-container box-shadows outnone widget">
+        {% banner_zone_iframe 114 300 250%}
+    </div><!--//.banner-container-->
+    <div class="clear-block block block-views widget widget-calendar">
+        {% month_cal%}
+    </div>
+    {% subscribe_block %}
+
+    <div class="split-sidebars encap">
+      <div class="c57l left">
+          {% if location %}
+            {% location_list %}
+          {% else %}
+            {% upcoming_events_block 2 %}
+          {% endif %}
+
+
+      </div><!--//.left-->
+      <div class="c40r right">
+        <div class="placeholders">
+          <div class="box-border box-contents box-shadows">
+            {% banner_zone_iframe 118 120 60 %}
+          </div><!--//.box-contents-->
+        </div><!--//.placeholder-->
+        <div class="placeholders mt10">
+          <div class="box-border box-contents box-shadows">
+            {% banner_zone_iframe 119 120 240 %}
+          </div>
+          <!--//.box-contents-->
+        </div><!--//.placeholder-->
+        <div class="banner-container box-shadows outnone widget">
+            {% banner_zone_iframe 115 120 600 %}
+        </div><!--//.banner-container-->
+      </div><!--//.right-->
+    </div><!--//.split-sidebars-->
+{% endblock %}
+    
