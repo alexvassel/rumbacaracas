@@ -6,6 +6,9 @@ from zinnia.models import Entry
 from zinnia.admin import EntryAdmin
 from news.models import EntryImage
 from django.utils.translation import ugettext_lazy as _
+from zinniaModels import AuthorProfile
+from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 #MONKEY PATCHING OF ZINNIA ADMIN
 EntryAdmin.fieldsets = ( ( _('Content'), {'fields': ( 'title', 'short', 'content', 'author', 'source',
@@ -62,3 +65,18 @@ from news.models import MainSliderPreferences
 
 admin.site.register( MainSliderPreferences )
 
+#new model register for author
+class ProfileAdmin( admin.ModelAdmin ):
+    list_display = ( 'user', 'profile_photo','about_author','view_profile' )
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "user":
+            kwargs["queryset"] = User.objects.filter(is_staff=True)
+        return super(ProfileAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+    def view_profile(self, obj):
+        usernames=User.objects.filter(id=obj.user_id)
+        return u'<a href="%s" target="_blank">%s</a>' % ( reverse('ath_profile', None,  {usernames[0].username} ), _( 'View Profile' ) )
+#        return u"<a href='%s%s' target='_blank'>view profile</a>" %("/locales/profile/",usernames[0].username)
+    view_profile.allow_html = True
+    view_profile.allow_tags = True  
+    view_profile.short_description = 'Action'
+admin.site.register( AuthorProfile, ProfileAdmin )
