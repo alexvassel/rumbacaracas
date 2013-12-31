@@ -61,7 +61,7 @@ a.read-more-red {
 </style>
 <div class="node-container eventos box-shadows encap">
 <div class="encap">
-<span class="flt-left"><h2 class="title">{% trans "Profiles"%}</h2></span>
+<span class="flt-left"><h2 class="title">{% trans "BLOGGERS"%}</h2></span>
 </div><!--//.title-wrap-->
 
 <div class="node evento-details encap">
@@ -88,22 +88,15 @@ a.read-more-red {
     <tbody>
     {% for data in profile %}
     
-    <tr class="even">
-    <td><strong>{% trans "Name"%}:</strong></td>
+    <tr class="odd">
+    <td style="color:black;"><strong>{% trans "name"%}:</strong></td>
     <td><strong>
     {{data.user.first_name}}&nbsp;&nbsp;&nbsp;{{data.user.last_name}}</strong>
     </td>
     </tr>
    
-    <tr class="odd">
-    <td><strong>{% trans "Email"%}:</strong></td>
-    <td><strong>
-    {{data.user.email}}</strong>
-    
-    </td>
-    </tr>
     <tr class="even">
-    <td><strong>{% trans "About me"%}:</strong></td>
+    <td style="color:black;"><strong>{% trans "+info"%}:</strong></td>
     <td><strong>
     {{data.about_author}}
     </strong>
@@ -121,7 +114,7 @@ a.read-more-red {
   	
 </div><!--//.event-image-teaser-->
 
-<h1>{% trans "Other Articles"%}</h1>  	
+<h1 style="margin-bottom:-10px;margin-top:10px;">{% trans "Other" %} {% trans "Articles" %}</h1>  	
 
 </div>
 </div>
@@ -138,7 +131,7 @@ a.read-more-red {
 </div><!--//.social-share-->
 <div class="event-image-teaser">
 	<a class="image">
-  		<img src="{{entries.blogthumb.url}}" width="230px" height ="250px" />
+  		<img src="{{entries.MainThumb.url}}" />
 	  	
   	</a>
 
@@ -146,14 +139,14 @@ a.read-more-red {
  <div class="node-mini-right c32r">
   <div class="event-info outnone" style="width:300px;">
 <div class="locales-desc">
-<h1>{{entries.title}}</h1>	  
+<a href="{{entries.get_absolute_url}}"><h1>{{entries.title}}</h1></a>	  
 </div><!--//.event-image-teaser-->
 <span class="submitted">
 {{entries.creation_date}}
 </span>
 <p>{{entries.content|safe|striptags|slice:"200"}}</p>
 
-<a class="read-more-red" href="">Leer Más</a>
+<a class="read-more-red" href="{{entries.get_absolute_url}}">{% trans "Read More" %}</a>
 
   </div><!--//.event-info-->
 

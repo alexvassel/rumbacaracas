@@ -11,11 +11,11 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
 #MONKEY PATCHING OF ZINNIA ADMIN
-EntryAdmin.fieldsets = ( ( _('Content'), {'fields': ( 'title', 'short', 'content', 'author', 'source',
+EntryAdmin.fieldsets = ( ( _('Content'), {'fields': ( 'title', 'short', 'content', 'authors',
+
                                                       'image', 'slider_image', 'status' )} ),
 #                         ( _('Image preview'), {'fields': ('preview_as_image', 'preview_image' )} ),
                          ( _('Options'), {'fields': ( 'show_in_main_slider',
-                                                      'authors',
                                                       'creation_date', 'start_publication',
                                                       'end_publication' ),
                                           'classes': ( 'collapse', 'collapse-closed' )} ),
