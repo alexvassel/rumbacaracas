@@ -29,7 +29,7 @@
     <h2 class="title">{{object.title }}</h2>
     <span class="submitted">
         {% if object.author %}
-            {% trans "Written by" %} <span class="vcard author"><a href="/profile/{{object.authors.all.0.username}}" target="_blank">{{ object|urlize_author_source }}</a></span>
+            {% trans "Written by" %} <span class="vcard author"><a href="/profile/{{object.authors.all.0.username}}" target="_blank">{{ object.author }}</a></span>
         {% else %}
             {% trans "Written" %}
         {% endif %}
