@@ -68,8 +68,8 @@
                             {% endfor %} /
                         {% endif %}
                     
-                        {% if object.author %}
-                            {% trans "Written by" %} <span class="vcard author"><a href="/profile/{{object.authors.all.0.username}}" target="_blank">{{ object.author }}</a></span>
+                        {% if object.author_profile %}
+                            {% trans "Written by" %} <span class="vcard author"><a href="{% url ath_profile object.author_profile.user.username %}" target="_blank">{{ object.author_profile }}</a></span>
                         {% else %}
                             {% trans "Written" %}
                         {% endif %}

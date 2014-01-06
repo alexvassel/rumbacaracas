@@ -11,9 +11,47 @@ import datetime
 import string,random
 import os
 
+
+def upload_to_profile(instance, filename):
+    format = 'uploads/author_profiles/%Y/%m/%d/%H%M%S'
+    prefix = os.path.normpath(force_unicode(datetime.datetime.now().strftime(smart_str(format))))
+    postfix = '%s%s' % (
+        string.join(random.sample(string.ascii_letters + string.digits, 5), ''),
+        os.path.splitext(filename)[-1],
+    )
+    filepath = '%s_%s' % (prefix, postfix)
+    return filepath
+
+class AuthorProfile( ImageModel ):
+    profile_photo= ImageRestrictedFileField(upload_to = upload_to_profile , null=True, blank = True )
+    about_author = models.TextField( _( 'About Author' ), blank = True, null = True )
+    user = models.OneToOneField( User , blank = False , null = False )
+    class IKOptions:
+        # This inner class is where we define the ImageKit options for the model
+        spec_module = 'yourphotos.specs'
+        cache_dir = 'image_cache/'
+        image_field = 'profile_photo'
+        save_count_as = 'num_views'
+    
+    def __unicode__( self ):
+        return self.user.first_name + " " + self.user.last_name
+    
+    
+    @models.permalink
+    def get_absolute_url( self ):
+        """Return entry's URL"""
+        return ( 'ath_profile', (), {
+            'profile_id': self.user.username} )
+    
+    class Meta:
+        verbose_name = _( 'Author Profile' )
+        verbose_name_plural = _( 'Author Profiles' )
+
+
 class MyEntry( EntryAbstractClass ):
     short = models.TextField( _( 'short description' ), max_length=50 )
     source = models.CharField( _( 'source' ), blank = True, max_length = 255 )
+    author_profile = models.ForeignKey( AuthorProfile , blank = False , null = True, verbose_name="Author Profile" )
     author = models.CharField( _( 'author' ), blank = True, max_length = 255 )
     slider_image = ImageRestrictedFileField( _( 'Slider image 619x258' ), upload_to = UPLOAD_TO , blank = True )
     show_in_main_slider = models.BooleanField( _( 'Show in Main Slider' ), default = False )
@@ -61,39 +99,5 @@ def upload_to(instance, filename):
 
 
 
-def upload_to_profile(instance, filename):
-    format = 'uploads/author_profiles/%Y/%m/%d/%H%M%S'
-    prefix = os.path.normpath(force_unicode(datetime.datetime.now().strftime(smart_str(format))))
-    postfix = '%s%s' % (
-        string.join(random.sample(string.ascii_letters + string.digits, 5), ''),
-        os.path.splitext(filename)[-1],
-    )
-    filepath = '%s_%s' % (prefix, postfix)
-    return filepath
-
-class AuthorProfile( ImageModel ):
-    profile_photo= ImageRestrictedFileField(upload_to = upload_to_profile , null=True, blank = True )
-    about_author = models.TextField( _( 'About Author' ), blank = True, null = True )
-    user = models.OneToOneField( User , blank = False , null = False )
-    class IKOptions:
-        # This inner class is where we define the ImageKit options for the model
-        spec_module = 'yourphotos.specs'
-        cache_dir = 'image_cache/'
-        image_field = 'profile_photo'
-        save_count_as = 'num_views'
-    
-    def __unicode__( self ):
-        return self.user.first_name + " " + self.user.last_name
-    
-    
-    @models.permalink
-    def get_absolute_url( self ):
-        """Return entry's URL"""
-        return ( 'ath_profile', (), {
-            'profile_id': self.user.username} )
-    
-    class Meta:
-        verbose_name = _( 'Author Profile' )
-        verbose_name_plural = _( 'Author Profiles' )
     
     

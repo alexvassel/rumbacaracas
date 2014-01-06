@@ -15,8 +15,9 @@
 
 table tr.odd{
 text-align:left;
-background:none repeat scroll 0 0 #F8F8F8;
-
+margin-bottom: 5px;
+line-height: 25px;
+/*background:none repeat scroll 0 0 #F8F8F8;*/
 }
 .locales-desc table tr.even {
 
@@ -59,112 +60,165 @@ a.read-more-red {
 }
 
 </style>
-<div class="node-container eventos box-shadows encap">
-<div class="encap">
-<span class="flt-left"><h2 class="title">{% trans "BLOGGERS"%}</h2></span>
-</div><!--//.title-wrap-->
+<div class="node-container locales box-shadows encap">
+	<div class="title-wrap encap">
+		<span class="flt-left">
+			<h2 class="title">{% block titlehdr %}{% trans "BLOGGERS"%}{% endblock %}</h2>
+		</span>
+		<span class="flt-right">
+		  <ul id="socializer" class="socializer encap outnone fcml0 lcmr0">
+	        <li>
+	        	{% if category.slug == "blog" %}
+	        		<a class="socializer-15" href="{% url news_add_blog %}">
+						<span style="padding-left:5px">{%trans "Add Article"%}</span>
+					</a>
+        		{%else%}
+        		{% with first_cat=object.categories.all|first %}
+					{% if first_cat.slug == "blog"%}
+						<a class="socializer-15" href="{% url news_add_blog %}">
+							<span style="padding-left:5px">{%trans "Add Article"%}</span>
+						</a>
+					{%else%}
+						<a class="socializer-7" href="{% url news_add %}">
+							<span style="padding-left:5px">{%trans "Add News"%}</span>
+						</a>
+					{% endif %}
+				{% endwith %}
+        		{% endif %}
+			</li>
+	      </ul>
+		</span>
+	</div><!--//.title-wrap-->
 
-<div class="node evento-details encap">
-<div class="node-mini-left c65l">
-<div class="contents">
-{% for data in profile %}
-<h2>{{data.user.username}}</h2>
-<div class="social-share mb10">
-</div><!--//.social-share-->
-<div class="event-image-teaser">
-	<a class="image">
-	
-    
-  		<img src="{{data.newsthumb.url}}" width="180px;"/>
+	<div class="node evento-details encap" style="border: none;">
+		<div class="node-mini-left c65l">
+			<div class="contents">
+				{% for data in profile %}
+				<h2 class="title" style="font-weight: bold; margin: 0;">{{data}}</h2>
+				<div class="social-share mb10">
+				</div><!--//.social-share-->
+				<div class="event-image-teaser">
+					<a class="image">
+				  		<img src="{{data.newsthumb.url}}" width="180px;"/>
+				  	</a>
+				{%endfor%}
   	
-  	</a>
-	{%endfor%}
-  	
- <div class="node-mini-right c32r">
-  <div class="event-info outnone">
-<div class="event-image-teaser">
-<div class="locales-desc">
-  <table cellpadding="0" cellspacing="0" border="0" width="310px">
-    <tbody>
-    {% for data in profile %}
-    
-    <tr class="odd">
-    <td style="color:black;"><strong>{% trans "name"%}:</strong></td>
-    <td><strong>
-    {{data.user.first_name}}&nbsp;&nbsp;&nbsp;{{data.user.last_name}}</strong>
-    </td>
-    </tr>
+					<div class="node-mini-right c32r">
+						<div class="event-info outnone">
+							<div class="event-image-teaser">
+								<div class="locales-desc">
+									<table cellpadding="0" cellspacing="0" border="0" width="310px">
+    									<tbody>
+    										{% for data in profile %}
+    										<tr class="odd">
+    											<td style="color:black;"><strong>{% trans "name"%}:</strong></td>
+    											<td><strong>
+    												{{data.user.first_name}}&nbsp;&nbsp;&nbsp;{{data.user.last_name}}</strong>
+    											</td>
+    										</tr>
    
-    <tr class="even">
-    <td style="color:black;"><strong>{% trans "+info"%}:</strong></td>
-    <td><strong>
-    {{data.about_author}}
-    </strong>
-    </td>
-    </tr>
-   {%endfor%}
-    </tbody>
-    </table>
-    </div>
-	
-	  
-</div><!--//.event-image-teaser-->
-  </div><!--//.event-info-->
-</div>
-  	
-</div><!--//.event-image-teaser-->
-
-<h1 style="margin-bottom:-10px;margin-top:10px;">{% trans "Other" %} {% trans "Articles" %}</h1>  	
-
-</div>
-</div>
-</div>
+    										<tr class="even">
+    											<td style="color:black;"><strong>{% trans "+info"%}:</strong></td>
+    											<td><strong>{{data.about_author}}</strong></td>
+    										</tr>
+   											{%endfor%}
+    									</tbody>
+    								</table>
+    							</div>
+							</div><!--//.event-image-teaser-->
+						</div><!--//.event-info-->
+					</div>
+				</div><!--//.event-image-teaser-->
+				{%comment%}
+				<div class="general-bar grey-bar" style="width: 595px;">
+					{% trans "Other" %} {% trans "Articles" %}
+				</div>
+				{%endcomment%}
+			</div>
+		</div>
+	</div>
 
 
+{% if entry.object_list %}
+	<div class="news-main-box" style="width: 600px;">
+		<div class="general-bar grey-bar" style="width: 595px;">
+			{% trans "Other" %} {% trans "Articles" %}
+		</div>
+		{% for object in entry.object_list %}
+			{% if forloop.counter|divisibleby:"2" %}
+				<div class="news-photos-box" style="width:281px;">
+			{% else %}
+				<div class="news-photos-box" style="margin-right:30px; width:281px;">
+			{% endif %}
+				<a href="{{ object.get_absolute_url }}">
+					<img style="width: 271px;" src="{{ object.blogthumb.url }}" alt="{{ object.title }}">
+				</a>
+				<div class="news-photos-info-box">
+					<a href="{{ object.get_absolute_url }}">
+						<h3 class="news-photo-desc">
+							{{ object.title|truncate:53 }}
+						</h3>
+					</a>
+					<div class="news-photo-date-info">
+						{{ object.creation_date|date:"d.m.y" }} /
+						{% for cat in object.categories.all %}
+							<a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+							{% if not forloop.last %}, {% endif %}
+	      				{% endfor %} /
+						<a href="{{ object.get_absolute_url }}#disqus_thread">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
+					</div>
+					<div class="news-photos-details">
+						{{ object.short|truncate:162 }}
+					</div>
+					<a class="new-theme-read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
+				</div>
+			</div>
+		{% endfor %}
+		<div style="clear: both;"></div>
+		<a href="{% url zinnia_entry_archive_index %}" class="new-theme-gradient-bar-hyperlink">
+			<div class="general-bar new-theme-gradient-bar" style="width: 595px;">
+				<span>
+					{% trans "SEE MORE NEWS" %}
+				</span>
+			</div>
+		</a>
+	</div>
+	<div style="clear: both;"></div>
+{% endif %}
 
-{%for entries in entry.object_list %} 	
-<div class="node evento-details encap">
-<div class="node-mini-left c65l">
 
-<div class="contents">
-<div class="social-share mb10">
-</div><!--//.social-share-->
-<div class="event-image-teaser">
-	<a class="image">
-  		<img src="{{entries.MainThumb.url}}" />
-	  	
-  	</a>
+{%comment%}
 
- 
- <div class="node-mini-right c32r">
-  <div class="event-info outnone" style="width:300px;">
-<div class="locales-desc">
-<a href="{{entries.get_absolute_url}}"><h1>{{entries.title}}</h1></a>	  
-</div><!--//.event-image-teaser-->
-<span class="submitted">
-{{entries.creation_date}}
-</span>
-<p>{{entries.content|safe|striptags|slice:"200"}}</p>
+	{%for entries in entry.object_list %} 	
+	<div class="node evento-details encap">
+		<div class="node-mini-left c65l">
 
-<a class="read-more-red" href="{{entries.get_absolute_url}}">{% trans "Read More" %}</a>
+			<div class="contents">
+				<div class="social-share mb10">
+				</div><!--//.social-share-->
+				<div class="event-image-teaser">
+					<a class="image">
+				  		<img src="{{entries.MainThumb.url}}" />
+				  	</a>
 
-  </div><!--//.event-info-->
+					<div class="node-mini-right c32r">
+						<div class="event-info outnone" style="width:300px;">
+							<div class="locales-desc">
+								<a href="{{entries.get_absolute_url}}"><h1>{{entries.title}}</h1></a>	  
+							</div><!--//.event-image-teaser-->
+							<span class="submitted">
+								{{entries.creation_date}}
+							</span>
+							<p>{{entries.content|safe|striptags|slice:"200"}}</p>
 
+							<a class="read-more-red" href="{{entries.get_absolute_url}}">{% trans "Read More" %}</a>
 
-</div>
-  	
-</div><!--//.event-image-teaser-->
-
-
-
-</div>
-
-
-</div>
-
-
-
-</div>
+  						</div><!--//.event-info-->
+					</div>
+				</div><!--//.event-image-teaser-->
+			</div>
+		</div>
+	</div>
 
 
 <div class="photos-share-options">
@@ -192,6 +246,7 @@ a.read-more-red {
 		{% common_paginator%}
 	{% endif%}
 	</center>
+{%endcomment%}
 <div class="encap" id="disqus_thread">
   	{%facebook_comments request.build_absolute_uri %}
   </div>

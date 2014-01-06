@@ -114,9 +114,14 @@ def add( request, type ):
 @render_to( 'news/profile_detail.html' )
 def ath_profile ( request,profile_id):
     dict = {}
-    profileid = User.objects.filter(username=profile_id)
-    profile = AuthorProfile.objects.select_related('user').filter(user=profileid[0].id)
-    entries = Entry.objects.filter(authors=profileid[0].id)
+    try:
+        profileid = User.objects.filter(username=profile_id)
+        profile = AuthorProfile.objects.select_related('user').filter(user=profileid[0].id)
+        entries = Entry.objects.filter(author_profile=profile[0])
+    except Exception:
+        profileid = None
+        profile = None
+        entries = None
     try:
         page = int( request.GET.get( 'page', '1' ) )
     except ValueError:
