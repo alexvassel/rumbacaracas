@@ -6,6 +6,7 @@ from zinnia.models import Entry
 from zinnia.admin import EntryAdmin
 from news.models import EntryImage
 from django.utils.translation import ugettext_lazy as _
+from django.utils.html import urlize
 from zinniaModels import AuthorProfile
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
@@ -80,4 +81,9 @@ class ProfileAdmin( admin.ModelAdmin ):
     view_profile.allow_html = True
     view_profile.allow_tags = True  
     view_profile.short_description = 'Action'
+    
+    def save_model(self, request, obj, form, change):
+        obj.about_author = urlize(obj.about_author);
+        obj.save()
+    
 admin.site.register( AuthorProfile, ProfileAdmin )

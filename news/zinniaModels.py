@@ -51,7 +51,7 @@ class AuthorProfile( ImageModel ):
 class MyEntry( EntryAbstractClass ):
     short = models.TextField( _( 'short description' ), max_length=50 )
     source = models.CharField( _( 'source' ), blank = True, max_length = 255 )
-    author_profile = models.ForeignKey( AuthorProfile , blank = False , null = True, verbose_name="Author Profile" )
+    author_profile = models.ForeignKey( AuthorProfile , blank = True , null = True, verbose_name="Author Profile" )
     author = models.CharField( _( 'author' ), blank = True, max_length = 255 )
     slider_image = ImageRestrictedFileField( _( 'Slider image 619x258' ), upload_to = UPLOAD_TO , blank = True )
     show_in_main_slider = models.BooleanField( _( 'Show in Main Slider' ), default = False )

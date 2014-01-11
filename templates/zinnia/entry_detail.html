@@ -28,10 +28,14 @@
 <div id="entry-{{ object.pk }}" class="node music-news encap {% if object.featured %} featured{% endif %}">
     <h2 class="title">{{object.title }}</h2>
     <span class="submitted">
-        {% if object.author_profile %}
+        {% if object.author_profile and object.author_profile != "" %}
             {% trans "Written by" %} <span class="vcard author"><a href="{% url ath_profile object.author_profile.user.username %}" target="_blank">{{ object.author_profile }}</a></span>
         {% else %}
-            {% trans "Written" %}
+        	{% if object.author and object.author != "" %}
+        		{% trans "Written by" %} <span class="vcard author">{{object.author|safe}}</span>
+        	{% else %}
+            	{% trans "Written" %}
+            {% endif %}
         {% endif %}
 		{% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}
 	</span>

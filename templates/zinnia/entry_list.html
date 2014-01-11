@@ -71,7 +71,11 @@
                         {% if object.author_profile %}
                             {% trans "Written by" %} <span class="vcard author"><a href="{% url ath_profile object.author_profile.user.username %}" target="_blank">{{ object.author_profile }}</a></span>
                         {% else %}
-                            {% trans "Written" %}
+                            {% if object.author and object.author != "" %}
+				        		{% trans "Written by" %} <span class="vcard author">{{object.author|safe}}</span>
+				        	{% else %}
+				            	{% trans "Written" %}
+				            {% endif %}
                         {% endif %}
                         {% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}
                     </span>
