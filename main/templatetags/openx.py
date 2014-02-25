@@ -92,6 +92,16 @@ def banner_zone_iframe_updated( zone_id, width=None, height=None, noupdate=None 
     return dict( zone_id = zone_id, width = width, height=height,rand =rand, noupdate = noupdate  )
 
 
+@register.inclusion_tag( 'main/revive_banner.html' )
+def revive_banner( zone_id, width=None, height=None, n=None, noupdate=None ):
+    rand = int(100000 * random.random())
+    if noupdate != None:
+        noupdate = 1
+    else:
+        noupdate = 0
+    return dict( zone_id = zone_id, width = width, height=height,rand =rand, n=n, noupdate = noupdate  )
+
+
 @register.inclusion_tag( 'main/openx_float_banner.html' )
 def banner_zone_float( zone_id, width=None, height=None ):
     rand = round(100000 * random.random(), 5)
