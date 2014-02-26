@@ -213,7 +213,7 @@
 	</div>
 	<div style="clear: both;"></div>
 	<div class="banner-container outnone" style="margin: 0 auto; text-align: center; box-shadow: none;">
-		{% banner_zone_iframe 117 468 100 1 %}
+		{% revive_banner 3 468 100 "a2b840a7" 1 %}
 	</div><!--//.banner-container-->
 	
 	<div class="new-theme-most-viewed-box">
@@ -317,7 +317,7 @@
 	</div>
 	<div style="clear: both;"></div>
 	<div id="new-theme-long-banner" class="banner-container outnone" style="margin: 0 auto; text-align: center; box-shadow: none;">
-		{% banner_zone_iframe 175 960 300%}
+		{% revive_banner 3 960 300 "a2b840a7" %}
 	</div>
 	<div class="new-theme-videos-box">
 		<div class="general-bar orange-bar">
@@ -358,7 +358,7 @@
 	</div>
 	<div style="clear: both;"></div>
 	<div class="banner-container outnone" style="margin: 0 auto; text-align: center; box-shadow: none;">
-		{% banner_zone_iframe 179 468 100 1 %}
+		{% revive_banner 3 468 100 "a2b840a7" 1 %}
 	</div>
 	<div class="blog-main-box">
     	<div class="general-bar grey-bar">
@@ -410,7 +410,7 @@
 	
 	<div style="clear: both;"></div>
 	<div class="banner-container outnone" style="margin: 0 auto; text-align: center; box-shadow: none;">
-		{% banner_zone_iframe 117 468 100 1 %}
+		{% revive_banner 3 468 100 "a2b840a7" 1 %}
 	</div>
 	
 	<div class="events-news-main-box">
@@ -760,13 +760,10 @@
     <div class="clear-block block block-views widget widget-calendar">
         {% month_cal%}
     </div>
-
+	<div class="banner-container box-shadows outnone widget">
+        {% revive_banner 6 300 250 "a51982fc" %}
+    </div><!--//.banner-container-->
     <div class="split-sidebars encap">
-    	<div class="box-title" style="text-align: center;">
-    		<h2>
-    			{% trans "Last Edition" %}
-    		</h2>
-    	</div>
     	<div class="new-theme-rumba-image">
     		{% banner_zone_iframe 171 300 600%}
 			<!--<img src="{% value_from_settings "STATIC_URL" %}images/new-theme/rumbaCracas.png">-->
@@ -820,7 +817,7 @@
        </div>
        {% endcomment %}
        <div id="add-above-yourphotos-box" class="banner-container box-shadows outnone widget">
-	        {% banner_zone_iframe 177 300 250%}
+	        {% revive_banner 7 300 250 "a74f8f69" %}
 	   </div><!--//.banner-container-->
 		
 		<div class="your-photos-main-box">
@@ -945,7 +942,7 @@
 	</div>
 	
 	<div class="banner-container box-shadows outnone widget">
-        {% banner_zone_iframe 172 300 500 %}
+        {% revive_banner 8 300 500 "ae981f89" %}
     </div><!--//.banner-container-->
 
 {% endblock %}
