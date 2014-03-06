@@ -5,6 +5,9 @@
 {% load facebook %}
 {% load paging %}
 {% load cache %}
+{% load openx %}
+{% load widgets %}
+
 
 {% block advbodycls %}section-videos{% endblock %}
 
@@ -91,3 +94,18 @@
 </script>
 {% endblock %}
 
+{% block colright %}
+
+    <div class="banner-container box-shadows outnone widget">
+        {% revive_banner 9 300 250 "a72c0636" %}
+    </div><!--//.banner-container-->
+
+    <div class="clear-block block block-views widget widget-calendar">
+        {% month_cal%}
+    </div>
+
+    <div class="banner-container box-shadows outnone widget">
+        {% revive_banner 10 300 250 "a796f138" %}
+    </div><!--//.banner-container-->
+{% endblock %}
+    

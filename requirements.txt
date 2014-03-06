@@ -1,0 +1,19 @@
+CREATE TABLE `news_authorprofile` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `profile_photo` varchar(100),
+    `about_author` longtext,
+    `user_id` integer NOT NULL UNIQUE
+)
+;
+ALTER TABLE `news_authorprofile` ADD CONSTRAINT `user_id_refs_id_8195cdfa` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+CREATE TABLE `news_entryimage` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `entry_id` integer NOT NULL,
+    `image` varchar(100) NOT NULL
+)
+;
+ALTER TABLE `news_entryimage` ADD CONSTRAINT `entry_id_refs_id_413aa18f` FOREIGN KEY (`entry_id`) REFERENCES `zinnia_entry` (`id`);
+
+ALTER TABLE  `zinnia_entry` ADD CONSTRAINT  `entry_id_author_id_413aa18e` FOREIGN KEY (  `author_profile_id` ) REFERENCES  `news_authorprofile` ( `id` )
+
+#run these commands to enable the functionality of author profile.
