@@ -8,13 +8,13 @@ from events.models import Event,EVENT_ART_CULTURE_CATEGORY
 from yourphotos.models import Photo
 from yourvideos.models import Video
 from locations.models import Location
-from zinnia.models import Entry
+from zinnia.models import Entry,Category
 from people.models import PhotoEvent
 import calendar
 from datetime import datetime, timedelta, time
 import itertools
 from django.template.defaultfilters import date
-
+from django.db.models import Q
 
 @register.inclusion_tag( 'widgets/magazine.html' )
 def magazine_block( ):
@@ -47,6 +47,11 @@ def news_list( ):
     news = Entry.published.all()[:10]
     return dict(news=news)
 
+@register.inclusion_tag( 'widgets/zinnia_latest_news.html' )
+def zinnia_list( ):
+    category=Category.objects.filter(title='blog')
+    news = Entry.published.filter(~Q(categories = category))[:5]
+    return dict(news=news)
 
 @register.inclusion_tag( 'widgets/locations.html' )
 def location_list( ):

@@ -3,9 +3,9 @@
   <div class="box-title"><h2>{% trans "Latest News" %}</h2></div>
   <div class="decou pl5 pr2" id="news">
     
-        {% for entry in news|slice:":3" %}
+        {% for entry in news %}
             <img src="{{entry.image.url}}" alt="{{ entry.title }}" width="280px" height="250px;"/><br>
-          <h2 class="red-title">{{ entry.title }}</h2>
+          <h3 class="red-title">{{ entry.title }}</h3>
            <h5 class="red-title">{{ entry.start_publication|date:"d.m.y" }}</h5>
         {% endfor %}
     

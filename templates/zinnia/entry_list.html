@@ -2,6 +2,7 @@
 {% load i18n zinnia_tags %}
 {% load gplus %}
 {% load tools %}
+{% load widgets%}
 {% load openx widgets facebook twitter%}
 
 {% block advbodycls %}section-blog{% endblock %}
@@ -159,7 +160,9 @@
 
     <div class="split-sidebars encap">
       <div class="c57l left">
-        {% upcoming_events_list %}
+
+        {% zinnia_list %}
+        
       </div><!--//.left-->
       <div class="c40r right">
         <div class="placeholders">

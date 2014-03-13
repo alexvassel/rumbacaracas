@@ -1197,6 +1197,7 @@ a.carousel-next{
   top: 6px;
   text-transform: uppercase;
   z-index: 10;
+  border: none;
 }
 #main-contents #col-right #whats-today{
   margin: 0 !important;
@@ -1358,6 +1359,8 @@ a.carousel-next{
   margin: 0 auto;
   border: 1px solid #070000;
   margin: 0 0 10px;
+  width: 100%;
+  height: 220px;
 }
 #main-contents #col-left .node-mini-right .box-generic .box-border img,
 #main-contents #col-right .box-generic .box-contents img{
@@ -1533,15 +1536,14 @@ a.carousel-next{
 #main-contents #col-right .ultimas-fotos .box-title h2,
 #main-contents #col-right .upcoming-events .box-title h2,
 #main-contents #col-right .tbfat .box-title h2{
-  border-top: 5px solid #8A8A8A;
   border-bottom: 2px solid #8A8A8A;
   top: 0;
   padding: 5px 0;
   margin: 0 0 5px;
 }
-#main-contents #col-right .tbfat .box-title h2{
+/* #main-contents #col-right .tbfat .box-title h2{
 	border-top: 8px solid #8A8A8A;
-}
+} */
 #main-contents #col-right .tbthin .box-title h2{
 	border-top: none;
   border-bottom: 3px solid #8A8A8A;
@@ -2262,12 +2264,14 @@ padding-left:10px;
 }
 
 #main-contents #col-left .node .eventos-left img{
-  margin: 0;
+  margin: 0;  
 }
 #main-contents #col-left .node .teaser-image img, #main-contents #col-left .type-blog div.node-thumbnail img{
   display: block;
   border: 2px solid #898989;
   margin: 0 0 10px;
+  width: 300px;
+  height: 220px;
 }
 #main-contents #col-left .node .image-teaser-slides,
 #main-contents #col-left .node .image-teaser-slides li{
@@ -4142,4 +4146,8 @@ li.sobre1 a.fotorequest {
 }
 li.sobre1 a.fotorequest:hover {
     background: url(images/sprites/publica_fotos_hov_white.png) no-repeat scroll; width:37px; height:30px;  float:left;
+}
+.red-title{
+  font-weight: bold;
+  color: #F26100;
 }

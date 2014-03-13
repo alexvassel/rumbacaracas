@@ -34,8 +34,8 @@
   margin-bottom: 20px;
 }
 .lastest-photos-main-box .latest-photos-image-box img {
-  width: 291px;
-  height: 175px;
+  width: 300px;
+  height: 220px;
   border: 5px solid white;
 }
 .lastest-photos-main-box .latest-photos-image-box .grey-text-bar-on-img-container {
@@ -204,7 +204,7 @@
 }
 .general-bar {
   height: 35px;
-  width: 635px;
+  width: auto;
   padding-left: 5px;
   line-height: 38px;
   font-weight: bold;
@@ -749,3 +749,36 @@
 .facebook-facepile .jsbanner{height: 530px;}
 .facebook-facepile iframe{height: 530px !important;}
 
+.c57l{
+width: 100%;
+}
+
+.c57l img{
+width: 100%;
+height: 250px;	
+}
+
+.box-title h2{
+border: none;	
+}
+
+#news h2{
+	border:none;
+	width:300px;
+	size: 5px;
+}
+
+#news img
+{
+	width: 280px;
+	height: 250px;
+}
+.img_250
+{
+	display: block;
+	margin: 0 auto;
+	border: 1px solid #070000;
+	margin: 0 0 10px;
+	width: 100%;
+	height: 220px;
+}

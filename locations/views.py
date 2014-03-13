@@ -126,11 +126,14 @@ def detail ( request, slug ):
     
     #location_events = [((event.from_date >= today), event) for event in location_events_raw ]
     location_photos = PhotoEvent.objects.filter(status=1, location=location).order_by('-date')[:5]
-
+    
+    locations = Location.objects.filter( status = 1 ).order_by( '-id' )[:4]
+    
     request.breadcrumbs( _( 'Locations' ) , reverse('location_main') )
     request.breadcrumbs( location.title , request.path_info )
     dict = _process( request, LocationType )
     dict['location'] = location
+    dict['locations'] = locations
     dict['active_tab'] = 'category'
     dict['location_events'] = location_events
     dict['location_photos'] = location_photos
