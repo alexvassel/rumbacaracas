@@ -37,8 +37,8 @@ def people_block( ):
     return dict(events=events)
 
 @register.inclusion_tag( 'widgets/people_list.html' )
-def people_list( ):
-    events = PhotoEvent.objects.filter(status=1).order_by('-date')[:6]
+def people_list( count = 6 ):
+    events = PhotoEvent.objects.filter(status=1).order_by('-date')[:count]
     return dict(events=events)
 
 
@@ -48,9 +48,12 @@ def news_list( ):
     return dict(news=news)
 
 @register.inclusion_tag( 'widgets/zinnia_latest_news.html' )
-def zinnia_list( ):
-    category=Category.objects.filter(title='blog')
-    news = Entry.published.filter(~Q(categories = category))[:5]
+def news_list2( count=3, is_category_blog="True" ):
+    if is_category_blog == "False":
+        category=Category.objects.filter(title='blog')
+        news = Entry.published.filter(~Q(categories = category))[:count]
+    else:
+        news = Entry.published.all()[:count]
     return dict(news=news)
 
 @register.inclusion_tag( 'widgets/locations.html' )
@@ -61,6 +64,11 @@ def location_list( ):
 @register.inclusion_tag( 'widgets/locations_block.html' )
 def location_block( ):
     locations = Location.objects.filter(status=1).order_by('?')[:2]
+    return dict(locations=locations)
+
+@register.inclusion_tag( 'widgets/locations_block2.html' )
+def location_block2( count=4 ):
+    locations = Location.objects.filter(status=1).order_by('?')[:count]
     return dict(locations=locations)
 
 @register.inclusion_tag( 'widgets/art_culture.html' )

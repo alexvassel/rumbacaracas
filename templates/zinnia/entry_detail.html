@@ -85,6 +85,11 @@
 {%posts_same_category object%}
 {% endblock %}
 
+{% block widget_ultimas_noticias %}
+  	<div class="c57l left">
+    	{% news_list2 5 "False" %}
+  	</div><!--//.left-->
+{% endblock widget_ultimas_noticias %}
 
 
 {% block admin_tools %}

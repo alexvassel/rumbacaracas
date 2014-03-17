@@ -62,9 +62,9 @@
 				{% if forloop.counter|divisibleby:"2" %}
 					<div class="latest-photos-image-box">
 				{% else %}
-					<div class="latest-photos-image-box" style="margin-right: 30px;">
+					<div class="latest-photos-image-box" style="margin-right: 20px;">
 				{% endif %}
-					<a href="{{ row.get_absolute_url }}"><img src="{{ row.mainthumb.url }}" alt="{{ row.title }}" /></a>
+					<a href="{{ row.get_absolute_url }}"><img src="{{ row.rightcolumnthumb.url }}" alt="{{ row.title }}" /></a>
 					<div class="grey-text-bar-on-img-container">
 						<div class="grey-text-bar-on-img">
 							<div style="float: right">
@@ -176,10 +176,10 @@
 			{% if forloop.counter|divisibleby:"2" %}
 				<div class="news-photos-box">
 			{% else %}
-				<div class="news-photos-box" style="margin-right: 30px;">
+				<div class="news-photos-box" style="margin-right: 20px;">
 			{% endif %}
 				<a href="{{ object.get_absolute_url }}">
-					<img src="{{ object.blogthumb.url }}" alt="{{ object.title }}">
+					<img src="{{ object.rightcolumnthumb.url }}" alt="{{ object.title }}">
 				</a>
 				<div class="news-photos-info-box">
 					<a href="{{ object.get_absolute_url }}">
@@ -327,10 +327,10 @@
 			{% if forloop.counter|divisibleby:"2" %}
 				<div class="video-box">
 			{% else %}
-				<div class="video-box" style="margin-right: 30px;">
+				<div class="video-box" style="margin-right: 20px;">
 			{% endif %}
 				<div class="video-container">
-	                {%youtube_video video.youtube_id 291 185%}
+	                {%youtube_video video.youtube_id 300 220%}
 				</div>
 				<div class="video-info-box">
 					<a href="{{ video.get_absolute_url }}" style="color:#f06000;">
@@ -368,11 +368,11 @@
 			{% if forloop.counter|divisibleby:"2" %}
 				<div class="blog-photos-box">
 			{% else %}
-				<div class="blog-photos-box" style="margin-right: 30px;">
+				<div class="blog-photos-box" style="margin-right: 20px;">
 			{% endif %}
 				<a href="{{ object.get_absolute_url }}">
 					{% if object.image %}
-		                <img src="{{ object.blogthumb.url }}" alt="{{ object.title }}" />
+		                <img src="{{ object.rightcolumnthumb.url }}" alt="{{ object.title }}" />
 		            {% else %}
 		                <img src="{% value_from_settings "STATIC_URL" %}s.gif" alt="{{ object.title }}" width=228 height=168/>
 		            {% endif %}
@@ -424,7 +424,7 @@
 						<div class="events-news-box">
 							<div class="column1">
 								<a href="{{ event.get_absolute_url }}">
-									<img src="{{ event.widgetethumb.url }}" alt="{{ event.title }}">
+									<img src="{{ event.rightcolumnthumb.url }}" alt="{{ event.title }}">
 								</a>
 							</div>
 							<div class="column2">
@@ -457,7 +457,7 @@
 			          				<a href="{{ event.get_absolute_url }}#disqus_thread">{%facebook_comments_count event.get_absolute_url%} {% trans "Comments" %}</a>
 								</div>
 								<div class="news-event-description">
-									{{ event.description|truncate:155 }}
+									{{ event.description|truncate:300 }}
 								</div>
 								<a style="color: #F06000;" class="new-theme-read-more" href="{{ event.get_absolute_url }}">{%  trans "Read More" %}</a>
 							</div>
@@ -469,7 +469,7 @@
 			<div class="events-news-box">
 				<div class="column1">
 					<a href="{{ object.get_absolute_url }}">
-						<img src="{{ object.blogthumb.url }}" alt="{{ object.title }}">
+						<img src="{{ object.rightcolumnthumb.url }}" alt="{{ object.title }}">
 					</a>
 				</div>
 				<div class="column2">
@@ -489,7 +489,7 @@
           				<a href="{{ object.get_absolute_url }}#disqus_thread">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
 					</div>
 					<div class="news-event-description">
-						{{ object.short|truncate:155 }}
+						{{ object.short|truncate:300 }}
 					</div>
 					<a style="color: #F06000;" class="new-theme-read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
 				</div>
@@ -786,7 +786,7 @@
 				{% endif %}
 					<a href="{{ locale.get_absolute_url }}">
 			            {% if locale.image_logo %}
-			                <img src="{{ locale.blogthumb.url }}" alt="{{ locale.title }}" />
+			                <img src="{{ locale.rightcolumnthumb.url }}" alt="{{ locale.title }}" />
 			            {% else %}
 			                <img src="{% value_from_settings "STATIC_URL" %}s.gif" alt="{{ object.title }}" width=300 height=168/>
 			            {% endif %}
@@ -831,7 +831,7 @@
 				<div class="your-photo-box">
 					<center>
 						<a href="{% url yourphoto_details photo.id %}">
-							<img style="width: 265px; height: 272px;" src="{{ photo.thumbnail.url }}" alt="{{photo.description}}" >
+							<img style="width: 265px; height: 272px;" src="{{ photo.rightcolumnthumb.url }}" alt="{{photo.description}}" >
 						</a>
 					</center>
 				</div>

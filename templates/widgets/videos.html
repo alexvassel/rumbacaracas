@@ -9,7 +9,7 @@
         <ul>
             {% for video in videos %}
                 <li>
-                    <a href="{{video.get_absolute_url}}"><img width="168" src="{{video.youtube_id|youtube_img_from_id}}" alt="{{video.description}}"/></a>
+                    <a href="{{video.get_absolute_url}}"><img width="300" src="{{video.youtube_id|youtube_img_from_id}}" alt="{{video.description}}"/></a>
                     <h6><a href="{{video.get_absolute_url}}">{{video.description}}</a></h6>
                     <span class="author-meta">{% trans "Submitted by"%} {{video.user|user_link}}</span>
                     <div class="fivestar-widget clear-block fivestar-widget-5">

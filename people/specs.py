@@ -44,6 +44,11 @@ class MainMiniThumb( processors.Resize ):
     width = 126
     height = 78
     crop = True
+    
+class RightColumnThumb( processors.Resize ):
+    width = 300
+    height = 220
+    crop = True
 
 class EnchanceThumb( processors.Adjustment ):
     contrast = 1.2
@@ -91,3 +96,8 @@ class ThinThumbnail( ImageSpec ):
     access_as = 'thinthumb'
     pre_cache = False
     processors = [ThinThumb, EnchanceThumb]
+    
+class RightColumnThumbnail( ImageSpec ):
+    access_as = 'rightcolumnthumb'
+    pre_cache = False
+    processors = [RightColumnThumb]

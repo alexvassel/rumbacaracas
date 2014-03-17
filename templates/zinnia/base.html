@@ -65,9 +65,11 @@
     </div>
 
     <div class="split-sidebars encap">
+      {% block widget_ultimas_noticias %}
       <div class="c57l left">
-        {% news_list %}
+        {% news_list2 %}
       </div><!--//.left-->
+      {% endblock widget_ultimas_noticias %}
       <div class="c40r right">
         <div class="placeholders">
           <div class="box-border box-contents box-shadows">

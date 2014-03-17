@@ -58,6 +58,11 @@ class WidgetImage( processors.Resize ):
     width = 148
     height = 118
     crop = True
+
+class RightColumnThumb( processors.Resize ):
+    width = 300
+    height = 220
+    crop = True
     
 # now let's create an adjustment processor to enhance the image at small sizes
 class EnchanceThumb( processors.Adjustment ):
@@ -148,3 +153,8 @@ class WidgetThumbnail( ImageSpec ):
     access_as = 'widgetethumb'
     pre_cache = False
     processors = [WidgetImage, EnchanceThumb]
+    
+class RightColumnThumbnail( ImageSpec ):
+    access_as = 'rightcolumnthumb'
+    pre_cache = False
+    processors = [RightColumnThumb]

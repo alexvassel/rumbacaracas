@@ -3,12 +3,12 @@
 {% load facebook %}
 <div class="your-photos outnone" id="block-your-photos">
   <div class="box-title"><h2>{% trans "Your photos" %}</h2></div>
-  <div class="box-border box-contents box-shadows decou">
+  <div class="box-border box-contents decou">
     <ul>
         {% for photo in photos %}
-            <li>
+            <li style="padding: 10px 0;">
                 <a href="{{photo.get_absolute_url}}">
-                    <img src="{{photo.widgetethumb.url}}" alt="{{photo.description}}"/>
+                    <img src="{{photo.rightcolumnthumb.url}}" alt="{{photo.description}}"/>
                 </a>
                 <h6><a href="{{photo.get_absolute_url}}">{{ photo.description }}</a></h6>
                 <p>{% trans "Photo by" %} {{ photo.user|user_link }}</p>

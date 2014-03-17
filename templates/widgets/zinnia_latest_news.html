@@ -1,13 +1,15 @@
 {% load i18n %}
 <div class="more-news outnone tbfat">
   <div class="box-title"><h2>{% trans "Latest News" %}</h2></div>
-  <div class="decou pl5 pr2" id="news">
-    
-        {% for entry in news %}
-            <img src="{{entry.image.url}}" alt="{{ entry.title }}" width="280px" height="250px;"/><br>
-          <h3 class="red-title">{{ entry.title }}</h3>
-           <h5 class="red-title">{{ entry.start_publication|date:"d.m.y" }}</h5>
-        {% endfor %}
-    
+  <div class="decou pl5 pr2" id="ultimas-noticias-right-column-widget">
+    {% for entry in news %}
+    	<a href="{{ entry.get_absolute_url }}">
+        	<img src="{{entry.rightcolumnthumb.url}}" alt="{{ entry.title }}" width="300px" height="220px;"/><br>
+       	</a>
+       	<a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}">
+      		<h2 style="text-decoration-color: #F26100" class="red-title">{{ entry.title }}</h2>
+      	</a>
+       	<div class="ultimas-noticias-right-column-widget-time">{{ entry.start_publication|date:"d.m.y" }}</div>
+    {% endfor %}
   </div><!--//.box-contents-->
 </div>

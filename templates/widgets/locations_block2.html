@@ -1,0 +1,41 @@
+{% load i18n %}
+{% load tools %}
+<div id="new-theme-locales-box" class="locales-main-box">
+    <div class="box-title" style="text-align: center;">
+        <h2>
+            {% trans "LOCALES" %}
+        </h2>
+    </div>
+    {% for locale in locations %}
+        {% if forloop.last %}
+    <div class="locale-img">
+        {% else %}
+	<div class="locale-img" style="margin-bottom: 10px;">
+        {% endif %}
+        <a href="{{ locale.get_absolute_url }}">
+        	{% if locale.image_logo %}
+            <img src="{{ locale.rightcolumnthumb.url }}" alt="{{ locale.title }}" />
+            {% else %}
+            <img src="{% value_from_settings "STATIC_URL" %}s.gif" alt="{{ object.title }}" width=300 height=168/>
+            {% endif %}
+        </a>
+    </div>
+    <div style="position: absolute; width:0px; height: 0px;">
+        {% if forloop.last %}
+        <div class="slide-on-image" style="top: -25px;">
+        {% else %}
+        <div class="slide-on-image">
+        {% endif %}
+            <div class="locale-center-text" style="position: absolute; left: 0px;">{{ locale.title }}</div>
+        </div>
+    </div>
+    {% endfor %}
+    <a href= "{% url location_main %}" class="hyper-link-more-locales">
+        <div class="local-grey-bar">
+            <div class="locale-next-nav">{% trans "SEE MORE LOCALES" %}</div>
+            <div class="img-span">
+                <img src="{% value_from_settings "STATIC_URL" %}images/new-theme/right-nav-arrow.png">
+            </div>
+        </div>
+    </a>
+</div>

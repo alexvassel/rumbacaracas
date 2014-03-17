@@ -52,7 +52,11 @@ class NewsThumb( processors.Resize ):
     width = 250
     height = 200
     crop = True
-
+    
+class RightColumnThumb( processors.Resize ):
+    width = 300
+    height = 220
+    crop = True
 
 
 # now let's create an adjustment processor to enhance the image at small sizes
@@ -112,3 +116,8 @@ class NewsThumbnail( ImageSpec ):
     access_as = 'newsthumb'
     pre_cache = False
     processors = [NewsThumb]
+    
+class RightColumnThumbnail( ImageSpec ):
+    access_as = 'rightcolumnthumb'
+    pre_cache = False
+    processors = [RightColumnThumb]

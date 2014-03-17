@@ -5,9 +5,11 @@
   <div class="box-title"><h2>{% trans "Latest Photos" %}</h2></div>
   <div class="decou pl5 pr2">
     <ul>
-        {% for event in events|slice:"3" %}
+        {% for event in events %}
             <li>
-                <img src="{{event.thinthumb.url}}" alt="{{event.description}}" style="border-color: rgb(137, 137, 137);" />
+            	<a href="{{event.get_absolute_url}}" title="{{event.title}}">
+                	<img src="{{event.rightcolumnthumb.url}}" alt="{{event.description}}" style="border-color: rgb(137, 137, 137);" />
+               </a>
                 <h6><a href="{{event.get_absolute_url}}" title="{{event.title}}">{{event.title}}</a></h6>
                 <p>
                     {% if event.location %}
