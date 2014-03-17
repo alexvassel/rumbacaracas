@@ -1,0 +1,53 @@
+{% load i18n %}
+{% load tools %}
+  
+    <div class="art-culture-main-box">
+        <div class="box-title" style="text-align: center;margin: 30px 0 5px 0;">
+            <h2>
+                {% trans "ART AND CULTURA" %}
+            </h2>
+        </div>
+        {% for object in art_culture|slice:":3" %}
+            <a href="{{ object.get_absolute_url }}" class="hyperlink-art-culture-image">
+                {% if object.image %}
+                    <img src="{{ object.blogthumb.url }}" alt="{{ object.title }}" />
+                {% else %}
+                    <img src="{% value_from_settings "STATIC_URL" %}s.gif" alt="{{ object.title }}" width=290 height=152/>
+                {% endif %}
+            </a>
+            
+            <div class="art-culture-info-box">
+                <div style="min-height: 36px;">
+                    <a href="{{ object.get_absolute_url }}" class="art-culture-title">
+                        {{ object.title|truncate:60 }}
+                    </a>
+                    <div class="art-culture-location">
+                        {% if object.location %}
+                        <a href="{{ object.location.get_absolute_url }}">{{ object.location.title|truncate:60 }}</a>
+                        {% else %}
+                            {% if object.place %}
+                                {{object.place|truncate:60}}
+                            {% else %}
+                                {% trans "Other"%}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="date-info">
+                    {% if object.from_date == object.to_date %}
+                        {{object.from_date|date:"d.m.Y"}}
+                    {% else %}
+                        {{object.from_date|date:"d.m.Y"}} a {{object.to_date|date:"d.m.Y"}}
+                    {% endif %}
+                    {% if object.repeat.all %}({{ object.repeat.all|join:", "}}){% endif %}
+                </div>
+            </div>
+            
+        {% endfor %}
+        <a href="#" class="hyper-link-more">
+            <div class="more-grey-bar">
+                <div class="more-next-nav">{% trans "SEE MORE ART AND CULTURE" %}</div>
+                <div class="img-span"><img src="{% value_from_settings "STATIC_URL" %}images/new-theme/right-nav-arrow.png"></div>
+            </div>
+        </a>
+    </div>

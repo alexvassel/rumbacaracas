@@ -1309,6 +1309,7 @@ a.carousel-next{
 /* Block Your Photos, Generic News */
 #main-contents #col-right .your-photos{
   margin: 0 0 15px;
+  width: 300px;
 }
 #main-contents #col-left .node-mini-right .box-generic{
   padding: 0 0 5px;
@@ -2270,8 +2271,6 @@ padding-left:10px;
   display: block;
   border: 2px solid #898989;
   margin: 0 0 10px;
-  width: 300px;
-  height: 220px;
 }
 #main-contents #col-left .node .image-teaser-slides,
 #main-contents #col-left .node .image-teaser-slides li{

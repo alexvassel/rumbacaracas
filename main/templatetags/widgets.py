@@ -16,6 +16,10 @@ import itertools
 from django.template.defaultfilters import date
 from django.db.models import Q
 
+def sortEventList( list ):
+    list.sort( key = lambda a:a.position, reverse = False )
+    return list
+
 @register.inclusion_tag( 'widgets/magazine.html' )
 def magazine_block( ):
     return dict()
@@ -77,6 +81,16 @@ def art_culture_block( ):
     #TODO wrong check if upcoming
     events = Event.objects.filter(status=1, category=EVENT_ART_CULTURE_CATEGORY, to_date__gte = today)[:2]
     return dict(events=events)
+
+
+@register.inclusion_tag( 'widgets/art_culture_home.html' )
+def art_culture_block_home(count=4):
+    current_date = datetime.today()
+    art_culture_qs = Event.objects.filter(category=EVENT_ART_CULTURE_CATEGORY)
+    art_culture_raw = Event.objects.get_occuriences( start_date = current_date, end_date = current_date , qs = art_culture_qs )
+
+    art_culture = sortEventList( [event for event, date in art_culture_raw] )[:count]
+    return dict(art_culture = art_culture)
 
 @register.inclusion_tag('widgets/today_events_list.html')
 def get_event_list(number=5):
