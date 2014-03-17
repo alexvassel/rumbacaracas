@@ -137,10 +137,15 @@ def index( request ):
     
     ct_news = ContentType.objects.get(app_label='zinnia', model='entry')
 #    ct_event = ContentType.objects.get(app_label='events', model='event')
-    most_viewed_news = list(MostViewed.objects.filter(content_type=ct_news).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:6])
-#    most_viewed_events = list(MostViewed.objects.filter(content_type=ct_event).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:10])
     last_thirty_days_date=datetime.today()-timedelta(days=30)
-    m_v_n = list(Entry.objects.filter(status=1, id__in=most_viewed_news,creation_date__gte=last_thirty_days_date)[:6:1])
+    entries=Entry.objects.filter(creation_date__gte=last_thirty_days_date)
+    most_viewed_news = list(MostViewed.objects.filter(content_type=ct_news,content_type_object_id__in=entries).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:6])
+#    most_viewed_events = list(MostViewed.objects.filter(content_type=ct_event).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:10])
+    m_v_n = []
+    for entry in entries:
+        if entry.id in most_viewed_news:
+            m_v_n.append(entry)
+#     m_v_n = list(Entry.objects.filter(id__in=most_viewed_news)[:6:1])
     m_v_n.sort( key = lambda a:a.creation_date, reverse = True )
     m_v_e = most_viewed_events_list(2)
     
