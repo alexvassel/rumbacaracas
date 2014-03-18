@@ -161,7 +161,7 @@
     <div class="split-sidebars encap">
     	{% block widget_ultimas_noticias %}
       	<div class="c57l left">
-        	{% news_list2 5 "False" %}
+        	{% news_list2 10 "False" object_list.count page_obj.number %}
       	</div><!--//.left-->
       	{% endblock widget_ultimas_noticias %}
       <div class="c40r right">

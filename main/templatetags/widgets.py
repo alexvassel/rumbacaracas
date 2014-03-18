@@ -52,10 +52,10 @@ def news_list( ):
     return dict(news=news)
 
 @register.inclusion_tag( 'widgets/zinnia_latest_news.html' )
-def news_list2( count=3, is_category_blog="True" ):
+def news_list2( count=3, is_category_blog="True", start=0, page=1 ):
     if is_category_blog == "False":
         category=Category.objects.filter(title='blog')
-        news = Entry.published.filter(~Q(categories = category))[:count]
+        news = Entry.published.filter(~Q(categories = category))[start*page:((start*page)+count)]
     else:
         news = Entry.published.all()[:count]
     return dict(news=news)
