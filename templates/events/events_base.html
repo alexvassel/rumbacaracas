@@ -34,7 +34,7 @@
       <ul class="image-teaser-slides encap">
       	{% for slide in slider_events%}
         	<li>
-        		<a href="{% url event_details slide.slug %}"><img  width="595" height="244" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.bigimg.url}}{% endif %}" alt="{{slide.title}}" /></a>
+        		<a href="{% url event_details slide.slug %}"><img  width="595" height="440px" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.bigimg.url}}{% endif %}" alt="{{slide.title}}" /></a>
         		<div class="slide-teasers">
                     <h3><a href="{% url event_details slide.slug %}">{{slide.title}}</a></h3>
                     <p>{{slide.description|truncate:85}}<br />

@@ -60,6 +60,24 @@ def news_list2( count=3, is_category_blog="True", start=0, page=1 ):
         news = Entry.published.all()[:count]
     return dict(news=news)
 
+from django.contrib.contenttypes.models import ContentType
+from main.models import MostViewed
+@register.inclusion_tag( 'widgets/most_watched.html' )
+def most_watched(count=6 ):
+    ct_news = ContentType.objects.get(app_label='zinnia', model='entry')
+    last_thirty_days_date=datetime.today()-timedelta(days=30)
+    entries=Entry.objects.filter(creation_date__gte=last_thirty_days_date)
+    most_viewed_news = list(MostViewed.objects.filter(content_type=ct_news,content_type_object_id__in=entries).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:6])
+#    most_viewed_events = list(MostViewed.objects.filter(content_type=ct_event).order_by('-no_of_views').values_list('content_type_object_id', flat=True)[:10])
+    m_v_n = []
+    for entry in entries:
+        if entry.id in most_viewed_news:
+            m_v_n.append(entry)
+    return dict(most_viewed_news=m_v_n)
+
+
+
+
 @register.inclusion_tag( 'widgets/locations.html' )
 def location_list( ):
     locations = Location.objects.filter(status=1).order_by('?')[:20]

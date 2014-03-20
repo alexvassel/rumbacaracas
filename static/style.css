@@ -829,6 +829,11 @@ li.sobre1 a.fotosobre1:hover {
 #col-left #front-slides #slides .slide-info-wrapper{
 	position: absolute;
 	width: 640px;
+	text-align:center;
+	z-index: 1;
+	bottom: -151px;
+	background: black;
+    opacity: 0.6;
 }
 .ie #col-left #front-slides #slides .slide-info-wrapper{
 	
@@ -2281,7 +2286,7 @@ padding-left:10px;
 #main-contents #col-left .eventos-para-hoy .node .image-teaser-slides li,
 #main-contents #col-left .locales .node .image-teaser-slides,
 #main-contents #col-left .locales .node .image-teaser-slides li{
-  height: 250px;
+  height: 440px;
 }
 
 
@@ -4125,7 +4130,7 @@ li.greating_pic {
 }
 
 .eventos .eventos-left {
-     margin-left: -20px;
+     /* margin-left: -20px; */
      width: 640px;
  }
 .fotos .fotos-left {

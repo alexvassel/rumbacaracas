@@ -1,0 +1,36 @@
+{% load tools %}
+{% load i18n %}
+{% load listtools %}
+{% load widgets %}
+{% load facebook %}
+           <div class="box-title" style="text-align: center;">
+                <h2>
+                    {% trans "THE MOST SEEN" %}
+                </h2>
+            </div>
+                    <div class="most-viewed-container">
+            <div class="column1">
+                {% for news in most_viewed_news %}
+                {% if forloop.counter|divisibleby:"2" %}
+                <div class="news-box-trans" style="background-color: #E5E5E5;">
+                {% else %}
+                <div class="news-box-trans">
+                {% endif %}
+                    <a href="{{ news.get_absolute_url }}">
+                        <h3 class="orange-color">
+                            {{ news.title|truncate:53 }}
+                        </h3>
+                    </a>
+                    <div class="news-event-date-info">
+                        {{ news.creation_date|date:"d.m.y" }} / 
+                        {% for cat in news.categories.all %}
+                        <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %} /
+                        <a href="{{ news.get_absolute_url }}#disqus_thread">{%facebook_comments_count news.get_absolute_url%} {% trans "Comments" %}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+         </div>
+      

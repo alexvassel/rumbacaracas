@@ -29,16 +29,16 @@
     <h2 class="title">{{object.title }}</h2>
     <span class="submitted">
         {% if object.author_profile and object.author_profile != "" %}
-            {% trans "Written by" %} <span class="vcard author"><a href="{% url ath_profile object.author_profile.user.username %}" target="_blank">{{ object.author_profile }}</a></span>
+            <a href="{% url ath_profile object.author_profile.user.username %}" target="_blank">{% trans "Written by" %} <span class="vcard author">{{ object.author_profile }}</span>
         {% else %}
         	{% if object.author and object.author != "" %}
-        		{% trans "Written by" %} <span class="vcard author">{{object.author|safe}}</span>
+        		<a href="http://{{ object.author }}" target="_blank">{% trans "Written by" %} <span class="vcard author">{{object.author|safe}}</span>
         	{% else %}
             	{% trans "Written" %}
             {% endif %}
         {% endif %}
-		{% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}
-	</span>
+		{% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}</a>
+	</a>
     <div class="photos-share-options" style="margin-top: 10px;margin-bottom:0">
 		<ul class="teaser-options encap outnone fcml0 lcmr0">
 			<li class="pl0">
@@ -87,7 +87,7 @@
 
 {% block widget_ultimas_noticias %}
   	<div class="c57l left">
-    	{% news_list2 5 "False" %}
+    	{% news_list2 5 "False" 5 %}
   	</div><!--//.left-->
 {% endblock widget_ultimas_noticias %}
 

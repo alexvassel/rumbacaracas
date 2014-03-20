@@ -24,18 +24,16 @@
 
             <div id="slides" class="slides">
                 {% for slide, type in slides%}
-                    <div class="slide" {% if not forloop.first %}style="display:none;width: 619px;height: 425px; overflow: hidden"{% else %}style="height: 338px;"{% endif %}>
-                        <img  width="615" height="258" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.slide.url}}{% endif %}" alt="{{slide.title}}" />
+                    <div class="slide" {% if not forloop.first %}style="display:none;width: 619px;height: 258px; "{% else %}style="height: 258px;"{% endif %}>
+                        <img  width="615" height="440px" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.slide.url}}{% endif %}" alt="{{slide.title}}"/>
                         <div class="slide-info-wrapper">
                             <div class="slide-info">
                                 <h3><a href="{{slide.get_absolute_url}}">{{slide.title|truncate:80}}</a></h3>
-                                {%if type == 'event'%}
-                                    <p>{{slide.description|truncate:280}}</p>
+                                <!-- {%if type == 'event'%}
                                     <a class="slider-read-more" href="{{slide.get_absolute_url}}">{% trans "Read More" %}</a>
                                 {% else %}
-                                    <p>{{slide.short|truncate:280}}</p>
                                     <a class="slider-read-more" href="{{slide.get_absolute_url}}">{% trans "Read More" %}</a>
-                                {% endif %}
+                                {% endif %} -->
                             </div><!--//.slide-info-->
                         </div><!--//.slide-info-wrapper-->
                     </div><!--//.slide-->
@@ -68,14 +66,13 @@
 					<div class="grey-text-bar-on-img-container">
 						<div class="grey-text-bar-on-img">
 							<div style="float: right">
-								{{row.date|date:"d.m.y"}}
+							<a href="{{ row.get_absolute_url }}">{{ row.title }}</a>
+								<p style="float: right;">{{row.date|date:"d.m.y"}}</p>
 							</div>
 							<div style="clear: both;"></div>
 						</div>
 					</div>
-					<div class="latest-photo-desc">
-						<a href="{{ row.get_absolute_url }}">{{ row.title }}</a>
-					</div>
+					
 				</div>
             {% endif %}
 		{% endfor %}
@@ -203,118 +200,20 @@
 			</div>
 		{% endfor %}
 		<div style="clear: both;"></div>
-		<a href="{% url zinnia_entry_archive_index %}" class="new-theme-gradient-bar-hyperlink">
+		<!-- <a href="{% url zinnia_entry_archive_index %}" class="new-theme-gradient-bar-hyperlink">
 			<div class="general-bar new-theme-gradient-bar">
 				<span>
 					{% trans "SEE MORE NEWS" %}
 				</span>
 			</div>
-		</a>
+		</a> -->
 	</div>
 	<div style="clear: both;"></div>
 	<div class="banner-container outnone" style="margin: 0 auto; text-align: center; box-shadow: none;">
 		{% revive_banner 3 468 100 "a2b840a7" 1 %}
 	</div><!--//.banner-container-->
 	
-	<div class="new-theme-most-viewed-box">
-		<div class="general-bar black-bar">
-			{% trans "THE MOST SEEN" %}
-		</div>
-		<div style="clear: both;"></div>
-		
-		<div class="most-viewed-container">
-			<div class="column1">
-				{% for news in most_viewed_news %}
-				{% if forloop.counter|divisibleby:"2" %}
-				<div class="news-box-trans" style="background-color: #E5E5E5;">
-				{% else %}
-				<div class="news-box-trans">
-				{% endif %}
-					<a href="{{ news.get_absolute_url }}">
-						<h3 class="orange-color">
-							{{ news.title|truncate:53 }}
-						</h3>
-					</a>
-					
-					<div class="news-event-date-info">
-						{{ news.creation_date|date:"d.m.y" }} / 
-						{% for cat in news.categories.all %}
-						<a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
-							{% if not forloop.last %}, {% endif %}
-          				{% endfor %} /
-						<a href="{{ news.get_absolute_url }}#disqus_thread">{%facebook_comments_count news.get_absolute_url%} {% trans "Comments" %}</a>
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-			<div class="column2">
-				{% for event in most_viewed_events %}
-				<div class="event-box" style="margin-bottom: 25px;">
-					<div class="event-img-bg">
-						<a href="{{ event.get_absolute_url }}" style="display: block;">
-							<img class="event-img" src="{{ event.widgetethumb.url }}" alt="{{ event.title }}">
-						</a>
-					<!--</div>
-					<div style="position: absolute;width: 0px; height: 0px;"> -->
-						<div class="event-desc"> 
-							<div>
-								<a href="{{ event.get_absolute_url }}" class="event-heading">
-									<h3>{{ event.title|truncate:58 }}</h3>
-								</a>
-							</div>
-							<div>
-								{% if event.location %}
-								<a href="{{ event.location.get_absolute_url }}" class="event-heading" style="color: #F06000;">
-									<h3 style="color: #F06000;font-size: 13px;">{{ event.location.title|truncate:42 }}</h3>
-								</a>
-								{% else %}
-									{% if event.place %}
-			                            {{event.place}}
-			                        {% else %}
-			                            {% trans "Other"%}
-			                        {% endif %}
-			                    {% endif %}
-							</div>
-						</div>
-					</div>
-					
-					<div class="event-date-box">
-						{% if event.from_date%}
-							<strong>{%trans "Date"%}: </strong>
-							{% if event.from_date == event.to_date %}
-				        		{{event.from_date}}
-				    		{% else %}
-				    			{{event.from_date}} a {{event.to_date}}
-				    		{% endif %}
-						{%endif%}
-					</div>
-					
-					<div class="event-place-time-box">
-						{% if event.repeat.all %}
-						<strong>{%trans "Days"%}: </strong>
-						{{ event.repeat.all|join:", "}}
-						{% endif %}
-						{% if event.time%}
-						<strong> {% trans "Time"%}: </strong>{{event.time}}
-						{%endif%}
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-		</div>
-		<div style="clear: both;"></div>
-		
-		<div class="new-theme-gradient-bar-hyperlink">
-			<div class="general-bar new-theme-gradient-bar">
-				<a href="{% url zinnia_entry_archive_index %}" style="float:left;">
-					{% trans "SEE MORE NEWS" %}
-				</a>
-				<a href="{% url event_main %}">
-					{% trans "SEE MORE EVENTS" %}
-				</a>
-			</div>
-		</div>
-	</div>
+	
 	<div style="clear: both;"></div>
 	<div id="new-theme-long-banner" class="banner-container outnone" style="margin: 0 auto; text-align: center; box-shadow: none;">
 		{% revive_banner 3 960 300 "a2b840a7" %}
@@ -348,13 +247,13 @@
 			</div>
 		{% endfor %}
 		<div style="clear: both;"></div>
-		<a href="{% url video_main %}" class="new-theme-gradient-bar-hyperlink">
+		<!-- <a href="{% url video_main %}" class="new-theme-gradient-bar-hyperlink">
 			<div class="general-bar new-theme-gradient-bar">
 				<span>
 					{% trans "SEE MORE VIDEOS" %}
 				</span>
 			</div>
-		</a>
+		</a> -->
 	</div>
 	<div style="clear: both;"></div>
 	<div class="banner-container outnone" style="margin: 0 auto; text-align: center; box-shadow: none;">
@@ -399,13 +298,13 @@
 			</div>
 		{% endfor %}
 		<div style="clear: both;"></div>
-		<a href="{% url zinnia_category_detail "blog" %}" class="new-theme-gradient-bar-hyperlink">
+		<!-- <a href="{% url zinnia_category_detail "blog" %}" class="new-theme-gradient-bar-hyperlink">
 			<div class="general-bar new-theme-gradient-bar">
 				<span>
 					{% trans "SEE MORE BLOG" %}
 				</span>
 			</div>
-		</a>
+		</a> -->
 	</div>
 	
 	<div style="clear: both;"></div>
@@ -496,7 +395,7 @@
 			</div>
 			<div style="clear: both;"></div>
 		{% endfor %}
-		<div class="new-theme-gradient-bar-hyperlink">
+		<!-- <div class="new-theme-gradient-bar-hyperlink">
 			<div class="general-bar new-theme-gradient-bar">
 				<a href="{% url event_main %}" style="float:left;">
 					{% trans "SEE MORE EVENTS" %}
@@ -505,7 +404,7 @@
 					{% trans "SEE MORE NEWS" %}
 				</a>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<div style="clear: both;"></div>
 	
@@ -771,6 +670,8 @@
 		<div class="banner-container box-shadows outnone widget">
 	        {% banner_zone_iframe 176 300 250%}
 	    </div><!--//.banner-container-->
+        
+        	  {% most_watched %}
 	    
 	    <div id="new-theme-locales-box" class="locales-main-box">
 	    	<div class="box-title" style="text-align: center;">

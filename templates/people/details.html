@@ -31,24 +31,7 @@
     </span>
   </div><!--//.title-wrap-->
   <div class="node encap">
-    <div class="photos-share-options" style="border-top:none;margin-top: -20px; margin-bottom: 20px">
-		<ul class="teaser-options encap outnone fcml0 lcmr0">
-			<li class="pl0">
-				<a href="{{event.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
-					<span>{%facebook_comments_count event.get_absolute_url%}</span>
-				</a>
-			</li>
-			<li>
-				{% facebook_like event.get_absolute_url 50%}
-			</li>
-			<li>
-				{% twitter_share event.get_absolute_url event.title%}
-			</li>
-            <li class="br-none">
-                {% gplus event.get_absolute_url%}
-            </li>
-		</ul><!--//.teaser-options-->
-	</div>
+    
 
  
     <div class="content eventos">
@@ -84,6 +67,25 @@
 	  {%endif%}
     </div><!--//.content-->
   </div><!--//.node-->
+  
+  <div class="photos-share-options" style="border-top:none;margin-top: -20px; margin-bottom: 20px">
+        <ul class="teaser-options encap outnone fcml0 lcmr0">
+            <li class="pl0">
+                <a href="{{event.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
+                    <span>{%facebook_comments_count event.get_absolute_url%}</span>
+                </a>
+            </li>
+            <li>
+                {% facebook_like event.get_absolute_url 50%}
+            </li>
+            <li>
+                {% twitter_share event.get_absolute_url event.title%}
+            </li>
+            <li class="br-none">
+                {% gplus event.get_absolute_url%}
+            </li>
+        </ul><!--//.teaser-options-->
+    </div>
   <div class="recent-events-list">
 	{% for photo in current_page.object_list    %}
 		{% if forloop.counter0|divisibleby:3 %}
