@@ -24,7 +24,7 @@
 
             <div id="slides" class="slides">
                 {% for slide, type in slides%}
-                    <div class="slide" {% if not forloop.first %}style="display:none;width: 619px;height: 440px; "{% else %}style="height: 440px;"{% endif %}>
+                    <div class="slide" {% if not forloop.first %}style="display:none;width: 619px;height: 258px; "{% else %}style="height: 258px;"{% endif %}>
                         <img  width="615" height="440px" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.slide.url}}{% endif %}" alt="{{slide.title}}"/>
                         <div class="slide-info-wrapper">
                             <div class="slide-info">
