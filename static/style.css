@@ -833,7 +833,7 @@ li.sobre1 a.fotosobre1:hover {
 	z-index: 1;
 	bottom: -151px;
 	background: black;
-    opacity: 0.6;
+    opacity: 0.9;
     margin-left: 5px;
 }
 .ie #col-left #front-slides #slides .slide-info-wrapper{
@@ -4156,4 +4156,8 @@ li.sobre1 a.fotorequest:hover {
 .red-title{
   font-weight: bold;
   color: #F26100;
+}
+.teaser-image img
+{
+	width: 595px;
 }
