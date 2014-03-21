@@ -213,9 +213,9 @@
 		{% revive_banner 3 468 100 "a2b840a7" 1 %}
 	</div><!--//.banner-container-->	
 	<div class="new-theme-videos-box">
-		<div class="general-bar orange-bar">
+		<!-- <div class="general-bar orange-bar">
 			VIDEOS
-		</div>
+		</div> -->
 		{% for video in videos|slice:":4" %}
 			{% if forloop.counter|divisibleby:"2" %}
 				<div class="video-box">
@@ -254,9 +254,9 @@
 		{% revive_banner 3 468 100 "a2b840a7" 1 %}
 	</div>
 	<div class="blog-main-box">
-    	<div class="general-bar grey-bar">
+    	<!-- <div class="general-bar grey-bar">
 			{% trans "ON THE BLOG" %}
-		</div>
+		</div> -->
 		{% for object in blog|slice:":2" %}
 			{% if forloop.counter|divisibleby:"2" %}
 				<div class="blog-photos-box">
@@ -307,9 +307,9 @@
 	</div>
 	
 	<div class="events-news-main-box">
-		<div class="general-bar black-bar">
+		<!-- <div class="general-bar black-bar">
 			{% trans "EVENTS AND NEWS" %}
-		</div>
+		</div> -->
 		{% for object in news|slice:"4:8" %}
 			{% if forloop.counter == 2 or forloop.counter == 4 %}
 				{% for event in upcomming_events %}
@@ -389,7 +389,7 @@
 			</div>
 			<div style="clear: both;"></div>
 		{% endfor %}
-		<!-- <div class="new-theme-gradient-bar-hyperlink">
+		 <div class="new-theme-gradient-bar-hyperlink">
 			<div class="general-bar new-theme-gradient-bar">
 				<a href="{% url event_main %}" style="float:left;">
 					{% trans "SEE MORE EVENTS" %}
@@ -398,7 +398,7 @@
 					{% trans "SEE MORE NEWS" %}
 				</a>
 			</div>
-		</div> -->
+		</div>
 	</div>
 	<div style="clear: both;"></div>
 	

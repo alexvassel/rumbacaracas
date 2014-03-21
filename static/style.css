@@ -828,12 +828,13 @@ li.sobre1 a.fotosobre1:hover {
 }
 #col-left #front-slides #slides .slide-info-wrapper{
 	position: absolute;
-	width: 640px;
+	width: 615px;
 	text-align:center;
 	z-index: 1;
 	bottom: -151px;
 	background: black;
     opacity: 0.6;
+    margin-left: 5px;
 }
 .ie #col-left #front-slides #slides .slide-info-wrapper{
 	
@@ -853,17 +854,18 @@ li.sobre1 a.fotosobre1:hover {
 	outline: none;
 }
 #col-left #front-slides #slides .slide-info h3{
-	color: #f46100;
+	color: white;
 	font-size: 17px;
 	margin: 0 0 5px;
 	text-transform: uppercase;
 }
 #col-left #front-slides #slides .slide-info h3 a{
-	color: #f46100;
+	color: white;
 	text-decoration: none;
 }
 #col-left #front-slides #slides .slide-info a:hover{
 	text-decoration: underline;
+	color:#f46100;
 }
 #col-left #front-slides #slides .slide-info p{
 	color: #FFFFFF;
