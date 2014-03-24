@@ -7,7 +7,7 @@
 .country-event-main .country-event-center .country-event-box .country-evnent-box-text-wrap .text-below-image :HOVER {color:#f06000;}
 .country-event-main .country-event-center .country-event-box .country-evnent-box-text-wrap .text-below-image{/*background-color:lightgray;*/width:137px;position:relative;top:-4px;height:20px;line-height:20px;color: white;font-size:12px;font-weight:bold;background-color:black;opacity:.9;}
 .country-event-main .country-event-center .country-event-box .country-evnent-box-text-wrap .time-div{background-color: black;position:relative;top:-4px;color:white;opacity:0.8;height:14px}
-.country-event-main .country-event-center .country-event-box .country-evnent-box-text-wrap .time-div .time-text{font-size:10px;float:left;margin-right:3px}
+.country-event-main .country-event-center .country-event-box .country-evnent-box-text-wrap .time-div .time-text{font-size:10px;float:left;margin-left:3px}
 .country-event-main .country-event-center .country-event-box .country-evnent-box-text-wrap .text-below-image:hover{color:#f06000}
 .box-border .parts-wrapper .navigation-box{width:282px;background-color:#f06000;margin:0 7px;height:35px;line-height:35px;color:white;font-weight:bold;font-size:20px;text-align:center;position: absolute;top: 395px;right: 0px;z-index: 11;}
 .box-border .parts-wrapper .navigation-box .left-nav-arrows{float:left;width:30px;height:35px;background-image:url("../images/new-theme/left-nav-arrow.png")}
@@ -144,6 +144,11 @@
 .news-main-box .news-photos-box .news-photos-info-box a:hover {
   text-decoration: underline;
 }
+.news-main-box .news-photos-box .news-photos-info-box a:first-child:hover {
+  text-decoration: underline;
+  color: black;
+}
+
 .news-main-box .news-photos-box .news-photos-info-box .news-photo-desc {
   color: black;
   font-size: 20px;
@@ -362,6 +367,12 @@
 .new-theme-videos-box .video-box .video-info-box a:hover {
   text-decoration: underline;
 }
+
+.new-theme-videos-box .video-box .video-info-box a:first-child:hover {
+  text-decoration: underline;
+  color: black;
+}
+
 .new-theme-videos-box .video-box .video-info-box .video-desc {
   /* color: #f06000; */
   color:black;
@@ -409,6 +420,12 @@
 .blog-main-box .blog-photos-box .blog-photos-info-box a:hover {
   text-decoration: underline;
 }
+
+.blog-main-box .blog-photos-box .blog-photos-info-box a:first-child:hover {
+  text-decoration: underline;
+  color: black;
+}
+
 .blog-main-box .blog-photos-box .blog-photos-info-box .blog-photo-desc {
   /* color: #f06000; */
   color:black;
