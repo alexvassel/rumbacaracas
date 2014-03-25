@@ -67,7 +67,7 @@
 						<div class="grey-text-bar-on-img">
 							<div>
 							<a href="{{ row.get_absolute_url }}">{{ row.title }}</a>
-								<p style="float: right;">{{row.date|date:"d.m.y"}}</p>
+								<p>{{row.date|date:"d.m.y"}}</p>
 							</div>
 							<div style="clear: both;"></div>
 						</div>
@@ -181,7 +181,7 @@
 				<div class="news-photos-info-box">
 					<a href="{{ object.get_absolute_url }}">
 						<h3 class="news-photo-desc">
-							{{ object.title|truncate:53 }}
+							{{ object.title|truncate:47 }}
 						</h3>
 					</a>
 					<div class="news-photo-date-info">
@@ -228,7 +228,7 @@
 				<div class="video-info-box">
 					<a href="{{ video.get_absolute_url }}" >
 						<h3 class="video-desc">
-							{{video.description|truncate:55}}
+							{{video.description|truncate:50}}
 						</h3>
 					</a>
 					<div class="video-date-info">
@@ -237,7 +237,8 @@
 						<a href="{{ video.get_absolute_url }}#disqus_thread">{%facebook_comments_count video.get_absolute_url%} {% trans "Comments" %}</a>
 						<!--29.06.2013 / <a href="#">Actualidad</a> / <a href="#">0 Comentarios</a>-->
 					</div>
-				</div>
+    			</div>
+    			<a class="new-theme-read-more video-more" href="{{ video.get_absolute_url }}">{%  trans "Read More" %}</a>
 			</div>
 		{% endfor %}
 		<div style="clear: both;"></div>
