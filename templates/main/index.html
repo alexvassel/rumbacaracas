@@ -209,9 +209,10 @@
 		</a> -->
 	</div>
 	<div style="clear: both;"></div>
-	<div class="banner-container outnone" style="margin: 0 auto; text-align: center; box-shadow: none;">
+	<div class="banner-container outnone banner-margin" style="text-align: center; box-shadow: none;">
 		{% revive_banner 3 468 100 "a2b840a7" 1 %}
 	</div><!--//.banner-container-->	
+	<div style="clear: both;"></div>
 	<div class="new-theme-videos-box">
 		<!-- <div class="general-bar orange-bar">
 			VIDEOS
@@ -251,9 +252,10 @@
 		</a> -->
 	</div>
 	<div style="clear: both;"></div>
-	<div class="banner-container outnone" style="margin: 0 auto; text-align: center; box-shadow: none;">
+	<div class="banner-container outnone banner-margin" style="text-align: center; box-shadow: none;">
 		{% revive_banner 3 468 100 "a2b840a7" 1 %}
 	</div>
+	<div style="clear: both;"></div>
 	<div class="blog-main-box">
     	<!-- <div class="general-bar grey-bar">
 			{% trans "ON THE BLOG" %}
@@ -303,10 +305,10 @@
 	</div>
 	
 	<div style="clear: both;"></div>
-	<div class="banner-container outnone" style="margin: 0 auto; text-align: center; box-shadow: none;">
+	<div class="banner-container outnone banner-margin" style="text-align: center; box-shadow: none;">
 		{% revive_banner 3 468 100 "a2b840a7" 1 %}
 	</div>
-	
+	<div style="clear: both;"></div>
 	<div class="events-news-main-box">
 		<!-- <div class="general-bar black-bar">
 			{% trans "EVENTS AND NEWS" %}
@@ -795,9 +797,9 @@
 		{% for object in art_culture|slice:":3" %}
 			<a href="{{ object.get_absolute_url }}" class="hyperlink-art-culture-image">
 	            {% if object.image %}
-	                <img src="{{ object.blogthumb.url }}" alt="{{ object.title }}" />
+	                <img src="{{ object.rightcolumnthumb.url }}" alt="{{ object.title }}" />
 	            {% else %}
-	                <img src="{% value_from_settings "STATIC_URL" %}s.gif" alt="{{ object.title }}" width=290 height=152/>
+	                <img src="{% value_from_settings "STATIC_URL" %}s.gif" alt="{{ object.title }}" width="300" height="250"/>
 	            {% endif %}
 	        </a>
 			

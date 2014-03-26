@@ -828,7 +828,7 @@ li.sobre1 a.fotosobre1:hover {
 }
 #col-left #front-slides #slides .slide-info-wrapper{
 	position: absolute;
-	width: 615px;
+	width: 615.9999px;
 	text-align:center;
 	z-index: 1;
 	bottom: -151px;

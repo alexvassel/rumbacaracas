@@ -851,3 +851,7 @@ border: none;
 	margin-bottom: 50px;
 }
 .time-text:hover{color:#f06000}
+.banner-margin{
+	margin-top: 10px;
+    margin-bottom: 23px;
+}

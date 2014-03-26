@@ -39,25 +39,6 @@
         {% endif %}
 		{% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}</a>
 	</a>
-    <div class="photos-share-options" style="margin-top: 10px;margin-bottom:0">
-		<ul class="teaser-options encap outnone fcml0 lcmr0">
-			<li class="pl0">
-				<a href="{{object.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
-					<span>{%facebook_comments_count object.get_absolute_url%}</span>
-				</a>
-			</li>
-			<li>
-				{% facebook_like object.get_absolute_url 50%}
-			</li>
-			<li>
-				{% twitter_share object.get_absolute_url object.title%}
-			</li>
-            <li class="br-none">
-				{% gplus object.get_absolute_url%}
-			</li>
-		</ul><!--//.teaser-options-->
-	</div>
-    
 	<div class="content encap">
 		{% if object.image and not object.preview_as_image%}
 			<img class="main-image2" src="{{ object.image.url }}" alt="{{ object.title }}" />
@@ -72,6 +53,26 @@
 			</strong>
         </p>
         {% endif %}
+        
+            <div class="photos-share-options" style="margin-top: 10px;margin-bottom:0">
+        <ul class="teaser-options encap outnone fcml0 lcmr0">
+            <li class="pl0">
+                <a href="{{object.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
+                    <span>{%facebook_comments_count object.get_absolute_url%}</span>
+                </a>
+            </li>
+            <li>
+                {% facebook_like object.get_absolute_url 50%}
+            </li>
+            <li>
+                {% twitter_share object.get_absolute_url object.title%}
+            </li>
+            <li class="br-none">
+                {% gplus object.get_absolute_url%}
+            </li>
+        </ul><!--//.teaser-options-->
+    </div>
+        
 	</div><!--//.content-->
 </div><!--//.node-->
     <div class="banner-container box-contents outnone widget">
