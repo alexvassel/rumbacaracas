@@ -642,12 +642,14 @@
 }
 .art-culture-main-box .hyperlink-art-culture-image img {
   width: 290px;
-  height: 152px;
+  height: 220px;
   border: solid 5px #E8E8E8;
 }
 .art-culture-main-box .art-culture-info-box {
   background-color: white;
   padding: 5px 0 15px 5px;
+  margin-top: 74px;
+  margin-bottom: 4px;
 }
 .art-culture-main-box .art-culture-info-box .art-culture-title {
   color: black;
