@@ -683,15 +683,15 @@
 	padding: inherit;
 	margin: 0 0 10px;
 }
-.webkit #col-left #front-slides{
+#col-left #front-slides{
 	width: 625px;
 	height: 427px;
 }
-.webkit #col-left #front-slides .slides{
+#col-left #front-slides .slides{
 	width: 625px;
 	height: 425px;
 }
-.webkit #col-left #front-slides .slides img{
+#col-left #front-slides .slides img{
 	border: 5px solid white;
 }
 #col-left #front-slides .nav-wrapper{

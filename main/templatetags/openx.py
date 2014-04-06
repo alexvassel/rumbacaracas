@@ -112,11 +112,16 @@ def banner_zone_overflow( zone_id, width=None, height=None ):
     rand = round(100000 * random.random(), 5)
     return dict( zone_id = zone_id, width = width, height=height,rand =rand  )
 
-
+#this function will be removed later since we have replaced openx with latest version. i.e. revive.
 @register.inclusion_tag( 'main/openx_corner_banner.html' )
-def banner_zone_corner( zone_id, width=None, height=None ):
+def banner_zone_corner( zone_id, width=None, height=None, n=None ):
     rand = round(100000 * random.random(), 5)
-    return dict( zone_id = zone_id, width = width, height=height,rand =rand  )
+    return dict( zone_id = zone_id, width = width, height=height,rand =rand, n=n  )
+
+@register.inclusion_tag( 'main/revive_corner_banner.html' )
+def revive_zone_corner( zone_id, width=None, height=None, n=None ):
+    rand = round(100000 * random.random(), 5)
+    return dict( zone_id = zone_id, width = width, height=height,rand =rand, n=n  )
 
 
 @register.inclusion_tag( 'main/openx_email_banner.html' )

@@ -121,7 +121,7 @@
         }
 
         function animateContainerSize(toHeight, toWidth, speed, cntID){
-            var banner = $("#"+cntID.id).parent();
+            var banner = $('.corner_banner');
             banner.animate({ width: toWidth, height: toHeight }, speed);
         }
 
@@ -230,7 +230,7 @@
       </div><!--//.rows-->
     </div><!--//.container-->
   </div><!--//.header-primary-->
-{% block corner %}{% banner_zone_corner 138 %}{% endblock %}
+{% block corner %}{% revive_zone_corner 16 300 300 'ab72e4a3' %}{% endblock %}
 <div class="main-wrapper">
   <div class="container encap" style="cursor: default">
     <div id="header-secondary" class="header-secondary encap">
@@ -307,7 +307,7 @@
     </div><!--//.header-tertiary-->
     {{br}}
       <div class="banner-container outnone">
-          {% block pushdown %}{% banner_zone_iframe 162 960 300%}{% endblock %}
+          {% block pushdown %}{% endblock %}
       </div>
     <div class="breadcrumb">
 	{% block breadcrumbs %}
@@ -331,13 +331,11 @@
 	  <div id="col-right" class="col-right">
         {% block colright %}
             <div class="banner-container box-shadows outnone widget">
-                {% banner_zone_iframe 114 300 250%}
             </div><!--//.banner-container-->
             <div class="clear-block block block-views widget widget-calendar">
                 {% month_cal%}
             </div>
             <div class="banner-container outnone widget">
-                {% banner_zone_iframe_updated 180 300 250%}
             </div><!--//.banner-container-->
             
         {% endblock %}

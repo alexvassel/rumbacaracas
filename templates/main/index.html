@@ -12,8 +12,8 @@
 {% load listtools %}
 {% block advbodycls %}front{% endblock %}
 
-{% block corner %}{% banner_zone_corner 126 %}{% endblock %}
-{% block pushdown %}{% banner_zone_iframe 161 960 300%}{% endblock %}
+{% block corner %}{% revive_zone_corner 15 300 300 'a54f94e0' %}{% endblock %}
+{% block pushdown %}{% endblock %}
 
 {% block colleft %}
     {% if slides %}
@@ -661,11 +661,8 @@
     </div><!--//.banner-container-->
     <div class="split-sidebars encap">
     	<div class="new-theme-rumba-image">
-    		{% banner_zone_iframe 171 300 600%}
-			<!--<img src="{% value_from_settings "STATIC_URL" %}images/new-theme/rumbaCracas.png">-->
 		</div>
 		<div class="banner-container box-shadows outnone widget">
-	        {% banner_zone_iframe 176 300 250%}
 	    </div><!--//.banner-container-->
         
         	  {% most_watched %}
@@ -744,7 +741,6 @@
 		</div>
 		
 		<div id="add-below-yourphotos-box" class="banner-container box-shadows outnone widget">
-	        {% banner_zone_iframe 178 300 250%}
 	    </div><!--//.banner-container-->
 		
 			
@@ -755,17 +751,14 @@
 	        <div class="c40r right">
 	            <div class="placeholders">
 	                <div class="box-border box-contents box-shadows">
-	                    {% banner_zone_iframe 118 120 60 %}
 	                </div><!--//.box-contents-->
 	            </div><!--//.placeholder-->
 	            <div class="placeholders mt10">
 	                <div class="box-border box-contents box-shadows">
-	                    {% banner_zone_iframe 119 120 240 %}
 	                </div>
 	                <!--//.box-contents-->
 	            </div><!--//.placeholder-->
 	            <div class="banner-container box-shadows outnone widget">
-	                {% banner_zone_iframe 115 120 600 %}
 	            </div><!--//.banner-container-->
 	        </div><!--//.right-->
 		{% endcomment %}
