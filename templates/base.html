@@ -124,6 +124,11 @@
             var banner = $('.corner_banner');
             banner.animate({ width: toWidth, height: toHeight }, speed);
         }
+        
+        function animateFloatingBannerHeight(toHeight, speed, cntID){
+            var banner = $('.'+cntID);
+            banner.animate({ height: toHeight }, speed);
+        }
 
 
 	function reloadBanners() {
@@ -321,7 +326,7 @@
 	{% endblock %}
     </div>
 
-	{% block sattelite %}{% banner_zone_overflow 120 %}{% endblock %}
+	{% block sattelite %}{% endblock %}
 
     <div id="main-contents" class="main-contents encap">
 

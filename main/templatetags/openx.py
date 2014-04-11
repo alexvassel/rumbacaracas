@@ -102,15 +102,20 @@ def revive_banner( zone_id, width=None, height=None, n=None, noupdate=None ):
     return dict( zone_id = zone_id, width = width, height=height,rand =rand, n=n, noupdate = noupdate  )
 
 
-@register.inclusion_tag( 'main/openx_float_banner.html' )
-def banner_zone_float( zone_id, width=None, height=None ):
-    rand = round(100000 * random.random(), 5)
-    return dict( zone_id = zone_id, width = width, height=height,rand =rand  )
+#@register.inclusion_tag( 'main/openx_float_banner.html' )
+#def banner_zone_float( zone_id, width=None, height=None ):
+#    rand = round(100000 * random.random(), 5)
+#    return dict( zone_id = zone_id, width = width, height=height,rand =rand  )
 
-@register.inclusion_tag( 'main/openx_overflow_banner.html' )
-def banner_zone_overflow( zone_id, width=None, height=None ):
+#@register.inclusion_tag( 'main/openx_overflow_banner.html' )
+#def banner_zone_overflow( zone_id, width=None, height=None ):
+#    rand = round(100000 * random.random(), 5)
+#    return dict( zone_id = zone_id, width = width, height=height,rand =rand  )
+
+@register.inclusion_tag( 'main/revive_float_banner.html' )
+def banner_revive_float( zone_id, width=None, height=None, n=None ):
     rand = round(100000 * random.random(), 5)
-    return dict( zone_id = zone_id, width = width, height=height,rand =rand  )
+    return dict( zone_id = zone_id, width = width, height=height, rand=rand, n=n  )
 
 #this function will be removed later since we have replaced openx with latest version. i.e. revive.
 @register.inclusion_tag( 'main/openx_corner_banner.html' )

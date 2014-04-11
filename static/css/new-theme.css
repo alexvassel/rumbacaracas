@@ -857,3 +857,7 @@ border: none;
 	margin-top: 10px;
     margin-bottom: 23px;
 }
+.floating_banner{
+	height: 60px;
+	overflow: hidden;
+}
