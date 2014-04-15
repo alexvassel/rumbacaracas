@@ -210,204 +210,149 @@
 	</div>
 	<div style="clear: both;"></div>
 	<div class="banner-container outnone banner-margin" style="text-align: center; box-shadow: none;">
-		{% revive_banner 3 468 100 "a2b840a7" 1 %}
+		{% revive_banner 13 468 100 "a938a1af" 1 %}
 	</div><!--//.banner-container-->	
 	<div style="clear: both;"></div>
-	<div class="new-theme-videos-box">
-		<!-- <div class="general-bar orange-bar">
-			VIDEOS
-		</div> -->
-		{% for video in videos|slice:":4" %}
-			{% if forloop.counter|divisibleby:"2" %}
-				<div class="video-box">
-			{% else %}
-				<div class="video-box" style="margin-right: 20px;">
-			{% endif %}
-				<div class="video-container">
-	                {%youtube_video video.youtube_id 300 220%}
-				</div>
-				<div class="video-info-box">
-					<a href="{{ video.get_absolute_url }}" >
-						<h3 class="video-desc">
-							{{video.description|truncate:50}}
-						</h3>
-					</a>
-					<div class="video-date-info">
-						{{ video.datetime_added|date:"d.m.y" }} /
-						<a href="{% url video_main %}" title="videos">Videos</a> /
-						<a href="{{ video.get_absolute_url }}#disqus_thread">{%facebook_comments_count video.get_absolute_url%} {% trans "Comments" %}</a>
-						<!--29.06.2013 / <a href="#">Actualidad</a> / <a href="#">0 Comentarios</a>-->
-					</div>
-    			</div>
-    			<a class="new-theme-read-more video-more" href="{{ video.get_absolute_url }}" style="color: #F06000;">{%  trans "Read More" %}</a>
-			</div>
-		{% endfor %}
-		<div style="clear: both;"></div>
-		<!-- <a href="{% url video_main %}" class="new-theme-gradient-bar-hyperlink">
-			<div class="general-bar new-theme-gradient-bar">
-				<span>
-					{% trans "SEE MORE VIDEOS" %}
-				</span>
-			</div>
-		</a> -->
-	</div>
+
+<div class="events-news-main-box">
+        <!-- <div class="general-bar black-bar">
+            {% trans "EVENTS AND NEWS" %}
+        </div> -->
+        {% for object in news|slice:"2:10" %}
+            {% if forloop.counter == 2 or forloop.counter == 3 or forloop.counter == 5 or forloop.counter == 4 %}
+                {% for event in upcomming_events %}
+                    {% if forloop.parentloop.counter == 2  and forloop.first or forloop.parentloop.counter == 4 and forloop.counter == 2 or forloop.parentloop.counter == 3 or forloop.parentloop.counter == 5  %}
+                        <div class="events-news-box">
+                            <div class="column1">
+                                <a href="{{ event.get_absolute_url }}">
+                                    <img src="{{ event.rightcolumnthumb.url }}" alt="{{ event.title }}">
+                                </a>
+                            </div>
+                            <div class="column2">
+                                <div>
+                                    <a href="{{ event.get_absolute_url }}" class="news-event-title-hyperlink">
+                                        <h3 class="news-event-title">
+                                            {{ event.title|truncate:53 }}
+                                        </h3>
+                                    </a>
+                                    <div class="news-event-location">
+                                        {% if event.location %}
+                                            <p><a href="{{ event.location.get_absolute_url }}">{{ event.location.title }}</a></p>
+                                        {% else %}
+                                            <p>
+                                                {% if event.place %}
+                                                    {{event.place}}
+                                                {% else %}
+                                                    {% trans "Other"%}
+                                                {% endif %}
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="news-event-date-info">
+                                    {{ event.to_date|date:"d.m.y" }} / 
+                                    {% for cat in event.categories.all %}
+                                        <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+                                        {% if not forloop.last %}, {% endif %}
+                                    {% endfor %} / 
+                                    <a href="{{ event.get_absolute_url }}#disqus_thread">{%facebook_comments_count event.get_absolute_url%} {% trans "Comments" %}</a>
+                                </div>
+                                <div class="news-event-description">
+                                    {{ event.description|truncate:300 }}
+                                </div>
+                                <a style="color: #F06000;" class="new-theme-read-more" href="{{ event.get_absolute_url }}">{%  trans "Read More" %}</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            <div style="clear: both;"></div>
+            <div class="events-news-box">
+                <div class="column1">
+                    <a href="{{ object.get_absolute_url }}">
+                        <img src="{{ object.rightcolumnthumb.url }}" alt="{{ object.title }}">
+                    </a>
+                </div>
+                <div class="column2">
+                    <div>
+                        <a href="{{ object.get_absolute_url }}" class="news-event-title-hyperlink">
+                            <h3 class="news-event-title">
+                                {{ object.title|truncate:53 }}
+                            </h3>
+                        </a>
+                    </div>
+                    <div class="news-event-date-info">
+                        {{ object.creation_date|date:"d.m.y" }} / 
+                        {% for cat in object.categories.all %}
+                            <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %} / 
+                        <a href="{{ object.get_absolute_url }}#disqus_thread">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
+                    </div>
+                    <div class="news-event-description">
+                        {{ object.short|truncate:300 }}
+                    </div>
+                    <a style="color: #F06000;" class="new-theme-read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        {% endfor %}
+         <div class="new-theme-gradient-bar-hyperlink">
+            <div class="general-bar new-theme-gradient-bar">
+                <a href="{% url event_main %}" style="float:left;">
+                    {% trans "SEE MORE EVENTS" %}
+                </a>
+                <a href="{% url zinnia_entry_archive_index %}">
+                    {% trans "SEE MORE NEWS" %}
+                </a>
+            </div>
+        </div>
+    </div>
 	<div style="clear: both;"></div>
 	<div class="banner-container outnone banner-margin" style="text-align: center; box-shadow: none;">
-		{% revive_banner 3 468 100 "a2b840a7" 1 %}
+		{% revive_banner 14 468 100 "a2e1f3c9" 1 %}
 	</div>
 	<div style="clear: both;"></div>
-	<div class="blog-main-box">
-    	<!-- <div class="general-bar grey-bar">
-			{% trans "ON THE BLOG" %}
-		</div> -->
-		{% for object in blog|slice:":2" %}
-			{% if forloop.counter|divisibleby:"2" %}
-				<div class="blog-photos-box">
-			{% else %}
-				<div class="blog-photos-box" style="margin-right: 20px;">
-			{% endif %}
-				<a href="{{ object.get_absolute_url }}">
-					{% if object.image %}
-		                <img src="{{ object.rightcolumnthumb.url }}" alt="{{ object.title }}" />
-		            {% else %}
-		                <img src="{% value_from_settings "STATIC_URL" %}s.gif" alt="{{ object.title }}" width=228 height=168/>
-		            {% endif %}
-				</a>
-				<div class="blog-photos-info-box">
-					<a href="{{ object.get_absolute_url }}">
-						<h3 class="blog-photo-desc">
-							{{ object.title|truncate:53 }}
-						</h3>
-					</a>
-					<div class="blog-photo-date-info">
-						{{ object.creation_date|date:"d.m.y" }} /
-						{% for cat in object.categories.all %}
-							<a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
-							{% if not forloop.last %}, {% endif %}
-          				{% endfor %} /
-						<a href="{{ object.get_absolute_url }}#disqus_thread">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
-					</div>
-					<div class="blog-photos-details">
-						{{ object.short|truncate:165 }}
-					</div>
-					<a style="font-size: 14px;" class="blog-theme-read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
-				</div>
-			</div>
-		{% endfor %}
-		<div style="clear: both;"></div>
-		<!-- <a href="{% url zinnia_category_detail "blog" %}" class="new-theme-gradient-bar-hyperlink">
-			<div class="general-bar new-theme-gradient-bar">
-				<span>
-					{% trans "SEE MORE BLOG" %}
-				</span>
-			</div>
-		</a> -->
-	</div>
-	
+    <div class="new-theme-videos-box">
+        <!-- <div class="general-bar orange-bar">
+            VIDEOS
+        </div> -->
+        {% for video in videos|slice:":4" %}
+            {% if forloop.counter|divisibleby:"2" %}
+                <div class="video-box">
+            {% else %}
+                <div class="video-box" style="margin-right: 20px;">
+            {% endif %}
+                <div class="video-container">
+                    {%youtube_video video.youtube_id 300 220%}
+                </div>
+                <div class="video-info-box">
+                    <a href="{{ video.get_absolute_url }}" >
+                        <h3 class="video-desc">
+                            {{video.description|truncate:50}}
+                        </h3>
+                    </a>
+                    <div class="video-date-info">
+                        {{ video.datetime_added|date:"d.m.y" }} /
+                        <a href="{% url video_main %}" title="videos">Videos</a> /
+                        <a href="{{ video.get_absolute_url }}#disqus_thread">{%facebook_comments_count video.get_absolute_url%} {% trans "Comments" %}</a>
+                        29.06.2013 / <a href="#">Actualidad</a> / <a href="#">0 Comentarios</a>
+                    </div>
+                </div>
+                <a class="new-theme-read-more video-more" href="{{ video.get_absolute_url }}" style="color: #F06000;">{%  trans "Read More" %}</a>
+            </div>
+        {% endfor %}
+        <div style="clear: both;"></div>
+        <!-- <a href="{% url video_main %}" class="new-theme-gradient-bar-hyperlink">
+            <div class="general-bar new-theme-gradient-bar">
+                <span>
+                    {% trans "SEE MORE VIDEOS" %}
+                </span>
+            </div>
+        </a> -->
+    </div> 
 	<div style="clear: both;"></div>
-	<div class="banner-container outnone banner-margin" style="text-align: center; box-shadow: none;">
-		{% revive_banner 3 468 100 "a2b840a7" 1 %}
-	</div>
-	<div style="clear: both;"></div>
-	<div class="events-news-main-box">
-		<!-- <div class="general-bar black-bar">
-			{% trans "EVENTS AND NEWS" %}
-		</div> -->
-		{% for object in news|slice:"4:8" %}
-			{% if forloop.counter == 2 or forloop.counter == 4 %}
-				{% for event in upcomming_events %}
-					{% if forloop.parentloop.counter == 2  and forloop.first or forloop.parentloop.counter == 4 and forloop.counter == 2%}
-						<div class="events-news-box">
-							<div class="column1">
-								<a href="{{ event.get_absolute_url }}">
-									<img src="{{ event.rightcolumnthumb.url }}" alt="{{ event.title }}">
-								</a>
-							</div>
-							<div class="column2">
-								<div>
-									<a href="{{ event.get_absolute_url }}" class="news-event-title-hyperlink">
-										<h3 class="news-event-title">
-											{{ event.title|truncate:53 }}
-										</h3>
-									</a>
-									<div class="news-event-location">
-										{% if event.location %}
-						                    <p><a href="{{ event.location.get_absolute_url }}">{{ event.location.title }}</a></p>
-						                {% else %}
-						                    <p>
-						                        {% if event.place %}
-						                            {{event.place}}
-						                        {% else %}
-						                            {% trans "Other"%}
-						                        {% endif %}
-						                    </p>
-						                {% endif %}
-									</div>
-								</div>
-								<div class="news-event-date-info">
-									{{ event.to_date|date:"d.m.y" }} / 
-									{% for cat in event.categories.all %}
-										<a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
-										{% if not forloop.last %}, {% endif %}
-			          				{% endfor %} / 
-			          				<a href="{{ event.get_absolute_url }}#disqus_thread">{%facebook_comments_count event.get_absolute_url%} {% trans "Comments" %}</a>
-								</div>
-								<div class="news-event-description">
-									{{ event.description|truncate:300 }}
-								</div>
-								<a style="color: #F06000;" class="new-theme-read-more" href="{{ event.get_absolute_url }}">{%  trans "Read More" %}</a>
-							</div>
-						</div>
-					{% endif %}
-				{% endfor %}
-			{% endif %}
-			<div style="clear: both;"></div>
-			<div class="events-news-box">
-				<div class="column1">
-					<a href="{{ object.get_absolute_url }}">
-						<img src="{{ object.rightcolumnthumb.url }}" alt="{{ object.title }}">
-					</a>
-				</div>
-				<div class="column2">
-					<div>
-						<a href="{{ object.get_absolute_url }}" class="news-event-title-hyperlink">
-							<h3 class="news-event-title">
-								{{ object.title|truncate:53 }}
-							</h3>
-						</a>
-					</div>
-					<div class="news-event-date-info">
-						{{ object.creation_date|date:"d.m.y" }} / 
-						{% for cat in object.categories.all %}
-							<a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
-							{% if not forloop.last %}, {% endif %}
-          				{% endfor %} / 
-          				<a href="{{ object.get_absolute_url }}#disqus_thread">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
-					</div>
-					<div class="news-event-description">
-						{{ object.short|truncate:300 }}
-					</div>
-					<a style="color: #F06000;" class="new-theme-read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
-				</div>
-			</div>
-			<div style="clear: both;"></div>
-		{% endfor %}
-		 <div class="new-theme-gradient-bar-hyperlink">
-			<div class="general-bar new-theme-gradient-bar">
-				<a href="{% url event_main %}" style="float:left;">
-					{% trans "SEE MORE EVENTS" %}
-				</a>
-				<a href="{% url zinnia_entry_archive_index %}">
-					{% trans "SEE MORE NEWS" %}
-				</a>
-			</div>
-		</div>
-	</div>
-	<div style="clear: both;"></div>
-	
-	
-	
-	
+    
     {% comment %}
     <div id="outline-briefs" class="outline-briefs boxed-brief">
         <div class="outline-navigation">
@@ -714,7 +659,56 @@
        <div id="add-above-yourphotos-box" class="banner-container box-shadows outnone widget">
 	        {% revive_banner 7 300 250 "a74f8f69" %}
 	   </div><!--//.banner-container-->
-		
+		  <div class="art-culture-main-box">
+        <div class="box-title" style="text-align: center;margin: 30px 0 5px 0;">
+            <h2>
+                {% trans "ART AND CULTURA" %}
+            </h2>
+        </div>
+        {% for object in art_culture|slice:":3" %}
+            <a href="{{ object.get_absolute_url }}" class="hyperlink-art-culture-image">
+                {% if object.image %}
+                    <img src="{{ object.rightcolumnthumb.url }}" alt="{{ object.title }}" />
+                {% else %}
+                    <img src="{% value_from_settings "STATIC_URL" %}s.gif" alt="{{ object.title }}" width="300" height="250"/>
+                {% endif %}
+            </a>
+            
+            <div class="art-culture-info-box">
+                <div style="min-height: 36px;">
+                    <a href="{{ object.get_absolute_url }}" class="art-culture-title">
+                        {{ object.title|truncate:60 }}
+                    </a>
+                    <div class="art-culture-location">
+                        {% if object.location %}
+                        <a href="{{ object.location.get_absolute_url }}">{{ object.location.title|truncate:60 }}</a>
+                        {% else %}
+                            {% if object.place %}
+                                {{object.place|truncate:60}}
+                            {% else %}
+                                {% trans "Other"%}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="date-info">
+                    {% if object.from_date == object.to_date %}
+                        {{object.from_date|date:"d.m.Y"}}
+                    {% else %}
+                        {{object.from_date|date:"d.m.Y"}} a {{object.to_date|date:"d.m.Y"}}
+                    {% endif %}
+                    {% if object.repeat.all %}({{ object.repeat.all|join:", "}}){% endif %}
+                </div>
+            </div>
+            
+        {% endfor %}
+        <a href="#" class="hyper-link-more">
+            <div class="more-grey-bar">
+                <div class="more-next-nav">{% trans "SEE MORE ART AND CULTURE" %}</div>
+                <div class="img-span"><img src="{% value_from_settings "STATIC_URL" %}images/new-theme/right-nav-arrow.png"></div>
+            </div>
+        </a>
+    </div>
 		<div class="your-photos-main-box">
 			<div class="box-title" style="text-align: center;">
 	    		<h2>
@@ -781,58 +775,7 @@
         {% include "main/twitter_list.html" %}
     </div>
     
-    <div class="art-culture-main-box">
-		<div class="box-title" style="text-align: center;margin: 30px 0 5px 0;">
-    		<h2>
-    			{% trans "ART AND CULTURA" %}
-    		</h2>
-    	</div>
-		{% for object in art_culture|slice:":3" %}
-			<a href="{{ object.get_absolute_url }}" class="hyperlink-art-culture-image">
-	            {% if object.image %}
-	                <img src="{{ object.rightcolumnthumb.url }}" alt="{{ object.title }}" />
-	            {% else %}
-	                <img src="{% value_from_settings "STATIC_URL" %}s.gif" alt="{{ object.title }}" width="300" height="250"/>
-	            {% endif %}
-	        </a>
-			
-			<div class="art-culture-info-box">
-				<div style="min-height: 36px;">
-					<a href="{{ object.get_absolute_url }}" class="art-culture-title">
-						{{ object.title|truncate:60 }}
-					</a>
-					<div class="art-culture-location">
-						{% if object.location %}
-						<a href="{{ object.location.get_absolute_url }}">{{ object.location.title|truncate:60 }}</a>
-	                	{% else %}
-                        	{% if object.place %}
-                            	{{object.place|truncate:60}}
-	                        {% else %}
-	                            {% trans "Other"%}
-	                        {% endif %}
-		                {% endif %}
-					</div>
-				</div>
-				<div class="date-info">
-					{% if object.from_date == object.to_date %}
-			            {{object.from_date|date:"d.m.Y"}}
-			        {% else %}
-			            {{object.from_date|date:"d.m.Y"}} a {{object.to_date|date:"d.m.Y"}}
-			        {% endif %}
-			        {% if object.repeat.all %}({{ object.repeat.all|join:", "}}){% endif %}
-				</div>
-			</div>
-			
-		{% endfor %}
-		<a href="#" class="hyper-link-more">
-			<div class="more-grey-bar">
-				<div class="more-next-nav">{% trans "SEE MORE ART AND CULTURE" %}</div>
-				<div class="img-span"><img src="{% value_from_settings "STATIC_URL" %}images/new-theme/right-nav-arrow.png"></div>
-			</div>
-		</a>
-	</div>
-	
-	<div class="banner-container box-shadows outnone widget">
+  <div class="banner-container box-shadows outnone widget">
         {% revive_banner 8 300 500 "ae981f89" %}
     </div><!--//.banner-container-->
 

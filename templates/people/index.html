@@ -19,25 +19,6 @@
 	</span>
 	  </div><!--//.title-wrap-->
 	  <div class="node encap">
-      <div class="photos-share-options" style="border-top:none;margin-top: -20px; margin-bottom: 20px">
-		<ul class="teaser-options encap outnone fcml0 lcmr0">
-			<li class="pl0">
-				<a href="{{latest.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
-					<span>{%facebook_comments_count latest.get_absolute_url%}</span>
-				</a>
-			</li>
-			<li>
-				{% facebook_like latest.get_absolute_url 50%}
-			</li>
-			<li>
-				{% twitter_share latest.get_absolute_url latest.title%}
-			</li>
-            <li class="br-none">
-				{% gplus latest.get_absolute_url%}
-			</li>
-
-		</ul><!--//.teaser-options-->
-	</div>
 
 	<div class="content fotos">
       <h3>{% trans "Latest photos"%}</h3>
@@ -69,6 +50,26 @@
 	  <div class="mt15"><a href="{%url people_details slug=latest.slug%}" class="read-more-red">{%trans "Read More"%}</a></div>
 	</div><!--//.content-->
 	  </div><!--//.node-->
+	    <div class="photos-share-options" style="border-top:none;margin-top: -20px; margin-bottom: 20px;border-top: 1px dotted #000000;">
+        <ul class="teaser-options encap outnone fcml0 lcmr0">
+            <li class="pl0">
+                <a href="{{latest.get_absolute_url}}#disqus_thread" class="socializer-1 with-comment-count">
+                    <span>{%facebook_comments_count latest.get_absolute_url%}</span>
+                </a>
+            </li>
+            <li>
+                {% facebook_like latest.get_absolute_url 50%}
+            </li>
+            <li>
+                {% twitter_share latest.get_absolute_url latest.title%}
+            </li>
+            <li class="br-none">
+                {% gplus latest.get_absolute_url%}
+            </li>
+
+        </ul><!--//.teaser-options-->
+    </div>
+	  
 	  <div class="banner-container box-border box-contents outnone widget">
 	  </div><!--//.banner-container-->
 	  <div class="recent-fotos-list">
