@@ -134,7 +134,7 @@ def index( request ):
     final_slides = [( blog_tmp, 'blog', ) for blog_tmp in blog_slides] + [( event_tmp, 'event', ) for event_tmp in events_slides]
     random.shuffle(final_slides)
     
-    events = upcoming_events_list(2)
+    events = upcoming_events_list(4)
     
     ct_news = ContentType.objects.get(app_label='zinnia', model='entry')
 #    ct_event = ContentType.objects.get(app_label='events', model='event')
