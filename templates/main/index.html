@@ -221,7 +221,7 @@
         {% for object in news|slice:"2:10" %}
             {% if forloop.counter == 2 or forloop.counter == 3 or forloop.counter == 5 or forloop.counter == 4 %}
                 {% for event in upcomming_events %}
-                    {% if forloop.parentloop.counter == 2  and forloop.first or forloop.parentloop.counter == 4 and forloop.counter == 2 or forloop.parentloop.counter == 3 or forloop.parentloop.counter == 5  %}
+                    {% if forloop.parentloop.counter == 2  and forloop.first or forloop.parentloop.counter == 4 and forloop.counter == 2 or forloop.parentloop.counter == 5 and forloop.counter == 3 or forloop.parentloop.counter == 3 and forloop.counter == 2 %}
                         <div class="events-news-box">
                             <div class="column1">
                                 <a href="{{ event.get_absolute_url }}">
