@@ -218,8 +218,8 @@
         <!-- <div class="general-bar black-bar">
             {% trans "EVENTS AND NEWS" %}
         </div> -->
-        {% for object in news|slice:"3:10" %}
-            {% if forloop.counter == 2 or forloop.counter == 4 or forloop.counter == forloop.last or forloop.counter == forloop.first %}
+        {% for object in news|slice:"2:10" %}
+            {% if forloop.counter == 2 or forloop.counter == 4 or forloop.counter == 1 or forloop.counter == 8 %}
                 {% for event in upcomming_events %}
                     {% if forloop.parentloop.counter == 2  and forloop.first or forloop.parentloop.counter == 4 and forloop.counter == 2 or forloop.parentloop.counter == 5 and forloop.counter == 3 or forloop.parentloop.counter == 3 and forloop.counter == 2 %}
                         <div class="events-news-box">
