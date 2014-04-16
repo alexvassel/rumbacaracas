@@ -218,7 +218,7 @@
         <!-- <div class="general-bar black-bar">
             {% trans "EVENTS AND NEWS" %}
         </div> -->
-        {% for object in news|slice:"4:8" %}
+        {% for object in news|slice:"3:8" %}
             {% if forloop.first or forloop.counter == 2 or forloop.counter == 4 or forloop.last %}
                 {% for event in upcomming_events %}
                     {% if forloop.parentloop.first  and forloop.first or forloop.parentloop.counter == 2 and forloop.counter == 2 or forloop.parentloop.counter == 4 and forloop.counter == 3 or forloop.parentloop.last and forloop.last %}
@@ -267,6 +267,7 @@
                 {% endfor %}
             {% endif %}
             <div style="clear: both;"></div>
+            {% if not forloop.last %}
             <div class="events-news-box">
                 <div class="column1">
                     <a href="{{ object.get_absolute_url }}">
@@ -295,6 +296,7 @@
                     <a style="color: #F06000;" class="new-theme-read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
                 </div>
             </div>
+            {% endif %}
             <div style="clear: both;"></div>
         {% endfor %}
          <div class="new-theme-gradient-bar-hyperlink">
