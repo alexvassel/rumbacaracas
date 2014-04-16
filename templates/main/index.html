@@ -219,9 +219,9 @@
             {% trans "EVENTS AND NEWS" %}
         </div> -->
         {% for object in news|slice:"2:10" %}
-            {% if forloop.counter == 2 or forloop.counter == 4 or forloop.first or forloop.last %}
+            {% if forloop.counter == 2 or forloop.counter == 4 or forloop.counter == 1 or forloop.counter == 8 %}
                 {% for event in upcomming_events %}
-                    {% if forloop.parentloop.counter == 2  and forloop.first or forloop.parentloop.counter == 4 and forloop.counter == 2 or forloop.parentloop.first and forloop.counter == 3 or forloop.parentloop.last and forloop.counter == 4 %}
+                    {% if forloop.parentloop.counter == 2  and forloop.first or forloop.parentloop.counter == 4 and forloop.counter == 2 or forloop.parentloop.counter == 1 and forloop.counter == 3 or forloop.parentloop.counter == 8 and forloop.counter == 4 %}
                         <div class="events-news-box">
                             <div class="column1">
                                 <a href="{{ event.get_absolute_url }}">
