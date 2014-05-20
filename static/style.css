@@ -797,16 +797,16 @@ li.sobre1 a.fotosobre1:hover {
 	margin: 0 0 10px;
 }
 .webkit #col-left #front-slides{
-	width: 625px;
+	width: 640px;
 	height: 425px;
 }
 .webkit #col-left #front-slides .slides{
-	width: 625px;
+	width: 640px;
 	height: 425px;
 }
 #col-left #front-slides .nav-wrapper{
 	position: absolute;
-	width: 625px;
+	width: 640px;
 	z-index: 100;
 }
 #col-left #front-slides #nav{
@@ -2087,9 +2087,8 @@ div.breadcrumb a.active {
 #main-contents #col-left .node .content p:last-of-type{
   padding-bottom: 0px;
 }
-#main-contents #col-left .node span.submitted{
+#main-contents #col-left .node span.submitted {
   font-size: 11px;
-  font-weight: bold;
   display: block;
   padding: 0 0 5px;
 }

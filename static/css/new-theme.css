@@ -684,11 +684,11 @@
 	margin: 0 0 10px;
 }
 #col-left #front-slides{
-	width: 625px;
+	width: 640px;
 	height: 427px;
 }
 #col-left #front-slides .slides{
-	width: 625px;
+	width: 640px;
 	height: 425px;
 }
 #col-left #front-slides .slides img{
@@ -696,7 +696,7 @@
 }
 #col-left #front-slides .nav-wrapper{
 	position: absolute;
-	width: 625px;
+	width: 640px;
 	top: 5px;
 	z-index: 100;
 }
