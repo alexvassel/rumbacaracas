@@ -858,6 +858,6 @@ border: none;
     margin-bottom: 23px;
 }
 .floating_banner{
-	height: 60px;
+	/*height: 60px;*/
 	overflow: hidden;
 }
