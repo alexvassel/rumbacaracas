@@ -41,7 +41,7 @@
 	</a>
 	<div class="content encap">
 		{% if object.image and not object.preview_as_image%}
-			<img class="main-image2" src="{{ object.image.url }}" alt="{{ object.title }}" />
+			<img class="main-image2 fix-width" src="{{ object.image.url }}" alt="{{ object.title }}" />
 		{% endif %}
         {% autoescape off%}
 		    {{object_content}}

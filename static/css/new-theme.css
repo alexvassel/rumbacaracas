@@ -861,3 +861,7 @@ border: none;
 	/*height: 60px;*/
 	overflow: hidden;
 }
+#main-contents #col-left .node-container .node div.content img.fix-width{
+	max-width: 600px;
+}
+
