@@ -26,7 +26,7 @@
 {% with object.html_content|safe as object_content %}
 
 <div id="entry-{{ object.pk }}" class="node music-news encap {% if object.featured %} featured{% endif %}">
-    <h2 class="title">{{object.title }}</h2>
+    <h2 class="title">{{object.title }}</h2>{% trans object.slug  %}
     <span class="submitted">
         {% if object.author_profile and object.author_profile != "" %}
             <a href="{% url ath_profile object.author_profile.user.username %}" target="_blank">{% trans "Written by" %} <span class="vcard author">{{ object.author_profile }}</span>
