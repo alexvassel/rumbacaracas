@@ -4,6 +4,7 @@
 {% load facebook twitter widgets %}
 {% block title %}{{ object.title }}{% endblock %}
 
+{% block bannermain %}   {% revive_banner 20 800 100 "ae59f500" %} {% endblock %}
 
 {% block titlehdr %}
 	{% for cat in object.categories.all%}
@@ -20,7 +21,7 @@
     {% endblock %}
 {% endif %}
 
-{% block pushdown %}{% banner_revive_float 20 960 60 "a30d61ff" %}{% endblock %}
+{% block pushdown %}{% banner_revive_float 18 960 60 "a30d61ff" %}{% endblock %}
 
 {% block content %}
 {% with object.html_content|safe as object_content %}
