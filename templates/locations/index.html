@@ -10,30 +10,6 @@
 {% load widgets %}
 {% load tools %}
 
-{% if location %}
-    {% block fbmeta %}
-        <meta property="og:title" content="{{ location.title }}"/>
-        <meta property="og:image" content="{{ location.thumbnail.url }}"/>
-        <meta property="og:url" content="{% value_from_settings "FULL_BASE_URL" %}{{ location.get_absolute_url }}"/>
-        <meta property="og:description" content="{{ location.description|truncate_raw:100 }}"/>
-
-        {% for type in  location.type.all%}
-            <meta property="og:type" content="{{ type.fb_type }}"/>
-        {%  endfor %}
-
-        <meta property="og:email" content="{{ location.email }}"/>
-        <meta property="og:phone_number" content="{{ location.phone_1 }}{% if location.phone_2 %}, {{ location.phone_2 }}{% endif %}"/>
-        <meta property="og:fax_number" content="{{ location.fax }}"/>
-
-        <meta property="og:street-address" content="{{ location.address }}"/>
-        <meta property="og:locality" content="{{ location.city }}"/>
-        <meta property="og:region" content="{{ location.area.title }}"/>
-        <meta property="og:country-name" content="Venezuela"/>
-
-    {% endblock %}
-{% endif %}
-
-
 
 {% block pushdown %}{% banner_revive_float 18 960 60 "a30d61ff" %}{% endblock %}
 
