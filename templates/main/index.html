@@ -777,11 +777,6 @@
         {% endcomment %}
         {% include "main/twitter_list.html" %}
     </div>
-        {% comment %}
-      <div class="banner-container box-shadows outnone widget">
-        {% overlay_banner 26 500 500 %}
-    </div>
-    {% endcomment %}
     
   <div class="banner-container box-shadows outnone widget">
         {% revive_banner 8 300 500 "ae981f89" %}
@@ -790,11 +785,8 @@
 {% endblock %}
 {% block overlay %}
         <div class="overlay">
-        <script type='text/javascript'><!--//<![CDATA[
-           var ox_u = 'http://ads2014.2rumba.com/www/delivery/al.php?zoneid=26&layerstyle=geocities&align=center&padding=2&closetext=%5BClose%5D';
-           if (document.context) ox_u += '&context=' + escape(document.context);
-           document.write("<scr"+"ipt type='text/javascript' src='" + ox_u + "'></scr"+"ipt>");
-        //]]>--></script>
-        </div><!--//.banner-container-->
+           {% overlay_banner 26 %}
+        </div>
+
 {% endblock overlay %}
 

@@ -134,3 +134,8 @@ def banner_zone_email( zone_id):
     rand = random.random()
     return dict( zone_id = zone_id, rand = rand  )
 
+@register.inclusion_tag( 'main/openx_overlay_banner.html' )
+def overlay_banner( zone_id):
+    rand = random.random()
+    return dict( zone_id = zone_id, rand = rand  )
+
