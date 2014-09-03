@@ -864,4 +864,10 @@ border: none;
 #main-contents #col-left .node-container .node div.content img.fix-width{
 	max-width: 600px;
 }
-
+.overlay {
+    position:absolute;
+    top: 165px;
+    left: -120px;
+    z-index:9999;
+    color:white;
+}

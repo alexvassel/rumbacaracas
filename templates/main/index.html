@@ -41,6 +41,7 @@
             </div><!--//.slides-->
         </div><!--//.front-slides-->
     {%  endif %}
+
     <div id="latest-photos" class="latest-photos encap boxed-brief lastest-photos-main-box">
         {% comment %}<div class="wrapper encap">
             <div class="title flt-left"><h2>{% trans "LATEST PHOTOS" %}</h2></div>
@@ -354,7 +355,7 @@
         </a> -->
     </div> 
 	<div style="clear: both;"></div>
-    
+
     {% comment %}
     <div id="outline-briefs" class="outline-briefs boxed-brief">
         <div class="outline-navigation">
@@ -776,10 +777,24 @@
         {% endcomment %}
         {% include "main/twitter_list.html" %}
     </div>
+        {% comment %}
+      <div class="banner-container box-shadows outnone widget">
+        {% overlay_banner 26 500 500 %}
+    </div>
+    {% endcomment %}
     
   <div class="banner-container box-shadows outnone widget">
         {% revive_banner 8 300 500 "ae981f89" %}
     </div><!--//.banner-container-->
 
 {% endblock %}
+{% block overlay %}
+        <div class="overlay">
+        <script type='text/javascript'><!--//<![CDATA[
+           var ox_u = 'http://ads2014.2rumba.com/www/delivery/al.php?zoneid=26&layerstyle=geocities&align=center&padding=2&closetext=%5BClose%5D';
+           if (document.context) ox_u += '&context=' + escape(document.context);
+           document.write("<scr"+"ipt type='text/javascript' src='" + ox_u + "'></scr"+"ipt>");
+        //]]>--></script>
+        </div><!--//.banner-container-->
+{% endblock overlay %}
 
