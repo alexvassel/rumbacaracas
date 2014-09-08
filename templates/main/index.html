@@ -784,9 +784,24 @@
 
 {% endblock %}
 {% block overlay %}
-        <div class="overlay">
+    <dialog class="modal">
+         <div class="overlaybtn"><button id="close">Close</button></div>
+        <div class="overlay-test"></div>
+         <div class="overlaypan">
            {% overlay_banner 26 %}
-        </div>
+          </div>
+
+    </dialog>
+  <script>
+   var dialog = document.querySelector('dialog');
+    $(document).ready(function(){
+       dialog.show();
+    });
+  document.querySelector('#close').onclick = function() {
+        dialog.close();
+    };
+  </script>
+
 
 {% endblock overlay %}
 
