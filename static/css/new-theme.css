@@ -880,9 +880,13 @@ border: none;
 }
 .overlaybtn{
     position: fixed;
-    top: 57px;
-    left: 580px;
+    top: 47px;
+    left: 963px;
     z-index: 13;
+}
+.overlaybtn #close{
+    font-size: 23px;
+    -webkit-border-radius: 5px;
 }
 .modal{
 position: absolute;
