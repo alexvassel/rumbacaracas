@@ -784,6 +784,7 @@
 
 {% endblock %}
 {% block overlay %}
+<!-- uncomment below html and js code to activate home page blocking add. -->
 <!-- 
     <div id="dialog" class="modal">
          <div class="overlaybtn"><button id="close">Close</button></div>
@@ -792,9 +793,10 @@
            {% overlay_banner 26 %}
           </div>
     </div>
+-->
   <script>
     $(document).ready(function(){
-    	//just uncomment the line below in order to show the home page blocking add.
+    	//just uncomment the js line below in order to show the home page blocking add.
        //$("#dialog").show();
     });
     $(document).ready(function(){
@@ -804,6 +806,5 @@
     });
 
   </script>
- -->
 {% endblock overlay %}
 
