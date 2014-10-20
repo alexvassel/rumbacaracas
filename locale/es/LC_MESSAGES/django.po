@@ -878,7 +878,7 @@ msgstr "Rumbacaracas Inicio"
 #: templates/mobile/base.html:244 templates/mobile/base.html.py:355
 #: templates/static/about_menu.html:11 templates/static/aboutus.html:49
 msgid "Printed Editions"
-msgstr "REVISTA DIGITAL"
+msgstr "Recomendaciones"
 
 #: templates/base.html:265 templates/base.html.py:378
 #: templates/mobile/base.html:237 templates/mobile/base.html.py:336
@@ -980,7 +980,7 @@ msgstr "Actualidad"
 #: templates/base.html:307 templates/mobile/base.html:280
 #: templates/mobile/main/index.html:66
 msgid "Bands, Authors and Djs"
-msgstr "Bandas, Artistas y DJs"
+msgstr "Recomendaciones y Entrevistas"
 
 #: templates/base.html:376 templates/mobile/base.html:334
 #: templates/people/index.html:14
