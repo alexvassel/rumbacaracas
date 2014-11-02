@@ -108,7 +108,9 @@ class Location( ImageModel ):
     hours_of_operation = models.CharField( _( 'Working hours' ), max_length = 256 , blank = True )
     days_of_operation = models.ManyToManyField( WeekDay , blank = True )
     area = models.ForeignKey( LocationArea , blank = True , null = True )
+    dress_type = models.ForeignKey( DressType , blank = True , null = True )
     music = models.ForeignKey( LocationMusic , blank = True , null = True )
+#     venue_price = models.ForeignKey(VenuePrice, blank = True, null = True)
     image_logo = ImageRestrictedFileField( _( 'Image logo' ), upload_to = upload_to_dest(format='uploads/locations/%Y/%m/%d') , blank = True )
     description = models.TextField( _( 'Description' ) , blank = True )
     owner = models.CharField( _( 'Owner or manager' ), max_length = 256 , blank = True )
@@ -152,6 +154,31 @@ class Location( ImageModel ):
         if str(self.city) == 'Caracas':
             super(Location, self).save(using = 'venezuela', *args, **kwargs)
             
+
+VENUE_PRICE_TYPE = ( 
+    ( '1', _( '$' ) ),
+    ( '2', _( '$$' ) ),
+    ( '3', _( '$$$' ) ),
+    ( '4', _( '$$$$' ) ),
+ )
+
+class VenuePrice( models.Model ):
+    price_type = models.CharField( _( 'How much expensive' ), choices = VENUE_PRICE_TYPE, max_length = 256, null=True, blank=True )
+    actual_price = models.FloatField( _( 'How much expensive' ), max_length = 256, null=True, blank=True )
+    venue_location = models.OneToOneField(Location, related_name="venue_price")
+    
+    def __unicode__( self ):
+        if self.actual_price:
+            return str(self.actual_price)
+        elif self.price_type:
+            return self.price_type
+        else:
+            return ""
+        
+    class Meta:
+        verbose_name = _( 'Venue Price' )
+        verbose_name_plural = _( 'Venue Price' )
+
 # ASSIGN A PRE_SAVE SIGNAL
 def save_location_info(sender, **kwargs):
     obj = kwargs['instance']

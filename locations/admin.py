@@ -1,4 +1,4 @@
-from locations.models import LocationType, RestaurantType, LocationMusic, Location, DressType, LocationArea
+from locations.models import LocationType, RestaurantType, LocationMusic, Location, DressType, LocationArea, VenuePrice
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
@@ -15,7 +15,8 @@ class LocationTypeAdmin( admin.ModelAdmin ):
     list_editable = ( 'show_in_menu', )
 admin.site.register( LocationType, LocationTypeAdmin )
 
-
+class VenuePriceAdmin( admin.StackedInline):
+    model = VenuePrice
 
 class LocationAdmin( admin.ModelAdmin ):
     prepopulated_fields = {"slug": ( "title", )}
@@ -29,11 +30,14 @@ class LocationAdmin( admin.ModelAdmin ):
     fieldsets = [
         ( 'Location data', {'fields': ( 
             'title', 'slug', 'type', 'restaurant', 'area', 'address', 'city', 'phone_1', 'phone_2',
-            'fax', 'url', 'email', 'hours_of_operation', 'days_of_operation',
-             'music', 'image_logo', 'description', 'status', 'featured',
+            'fax', 'url', 'email', 'hours_of_operation', 'days_of_operation', 'dress_type',
+            'music', 'image_logo', 'description', 'status', 'featured',
              'add_user',
         )} ),
         ( 'Contact Information', {'fields': ( 'owner', 'contact_type', 'contact', 'phones', 'contact_email' )} ),
+    ]
+    inlines = [
+        VenuePriceAdmin,
     ]
     actions = [make_published]
 

@@ -402,6 +402,10 @@ msgstr "Teléfonos"
 msgid "Location"
 msgstr "Locales"
 
+#: locations/models.py:179
+msgid "Venue Price"
+msgstr "Cuánto hay que llevar"
+
 #: locations/models.py:148 locations/views.py:59 locations/views.py:100
 #: locations/views.py:125 locations/views.py:134 locations/views.py:142
 #: locations/views.py:160 locations/views.py:175 templates/base.html:370

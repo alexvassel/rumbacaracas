@@ -98,6 +98,30 @@
             <td><a href="mailto:{{location.email}}">{{location.email}}</a></td>
           </tr>
         {% endif %}
+        {% if location.dress_type %}          
+          <tr>
+            <td><strong>{% trans "Dress type"%}:</strong></td>
+            <td>{{location.dress_type.title}}</td>
+          </tr>
+        {% endif %}
+        {% if location.music%}
+          <tr>
+            <td><strong>{% trans "Music type"%}:</strong></td>
+            <td>{{location.music.title}}</td>
+          </tr>
+        {% endif %}
+        {% if location.venue_price %}
+          <tr>
+            <td><strong>{% trans "Venue Price"%}:</strong></td>
+            <td>
+            {% if location.venue_price.actual_price %}
+            {{location.venue_price.actual_price }}
+            {% else %}
+            {{location.venue_price.get_price_type_display}}
+            {% endif %}
+            </td>
+          </tr>
+        {% endif %}
 		{% if location.hours_of_operation or location.days_of_operation.all%}          
           <tr>
             <td><strong>{% trans "Working hours"%}:</strong></td>
@@ -112,12 +136,6 @@
           <tr>
             <td><strong>{% trans "Restaurant"%}:</strong></td>
             <td>{{location.restaurant.all|join:", "}}</td>
-          </tr>
-        {% endif %}
-        {% if location.music%}
-          <tr>
-            <td><strong>{% trans "Music type"%}:</strong></td>
-            <td>{{location.music.title}}</td>
           </tr>
         {% endif %}
         {% if location.type.all%}

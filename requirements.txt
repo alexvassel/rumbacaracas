@@ -16,4 +16,14 @@ ALTER TABLE `news_entryimage` ADD CONSTRAINT `entry_id_refs_id_413aa18f` FOREIGN
 
 ALTER TABLE  `zinnia_entry` ADD CONSTRAINT  `entry_id_author_id_413aa18e` FOREIGN KEY (  `author_profile_id` ) REFERENCES  `news_authorprofile` ( `id` )
 
+ALTER TABLE locations_location ADD dress_type_id integer;
+ALTER TABLE `locations_location` ADD CONSTRAINT `dress_type_id_refs_id_4e08519a` FOREIGN KEY (`dress_type_id`) REFERENCES `locations_dresstype` (`id`);
+
+CREATE TABLE `locations_venueprice` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `price_type` varchar(256),
+    `actual_price` double precision,
+    `venue_location_id` integer NOT NULL UNIQUE
+) ENGINE = MyISAM;
+ALTER TABLE `locations_venueprice` ADD CONSTRAINT `venue_location_id_refs_id_fbad0ec4` FOREIGN KEY (`venue_location_id`) REFERENCES `locations_location` (`id`);
 #run these commands to enable the functionality of author profile.
