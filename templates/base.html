@@ -17,8 +17,8 @@
     xmlns:og="http://opengraphprotocol.org/schema/"
     xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
-
-
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- Remvoing any redirection on mobile- Juni   
 	<script type="text/javascript">
 		// .
 		var mobile_domain ="m.rumbacaracas.com";
@@ -28,7 +28,7 @@
 		var other_tablets = true;
 		document.write(unescape("%3Cscript src='"+location.protocol+"//s3.amazonaws.com/me.static/js/me.redirect.min.js' type='text/javascript'%3E%3C/script%3E"));
 	</script>
-
+ -->
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>{% block title %}{% endblock %}{%comment%}{% if flavour == "mobile" %}({% trans "mobile version" %}){% endif %}{%endcomment%}</title>
@@ -57,6 +57,7 @@
 	<link href="{{ STATIC_URL }}css/addforms.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
     <link href="{{ STATIC_URL }}css/custom-ui-theme/jquery-ui-1.8.14.custom.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
     <link href="{{ STATIC_URL }}css/new-theme.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+	
     {% endcompress %}
 
     {% compress js %}
@@ -64,11 +65,11 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.cookie.js"></script>
 
 	<script type="text/javascript">
-//        if($.cookie('prepagina') == null) {
-//			$.cookie('realreferrer', document.referrer,{path: '/', domain: '.rumbacaracas.com'});
-//			$.cookie('prepagina', "si", {path: '/', domain: '.rumbacaracas.com'});
-//			window.location = "/splash"
-//      	}
+    //    if($.cookie('prepagina') == null) {
+	//		$.cookie('realreferrer', document.referrer,{path: '/', domain: '.rumbacaracas.com'});
+	//		$.cookie('prepagina', "si", {path: '/', domain: '.rumbacaracas.com'});
+	//		window.location = "/splash"
+    //  	}
 	</script>
 
 	<script type="text/javascript" src="{{ STATIC_URL }}js/menus.js"></script>
@@ -82,6 +83,9 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/writeCapture.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.writeCapture.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ba-dotimeout.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.floatingbanner.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.floatingbanner.min.js"></script>
+
 
 	<!--[if lte IE 6]><link href="{{ STATIC_URL }}css/ie6fix.css" rel="stylesheet" type="text/css" /><![endif]-->
 	<!--[if IE 7]><link href="{{ STATIC_URL }}css/ie7fix.css" rel="stylesheet" type="text/css" /><![endif]-->
@@ -161,7 +165,8 @@
 	
 	
 	</script>
-
+  <link rel="stylesheet" href="http://rumbacaracas.com/media/responsive.css" />
+  <link href="http://rumbacaracas.com/media/css/floatingbanner.css" rel="stylesheet"/>
 </head>
 <body class=" {% block advbodycls %}{% endblock %}">
 
@@ -177,21 +182,27 @@
          <div class="sec-left flt-left">
 
           <ul class="top-menu-social">
-		{% if request.user.is_authenticated %}
+            <li class="opcion0 force-left">SÍGUENOS</li>
+            <li class="socbutt force-left"><a target="_blank" href="https://www.facebook.com/rumbacaracas" class="socbutt_fb"></a>&nbsp;&nbsp;</li>
+            <li class="socbutt force-left"><a target="_blank" href="https://twitter.com/rumbacaracas" class="socbutt_tw"></a>&nbsp;&nbsp;</li>
+            <li class="socbutt force-left"><a target="_blank" href="http://instagram.com/rumbacaracas" class="socbutt_insta"></a>&nbsp;&nbsp;</li>
+            <li class="socbutt force-left"><a target="_blank" href="https://www.youtube.com/user/rumbacaracasvideos" class="socbutt_youtube"></a>&nbsp;&nbsp;</li>
+        <!--
+        {% if request.user.is_authenticated %}
             {% main_greating  request.user%}
             <li class="sepL force-right">&nbsp;</li>
             <li class="opcion0 force-right">
                 <a href="{% url social_logout %}"  class="logout" onclick="javascript:FB.logout(function(response){ document.location = '{% url social_logout %}' })">
-					{% trans "Logout" %}
-				</a>
-			</li>
-		{% else %}
+                    {% trans "Logout" %}
+                </a>
+            </li>
+        {% else %}
             <li class="btnfacebook1">{% facebook_button %}</li>
             <li class="opcion0"> {%trans "or"%} </li>
             <li class="btntwitter1">{% twitter_button %}</li>
             <li class="sepL">&nbsp;</li>
-		{% endif %}            
-
+        {% endif %}            
+        -->
 
           </ul>
 
@@ -224,8 +235,6 @@
                 <li class="photo-request"><a href="{% url people_request %}">{% trans "Hire a photographer" %}</a></li>
                 <li class="sepB">&nbsp;</li>
 
-                <li class="social-freak"><a class="facebook-fanpage" href="http://www.facebook.com/rumbabogotacom" target="_blank"><span class="hidden">{% trans "Follow us on Facebook"%}</span></a></li>
-                <li class="social-freak"><a class="twitter-page" href="http://twitter.com/#!/rumbabogota" target="_blank"><span class="hidden">{% trans "Follow us on Twitter"%}</span></a></li>
                 <li class="top-search-form">
                     {% googlesearch_input %}
                 </li>
@@ -237,7 +246,7 @@
   </div><!--//.header-primary-->
 {% block corner %}{% revive_zone_corner 16 300 300 'ab72e4a3' %}{% endblock %}
 <div class="main-wrapper">
-  <div class="container encap" style="cursor: default">
+  <div class="container encap whitebg" style="cursor: default">
     <div id="header-secondary" class="header-secondary encap">
       <div class="date c14l txt-right mr10">
         <h2>
@@ -427,6 +436,7 @@
 </div>
 <script>
 	$(document).ready(function () {
+		alert('test');
 		jQuery("#footer-tertiary .txt-left img").mouseover(function( )
 		{
 			$(this).attr("src", $(this).attr("src").replace(".png", "_on.png"));
@@ -440,29 +450,32 @@
 	
 		/* PUSH BANNER */
 
-		// initial height
-		var banner_push_h_from = 60;
-		// the height at the end
-		var banner_push_h_to = 200;
-		// animation speed
-		var banner_push_aspeed = 1000;
+        if( jQuery(".banner-push").length > 0 && jQuery(".banner-push")[0].scrollHeight > 0 ) {
 
-		jQuery(".banner-push").css('height', banner_push_h_from +'px');
-		jQuery(".banner-push").css('overflow', 'hidden');
-		jQuery(".banner-push").mouseover(function() {
-            $(this).clearQueue();
-            $(this).animate({height:banner_push_h_to, queue:false},banner_push_aspeed);
-		});
+    		// initial height
+    		var banner_push_h_from = 60;
+	    	// the height at the end
+        	var banner_push_h_to = 200;
+		    // animation speed
+	    	var banner_push_aspeed = 1000;
+    
+    		jQuery(".banner-push").css('height', banner_push_h_from +'px');
+    		jQuery(".banner-push").css('overflow', 'hidden');
+    		jQuery(".banner-push").mouseover(function() {
+                $(this).clearQueue();
+                $(this).animate({height:banner_push_h_to, queue:false},banner_push_aspeed);
+    		});
 
-		jQuery(".banner-push").mouseout(function() {
-            $(this).clearQueue();
-            $(this).animate({height:banner_push_h_from, queue:false},banner_push_aspeed);
-		});
+    		jQuery(".banner-push").mouseout(function() {
+                $(this).clearQueue();
+                $(this).animate({height:banner_push_h_from, queue:false},banner_push_aspeed);
+    		});
 
+        }
 	})
 </script>
 
 {% gplus_js_tag %}
-
+<script type="text/javascript" src="http://rumbacaracas.com/media/responsive.js"></script>
 </body>
 </html>
