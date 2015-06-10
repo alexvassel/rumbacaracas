@@ -1,0 +1,554 @@
+{% load i18n %}
+{% load facebook_tags %}
+{% load facebook %}
+{% load twitter %}
+{% load tools %}
+{% load twitter_tags %}
+{% load openx %}
+{% load gplus %}
+{% load widgets %}
+{% load socialregistration_tags %}
+{% load googlesearch_inclusion_tags %}
+{% load compress %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://opengraphprotocol.org/schema/"
+    xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- Remvoing any redirection on mobile- Juni
+	<script type="text/javascript">
+		// .
+		var mobile_domain ="m.rumbacaracas.com";
+		// Set to false to not redirect on iPad.
+		var ipad = true;
+		// Set to false to not redirect on other tablets (Android , BlackBerry, WebOS tablets).
+		var other_tablets = true;
+		document.write(unescape("%3Cscript src='"+location.protocol+"//s3.amazonaws.com/me.static/js/me.redirect.min.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+ -->
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>{% block title %}{% endblock %}{%comment%}{% if flavour == "mobile" %}({% trans "mobile version" %}){% endif %}{%endcomment%}</title>
+    {% block seometa %}
+	    <meta name="keywords" content="Rumbas, rumba en caracas, redes sociales, web, fotos, entretenimiento, locales, conciertos, djs, eventos, videos, fiestas, música, cultura, facebook, twitter, youtube, google" />
+	    <meta name="description" content="Guía online de entretenimiento que informa y cubre las rumbas, eventos, rumberos, noticias, fotos, locales, conciertos y redes sociales en la ciudad de Caracas, Venezuela" />
+    {% endblock %}
+    <meta property="fb:app_id" content="{% value_from_settings "FACEBOOK_APP_ID" %}">
+    <meta property="og:site_name" content="Rumbacaracas.com"/>
+    {% block fbmeta %}
+        {% comment %}<meta property="og:title" content="Rumbacaracas.com"/>{% endcomment %}
+        <meta property="og:image" content="{{ STATIC_URL }}images/logos/RC.png"/>
+	{% endblock %}
+
+	<link rel="shortcut icon" href="/favicon.ico" />
+
+
+    {% compress css %}
+	<link href="{{ STATIC_URL }}css/base.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+	<link href="{{ STATIC_URL }}css/typo.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+	<link href="{{ STATIC_URL }}css/forms.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+	<link href="{{ STATIC_URL }}style.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+	<link href="{{ STATIC_URL }}css/jquery.lightbox-0.5.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+	<link href="{{ STATIC_URL }}js/tip-darkgray/tip-darkgray.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+	<link href="{{ STATIC_URL }}js/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+	<link href="{{ STATIC_URL }}css/addforms.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+    <link href="{{ STATIC_URL }}css/custom-ui-theme/jquery-ui-1.8.14.custom.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+    <link href="{{ STATIC_URL }}css/new-theme.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+    {% endcompress %}
+
+    {% compress js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.cookie.js"></script>
+
+	<script type="text/javascript">
+//        if($.cookie('prepagina') == null) {
+//			$.cookie('realreferrer', document.referrer,{path: '/', domain: '.rumbacaracas.com'});
+//			$.cookie('prepagina', "si", {path: '/', domain: '.rumbacaracas.com'});
+//			window.location = "/splash"
+//      	}
+	</script>
+
+	<script type="text/javascript" src="{{ STATIC_URL }}js/menus.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/site.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/cycle.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.12.custom.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ui.datepicker-es.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/uniform/jquery.uniform.js"></script>
+    {% endcompress %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.lightbox-0.5.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/writeCapture.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.writeCapture.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ba-dotimeout.min.js"></script>
+
+	<!--[if lte IE 6]><link href="{{ STATIC_URL }}css/ie6fix.css" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE 7]><link href="{{ STATIC_URL }}css/ie7fix.css" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE]><script defer="defer" type="text/javascript" src="{{ STATIC_URL }}js/iefixes.js"></script><![endif]-->
+
+	<!--[if (gte IE 6)&(lte IE 8)]>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/selectivizr.js"></script>
+		<noscript><link rel="stylesheet" href="{{ STATIC_URL }}css/ie-fallback.css" /></noscript>
+	<![endif]-->
+	
+    <script type="text/javascript">	
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-801353-1']);
+      _gaq.push(['_setDomainName', '.rumbacaracas.com']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+
+	<!-- RELOAD BANNERS -->
+	<script>
+
+        //Function to support resize openx banner container
+        function animateContainerHeight(to, speed, cntID){
+            var banner = $("#"+cntID).parent();
+            banner.animate({ height: to }, speed);
+        }
+        function animateContainerWidth(to, speed, cntID){
+            var banner = $("#"+cntID).parent();
+            banner.animate({ width: to }, speed);
+        }
+
+        function animateContainerSize(toHeight, toWidth, speed, cntID){
+            var banner = $('.corner_banner');
+            banner.animate({ width: toWidth, height: toHeight }, speed);
+        }
+        
+        function animateFloatingBannerHeight(toHeight, speed, cntID){
+            var banner = $('.'+cntID);
+            banner.animate({ height: toHeight }, speed);
+        }
+
+
+	function reloadBanners() {
+		var banners = $('.jsbanner');
+		for(i = 0; i < banners.length; i++) {
+			var self = $(banners[i]);
+		    var rel = self.attr('rel');
+		    var update = self.attr('value');
+		    if(update != 1)
+		    	$.writeCapture.load(self.parent(),'/get_banner/' + rel);
+		}
+		return false;
+	}
+	
+	
+	$(document).ready(function () {
+		$.writeCapture.autoAsync();
+		$.doTimeout('checkB', 10000, function() {
+			var banner = $('.jsbanner');
+			if($('div', $(banner[0])).html() == "") {
+				if(typeof window.gourl != "undefined") {
+					window.gourl = window.gourl.replace(/\?resetCache/, '');
+					window.location = window.gourl;
+				}
+			}
+			return true;
+		});
+	});
+	
+	
+	</script>
+
+<style>
+
+div#front-slides ul#navarrow {
+    position: relative; 
+    list-style: none;
+    z-index: 15;
+    top: 40%; 
+    overflow:visible;
+    height:0px;
+    display: none;
+    outline: 0;
+}
+div#front-slides ul#navarrow li#prev {
+    //display: none;
+    top: 55%; 
+    float: left; 
+    margin: 0 0 0 30px;
+    height:0px;
+    overflow:visible;
+    outline: 0;
+}
+div#front-slides ul#navarrow li#next {
+    //display: none;
+    float: right; 
+    margin: 0 30px 0 0;
+    height:0px;
+    overflow:visible;
+    outline: 0;
+}
+
+div#front-slides ul#navarrow li a {
+    display: block; 
+    //width: 43px; 
+    //height: 85px; 
+    width: 32px; 
+    height: 64px; 
+    text-indent: -9999px;
+    outline: 0;
+}
+
+a img  {
+    outline: 0 !important;
+    border:none !important;
+}
+
+
+div#front-slides ul#navarrow li#prev a {
+    //background: url({{STATIC_URL}}images/prev.png);
+    //background: url({{STATIC_URL}}images/slider-arrow-prev.png);
+    background: url({{STATIC_URL}}images/slider-arrow-prev-small.png);
+    margin:0px;
+    padding:0px;
+}
+
+div#front-slides ul#navarrow li#next a {
+    //background: url({{STATIC_URL}}images/next.png);
+    //background: url({{STATIC_URL}}images/slider-arrow-next.png);
+    background: url({{STATIC_URL}}images/slider-arrow-next-small.png);
+    margin:0px;
+    padding:0px;
+}
+</style>
+<link rel="stylesheet" href="http://rumbacaracas.com/media/responsive.css" />
+
+</head>
+<body class=" {% block advbodycls %}{% endblock %}">
+
+    {% main_background %}
+	{% facebook_js_tag %}
+	{% twitter_js_tag %}
+
+  <div id="header-primary" class="header-primary no-deco outnone">
+
+    <div class="container">
+    	<div class="rows encap">
+
+         <div class="sec-left flt-left">
+
+          <ul class="top-menu-social">
+            <li class="opcion0 force-left">SÍGUENOS</li>
+            <li class="socbutt force-left"><a target="_blank" href="https://www.facebook.com/rumbacaracas" class="socbutt_fb"></a>&nbsp;&nbsp;</li>
+            <li class="socbutt force-left"><a target="_blank" href="https://twitter.com/rumbacaracas" class="socbutt_tw"></a>&nbsp;&nbsp;</li>
+            <li class="socbutt force-left"><a target="_blank" href="http://instagram.com/rumbacaracas" class="socbutt_insta"></a>&nbsp;&nbsp;</li>
+            <li class="socbutt force-left"><a target="_blank" href="https://www.youtube.com/user/rumbacaracasvideos" class="socbutt_youtube"></a>&nbsp;&nbsp;</li>
+        <!--
+		{% if request.user.is_authenticated %}
+            {% main_greating  request.user%}
+            <li class="sepL force-right">&nbsp;</li>
+            <li class="opcion0 force-right">
+                <a href="{% url social_logout %}"  class="logout" onclick="javascript:FB.logout(function(response){ document.location = '{% url social_logout %}' })">
+					{% trans "Logout" %}
+				</a>
+			</li>
+		{% else %}
+            <li class="btnfacebook1">{% facebook_button %}</li>
+            <li class="opcion0"> {%trans "or"%} </li>
+            <li class="btntwitter1">{% twitter_button %}</li>
+            <li class="sepL">&nbsp;</li>
+		{% endif %}            
+        -->
+
+
+          </ul>
+
+          <ul id="top-menu-primary" class="top-menu-primary">
+
+            <li>
+              <a href="/">{% trans "Public" %}</a>
+              <ul>
+                <li><a class="publica-tus-eventos" href="{% url event_add %}">{% trans "Add Event" %}</a></li>
+                <li><a class="sube-tus-fotos" href="{% url yourphoto_add %}">{% trans "Upload Your Photo" %}</a></li>
+                <li><a class="publica-una-noticia" href="{% url news_add %}">{% trans "Add News" %}</a></li>
+                <li><a class="envianos-tus-local" href="{% url location_add %}">{% trans "Add Location" %}</a></li>
+                <li><a class="monta-tus-videos" href="{% url video_add %}">{% trans "Upload Video" %}</a></li>
+                <li><a class="en-el-blog" href="{% url news_add_blog %}">{% trans "Add Article" %}</a></li>
+              </ul>
+            </li>
+
+          </ul>
+         </div><!--//.flt-left-->
+
+        <div class="sec-right flt-right">
+            <ul class="encap flt-right fcml0 lcmr0">
+
+                <li class="sepRpar">&nbsp;</li>
+                <li class="sobre1"><a href="{% url subscribe_main %}" class="fotosobre1"></a></li>
+                <li class="newsletter-subscribe"><a href="{% url subscribe_main %}">E-RUMBA<br /><span>{% trans "subscription" %}</span></a></li>
+                <li class="sepB">&nbsp;</li>
+
+                <li class="sobre1"><a href="{% url people_request %}" class="fotorequest"></a></li>
+                <li class="photo-request"><a href="{% url people_request %}">{% trans "Hire a photographer" %}</a></li>
+                <li class="sepB">&nbsp;</li>
+
+<!--                
+                <li class="social-freak"><a class="facebook-fanpage" href="http://www.facebook.com/rumbabogotacom" target="_blank"><span class="hidden">{% trans "Follow us on Facebook"%}</span></a></li>
+                <li class="social-freak"><a class="twitter-page" href="http://twitter.com/#!/rumbabogota" target="_blank"><span class="hidden">{% trans "Follow us on Twitter"%}</span></a></li>
+-->
+                <li class="top-search-form">
+                    {% googlesearch_input %}
+                </li>
+
+            </ul>
+        </div><!--//.flt-right-->
+      </div><!--//.rows-->
+    </div><!--//.container-->
+  </div><!--//.header-primary-->
+{% block corner %}{% revive_zone_corner 16 300 300 'ab72e4a3' %}{% endblock %}
+<div class="main-wrapper">
+  <div class="container encap whitebg" style="cursor: default">
+    <div id="header-secondary" class="header-secondary encap">
+      <div class="date c14l txt-right mr10">
+        <h2>
+          <p class="week fp24">{% now "l" %}</p>
+          <p class="day fp29">{% now "j" %}</p>
+          <p class="month fp13">{% now "F" %}</p>
+          <p class="year fp13">{% now "Y" %}</p>
+         </h2>
+      </div><!--//.date-->
+      <div class="banner-container txt-right outnone" align="right">
+
+  {% block bannermain %}        {% revive_banner 1 800 100 "ae59f500" %} {% endblock %}
+
+	</div><!--//.banner-container-->
+      <br class="cflt" />
+    </div><!--//.header-secondary-->
+    <div id="header-tertiary" class="header-tertiary encap">
+    	<div class="rumba-logo outnone c25l">
+      	<h1><a href="/" title="{% trans "Rumbacaracas Home"%}"><img src="{{ STATIC_URL }}images/rb_logo.png" alt="Rumbacaracas.com" /></a><span>Sólo queremos divertirnos</span></h1>
+      </div><!--//.logo-->
+      <div id="top-menus-wrapper" class="top-menus-wrapper outnone c75r">
+      	<ul id="top-menu-secondary" class="top-menu-secondary flt-right encap fcpl0 lcpr0">
+{#		<li><a href="{% url magazine_main %}">{% trans "Printed Editions" %}</a></li>#}
+        <li><a href="{% url zinnia_category_detail "bandas" %}">{% trans "Printed Editions" %}</a></li>
+      	<li><a href="{% url video_main %}">{% trans "Videos" %}</a></li>
+          <li><a href="{% url zinnia_category_detail "blog" %}">{% trans "Blog"%}</a></li>
+      	  <li>
+      	  	<a href="{% url about_main %}">{% trans "About Us" %}</a>
+                <ul>
+                  <li><a href="{% url about_products_web %}">{% trans "Web" %}</a></li>
+                  <li><a href="{% url magazine_main %}">{% trans "Newsletter" %}</a></li>
+              <li><a href="{% url about_products_news %}">E-rumba</a></li>
+                  <li><a href="{% url about_products_events %}">{% trans "Events" %}</a></li>
+                </ul>
+       	  </li>
+      	</ul>
+        <div class="cflt"></div>
+      	<ul id="top-menu-tertiary" class="top-menu-tertiary flt-right encap">
+        	<li class="calendario">
+            <h3><a href="{% url event_main %}">{% trans "Events"%}</a></h3>
+            <ul>
+              <li><a href="{% url event_by_category_day %}">{% trans "For Today"%}</a></li>
+              <li><a href="{% url event_by_category_tomorrow %}">{% trans "For Tomorrow"%}</a></li>
+              <li><a href="{% url event_by_category_week %}">{% trans "For a Week"%}</a></li>
+              <li><a href="{% url event_by_category_month %}">{% trans "For a Month"%}</a></li>
+            </ul>
+          </li>
+      	  <li class="secciones">
+
+          	<h3><a href="{% url location_main %}">{% trans "Location" %}</a></h3>
+            {% show_location_menu %}
+          </li>
+        	<li class="fotos">
+          	<h3><a href="{% url people_main %}">{%trans "Fotos"%}</a></h3>
+            <ul>
+              <li><a href="{% url people_main %}">{%trans "People & Events"%}</a></li>
+              <li><a href="{% url yourphoto_main %}">{% trans "Your photos"%}</a></li>
+            </ul>
+          </li>
+          <li class="noticias">
+          	<h3><a href="{% url zinnia_entry_archive_index %}">{% trans "News" %}</a></h3>
+            <ul>
+              <li><a href="{% url zinnia_category_detail "rumba-news" %}">{% trans "Rumba News" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "music-news" %}">{% trans "Music News" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "sexy-news" %}">{% trans "Sexy News" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "news" %}">{% trans "Actual" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "bandas" %}">{% trans "Bands, Authors and Djs" %}</a></li>
+            </ul>
+          </li>
+      	</ul>
+      </div><!--//.top-menus-wrapper-->
+      <br class="cflt" />
+    </div><!--//.header-tertiary-->
+    {{br}}
+      <div class="banner-container outnone banner-push">
+          {% block pushdown %}{% endblock %}
+      </div>
+    <div class="breadcrumb">
+	{% block breadcrumbs %}
+    	{% for breadcrumb in request.breadcrumbs %}
+    		{% if forloop.last %}
+    			<a class="active" href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a>
+    		{% else %}
+    			<a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a><span>&nbsp;→&nbsp;</span>
+    		{% endif %}
+		{% endfor %}
+	{% endblock %}
+    </div>
+
+	{% block sattelite %}{% endblock %}
+
+    <div id="main-contents" class="main-contents encap">
+    	<div id="col-left" class="col-left-index-new">
+			{% block colleft %}{% endblock %}
+      	</div><!--//.col-left-->
+	  <div id="col-right" class="col-right">
+        {% block colright %}
+            <div class="banner-container box-shadows outnone widget">
+            </div><!--//.banner-container-->
+            <div class="clear-block block block-views widget widget-calendar">
+                {% month_cal%}
+            </div>
+            <div class="banner-container outnone widget">
+            </div><!--//.banner-container-->
+            
+        {% endblock %}
+      </div><!--//.col-left-->
+    	<br class="cflt" />
+    {% block overlay %}
+
+    {% endblock overlay %}
+    </div><!--//.main-contents-->
+    <div id="footer-primary" class="footer-primary">
+      <div class="banner-container outnone">
+        {% revive_banner 1 800 100 "ae59f500" %}
+      </div><!--//.banner-container-->
+    </div><!--//.footer-primary-->
+    <div id="footer-secondary" class="footer-secondary">
+      <div class="footer-links encap equal-width">
+        <div class="c16_6l">
+          <h2>{% trans "Events"%}</h2>
+          <ul>
+              <li><a href="{% url event_by_category_day %}">{% trans "For Today"%}</a></li>
+              <li><a href="{% url event_by_category_tomorrow %}">{% trans "For Tomorrow"%}</a></li>
+              <li><a href="{% url event_by_category_week %}">{% trans "For a Week"%}</a></li>
+              <li><a href="{% url event_by_category_month %}">{% trans "For a Month"%}</a></li>
+          </ul>
+        </div>
+        <div class="c16_6l">
+            <h2>{% trans "Locations" %}</h2>
+          {% show_location_menu %}
+        </div>
+        <div class="c16_6l">
+          <h2>{% trans "Content" %}</h2>
+          <ul>
+            <li><a href="{% url people_main %}">{% trans "Photos" %}</a></li>
+            <li><a href="{% url yourphoto_main %}">{% trans "Your photos" %}</a></li>
+            <li><a href="{% url video_main %}">{%  trans "Videos" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "blog" %}">{% trans "Blog" %}</a></li>
+          </ul>
+        </div>
+        <div class="c16_6l">
+          <h2>{% trans "News" %}</h2>
+          <ul>
+            <li><a href="{% url zinnia_category_detail "rumba-news" %}">{% trans "Rumba News" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "music-news" %}">{% trans "Music News" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "news" %}">{% trans "Actual" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "interviews" %}">{% trans "Interviews" %}</a></li>
+            <li><a href="{% url zinnia_category_detail "dj-mix" %}">{% trans "DJ Mix" %}</a></li>
+          </ul>
+        </div>
+        <div class="c16_6l">
+          <h2>{% trans "Media" %}</h2>
+          <ul>
+              <li><a href="{% url about_products_web %}">{% trans "Web" %}</a></li>
+              <li><a href="{% url about_products_news %}">{% trans "Newsletter" %}</a></li>
+              <li><a href="{% url magazine_main %}">{% trans "Printed Editions" %}</a></li>
+              <li><a href="{% url about_products_events %}">{% trans "Events" %}</a></li>
+          </ul>
+        </div>
+        <div class="c16_6r">
+          <h2>{% trans "About Us" %}</h2>
+          <ul>
+            <li><a href="{% url about_main %}">{% trans "About us page" %}</a></li>
+            <li><a href="{% url about_products %}">{% trans "Products" %}</a></li>
+            <li><a href="{% url about_partners %}">{% trans "Partners" %}</a></li>
+            <li><a href="{% url about_contacts %}">{% trans "Contacts" %}</a></li>
+          </ul>
+        </div>
+      </div><!--//.footer-links-->
+    </div><!--//.footer-secondary-->
+
+    <div id="footer-tertiary">
+      <span class="txt-left">
+        <a href="/"><img src="{{ STATIC_URL }}images/logos/RC.png" width="100" alt="" title="" /></a>
+        <a href="http://www.rumbabogota.com/" target="_blank"><img src="{{ STATIC_URL }}images/logos/RB.png" width="100" alt="" title="" /></a>
+        <a href="http://www.rumbavenezuela.com/" target="_blank"><img src="{{ STATIC_URL }}images/logos/RV.png" width="100" alt="" title="" /></a>
+        <a href="http://www.rumbamiami.com" target="_blank"><img src="{{ STATIC_URL }}images/logos/RM.png" width="100" alt="" title="" /></a>
+        <a href="http://www.rumbapanama.com/" target="_blank"><img src="{{ STATIC_URL }}images/logos/RP.png" width="100" alt="" title="" /></a>		
+      </span>
+
+      <span class="txt-right">
+        <p><span class="uppercase">Rumbacaracas.com</span>, C.A. &copy; 2009-{% now "Y" %} Todos los Derechos Reservados<br /><a href="{% url terms_of_use %}">{% trans "Terms of Use" %}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:rumba@rumbacaracas.com">rumba@rumbacaracas.com</a></p>
+      </span>
+    </div><!--//.footer-tertiary-->
+  </div><!--//.container-->
+</div>
+<script>
+	$(document).ready(function () {
+		jQuery("#footer-tertiary .txt-left img").mouseover(function( )
+		{
+			$(this).attr("src", $(this).attr("src").replace(".png", "_on.png"));
+		});
+		
+		jQuery("#footer-tertiary .txt-left img").mouseout(function( )
+		{
+			$(this).attr("src", $(this).attr("src").replace("_on.png", ".png"));
+		});
+		
+	
+		/* PUSH BANNER */
+
+        if( jQuery(".banner-push").length > 0 && jQuery(".banner-push")[0].scrollHeight > 0 ) {
+
+    		// initial height
+    		var banner_push_h_from = 60;
+    		// the height at the end
+    		var banner_push_h_to = 200;
+    		// animation speed
+	    	var banner_push_aspeed = 1000;
+    
+    		jQuery(".banner-push").css('height', banner_push_h_from +'px');
+    		jQuery(".banner-push").css('overflow', 'hidden');
+    		jQuery(".banner-push").mouseover(function() {
+                $(this).clearQueue();
+                $(this).animate({height:banner_push_h_to, queue:false},banner_push_aspeed);
+    		});
+    
+	    	jQuery(".banner-push").mouseout(function() {
+                $(this).clearQueue();
+                $(this).animate({height:banner_push_h_from, queue:false},banner_push_aspeed);
+	    	});
+        }
+
+        $('#front-slides').hover(function() {
+                $('ul#navarrow').fadeIn();
+                //$('li#prev').fadeIn();
+                //$('li#next').fadeIn();
+            }, function() {
+                $('ul#navarrow').fadeOut();
+                //$('li#prev').fadeOut();
+                //$('li#next').fadeOut();
+            }
+        );
+	})
+</script>
+
+{% gplus_js_tag %}
+<script type="text/javascript" src="http://rumbacaracas.com/media/responsive.js"></script>
+</body>
+</html>

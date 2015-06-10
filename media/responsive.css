@@ -1,0 +1,782 @@
+#footer-secondary
+{
+    clear: both;
+}
+
+/*Custome Styles other than mobile*/
+#shick-rb
+{
+    float: left !important;
+
+    margin-bottom: 20px !important;
+}
+
+.banner-for-reload
+{
+    float: left;
+
+    margin-bottom: 15px;
+}
+
+@media only screen and (max-width: 767px)
+{
+    body
+    {
+        overflow-x: hidden;
+
+        background: #faf9f9;
+    }
+    .whitebg
+    {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    #header-tertiary .rumba-logo h1 span
+    {
+        top: 0;
+        left: 0;
+    }
+    /*Make all the overflowing images and iframe content align with the screen size*/
+    img
+    {
+        max-width: 100% !important;
+    }
+    iframe
+    {
+        min-width: 100%;
+        max-width: 100% !important;
+        max-height: auto;
+    }
+    .banner-container
+    {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    #main-contents #col-right .your-photos
+    {
+        min-width: 100%;
+    }
+    #main-contents #col-left .photo-archives .photos-mod ul.photo-archives-list li
+    {
+        width: 100%;
+    }
+
+    #header-primary
+    {
+        position: relative;
+
+        float: none;
+
+        width: 100%;
+        height: auto;
+
+        background-size: cover;
+    }
+    #header-primary .rows .sec-right ul
+    {
+        font-size: 12px;
+
+        width: 100%;
+        margin: 0 auto;
+    }
+    /*
+    #header-primary .rows ul.top-menu-primary li
+    {
+        margin: 0;
+    }
+    #header-primary .top-menu-primary
+    {
+        display: none !important;
+    }
+    */
+    #header-primary .rows .sec-left ul.top-menu-social
+    {
+        float: none;
+
+        margin: 0 auto;
+    }
+    .encap
+    {
+        float: none;
+        overflow: visible;
+
+        box-sizing: border-box;
+        width: 98%;
+        margin: 0 auto;
+
+        text-align: left;
+    }
+    .encap .flt-left
+    {
+        display: inline-block;
+        float: left;
+        overflow: visible;
+    }
+    .sec-right
+    {
+        display: none !important;
+        float: none !important;
+        clear: both !important;
+
+        width: 100% !important;
+    }
+    #header-primary .rows .sec-right ul
+    {
+        padding: 10px;
+    }
+    #header-primary .rows .sec-right ul li
+    {
+        display: inline-block;
+        float: none;
+
+        margin: 0 10px;
+    }
+    #header-primary .rows .sec-left ul li a
+    {
+        display: block;
+
+        padding: 13px 20px 13px 5px;
+    }
+    .banner-container img
+    {
+        width: 100%;
+    }
+    .container
+    {
+        width: 100%;
+    }
+    #col-left #front-slides #slides .slide-info-wrapper
+    {
+        width: 100%! important;
+    }
+    #col-left #front-slides #slides .slide-info
+    {
+        max-width: 100% !important;
+    }
+    .c14l,
+    .c14r
+    {
+        width: 100%;
+
+        text-align: center;
+    }
+    #header-secondary .date h2 p
+    {
+        line-height: normal;
+
+        display: inline-block;
+
+        padding: 0;
+    }
+    #main-contents
+    {
+        padding: 15px 0 0 0;
+    }
+    #main-contents h2
+    {
+        padding: 5px;
+    }
+    #main-contents #col-left #latest-photos #latest-photos-content .photo-teasters .image img,
+    .c25l,
+    .c25r
+    {
+        width: 100%;
+
+        text-align: center;
+    }
+    .c75l,
+    .c75r
+    {
+        width: 100%;
+    }
+    .top-menu-secondary
+    {
+        display: inline-block;
+        float: none;
+
+        padding: 0;
+    }
+    .c5r,
+    .c10r,
+    .c11r,
+    .c12r.c13r,
+    .c14r,
+    .c15r,
+    .c16r,
+    .c16_6r,
+    .c17r,
+    .c18r,
+    .c19r,
+    .c20r,
+    .c21r,
+    .c22r,
+    .c23r,
+    .c24r,
+    .c25r,
+    .c26r,
+    .c27r,
+    .c28r,
+    .c29r,
+    .c30r,
+    .c31r,
+    .c32r,
+    .c33r,
+    .c34r,
+    .c35r,
+    .c36r,
+    .c37r,
+    .c38r,
+    .c39r,
+    .c40r,
+    .c41r,
+    .c42r,
+    .c43r,
+    .c44r,
+    .c45r,
+    .c46r,
+    .c47r,
+    .c48r,
+    .c49r,
+    .c50r,
+    .c51r,
+    .c52r,
+    .c53r,
+    .c54r,
+    .c55r,
+    .c56r,
+    .c57r,
+    .c58r,
+    .c59r,
+    .c60r,
+    .c61r,
+    .c62r,
+    .c63r,
+    .c64r,
+    .c65r,
+    .c66r,
+    .c67r,
+    .c68r,
+    .c69r,
+    .c70r,
+    .c71r,
+    .c72r,
+    .c73r,
+    .c74r,
+    .c75r,
+    .c80r,
+    .c85r,
+    .c86r,
+    .c87r,
+    .c88r,
+    .c90r,
+    .c95r
+    {
+        float: none;
+
+        margin-left: 0;
+
+        text-align: left;
+    }
+    #header-tertiary #top-menus-wrapper .top-menu-secondary
+    {
+        display: block;
+
+        text-align: center;
+    }
+    #header-tertiary #top-menus-wrapper .top-menu-secondary li
+    {
+        font-size: 10px;
+
+        display: inline-block;
+        float: none;
+
+        padding: 0;
+    }
+    #header-tertiary #top-menus-wrapper .top-menu-secondary li a
+    {
+        display: block;
+
+        padding: 5px;
+    }
+    #header-tertiary #top-menus-wrapper ul.top-menu-tertiary
+    {
+        float: none;
+
+        height: auto;
+    }
+    #header-tertiary #top-menus-wrapper ul.top-menu-tertiary li
+    {
+        overflow: hidden;
+
+        width: 100%;
+
+        border-bottom: 1px solid #e2e2e2;
+    }
+    #main-contents
+    {
+        padding: 0;
+
+        text-align: left;
+    }
+    #main-contents #col-left
+    {
+        float: none;
+
+        width: 100% !important;
+        margin: 0 auto;
+    }
+    .webkit #col-left #front-slides
+    {
+        width: 100%;
+    }
+    .webkit #col-left #front-slides .slides
+    {
+        width: 100%;
+        min-height: 262px;
+    }
+    #col-left #front-slides .nav-wrapper
+    {
+        position: absolute;
+        z-index: 100;
+
+        width: 100%;
+    }
+    a.carousel-next
+    {
+        position: absolute;
+        right: 0;
+    }
+    a.carousel-prev
+    {
+        position: absolute;
+        left: 0;
+    }
+    #main-contents #col-left #latest-photos #latest-photos-content
+    {
+        min-height: 0;
+    }
+    #main-contents #col-left #latest-photos #latest-photos-content .more-photos
+    {
+        overflow: hidden;
+
+        margin-top: 175px;
+    }
+    #col-left #front-slides #nav
+    {
+        float: none;
+    }
+    #col-left #front-slides #slides .slide-info-wrapper
+    {
+        position: absolute;
+
+        box-sizing: border-box;
+        width: 95%;
+        padding: 0 10px;
+    }
+    .c40l
+    {
+        width: 100%;
+    }
+    .slide
+    {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    #col-left #front-slides #slides .slide-info
+    {
+        width: 100%;
+    }
+    .slide img
+    {
+        width: 100%;
+    }
+    #main-contents #col-right
+    {
+        float: none;
+
+        width: 95%;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .c58l,
+    .c42r,
+    .c55l,
+    .c57l,
+    .c40r,
+    .c60r
+    {
+        float: none;
+        clear: both;
+
+        width: 100%;
+    }
+    #main-contents #col-right .your-photos .box-border img,
+    #main-contents #col-right .print-guide .box-border img
+    {
+        width: 100%;
+        height: auto;
+    }
+    #main-contents #col-left #front-videos div.videos-content .recent-video-list ul li.active a,
+    #main-contents #col-left #front-videos div.videos-content .recent-video-list ul li a
+    {
+        background-size: cover;
+    }
+    #main-contents #col-left #front-videos #videos-content
+    {
+        padding: 0 0 10px 0;
+    }
+    .c58l ul li a img
+    {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .c40r .placeholders
+    {
+        display: none;
+    }
+    .c45l,
+    .c45r
+    {
+        float: none;
+        clear: both;
+
+        width: 95%;
+    }
+    #footer-primary
+    {
+        overflow: hidden;
+
+        width: 90%;
+    }
+    .c16_6l,
+    .c16_6r
+    {
+        float: none;
+
+        width: 70% !important;
+        margin: 0 auto;
+    }
+    #footer-tertiary
+    {
+        padding-bottom: 10px;
+
+        text-align: center;
+    }
+    #header-primary .rows .sec-left
+    {
+        width: 100%;
+    }
+    div.breadcrumb
+    {
+        padding-bottom: 2px;
+        padding-left: 2%;
+    }
+    #main-contents #col-left #front-videos div.videos-content .recent-video-list ul li a:hover
+    {
+        background: #000;
+
+        round: #000;
+        round: #000;
+        round: #000;
+        round-size: cover;
+    }
+    li.sepL
+    {
+        position: relative;
+
+        height: 0;
+        margin-top: 0;
+        margin-left: 0;
+
+        border-right-width: 0;
+        border-right-color: none;
+    }
+    .eventos .eventos-left
+    {
+        width: 100%;
+    }
+    #main-contents #col-left .node .eventos-left img
+    {
+        width: 95%;
+    }
+    #main-contents #col-left .recent-events-list .list-part
+    {
+        float: none;
+
+        width: 100%;
+        margin: 15px 10px 0;
+
+        background-color: transparent;
+    }
+    /*Eventos Page*/
+    #main-contents .merged-container .merged-contents
+    {
+        padding: 0;
+    }
+    #main-contents .merged-container
+    {
+        max-width: 95%;
+        padding: 15px 20px;
+    }
+    #main-contents #col-left .eventos-para-hoy .node .image-teaser-slides li
+    {
+        position: relative !important;
+
+        height: auto;
+    }
+    #main-contents #col-left .eventos-para-hoy .node .image-teaser-slides
+    {
+        height: auto;
+    }
+    #main-contents #col-left .node .image-teaser-slides li .slide-teasers
+    {
+        margin: 0;
+    }
+    #main-contents #col-right .block-simplenews
+    {
+        display: none;
+    }
+    #main-contents .merged-contents .tab-titles
+    {
+        padding: 20px 0;
+    }
+    #main-contents .merged-contents .tab-titles ul li
+    {
+        margin: 5px 4px;
+    }
+    #main-contents #col-left #events-accordion ul.photo-archives-list li,
+    #main-contents .merged-contents .tab-containers ul.event-tab-contents
+    {
+        width: 100%;
+    }
+    /*Sitios page*/
+    #main-contents #col-left .locales-details .logo-strips ul.logo-slides
+    {
+        text-align: center;
+    }
+    #main-contents #col-left .locales-details .logo-strips .logo-slides li
+    {
+        display: inline-block;
+        float: none;
+    }
+    #main-contents #col-left .fotos .teaser-image img,
+    #main-contents #col-left .locales .tab-containers .local-listing ul li.location-preview,
+    .c48r
+    {
+        width: 100%;
+    }
+    .fotos .fotos-left
+    {
+        width: 100%;
+        margin-left: 0;
+    }
+    #main-contents #col-left .fotos h3,
+    #main-contents #col-left .recent-fotos-list .row h3
+    {
+        line-height: 25px;
+    }
+    .c48l
+    {
+        width: 100%;
+        padding: 20px 0;
+    }
+    .c55r,
+    .c65l,
+    .c32r
+    {
+        width: 100%;
+    }
+    .fb_iframe_widget
+    {
+        float: none;
+        overflow: hidden;
+
+        width: 100%;
+        padding: 5px 0;
+    }
+    /*Tus videos*/
+    #main-contents #col-left .video-archives .videos-mod ul.video-archives-list li
+    {
+        width: 100%;
+    }
+    /*productos -> web*/
+    #main-contents #col-left .node .node-mini-right
+    {
+        margin: 0;
+        padding: 0;
+    }
+    #main-contents #col-left .node .node-mini-left img,
+    #main-contents #col-left .node .node-mini-right img
+    {
+        width: 100% !important;
+    }
+    /*Misc Menus*/
+    select,
+    option
+    {
+        width: 20px;
+    }
+    .tab-containers,
+    .event-detail-filters
+    {
+        overflow: hidden;
+    }
+    #main-contents #col-left .node-container .title-wrap ul li a
+    {
+        width: 100% !important;
+    }
+    .title-wrap .flt-right
+    {
+        float: left;
+        clear: both;
+    }
+
+    /*Tabular items being fixed in the next css*/
+    .ptb8,
+    table.ptb8 td,
+    table tr.ptb8 td
+    {
+        display: none;
+    }
+
+    /*http://rumbabogota.com/fotos/carls-jr-bogota/67121    */
+    .gente .images-preview
+    {
+        width: 100%;
+        margin-left: 0;
+    }
+    #main-contents #col-left .image-navigations
+    {
+        float: none;
+
+        width: 96%;
+    }
+    #main-contents #col-left .node .image-teaser-slides img
+    {
+        width: 100%;
+    }
+    /*making facebook comment responsive*/
+    #fbcomments,
+    .fb-comments,
+    .fb-comments iframe[style],
+    .fb-comments span
+    {
+        width: 100% !important;
+    }
+    #header-primary .top-menu-primary
+    {
+        display: none !important;
+    }
+    .lastest-photos-main-box .orange-bar
+    {
+        width: 100%;
+    }
+    .lastest-photos-main-box .latest-photos-image-box
+    {
+        width: 100%;
+        height: auto;
+    }
+    .lastest-photos-main-box .latest-photos-image-box img
+    {
+        width: 100%;
+        height: auto;
+    }
+    .news-main-box
+    {
+        width: 100%;
+        max-width: 100%;
+    }
+    .general-bar
+    {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .box-shadows
+    {
+        -webkit-box-shadow: 0 16px 49px -11px rgba(0,0,0,.98);
+           -moz-box-shadow: 0 16px 49px -11px rgba(0,0,0,.98);
+                box-shadow: 0 16px 49px -11px rgba(0,0,0,.98);
+    }
+    #main-contents #col-right .widget
+    {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .jsbanner
+    {
+        overflow: hidden;
+
+        width: 100%;
+    }
+    #ultimas-noticias-right-column-widget img
+    {
+        min-width: 100%;
+        height: auto;
+    }
+    .lastest-photos-main-box .more-photos-link .gradient-bar
+    {
+        width: 100%;
+    }
+    .news-main-box .news-photos-box
+    {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .news-main-box .news-photos-box img
+    {
+        width: 100%;
+        min-width: 90%;
+        height: auto;
+    }
+    .events-news-main-box,
+    .new-theme-videos-box,
+    .new-theme-videos-box .video-box,
+    .art-culture-main-box .hyperlink-art-culture-image img,
+    .art-culture-main-box,
+    .your-photos-main-box
+    {
+        width: 100%;
+    }
+    .webkit #col-left #front-slides .slides,
+    {
+        height: auto;
+    }
+    #footer-secondary,
+    #footer-tertiary span.txt-left
+    {
+        display: none;
+    }
+    #footer-tertiary .txt-right
+    {
+        text-align: center;
+    }
+    .videos-content
+    {
+        overflow: hidden;
+    }
+    .video-slides ul
+    {
+        max-width: 100%;
+    }
+    .video-slides ul li object,
+    .video-slides ul li object embed
+    {
+        max-width: 100%;
+    }
+}
+@media screen and (max-width: 480px)
+{
+    #main-contents #col-left #outline-briefs ul#outline-titles li
+    {
+        width: 100%;
+
+        border-bottom: 1px solid #e2e2e2;
+    }
+    #header-tertiary #top-menus-wrapper .top-menu-secondary li a
+    {
+        padding: 2px;
+    }
+}
