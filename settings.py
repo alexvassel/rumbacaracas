@@ -164,6 +164,7 @@ OPENX_PASSWORD = 'adminbanners'
 #    'custom_undo_redo_levels': 10,
 #}
 #ZINNIA_WYSIWYG = 'tinymce'
+ZINNIA_WYSIWYG = None 
 
 LOGIN_REDIRECT_URL = "/"
 
@@ -200,7 +201,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    'tinymce',
+  #  'tinymce',
+    'ckeditor',
     'socialregistration',
     'events',
     'locations',
@@ -250,3 +252,35 @@ except ImportError, e:
     raise e
 
 GRAPPELLI_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
+
+
+CKEDITOR_UPLOAD_PATH = upload_to 
+CKEDITOR_CONFIGS = {
+    'default': {
+#        'toolbar': 'Basic',
+#        'extraPlugins': 'oembed,widget',
+        'toolbar': [
+            [      'Undo', 'Redo',
+              '-', 'Bold', 'Italic', 'Underline',
+              '-', 'Link', 'Unlink', 'Anchor',
+              '-', 'Format',
+              '-', 'SpellChecker', 'Scayt',
+              '-', 'Maximize',
+            ],
+            [      'HorizontalRule',
+              '-', 'Table',
+              '-', 'BulletedList', 'NumberedList',
+              '-', 'Cut','Copy','Paste','PasteText','PasteFromWord',
+              '-', 'SpecialChar',
+              '-', 'Source',
+#              '-', 'About',
+            ]
+        ],
+        'width': 840,
+        'height': 300,
+        'toolbarCanCollapse': False,
+    }
+}
+
+
+

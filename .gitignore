@@ -21,3 +21,5 @@ rumbacaracas.iml
 .idea/
 .settings
 .pydevproject
+backup/*
+old_uploads/*

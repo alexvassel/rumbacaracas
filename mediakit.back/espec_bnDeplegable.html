@@ -1,0 +1,59 @@
+<h2>Banner desplegable:</h2>
+
+<div class="specs">
+
+<p class="warning">Recuerde siempre enviar los archivos .fla, .swf y las tipograf&iacute;as convertidas en curvas.</p>
+
+<h3>C&oacute;mo funciona</h3>
+
+<p>El formato <strong>Banner desplegable roll over</strong> es una creatividad Flash que se muestra en 2 instancias: En la primera el anuncio se ver&aacute; replegado, y tendr&aacute; la posibilidad de desplegarse al posicionar el puntero (mouse) sobre &eacute;l mostr&aacute;ndose por encima del sitio.</p>
+
+<h3>C&oacute;mo cuenta</h3>
+	<ul>
+		<li>La primera vez que se visualice el anuncio, el mismo se va a encontrar replegado, contando la impresi&oacute;n.</li>
+		<li>Si el usuario decide desplegar el anuncio comenzar&aacute; a contar el tiempo de visualizaci&oacute;n.</li>
+		<li>Si el banner llega al final de la animaci&oacute;n, se registra la acci&oacute;n Anuncio completo.</li>
+    	<li>La acci&oacute;n Desplegar y la acci&oacute;n Replegar se registrar&aacute;n cada vez que el usuario despliegue o repliegue el anuncio respectivamente.</li>
+	</ul>
+
+<h3>C&oacute;mo se programa</h3>
+
+<p>El formato se programa en <strong>una pieza</strong> en Flash, publicada en <strong>versi&oacute;n 6, 7, 8 &oacute; 9</strong>. El mismo deber&aacute; tener en total <strong>dos frames</strong>: uno para el anuncio replegado y otro para el anuncio desplegado.</p>
+
+<h4>Medidas:</h4>
+	<ul>
+		<li><strong>Banner replegado: 800x100 px</strong></li>
+		<li><strong>Banner desplegado: 800x400 px</strong></li>
+	</ul>
+ 
+<h4>Frame 1 "Banner replegado"</h4>
+<p>En el primer frame se debe llamar a la siguiente funci&oacute;n de ActionScript:</p>
+<pre>_root.eplInicioAnuncio();
+stop();</pre>
+
+<p>Para desplegar el anuncio se incluir&aacute; un bot&oacute;n "abrir", o el evento "rollOver", seg&uacute;n corresponda. Donde se ejecute el siguiente c&oacute;digo ActionScript:</p>
+<pre>_root.eplDesplegar();</pre>
+
+<p>Toda la animaci&oacute;n que suceda en esta instancia deber&aacute; estar dentro de un MovieClip. Este ser&aacute; el MovieClip 1. La animaci&oacute;n tendr&aacute; un loop infinito</p>
+
+<h4>Frame 2 "Anuncio desplegado"</h4>
+
+<p>Se incluir&aacute; un bot&oacute;n de "cerrar", o se realizar&aacute; en la acci&oacute;n "rollOut", seg&uacute;n corresponda con la siguiente acci&oacute;n:</p>
+<pre>_root.eplReplegar();</pre>
+
+<p>Toda la animaci&oacute;n que suceda en esta instancia deber&aacute; estar dentro de un MovieClip. Este ser&aacute; el MovieClip 2. La animaci&oacute;n tendr&aacute; un loop infinito.</p>
+<p>En el &uacute;ltimo frame de este MovieClip se debe llamar a la siguiente acci&oacute;n:</p>
+
+<pre>_root.eplAnuncioCompleto();
+stop();</pre>
+
+<p>El &aacute;rea de click debe estar presente en los dos frames, llamando a la siguiente acci&oacute;n:</p>
+<pre>getURL(_root.clickTag, "_blank");</pre>
+
+<h3>Materiales a enviar</h3>
+	<ul>
+		<li>Un archivo .fla programado seg&uacute;n las especificaciones anteriores</li>
+		<li>Un archivo .swf correspondiente al .fla</li>
+		<li>Recuerde que las tipograf&iacute;as deben estar convertidas en curvas dentro de la creatividad</li>
+	</ul>
+</div>

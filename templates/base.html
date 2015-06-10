@@ -20,6 +20,7 @@
 
 
 	<script type="text/javascript">
+		// .
 		var mobile_domain ="m.rumbacaracas.com";
 		// Set to false to not redirect on iPad.
 		var ipad = true;
@@ -160,7 +161,6 @@
 	
 	
 	</script>
-
 
 </head>
 <body class=" {% block advbodycls %}{% endblock %}">
@@ -312,7 +312,7 @@
       <br class="cflt" />
     </div><!--//.header-tertiary-->
     {{br}}
-      <div class="banner-container outnone">
+      <div class="banner-container outnone banner-push">
           {% block pushdown %}{% endblock %}
       </div>
     <div class="breadcrumb">
@@ -436,6 +436,29 @@
 		{
 			$(this).attr("src", $(this).attr("src").replace("_on.png", ".png"));
 		});
+		
+	
+		/* PUSH BANNER */
+
+		// initial height
+		var banner_push_h_from = 60;
+		// the height at the end
+		var banner_push_h_to = 200;
+		// animation speed
+		var banner_push_aspeed = 1000;
+
+		jQuery(".banner-push").css('height', banner_push_h_from +'px');
+		jQuery(".banner-push").css('overflow', 'hidden');
+		jQuery(".banner-push").mouseover(function() {
+            $(this).clearQueue();
+            $(this).animate({height:banner_push_h_to, queue:false},banner_push_aspeed);
+		});
+
+		jQuery(".banner-push").mouseout(function() {
+            $(this).clearQueue();
+            $(this).animate({height:banner_push_h_from, queue:false},banner_push_aspeed);
+		});
+
 	})
 </script>
 

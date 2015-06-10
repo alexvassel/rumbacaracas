@@ -1,0 +1,25 @@
+<h2>Anuncio Corner Inferior</h2>
+
+<div class="specs">
+<p>Las medidas del banner corner peque&ntilde;o inicial puede variar de 60 a 100 pixels de ancho y hasta 60 px de alto. Las medidas del segundo banner (segunda instancia que aparece al pasar el mouse o al hacer click) debe tener un m&aacute;ximo de 250 px de ancho x 250 px de alto.</p>
+<ul>
+	<li>El peso m&aacute;ximo de esta pieza publicitaria es de 100K</li>
+	<li>Esa pieza publicitaria puede crearse con im&aacute;genes est&aacute;ticas o animadas. Para anuncios con im&aacute;genes est&aacute;ticas, por favor enviar las im&aacute;genes en gif o jpg con las medidas correctas. Para anuncios con im&aacute;genes animadas, por favor enviar los archivos .swf y .fla. Para aquellos anuncios que contengan anuncios en flash, deben tener las especificaciones correctas de animaci&oacute;n y clicktag, descritas abajo.</li>
+	<li>En Flash, se le debe indicar a la pieza, mediante la acci&oacute;n &quot;on mouse over&quot; o &quot;on click&quot; que aparezca el segundo banner.</li>
+	<li>En caso de que el anuncio tenga audio, &eacute;ste debe comenzar siempre en OFF y tener los botones on/off para que el usuario seleccione.</li>
+	<li>El bot&oacute;n de "cerrar" debe estar presente en alguna parte del banner expandible (o segundo banner) y este a su vez debe revertirse &oacute; cerrar a su estado peque&ntilde;o en "mouse-off".</li>
+	<li>El enlace a la p&aacute;gina del cliente debe abrir en una nueva ventana (target: _blank)</li>
+	<li>Enviar los archivos .Fla, .Swf y las fuentes</li>
+</ul>
+
+<h3>CLICKTAG</h3>
+<p>information must be included in all flash ads in order to track click-throughs. Here is the recommended method to include ClickTags.</p>
+ 
+<p>Create an invisible button that covers the entire banner canvas and remains in this location for the duration of the timeline.<br />
+Please follow the correct instruction below based on where your ad will appear.</p>
+
+<p>Attach the following action to your invisible button:</p>
+<pre>on (release) {
+getURL(clickTag, "_blank");
+}</pre>
+</div>

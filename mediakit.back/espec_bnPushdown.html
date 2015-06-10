@@ -1,0 +1,62 @@
+<h2>Banner push down:</h2>
+
+<div class="specs">
+
+<p class="warning">Recuerde siempre enviar los archivos .fla, .swf y las tipograf&iacute;as convertidas en curvas.</p>
+
+<h3>C&oacute;mo funciona</h3>
+
+<p>El formato <strong>Banner push down</strong> es una creatividad Flash que se muestra en 2 instancias: En la primera el anuncio se ver&aacute; replegado, y tendr&aacute; un bot&oacute;n para poder abrirlo si se desea. En la &uacute;ltima instancia el anuncio se visualizar&aacute; desplegado empujando el contenido de la p&aacute;gina hacia abajo y tambi&eacute;n tendr&aacute; el bot&oacute;n cerrar. La diferencia con el banner desplegable, es que en &eacute;sta el anuncio se abrir&aacute; o cerrar&aacute; al seleccionar el bot&oacute;n. Si el usuario ingresa nuevamente al sitio ver&aacute; el anuncio replegado.</p>
+
+<h3>C&oacute;mo cuenta</h3>
+	<ul>
+		<li>La primera vez que se visualice el anuncio, el mismo se va a encontrar replegado, contando la impresi&oacute;n.</li>
+		<li>Si el usuario decide desplegar el anuncio comenzar&aacute; a contar el tiempo de visualizaci&oacute;n.</li>
+		<li>Si el banner llega al final de la animaci&oacute;n, se registra la acci&oacute;n Anuncio completo.</li>
+    	<li>La acci&oacute;n Desplegar y la acci&oacute;n Replegar se registrar&aacute;n cada vez que el usuario despliegue o repliegue el anuncio respectivamente.</li>
+	</ul>
+
+<h3>C&oacute;mo se programa</h3>
+
+<p>El formato se programa en <strong>una pieza</strong> en Flash, publicada en <strong>versi&oacute;n 6, 7, 8 &oacute; 9</strong>. El mismo deber&aacute; tener en total dos frames: uno para el anuncio replegado y otro para el anuncio desplegado.</p>
+
+<h4>Medidas:</h4>
+	<ul>
+		<li><strong>Banner replegado: 920x50 px</strong></li>
+		<li><strong>Banner desplegado: 920x200 px</strong></li>
+	</ul>
+ 
+<h4>Frame 1 "Anuncio replegado"</h4>
+<p>En el primer frame se debe llamar a la siguiente funci&oacute;n de ActionScript:</p>
+<pre>_root.eplInicioAnuncio();</pre>
+
+<p>El banner se encuentra replegado con las medidas 920x50 px y s&oacute;lo se despliega mediante el bot&oacute;n de "abrir" el cual debe incluir la siguiente acci&oacute;n:</p>
+<pre>on (release) {
+_root.eplDesplegar();
+_root.nextFrame();
+} </pre>
+
+<p>Toda la animaci&oacute;n que suceda en esta instancia deber&aacute; estar dentro de un MovieClip. Este ser&aacute; el MovieClip 1. La animaci&oacute;n tendr&aacute; un loop infinito</p>
+
+<h4>Frame 2 "Anuncio desplegado"</h4>
+
+<p>Esta instancia se activa cuando el usuario decide abrir el banner. El banner se despliega con las medidas 920x200 px y solo se repliega mediante el bot&oacute;n de "cerrar" el cual debe incluir la siguiente acci&oacute;n:</p>
+<pre>on (release) {
+_root.eplReplegar();
+_root.nextFrame();
+}</pre>
+
+<p>Toda la animaci&oacute;n que suceda en esta instancia deber&aacute; estar dentro de un MovieClip. Este ser&aacute; el MovieClip 2. En el &uacute;ltimo frame de este MovieClip se debe llamar a la siguiente acci&oacute;n que permite que el anuncio se cierre solo:</p>
+<pre>_root.eplAnuncioCompleto();</pre>
+
+<p>En los dos frames debe haber un layer que contenga la acci&oacute;n de <pre>stop();</pre>
+El &aacute;rea de click debe estar presente en los tres frames, y debe estar en un layer diferente. Llamando a la siguiente acci&oacute;n: </p>
+<pre>getURL(_root.clickTag, "_blank");</pre>
+
+<h3>Materiales a enviar</h3>
+	<ul>
+		<li>Un archivo .fla programado seg&uacute;n las especificaciones anteriores</li>
+		<li>Un archivo .swf correspondiente al .fla</li>
+		<li>Recuerde que las tipograf&iacute;as deben estar convertidas en curvas dentro de la creatividad</li>
+	</ul>
+</div>
