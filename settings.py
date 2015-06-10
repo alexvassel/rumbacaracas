@@ -4,12 +4,15 @@ import os
 import datetime
 from django.utils.encoding import force_unicode, smart_str
 
-DEBUG = True
-TEMPLATE_DEBUG = True
+DEBUG = False #True
+TEMPLATE_DEBUG = False #True
+
+SERVER_EMAIL = 'noreply@rumbacr.com'
 
 ADMINS = ( 
     # ('Your Name', 'your_email@domain.com'),
- )
+    ('Luis Grisolia','luiscarlosgrisolia@gmail.com'),
+)
 
 MANAGERS = ADMINS
 
@@ -282,5 +285,22 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-
+## added logging configurationLOGGING = {
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
 
