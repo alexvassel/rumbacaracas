@@ -15,7 +15,7 @@ from django.core.urlresolvers import reverse
 from main.modelFields import ImageRestrictedFileField
 from cities.models import City
 from django.db.models.signals import pre_delete, pre_save
-from django.db import connections, transaction
+from django.db import connection, connections, transaction
 
 EVENT_CITIES = []
 cities = City.objects.all()
@@ -196,10 +196,11 @@ class Event( ImageModel, Sortable ):
     def save(self, *args, **kwargs):
         if not self.to_date:
             self.to_date = self.from_date
-        
         super(Event, self).save(*args, **kwargs)
-        if str(self.city) == 'Caracas':
-            super(Event, self).save(using = 'venezuela', *args, **kwargs)
+        
+        #super(Event, self).save(*args, **kwargs)
+        #if str(self.city) == 'Caracas':
+        #    super(Event, self).save(using = 'venezuela', *args, **kwargs)
             
 # ASSIGN A PRE_SAVE SIGNAL
 def unique_slug(sender, **kwargs):
@@ -207,10 +208,12 @@ def unique_slug(sender, **kwargs):
     
     result = ''
     query = "SELECT * FROM events_event WHERE slug='"+str(obj.slug)+"'"
-    cursor = connections['venezuela'].cursor()
+    #cursor = connections['venezuela'].cursor()
+    cursor = connection.cursor()
     cursor.execute(query)
     result = str(cursor.fetchone())
-    transaction.commit_unless_managed(using='venezuela')
+    #transaction.commit_unless_managed(using='venezuela')
+    transaction.commit_unless_managed()
     if result != 'None':
         import random
         obj.slug = obj.slug+'-'+str(random.randrange(1000, 9999))
@@ -221,7 +224,9 @@ def delete_both(sender, **kwargs):
     obj = kwargs['instance']
     query = "DELETE FROM events_event WHERE slug='"+str(obj.slug)+"'"
     cursor = connections['venezuela'].cursor()
+    cursor = connection.cursor()
     cursor.execute(query)
-    transaction.commit_unless_managed(using='venezuela')
+    #transaction.commit_unless_managed(using='venezuela')
+    transaction.commit_unless_managed()
 
 pre_delete.connect(delete_both, sender=Event)

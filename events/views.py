@@ -277,8 +277,7 @@ def detail ( request, slug, period = 'day' ):
 
 from django.contrib.auth.decorators import login_required
 
-
-@login_required( login_url = '/login/' )
+@login_required() #login_url = '/login/' )
 @render_to( 'events/add.html' )
 def add( request ):
     request.breadcrumbs( _( 'Events' ) , reverse('event_main') )
@@ -354,7 +353,7 @@ def add( request ):
             event.status = 2
             event.add_user = request.user
             event.save()
-            form.save_m2m()
+            #form.save_m2m()
             return {
                     "completed": True,
                 "form": form,
@@ -366,6 +365,8 @@ def add( request ):
         }
     else:
         form = EventForm()
+        #print u'form invalid'
+        #print form.cleaned_data()
     return {
         'form': form,
     }
