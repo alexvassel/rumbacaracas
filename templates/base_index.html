@@ -57,6 +57,7 @@
 	<link href="{{ STATIC_URL }}css/addforms.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
     <link href="{{ STATIC_URL }}css/custom-ui-theme/jquery-ui-1.8.14.custom.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
     <link href="{{ STATIC_URL }}css/new-theme.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
+
     {% endcompress %}
 
     {% compress js %}
@@ -82,7 +83,8 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/writeCapture.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.writeCapture.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ba-dotimeout.min.js"></script>
-
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.floatingbanner.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.floatingbanner.min.js"></script>
 	<!--[if lte IE 6]><link href="{{ STATIC_URL }}css/ie6fix.css" rel="stylesheet" type="text/css" /><![endif]-->
 	<!--[if IE 7]><link href="{{ STATIC_URL }}css/ie7fix.css" rel="stylesheet" type="text/css" /><![endif]-->
 	<!--[if IE]><script defer="defer" type="text/javascript" src="{{ STATIC_URL }}js/iefixes.js"></script><![endif]-->
@@ -225,6 +227,7 @@ div#front-slides ul#navarrow li#next a {
 }
 </style>
 <link rel="stylesheet" href="http://rumbacaracas.com/media/responsive.css" />
+<link href="http://rumbacaracas.com/media/css/floatingbanner.css" rel="stylesheet"/>
 
 </head>
 <body class=" {% block advbodycls %}{% endblock %}">

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_index.html" %}
 {% load i18n %}
 {% block title %}{% trans "Rumbacaracas" %}{% endblock %}
 {% load tools %}
@@ -18,14 +18,22 @@
 {% block colleft %}
     {% if slides %}
         <div id="front-slides" class="front-slides encap">
+
+            <ul id="navarrow">
+                <li id="prev"><a href="#">Previous</a></li>
+                <li id="next"><a href="#">Next</a></li>
+            </ul>
+
+            <!--
             <div class="nav-wrapper">
-                <div id="nav" class="encap outnone">&nbsp;</div>
-            </div><!--//.nav-wrapper-->
+                <div id="nav" style="margin:0;padding:0;">&nbsp;</div>
+            </div>
+            -->
 
             <div id="slides" class="slides">
                 {% for slide, type in slides%}
-                    <div class="slide" {% if not forloop.first %}style="display:none;width: 619px;height: 258px; "{% else %}style="height: 258px;"{% endif %}>
-                        <img  width="630" height="440px" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.slide.url}}{% endif %}" alt="{{slide.title}}"/>
+                    <div class="slide" {% if not forloop.first %}style="display:none;width: 600px;height: 258px; "{% else %}style="height: 258px;"{% endif %}>
+                        <img  width="600" height="440px" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.slide.url}}{% endif %}" alt="{{slide.title}}"/>
                         <div class="slide-info-wrapper">
                             <div class="slide-info">
                                 <h3><a href="{{slide.get_absolute_url}}">{{slide.title|truncate:80}}</a></h3>
@@ -61,7 +69,7 @@
 				{% if forloop.counter|divisibleby:"2" %}
 					<div class="latest-photos-image-box">
 				{% else %}
-					<div class="latest-photos-image-box" style="margin-right: 20px;">
+					<div class="latest-photos-image-box" style="margin-right: 1px;">
 				{% endif %}
 					<a href="{{ row.get_absolute_url }}"><img src="{{ row.rightcolumnthumb.url }}" alt="{{ row.title }}" /></a>
 					<div class="grey-text-bar-on-img-container">
@@ -172,9 +180,9 @@
 		</div>
 		{% for object in news|slice:":4" %}
 			{% if forloop.counter|divisibleby:"2" %}
-				<div class="news-photos-box">
+    			<div class="news-photos-box">
 			{% else %}
-				<div class="news-photos-box" style="margin-right: 20px;">
+				<div class="news-photos-box" style="margin-right: 1px;">
 			{% endif %}
 				<a href="{{ object.get_absolute_url }}">
 					<img src="{{ object.rightcolumnthumb.url }}" alt="{{ object.title }}">
@@ -185,22 +193,75 @@
 							{{ object.title|truncate:47 }}
 						</h3>
 					</a>
-					<div class="news-photo-date-info">
-						{{ object.creation_date|date:"d.m.y" }} /
-						{% for cat in object.categories.all %}
-							<a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
-							{% if not forloop.last %}, {% endif %}
-          				{% endfor %} /
-						<a href="{{ object.get_absolute_url }}#disqus_thread">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
-					</div>
-					<div class="news-photos-details">
-						{{ object.short|truncate:162 }}
-					</div>
-					<a class="new-theme-read-more" href="{{ object.get_absolute_url }}">{%  trans "Read More" %}</a>
 				</div>
+                    <div class="news-event-date-info">
+                        {{ object.creation_date|date:"d.m.y" }} /
+                        {% for cat in object.categories.all %}
+                            <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %} /
+                        <a href="{{ object.get_absolute_url }}#disqus_thread">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
+                    </div>
+
 			</div>
 		{% endfor %}
-		<div style="clear: both;"></div>
+        {% for object in news|slice:"4:13" %}
+            {% if forloop.first or forloop.counter == 2 or forloop.counter == 4 or forloop.last %}
+                {% for event in upcomming_events %}
+                    {% if forloop.parentloop.first  and forloop.first or forloop.parentloop.counter == 2 and forloop.counter == 2 or forloop.parentloop.counter == 4 and forloop.counter == 4 or forloop.parentloop.last and forloop.last %}
+
+			<div class="news-photos-box" style="margin-right: 1px;">
+				<a href="{{ event.get_absolute_url }}">
+					<img src="{{ event.rightcolumnthumb.url }}" alt="{{ event.title }}">
+				</a>
+				<div class="news-photos-info-box">
+					<a href="{{ event.get_absolute_url }}">
+						<h3 class="news-photo-desc">
+							{{ event.title|truncate:47 }}
+						</h3>
+					</a>
+				</div>
+                    <div class="news-event-date-info">
+                        {{ event.to_date|date:"d.m.y" }} /
+                        {% for cat in event.categories.all %}
+                            <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %} /
+                        <a href="{{ event.get_absolute_url }}#disqus_thread">{%facebook_comments_count event.get_absolute_url%} {% trans "Comments" %}</a>
+                    </div>
+
+
+		    </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+    
+
+            {% if not forloop.last %}
+			<div class="news-photos-box" style="margin-right: 1px;">
+				<a href="{{ object.get_absolute_url }}">
+					<img src="{{ object.rightcolumnthumb.url }}" alt="{{ object.title }}">
+				</a>
+				<div class="news-photos-info-box">
+					<a href="{{ object.get_absolute_url }}">
+						<h3 class="news-photo-desc">
+							{{ object.title|truncate:47 }}
+						</h3>
+					</a>
+				</div>
+                    <div class="news-event-date-info">
+                        {{ object.creation_date|date:"d.m.y" }} /
+                        {% for cat in object.categories.all %}
+                            <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %} /
+                        <a href="{{ object.get_absolute_url }}#disqus_thread">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
+                    </div>
+
+		    </div>
+            {% endif %}
+		{% endfor %}
+		<!--<div style="clear: both;"></div>-->
 		<!-- <a href="{% url zinnia_entry_archive_index %}" class="new-theme-gradient-bar-hyperlink">
 			<div class="general-bar new-theme-gradient-bar">
 				<span>
@@ -216,9 +277,7 @@
 	<div style="clear: both;"></div>
 
 <div class="events-news-main-box">
-        <!-- <div class="general-bar black-bar">
-            {% trans "EVENTS AND NEWS" %}
-        </div> -->
+<!--
         {% for object in news|slice:"3:8" %}
             {% if forloop.first or forloop.counter == 2 or forloop.counter == 4 or forloop.last %}
                 {% for event in upcomming_events %}
@@ -300,6 +359,7 @@
             {% endif %}
             <div style="clear: both;"></div>
         {% endfor %}
+-->
          <div class="new-theme-gradient-bar-hyperlink">
             <div class="general-bar new-theme-gradient-bar">
                 <a href="{% url event_main %}" style="float:left;">
@@ -311,6 +371,7 @@
             </div>
         </div>
     </div>
+
 	<div style="clear: both;"></div>
 	<div class="banner-container outnone banner-margin" style="text-align: center; box-shadow: none;">
 		{% revive_banner 14 468 100 "a2e1f3c9" 1 %}
@@ -324,7 +385,7 @@
             {% if forloop.counter|divisibleby:"2" %}
                 <div class="video-box">
             {% else %}
-                <div class="video-box" style="margin-right: 20px;">
+                <div class="video-box" style="margin-right: 1px;">
             {% endif %}
                 <div class="video-container">
                     {%youtube_video video.youtube_id 300 220%}
@@ -459,7 +520,9 @@
                 containerResize: 1,
                 pager: '#nav',
                 easing: 'easeOutQuint',
-                delay: 3000
+                delay: 3000,
+                prev: '#prev',
+                next: '#next'
             });
 
             jQuery('#main-contents #col-left #outline-briefs #outline-slides').cycle({

@@ -3,44 +3,13 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 SERVER_EMAIL = 'noreply@rumbacr.com'
-ADMINS = (('nagaev maksim','nagaev.maksim@gmail.com',),)
+ADMINS = (
+    #('nagaev maksim','nagaev.maksim@gmail.com',),
+    ('Luis Grisolia', 'luiscarlosgrisolia@gmail.com'),
+)
 #INTERNAL_IPS = ( '127.0.0.1', '213.33.244.154',)
 
 LANGUAGE_CODE = 'es'
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        # Include the default Django email handler for errors
-        # This is what you'd get without configuring logging at all.
-        'mail_admins': {
-            'class': 'django.utils.log.AdminEmailHandler',
-            'level': 'ERROR',
-             # But the emails are plain text by default - HTML is nicer
-            'include_html': True,
-        },
-        # Log to a text file that can be rotated by logrotate
-        'logfile': {
-            'class': 'logging.handlers.WatchedFileHandler',
-            'filename': '/web/log/rumbacaracas_exceptions.log'
-        },
-    },
-    'loggers': {
-        # Again, default Django configuration to email unhandled exceptions
-        'django.request': {
-            'handlers': ['logfile'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-        # Might as well log any errors anywhere else in Django
-        'django': {
-            'handlers': ['logfile'],
-            'level': 'ERROR',
-            'propagate': False,
-        },
-    },
-}
 
 
 
@@ -85,15 +54,7 @@ DATABASES = {
             'USER': 'rumbaccs', # Not used with sqlite3.
             'HOST': 'ads.2rumba.com', # Set to empty string for localhost. Not used with sqlite3.
             'PASSWORD': 'dXqGg7XHA5Mfax4', # Not used with sqlite3.
-        },
-    'venezuela': {
-            'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'venezuela', # Or path to database file if using sqlite3.
-            'USER': 'venezuela', # Not used with sqlite3.
-            'PASSWORD': 'dUtY*SkeG47', # Not used with sqlite3.
-            'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '', # Set to empty string for default. Not used with sqlite3.
-    },
+        }
     }
 
 

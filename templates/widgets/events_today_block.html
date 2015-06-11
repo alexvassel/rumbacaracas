@@ -36,18 +36,8 @@
 	                                            {% endif %}
 	                                            {% endcomment %}
 					                        </div>
+                                            <!--
 					                        <div class="time-div">
-					                        	<!-- <div style="float: left" class="time-text">
-					                        		{% if event.location %}
-		                                                {{ event.location.title|slice:":20" }}
-		                                            {% else %}
-		                                                {% if event.place %}
-		                                                    {{event.place|slice:":20"}}
-		                                                {% else %}
-		                                                    {% trans "Other"%}
-		                                                {% endif %}
-		                                            {% endif %}
-					                        	</div> -->
 					                            <div class="time-text">
 					                            	{% if event.time|length == 3 %}
 					                                	{{event.time|slice:":0"}}{{event.time|slice:"3:"}}
@@ -56,6 +46,7 @@
 					                                {% endif %}
 					                            </div>
 					                        </div>
+                                            -->
 					                    </div>
                                          <!-- 
                                         -

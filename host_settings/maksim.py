@@ -1,4 +1,4 @@
-INTERNAL_IPS = ( '127.0.0.1', '213.33.244.154',)
+
 
 FIXTURE_DIRS = (
    '/home/maksim/Documents/Develop/rumbabogota/locations/fixtures/',
@@ -50,7 +50,7 @@ DATABASES = {
 }
 
 DEBUG=True
-LANGUAGE_CODE = 'es'
+#LANGUAGE_CODE = 'es'
 
 CACHES = {
     'default': {
@@ -69,9 +69,9 @@ FACEBOOK_SECRET_KEY = '68e652ad4024ba1c2a563e7ff833f856'
 
 
 TEMPLATE_LOADERS = (
-    'django_mobile.loader.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.eggs.Loader',
  )
 
 

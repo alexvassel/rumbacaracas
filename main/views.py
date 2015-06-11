@@ -57,7 +57,9 @@ def upcoming_events_list(count = 2):
     dtend = datetime( zdat_day.year, zdat_day.month, zdat_day.day )
 
     #TODO wrong check if upcoming
-    event_list = Event.objects.filter(status=1,to_date__gte = dtstart,to_date__lte = dtend).order_by('to_date')[:count]
+    #event_list = Event.objects.filter(status=1,to_date__gte = dtstart,to_date__lte = dtend).order_by('to_date')[:count]
+    #event_list = Event.objects.filter(status=1,to_date__gte = dtstart).order_by('to_date')[:count]
+    event_list = Event.objects.filter(status=1,to_date__gte = dtstart,position__in=[3,4]).order_by('to_date')[:count]
     return event_list
 
 def most_viewed_events_list(count=2):
@@ -117,7 +119,8 @@ def index( request ):
 
     blog = Entry.published.filter(categories__slug = "blog").order_by( '-creation_date' )[:4]
 #     news = Entry.published.exclude(categories__slug = "blog").order_by( '-creation_date' )[:8]
-    news = Entry.published.order_by( '-creation_date' )[:8]
+    #news = Entry.published.order_by( '-creation_date' )[:8]
+    news = Entry.published.order_by( '-creation_date' )[:13]
 
     locations = Location.objects.filter( status = 1 ).order_by( '?' )[:4]
 
@@ -134,7 +137,7 @@ def index( request ):
     final_slides = [( blog_tmp, 'blog', ) for blog_tmp in blog_slides] + [( event_tmp, 'event', ) for event_tmp in events_slides]
     random.shuffle(final_slides)
     
-    events = upcoming_events_list(4)
+    events = upcoming_events_list(8)
     
     ct_news = ContentType.objects.get(app_label='zinnia', model='entry')
 #    ct_event = ContentType.objects.get(app_label='events', model='event')

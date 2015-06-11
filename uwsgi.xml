@@ -5,6 +5,7 @@
 	<env>DJANGO_SETTINGS_MODULE=settings</env>
 	<module>django.core.handlers.wsgi:WSGIHandler()</module>
 	<home>/web/envs/rumbacaracas</home>
+    <logto>/web/log/rumbacaracas-uwsgi.log</logto>
 	<harakiri>120</harakiri>
 	<cheap/>
         <idle>120</idle>

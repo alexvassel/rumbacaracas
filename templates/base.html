@@ -63,7 +63,7 @@
     {% compress js %}
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.5.1.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.cookie.js"></script>
-
+    {% comment %}
 	<script type="text/javascript">
     //    if($.cookie('prepagina') == null) {
 	//		$.cookie('realreferrer', document.referrer,{path: '/', domain: '.rumbacaracas.com'});
@@ -71,6 +71,7 @@
 	//		window.location = "/splash"
     //  	}
 	</script>
+    {% endcomment %}
 
 	<script type="text/javascript" src="{{ STATIC_URL }}js/menus.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/site.js"></script>
