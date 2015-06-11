@@ -285,7 +285,7 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-## added logging configurationLOGGING = {
+## added logging configuration
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
