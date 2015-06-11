@@ -13,7 +13,7 @@ from django.forms.models import modelformset_factory
 from django.http import HttpResponseRedirect
 from datetime import *;
 from dateutil.relativedelta import *
-from main.models import MostViewed
+from main.models import MostViewed, SplashScreen
 from events.models import EventCategory
 from django.contrib.contenttypes.models import ContentType
 from preferences import preferences
@@ -152,11 +152,22 @@ def index( request ):
 #     m_v_n = list(Entry.objects.filter(id__in=most_viewed_news)[:6:1])
     m_v_n.sort( key = lambda a:a.creation_date, reverse = True )
     m_v_e = most_viewed_events_list(2)
+
+    ## SplashScreen
+    splashscreen = SplashScreen.objects.get(pk = 1)
     
-    return {'people': people, 'news': news,'blog': blog,'locations': locations, 'art_culture': art_culture,
-            'videos':videos, 'photos': photos,
-            'slides': final_slides, 'upcomming_events':events, 'most_viewed_news':m_v_n,
-            'most_viewed_events':m_v_e}
+    return {'people': people, 
+            'news': news, 
+            'blog': blog, 
+            'locations': locations, 
+            'art_culture': art_culture,
+            'videos':videos, 
+            'photos': photos, 
+            'slides': final_slides, 
+            'upcomming_events': events, 
+            'most_viewed_news': m_v_n,
+            'most_viewed_events': m_v_e, 
+            'splashscreen': splashscreen}
 
 
 from django.views.decorators.csrf import requires_csrf_token
