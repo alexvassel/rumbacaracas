@@ -844,7 +844,8 @@
   <div class="banner-container box-shadows outnone widget">
         {% revive_banner 8 300 500 "ae981f89" %}
     </div><!--//.banner-container-->
-    {% comment %}Splash screen{% endcomment %}
+    {% comment %}//
+        Splash screen
         <span id="id_splashscreen">
             <!--
             {{ splashscreen.image }} <br>
@@ -855,9 +856,15 @@
                 <img src='{% value_from_settings "MEDIA_URL" %}{{ splashscreen.image }}'>
             {% endif %}
         </span>
-    {% comment %}{% endcomment %}
+    {% endcomment %}
 {% endblock %}
 {% block overlay %}
+{% comment %}
+<script type='text/javascript'><!--//<![CDATA[
+   var ox_u = 'http://ads2014.2rumba.com/www/delivery/al.php?zoneid=26&layerstyle=geocities&align=center&padding=2&closetext=%5BClose%5D';
+   if (document.context) ox_u += '&context=' + escape(document.context);
+   document.write("<scr"+"ipt type='text/javascript' src='" + ox_u + "'></scr"+"ipt>");
+//]]>--></script>
 {% comment %}
   <script>
     $(document).ready(function(){
