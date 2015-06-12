@@ -844,20 +844,48 @@
   <div class="banner-container box-shadows outnone widget">
         {% revive_banner 8 300 500 "ae981f89" %}
     </div><!--//.banner-container-->
-
+    {% comment %}Splash screen{% endcomment %}
+        <span id="id_splashscreen">
+            <!--
+            {{ splashscreen.image }} <br>
+            {{ splashscreen.effect }} <br>
+            {{ splashscreen.duration }}
+            -->
+            {% if splascreen.is_active %}
+                <img src='{% value_from_settings "MEDIA_URL" %}{{ splashscreen.image }}'>
+            {% endif %}
+        </span>
+    {% comment %}{% endcomment %}
 {% endblock %}
 {% block overlay %}
+{% comment %}
   <script>
     $(document).ready(function(){
+    var docWidth = $(document).width();
+    var docHeight = $(document).height();
+    var divWidth = Math.round(docWidth / 2);
+    var divHeight = Math.round(docHeight / 2);
+    var offsetLeft = '50%';
+    var offsetTop = '50%';
+    $('#splashscreen').animate(
+                   {
+                   width: divWidth,
+                   height: divHeight,
+                   top: offsetTop,
+                   left: offsetLeft,
+                   marginTop: -(divHeight / 2),
+                   marginLeft: -(divWidth / 2),
+                   lineHeight: divHeight
+                   }, 'slow');
     	//just uncomment the js line below in order to show the home page blocking add.
        //$("#dialog").show();
     });
-    $(document).ready(function(){
-     $("#close").click(function() {
-        $("#dialog").remove();
-      });
+    //$(document).ready(function(){
+    // $("#close").click(function() {
+    //    $("#dialog").remove();
+    //  });
     });
-
+{% endcomment %}
   </script>
 {% endblock overlay %}
 
