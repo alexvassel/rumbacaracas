@@ -432,8 +432,7 @@
       <span class="txt-right">
         <p><span class="uppercase">Rumbacaracas.com</span>, C.A. &copy; 2009-{% now "Y" %} Todos los Derechos Reservados<br /><a href="{% url terms_of_use %}">{% trans "Terms of Use" %}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:rumba@rumbacaracas.com">rumba@rumbacaracas.com</a></p>
       </span>
-    </div><!--//.footer-tertiary-->
-      <div id="footer-cuartiary">
+        {% comment %}
         <script type="text/javascript">
             if( !($.cookie('adCookie') === null) ) {
                 $("#footer-cuartiary").hide();
@@ -443,6 +442,9 @@
                 $.cookie('adCookie','hide_splash', {path: '/', expires: date});
             }
         </script>
+        {% endcomment %}
+    </div><!--//.footer-tertiary-->
+      <div id="footer-cuartiary">
     <!--ADDED BY NEO-->
         <div id='MensajeFacebook' onClick='CerrarMensaje()' style ='display: block; padding: 110px 0 0; margin: 0px; bottom: 0px; top: 0px; right: 0px; left: 0px; position: fixed; z-index: 99999; background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.8);'>
             <div id='MensajeFacebookdos' style='margin: 0 auto; width: 800px;'>
