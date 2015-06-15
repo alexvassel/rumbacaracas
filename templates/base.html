@@ -436,10 +436,6 @@
         <script type="text/javascript">
             if( !($.cookie('adCookie') === null) ) {
                 $("#footer-cuartiary").hide();
-            } else {
-                var date = new Date();
-                date.setTime(date.getTime() + (10 * 60 * 1000));
-                $.cookie('adCookie','hide_splash', {path: '/', expires: date});
             }
         </script>
         {% endcomment %}
@@ -458,8 +454,10 @@
              function CerrarMensaje()
                 {
                     document.getElementById('MensajeFacebook').style.display = 'none';
-                }
-           </script>
+                    var date = new Date();
+                    date.setTime(date.getTime() + (10 * 60 * 1000));
+                    $.cookie('adCookie','hide_splash', {path: '/', expires: date});
+          </script>
         </div>
     </div><!--//.footer-cuattiary-->
     <!--ADDED BY NEO-->

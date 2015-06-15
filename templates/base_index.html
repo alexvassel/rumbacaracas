@@ -505,10 +505,6 @@ div#front-slides ul#navarrow li#next a {
     <script type="text/javascript">
         if( !($.cookie('adCookie') === null) ) {
             $("#footer-cuartiary").hide();
-        } else {
-            var date = new Date();
-            date.setTime(date.getTime() + (10 * 60 * 1000));
-            $.cookie('adCookie','hide_splash', {path: '/', expires: date});
         }
     </script>
     {% endcomment %}
@@ -526,6 +522,9 @@ div#front-slides ul#navarrow li#next a {
              function CerrarMensaje()
                 {
                     document.getElementById('MensajeFacebook').style.display = 'none';
+                    var date = new Date();
+                    date.setTime(date.getTime() + (10 * 60 * 1000));
+                    $.cookie('adCookie','hide_splash', {path: '/', expires: date});
                 }
            </script>
         </div>
