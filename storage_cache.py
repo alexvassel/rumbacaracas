@@ -34,8 +34,8 @@ class DjangoCache(Cache):
             return file_dict['mtime']
         return None
 
-    def save(self, name, size, mtime):
-        self.cache.add(self._key(name), dict(name=name, size=size, mtime=mtime), timeout = self.cache_timeout)
+    def save(self, name, size, getmtime):
+        self.cache.add(self._key(name), dict(name=name, size=size, mtime=getmtime), timeout=self.cache_timeout)
 
     def remove(self, name):
         self.cache.delete(self._key(name))

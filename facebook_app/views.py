@@ -2,7 +2,7 @@ import base64, hashlib, hmac, json, urllib, time
 from socialregistration.models import FacebookProfile
 from socialregistration.views import _get_next
 import facebook
-import md5
+import hashlib
 from django.conf import settings
 from decorators import render_to
 import itertools

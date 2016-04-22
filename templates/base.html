@@ -166,6 +166,47 @@
 	
 	
 	</script>
+    <script>
+        function showoff(whoisthis)
+        {
+        document.getElementById(whoisthis).style.display = 'none';
+        var vid = document.getElementById(whoisthis+1);
+        vid.currentTime = 0;
+        vid.pause();
+        }
+        function showon(whoisthis)
+        {
+        document.getElementById(whoisthis).style.display = 'Block';
+        var vid = document.getElementById(whoisthis+1);
+        vid.play();
+        }
+    </script>
+    <style>
+    /* Banners Richmedia*/
+    .RichBannerHeader{
+        width:800px; /* Tamaño del banner */
+    }
+    .RichBannerHeader video{
+        width: 100%;
+    }
+    .RichBannerAlto{
+        width:270px; /* Tamaño del banner */
+    }
+    .RichMediaHeader{
+        display: none;
+        margin-top: -12.5%;
+        position: relative;
+        z-index: 99999;
+        height: 0px; /* Para que no mueva los objetos alrededor */
+    }
+    .RichMediaAlto{
+        display: none;
+        position: relative;
+        z-index: 99999;
+        margin-top: -233%;
+        margin-left: -247%; /* 0 para cambiar de lado */
+    }
+    </style>
   <link rel="stylesheet" href="http://rumbacaracas.com/media/responsive.css" />
   <link href="http://rumbacaracas.com/media/css/floatingbanner.css" rel="stylesheet"/>
 </head>
@@ -246,8 +287,27 @@
     </div><!--//.container-->
   </div><!--//.header-primary-->
 {% block corner %}{% revive_zone_corner 16 300 300 'ab72e4a3' %}{% endblock %}
+        <!--/* Revive Adserver Javascript Tag v3.0.2 */-->
+
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://ads2014.2rumba.com/www/delivery/ajs.php':'http://ads2014.2rumba.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=27");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://ads2014.2rumba.com/www/delivery/ck.php?n=ac8b9c8e&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads2014.2rumba.com/www/delivery/avw.php?zoneid=27&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=ac8b9c8e' border='0' alt='' /></a></noscript>
+
 <div class="main-wrapper">
-  <div class="container encap whitebg" style="cursor: default">
+ <a href="http://ads2014.2rumba.com/www/delivery/ck.php?oaparams=2__bannerid=398__zoneid=27__cb=9675a6682d__oadest=http%3A%2F%2Fbreinguash.com%2Fconexionalam%2F" target="_blank" style="position: fixed;    height: 1200px;    text-indent: -9999px;    width: 1900px;    top: 0;    left: 0;    border: 0;    float: left;    min-height: 1200px;    z-index: 0;"></a>
+  <div class="container encap whitebg" style="cursor: default; position:relative; z-index:1;">
     <div id="header-secondary" class="header-secondary encap">
       <div class="date c14l txt-right mr10">
         <h2>
@@ -432,39 +492,36 @@
       <span class="txt-right">
         <p><span class="uppercase">Rumbacaracas.com</span>, C.A. &copy; 2009-{% now "Y" %} Todos los Derechos Reservados<br /><a href="{% url terms_of_use %}">{% trans "Terms of Use" %}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:rumba@rumbacaracas.com">rumba@rumbacaracas.com</a></p>
       </span>
-        {% comment %}
-        <script type="text/javascript">
-            if( !($.cookie('adCookie') === null) ) {
-                $("#footer-cuartiary").hide();
-            }
-        </script>
-        {% endcomment %}
     </div><!--//.footer-tertiary-->
-      <div id="footer-cuartiary">
-    <!--ADDED BY NEO-->
-        <div id='MensajeFacebook' onClick='CerrarMensaje()' style ='display: block; padding: 110px 0 0; margin: 0px; bottom: 0px; top: 0px; right: 0px; left: 0px; position: fixed; z-index: 99999; background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.8);'>
-            <div id='MensajeFacebookdos' style='margin: 0 auto; width: 800px;'>
-                <div id="cerrado" style="COLOR:WHITE;FLOAT: RIGHT; FONT-SIZE: 16PX;MARGIN-BOTTOM: 5PX; cursor: pointer;">
-                    CERRAR [x]
-                </div>
-<iframe id='a1ec5510' name='a1ec5510' src='http://thenumbersoftqa.com.ve/www/delivery/afr.php?zoneid=32&amp;cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='800' height='600'><a href='http://thenumbersoftqa.com.ve/www/delivery/ck.php?n=aea41e91&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://thenumbersoftqa.com.ve/www/delivery/avw.php?zoneid=32&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=aea41e91' border='0' alt='' /></a></iframe>
+      {%comment%}
+      <!--ADDED BY NEO-->
+      {% if request.session['BannerEmergente'] == '' %}
+            {{ request.session['BannerEmergente'] = 'ShowBanner' }}
+              <div id="footer-cuartiary" style="display: none;">
+                    <div id='MensajeFacebook' onClick='CerrarMensaje()' style ='display: block; padding: 110px 0 0; margin: 0px; bottom: 0px; top: 0px; right: 0px; left: 0px; position: fixed; z-index: 99999; background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.8);'>
+                        <div id='MensajeFacebookdos' style='margin: 0 auto; width: 800px;'>
+                            <div id="cerrado" style="COLOR:WHITE;FLOAT: RIGHT; FONT-SIZE: 16PX;MARGIN-BOTTOM: 5PX; cursor: pointer;">
+                                CERRAR [x]
+                            </div>
+                            <iframe id='a1ec5510' name='a1ec5510' src='http://thenumbersoftqa.com.ve/www/delivery/afr.php?zoneid=32&amp;cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='800' height='600'><a href='http://thenumbersoftqa.com.ve/www/delivery/ck.php?n=aea41e91&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://thenumbersoftqa.com.ve/www/delivery/avw.php?zoneid=32&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=aea41e91' border='0' alt='' /></a></iframe>
 
-            </div>
-        <script type="text/javascript">
-             function CerrarMensaje()
-                {
-                    document.getElementById('MensajeFacebook').style.display = 'none';
-                    var date = new Date();
-                    date.setTime(date.getTime() + (10 * 60 * 1000));
-                    $.cookie('adCookie','hide_splash', {path: '/', expires: date});
-          </script>
-        </div>
-    </div><!--//.footer-cuattiary-->
-    <!--ADDED BY NEO-->
+                        </div>
+                    <script type="text/javascript">
+                         function CerrarMensaje()
+                            {
+                                document.getElementById('MensajeFacebook').style.display = 'none';
+                            }
+                       </script>
+                    </div>
+                </div><!--//.footer-cuattiary-->
+        {% endif %}
+        <!--ADDED BY NEO-->
+      {%endcomment%} 
   </div><!--//.container-->
 </div>
 <script>
 	$(document).ready(function () {
+		
 		jQuery("#footer-tertiary .txt-left img").mouseover(function( )
 		{
 			$(this).attr("src", $(this).attr("src").replace(".png", "_on.png"));
@@ -478,28 +535,28 @@
 	
 		/* PUSH BANNER */
 
-        if( jQuery(".banner-push").length > 0 && jQuery(".banner-push")[0].scrollHeight > 0 ) {
-
-    		// initial height
-    		var banner_push_h_from = 60;
-	    	// the height at the end
-        	var banner_push_h_to = 200;
-		    // animation speed
-	    	var banner_push_aspeed = 1000;
-    
-    		jQuery(".banner-push").css('height', banner_push_h_from +'px');
-    		jQuery(".banner-push").css('overflow', 'hidden');
-    		jQuery(".banner-push").mouseover(function() {
-                $(this).clearQueue();
-                $(this).animate({height:banner_push_h_to, queue:false},banner_push_aspeed);
-    		});
-
-    		jQuery(".banner-push").mouseout(function() {
-                $(this).clearQueue();
-                $(this).animate({height:banner_push_h_from, queue:false},banner_push_aspeed);
-    		});
-
-        }
+//        if( jQuery(".banner-push").length > 0 && jQuery(".banner-push")[0].scrollHeight > 0 ) {
+//
+//    		// initial height
+//    		var banner_push_h_from = 60;
+//	    	// the height at the end
+//        	var banner_push_h_to = 300;
+//		    // animation speed
+//	    	var banner_push_aspeed = 1000;
+//    
+//    		jQuery(".banner-push").css('height', banner_push_h_from +'px');
+//    		jQuery(".banner-push").css('overflow', 'hidden');
+//    		jQuery(".banner-push").mouseover(function() {
+//                $(this).clearQueue();
+//                $(this).animate({height:banner_push_h_to, queue:false},banner_push_aspeed);
+//    		});
+//
+//    		jQuery(".banner-push").mouseout(function() {
+//                $(this).clearQueue();
+//                $(this).animate({height:banner_push_h_from, queue:false},banner_push_aspeed);
+//    		});
+//
+//        }
 	})
 </script>
 

@@ -40,6 +40,7 @@
         {% endif %}
 		{% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}</a>
 	</a>
+</span>
 	<div class="content encap">
 		{% if object.image and not object.preview_as_image%}
 			<img class="main-image2 fix-width" src="{{ object.image.url }}" alt="{{ object.title }}" />

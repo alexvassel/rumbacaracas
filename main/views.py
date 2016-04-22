@@ -89,6 +89,9 @@ def most_viewed_events_list(count=2):
 def index( request ):
     current_date = datetime.today()
 
+    if request.session.get('BannerEmergente', False):
+        request.session['BannerEmergente'] = True
+    
     main_image_slider_mode = preferences.MainSliderPreferences.status
 
     if main_image_slider_mode == "1":

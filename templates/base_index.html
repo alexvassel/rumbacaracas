@@ -507,7 +507,6 @@ div#front-slides ul#navarrow li#next a {
             $("#footer-cuartiary").hide();
         }
     </script>
-    {% endcomment %}
     <!--ADDED BY NEO-->
       <div id="footer-cuartiary"><!-- a -->
         <div id='MensajeFacebook' onClick='CerrarMensaje()' style ='display: block; padding: 110px 0 0; margin: 0px; bottom: 0px; top: 0px; right: 0px; left: 0px; position: fixed; z-index: 99999; background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.8);'>
@@ -530,6 +529,7 @@ div#front-slides ul#navarrow li#next a {
         </div>
     </div><!--//.footer-cuattiary-->
     <!--ADDED BY NEO-->
+    {% endcomment %}
   </div><!--//.container-->
 </div>
 <script>
@@ -547,27 +547,27 @@ div#front-slides ul#navarrow li#next a {
 	
 		/* PUSH BANNER */
 
-        if( jQuery(".banner-push").length > 0 && jQuery(".banner-push")[0].scrollHeight > 0 ) {
-
-    		// initial height
-    		var banner_push_h_from = 60;
-    		// the height at the end
-    		var banner_push_h_to = 200;
-    		// animation speed
-	    	var banner_push_aspeed = 1000;
-    
-    		jQuery(".banner-push").css('height', banner_push_h_from +'px');
-    		jQuery(".banner-push").css('overflow', 'hidden');
-    		jQuery(".banner-push").mouseover(function() {
-                $(this).clearQueue();
-                $(this).animate({height:banner_push_h_to, queue:false},banner_push_aspeed);
-    		});
-    
-	    	jQuery(".banner-push").mouseout(function() {
-                $(this).clearQueue();
-                $(this).animate({height:banner_push_h_from, queue:false},banner_push_aspeed);
-	    	});
-        }
+//        if( jQuery(".banner-push").length > 0 && jQuery(".banner-push")[0].scrollHeight > 0 ) {
+//
+//    		// initial height
+//    		var banner_push_h_from = 60;
+//    		// the height at the end
+//    		var banner_push_h_to = 300;
+//    		// animation speed
+//	    	var banner_push_aspeed = 1000;
+//    
+//    		jQuery(".banner-push").css('height', banner_push_h_from +'px');
+//    		jQuery(".banner-push").css('overflow', 'hidden');
+//    		jQuery(".banner-push").mouseover(function() {
+//                $(this).clearQueue();
+//                $(this).animate({height:banner_push_h_to, queue:false},banner_push_aspeed);
+//    		});
+//    
+//	    	jQuery(".banner-push").mouseout(function() {
+//                $(this).clearQueue();
+//                $(this).animate({height:banner_push_h_from, queue:false},banner_push_aspeed);
+//	    	});
+//        }
 
         $('#front-slides').hover(function() {
                 $('ul#navarrow').fadeIn();

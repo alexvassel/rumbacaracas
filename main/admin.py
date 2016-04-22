@@ -4,8 +4,8 @@ from main.models import Place, MainBackgroundImage, CursorImage, SplashScreen
 
 
 class PlaceAdmin( SortableAdmin ):
-    list_editable = SortableAdmin.list_editable + ( 'background_image', 'cursor_image', 'splash_image' )
-    list_display = SortableAdmin.list_display + ( 'title', 'background_image', 'cursor_image', 'splash_image' )
+    list_editable = SortableAdmin.list_editable + ( 'background_image', 'cursor_image' )
+    list_display = SortableAdmin.list_display + ( 'title', 'background_image', 'cursor_image' )
     list_display_links = ( 'title', )
 
 
