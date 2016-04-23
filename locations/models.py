@@ -30,7 +30,7 @@ class LocationType( models.Model ):
         verbose_name_plural = _( 'Location types' )
     def save(self, *args, **kwargs):
         super(LocationType, self).save(*args, **kwargs)
-        super(LocationType, self).save(using = 'venezuela', *args, **kwargs)
+        #super(LocationType, self).save(using = 'venezuela', *args, **kwargs)
 
 class RestaurantType ( models.Model ):
     title = models.CharField( _( 'Type of Restaurant' ), max_length = 256 )
@@ -41,7 +41,7 @@ class RestaurantType ( models.Model ):
         verbose_name_plural = _( 'Types of Restaurant' )
     def save(self, *args, **kwargs):
         super(RestaurantType, self).save(*args, **kwargs)
-        super(RestaurantType, self).save(using = 'venezuela', *args, **kwargs)
+        #super(RestaurantType, self).save(using = 'venezuela', *args, **kwargs)
 
 class LocationArea ( models.Model ):
     title = models.CharField( _( 'Area' ), max_length = 256 )
@@ -52,7 +52,7 @@ class LocationArea ( models.Model ):
         verbose_name_plural = _( 'Location areas' )
     def save(self, *args, **kwargs):
         super(LocationArea, self).save(*args, **kwargs)
-        super(LocationArea, self).save(using = 'venezuela', *args, **kwargs)
+        #super(LocationArea, self).save(using = 'venezuela', *args, **kwargs)
 
 class LocationMusic ( models.Model ):
     title = models.CharField( _( 'Music' ), max_length = 256 )
@@ -63,7 +63,7 @@ class LocationMusic ( models.Model ):
         verbose_name_plural = _( 'Location musics' )
     def save(self, *args, **kwargs):
         super(LocationMusic, self).save(*args, **kwargs)
-        super(LocationMusic, self).save(using = 'venezuela', *args, **kwargs)
+        #super(LocationMusic, self).save(using = 'venezuela', *args, **kwargs)
 
 
 class DressType( models.Model ):
@@ -75,7 +75,7 @@ class DressType( models.Model ):
         verbose_name_plural = _( 'Dress types' )
     def save(self, *args, **kwargs):
         super(DressType, self).save(*args, **kwargs)
-        super(DressType, self).save(using = 'venezuela', *args, **kwargs)
+        #super(DressType, self).save(using = 'venezuela', *args, **kwargs)
 
 
 class WeekDay( models.Model ):
@@ -151,8 +151,8 @@ class Location( ImageModel ):
     
     def save(self, *args, **kwargs):
         super(Location, self).save(*args, **kwargs)
-        if str(self.city) == 'Caracas':
-            super(Location, self).save(using = 'venezuela', *args, **kwargs)
+        #if str(self.city) == 'Caracas':
+            #super(Location, self).save(using = 'venezuela', *args, **kwargs)
             
 
 VENUE_PRICE_TYPE = ( 
@@ -178,14 +178,16 @@ class VenuePrice( models.Model ):
     class Meta:
         verbose_name = _( 'Venue Price' )
         verbose_name_plural = _( 'Venue Price' )
-
+"""
 # ASSIGN A PRE_SAVE SIGNAL
 def save_location_info(sender, **kwargs):
     obj = kwargs['instance']
     
     result = ''
     query = "SELECT * FROM locations_location WHERE slug='"+str(obj.slug)+"'"
-    cursor = connections['venezuela'].cursor()
+    import ipdb; ipdb.set_trace()
+    #cursor = connections['venezuela'].cursor()
+    cursor = connections.cursor()
     cursor.execute(query)
     result = str(cursor.fetchone())
     transaction.commit_unless_managed(using='venezuela')
@@ -194,6 +196,7 @@ def save_location_info(sender, **kwargs):
         obj.slug = obj.slug+'-'+str(random.randrange(1000, 9999))
 
 # ASSIGN A PRE_DELETE SIGNAL
+
 def delete_both(sender, **kwargs):
     obj = kwargs['instance']
     query = "DELETE FROM locations_location WHERE slug='"+str(obj.slug)+"'"
@@ -204,3 +207,4 @@ def delete_both(sender, **kwargs):
 # CONNECT THE SIGNALS
 pre_delete.connect(delete_both, sender=Location)
 pre_save.connect(save_location_info, sender=Location)
+"""

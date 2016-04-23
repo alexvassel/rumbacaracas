@@ -38,7 +38,7 @@ class EventCategory( Sortable ):
         return self.title
     def save(self, *args, **kwargs):
         super(EventCategory, self).save(*args, **kwargs)
-        super(EventCategory, self).save(using = 'venezuela', *args, **kwargs)
+        #super(EventCategory, self).save(using = 'venezuela', *args, **kwargs)
             
     class Meta( Sortable.Meta ):
         verbose_name = _( 'Event type' )
@@ -218,6 +218,7 @@ def unique_slug(sender, **kwargs):
         import random
         obj.slug = obj.slug+'-'+str(random.randrange(1000, 9999))
 pre_save.connect(unique_slug, sender=Event)
+
 
 # ASSIGN A PRE_DELETE SIGNAL
 def delete_both(sender, **kwargs):
