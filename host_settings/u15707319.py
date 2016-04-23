@@ -72,8 +72,8 @@ CACHES = {
 DEFAULT_FILE_STORAGE = 'cuddlybuddly.storage.s3.S3Storage'
 #DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-AWS_ACCESS_KEY_ID = 'AKIAJH3P6FIUXVWPBXSA'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIAJFYEEHHEJAKZERRQ'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'media.rumbacaracas.com'
 
 from django.utils.http import  http_date
