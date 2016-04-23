@@ -46,7 +46,6 @@
 	<link rel="shortcut icon" href="/favicon.ico" />
 
 
-    {% compress css %}
 	<link href="{{ STATIC_URL }}css/base.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
 	<link href="{{ STATIC_URL }}css/typo.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
 	<link href="{{ STATIC_URL }}css/forms.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
@@ -58,7 +57,6 @@
     <link href="{{ STATIC_URL }}css/custom-ui-theme/jquery-ui-1.8.14.custom.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
     <link href="{{ STATIC_URL }}css/new-theme.css" rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" />
 
-    {% endcompress %}
 
     {% compress js %}
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.5.1.min.js"></script>
@@ -237,7 +235,7 @@ div#front-slides ul#navarrow li#next a {
     {% main_background %}
 	{% facebook_js_tag %}
 	{% twitter_js_tag %}
-
+{% comment %}
   <div id="header-primary" class="header-primary no-deco outnone">
 
     <div class="container">
@@ -313,6 +311,7 @@ div#front-slides ul#navarrow li#next a {
       </div><!--//.rows-->
     </div><!--//.container-->
   </div><!--//.header-primary-->
+{% endcomment %}
 {% block corner %}{% revive_zone_corner 16 300 300 'ab72e4a3' %}{% endblock %}
 <div class="main-wrapper">
   <div class="container encap whitebg" style="cursor: default">
