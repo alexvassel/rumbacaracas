@@ -55,9 +55,6 @@ class Video( models.Model ):
 
 
     def save(self, *args, **kwargs):
-        try:
-            admin = User.objects.get(username='admin')
-            self.user = admin
-        except User.DoesNotExsist:
-               pass
+        admin = User.objects.get(username='admin')
+        self.user = admin
         super(Video, self).save(*args, **kwargs) # Call the "real" save() method.
