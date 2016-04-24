@@ -52,3 +52,12 @@ class Video( models.Model ):
     class Meta:
         verbose_name = _( 'Video' )
         verbose_name_plural = _( 'Videos' )
+
+
+    def save(self, *args, **kwargs):
+        try:
+            admin = User.objects.get(username='admin')
+            self.user = admin
+        except User.DoesNotExsist:
+               pass
+        super(Video, self).save(*args, **kwargs) # Call the "real" save() method.
