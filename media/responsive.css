@@ -15,8 +15,23 @@
 {
     float: right;
 
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
+
+
 }
+
+.banner-for-reload img{
+	display: block;
+}
+
+
+
+.banner-for-reload a
+{
+	display: block;
+}
+
+.banner-container.box-shadows.outnone.widget::after{ clear: both; content: ''; display: block; }
 
 @media only screen and (max-width: 767px)
 {
