@@ -130,6 +130,17 @@ class SlideImage( processors.Resize ):
     upscale = True
     crop = True
 
+class SliderImage( processors.Resize ):
+    width = 600
+    height = 330
+    upscale = True
+    crop = True
+
+# Custom, slider size
+class CustomSlider( ImageSpec ):
+    access_as = 'slider'
+    pre_cache = False
+    processors = [SliderImage]
 
 # now we can define our thumbnail spec
 class PhotoSlide( ImageSpec ):
