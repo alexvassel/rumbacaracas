@@ -32,7 +32,7 @@ class SlideImage( processors.Resize ):
 
 class SliderImage( processors.Resize ):
     width = 600
-    height = 330
+    height = 375
     upscale = True
     crop = True
 

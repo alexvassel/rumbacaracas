@@ -2,8 +2,8 @@
 from django.template.loader import template_source_loaders
 
 def reset_template_cache():
-    print("123")
     if not template_source_loaders:
+        print 'no loaders found'
         return
 
     for loader in template_source_loaders:	
