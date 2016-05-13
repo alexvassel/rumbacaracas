@@ -80,10 +80,11 @@
                         {% endif %}
                         {% trans "on" %} {{ object.creation_date|date:"d.m.Y" }}
                     </span>
+{% if object.image %}
                   <a href="{{ object.get_absolute_url }}" class="wide_preview">
                     <img style="max-width: 600px;" alt="{{ object.title }}" src="{{ object.image.url }}">
                   </a>  
-                
+                {% endif %}
                 </dd>
             {% endif %}
             </dl>
