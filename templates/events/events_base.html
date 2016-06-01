@@ -34,7 +34,7 @@
       <ul class="image-teaser-slides encap">
       	{% for slide in slider_events%}
         	<li>
-        		<a href="{% url event_details slide.slug %}"><img  width="595" height="440px" src="{{ slide.slider.url }}" alt="{{slide.title}}" /></a>
+        		<a href="{% url event_details slide.slug %}"><img  width="600" height="400" src="{{ slide.slider.url }}" alt="{{slide.title}}" /></a>
         		<div class="slide-teasers">
                     <h3><a href="{% url event_details slide.slug %}">{{slide.title}}</a></h3>
                     <p>{{slide.description|truncate:85}}<br />
@@ -279,9 +279,7 @@
         {% month_cal%}
     </div>
 
-    <div class="banner-container box-shadows outnone widget">
-        {% revive_banner 10 300 250 "a796f138" %}
-    </div><!--//.banner-container-->
+<!--//.banner-container-->
 
-    
+
 {% endblock %}
