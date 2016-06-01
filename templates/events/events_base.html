@@ -34,7 +34,7 @@
       <ul class="image-teaser-slides encap">
       	{% for slide in slider_events%}
         	<li>
-        		<a href="{% url event_details slide.slug %}"><img  width="595" height="440px" src="{% if slide.slider_image %}{{slide.slider_image.url}}{% else %}{{slide.bigimg.url}}{% endif %}" alt="{{slide.title}}" /></a>
+        		<a href="{% url event_details slide.slug %}"><img  width="595" height="440px" src="{{ slide.slider.url }}" alt="{{slide.title}}" /></a>
         		<div class="slide-teasers">
                     <h3><a href="{% url event_details slide.slug %}">{{slide.title}}</a></h3>
                     <p>{{slide.description|truncate:85}}<br />
@@ -72,7 +72,7 @@
   <div class="merged-contents">
     <div class="tab-titles encap">
       <ul class="outnone encap">
-      	
+
         <li class="box-shadows">
         	<a href="{{active_tab|get_event_url_by_tab:'day'}}#eventos-anclaje" {% if period == "day" %} class="active"{% endif %}>
         		{% trans "For Today"%}
@@ -227,14 +227,14 @@
 				window.location.href = '{% url event_main %}'+ slug;
 			}
         })
-        
+
         $("#locations-list").change(function () {
 			var slug = $("#locations-list").val();
 			if (slug != '') {
 				window.location.href = '{% url location_main %}'+ slug;
 			}
         })
-        
+
 		$("#event-filter-btn").click(function () {
 			var cur_month = $("#events-months").val();
 			var cur_year = $("#events-years").val();
@@ -283,5 +283,5 @@
         {% revive_banner 10 300 250 "a796f138" %}
     </div><!--//.banner-container-->
 
-    {% subscribe_block %}
+    
 {% endblock %}

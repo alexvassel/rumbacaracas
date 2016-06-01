@@ -403,14 +403,14 @@
         {% revive_banner 10 300 250 "a796f138" %}
     </div><!--//.banner-container-->
 
-    {% subscribe_block %}
+    {% comment %}{% subscribe_block %}{% endcomment %}
 
     <div class="split-sidebars encap">
       <div class="c57l left">
 		{% if location %}
 			{% location_block2 %}
         {% else %}
-            <!-- {% upcoming_events_block 3 %} -->
+            {% upcoming_events_block 3 %}
             {% most_watched %}
         {% endif %}
 
