@@ -50,130 +50,6 @@
         </div><!--//.front-slides-->
     {%  endif %}
 
-    <div id="latest-photos" class="latest-photos encap boxed-brief lastest-photos-main-box">
-        {% comment %}<div class="wrapper encap">
-            <div class="title flt-left"><h2>{% trans "LATEST PHOTOS" %}</h2></div>
-            <div class="tab-titles flt-right fcml0 lcmr0">
-                <ul id="tab-photo-outline" class="outnone tab-navigation">
-                    <li class="box-shadows"><a class="active" href="#tab-events">{% trans "People and Events" %}</a></li>
-                    <li class="box-shadows"><a href="#tab-your-photos">{% trans "Your Photos" %}</a></li>
-                </ul>
-            </div><!--//.tab-titles-->
-        </div><!--//.wrapper-->
-		{% endcomment %}
-		<div class="orange-bar">
-			{% trans "LATEST PHOTOS" %}
-		</div>
-		{% for row in people|slice:":4" %}
-			{% if row %}
-				{% if forloop.counter|divisibleby:"2" %}
-					<div class="latest-photos-image-box">
-				{% else %}
-					<div class="latest-photos-image-box" style="margin-right: 1px;">
-				{% endif %}
-					<a href="{{ row.get_absolute_url }}"><img src="{{ row.rightcolumnthumb.url }}" alt="{{ row.title }}" /></a>
-					<div class="grey-text-bar-on-img-container">
-						<div class="grey-text-bar-on-img">
-							<div>
-							<a href="{{ row.get_absolute_url }}">{{ row.title }}</a>
-								<p>{{row.date|date:"d.m.y"}}</p>
-							</div>
-							<div style="clear: both;"></div>
-						</div>
-					</div>
-					
-				</div>
-            {% endif %}
-		{% endfor %}
-		<div style="clear: both;"></div>
-		<a href="{% url people_main %}" class="more-photos-link">
-			<div class="gradient-bar">
-				<span>
-					{% trans "SEE MORE PHOTOS" %}
-				</span>
-			</div>
-		</a>
-		<div style="clear: both;"></div>
-		{% comment %}
-        <div id="latest-photos-content" class="latest-photos-content tab-container box-shadows outnone">
-            <div id="tab-events" class="tab-parts encap">
-                <div class="photo-teasters" style="height: 195px;">
-                    {% include "people/main_ajax_slide.html" with event=people|first%}
-                </div><!--//.photo-teasers-->
-                <div class="cflt"></div>
-                <div class="more-photos encap">
-                    <a id="carousel-prev" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
-                    <a id="carousel-next" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
-                    <ul class="carousel-images peoples ie-encap" style="width: 562px;height: 145px;">
-                        {% cache 60 main_people %}
-                            {% for row in people|main_slider_split:4 %}
-                                {% if row %}
-                                    <li style="{% if not forloop.first %};display:none{% endif %}">
-                                        <ul class="carousel-slide fcml0 lcmr0">
-                                            {% for event in row %}
-                                                {% if forloop.parentloop.first and  forloop.first%}
-                                                    <li class="active">
-                                                        {% else %}
-                                                    <li>
-                                                {% endif %}
-                                            <h6>
-                                                <a href="{% url people_main_slide event.id %}"><img src="{{ event.mainminithumb.url }}" alt="{{event.title}}" />{{event.title|truncate:35}}<br />{{event.date|date:"d.m.y"}}</a>
-                                            </h6>
-                                            </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        {% endcache %}
-                    </ul><!--//.carousel-images-->
-                    <div class="cflt"></div>
-                </div><!--//.more-photos-->
-                <div class="cflt"></div>
-            </div><!--//.tab-parts-->
-
-            <div id="tab-your-photos" class="tab-parts encap">
-                <div class="photo-teasters" style="height: 195px;">
-                    {% include "yourphotos/main_ajax_slide.html" with photo=photos|first%}
-                </div><!--//.photo-teasers-->
-                <div class="cflt"></div>
-                <div class="more-photos encap">
-                    <a id="carousel-prev2" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
-                    <a id="carousel-next2" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
-                    <ul class="carousel-images fotos ie-encap" style="width: 562px;height: 145px;">
-                        {% cache 60 main_yourphoto %}
-                            {% for row in photos|main_slider_split:4 %}
-                                {% if row %}
-                                    <li style="{% if not forloop.first %};display:none{% endif %}">
-                                        <ul class="carousel-slide fcml0 lcmr0">
-                                            {% for photo in row %}
-                                                {% if forloop.parentloop.first and  forloop.first%}
-                                                    <li class="active">
-                                                        {% else %}
-                                                    <li>
-                                                {% endif %}
-                                            <h6>
-                                                <a href="{% url yourphoto_main_slide photo.id %}"><img src="{{ photo.mainminithumb.url }}" alt="{{photo.description}}" />{{photo.description|truncate:35}}<br />{{photo.datetime_added|date:"d.m.y"}}</a>
-                                            </h6>
-                                            </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        {% endcache %}
-                    </ul><!--//.carousel-images-->
-                    <div class="cflt"></div>
-                </div><!--//.more-photos-->
-                <div class="cflt"></div>
-
-            </div><!--//.tab-parts-->
-
-        </div><!--//.latest-photos-content-->
-        {% endcomment %}
-    </div><!--//.latest-photos-->
-    <div style="clear: both;"></div>
-    {% include "main/banner_103.html" %}
     <div class="news-main-box">
     	<div class="general-bar grey-bar">
 			{% trans "NEWS" %}
@@ -371,6 +247,130 @@
             </div>
         </div>
     </div>
+        <div id="latest-photos" class="latest-photos encap boxed-brief lastest-photos-main-box">
+        {% comment %}<div class="wrapper encap">
+            <div class="title flt-left"><h2>{% trans "LATEST PHOTOS" %}</h2></div>
+            <div class="tab-titles flt-right fcml0 lcmr0">
+                <ul id="tab-photo-outline" class="outnone tab-navigation">
+                    <li class="box-shadows"><a class="active" href="#tab-events">{% trans "People and Events" %}</a></li>
+                    <li class="box-shadows"><a href="#tab-your-photos">{% trans "Your Photos" %}</a></li>
+                </ul>
+            </div><!--//.tab-titles-->
+        </div><!--//.wrapper-->
+		{% endcomment %}
+		<div class="orange-bar">
+			{% trans "LATEST PHOTOS" %}
+		</div>
+		{% for row in people|slice:":4" %}
+			{% if row %}
+				{% if forloop.counter|divisibleby:"2" %}
+					<div class="latest-photos-image-box">
+				{% else %}
+					<div class="latest-photos-image-box" style="margin-right: 1px;">
+				{% endif %}
+					<a href="{{ row.get_absolute_url }}"><img src="{{ row.rightcolumnthumb.url }}" alt="{{ row.title }}" /></a>
+					<div class="grey-text-bar-on-img-container">
+						<div class="grey-text-bar-on-img">
+							<div>
+							<a href="{{ row.get_absolute_url }}">{{ row.title }}</a>
+								<p>{{row.date|date:"d.m.y"}}</p>
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+					</div>
+
+				</div>
+            {% endif %}
+		{% endfor %}
+		<div style="clear: both;"></div>
+		<a href="{% url people_main %}" class="more-photos-link">
+			<div class="gradient-bar">
+				<span>
+					{% trans "SEE MORE PHOTOS" %}
+				</span>
+			</div>
+		</a>
+		<div style="clear: both;"></div>
+		{% comment %}
+        <div id="latest-photos-content" class="latest-photos-content tab-container box-shadows outnone">
+            <div id="tab-events" class="tab-parts encap">
+                <div class="photo-teasters" style="height: 195px;">
+                    {% include "people/main_ajax_slide.html" with event=people|first%}
+                </div><!--//.photo-teasers-->
+                <div class="cflt"></div>
+                <div class="more-photos encap">
+                    <a id="carousel-prev" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
+                    <a id="carousel-next" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
+                    <ul class="carousel-images peoples ie-encap" style="width: 562px;height: 145px;">
+                        {% cache 60 main_people %}
+                            {% for row in people|main_slider_split:4 %}
+                                {% if row %}
+                                    <li style="{% if not forloop.first %};display:none{% endif %}">
+                                        <ul class="carousel-slide fcml0 lcmr0">
+                                            {% for event in row %}
+                                                {% if forloop.parentloop.first and  forloop.first%}
+                                                    <li class="active">
+                                                        {% else %}
+                                                    <li>
+                                                {% endif %}
+                                            <h6>
+                                                <a href="{% url people_main_slide event.id %}"><img src="{{ event.mainminithumb.url }}" alt="{{event.title}}" />{{event.title|truncate:35}}<br />{{event.date|date:"d.m.y"}}</a>
+                                            </h6>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endcache %}
+                    </ul><!--//.carousel-images-->
+                    <div class="cflt"></div>
+                </div><!--//.more-photos-->
+                <div class="cflt"></div>
+            </div><!--//.tab-parts-->
+
+            <div id="tab-your-photos" class="tab-parts encap">
+                <div class="photo-teasters" style="height: 195px;">
+                    {% include "yourphotos/main_ajax_slide.html" with photo=photos|first%}
+                </div><!--//.photo-teasers-->
+                <div class="cflt"></div>
+                <div class="more-photos encap">
+                    <a id="carousel-prev2" class="carousel-prev flt-left" href="#"><span class="hidden">&nbsp;</span></a>
+                    <a id="carousel-next2" class="carousel-next flt-right" href="#"><span class="hidden">&nbsp;</span></a>
+                    <ul class="carousel-images fotos ie-encap" style="width: 562px;height: 145px;">
+                        {% cache 60 main_yourphoto %}
+                            {% for row in photos|main_slider_split:4 %}
+                                {% if row %}
+                                    <li style="{% if not forloop.first %};display:none{% endif %}">
+                                        <ul class="carousel-slide fcml0 lcmr0">
+                                            {% for photo in row %}
+                                                {% if forloop.parentloop.first and  forloop.first%}
+                                                    <li class="active">
+                                                        {% else %}
+                                                    <li>
+                                                {% endif %}
+                                            <h6>
+                                                <a href="{% url yourphoto_main_slide photo.id %}"><img src="{{ photo.mainminithumb.url }}" alt="{{photo.description}}" />{{photo.description|truncate:35}}<br />{{photo.datetime_added|date:"d.m.y"}}</a>
+                                            </h6>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endcache %}
+                    </ul><!--//.carousel-images-->
+                    <div class="cflt"></div>
+                </div><!--//.more-photos-->
+                <div class="cflt"></div>
+
+            </div><!--//.tab-parts-->
+
+        </div><!--//.latest-photos-content-->
+        {% endcomment %}
+    </div><!--//.latest-photos-->
+    <div style="clear: both;"></div>
+    {% include "main/banner_103.html" %}
 
 	<div style="clear: both;"></div>
 	<div class="banner-container outnone banner-margin" style="text-align: center; box-shadow: none;">
