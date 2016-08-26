@@ -66,14 +66,14 @@
 				<div class="news-photos-info-box">
 					<a href="{{ object.get_absolute_url }}">
 						<h3 class="news-photo-desc">
-							{{ object.title|truncate:47 }}
+							{{ object.title|truncate:37 }}
 						</h3>
 					</a>
 				</div>
                     <div class="news-event-date-info">
                         {{ object.creation_date|date:"d.m.y" }} /
                         {% for cat in object.categories.all %}
-                            <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+                            <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat|truncate:10 }}</a>
                             {% if not forloop.last %}, {% endif %}
                         {% endfor %} /
                         <a href="{{ object.get_absolute_url }}#disqus_thread">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
@@ -93,14 +93,14 @@
 				<div class="news-photos-info-box">
 					<a href="{{ event.get_absolute_url }}">
 						<h3 class="news-photo-desc">
-							{{ event.title|truncate:47 }}
+							{{ event.title|truncate:37 }}
 						</h3>
 					</a>
 				</div>
                     <div class="news-event-date-info">
                         {{ event.to_date|date:"d.m.y" }} /
                         {% for cat in event.categories.all %}
-                            <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+                            <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat|truncate:10 }}</a>
                             {% if not forloop.last %}, {% endif %}
                         {% endfor %} /
                         <a href="{{ event.get_absolute_url }}#disqus_thread">{%facebook_comments_count event.get_absolute_url%} {% trans "Comments" %}</a>
@@ -121,14 +121,14 @@
 				<div class="news-photos-info-box">
 					<a href="{{ object.get_absolute_url }}">
 						<h3 class="news-photo-desc">
-							{{ object.title|truncate:47 }}
+							{{ object.title|truncate:37 }}
 						</h3>
 					</a>
 				</div>
                     <div class="news-event-date-info">
                         {{ object.creation_date|date:"d.m.y" }} /
                         {% for cat in object.categories.all %}
-                            <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+                            <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat|truncate:10 }}</a>
                             {% if not forloop.last %}, {% endif %}
                         {% endfor %} /
                         <a href="{{ object.get_absolute_url }}#disqus_thread">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>
@@ -188,7 +188,7 @@
                                 <div class="news-event-date-info">
                                     {{ event.to_date|date:"d.m.y" }} / 
                                     {% for cat in event.categories.all %}
-                                        <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+                                        <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat|truncate:10 }}</a>
                                         {% if not forloop.last %}, {% endif %}
                                     {% endfor %} / 
                                     <a href="{{ event.get_absolute_url }}#disqus_thread">{%facebook_comments_count event.get_absolute_url%} {% trans "Comments" %}</a>
@@ -221,7 +221,7 @@
                     <div class="news-event-date-info">
                         {{ object.creation_date|date:"d.m.y" }} / 
                         {% for cat in object.categories.all %}
-                            <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat }}</a>
+                            <a href="{{ cat.get_absolute_url }}" title="{{ cat }}">{{ cat|truncate:10 }}</a>
                             {% if not forloop.last %}, {% endif %}
                         {% endfor %} / 
                         <a href="{{ object.get_absolute_url }}#disqus_thread">{%facebook_comments_count object.get_absolute_url%} {% trans "Comments" %}</a>

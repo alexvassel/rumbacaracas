@@ -1,5 +1,5 @@
 {% extends "zinnia/base.html" %}
-{% load i18n zinnia_tags %}
+{% load i18n zinnia_tags common %}
 {% load gplus tools openx%}
 {% load facebook twitter widgets %}
 {% block title %}{{ object.title }}{% endblock %}
@@ -8,8 +8,18 @@
 
 {% block titlehdr %}
 	{% for cat in object.categories.all%}
-	      {{ cat }}{% if not forloop.last %}, {% endif %}
+
+        {% if cat.slug == "destacados" %}
+            {% set destacados = True %}
+        {% endif %}
+        {{ cat }}{% if not forloop.last %},
+        {% else %}
+            {% if destacados %}
+                {% revive_banner 59 0 0 "a3293e05" %}
+            {% endif %}
+        {% endif %}
     {% endfor %}
+
 {% endblock %}
 
 {% if object %}
