@@ -122,7 +122,7 @@ class OccurrenceManager( models.Manager ):
 
 class Event( ImageModel, Sortable ):
     title = models.CharField( _( 'Event Name or Title' ), max_length = 256 )
-    slug = models.SlugField ( _( 'Url name for event' ) , unique=True)
+    slug = models.SlugField ( _( 'Url name for event' ) , unique=True, max_length=1000)
     from_date = models.DateField( _( 'Event start date' ) )
     to_date = models.DateField( _( 'Event end date' ), blank = True )
     repeat = models.ManyToManyField( WeekDay , blank = True )
@@ -138,7 +138,8 @@ class Event( ImageModel, Sortable ):
     phone = models.CharField( _( 'Info' ), max_length = 256 , blank = True )
     url = models.URLField( _( 'Url' ) , blank = True, verify_exists=False )
     email = models.EmailField( _( 'Email' ) , blank = True )
-    image = ImageRestrictedFileField( upload_to = upload_to_dest(format='uploads/events/%Y/%m/%d'), blank = True )
+    image = ImageRestrictedFileField(upload_to=upload_to_dest(format='uploads/events/%Y/%m/%d'),
+                                     max_length=1000, blank=True)
     slider_image = ImageRestrictedFileField( _( 'Slider image 619x440' ), upload_to = upload_to_dest(format='uploads/events/%Y/%m/%d'), blank = True )
     user = models.CharField( 'User', max_length = 256 , blank = True )
     description = models.TextField( _( 'Event Description' ), blank = True )
@@ -224,7 +225,7 @@ pre_save.connect(unique_slug, sender=Event)
 def delete_both(sender, **kwargs):
     obj = kwargs['instance']
     query = "DELETE FROM events_event WHERE slug='"+str(obj.slug)+"'"
-    cursor = connections['venezuela'].cursor()
+    #cursor = connections['venezuela'].cursor()
     cursor = connection.cursor()
     cursor.execute(query)
     #transaction.commit_unless_managed(using='venezuela')
