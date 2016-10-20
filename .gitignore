@@ -23,3 +23,6 @@ rumbacaracas.iml
 .pydevproject
 backup/*
 old_uploads/*
+uwsgi.xml
+media/*
+uploads/*
