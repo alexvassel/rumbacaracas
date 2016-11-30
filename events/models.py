@@ -202,7 +202,7 @@ class Event( ImageModel, Sortable ):
         #super(Event, self).save(*args, **kwargs)
         #if str(self.city) == 'Caracas':
         #    super(Event, self).save(using = 'venezuela', *args, **kwargs)
-            
+
 # ASSIGN A PRE_SAVE SIGNAL
 def unique_slug(sender, **kwargs):
     obj = kwargs['instance']
@@ -218,7 +218,9 @@ def unique_slug(sender, **kwargs):
     if result != 'None':
         import random
         obj.slug = obj.slug+'-'+str(random.randrange(1000, 9999))
-pre_save.connect(unique_slug, sender=Event)
+
+# We do not need it, because the field slug is unique (originality serves by db)
+#pre_save.connect(unique_slug, sender=Event)
 
 
 # ASSIGN A PRE_DELETE SIGNAL
